@@ -1,6 +1,6 @@
 library BCS version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 
@@ -19,16 +19,18 @@ Mammography		Indicates mammography was provided on the indicated date of service
 
 // NOTE: These valuesets are defined by the appropriate measures, refer to them for definitions
 valueset "Bilateral Mastectomy": 'Bilateral Mastectomy'
-valueset "Unilateral Mastectomy": 'Unilateral Mastectomy + Bilateral Modifier'
+valueset "Unilateral Mastectomy + Bilateral Modifier": 'Unilateral Mastectomy + Bilateral Modifier'
 valueset "History of Bilateral Mastectomy": 'History of Bilateral Mastectomy'
 
 valueset "Left Modifier": 'Left Modifier'
 valueset "Absence of Left Breast": 'Absence of Left Breast'
 valueset "Unilateral Mastectomy Left": 'Unilateral Mastectomy Left'
+valueset "Unilateral Mastectomy + Left Modifier": 'Unilateral Mastectomy + Left Modifier'
 
 valueset "Right Modifier": 'Right Modifier'
 valueset "Absence of Right Breast": 'Absence of Right Breast'
 valueset "Unilateral Mastectomy Right": 'Unilateral Mastectomy Right'
+valueset "Unilateral Mastectomy + Right Modifier": 'Unilateral Mastectomy + Right Modifier'
 
 valueset "Mammography": 'Mammography'
 

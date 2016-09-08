@@ -1,6 +1,6 @@
 library CCS version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 
@@ -85,4 +85,3 @@ define "Hysterectomy Procedure":
 define "Hx Hysterectomy Procedure":
   [Procedure: "Absence of Cervix"] A
     where A.status.value = 'completed'
-

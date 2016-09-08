@@ -4,7 +4,7 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="FHIR" uri="http://hl7.org/fhir"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.6"/>
    </usings>
    <parameters>
       <def name="MeasurementPeriod" accessLevel="Public">
@@ -81,23 +81,30 @@
       <def name="Colonoscopy Performed" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="C">
-               <expression dataType="fhir:Procedure" dateProperty="performedDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Colonoscopy" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="C" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="performedDateTime" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
+               </operand>
             </where>
          </expression>
       </def>
       <def name="Hx Colorectal Cancer" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="C">
-               <expression dataType="fhir:Condition" xsi:type="Retrieve">
+               <expression dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Colorectal Cancer" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -120,23 +127,30 @@
       <def name="Hx Sigmoidoscopy" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="S">
-               <expression dataType="fhir:Procedure" dateProperty="performedDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Flexible Sigmoidoscopy" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Five Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="S" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="S" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="performedDateTime" scope="S" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Five Years" xsi:type="ExpressionRef"/>
+               </operand>
             </where>
          </expression>
       </def>
       <def name="Hx Total Colectomy" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="T">
-               <expression dataType="fhir:Procedure" xsi:type="Retrieve">
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Total Colectomy" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -148,51 +162,49 @@
             </where>
          </expression>
       </def>
-      <def name="iFOBT" context="Patient" accessLevel="Public">
+      <def name="FOBT Procedure" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="F">
-               <expression dataType="fhir:Procedure" dateProperty="performedDateTime.value" xsi:type="Retrieve">
-                  <codes name="FOBT" xsi:type="IdentifierRef"/>
-                  <dateRange name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Fecal Occult Blood Test (FOBT)" xsi:type="ValueSetRef"/>
                </expression>
             </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="F" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="F" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
-            </where>
-         </expression>
-      </def>
-      <def name="gFOBT" context="Patient" accessLevel="Public">
-         <expression xsi:type="Query">
-            <source alias="F">
-               <expression dataType="fhir:Procedure" dateProperty="performedDateTime.value" xsi:type="Retrieve">
-                  <codes name="FOBT" xsi:type="IdentifierRef"/>
-                  <dateRange name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
-               </expression>
-            </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="F" xsi:type="Property"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="performedDateTime" scope="F" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
             </where>
          </expression>
       </def>
       <def name="Hx Colonoscopy" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="C">
-               <expression dataType="fhir:Procedure" dateProperty="performedDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Colonoscopy" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="C" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="performedDateTime" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
+               </operand>
             </where>
          </expression>
       </def>

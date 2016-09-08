@@ -1,6 +1,6 @@
 library CBP version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 Blood Pressure		value providing blood pressure
@@ -26,12 +26,12 @@ valueset "Systolic Greater Than/Equal To 140": '2.16.840.1.113883.3.464.1004.124
 valueset "Diastolic Less Than 80": '2.16.840.1.113883.3.464.1004.1084'
 valueset "Diastolic 80-89": '2.16.840.1.113883.3.464.1004.1082'
 valueset "Diastolic Greater Than/Equal To 90": '2.16.840.1.113883.3.464.1004.1083'
-valueset "Essential Hypertension": '2.16.840.1.113883.3.464.1004.1122'
 */
 
 // Using the DAF profiles, we could also communicate the requirement with value-based filtering
 valueset "Systolic Blood Pressure": 'Systolic Blood Pressure' // TODO: LOINC 8480-6
 valueset "Diastolic Blood Pressure": 'Diastolic Blood Pressure' // TODO: LOINC 8462-4
+valueset "Essential Hypertension": '2.16.840.1.113883.3.464.1004.1122'
 
 parameter MeasurementPeriod Interval<DateTime>
 
@@ -120,4 +120,3 @@ define "Hypertension Diagnosis":
 // Date of first diagnosis of Hypertension
 define "Hx HTN":
   First("Hypertension Diagnosis" D sort by D.onsetDateTime.value).dateRecorded.value
-

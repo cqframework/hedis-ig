@@ -1,6 +1,6 @@
 library CDC version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 
@@ -50,6 +50,7 @@ valueset "Diabetic Retinal Screening With Eye Care Professional": '2.16.840.1.11
 // https://ecqi.healthit.gov/system/files/ecqm/2014/EP/measures/CMS134v4_1.html
 // "Laboratory Test, Performed: Urine Protein Tests" using "Urine Protein Tests Grouping Value Set (2.16.840.1.113883.3.464.1003.109.12.1024)"
 // "Medication, Active: ACE Inhibitor or ARB" using "ACE Inhibitor or ARB Grouping Value Set (2.16.840.1.113883.3.526.3.1139)"
+valueset "ACE Inhibitor or ARB": '2.16.840.1.113883.3.526.3.1139'
 valueset "Urine Macroalbumin Tests": '2.16.840.1.113883.3.464.1004.1257'
 valueset "Positive Urine Macroalbumin Tests": '2.16.840.1.113883.3.464.1004.1216'
 valueset "Urine Protein Test": 'Urine Protein Test'
@@ -92,11 +93,6 @@ define "Heamoglobin A1C Level Greater than 9.0":
 
 // Angiotensin II receptor blockers (ARB) Medication Order
 
-define "ARB Medication Order":
-  [MedicationOrder : "ARB"] A
-    where A.status.value = 'completed'
-      and A.dateWritten.value during "Lookback Interval One Year"
-
 // Angiotensin Converting Enzyme (ACE) Medication Order
 // The following list of medications is from the CDC-L_2015(final).xls document found here:
 // https://www.ncqa.org/HEDISQualityMeasurement/HEDISMeasures/HEDIS2015/HEDIS2015NDCLicense/HEDIS2015FinalNDCLists.aspx
@@ -122,8 +118,8 @@ define "ARB Medication Order":
 // Mavik
 // Trandolapril
 
-define "ACE Medication Order":
-  [MedicationOrder : "ACE"] A
+define "ACE Inhibitor or ARB Medication Order":
+  [MedicationOrder : "ACE Inhibitor or ARB"] A
     where A.status.value = 'completed'
       and A.dateWritten.value during "Lookback Interval One Year"
 

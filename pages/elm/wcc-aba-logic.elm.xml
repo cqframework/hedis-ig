@@ -4,7 +4,7 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="FHIR" uri="http://hl7.org/fhir"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.6"/>
    </usings>
    <parameters>
       <def name="MeasurementPeriod" accessLevel="Public">
@@ -54,18 +54,25 @@
       <def name="BMI Percent" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="P">
-               <expression dataType="fhir:Observation" dateProperty="effectiveDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                   <codes name="BMI Percentile" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="In">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="P" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="P" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="List">
+                     <element valueType="t:String" value="final" xsi:type="Literal"/>
+                     <element valueType="t:String" value="amended" xsi:type="Literal"/>
+                  </operand>
                </operand>
-               <operand xsi:type="List">
-                  <element valueType="t:String" value="final" xsi:type="Literal"/>
-                  <element valueType="t:String" value="amended" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="effectiveDateTime" scope="P" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
             </where>
          </expression>
@@ -73,18 +80,25 @@
       <def name="Body Mass Index (BMI) Value" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="V">
-               <expression dataType="fhir:Observation" dateProperty="effectiveDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                   <codes name="BMI Value" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="In">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="V" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="V" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="List">
+                     <element valueType="t:String" value="final" xsi:type="Literal"/>
+                     <element valueType="t:String" value="amended" xsi:type="Literal"/>
+                  </operand>
                </operand>
-               <operand xsi:type="List">
-                  <element valueType="t:String" value="final" xsi:type="Literal"/>
-                  <element valueType="t:String" value="amended" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="effectiveDateTime" scope="V" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
             </where>
          </expression>
@@ -92,18 +106,25 @@
       <def name="Height" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="O">
-               <expression dataType="fhir:Observation" dateProperty="effectiveDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Body Height" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="In">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="O" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="O" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="List">
+                     <element valueType="t:String" value="final" xsi:type="Literal"/>
+                     <element valueType="t:String" value="amended" xsi:type="Literal"/>
+                  </operand>
                </operand>
-               <operand xsi:type="List">
-                  <element valueType="t:String" value="final" xsi:type="Literal"/>
-                  <element valueType="t:String" value="amended" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="effectiveDateTime" scope="O" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
             </where>
          </expression>
@@ -111,18 +132,25 @@
       <def name="Weight" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="O">
-               <expression dataType="fhir:Observation" dateProperty="effectiveDateTime.value" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Body Weight" xsi:type="ValueSetRef"/>
-                  <dateRange name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </expression>
             </source>
-            <where xsi:type="In">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="O" xsi:type="Property"/>
+            <where xsi:type="And">
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="status" scope="O" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="List">
+                     <element valueType="t:String" value="final" xsi:type="Literal"/>
+                     <element valueType="t:String" value="amended" xsi:type="Literal"/>
+                  </operand>
                </operand>
-               <operand xsi:type="List">
-                  <element valueType="t:String" value="final" xsi:type="Literal"/>
-                  <element valueType="t:String" value="amended" xsi:type="Literal"/>
+               <operand xsi:type="In">
+                  <operand path="value" xsi:type="Property">
+                     <source path="effectiveDateTime" scope="O" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
             </where>
          </expression>

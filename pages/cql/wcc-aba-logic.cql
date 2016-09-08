@@ -1,6 +1,6 @@
 library WCCABA version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 
@@ -67,4 +67,3 @@ define "Weight":
   [Observation: "Body Weight"] O
     where O.status.value in { 'final', 'amended' }
       and O.effectiveDateTime.value during "Lookback Interval Two Years"
-

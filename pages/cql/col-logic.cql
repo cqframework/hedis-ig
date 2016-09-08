@@ -1,6 +1,6 @@
 library COL version '1'
 
-using FHIR // version '1.4'
+using FHIR version '1.6'
 
 /*
 
@@ -93,16 +93,23 @@ define "Hx Total Colectomy":
 // iFOBT - Indicates completion of an immunochemical fecal occult blood test (iFOBT) as part of screening for colorectal cancer.
 
 // Code {code: '441579003' system: "http://snomed.org/sct" display: 'Measurement of occult blood in stool specimen using immunoassay (procedure)'}
-define iFOBT:
-  [Procedure: "FOBT"] F
-    where F.status.value = 'completed'
-      and F.performedDateTime.value during "Lookback Interval One Year"
+//define "iFOBT Procedure":
+//  [Procedure: "iFOBT"] F
+//    where F.status.value = 'completed'
+//      and F.performedDateTime.value during "Lookback Interval One Year"
 
 // gFOBT - Indicates completion of a GUAIAC fecal occult blood test (gFOBT) as part of screening for colorectal cancer.
 
 // Code {code: '442554004' system: "http://snomed.org/sct" display: 'Guaiac test for occult blood in feces specimen (procedure)'}
-define gFOBT:
-  [Procedure: "FOBT"] F
+//define "gFOBT Procedure":
+//  [Procedure: "gFOBT"] F
+//    where F.status.value = 'completed'
+//      and F.performedDateTime.value during "Lookback Interval One Year"
+
+// Using the grouping value set to include both iFOBT and gFOBT
+// If these two tests need to be reported separately, we need value sets to distinguish them
+define "FOBT Procedure":
+  [Procedure: "Fecal Occult Blood Test (FOBT)"] F
     where F.status.value = 'completed'
       and F.performedDateTime.value during "Lookback Interval One Year"
 
