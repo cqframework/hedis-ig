@@ -79,10 +79,15 @@ define "Hx Colorectal Cancer":
 
 // Hx Sigmoidoscopy	- Most recent historic sigmoidoscopy date, results/findings must be provided
 
-define "Hx Sigmoidoscopy":
+define "Sigmoidoscopy Procedure":
   [Procedure: "Flexible Sigmoidoscopy"] S
     where S.status.value = 'completed'
       and S.performedDateTime.value during "Lookback Interval Five Years"
+
+define "Sigmoidoscopy Observation":
+  [Observation: "Flexible Sigmoidoscopy"] O
+    where O.status.value = 'final'
+      and O.effectiveDateTime.value during "Lookback Interval Five Years"
 
 // Hx Total Colectomy - Date of total colectomy
 
@@ -113,9 +118,19 @@ define "FOBT Procedure":
     where F.status.value = 'completed'
       and F.performedDateTime.value during "Lookback Interval One Year"
 
+define "FOBT Observation":
+  [Observation: "Fecal Occult Blood Test (FOBT)"] O
+    where O.status.value = 'final'
+      and O.effectiveDateTime.value during "Lookback Interval One Year"
+
 // Hx Colonoscopy - Most recent historic colonoscopy date
 
-define "Hx Colonoscopy":
+define "Colonoscopy Procedure":
   [Procedure: "Colonoscopy"] C
     where C.status.value = 'completed'
       and C.performedDateTime.value during "Lookback Interval Ten Years"
+
+define "Colonoscopy Observation":
+  [Observation: "Colonoscopy"] O
+    where O.status.value = 'final'
+      and O.effectiveDateTime.value during "Lookback Interval Ten Years"
