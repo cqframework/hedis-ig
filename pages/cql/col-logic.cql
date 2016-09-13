@@ -40,10 +40,10 @@ Non-Recommended Colorectal Cancer Screening in Older Adults	FOBT	2.16.840.1.1138
 
 */
 
-valueset "Colonoscopy":	'2.16.840.1.113883.3.464.1004.1064'
-valueset "Colorectal Cancer": '2.16.840.1.113883.3.464.1004.1064'
-valueset "Flexible Sigmoidoscopy": '2.16.840.1.113883.3.464.1004.1102'
+valueset "Malignant Neoplasm of Colon": '2.16.840.1.113883.3.464.1004.1064' // Colorectal Cancer
 valueset "Total Colectomy": '2.16.840.1.113883.3.464.1003.198.12.1019'
+valueset "Colonoscopy":	'2.16.840.1.113883.3.464.1004.1064'
+valueset "Flexible Sigmoidoscopy": '2.16.840.1.113883.3.464.1004.1102'
 valueset "Fecal Occult Blood Test (FOBT)": '2.16.840.1.113883.3.464.1003.198.12.1011'
 
 parameter MeasurementPeriod Interval<DateTime>
@@ -63,6 +63,19 @@ define "Lookback Interval Ten Years":
 define "In Demographic":
     AgeInYearsAt(start of MeasurementPeriod) >= 50
 
+// Hx Colorectal Cancer	Date of colorectal cancer diagnosis
+
+define "Hx Colorectal Cancer":
+  [Condition: "Malignant Neoplasm of Colon"] C
+    where C.clinicalStatus.value = 'active'
+      and C.verificationStatus.value = 'confirmed'
+
+// Hx Total Colectomy - Date of total colectomy
+
+define "Hx Total Colectomy":
+  [Procedure: "Total Colectomy"] T
+    where T.status.value = 'completed'
+
 // Colonoscopy - Indicates a colonoscopy was provided on the indicated date of service, results/findings must be provided.
 
 define "Colonoscopy Performed":
@@ -70,12 +83,10 @@ define "Colonoscopy Performed":
     where C.status.value = 'completed'
       and C.performedDateTime.value during "Lookback Interval Ten Years"
 
-// Hx Colorectal Cancer	Date of colorectal cancer diagnosis
-
-define "Hx Colorectal Cancer":
-  [Condition: "Colorectal Cancer"] C
-    where C.clinicalStatus.value = 'active'
-      and C.verificationStatus.value = 'confirmed'
+define "Colonoscopy Results":
+  [Observation: "Colonoscopy"] C
+    where C.status.value = 'final'
+      and C.effectiveDateTime.value during "Lookback Interval Ten Years"
 
 // Hx Sigmoidoscopy	- Most recent historic sigmoidoscopy date, results/findings must be provided
 
@@ -88,12 +99,6 @@ define "Sigmoidoscopy Observation":
   [Observation: "Flexible Sigmoidoscopy"] O
     where O.status.value = 'final'
       and O.effectiveDateTime.value during "Lookback Interval Five Years"
-
-// Hx Total Colectomy - Date of total colectomy
-
-define "Hx Total Colectomy":
-  [Procedure: "Total Colectomy"] T
-    where T.status.value = 'completed'
 
 // iFOBT - Indicates completion of an immunochemical fecal occult blood test (iFOBT) as part of screening for colorectal cancer.
 
@@ -113,6 +118,7 @@ define "Hx Total Colectomy":
 
 // Using the grouping value set to include both iFOBT and gFOBT
 // If these two tests need to be reported separately, we need value sets to distinguish them
+
 define "FOBT Procedure":
   [Procedure: "Fecal Occult Blood Test (FOBT)"] F
     where F.status.value = 'completed'

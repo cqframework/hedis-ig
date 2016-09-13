@@ -14,10 +14,10 @@
       </def>
    </parameters>
    <valueSets>
-      <def name="Colonoscopy" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
-      <def name="Colorectal Cancer" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
-      <def name="Flexible Sigmoidoscopy" id="2.16.840.1.113883.3.464.1004.1102" accessLevel="Public"/>
+      <def name="Malignant Neoplasm of Colon" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
       <def name="Total Colectomy" id="2.16.840.1.113883.3.464.1003.198.12.1019" accessLevel="Public"/>
+      <def name="Colonoscopy" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
+      <def name="Flexible Sigmoidoscopy" id="2.16.840.1.113883.3.464.1004.1102" accessLevel="Public"/>
       <def name="Fecal Occult Blood Test (FOBT)" id="2.16.840.1.113883.3.464.1003.198.12.1011" accessLevel="Public"/>
    </valueSets>
    <statements>
@@ -78,6 +78,44 @@
             <operand valueType="t:Integer" value="50" xsi:type="Literal"/>
          </expression>
       </def>
+      <def name="Hx Colorectal Cancer" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="C">
+               <expression dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Malignant Neoplasm of Colon" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="clinicalStatus" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="active" xsi:type="Literal"/>
+               </operand>
+               <operand xsi:type="Equal">
+                  <operand path="value" xsi:type="Property">
+                     <source path="verificationStatus" scope="C" xsi:type="Property"/>
+                  </operand>
+                  <operand valueType="t:String" value="confirmed" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Hx Total Colectomy" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="T">
+               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Total Colectomy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Equal">
+               <operand path="value" xsi:type="Property">
+                  <source path="status" scope="T" xsi:type="Property"/>
+               </operand>
+               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
       <def name="Colonoscopy Performed" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="C">
@@ -101,25 +139,25 @@
             </where>
          </expression>
       </def>
-      <def name="Hx Colorectal Cancer" context="Patient" accessLevel="Public">
+      <def name="Colonoscopy Results" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="C">
-               <expression dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
-                  <codes name="Colorectal Cancer" xsi:type="ValueSetRef"/>
+               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Colonoscopy" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="Equal">
                   <operand path="value" xsi:type="Property">
-                     <source path="clinicalStatus" scope="C" xsi:type="Property"/>
+                     <source path="status" scope="C" xsi:type="Property"/>
                   </operand>
-                  <operand valueType="t:String" value="active" xsi:type="Literal"/>
+                  <operand valueType="t:String" value="final" xsi:type="Literal"/>
                </operand>
-               <operand xsi:type="Equal">
+               <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="verificationStatus" scope="C" xsi:type="Property"/>
+                     <source path="effectiveDateTime" scope="C" xsi:type="Property"/>
                   </operand>
-                  <operand valueType="t:String" value="confirmed" xsi:type="Literal"/>
+                  <operand name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
                </operand>
             </where>
          </expression>
@@ -167,21 +205,6 @@
                   </operand>
                   <operand name="Lookback Interval Five Years" xsi:type="ExpressionRef"/>
                </operand>
-            </where>
-         </expression>
-      </def>
-      <def name="Hx Total Colectomy" context="Patient" accessLevel="Public">
-         <expression xsi:type="Query">
-            <source alias="T">
-               <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
-                  <codes name="Total Colectomy" xsi:type="ValueSetRef"/>
-               </expression>
-            </source>
-            <where xsi:type="Equal">
-               <operand path="value" xsi:type="Property">
-                  <source path="status" scope="T" xsi:type="Property"/>
-               </operand>
-               <operand valueType="t:String" value="completed" xsi:type="Literal"/>
             </where>
          </expression>
       </def>
