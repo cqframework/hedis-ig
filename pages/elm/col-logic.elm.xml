@@ -13,11 +13,16 @@
          </parameterTypeSpecifier>
       </def>
    </parameters>
+   <codeSystems>
+      <def name="CPT" id="urn:oid:2.16.840.1.113883.6.12" accessLevel="Public"/>
+      <def name="SNOMED-CT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public"/>
+      <def name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+   </codeSystems>
    <valueSets>
-      <def name="Malignant Neoplasm of Colon" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
+      <def name="Malignant Neoplasm of Colon" id="2.16.840.1.113883.3.464.1003.108.12.1001" accessLevel="Public"/>
       <def name="Total Colectomy" id="2.16.840.1.113883.3.464.1003.198.12.1019" accessLevel="Public"/>
-      <def name="Colonoscopy" id="2.16.840.1.113883.3.464.1004.1064" accessLevel="Public"/>
-      <def name="Flexible Sigmoidoscopy" id="2.16.840.1.113883.3.464.1004.1102" accessLevel="Public"/>
+      <def name="Colonoscopy" id="2.16.840.1.113883.3.464.1003.108.12.1020" accessLevel="Public"/>
+      <def name="Flexible Sigmoidoscopy" id="2.16.840.1.113883.3.464.1003.198.12.1010" accessLevel="Public"/>
       <def name="Fecal Occult Blood Test (FOBT)" id="2.16.840.1.113883.3.464.1003.198.12.1011" accessLevel="Public"/>
    </valueSets>
    <statements>
@@ -132,7 +137,9 @@
                </operand>
                <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="C" xsi:type="Property"/>
+                     <source path="end" xsi:type="Property">
+                        <source path="performedPeriod" scope="C" xsi:type="Property"/>
+                     </source>
                   </operand>
                   <operand name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
                </operand>
@@ -178,7 +185,9 @@
                </operand>
                <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="S" xsi:type="Property"/>
+                     <source path="end" xsi:type="Property">
+                        <source path="performedPeriod" scope="S" xsi:type="Property"/>
+                     </source>
                   </operand>
                   <operand name="Lookback Interval Five Years" xsi:type="ExpressionRef"/>
                </operand>
@@ -224,7 +233,9 @@
                </operand>
                <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="F" xsi:type="Property"/>
+                     <source path="end" xsi:type="Property">
+                        <source path="performedPeriod" scope="F" xsi:type="Property"/>
+                     </source>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -270,7 +281,9 @@
                </operand>
                <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="C" xsi:type="Property"/>
+                     <source path="end" xsi:type="Property">
+                        <source path="performedPeriod" scope="C" xsi:type="Property"/>
+                     </source>
                   </operand>
                   <operand name="Lookback Interval Ten Years" xsi:type="ExpressionRef"/>
                </operand>
