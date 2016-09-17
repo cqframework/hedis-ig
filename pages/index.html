@@ -80,9 +80,23 @@
   <h4>Introduction</h4>
   
   <p>
-  This implementation guide contains definitions and resources to describe the cohorts and data requirements to calculate payer quality measures. The resources can be used to automate the extraction of data required to support the calculation of payer quality measures.
-  </p>
-  
+Calculating payer-relation quality measures is a key component of value-based care. A critical aspect of calculating these measures is accessing or obtaining the patient information involved in the calculations. The availability of secure, RESTful, standards-based services - Fast Healthcare Interoperability Resources (FHIR) - for accessing patient information provides opportunities to streamline this process. Combining this functionality with the emerging capability of shareable knowledge artifacts enables an approach to gathering patient information that can significantly reduce the amount of engineering effort required to implement and maintain quality measure calculations that payers can use. In addition, healthcare providers benefit from the reduced effort required to respond to quality reporting requests.</p>
+
+<a name="overview"></a>
+<h4>Overview</h4>
+
+<p>The <a href="{{site.data.fhir.path}}clinicalreasoning-module.html">Clinical Reasoning module</a> of the FHIR specification defines resources and operations to support the definition and delivery of decision support and quality measurement content. In particular, the <a href="{{site.data.fhir.path}}cqif-quality-reporting.html">Quality Reporting</a> topic describes the use of the <a href="{[site.data.fhir.path}}measure.html">Measure</a> and <a href="{{site.data.fhir.path}}measurereport.html">MeasureReport</a> resources to define quality measures and report measurement results, including the patient information involved in performing the calculations.</p>
+
+<p>By focusing on the data requirements involved in the calculation of payer quality measures, we can define what are effectively cohort definitions for each measure of interest and use the quality reporting mechanism defined in the Clinical Reasoning module to retrieve the patient information required to support a full calculation of the measure.</p>
+
+<p>The following diagram illustrates the approach:</p>
+
+<img src="payer-extract.png" alt="Payer Extract Approach"/>
+
+<p>The measure processing component is responsible for turning CQL-based measure definitions into FHIR requests against the EHRs. This functionality can be built independent of the content of the measures, so it only has to be developed one time; any measure written in CQL can be evaluated in this way.</p>
+
+<a name="measures"></a>
+<h4>Measures</h4>
   <p>
   This guide focuses on cohort definitions to support the following six payer measures:
   </p>
@@ -100,6 +114,23 @@
 		  <tr><td>ABA</td><td>Adult BMI Assessment</td></tr>
 	  </tbody>
   </table>
+  
+  <a name="testdata"></a>
+  <h4>Test Data</h4>
+  
+  <p>To facilitate testing and verification, this guide includes test bundles for the Colorectal Cancer Screening and the Controlling Blood Pressure measures:</p>
+  
+  <table class="grid">
+	<thead>
+		<tr>
+			<th>Bundle</th><th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% include table-bundles.xhtml %}
+	</tbody>
+</table>
+
 
   <a name="content-index"></a>
   <h4>Content Index</h4>
