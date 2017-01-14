@@ -1,6 +1,8 @@
 library WCCABA version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
+
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 
@@ -45,25 +47,25 @@ define "In Demographic":
 
 define "BMI Percent":
   [Observation: "BMI Percentile"] P
-    where P.status.value in { 'final', 'amended' }
-      and P.effectiveDateTime.value during "Lookback Interval Two Years"
+    where P.status in { 'final', 'amended' }
+      and P.effective during "Lookback Interval Two Years"
 
 /* Body Mass Index (BMI) Value	  value identifying body mass */
 
 define "Body Mass Index (BMI) Value":
   [Observation: "BMI Value"] V
-    where V.status.value in { 'final', 'amended' }
-      and V.effectiveDateTime.value during "Lookback Interval Two Years"
+    where V.status in { 'final', 'amended' }
+      and V.effective during "Lookback Interval Two Years"
 
 /* Height */
 
 define "Height":
   [Observation: "Body Height"] O
-    where O.status.value in { 'final', 'amended' }
-      and O.effectiveDateTime.value during "Lookback Interval Two Years"
+    where O.status in { 'final', 'amended' }
+      and O.effective during "Lookback Interval Two Years"
 
 /* Body Weight */
 define "Weight":
   [Observation: "Body Weight"] O
-    where O.status.value in { 'final', 'amended' }
-      and O.effectiveDateTime.value during "Lookback Interval Two Years"
+    where O.status in { 'final', 'amended' }
+      and O.effective during "Lookback Interval Two Years"

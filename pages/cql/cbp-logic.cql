@@ -1,8 +1,8 @@
 library CBP version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
 
-include FHIRHelpers version '1.6' called FHIRHelpers
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 Blood Pressure		value providing blood pressure
@@ -31,16 +31,16 @@ valueset "Diastolic Greater Than/Equal To 90": '2.16.840.1.113883.3.464.1004.108
 */
 
 // Using the DAF profiles, we could also communicate the requirement with value-based filtering
-valueset "Blood Pressure": 'Blood Pressure' // TODO: LOINC 55284-4
-valueset "Systolic Blood Pressure": 'Systolic Blood Pressure' // TODO: LOINC 8480-6
-valueset "Diastolic Blood Pressure": 'Diastolic Blood Pressure' // TODO: LOINC 8462-4
-valueset "Essential Hypertension": '2.16.840.1.113883.3.464.1004.1122'
-valueset "Outpatient Without UBREV": 'Outpatient Without UBREV'
-valueset "End Stage Renal Disease": 'End Stage Renal Disease'
-valueset "Kidney Transplant": 'Kidney Transplant'
-valueset "Inpatient Stay": 'Inpatient Stay'
+//valueset "Blood Pressure": 'Blood Pressure' // TODO: LOINC 55284-4
+valueset "Systolic Blood Pressure": '2.16.840.1.113883.3.526.3.1032' //'Systolic Blood Pressure' // TODO: LOINC 8480-6
+valueset "Diastolic Blood Pressure": '2.16.840.1.113883.3.526.3.1033' //'Diastolic Blood Pressure' // TODO: LOINC 8462-4
+valueset "Essential Hypertension": '2.16.840.1.113883.3.464.1003.104.12.1011'
+valueset "Outpatient Without UBREV": '2.16.840.1.113883.3.464.1004.1203'
+valueset "End Stage Renal Disease": '2.16.840.1.113883.3.526.3.353'
+valueset "Kidney Transplant": '2.16.840.1.113883.3.464.1003.109.12.1012'
+valueset "Inpatient Stay": '2.16.840.1.113883.3.464.1004.1395'
 valueset "Insulin or Hypo-/Antihyper-glycemics": 'Insulin or Hypo-/Antihyper-glycemics'
-valueset "Pregnancy": 'Pregnancy'
+valueset "Pregnancy": '2.16.840.1.113883.3.600.1622'
 valueset "Gestational or Steroid-induced Diabetes": 'Gestational or Steroid-induced Diabetes'
 
 parameter MeasurementPeriod Interval<DateTime>
@@ -88,11 +88,25 @@ define "BP: Diastolic Greater Than/Equal To 90":
 
 */
 
+define "BP: Systolic":
+  [Observation: "Systolic Blood Pressure"] O
+    where O.status.value in { 'final', 'amended' }
+      //and O.effectiveDateTime.value during "Lookback Interval One Year"
+      // w/ FHIRHelpers
+      //and O.effectiveDateTime during "Lookback Interval One Year"
+      // w/ FHIR Choice Types
+      and O.effective during "Lookback Interval One Year"
+
+define "BP: Diastolic":
+  [Observation: "Diastolic Blood Pressure"] O
+    where O.status.value in { 'final', 'amended' }
+      and O.effective during "Lookback Interval One Year"
+
 // Using DAF Profiles (LOINC Code)
-define "Blood Pressure Observations":
+/*define "Blood Pressure Observations":
   [Observation: "Blood Pressure"] O
     where O.status.value in { 'final', 'amended' }
-      and O.effectiveDateTime.value during "Lookback Interval One Year"
+      and O.effective during "Lookback Interval One Year"
 
 define "BP: Systolic":
   "Blood Pressure Observations" O
@@ -100,100 +114,103 @@ define "BP: Systolic":
 
 define "BP: Diastolic":
   "Blood Pressure Observations" O
-    return singleton from (O.component C where C.code in "Diastolic Blood Pressure")
+    return singleton from (O.component C where C.code in "Diastolic Blood Pressure")*/
 
 define "BP: Systolic Less Than 140":
     "BP: Systolic" S
-        where S.valueQuantity.value.value < 140
+        // So, this is ugly...
+        //where S.value.value.value < 140
+        // Not sure this is better
+        where (S.value as Quantity).value.value < 140
 
 define "BP: Systolic Greater Than/Equal To 140":
     "BP: Systolic" S
-        where S.valueQuantity.value.value >= 140
+        where (S.value as Quantity).value.value >= 140
 
 define "BP: Diastolic Less Than 80":
     "BP: Diastolic" D
-        where D.valueQuantity.value.value < 80
+        where (D.value as Quantity).value.value < 80
 
 define "BP: Diastolic 80-89":
     "BP: Diastolic" D
-        where D.valueQuantity.value.value between 80 and 89
+        where (D.value as Quantity).value.value between 80 and 89
 
 define "BP: Diastolic Greater Than/Equal To 90":
     "BP: Diastolic" D
-        where D.valueQuantity.value.value >= 90
+        where (D.value as Quantity).value.value >= 90
 
 // Exclude Patients with a Diagnosis of Essential Hypertension
 // Hx HTN
 define "Hypertension Diagnosis":
   [Condition: "Essential Hypertension"] H
-    where H.clinicalStatus.value = 'active'
-        and H.verificationStatus.value = 'confirmed'
-        and H.onsetDateTime.value during "Lookback Interval Three Years"
+    where H.clinicalStatus = 'active'
+        and H.verificationStatus = 'confirmed'
+        and H.onset during "Lookback Interval Three Years"
 
 // Date of first diagnosis of Hypertension
 define "Hx HTN":
-  First("Hypertension Diagnosis" D sort by D.onsetDateTime.value).dateRecorded.value
+  First("Hypertension Diagnosis" D sort by (D.onset as dateTime)).assertedDate
 
 // Outpatient Encounters with a diagnosis of Essential Hypertension during the first 6 months of the measurement period
 define "Outpatient Encounter":
   [Encounter: "Outpatient Without UBREV"] E
-    where E.period."start".value during Interval[start of MeasurementPeriod, start of MeasurementPeriod + 6 months]
+    where E.period."start" during Interval[start of MeasurementPeriod, start of MeasurementPeriod + 6 months]
 
 // End-Stage Renal Disease (ESRD)
 // Kidney Transplant
 
 define "End Stage Renal Disease Diagnosis":
   [Condition: "End Stage Renal Disease"] C
-    where C.clinicalStatus.value = 'active'
-      and C.verificationStatus.value = 'confirmed'
-      and C.onsetDateTime.value same day or before end of MeasurementPeriod
+    where C.clinicalStatus = 'active'
+      and C.verificationStatus = 'confirmed'
+      and C.onset same day or before end of MeasurementPeriod
 
 define "Kidney Transplant Procedure":
   [Procedure: "Kidney Transplant"] P
-    where P.status.value = 'completed'
-      and P.performedDateTime.value same day or before end of MeasurementPeriod
+    where P.status = 'completed'
+      and P.performed same day or before end of MeasurementPeriod
 
 // Pregnancy
 
 define "Pregnancy Condition":
   [Condition: "Pregnancy"] P
-    where P.verificationStatus.value = 'confirmed'
-      and Interval[P.onsetDateTime.value, P.abatementDateTime.value] overlaps MeasurementPeriod
+    where P.verificationStatus = 'confirmed'
+      and Interval[P.onset as dateTime, P.abatement as dateTime] overlaps MeasurementPeriod
 
 // Non-Acute Inpatient Admission
 
 define "Non-Acute Inpatient Admission":
   [Encounter: "Inpatient Stay"] E
-    where E.status.value = 'finished'
-      and E.period."end".value during MeasurementPeriod
+    where E.status = 'finished'
+      and E.period."end" during MeasurementPeriod
 
 // Identify Diabetic patients
 
 define "Outpatient Encounter":
   [Encounter: "Outpatient"] E
-    where E.status.value = 'finished'
-      and E.period."start".value during "Lookback Interval One Year"
+    where E.status = 'finished'
+      and E.period."start" during "Lookback Interval One Year"
 
 define "Non-Acute Inpatient Admission":
   [Encounter: "Nonacute Inpatient"] E
-    where E.status.value = 'finished'
-      and E.period."start".value during "Lookback Interval One Year"
+    where E.status = 'finished'
+      and E.period."start" during "Lookback Interval One Year"
 
 define "MedicationDispense":
   [MedicationDispense: "Insulin or Hypo-/Antihyper-glycemics"] M
-    where M.status.value = 'completed'
-      and M.whenHandedOver.value during "Lookback Interval One Year"
+    where M.status = 'completed'
+      and M.whenHandedOver during "Lookback Interval One Year"
 
 define "Any Setting Encounter":
   [Encounter] E
-    where E.status.value = 'finished'
-      and E.period."start".value during "Lookback Interval One Year"
+    where E.status = 'finished'
+      and E.period."start" during "Lookback Interval One Year"
 
 define "Gestational or Steroid-induced Diabetes Condition":
   [Condition: "Gestational or Steroid-induced Diabetes"] C
-    where C.clinicalStatus.value = 'active'
-      and C.verificationStatus.value = 'confirmed'
-      and C.onsetDateTime.value during "Lookback Interval One Year"
+    where C.clinicalStatus = 'active'
+      and C.verificationStatus = 'confirmed'
+      and C.onset during "Lookback Interval One Year"
 
 // TODO: Determine the member's Primary Care Provider
 // This mechanism is used to limit the blood pressure observations to a single provider

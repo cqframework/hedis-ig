@@ -1,6 +1,6 @@
 library BCS version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
 
 /*
 
@@ -57,7 +57,7 @@ define "Bilateral Mastectomy Procedure":
     where P.status.value = 'completed'
 
 define "Hx Mastectomy Bilat":
-    "Bilateral Mastectomy Procedure" P return P.performedDateTime
+    "Bilateral Mastectomy Procedure" P return (P.performed as dateTime)
 
 /* Hx Mastectomy Left	 Date of left-sided unilateral mastectomy */
 
@@ -73,8 +73,8 @@ define "Left Mastectomy Observation":
 
 define "Hx Mastectomy Left":
     First(
-        (("Left Mastectomy Procedure" P return P.performedDateTime.value)
-            union ("Left Mastectomy Observation" O return O.effectiveDateTime.value)
+        (("Left Mastectomy Procedure" P return (P.performed as dateTime).value)
+            union ("Left Mastectomy Observation" O return (O.effective as dateTime).value)
         ) MastectomyDates sort asc
     )
 
@@ -92,8 +92,8 @@ define "Right Mastectomy Observation":
 
 define "Hx Mastectomy Right":
     First(
-        (("Right Mastectomy Procedure" P return P.performedDateTime.value)
-            union ("Right Mastectomy Observation" O return O.effectiveDateTime.value)
+        (("Right Mastectomy Procedure" P return (P.performed as dateTime).value)
+            union ("Right Mastectomy Observation" O return (O.effective as dateTime).value)
         ) MastectomyDates sort asc
     )
 
@@ -102,4 +102,4 @@ define "Hx Mastectomy Right":
 define "Mammography Procedure":
     [Procedure: "Mammography"] M
         where M.status.value = 'completed'
-            and M.performedDateTime.value during "Lookback Interval Twenty-Seven Months"
+            and (M.performed as dateTime).value during "Lookback Interval Twenty-Seven Months"

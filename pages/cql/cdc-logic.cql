@@ -1,6 +1,8 @@
 library CDC version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
+
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 
@@ -73,23 +75,23 @@ define "In Demographic":
 
 define "Heamoglobin A1C Tests":
   [Observation : "HbA1c Tests"] T
-    where T.status.value in { 'final', 'amended' }
-      and T.effectiveDateTime.value during "Lookback Interval One Year"
+    where T.status in { 'final', 'amended' }
+      and T.effective during "Lookback Interval One Year"
 
 define "Heamoglobin A1C Level Less than 7.0":
   [Observation : "HbA1c Level Less than 7.0"] H
-    where H.status.value in { 'final', 'amended' }
-      and H.effectiveDateTime.value during "Lookback Interval One Year"
+    where H.status in { 'final', 'amended' }
+      and H.effective during "Lookback Interval One Year"
 
 define "Heamoglobin A1C Level 7.0-9.0":
   [Observation: "HbA1c Level 7.0-9.0"] H
-    where H.status.value in { 'final', 'amended' }
-      and H.effectiveDateTime.value during "Lookback Interval One Year"
+    where H.status in { 'final', 'amended' }
+      and H.effective during "Lookback Interval One Year"
 
 define "Heamoglobin A1C Level Greater than 9.0":
   [Observation: "HbA1c Level Greater Than 9.0"] H
-    where H.status.value in { 'final', 'amended' }
-      and H.effectiveDateTime.value in "Lookback Interval One Year"
+    where H.status in { 'final', 'amended' }
+      and H.effective in "Lookback Interval One Year"
 
 // Angiotensin II receptor blockers (ARB) Medication Order
 
@@ -119,42 +121,42 @@ define "Heamoglobin A1C Level Greater than 9.0":
 // Trandolapril
 
 define "ACE Inhibitor or ARB Medication Order":
-  [MedicationOrder : "ACE Inhibitor or ARB"] A
-    where A.status.value = 'completed'
-      and A.dateWritten.value during "Lookback Interval One Year"
+  [MedicationRequest : "ACE Inhibitor or ARB"] A
+    where A.status = 'completed'
+      and A.dateWritten during "Lookback Interval One Year"
 
 // Dilated Eye Exam Observation
 
 define "Diabetic Retinal Screening Eye Exam":
   [Procedure : "Diabetic Retinal Screening"] D
-    where D.status.value = 'completed'
-      and D.performedDateTime.value during "Lookback Interval Two Years"
+    where D.status = 'completed'
+      and D.performed during "Lookback Interval Two Years"
 
 define "Diabetic Retinal Screening Negative Eye Exam":
   [Procedure : "Diabetic Retinal Screening Negative"] D
-    where D.status.value = 'completed'
-      and D.performedDateTime.value during "Lookback Interval Two Years"
+    where D.status = 'completed'
+      and D.performed during "Lookback Interval Two Years"
 
 define "Diabetic Retinal Screening With Eye Care Professional Eye Exam":
   [Procedure : "Diabetic Retinal Screening With Eye Care Professional"] D
-    where D.status.value = 'completed'
-      and D.performedDateTime.value during "Lookback Interval Two Years"
+    where D.status = 'completed'
+      and D.performed during "Lookback Interval Two Years"
 
 // Macroalbumin Observation
 
 define "Macroalbumin Results":
   [Observation: "Urine Macroalbumin Tests"] M
-    where M.status.value in { 'final', 'amended' }
-      and M.effectiveDateTime.value during "Lookback Interval One Year"
+    where M.status in { 'final', 'amended' }
+      and M.effective during "Lookback Interval One Year"
 
 define "Positive Macroalbumin Tests":
   [Observation: "Positive Urine Macroalbumin Tests"] M
-    where M.status.value in { 'final', 'amended' }
-      and M.effectiveDateTime.value during "Lookback Interval One Year"
+    where M.status in { 'final', 'amended' }
+      and M.effective during "Lookback Interval One Year"
 
 // Retinopathy Positive
 
 define "Diabetic Retinopathy Detected":
   [Observation : "Diabetic Retinal Screening"] D
-    where D.status.value in { 'final', 'amended' }
-      and D.effectiveDateTime.value during "Lookback Interval Two Years"
+    where D.status in { 'final', 'amended' }
+      and D.effective during "Lookback Interval Two Years"

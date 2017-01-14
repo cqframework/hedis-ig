@@ -1,6 +1,8 @@
 library COL version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
+
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 
@@ -40,15 +42,37 @@ Non-Recommended Colorectal Cancer Screening in Older Adults	FOBT	2.16.840.1.1138
 
 */
 
-valueset "Malignant Neoplasm of Colon": '2.16.840.1.113883.3.464.1004.1064' // Colorectal Cancer
+//codesystem "CPT": 'urn:oid:2.16.840.1.113883.6.12'
+codesystem "CPT": 'http://www.ama-assn.org/go/cpt'
+//codesystem "SNOMED-CT": 'urn:oid:2.16.840.1.113883.6.96'
+codesystem "SNOMED-CT": 'http://snomed.info/sct'
+//codesystem "LOINC": 'urn:oid:2.16.840.1.113883.6.1'
+codesystem "LOINC": 'http://loinc.org'
+
+valueset "Malignant Neoplasm of Colon": '2.16.840.1.113883.3.464.1003.108.12.1001' // Colorectal Cancer
 valueset "Total Colectomy": '2.16.840.1.113883.3.464.1003.198.12.1019'
-valueset "Colonoscopy":	'2.16.840.1.113883.3.464.1004.1064'
-valueset "Flexible Sigmoidoscopy": '2.16.840.1.113883.3.464.1004.1102'
+valueset "Colonoscopy":	'2.16.840.1.113883.3.464.1003.108.12.1020'
+valueset "Flexible Sigmoidoscopy": '2.16.840.1.113883.3.464.1003.198.12.1010'
 valueset "Fecal Occult Blood Test (FOBT)": '2.16.840.1.113883.3.464.1003.198.12.1011'
 
 parameter MeasurementPeriod Interval<DateTime>
 
 context Patient
+
+//define "Malignant Neoplasm of Colon":
+//    { Code '363414004' from "SNOMED-CT", Code '285312008' from "SNOMED-CT" }
+
+//define "Total Colectomy":
+//    { Code '36192008' from "SNOMED-CT" }
+
+//define "Colonoscopy":
+//    { Code '174158000' from "SNOMED-CT" }
+
+//define "Flexible Sigmoidoscopy":
+//    { Code '396226005' from "SNOMED-CT" }
+
+//define "Fecal Occult Blood Test (FOBT)":
+//    { Code '27396-1' from "LOINC", Code '58453-2' from "LOINC" }
 
 define "Lookback Interval One Year":
   Interval[start of MeasurementPeriod - 1 years, end of MeasurementPeriod]
@@ -67,76 +91,76 @@ define "In Demographic":
 
 define "Hx Colorectal Cancer":
   [Condition: "Malignant Neoplasm of Colon"] C
-    where C.clinicalStatus.value = 'active'
-      and C.verificationStatus.value = 'confirmed'
+    where C.clinicalStatus = 'active'
+      and C.verificationStatus = 'confirmed'
 
 // Hx Total Colectomy - Date of total colectomy
 
 define "Hx Total Colectomy":
   [Procedure: "Total Colectomy"] T
-    where T.status.value = 'completed'
+    where T.status = 'completed'
 
 // Colonoscopy - Indicates a colonoscopy was provided on the indicated date of service, results/findings must be provided.
 
 define "Colonoscopy Performed":
   [Procedure: "Colonoscopy"] C
-    where C.status.value = 'completed'
-      and C.performedDateTime.value during "Lookback Interval Ten Years"
+    where C.status = 'completed'
+      and C.performed."end" during "Lookback Interval Ten Years"
 
 define "Colonoscopy Results":
   [Observation: "Colonoscopy"] C
-    where C.status.value = 'final'
-      and C.effectiveDateTime.value during "Lookback Interval Ten Years"
+    where C.status = 'final'
+      and C.effective during "Lookback Interval Ten Years"
 
 // Hx Sigmoidoscopy	- Most recent historic sigmoidoscopy date, results/findings must be provided
 
 define "Sigmoidoscopy Procedure":
   [Procedure: "Flexible Sigmoidoscopy"] S
-    where S.status.value = 'completed'
-      and S.performedDateTime.value during "Lookback Interval Five Years"
+    where S.status = 'completed'
+      and S.performed."end" during "Lookback Interval Five Years"
 
 define "Sigmoidoscopy Observation":
   [Observation: "Flexible Sigmoidoscopy"] O
-    where O.status.value = 'final'
-      and O.effectiveDateTime.value during "Lookback Interval Five Years"
+    where O.status = 'final'
+      and O.effective during "Lookback Interval Five Years"
 
 // iFOBT - Indicates completion of an immunochemical fecal occult blood test (iFOBT) as part of screening for colorectal cancer.
 
 // Code {code: '441579003' system: "http://snomed.org/sct" display: 'Measurement of occult blood in stool specimen using immunoassay (procedure)'}
 //define "iFOBT Procedure":
 //  [Procedure: "iFOBT"] F
-//    where F.status.value = 'completed'
-//      and F.performedDateTime.value during "Lookback Interval One Year"
+//    where F.status = 'completed'
+//      and F.performed."end" during "Lookback Interval One Year"
 
 // gFOBT - Indicates completion of a GUAIAC fecal occult blood test (gFOBT) as part of screening for colorectal cancer.
 
 // Code {code: '442554004' system: "http://snomed.org/sct" display: 'Guaiac test for occult blood in feces specimen (procedure)'}
 //define "gFOBT Procedure":
 //  [Procedure: "gFOBT"] F
-//    where F.status.value = 'completed'
-//      and F.performedDateTime.value during "Lookback Interval One Year"
+//    where F.status = 'completed'
+//      and F.performed."end" during "Lookback Interval One Year"
 
 // Using the grouping value set to include both iFOBT and gFOBT
 // If these two tests need to be reported separately, we need value sets to distinguish them
 
 define "FOBT Procedure":
   [Procedure: "Fecal Occult Blood Test (FOBT)"] F
-    where F.status.value = 'completed'
-      and F.performedDateTime.value during "Lookback Interval One Year"
+    where F.status = 'completed'
+      and F.performed."end" during "Lookback Interval One Year"
 
 define "FOBT Observation":
   [Observation: "Fecal Occult Blood Test (FOBT)"] O
-    where O.status.value = 'final'
-      and O.effectiveDateTime.value during "Lookback Interval One Year"
+    where O.status = 'final'
+      and O.effective during "Lookback Interval One Year"
 
 // Hx Colonoscopy - Most recent historic colonoscopy date
 
 define "Colonoscopy Procedure":
   [Procedure: "Colonoscopy"] C
-    where C.status.value = 'completed'
-      and C.performedDateTime.value during "Lookback Interval Ten Years"
+    where C.status = 'completed'
+      and C.performed."end" during "Lookback Interval Ten Years"
 
 define "Colonoscopy Observation":
   [Observation: "Colonoscopy"] O
-    where O.status.value = 'final'
-      and O.effectiveDateTime.value during "Lookback Interval Ten Years"
+    where O.status = 'final'
+      and O.effective during "Lookback Interval Ten Years"

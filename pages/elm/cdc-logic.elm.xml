@@ -4,8 +4,11 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.6"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.8"/>
    </usings>
+   <includes>
+      <def localIdentifier="FHIRHelpers" path="FHIRHelpers" version="1.8"/>
+   </includes>
    <parameters>
       <def name="MeasurementPeriod" accessLevel="Public">
          <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
@@ -74,14 +77,14 @@
       <def name="Heamoglobin A1C Tests" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="T">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="HbA1c Tests" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="T" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="T" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -89,8 +92,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="T" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="T" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -100,14 +106,14 @@
       <def name="Heamoglobin A1C Level Less than 7.0" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="H">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="HbA1c Level Less than 7.0" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="H" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="H" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -115,8 +121,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="H" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="H" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -126,14 +135,14 @@
       <def name="Heamoglobin A1C Level 7.0-9.0" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="H">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="HbA1c Level 7.0-9.0" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="H" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="H" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -141,8 +150,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="H" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="H" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -152,14 +164,14 @@
       <def name="Heamoglobin A1C Level Greater than 9.0" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="H">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="HbA1c Level Greater Than 9.0" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="H" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="H" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -167,8 +179,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="H" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="H" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -178,20 +193,20 @@
       <def name="ACE Inhibitor or ARB Medication Order" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="A">
-               <expression dataType="fhir:MedicationOrder" codeProperty="medicationCodeableConcept" xsi:type="Retrieve">
+               <expression dataType="fhir:MedicationRequest" xsi:type="Retrieve">
                   <codes name="ACE Inhibitor or ARB" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="Equal">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="A" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="A" xsi:type="Property"/>
                   </operand>
                   <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="dateWritten" scope="A" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="dateWritten" scope="A" xsi:type="Property"/>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -207,14 +222,17 @@
             </source>
             <where xsi:type="And">
                <operand xsi:type="Equal">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="D" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="D" xsi:type="Property"/>
                   </operand>
                   <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="D" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="performed" scope="D" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
@@ -230,14 +248,17 @@
             </source>
             <where xsi:type="And">
                <operand xsi:type="Equal">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="D" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="D" xsi:type="Property"/>
                   </operand>
                   <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="D" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="performed" scope="D" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
@@ -253,14 +274,17 @@
             </source>
             <where xsi:type="And">
                <operand xsi:type="Equal">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="D" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="D" xsi:type="Property"/>
                   </operand>
                   <operand valueType="t:String" value="completed" xsi:type="Literal"/>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="D" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="performed" scope="D" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>
@@ -270,14 +294,14 @@
       <def name="Macroalbumin Results" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="M">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="Urine Macroalbumin Tests" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="M" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="M" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -285,8 +309,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="M" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="M" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -296,14 +323,14 @@
       <def name="Positive Macroalbumin Tests" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="M">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="Positive Urine Macroalbumin Tests" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="M" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="M" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -311,8 +338,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="M" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="M" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval One Year" xsi:type="ExpressionRef"/>
                </operand>
@@ -322,14 +352,14 @@
       <def name="Diabetic Retinopathy Detected" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="D">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="Diabetic Retinal Screening" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="status" scope="D" xsi:type="Property"/>
+                  <operand name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand path="status" scope="D" xsi:type="Property"/>
                   </operand>
                   <operand xsi:type="List">
                      <element valueType="t:String" value="final" xsi:type="Literal"/>
@@ -337,8 +367,11 @@
                   </operand>
                </operand>
                <operand xsi:type="In">
-                  <operand path="value" xsi:type="Property">
-                     <source path="effectiveDateTime" scope="D" xsi:type="Property"/>
+                  <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand asType="fhir:dateTime" xsi:type="As">
+                        <operand path="effective" scope="D" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
                   </operand>
                   <operand name="Lookback Interval Two Years" xsi:type="ExpressionRef"/>
                </operand>

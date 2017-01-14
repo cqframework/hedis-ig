@@ -4,7 +4,7 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.6"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="1.8"/>
    </usings>
    <parameters>
       <def name="MeasurementPeriod" accessLevel="Public">
@@ -100,7 +100,10 @@
                <expression name="Bilateral Mastectomy Procedure" xsi:type="ExpressionRef"/>
             </source>
             <return>
-               <expression path="performedDateTime" scope="P" xsi:type="Property"/>
+               <expression strict="false" xsi:type="As">
+                  <operand path="performed" scope="P" xsi:type="Property"/>
+                  <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+               </expression>
             </return>
          </expression>
       </def>
@@ -127,7 +130,7 @@
       <def name="Left Mastectomy Observation" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="O">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="Absence of Left Breast" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -153,7 +156,10 @@
                         </source>
                         <return>
                            <expression path="value" xsi:type="Property">
-                              <source path="performedDateTime" scope="P" xsi:type="Property"/>
+                              <source strict="false" xsi:type="As">
+                                 <operand path="performed" scope="P" xsi:type="Property"/>
+                                 <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                              </source>
                            </expression>
                         </return>
                      </operand>
@@ -163,7 +169,10 @@
                         </source>
                         <return>
                            <expression path="value" xsi:type="Property">
-                              <source path="effectiveDateTime" scope="O" xsi:type="Property"/>
+                              <source strict="false" xsi:type="As">
+                                 <operand path="effective" scope="O" xsi:type="Property"/>
+                                 <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                              </source>
                            </expression>
                         </return>
                      </operand>
@@ -198,7 +207,7 @@
       <def name="Right Mastectomy Observation" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="O">
-               <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <expression dataType="fhir:Observation" xsi:type="Retrieve">
                   <codes name="Absence of Right Breast" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -224,7 +233,10 @@
                         </source>
                         <return>
                            <expression path="value" xsi:type="Property">
-                              <source path="performedDateTime" scope="P" xsi:type="Property"/>
+                              <source strict="false" xsi:type="As">
+                                 <operand path="performed" scope="P" xsi:type="Property"/>
+                                 <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                              </source>
                            </expression>
                         </return>
                      </operand>
@@ -234,7 +246,10 @@
                         </source>
                         <return>
                            <expression path="value" xsi:type="Property">
-                              <source path="effectiveDateTime" scope="O" xsi:type="Property"/>
+                              <source strict="false" xsi:type="As">
+                                 <operand path="effective" scope="O" xsi:type="Property"/>
+                                 <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                              </source>
                            </expression>
                         </return>
                      </operand>
@@ -262,7 +277,10 @@
                </operand>
                <operand xsi:type="In">
                   <operand path="value" xsi:type="Property">
-                     <source path="performedDateTime" scope="M" xsi:type="Property"/>
+                     <source strict="false" xsi:type="As">
+                        <operand path="performed" scope="M" xsi:type="Property"/>
+                        <asTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                     </source>
                   </operand>
                   <operand name="Lookback Interval Twenty-Seven Months" xsi:type="ExpressionRef"/>
                </operand>

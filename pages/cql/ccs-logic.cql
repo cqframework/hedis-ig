@@ -1,6 +1,8 @@
 library CCS version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
+
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 
@@ -37,25 +39,25 @@ define "Lookback Interval Five Years":
 
 // TODO: Need to verify the demographic here
 define "In Demographic":
-    Patient.gender.value = 'female'
+    Patient.gender = 'female'
         and AgeInYearsAt(start of MeasurementPeriod) >= 40
 
 /* Pap Smear       Indicates a Pap Smear was provided on the indicated date of service, must include result for compliance */
 
 define "Pap Smear Procedure":
   [Procedure: "Cervical Cytology"] H
-    where H.status.value = 'completed'
-        and H.performedDateTime.value during "Lookback Interval Five Years"
+    where H.status = 'completed'
+        and H.performed during "Lookback Interval Five Years"
 
 define "Pap Smear DiagnosticReport":
   [DiagnosticReport: "Cervical Cytology"] R
-    where R.status.value = 'completed'
-        and R.effectiveDateTime.value during "Lookback Interval Five Years"
+    where R.status = 'completed'
+        and R.effective during "Lookback Interval Five Years"
 
 define "Pap Smear Observation":
   [Observation: "Cervical Cytology"] R
-    where R.status.value in { 'final', 'amended' }
-      and R.effectiveDateTime.value during "Lookback Interval Five Years"
+    where R.status in { 'final', 'amended' }
+      and R.effective during "Lookback Interval Five Years"
 
 /*
   HPV Test      	Indicates an HPV test was performed on the indicated date of service.
@@ -63,25 +65,25 @@ define "Pap Smear Observation":
 
 define "HPV Test Procedure":
   [Procedure: "HPV Tests"] H
-    where H.status.value = 'completed'
-        and H.performedDateTime.value during "Lookback Interval Five Years"
+    where H.status = 'completed'
+        and H.performed during "Lookback Interval Five Years"
 
 define "HPV Test DiagnosticReport":
   [DiagnosticReport: "HPV Tests"] R
-    where R.status.value = 'completed'
-        and R.effectiveDateTime.value during "Lookback Interval Five Years"
+    where R.status = 'completed'
+        and R.effective during "Lookback Interval Five Years"
 
 define "HPV Test Observation":
   [Observation: "HPV Tests"] R
-    where R.status.value in { 'final', 'amended' }
-      and R.effectiveDateTime.value during "Lookback Interval Five Years"
+    where R.status in { 'final', 'amended' }
+      and R.effective during "Lookback Interval Five Years"
 
 /* Hx Hysterectomy	Date of total hysterectomy */
 
 define "Hysterectomy Procedure":
   [Procedure: "Hysterectomy"] A
-    where A.status.value = 'completed'
+    where A.status = 'completed'
 
 define "Hx Hysterectomy Procedure":
   [Procedure: "Absence of Cervix"] A
-    where A.status.value = 'completed'
+    where A.status = 'completed'
