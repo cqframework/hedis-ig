@@ -1,6 +1,8 @@
 library COL version '1'
 
-using FHIR version '1.6'
+using FHIR version '1.8'
+
+include FHIRHelpers version '1.8' called FHIRHelpers
 
 /*
 
@@ -18,7 +20,7 @@ iFOBT	                COL	Indicates completion of an immunochemical fecal occult
                       part of screening for colorectal cancer.  Results/findings must be provided.
 
 gFOBT	                COL	Indicates completion of a GUAIAC fecal occult blood test (gFOBT) as part of screening     CPT, HCPCS, LOINC	                 1 year
-                      for colorectal cancer.Â  Provide number of samples returned
+                      for colorectal cancer.ï¿½  Provide number of samples returned
                       (completion of test requires 3 results).	ORU	"FOBT"
 
 Hx Colonoscopy	      COL	Most recent historic colonoscopy date	ORU	"Colonoscopy"	                                  CPT, HCPCS	                       10 years
@@ -56,7 +58,7 @@ context Patient
 define "Lookback Interval One Year":
   Interval[start of MeasurementPeriod, end of MeasurementPeriod]
 
-//used by FIT  
+//used by FIT
   define "Lookback Interval Two Years":
   Interval[start of MeasurementPeriod - 1 years, end of MeasurementPeriod]
 
@@ -77,20 +79,20 @@ define "In Demographic":
 
 define "Hx Colorectal Cancer":
   [Condition: "Malignant Neoplasm of Colon"] C
-    where C.verificationStatus.value = 'confirmed'
+    where C.verificationStatus = 'confirmed'
 
 // Hx Total Colectomy - Date of total colectomy - no date to exclude future
 
 define "Hx Total Colectomy":
   [Procedure: "Total Colectomy"] T
-    where T.status.value = 'completed'
+    where T.status = 'completed'
 
 // Colonoscopy - Indicates a colonoscopy was provided on the indicated date of service, results/findings must be provided.
 
 define "Colonoscopy Performed":
   [DiagnosticReport: "Colonoscopy"] C
-    where C.status.value = { 'final', 'appended', 'corrected' } 
-      and C.performedDateTime.value during "Lookback Interval Ten Years"
+    where C.status in { 'final', 'appended', 'corrected' }
+      and C.effective during "Lookback Interval Ten Years"
 
 
 
@@ -98,37 +100,37 @@ define "Colonoscopy Performed":
 
 define "Sigmoidoscopy Procedure":
   [DiagnosticReport: "Flexible Sigmoidoscopy"] S
-	where S.status.value = { 'final', 'appended', 'corrected' } 
-		and S.performedDateTime.value during "Lookback Interval Five Years"
+	where S.status in { 'final', 'appended', 'corrected' }
+		and S.effective during "Lookback Interval Five Years"
 
 
 // Using the grouping value set to include both iFOBT and gFOBT
 
 define "FOBT Observation":
   [Observation: "Fecal Occult Blood Test (FOBT)"] O
-    where O.status.value = { 'final', 'amended' } 
-      and O.effectiveDateTime.value during "Lookback Interval One Year"
+    where O.status in { 'final', 'amended' }
+      and O.effective during "Lookback Interval One Year"
 
 // Hx Colonoscopy - Most recent historic colonoscopy date
 
 define "Colonoscopy Procedure":
   [DiagnosticReport: "Colonoscopy"] C
-	where C.status.value = { 'final', 'appended', 'corrected' } 
-		and C.performedDateTime.value during "Lookback Interval Ten Years"
+	where C.status in { 'final', 'appended', 'corrected' }
+		and C.effective during "Lookback Interval Ten Years"
 
 
 // Virtual Colonoscopy - Procedure and Observation
 
 define "Virtual Colonoscopy Procedure":
   [DiagnosticReport: "CT Colonography"] V
-		where V.status.value = { 'final', 'appended', 'corrected' } 
-      and V.performedDateTime.value during "Lookback Interval Five Years"
+		where V.status in { 'final', 'appended', 'corrected' }
+      and V.effective during "Lookback Interval Five Years"
 
-     
-     
+
+
 // Fit DNA - Procedure and Observation
 
 define "Fit DNA Observation":
   [Observation: "CT Colonography"] F
-    where F.status.value = { 'final', 'amended' } 
-      and F.effectiveDateTime.value during "Lookback Interval Two Years"
+    where F.status in { 'final', 'amended' }
+      and F.effective during "Lookback Interval Two Years"

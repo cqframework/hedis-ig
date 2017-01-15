@@ -36,11 +36,8 @@
       </def>
       <def name="Lookback Interval One Year" context="Patient" accessLevel="Public">
          <expression lowClosed="true" highClosed="true" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
-               </operand>
-               <operand value="1" unit="years" xsi:type="Quantity"/>
+            <low xsi:type="Start">
+               <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
             </low>
             <high xsi:type="End">
                <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
@@ -61,16 +58,29 @@
          </expression>
       </def>
       <def name="In Demographic" context="Patient" accessLevel="Public">
-         <expression xsi:type="GreaterOrEqual">
-            <operand precision="Year" xsi:type="CalculateAgeAt">
-               <operand path="birthDate.value" xsi:type="Property">
-                  <source name="Patient" xsi:type="ExpressionRef"/>
+         <expression xsi:type="And">
+            <operand xsi:type="GreaterOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="End">
+                     <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
+                  </operand>
                </operand>
-               <operand xsi:type="Start">
-                  <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
-               </operand>
+               <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
             </operand>
-            <operand valueType="t:Integer" value="40" xsi:type="Literal"/>
+            <operand xsi:type="LessOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="End">
+                     <operand name="MeasurementPeriod" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="85" xsi:type="Literal"/>
+            </operand>
          </expression>
       </def>
       <def name="BP: Systolic" context="Patient" accessLevel="Public">
