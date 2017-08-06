@@ -8,48 +8,10 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Patient/Patient-12218",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Patient/Patient-12218",
       "resource": {
         "resourceType": "Patient",
         "id": "Patient-12218",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v3/Race",
-                  "code": "2106-3",
-                  "display": "White"
-                }
-              ]
-            }
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v3/Ethnicity",
-                  "code": "2186-5",
-                  "display": "Not Hispanic or Latino"
-                }
-              ]
-            }
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/us-core-religion",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v3/ReligiousAffiliation",
-                  "code": "1041",
-                  "display": "Roman Catholic Church"
-                }
-              ]
-            }
-          }
-        ],
         "identifier": [
           {
             "use": "official",
@@ -116,59 +78,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Patient/Patient-12218"
+        "url": "http://localhost:8080/fhir/baseDstu3/Patient/Patient-12218"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Practitioner/Practitioner-12208",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Practitioner/Practitioner-12208",
       "resource": {
         "resourceType": "Practitioner",
         "id": "Practitioner-12208",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v3/Race",
-                  "code": "2056-0",
-                  "display": "Black"
-                }
-              ]
-            }
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v3/Ethnicity",
-                  "code": "2186-5",
-                  "display": "Not Hispanic or Latino"
-                }
-              ]
-            }
-          },
-          {
-            "url": "http://gov.onc.fhir.extension.taxonomy",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://org.nucc.taxonomy",
-                  "code": "208D00000X",
-                  "display": "General Practice"
-                }
-              ]
-            }
-          },
-          {
-            "url": "http://org.mihin.fhir.extension.electronic-service",
-            "valueReference": {
-              "reference": "ElectronicService/ElectronicService-2415",
-              "display": "Jay.M.Sawyer@direct.mihintest.org"
-            }
-          }
-        ],
         "identifier": [
           {
             "use": "official",
@@ -294,11 +211,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Practitioner/Practitioner-12208"
+        "url": "http://localhost:8080/fhir/baseDstu3/Practitioner/Practitioner-12208"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Organization/Organization-2002",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Organization/Organization-2002",
       "resource": {
         "resourceType": "Organization",
         "id": "Organization-2002",
@@ -390,11 +307,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Organization/Organization-2002"
+        "url": "http://localhost:8080/fhir/baseDstu3/Organization/Organization-2002"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Coverage/Coverage-68",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Coverage/Coverage-68",
       "resource": {
         "resourceType": "Coverage",
         "id": "Coverage-68",
@@ -404,23 +321,22 @@
             "valueString": "2.16.840.1.113883.10.20.24.3.55"
           }
         ],
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/identifier",
+            "value": "1.3.6.1.4.1.115:579f4eb5aeac500a550c5c4b"
+          }
+        ],
         "status": "active",
-        "issuerIdentifier": {
-          "system": "http://www.example.org/",
-          "value": "example-issuer"
-        },
-        "period": {
-          "start": "2008-01-01T05:00:00-05:00"
-        },
         "type": {
           "system": "2.16.840.1.113883.3.221.5",
           "code": "349"
         },
-        "planholderReference": {
+        "policyHolder": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "beneficiaryReference": {
+        "beneficiary": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -428,20 +344,23 @@
           "system": "http://hl7.org/fhir/policyholder-relationship",
           "code": "self"
         },
-        "identifier": [
+        "period": {
+          "start": "2008-01-01T05:00:00-05:00"
+        },
+        "payor": [
           {
-            "system": "http://hl7.org/fhir/identifier",
-            "value": "1.3.6.1.4.1.115:579f4eb5aeac500a550c5c4b"
+            "reference": "Organization/Organization-2002",
+            "display": "Sun Hill Physicians"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Coverage/Coverage-68"
+        "url": "http://localhost:8080/fhir/baseDstu3/Coverage/Coverage-68"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-69",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-69",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-69",
@@ -471,7 +390,7 @@
             "text": "Encounter, Performed: Care Services In Long Term Residential Facility"
           }
         ],
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -494,11 +413,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-69"
+        "url": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-69"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-70",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-70",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-70",
@@ -528,7 +447,7 @@
             "text": "Encounter, Performed: Preventive Care Services   Established Office Visit, 18 And Up"
           }
         ],
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -551,11 +470,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-70"
+        "url": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-70"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-71",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-71",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-71",
@@ -585,7 +504,7 @@
             "text": "Encounter, Performed: Preventive Care Services   Other"
           }
         ],
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -608,11 +527,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-71"
+        "url": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-71"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-72",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-72",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-72",
@@ -642,7 +561,7 @@
             "text": "Encounter, Performed: Preventive Care Services Initial Office Visit, 18 And Up"
           }
         ],
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -665,11 +584,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-72"
+        "url": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-72"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-73",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-73",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-73",
@@ -708,7 +627,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "1979-04-01",
+        "assertedDate": "1979-04-01",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -716,11 +635,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-73"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-73"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-74",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-74",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-74",
@@ -759,7 +678,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2006-05-30",
+        "assertedDate": "2006-05-30",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -767,11 +686,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-74"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-74"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/MedicationStatement/MedicationStatement-75",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/MedicationStatement/MedicationStatement-75",
       "resource": {
         "resourceType": "MedicationStatement",
         "id": "MedicationStatement-75",
@@ -801,19 +720,19 @@
           ],
           "text": "Medication, Active: Ace Inhibitor Or Arb"
         },
-        "patient": {
+        "dateAsserted": "2006-05-30T08:00:00-04:00",
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
-        },
-        "dateAsserted": "2006-05-30T08:00:00-04:00"
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/MedicationStatement/MedicationStatement-75"
+        "url": "http://localhost:8080/fhir/baseDstu3/MedicationStatement/MedicationStatement-75"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-76",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-76",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-76",
@@ -852,7 +771,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2003-05-13",
+        "assertedDate": "2003-05-13",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -860,11 +779,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-76"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-76"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-77",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-77",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-77",
@@ -903,7 +822,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2006-07-09",
+        "assertedDate": "2006-07-09",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -911,11 +830,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-77"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-77"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-78",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-78",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-78",
@@ -954,7 +873,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2004-12-28",
+        "assertedDate": "2004-12-28",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -962,11 +881,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-78"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-78"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-79",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-79",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-79",
@@ -1005,7 +924,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2006-05-30",
+        "assertedDate": "2006-05-30",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -1013,11 +932,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-79"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-79"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-80",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-80",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-80",
@@ -1056,7 +975,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2006-05-30",
+        "assertedDate": "2006-05-30",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -1064,11 +983,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-80"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-80"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-81",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-81",
       "resource": {
         "resourceType": "Condition",
         "id": "Condition-81",
@@ -1107,7 +1026,7 @@
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
-        "dateRecorded": "2006-05-30",
+        "assertedDate": "2006-05-30",
         "asserter": {
           "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
@@ -1115,11 +1034,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Condition/Condition-81"
+        "url": "http://localhost:8080/fhir/baseDstu3/Condition/Condition-81"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-82",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-82",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-82",
@@ -1149,7 +1068,7 @@
             "text": "Encounter, Performed: Discharge Services   Nursing Facility"
           }
         ],
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-12218",
           "display": "2  N Adult DM"
         },
@@ -1172,7 +1091,7 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu2/Encounter/Encounter-82"
+        "url": "http://localhost:8080/fhir/baseDstu3/Encounter/Encounter-82"
       }
     }
   ]
