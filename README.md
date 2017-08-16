@@ -8,13 +8,13 @@ The implementation is based on the prior payerextract FHIR IG.
 
 Commits to this repository will automatically trigger a new build of the IG, which will then be published to the following location:
 
-[http://build.fhir.org/ig/cqframework/HEDIS](http://build.fhir.org/ig/cqframework/HEDIS)
+[http://build.fhir.org/ig/cqframework/payerextract](http://build.fhir.org/ig/cqframework/payerextract)
 
 Build log is available here:
 [http://ig-build.fhir.org.s3-website-us-east-1.amazonaws.com/logs/cqframework/HEDIS](http://ig-build.fhir.org.s3-website-us-east-1.amazonaws.com/logs/cqframework/HEDIS)
 
 Full debugging information is available here:
-[http://build.fhir.org/ig/cqframework/HEDIS/debug.tgz](http://build.fhir.org/ig/cqframework/HEDIS/debug.tgz)
+[http://build.fhir.org/ig/cqframework/payerextract/debug.tgz](http://build.fhir.org/ig/cqframework/payerextract/debug.tgz)
 
 ## Local Build
 
