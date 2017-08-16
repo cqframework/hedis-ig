@@ -5,11 +5,7 @@ Cervical Cancer Screening (CCS)
 library CCS_FHIR version '1.0.0'
 
 //using FHIR version '3.0.1'
-//using FHIR version '3.0.0'
-using FHIR version '1.8'
-
-//include FHIRHelpers version '3.0.1' called FHIRHelpers
-include FHIRHelpers version '1.8' called FHIRHelpers
+using FHIR version '3.0.0'
 
 /*
 Description
@@ -66,7 +62,7 @@ define "Is In Eligible Population":
 		and "Is Not In Hospice"
 
 define "Is Female":
-	Patient.gender = 'female'
+	Patient.gender.value = 'female'
 
 define "Is Age 24 to 64":
 	AgeInYearsAt(end of "Measurement Period") between 24 and 64
@@ -75,13 +71,16 @@ define "Is Age 24 to 64":
 // measurement year; the following test is a placeholder for that.
 // An alternate formulation using ToContext() yielded compilation errors.
 define "Is Not In Hospice":
+	true
+/*
 	not exists(
 		[DocumentReference] DocRef
-			where (DocRef.status = 'current')
+			where (DocRef.status.value = 'current')
 				and (DocRef."context".period overlaps "Measurement Period")
 				and ((DocRef."context".facilityType.coding elem return elem.code)
 					contains "Facility Type Code Value Set: Hospice facility")
 	)
+*/
 
 define "Is In Eligible Population Commercial":
 	"Is In Eligible Population"
@@ -133,48 +132,48 @@ define "Is Age 30 to 64":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where WhenCC during "Lookback Interval Three Years"
+			where WhenCC.value during "Lookback Interval Three Years"
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
 			with "Dates of HPV Tests" WhenHPV
-				such that ((difference in days between WhenCC and WhenHPV) <= 4)
-			where WhenCC during "Lookback Interval Five Years"
+				such that ((difference in days between WhenCC.value and WhenHPV.value) <= 4)
+			where WhenCC.value during "Lookback Interval Five Years"
 	)
 
 define "Dates of Cervical Cytology Tests":
 	([Procedure: "Cervical Cytology Value Set"] Proc
-		where Proc.status = 'completed'
+		where Proc.status.value = 'completed'
 		return Proc.performed)
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
-		where DiagRep.status = 'final'
+		where DiagRep.status.value = 'final'
 		return DiagRep.effective)
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
-		where Obs.status in { 'final', 'amended' }
+		where Obs.status.value in { 'final', 'amended' }
 		return Obs.effective)
 
 define "Dates of HPV Tests":
 	([Procedure: "HPV Tests Value Set"] Proc
-		where Proc.status = 'completed'
+		where Proc.status.value = 'completed'
 		return Proc.performed)
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
-		where DiagRep.status = 'final'
+		where DiagRep.status.value = 'final'
 		return DiagRep.effective)
 	union
 	([Observation: "HPV Tests Value Set"] Obs
-		where Obs.status in { 'final', 'amended' }
+		where Obs.status.value in { 'final', 'amended' }
 		return Obs.effective)
 
 define "Is In Denominator Exclusions":
 	exists(
 		[Procedure: "Cervical Cytology Value Set"] Proc
-			where Proc.status = 'completed'
-				and Proc.performed before end of "Measurement Period"
+			where Proc.status.value = 'completed'
+				and Proc.performed.value before end of "Measurement Period"
 	)
 
 /*
