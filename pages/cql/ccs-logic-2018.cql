@@ -16,11 +16,6 @@ The percentage of women 21–64 years of age who were screened for cervical
 		(HPV) co-testing performed every 5 years.
 */
 
-codesystem "SNOMED": 'http://snomed.info/sct'
-
-valueset "Facility Type Code Value Set": 'urn:oid:2.16.840.1.113883.3.88.12.80.67'
-	// Defining URL: 'http://hl7.org/fhir/ValueSet/c80-facilitycodes'
-
 valueset "Cervical Cytology Value Set": 'TODO'
 valueset "HPV Tests Value Set": 'TODO'
 valueset "Absence of Cervix Value Set": 'TODO'
@@ -35,11 +30,11 @@ Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2016,1,1,0,0,0,0))
 
 parameter "Measurement Period" Interval<DateTime>
 
-define "Lookback Interval Three Years":
-	Interval[start of "Measurement Period" - 3 years, end of "Measurement Period")
+define "Lookback Interval Two More Years":
+	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
 
-define "Lookback Interval Five Years":
-	Interval[start of "Measurement Period" - 5 years, end of "Measurement Period")
+define "Lookback Interval Four More Years":
+	Interval[start of "Measurement Period" - 4 years, end of "Measurement Period")
 
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
@@ -47,9 +42,6 @@ that patient being given by the special context parameter Patient.
 */
 
 context Patient
-
-//define "Facility Type Code Value Set: Hospice facility": Concept { Code '284546000' from "SNOMED" }
-define "Facility Type Code Value Set: Hospice facility": '284546000'
 
 /*
 Eligible Population
@@ -67,20 +59,9 @@ define "Is Female":
 define "Is Age 24 to 64":
 	AgeInYearsAt(end of "Measurement Period") between 24 and 64
 
-// TODO: Determine properly whether the patient was in hospice during the
-// measurement year; the following test is a placeholder for that.
-// An alternate formulation using ToContext() yielded compilation errors.
 define "Is Not In Hospice":
 	true
-/*
-	not exists(
-		[DocumentReference] DocRef
-			where (DocRef.status.value = 'current')
-				and (DocRef."context".period overlaps "Measurement Period")
-				and ((DocRef."context".facilityType.coding elem return elem.code)
-					contains "Facility Type Code Value Set: Hospice facility")
-	)
-*/
+	// TODO: Determine properly whether the patient was in hospice during the measurement year.
 
 define "Is In Eligible Population Commercial":
 	"Is In Eligible Population"
@@ -132,7 +113,7 @@ define "Is Age 30 to 64":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where WhenCC.value during "Lookback Interval Three Years"
+			where WhenCC.value during "Lookback Interval Two More Years"
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
@@ -140,7 +121,7 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 		"Dates of Cervical Cytology Tests" WhenCC
 			with "Dates of HPV Tests" WhenHPV
 				such that ((difference in days between WhenCC.value and WhenHPV.value) <= 4)
-			where WhenCC.value during "Lookback Interval Five Years"
+			where WhenCC.value during "Lookback Interval Four More Years"
 	)
 
 define "Dates of Cervical Cytology Tests":
