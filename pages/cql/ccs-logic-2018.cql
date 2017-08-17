@@ -50,17 +50,17 @@ Product lines -- Commercial, Medicaid (report each product line separately).
 
 define "Is In Eligible Population":
 	"Is Female"
-		and "Is Age 24 to 64"
-		and "Is Not In Hospice"
+		and "Is Age 24 to 64 at End"
+		and (not "Is In Hospice")
 
 define "Is Female":
 	Patient.gender.value = 'female'
 
-define "Is Age 24 to 64":
+define "Is Age 24 to 64 at End":
 	AgeInYearsAt(end of "Measurement Period") between 24 and 64
 
-define "Is Not In Hospice":
-	true
+define "Is In Hospice":
+	false
 	// TODO: Determine properly whether the patient was in hospice during the measurement year.
 
 define "Is In Eligible Population Commercial":
@@ -102,26 +102,26 @@ define "Is In Numerator":
 	case
 		when (not "Is In Eligible Population") then false
 		when "Is Cervical Cytology Test In Last 3 Years" then true
-		when (not "Is Age 30 to 64") then false
+		when (not "Is Age 30 to 64 at End") then false
 		when "Is Cervical Cytology Plus HPV Test In Last 5 Years" then true
 		else false
 	end
 
-define "Is Age 30 to 64":
+define "Is Age 30 to 64 at End":
 	AgeInYearsAt(end of "Measurement Period") between 30 and 64
 
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where WhenCC.value during "Lookback Interval Two More Years"
+			where (WhenCC as dateTime).value during "Lookback Interval Two More Years"
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
 			with "Dates of HPV Tests" WhenHPV
-				such that ((difference in days between WhenCC.value and WhenHPV.value) <= 4)
-			where WhenCC.value during "Lookback Interval Four More Years"
+				such that ((difference in days between (WhenCC as dateTime).value and (WhenHPV as dateTime).value) <= 4)
+			where (WhenCC as dateTime).value during "Lookback Interval Four More Years"
 	)
 
 define "Dates of Cervical Cytology Tests":
@@ -150,7 +150,7 @@ define "Dates of HPV Tests":
 		where Obs.status.value in { 'final', 'amended' }
 		return Obs.effective)
 
-define "Is In Denominator Exclusions":
+define "Is In Administrative Exclusions":
 	exists(
 		[Procedure: "Cervical Cytology Value Set"] Proc
 			where Proc.status.value = 'completed'
