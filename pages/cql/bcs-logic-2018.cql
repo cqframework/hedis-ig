@@ -145,23 +145,10 @@ define "Is In Numerator":
 
 define "Is Mammogram In Last 39 Months":
 	exists(
-		"Dates of Mammograms" WhenM
-			where (WhenM as dateTime).value during "Lookback Interval 27 More Months"
+		[Procedure: "Mammography Value Set"] Proc
+			where Proc.status.value = 'completed'
+				and (Proc.performed as dateTime).value during "Lookback Interval 27 More Months"
 	)
-
-define "Dates of Mammograms":
-	([Procedure: "Mammography Value Set"] Proc
-		where Proc.status.value = 'completed'
-		return Proc.performed)
-	union
-	([DiagnosticReport: "Mammography Value Set"] DiagRep
-		where DiagRep.status.value = 'final'
-		return DiagRep.effective)
-	union
-	([Observation: "Mammography Value Set"] Obs
-		where Obs.status.value in { 'final', 'amended' }
-		return Obs.effective)
-	// TODO: Is this only a Procedure or could it alternately be a DiagnosticReport or Observation etc?
 
 define "Is In Administrative Exclusions":
 	"Is Bilateral Mastectomy"

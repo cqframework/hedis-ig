@@ -130,7 +130,7 @@ define "Dates of Cervical Cytology Tests":
 		return Proc.performed)
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
-		where DiagRep.status.value = 'final'
+		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
 		return DiagRep.effective)
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
@@ -143,7 +143,7 @@ define "Dates of HPV Tests":
 		return Proc.performed)
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
-		where DiagRep.status.value = 'final'
+		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
 		return DiagRep.effective)
 	union
 	([Observation: "HPV Tests Value Set"] Obs
@@ -154,7 +154,7 @@ define "Is In Administrative Exclusions":
 	exists(
 		[Procedure: "Cervical Cytology Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and Proc.performed.value before end of "Measurement Period"
+				and (Proc.performed as dateTime).value before end of "Measurement Period"
 	)
 
 /*
