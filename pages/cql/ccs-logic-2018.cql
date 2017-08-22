@@ -113,51 +113,62 @@ define "Is Age 30 to 64 at End":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where (WhenCC as dateTime).value during "Lookback Interval Two More Years"
+			where IncludedIn(WhenCC, "Lookback Interval Two More Years")
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
 			with "Dates of HPV Tests" WhenHPV
-				such that ((difference in days between (WhenCC as dateTime).value and (WhenHPV as dateTime).value) <= 4)
-			where (WhenCC as dateTime).value during "Lookback Interval Four More Years"
+				such that ((difference in days between start of WhenCC and start of WhenHPV) <= 4)
+			where IncludedIn(WhenCC, "Lookback Interval Four More Years")
 	)
 
 define "Dates of Cervical Cytology Tests":
 	([Procedure: "Cervical Cytology Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return Proc.performed)
+		return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
 		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-		return DiagRep.effective)
+		return ChoiceToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return Obs.effective)
+		return ChoiceToIntervalOfDT(Obs.effective))
 
 define "Dates of HPV Tests":
 	([Procedure: "HPV Tests Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return Proc.performed)
+		return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
 		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-		return DiagRep.effective)
+		return ChoiceToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "HPV Tests Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return Obs.effective)
+		return ChoiceToIntervalOfDT(Obs.effective))
 
 define "Is In Administrative Exclusions":
 	exists(
 		[Procedure: "Cervical Cytology Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and (Proc.performed as dateTime).value before end of "Measurement Period"
+				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)
 
 /*
 Hybrid Specification
 TODO, if needed
 */
+
+
+/*
+Utility Functions
+*/
+
+define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
+	if value is FHIR.dateTime then
+		Interval[value.value, value.value]
+	else
+		Interval[value."start".value, value."end".value]

@@ -147,7 +147,7 @@ define "Is Mammogram In Last 39 Months":
 	exists(
 		[Procedure: "Mammography Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and (Proc.performed as dateTime).value during "Lookback Interval 27 More Months"
+				and IncludedIn(ChoiceToIntervalOfDT(Proc.performed), "Lookback Interval 27 More Months")
 	)
 
 define "Is In Administrative Exclusions":
@@ -156,3 +156,14 @@ define "Is In Administrative Exclusions":
 define "Is Bilateral Mastectomy":
 	false
 	// TODO: Enumerate the specified alternative criteria for this.
+
+
+/*
+Utility Functions
+*/
+
+define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
+	if value is FHIR.dateTime then
+		Interval[value.value, value.value]
+	else
+		Interval[value."start".value, value."end".value]

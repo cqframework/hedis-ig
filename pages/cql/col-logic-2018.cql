@@ -126,35 +126,35 @@ define "Is Fecal Occult Blood Test In Last Year":
 	exists(
 		[Observation: "FOBT Value Set"] Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and (Obs.effective as dateTime).value during "Measurement Period"
+				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Measurement Period")
 	)
 
 define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
 		[DiagnosticReport: "Flexible Sigmoidoscopy Value Set"] DiagRep
 			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-				and (DiagRep.effective as dateTime).value during "Lookback Interval Four More Years"
+				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 
 define "Is Colonoscopy In Last Ten Years":
 	exists(
 		[DiagnosticReport: "Colonoscopy Value Set"] DiagRep
 			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-				and (DiagRep.effective as dateTime).value during "Lookback Interval Nine More Years"
+				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Nine More Years")
 	)
 
 define "Is CT Colonography In Last Five Years":
 	exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
 			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-				and (DiagRep.effective as dateTime).value during "Lookback Interval Four More Years"
+				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 
 define "Is FIT-DNA Test In Last Three Years":
 	exists(
 		[Observation: "FIT-DNA Value Set"] Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and (Obs.effective as dateTime).value during "Lookback Interval Two More Years"
+				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Lookback Interval Two More Years")
 	)
 
 define "Is In Administrative Exclusions":
@@ -165,17 +165,28 @@ define "Is Colorectal Cancer":
 	exists(
 		[Condition: "Colorectal Cancer Value Set"] Cond
 			where Cond.verificationStatus.value = 'confirmed'
-				and (Cond.assertedDate as dateTime).value before end of "Measurement Period"
+				and Cond.assertedDate.value before end of "Measurement Period"
 	)
 
 define "Is Total Colectomy":
 	exists(
 		[Procedure: "Total Colectomy Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and (Proc.performed as dateTime).value before end of "Measurement Period"
+				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)
 
 /*
 Hybrid Specification
 TODO, if needed
 */
+
+
+/*
+Utility Functions
+*/
+
+define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
+	if value is FHIR.dateTime then
+		Interval[value.value, value.value]
+	else
+		Interval[value."start".value, value."end".value]
