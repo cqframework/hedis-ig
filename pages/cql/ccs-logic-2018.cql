@@ -122,8 +122,9 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 			with "Dates of HPV Tests" WhenHPV
 				such that (((difference in days between start of WhenCC and start of WhenHPV) <= 4)
 					and AgeInYearsAt(start of WhenCC) >= 30
-					and AgeInYearsAt(start of WhenHPV) >= 30)
-			where IncludedIn(WhenCC, "Lookback Interval Four More Years")
+					and AgeInYearsAt(start of WhenHPV) >= 30
+					and IncludedIn(WhenCC, "Lookback Interval Four More Years")
+					and IncludedIn(WhenHPV, "Lookback Interval Four More Years"))
 	)
 
 define "Dates of Cervical Cytology Tests":
