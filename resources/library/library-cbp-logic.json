@@ -1,0 +1,93 @@
+{
+    "resourceType": "Library",
+    "id": "library-cbp-logic",
+    "text": {
+      "status": "generated"
+    },
+    "identifier": [
+      {
+        "use": "official",
+        "value": "CBP"
+      }
+    ],
+    "version": "1.0.0",
+    "title": "Cohort Definition for Controlling Blood Pressure Measure",
+    "status": "active",
+    "experimental": true,
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "date": "2016-04-19",
+    "topic": [
+      {
+        "text": "Controlling Blood Pressure"
+      }
+    ],
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": {
+          "reference": "Library/library-fhir-model-definition"
+        }
+      }
+    ],
+    "valueSet": [
+        {
+            "name": "Systolic Blood Pressure",
+            "identifier": "Systolic Blood Pressure"
+        },
+        {
+            "name": "Diastolic Blood Pressure",
+            "identifier": "Diastolic Blood Pressure"
+        }
+    ],
+    "dataRequirement": [
+      {
+        "type": "Patient"
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueCode": "Systolic Blood Pressure"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueCode": "Diastolic Blood Pressure"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+xml",
+        "url": "elm/cbp-logic.elm.xml"
+      }
+    ]
+  }
