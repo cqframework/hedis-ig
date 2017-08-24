@@ -28,7 +28,21 @@ valueset "Unilateral Mastectomy Right Value Set": 'TODO'
 valueset "Hospice Value Set": 'TODO'
 
 /*
-This library has a single explicit parameter which is the measurement year.
+This library has an explicit parameter which is the product line.
+Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
+If one of these normal arguments is given, the patient will only be
+considered to be in the Eligible Population if they have an appropriate
+continuous enrollment in that kind of medical plan.
+If instead a null argument is given, their enrollment status will have no
+effect on whether they are considered to be in the Eligible Population.
+If instead some other argument is given (an unrecognized plan type),
+the patient will unconditionally NOT be in the Eligible Population.
+*/
+
+parameter "Product Line" String
+
+/*
+This library has an explicit parameter which is the measurement year.
 While the actual parameter's type accepts all intervals, this library
 expects it will only be given arguments corresponding exactly to one whole
 calendar year, and it will not behave properly otherwise; 2015 for example:
@@ -56,6 +70,7 @@ define "Is In Eligible Population":
 	"Is Female"
 		and "Is Age 52 to 74 at End"
 		and (not "Is In Hospice")
+		and "Is In Applicable Product Line"
 
 define "Is Female":
 	Patient.gender.value = 'female'
@@ -70,9 +85,19 @@ define "Is In Hospice":
 				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
 	)
 
-define "Is In Eligible Population Commercial":
-	"Is In Eligible Population"
-		and "Is Continuous Enrollment Commercial"
+define "Is In Applicable Product Line":
+	case
+		when ("Product Line" ~ null) then true
+		when ("Product Line" = 'commercial') then "Is Continuous Enrollment Commercial"
+		when ("Product Line" = 'medicaid') then "Is Continuous Enrollment Medicaid"
+		when ("Product Line" = 'medicare') then
+			("Is Continuous Enrollment Medicare"
+				and (if "Is Age 65 Plus at Start"
+					then ("Is Enrolled in Institutional SNP"
+						or "Is Living Long-Term in Institution")
+					else false))
+		else false
+	end
 
 define "Is Continuous Enrollment Commercial":
 	true
@@ -84,10 +109,6 @@ define "Is Continuous Enrollment Commercial":
 	// measurement year and the year prior to the measurement year).
 	// See http://hl7.org/fhir/enrollmentresponse.html which is currently
 	// marked as a stub / draft / incomplete.
-
-define "Is In Eligible Population Medicaid":
-	"Is In Eligible Population"
-		and "Is Continuous Enrollment Medicaid"
 
 define "Is Continuous Enrollment Medicaid":
 	true
@@ -104,14 +125,6 @@ define "Is Continuous Enrollment Medicaid":
 	// to the measurement year).
 	// See http://hl7.org/fhir/enrollmentresponse.html which is currently
 	// marked as a stub / draft / incomplete.
-
-define "Is In Eligible Population Medicare":
-	"Is In Eligible Population"
-		and "Is Continuous Enrollment Medicare"
-		and (if "Is Age 65 Plus at Start"
-			then ("Is Enrolled in Institutional SNP"
-				or "Is Living Long-Term in Institution")
-			else false)
 
 define "Is Continuous Enrollment Medicare":
 	true
