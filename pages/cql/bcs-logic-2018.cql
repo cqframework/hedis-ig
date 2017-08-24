@@ -18,14 +18,14 @@ valueset "Bilateral Mastectomy Value Set": 'TODO'
 valueset "Bilateral Modifier Value Set": 'TODO'
 valueset "History of Bilateral Mastectomy Value Set": 'TODO'
 valueset "Unilateral Mastectomy Value Set": 'TODO'
-
 valueset "Absence of Left Breast Value Set": 'TODO'
 valueset "Left Modifier Value Set": 'TODO'
 valueset "Unilateral Mastectomy Left Value Set": 'TODO'
-
 valueset "Absence of Right Breast Value Set": 'TODO'
 valueset "Right Modifier Value Set": 'TODO'
 valueset "Unilateral Mastectomy Right Value Set": 'TODO'
+
+valueset "Hospice Value Set": 'TODO'
 
 /*
 This library has a single explicit parameter which is the measurement year.
@@ -64,8 +64,11 @@ define "Is Age 52 to 74 at End":
 	AgeInYearsAt(end of "Measurement Period") between 52 and 74
 
 define "Is In Hospice":
-	false
-	// TODO: Determine properly whether the patient was in hospice during the measurement year.
+	exists(
+		[Encounter: "Hospice Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+	)
 
 define "Is In Eligible Population Commercial":
 	"Is In Eligible Population"
@@ -189,7 +192,8 @@ define "Is History Of Bilateral Mastectomy":
 define "Is Unilateral Mastectomy With Bilateral Modifier":
 	exists(
 		[Claim] Claim
-			where exists(
+			where Claim.status.value = 'active'
+				and exists(
 				Claim.procedure BbElem
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
@@ -232,7 +236,8 @@ define "Is Unilateral Mastectomy Twice Spread Two Weeks":
 define "Is Unilateral Mastectomy With Left Modifier":
 	exists(
 		[Claim] Claim
-			where exists(
+			where Claim.status.value = 'active'
+				and exists(
 				Claim.procedure BbElem
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
@@ -272,7 +277,8 @@ define "Is Absence Of Left Breast":
 define "Is Unilateral Mastectomy With Right Modifier":
 	exists(
 		[Claim] Claim
-			where exists(
+			where Claim.status.value = 'active'
+				and exists(
 				Claim.procedure BbElem
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
@@ -319,3 +325,6 @@ define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
 		Interval[value.value, value.value]
 	else
 		Interval[value."start".value, value."end".value]
+
+define function PeriodToIntervalOfDT(value FHIR.Period):
+	Interval[value."start".value, value."end".value]

@@ -21,6 +21,8 @@ valueset "FIT-DNA Value Set": 'TODO'
 valueset "Colorectal Cancer Value Set": 'TODO'
 valueset "Total Colectomy Value Set": 'TODO'
 
+valueset "Hospice Value Set": 'TODO'
+
 /*
 This library has a single explicit parameter which is the measurement year.
 While the actual parameter's type accepts all intervals, this library
@@ -60,8 +62,11 @@ define "Is Age 51 to 75 at End":
 	AgeInYearsAt(end of "Measurement Period") between 51 and 75
 
 define "Is In Hospice":
-	false
-	// TODO: Determine properly whether the patient was in hospice during the measurement year.
+	exists(
+		[Encounter: "Hospice Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+	)
 
 define "Is In Eligible Population Commercial":
 	"Is In Eligible Population"
@@ -190,3 +195,6 @@ define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
 		Interval[value.value, value.value]
 	else
 		Interval[value."start".value, value."end".value]
+
+define function PeriodToIntervalOfDT(value FHIR.Period):
+	Interval[value."start".value, value."end".value]
