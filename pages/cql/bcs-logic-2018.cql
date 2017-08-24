@@ -75,7 +75,7 @@ define "Is Continuous Enrollment Commercial":
 	true
 	// TODO: Determine continuous enrollment over the 39 month period consisting
 	// of the measurement year plus the 2 prior years plus the 3 prior months.
-	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period. 
+	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period.
 	// Allowable gap -- No more than one gap in enrollment of up to 45 days
 	// for each full calendar year of continuous enrollment (i.e., the
 	// measurement year and the year prior to the measurement year).
@@ -90,7 +90,7 @@ define "Is Continuous Enrollment Medicaid":
 	true
 	// TODO: Determine continuous enrollment over the 39 month period consisting
 	// of the measurement year plus the 2 prior years plus the 3 prior months.
-	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period. 
+	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period.
 	// Allowable gap -- No more than one gap in enrollment of up to 45 days
 	// for each full calendar year of continuous enrollment (i.e., the
 	// measurement year and the year prior to the measurement year).
@@ -114,7 +114,7 @@ define "Is Continuous Enrollment Medicare":
 	true
 	// TODO: Determine continuous enrollment over the 39 month period consisting
 	// of the measurement year plus the 2 prior years plus the 3 prior months.
-	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period. 
+	// No gaps in enrollment are allowed the first Oct 1-Dec 31 of that 39 month period.
 	// Allowable gap -- No more than one gap in enrollment of up to 45 days
 	// for each full calendar year of continuous enrollment (i.e., the
 	// measurement year and the year prior to the measurement year).
@@ -188,17 +188,29 @@ define "Is History Of Bilateral Mastectomy":
 
 define "Is Unilateral Mastectomy With Bilateral Modifier":
 	exists(
-		[Procedure: "Unilateral Mastectomy Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+		[Claim] Claim
+			where exists(
+				Claim.procedure BbElem
+					with (
+						[Procedure: "Unilateral Mastectomy Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc1
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								else false)
+					with (
+						[Procedure: "Bilateral Modifier Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc2
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								else false)
+			)
 	)
-	and
-	exists(
-		[Procedure: "Bilateral Modifier Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
-	)
-	// TODO: Do we need to ask that both are on the same claim?
 
 define "Is Unilateral Mastectomy Twice Spread Two Weeks":
 	exists(
@@ -219,17 +231,29 @@ define "Is Unilateral Mastectomy Twice Spread Two Weeks":
 
 define "Is Unilateral Mastectomy With Left Modifier":
 	exists(
-		[Procedure: "Unilateral Mastectomy Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+		[Claim] Claim
+			where exists(
+				Claim.procedure BbElem
+					with (
+						[Procedure: "Unilateral Mastectomy Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc1
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								else false)
+					with (
+						[Procedure: "Left Modifier Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc2
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								else false)
+			)
 	)
-	and
-	exists(
-		[Procedure: "Left Modifier Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
-	)
-	// TODO: How to ask that both are on the same claim?
 
 define "Is Unilateral Mastectomy Left":
 	exists(
@@ -247,17 +271,29 @@ define "Is Absence Of Left Breast":
 
 define "Is Unilateral Mastectomy With Right Modifier":
 	exists(
-		[Procedure: "Unilateral Mastectomy Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+		[Claim] Claim
+			where exists(
+				Claim.procedure BbElem
+					with (
+						[Procedure: "Unilateral Mastectomy Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc1
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								else false)
+					with (
+						[Procedure: "Right Modifier Value Set"] Proc
+							where Proc.status.value = 'completed'
+								and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+					) Proc2
+						such that
+							(if BbElem.procedure is FHIR.Reference
+								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								else false)
+			)
 	)
-	and
-	exists(
-		[Procedure: "Right Modifier Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
-	)
-	// TODO: How to ask that both are on the same claim?
 
 define "Is Unilateral Mastectomy Right":
 	exists(
