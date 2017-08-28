@@ -23,6 +23,9 @@ valueset "Total Colectomy Value Set": 'TODO'
 
 valueset "Hospice Value Set": 'TODO'
 
+valueset "X Institutional SNP Value Set": 'TODO'
+valueset "X Long-Term in Institution Value Set": 'TODO'
+
 /*
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicare'}.
@@ -186,11 +189,19 @@ define "Is Age 65 Plus at Start":
 	AgeInYearsAt(start of "Measurement Period") >= 65
 
 define "Is Enrolled in Institutional SNP":
-	false
+	exists(
+		[Encounter: "X Institutional SNP Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+	)
 	// TODO: Determine properly whether the patient was in SNP during the measurement year.
 
 define "Is Living Long-Term in Institution":
-	false
+	exists(
+		[Encounter: "X Long-Term in Institution Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 
 /*
