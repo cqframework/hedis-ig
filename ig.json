@@ -14,11 +14,11 @@
 		"urn:oid:2.16.840.1.113883.6.238"
 	],
 	"dependencyList": [
-		{
-			"name": "uscore",
-			"location": "http://hl7.org/fhir/us/core",
-			"source": "lib/uscore"
-		},
+		// {
+		// 	"name": "uscore",
+		// 	"location": "http://hl7.org/fhir/us/core",
+		// 	"source": "lib/uscore"
+		// },
 		{
 			"name": "qicore",
 			"location": "http://hl7.org/fhir/us/qicore",
@@ -46,6 +46,12 @@
 			"content": true,
 			"xref": true
 		},
+		"Observation": {				
+			"template-format": "instance-template-example.html"
+		},
+		"Procedure": {				
+			"template-format": "instance-template-example.html"
+		},
 		"StructureDefinition" : {
 			"shex": true,
 			"sch": true,
@@ -66,19 +72,17 @@
 			// "template-base": "instance-template-sd.html",
 			// "template-mappings":"instance-template-sd-mappings.html",
 			// "template-defns":"instance-template-sd-definitions.html"
-		},
-		"Procedure": {				
-			"template-format": "instance-template-example.html"
 		}
 	},
 	"sct-edition" : "http://snomed.info/sct/731000124108",
 	"extraTemplates": [
       "mappings"
    	],
-	"canonicalBase": "http://hl7.org/fhir/hedis",
+	"canonicalBase": "http://hl7.org/fhir/us/hedis",
 	"source": "hedis.xml",
 	"spreadsheets": [
-		"Procedure/procedure-profile-spreadsheet.xml"
+		"Observation/observation-profile-spreadsheet.xml"
+		//"Procedure/procedure-profile-spreadsheet.xml"
 	],
 	"resources": {
 		"Bundle/connectathon": {
@@ -171,6 +175,10 @@
 		"Medication/001": {
 			"source": "medication-001"
 		},
+		"Observation/observation-example-hedis": {
+			"source": "Observation/observation-example-hedis.xml",
+			"base": "Observation-observation-example-hedis.html"
+		},
 		"Organization/2000": {
 			"source": "organization-2000"
 		},
@@ -192,15 +200,21 @@
 		"Practitioner/12208": {
 			"source": "practitioner-12208"
 		},
-		"StructureDefinition/hedis-procedure": {
-			"source": "Procedure/structuredefinition-hedis-procedure.xml",
-			"defns": "hedis-procedure-definitions.html",
-			"base": "hedis-procedure.html"
-		},
-		"Procedure/procedure-example-hedis": {
-			"source": "Procedure/procedure-example-hedis.xml",
-			"base": "Procedure-procedure-example-hedis.html"
+		// "Procedure/procedure-example-hedis": {
+		// 	"source": "Procedure/procedure-example-hedis.xml",
+		// 	"base": "Procedure-procedure-example-hedis.html"
+		// },
+		"StructureDefinition/hedis-observation": {
+			"source": "Observation/structuredefinition-hedis-observation.xml",
+			"defns": "hedis-observation-definitions.html",
+			"base": "hedis-observation.html"
 		}
+		// "StructureDefinition/hedis-procedure": {
+		// 	"source": "Procedure/structuredefinition-hedis-procedure.xml",
+		// 	"defns": "hedis-procedure-definitions.html",
+		// 	"base": "hedis-procedure.html"
+		// }
+		
 	},
 	"tool": "jekyll"
 }
