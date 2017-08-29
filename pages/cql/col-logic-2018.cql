@@ -23,6 +23,10 @@ valueset "Total Colectomy Value Set": 'TODO'
 
 valueset "Hospice Value Set": 'TODO'
 
+valueset "X Commercial Coverage Value Set": 'TODO'
+valueset "X Medicaid Coverage Value Set": 'TODO'
+valueset "X Medicare Coverage Value Set": 'TODO'
+
 valueset "X Institutional SNP Value Set": 'TODO'
 valueset "X Long-Term in Institution Value Set": 'TODO'
 
@@ -108,38 +112,25 @@ define "Is In Applicable Product Line":
 		else false
 	end
 
-define "Any Patient Coverage At Any Time":
-	[Coverage] Cov
-		where Cov.status.value in { 'active', 'cancelled' }
+define "Enrollment Periods":
+	collapse(
+		[Coverage] Cov
+			where Cov.status.value in { 'active', 'cancelled' }
+				and case "Product Line"
+					when 'commercial' then
+						CodingToCode(Cov.type.coding) in "X Commercial Coverage Value Set"
+					when 'medicaid' then
+						CodingToCode(Cov.type.coding) in "X Medicaid Coverage Value Set"
+					when 'medicare' then
+						CodingToCode(Cov.type.coding) in "X Medicare Coverage Value Set"
+					else false
+				end
+			return PeriodToIntervalOfDT(Cov.period)
+	)
 	// We assume [Coverage] in Patient context implicitly has this filter:
 	// Cov.beneficiary.identifier = Patient.identifier
 	// ... and that the paitient is not connected as a policy holder or payor.
-
-define "Product Line Organizations":
-	case "Product Line"
-		when 'commercial' then
-			[Organization] Org
-				where Org.name.value not in { 'Medicaid', 'Medicare' }
-		when 'medicaid' then
-			[Organization] Org
-				where Org.name.value in { 'Medicaid' }
-		when 'medicare' then
-			[Organization] Org
-				where Org.name.value in { 'Medicare' }
-		else List<FHIR.Organization> {}
-	end
 	// TODO: Properly determine organization(s) for the product line.
-
-define "Enrollment Periods":
-	collapse(
-		"Any Patient Coverage At Any Time" Cov
-			with "Product Line Organizations" Org
-				such that
-					(if Cov.payor is List<FHIR.Reference>
-						then (Cov.payor as List<FHIR.Reference>).identifier = Org.identifier
-						else false)
-			return PeriodToIntervalOfDT(Cov.period)
-	)
 	// Note: collapse() also puts the resulting intervals in order.
 
 define function "Enrollment Periods In Year"(Year Interval<DateTime>):
@@ -293,3 +284,12 @@ define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
 
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
+
+define function CodingToCode(coding FHIR.Coding):
+	System.Code {
+		code: coding.code.value,
+		system: coding.system.value,
+		version: coding.version.value,
+		display: coding.display.value
+	}
+	// From FHIRHelpers
