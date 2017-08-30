@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project name="org.hl7.fhir.tools" default="local-publish-ig">
-  <property name="guidename" value="hedis"/>
-  <property name="spec" value="http://hl7-fhir.github.io/"/>
+  <property name="guidename" value="payerextract"/>
+  <property name="spec" value="http://hl7.org/fhir/2016Sep/index.html"/>
   <!-- Where the main FHIR build publish folder is -->
   <property name="dir.publish" value="../../publish"/>
   <!-- Working area -->
@@ -16,13 +16,13 @@
   <property name="dir.output" value="output"/>
   <!-- -->
   <target name="dir-setup" description="--> create directories">
-<!--    <delete dir="${dir.pages}"/>-->
+    <delete dir="${dir.pages}"/>
     <delete dir="${dir.qa}"/>
     <delete dir="${dir.temp}"/>
-<!--    <mkdir dir="${dir.pages}"/>
+    <mkdir dir="${dir.pages}"/>
     <mkdir dir="${dir.pageassets}"/>
     <mkdir dir="${dir.pagedata}"/>
-    <mkdir dir="${dir.pageincludes}"/>-->
+    <mkdir dir="${dir.pageincludes}"/>
     <mkdir dir="${dir.qa}"/>
     <mkdir dir="${dir.temp}"/>
     <mkdir dir="${dir.txcache}"/>
@@ -32,7 +32,7 @@
     <copy file="${dir.publish}/org.hl7.fhir.igpublisher.jar" todir="${basedir}"/>
   </target>
   <target name="travis-setup" depends="dir-setup" description="--> Installs Jekyll, grabs publisher from CI website">
-    <get src="http://hl7.org/fhir/org.hl7.fhir.igpublisher.jar" dest="${basedir}"/>
+    <get src="http://hl7-fhir.github.io/org.hl7.fhir.igpublisher.jar" dest="${basedir}"/>
   </target>
   <target name="publish-ig" depends="dir-setup"  description="--> Run the IG build">
     <java jar="${basedir}/org.hl7.fhir.igpublisher.jar" fork="true" failonerror="true" maxmemory="1024m">

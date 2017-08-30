@@ -1,92 +1,64 @@
 {
-	"version": "3.0.1",
+	"tool": "jekyll",
 	"paths": {
 		"resources": "resources",
 		"pages": "pages",
 		"temp": "temp",
 		"output": "output",
 		"qa": "qa",
-		"txCache" : "txCache",
-		"specification": "http://hl7.org/fhir/STU3/"
+		"specification": "http://hl7.org/fhir/"
 	},
-	"logging": ["init", "progress", "context", "html", "tx"],
-	"special-urls":[
-		"urn:oid:2.16.840.1.113883.6.238"
-	],
-	"dependencyList": [
-		// {
-		// 	"name": "uscore",
-		// 	"location": "http://hl7.org/fhir/us/core",
-		// 	"source": "lib/uscore"
-		// },
-		{
-			"name": "qicore",
-			"location": "http://hl7.org/fhir/us/qicore",
-			"source": "lib/qicore"
-		}
-	],
   	"defaults": {
 		"Any": {
-			"xml": true,
-			"json": true,
-			"ttl": true,
-			"xml-html": true,
-			"json-html": true,
-			"ttl-html": true,
 			"template-format": "instance-template-format.html",
 			"template-base": "instance-template-base.html"
 		},
-		"CapabilityStatement": {
-			"summary": true,
-			"content": true,
-			"xref": true
-		},
-		"Library": {
-			"summary": true,
-			"content": true,
-			"xref": true
-		},
-		"Observation": {				
-			"template-format": "instance-template-example.html"
-		},
-		"Procedure": {				
-			"template-format": "instance-template-example.html"
-		},
 		"StructureDefinition" : {
-			"shex": true,
-			"sch": true,
-			"json-schema": true,
-			"summary": true,
-			"header": true,
-			"diff": true,
-			"snapshot": true,
-			"pseudo-xml": true,
-			"pseudo-json": true,
-			"pseudo-ttl": true,
-			"uml": true,
-			"tx": true,
-			"inv": true,
-			"dict": true,
-			"maps": true,
-			"xref": true
-			// "template-base": "instance-template-sd.html",
-			// "template-mappings":"instance-template-sd-mappings.html",
-			// "template-defns":"instance-template-sd-definitions.html"
+			"template-base": "instance-template-sd.html"
 		}
 	},
 	"sct-edition" : "http://snomed.info/sct/731000124108",
-	"extraTemplates": [
-      "mappings"
-   	],
-	"canonicalBase": "http://hl7.org/fhir/us/hedis",
-	"source": "hedis.xml",
-	"spreadsheets": [
-		"Observation/observation-profile-spreadsheet.xml"
-		//"Procedure/procedure-profile-spreadsheet.xml"
+	"canonicalBase": "http://hl7.org/fhir/payerextract",
+	"source": "payerextract.xml",
+	"bundles": [
+		"bundle-load-patient-12214"
 	],
 	"resources": {
-		"Bundle/connectathon": {
-			"source": "bundle-connectathon"
+		"Library/bcs-logic": {
+			"source": "library-bcs-logic"
+		},
+		"Library/cbp-logic": {
+			"source": "library-cbp-logic"
+		},
+		"Library/ccs-logic": {
+			"source": "library-ccs-logic"
+		},
+		"Library/cdc-logic": {
+			"source": "library-cdc-logic"
+		},
+		"Library/col-logic": {
+			"source": "library-col-logic"
+		},
+		"Library/wcc-aba-logic": {
+			"source": "library-wcc-aba-logic"
+		},
+		"Measure/bcs": {
+			"source": "measure-bcs"
+		},
+		"Measure/cbp": {
+			"source": "measure-cbp"
+		},
+		"Measure/ccs": {
+			"source": "measure-ccs"
+		},
+		"Measure/cdc": {
+			"source": "measure-cdc"
+		},
+		"Measure/col": {
+			"source": "measure-col"
+		},
+		"Measure/wcc-aba": {
+			"source": "measure-wcc-aba"
 		},
 		"Bundle/load-patient-12214": {
 			"source": "bundle-load-patient-12214"
@@ -129,92 +101,6 @@
 		},
 		"CapabilityStatement/measure-calculation-service": {
 			"source": "capability-measure-calculation-service"
-		},
-		"Endpoint/001": {
-			"source": "endpoint-001"
-		},
-		"Library/bcs-logic": {
-			"source": "bcs-logic"
-		},
-		"Library/cbp-logic": {
-			"source": "cbp-logic"
-		},
-		"Library/ccs-logic": {
-			"source": "ccs-logic"
-		},
-		"Library/cdc-logic": {
-			"source": "cdc-logic"
-		},
-		"Library/col-logic": {
-			"source": "col-logic"
-		},
-		"Library/fhir-model-definition": {
-			"source": "fhir-model-definition"
-		},
-		"Library/wcc-aba-logic": {
-			"source": "wcc-aba-logic"
-		},
-		"Measure/bcs": {
-			"source": "measure-bcs"
-		},
-		"Measure/cbp": {
-			"source": "measure-cbp"
-		},
-		"Measure/ccs": {
-			"source": "measure-ccs"
-		},
-		"Measure/cdc": {
-			"source": "measure-cdc"
-		},
-		"Measure/col": {
-			"source": "measure-col"
-		},
-		"Measure/wcc-aba": {
-			"source": "measure-wcc-aba"
-		},
-		"Medication/001": {
-			"source": "medication-001"
-		},
-		"Observation/observation-example-hedis": {
-			"source": "Observation/observation-example-hedis.xml",
-			"base": "Observation-observation-example-hedis.html"
-		},
-		"Organization/2000": {
-			"source": "organization-2000"
-		},
-		"Organization/2002": {
-			"source": "organization-2002"
-		},
-		"Patient/12214": {
-			"source": "patient-12214"
-		},
-		"Patient/12215": {
-			"source": "patient-12215"
-		},
-		"Patient/12216": {
-			"source": "patient-12216"
-		},
-		"Patient/12217": {
-			"source": "patient-12217"
-		},
-		"Practitioner/12208": {
-			"source": "practitioner-12208"
-		},
-		// "Procedure/procedure-example-hedis": {
-		// 	"source": "Procedure/procedure-example-hedis.xml",
-		// 	"base": "Procedure-procedure-example-hedis.html"
-		// },
-		"StructureDefinition/hedis-observation": {
-			"source": "Observation/structuredefinition-hedis-observation.xml",
-			"defns": "hedis-observation-definitions.html",
-			"base": "hedis-observation.html"
 		}
-		// "StructureDefinition/hedis-procedure": {
-		// 	"source": "Procedure/structuredefinition-hedis-procedure.xml",
-		// 	"defns": "hedis-procedure-definitions.html",
-		// 	"base": "hedis-procedure.html"
-		// }
-		
-	},
-	"tool": "jekyll"
+	}
 }

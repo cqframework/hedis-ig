@@ -1,0 +1,295 @@
+{
+    "resourceType": "Library",
+    "id": "library-cdc-logic",
+    "text": {
+      "status": "generated"
+    },
+    "identifier": [
+      {
+        "use": "official",
+        "value": "CDC"
+      }
+    ],
+    "version": "1.0.0",
+    "title": "Cohort Definition for Comprehensive Diabetes Care Measure",
+    "status": "active",
+    "experimental": true,
+    "type": {
+      "coding": [
+        {
+          "code": "logic-library"
+        }
+      ]
+    },
+    "date": "2016-04-19",
+    "topic": [
+      {
+        "text": "Diabetes Care"
+      }
+    ],
+    "relatedArtifact": [
+      {
+        "type": "depends-on",
+        "resource": {
+          "reference": "Library/library-fhir-model-definition"
+        }
+      }
+    ],
+    "valueSet": [
+      {
+          "name": "HbA1c Tests",
+          "identifier": "HPV Tests"
+      },
+      {
+          "name": "HbA1c Level Less than 7.0",
+          "identifier": "2.16.840.1.113883.3.464.1004.1208"
+      },
+      {
+        "name": "HbA1c Level 7.0-9.0",
+        "identifier": "2.16.840.1.113883.3.464.1004.1113"
+      },
+      {
+        "name": "HbA1c Level Greater Than 9.0",
+        "identifier": "2.16.840.1.113883.3.464.1004.1114"
+      },
+      {
+        "name": "Diabetic Retinal Screening",
+        "identifier": "2.16.840.1.113883.3.464.1004.1078"
+      },
+      {
+        "name": "Diabetic Retinal Screening Negative",
+        "identifier": "2.16.840.1.113883.3.464.1004.1079"
+      },
+      {
+        "name": "Diabetic Retinal Screening With Eye Care Professional",
+        "identifier": "2.16.840.1.113883.3.464.1004.1080"
+      },
+      {
+        "name": "Urine Macroalbumin Tests",
+        "identifier": "2.16.840.1.113883.3.464.1004.1257"
+      },
+      {
+        "name": "Positive Urine Macroalbumin Tests",
+        "identifier": "2.16.840.1.113883.3.464.1004.1216"
+      },
+      {
+        "name": "Urine Protein Test",
+        "identifier": "Urine Protein Test"
+      }
+    ],
+    "dataRequirement": [
+      {
+        "type": "Patient"
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "HbA1c Tests"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "HbA1c Level Less than 7.0"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "HbA1c Level 7.0-9.0"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "HbA1c Level Greater Than 9.0"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "MedicationRequest",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "ARB"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "dateWritten.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "MedicationRequest",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "ACE"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "dateWritten.value",
+              "valuePeriod": {
+                  "start": "2017-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Diabetic Retinal Screening"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "performedDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Diabetic Retinal Screening Negative"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "performedDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Diabetic Retinal Screening With Eye Care Professional"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "performedDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Urine Macroalbumin Tests"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Positive Urine Macroalbumin Tests"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSetString": "Diabetic Retinal Screening"
+          }
+        ],
+        "dateFilter": [
+          {
+              "path": "effectiveDateTime.value",
+              "valuePeriod": {
+                  "start": "2015-01-01T00:00:00+00:00"
+              }
+          }
+        ]
+      }
+    ],
+    "content": [
+      {
+        "contentType": "application/elm+xml",
+        "url": "elm/cdc-logic.elm.xml"
+      }
+    ]
+  }
