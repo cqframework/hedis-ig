@@ -93,7 +93,7 @@ define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":

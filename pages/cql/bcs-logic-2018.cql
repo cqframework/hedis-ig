@@ -98,7 +98,7 @@ define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -186,7 +186,7 @@ define "Is Enrolled in Institutional SNP":
 	exists(
 		[Encounter: "X Institutional SNP Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in SNP during the measurement year.
 
@@ -194,7 +194,7 @@ define "Is Living Long-Term in Institution":
 	exists(
 		[Encounter: "X Long-Term in Institution Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and Overlaps(PeriodToIntervalOfDT(Enc.period), "Measurement Period")
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 
