@@ -131,7 +131,7 @@ define "Enrollment Periods":
 			return PeriodToIntervalOfDT(Cov.period)
 	)
 	// We assume [Coverage] in Patient context implicitly has this filter:
-	// Cov.beneficiary.identifier = Patient.identifier
+	// Cov.beneficiary.identifier ~ Patient.identifier
 	// ... and that the paitient is not connected as a policy holder or payor.
 	// TODO: Properly determine organization(s) for the product line.
 	// Note: collapse() also puts the resulting intervals in order.
@@ -265,7 +265,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
 								else false)
 					with (
 						[Procedure: "Bilateral Modifier Value Set"] Proc
@@ -274,7 +274,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
 								else false)
 			)
 	)
@@ -309,7 +309,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
 								else false)
 					with (
 						[Procedure: "Left Modifier Value Set"] Proc
@@ -318,7 +318,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
 								else false)
 			)
 	)
@@ -350,7 +350,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc1.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
 								else false)
 					with (
 						[Procedure: "Right Modifier Value Set"] Proc
@@ -359,7 +359,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier = Proc2.identifier
+								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
 								else false)
 			)
 	)

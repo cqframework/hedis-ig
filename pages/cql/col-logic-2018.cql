@@ -128,7 +128,7 @@ define "Enrollment Periods":
 			return PeriodToIntervalOfDT(Cov.period)
 	)
 	// We assume [Coverage] in Patient context implicitly has this filter:
-	// Cov.beneficiary.identifier = Patient.identifier
+	// Cov.beneficiary.identifier ~ Patient.identifier
 	// ... and that the paitient is not connected as a policy holder or payor.
 	// TODO: Properly determine organization(s) for the product line.
 	// Note: collapse() also puts the resulting intervals in order.
