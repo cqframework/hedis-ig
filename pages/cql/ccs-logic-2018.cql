@@ -112,10 +112,15 @@ define "Is In Hospice":
 	)
 	or
 	exists(
-		[Encounter: "Hospice care ambulatory"] HospiceOrderOrPerformed
-			where HospiceOrderOrPerformed.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and (PeriodToIntervalOfDT(HospiceOrderOrPerformed.period) during "Measurement Period"
-					or PeriodToIntervalOfDT(HospiceOrderOrPerformed.period) overlaps "Measurement Period")
+		[ProcedureRequest: "Hospice care ambulatory"] HospiceOrder
+			where HospiceOrder.status.value in { 'active', 'completed' }
+				and HospiceOrder.authoredOn.value during "Measurement Period"
+	)
+	or
+	exists(
+		[Procedure: "Hospice care ambulatory"] HospicePerformed
+			where HospicePerformed.status.value = 'completed'
+				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
