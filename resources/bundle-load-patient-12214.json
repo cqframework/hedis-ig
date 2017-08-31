@@ -8,7 +8,7 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Patient/patient-12214",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Patient/Patient-12214",
       "resource": {
         "resourceType": "Patient",
         "id": "Patient-12214",
@@ -16,14 +16,13 @@
           "status": "generated",
           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Some narrative</div>"
         },
-        "reference": "Patient/12214",
         "identifier": [
           {
             "use": "official",
             "type": {
               "coding": [
                 {
-                  "system": "http://hl7.org/fhir/v2/0203",
+                  "system": "http://hl7.org/fhir/identifier-type",
                   "code": "SB",
                   "display": "Social Beneficiary Identifier"
                 }
@@ -84,11 +83,11 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu3/Patient/patient-12214"
+        "url": "http://localhost:8080/fhir/baseDstu3/Patient/Patient-12214"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Practitioner/practitioner-12208",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Practitioner/Practitioner-12208",
       "resource": {
         "resourceType": "Practitioner",
         "id": "Practitioner-12208",
@@ -98,7 +97,7 @@
             "type": {
               "coding": [
                 {
-                  "system": "http://hl7.org/fhir/v2/0203",
+                  "system": "http://hl7.org/fhir/identifier-type",
                   "code": "SB",
                   "display": "Social Beneficiary Identifier"
                 }
@@ -128,7 +127,7 @@
             "type": {
               "coding": [
                 {
-                  "system": "http://hl7.org/fhir/v2/0203",
+                  "system": "http://hl7.org/fhir/identifier-type",
                   "code": "SB",
                   "display": "Social Beneficiary Identifier"
                 }
@@ -207,7 +206,7 @@
               ]
             },
             "issuer": {
-              "reference": "Organization/organization-2000",
+              "reference": "Organization/Organization-2000",
               "display": "Michigan Department of Licensing and Regulatory Affairs"
             }
           }
@@ -215,53 +214,26 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu3/Practitioner/practitioner-12208"
+        "url": "http://localhost:8080/fhir/baseDstu3/Practitioner/Practitioner-12208"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Organization/organization-2002",
+      "fullUrl": "http://localhost:8080/fhir/baseDstu3/Organization/Organization-2002",
       "resource": {
         "resourceType": "Organization",
         "id": "Organization-2002",
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/organization-alias",
-            "valueIdentifier": {
-              "use": "official",
-              "type": {
-                "coding": [
-                  {
-                    "system": "http://gov.michigan.fhir.organization-license-type",
-                    "code": "PRACTICE"
-                  }
-                ],
-                "text": "Michigan Medical Practice License"
-              },
-              "system": "http://gov.michigan.fhir.organization-license",
-              "value": "LARA-ORG-2002",
-              "assigner": {
-                "display": "State of Michigan"
-              }
-            }
+            "valueString": "LARA-ORG-2002"
           },
           {
             "url": "http://hl7.org/fhir/StructureDefinition/organization-alias",
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "http://org.nucc.taxonomy",
-                  "code": "261Q00000X",
-                  "display": "Clinic/Center"
-                }
-              ]
-            }
+            "valueString": "261Q00000X"
           },
           {
             "url": "http://hl7.org/fhir/StructureDefinition/organization-alias",
-            "valueReference": {
-              "reference": "ElectronicService/ElectronicService-50",
-              "display": "orgname@email.com"
-            }
+            "valueString": "orgname@email.com"
           }
         ],
         "identifier": [
@@ -319,7 +291,7 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/fhir/baseDstu3/Organization/organization-2002"
+        "url": "http://localhost:8080/fhir/baseDstu3/Organization/Organization-2002"
       }
     },
     {
@@ -355,7 +327,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2 N Geriatric Jr"
         },
         "participant": [
@@ -365,13 +337,13 @@
               "end": "2015-06-18T08:15:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/organization-2002",
+          "reference": "Organization/Organization-2002",
           "display": "Sun Hill Physicians"
         }
       },
@@ -399,29 +371,35 @@
         ],
         "status": "active",
         "type": {
-          "system": "2.16.840.1.113883.3.221.5",
-          "code": "349"
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/coverage-selfpay",
+              "code": "pay"
+            }
+          ]
         },
         "policyHolder": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "beneficiary": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "relationship": {
-          "coding": {
-            "system": "http://hl7.org/fhir/policyholder-relationship",
-            "code": "self"
-          }
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/policyholder-relationship",
+              "code": "self"
+            }
+          ]
         },
         "period": {
           "start": "2008-01-01T05:00:00-05:00"
         },
         "payor": [
           {
-            "reference": "Organization/organization-2002",
+            "reference": "Organization/Organization-2002",
             "display": "Example Issuer"
           }
         ]
@@ -464,7 +442,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "participant": [
@@ -474,13 +452,13 @@
               "end": "2015-08-28T08:15:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/organization-2002",
+          "reference": "Organization/Organization-2002",
           "display": "Sun Hill Physicians"
         }
       },
@@ -528,12 +506,12 @@
           "text": "Diagnosis: Severe Dementia"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2014-04-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -581,12 +559,12 @@
           "text": "Diagnosis: Fracture Lower Body"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2015-06-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -634,12 +612,12 @@
           "text": "Diagnosis: Fracture Lower Body"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2015-06-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -670,7 +648,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "status": "completed",
@@ -704,7 +682,7 @@
               ]
             },
             "actor": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
@@ -758,12 +736,12 @@
           "text": "Diagnosis: Malignant Neoplasm Of Colon"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2 N Geriatric Jr"
         },
         "assertedDate": "2011-02-01T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -794,7 +772,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "status": "completed",
@@ -828,7 +806,7 @@
               ]
             },
             "actor": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
@@ -875,13 +853,13 @@
           "text": "Risk Category Assessment: Patient Not Ambulatory"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "issued": "2015-06-22T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/practitioner-12208",
+            "reference": "Practitioner/Practitioner-12208",
             "display": "Jay McCann Sawyer MD"
           }
         ]
@@ -930,12 +908,12 @@
           "text": "Diagnosis: Fracture Lower Body"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2015-06-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -983,12 +961,12 @@
           "text": "Diagnosis: Fracture Lower Body"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2015-06-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -1036,12 +1014,12 @@
           "text": "Diagnosis: Malignant Neoplasm Of Colon"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2011-02-01T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -1089,12 +1067,12 @@
           "text": "Diagnosis: Malignant Neoplasm Of Colon"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2011-02-01T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -1136,7 +1114,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "participant": [
@@ -1146,13 +1124,13 @@
               "end": "2015-09-28T08:30:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/organization-2002",
+          "reference": "Organization/Organization-2002",
           "display": "Sun Hill Physicians"
         }
       },
@@ -1193,13 +1171,13 @@
           "text": "Risk Category Assessment: Standardized Tools For Assessment Of Cognition"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "issued": "2015-09-28T08:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/practitioner-12208",
+            "reference": "Practitioner/Practitioner-12208",
             "display": "Jay McCann Sawyer MD"
           }
         ]
@@ -1225,7 +1203,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "status": "completed",
@@ -1260,7 +1238,7 @@
               ]
             },
             "actor": {
-              "reference": "Practitioner/practitioner-12208",
+              "reference": "Practitioner/Practitioner-12208",
               "display": "Jay McCann Sawyer MD"
             }
           }
@@ -1314,12 +1292,12 @@
           "text": "Diagnosis: Dementia & Mental Degenerations"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2013-04-22T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -1367,12 +1345,12 @@
           "text": "Diagnosis: Malignant Neoplasm Of Colon"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "assertedDate": "2011-02-01T20:30:02+00:00",
         "asserter": {
-          "reference": "Practitioner/practitioner-12208",
+          "reference": "Practitioner/Practitioner-12208",
           "display": "Jay McCann Sawyer MD"
         }
       },
@@ -1413,13 +1391,13 @@
           "text": "Risk Category Assessment: History Of Pneumococcal Vaccine"
         },
         "subject": {
-          "reference": "Patient/patient-12214",
+          "reference": "Patient/Patient-12214",
           "display": "2  N Geriatric Jr"
         },
         "issued": "2015-09-28T08:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/practitioner-12208",
+            "reference": "Practitioner/Practitioner-12208",
             "display": "Jay McCann Sawyer MD"
           }
         ]
