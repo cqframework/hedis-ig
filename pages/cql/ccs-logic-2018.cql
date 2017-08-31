@@ -22,6 +22,11 @@ valueset "Absence of Cervix Value Set": 'TODO'
 
 valueset "Hospice Value Set": 'TODO'
 
+valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Discharged to Home for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Discharged to Health Care Facility for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Hospice care ambulatory": 'urn:oid:2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+
 valueset "X Commercial Coverage Value Set": 'TODO'
 valueset "X Medicaid Coverage Value Set": 'TODO'
 valueset "X Medicare Coverage Value Set": 'TODO'
@@ -94,6 +99,23 @@ define "Is In Hospice":
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+	)
+	or
+	exists(
+		[Encounter: "Encounter Inpatient"] DischargeHospice
+			where DischargeHospice.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and (CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
+						in "Discharged to Home for Hospice Care"
+					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
+						in "Discharged to Health Care Facility for Hospice Care")
+				and PeriodToIntervalOfDT(DischargeHospice.period) ends during "Measurement Period"
+	)
+	or
+	exists(
+		[Encounter: "Hospice care ambulatory"] HospiceOrderOrPerformed
+			where HospiceOrderOrPerformed.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and (PeriodToIntervalOfDT(HospiceOrderOrPerformed.period) during "Measurement Period"
+					or PeriodToIntervalOfDT(HospiceOrderOrPerformed.period) overlaps "Measurement Period")
 	)
 
 define "Is In Applicable Product Line":
