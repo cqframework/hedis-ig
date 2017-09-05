@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="hedis-patient-example"/>
+  <text>
+    <status value="generated"/>
+  </text>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2106-3"/>
+        <display value="White"/>
+      </valueCoding>
+    </extension>
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="1002-5"/>
+        <display value="American Indian or Alaska Native"/>
+      </valueCoding>
+    </extension>
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2028-9"/>
+        <display value="Asian"/>
+      </valueCoding>
+    </extension>
+    <extension url="detailed">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="1586-7"/>
+        <display value="Shoshone"/>
+      </valueCoding>
+    </extension>
+    <extension url="detailed">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2036-2"/>
+        <display value="Filipino"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Mixed"/>
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2135-2"/>
+        <display value="Hispanic or Latino"/>
+      </valueCoding>
+    </extension>
+    <extension url="detailed">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2184-0"/>
+        <display value="Dominican"/>
+      </valueCoding>
+    </extension>
+    <extension url="detailed">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2148-5"/>
+        <display value="Mexican"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Hispanic or Latino"/>
+    </extension>
+  </extension>
+  <!--    MRN assigned by ACME healthcare on 6-May 2001    -->
+  <identifier>
+    <use value="usual"/>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v2/0203"/>
+        <code value="MR"/>
+      </coding>
+    </type>
+    <system value="urn:oid:1.2.36.146.595.217.0.1"/>
+    <value value="12345"/>
+    <period>
+      <start value="2001-05-06"/>
+    </period>
+    <assigner>
+      <display value="Acme Healthcare"/>
+    </assigner>
+  </identifier>
+  <active value="true"/>
+  <!--    Peter James Chalmers, but called "Jim"    -->
+  <name>
+    <use value="official"/>
+    <family value="Chalmers"/>
+    <given value="Peter"/>
+    <given value="James"/>
+  </name>
+  <name>
+    <use value="usual"/>
+    <given value="Jim"/>
+  </name>
+  <name>
+    <!--   Maiden names apply for anyone whose name changes as a result of marriage - irrespective
+     of gender   -->
+    <use value="maiden"/>
+    <family value="Windsor"/>
+    <given value="Peter"/>
+    <given value="James"/>
+    <period>
+      <end value="2002"/>
+    </period>
+  </name>
+  <telecom>
+    <use value="home"/>
+    <!--    home communication details aren't known    -->
+  </telecom>
+  <telecom>
+    <system value="phone"/>
+    <value value="(03) 5555 6473"/>
+    <use value="work"/>
+    <rank value="1"/>
+  </telecom>
+  <telecom>
+    <system value="phone"/>
+    <value value="(03) 3410 5613"/>
+    <use value="mobile"/>
+    <rank value="2"/>
+  </telecom>
+  <telecom>
+    <system value="phone"/>
+    <value value="(03) 5555 8834"/>
+    <use value="old"/>
+    <period>
+      <end value="2014"/>
+    </period>
+  </telecom>
+  <!--    use FHIR code system for male / female    -->
+  <gender value="male"/>
+  <birthDate value="1974-12-25">
+    <extension url="http://hl7.org/fhir/StructureDefinition/patient-birthTime">
+      <valueDateTime value="1974-12-25T14:35:45-05:00"/>
+    </extension>
+  </birthDate>
+  <deceasedBoolean value="false"/>
+  <address>
+    <use value="home"/>
+    <type value="both"/>
+    <text value="534 Erewhon St PeasantVille, Rainbow, Vic  3999"/>
+    <line value="534 Erewhon St"/>
+    <city value="PleasantVille"/>
+    <district value="Rainbow"/>
+    <state value="Vic"/>
+    <postalCode value="3999"/>
+    <period>
+      <start value="1974-12-25"/>
+    </period>
+  </address>
+  <contact>
+    <relationship>
+      <coding>
+        <system value="http://hl7.org/fhir/v2/0131"/>
+        <code value="N"/>
+      </coding>
+    </relationship>
+    <name>
+      <family value="du Marché">
+        <!--    the "du" part is a family name prefix (VV in iso 21090)    -->
+        <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-prefix">
+          <valueString value="VV"/>
+        </extension>
+      </family>
+      <given value="Bénédicte"/>
+    </name>
+    <telecom>
+      <system value="phone"/>
+      <value value="+33 (237) 998327"/>
+    </telecom>
+    <address>
+      <use value="home"/>
+      <type value="both"/>
+      <line value="534 Erewhon St"/>
+      <city value="PleasantVille"/>
+      <district value="Rainbow"/>
+      <state value="Vic"/>
+      <postalCode value="3999"/>
+      <period>
+        <start value="1974-12-25"/>
+      </period>
+    </address>
+    <gender value="female"/>
+    <period>
+      <!--    The contact relationship started in 2012    -->
+      <start value="2012"/>
+    </period>
+  </contact>
+  <communication>
+    <language>
+      <coding>
+        <system value="urn:ietf:bcp:47"/>
+        <code value="fr"/>
+        <display value="French"/>
+      </coding>
+    </language>
+  </communication>
+  <managingOrganization>
+    <reference value="Organization/example"/>
+  </managingOrganization>
+</Patient>
