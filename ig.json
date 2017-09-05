@@ -15,6 +15,12 @@
 			"template-format": "instance-template-format.html",
 			"template-base": "instance-template-base.html"
 		},
+		"Observation": {
+			"template-format": "instance-template-example.html"
+		},
+		"Procedure": {
+			"template-format": "instance-template-example.html"
+		},
 		"StructureDefinition": {
 			"template-base": "instance-template-sd.html",
 			"template-mappings":"instance-template-sd-mappings.html",
@@ -39,7 +45,8 @@
 		// "bundle-load-patient-12236"
 	],
 	"spreadsheets": [
-		"procedure/procedure-profile-spreadsheet.xml"
+		"procedure/procedure-profile-spreadsheet.xml",
+		"observation/observation-profile-spreadsheet.xml"
 	],
 	"resources": {
 		"Bundle/bundle-connectathon": {
@@ -165,10 +172,23 @@
 		"Practitioner/practitioner-12208": {
 			"base": "Practitioner-Practitioner-12208.html"
 		},
+		"StructureDefinition/hedis-observation": {
+			"source": "procedure/structuredefinition-hedis-observation.xml",
+			"defns": "hedis-observation-definitions.html",
+			"base": "hedis-observation.html"
+		},
 		"StructureDefinition/hedis-procedure": {
 			"source": "procedure/structuredefinition-hedis-procedure.xml",
 			"defns": "hedis-procedure-definitions.html",
 			"base": "hedis-procedure.html"
+		},
+		"Observation/observation-example-hedis": {
+			"source": "observation/observation-example-hedis.xml",
+			"base": "Observation-observation-example-hedis.html"
+		},
+		"Procedure/procedure-example-hedis": {
+			"source": "procedure/procedure-example-hedis.xml",
+			"base": "Procedure-procedure-example-hedis.html"
 		}
 	}
 }
