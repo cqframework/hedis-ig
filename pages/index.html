@@ -15,15 +15,19 @@
 </h2>
 
 <p>
-	Calculating payer-relation quality measures is a key component of value-based care. A critical aspect of calculating these measures is accessing or obtaining the patient information involved in the calculations. The availability of secure, RESTful, standards-based services - Fast Healthcare Interoperability Resources (FHIR) - for accessing patient information provides opportunities to streamline this process. Combining this functionality with the emerging capability of shareable knowledge artifacts enables an approach to gathering patient information that can significantly reduce the amount of engineering effort required to implement and maintain quality measure calculations that payers can use. In addition, healthcare providers benefit from the reduced effort required to respond to quality reporting requests.
+	Done thoroughly, value-based care involes calculating payer-relation quality measures.
+	This calculation relies on access to patient information. 
+	FHIR's secure, RESTful, standards-based services for accessing patient information streamlines this process.
+	By combining FHIR with shareable knowledge artifacts, we significantly reduce the amount of engineering effort required to implement and maintain quality measure calculations that payers can use.
+	Healthcare providers also benefit from this reduced effort as they respond to quality reporting requests.
 </p>
 
 <a name="overview" style="display:none;">&nbsp;</a>
 <h4>Overview</h4>
 
 <p>
-	The <a href="{{site.data.fhir.path}}clinicalreasoning-module.html">Clinical Reasoning module</a> of the FHIR specification defines resources and operations to support the definition and delivery of decision support and quality measurement content.	
-	In particular, the <a href="{{site.data.fhir.path}}cqif/cqif-quality-reporting.html">Quality Reporting</a> topic describes the use of the <a href="{{site.data.fhir.path}}measure.html">Measure</a> and <a href="{{site.data.fhir.path}}measurereport.html">MeasureReport</a> resources to define quality measures and report measurement results, including the patient information involved in performing the calculations.</p>
+	The <a href="{{site.data.fhir.path}}clinicalreasoning-module.html">Clinical Reasoning module</a> of the FHIR specification defines resources and operations to support decision support and quality measurement.	
+	In particular, FHIR's <a href="{{site.data.fhir.path}}cqif/cqif-quality-reporting.html">Quality Reporting</a> section describes <a href="{{site.data.fhir.path}}measure.html">Measure</a> and <a href="{{site.data.fhir.path}}measurereport.html">MeasureReport</a> resources, which define quality measures and reporting measurement results, including the patient information involved in performing the calculations.</p>
 
 <p>By focusing on the data requirements involved in the calculation of payer quality measures, we can define what are effectively cohort definitions for each measure of interest and use the quality reporting mechanism defined in the Clinical Reasoning module to retrieve the patient information required to support a full calculation of the measure.</p>
 
@@ -31,15 +35,17 @@
 
 <img src="payer-extract.png" alt="Payer Extract Approach"/>
 
-<p>The measure processing component is responsible for turning CQL-based measure definitions into FHIR requests against the EHRs. This functionality can be built independent of the content of the measures, so it only has to be developed one time; any measure written in CQL can be evaluated in this way.</p>
+<p>The measure processing component turns CQL-based measure definitions into FHIR requests against the EHRs.
+	This can be done independently of the content of the measures, so it only has to be developed one time;
+	any measure written in CQL can be evaluated in this way.</p>
 
 <a name="measures" style="display:none;">&nbsp;</a>
 <h4>Measures</h4>
 <p>
-This guide focuses on cohort definitions to support the following six payer measures:
+	This guide focuses on cohort definitions to support the following payer measures:
 </p>
 
-<table>
+<table class="grid">
 	<thead>
 		<tr><th>Measure</th><th>Description</th></tr>
 	</thead>
@@ -50,6 +56,17 @@ This guide focuses on cohort definitions to support the following six payer meas
 		<tr><td>CDC</td><td>Comprehensive Diabetes Care</td></tr>
 		<tr><td>COL</td><td>Colorectal Cancer Screening</td></tr>
 		<tr><td>ABA</td><td>Adult BMI Assessment</td></tr>
+	</tbody>
+</table>
+
+<p>The following profiles were derived from <a href="http://hl7.org/fhir/us/qicore" target="_blank">QI Core</a> in order to support the expression of HEDIS measures in FHIR:</p>
+
+<table class="grid">
+	<thead>
+		<tr><th>Profile</th><th>Description</th></tr>
+	</thead>
+	<tbody>
+		{% include table-profiles.xhtml %}
 	</tbody>
 </table>
 
@@ -82,32 +99,32 @@ This guide focuses on cohort definitions to support the following six payer meas
 		<tr><td><a href="Library-library-bcs-logic.html">Breast Cancer Screening Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of a Breast Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-bcs.html">Breast Cancer Screening Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for a Breast Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="elm/bcs-logic.elm.xml">Breast Cancer Screening (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Breast Cancer Screening library</td></tr>
-		<tr><td><a href="cql/bcs-logic.cql">Breast Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Breast Cancer Screening library</td></tr>
+		<tr><td><a href="cql/bcs-logic-2018.cql">Breast Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Breast Cancer Screening library</td></tr>
 
 		<tr><td><a href="Library-library-cbp-logic.html">Controlling High Blood Pressure Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of a Controlling High Blood Pressure payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-cbp.html">Controlling High Blood Pressure Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for a Controlling High Blood Pressure payer quality measure</td></tr>
 		<tr><td><a href="elm/cbp-logic.elm.xml">Controlling High Blood Pressure (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Controlling High Blood Pressure library</td></tr>
-		<tr><td><a href="cql/cbp-logic.cql">Controlling High Blood Pressure CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Controlling High Blood Pressure library</td></tr>
+		<tr><td><a href="cql/cbp-logic-2018.cql">Controlling High Blood Pressure CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Controlling High Blood Pressure library</td></tr>
 
 		<tr><td><a href="Library-library-ccs-logic.html">Cervical Cancer Screening Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of a Cervical Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-ccs.html">Cervical Cancer Screening Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for a Cervical Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="elm/ccs-logic.elm.xml">Cervical Cancer Screening (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Cervical Cancer Screening library</td></tr>
-		<tr><td><a href="cql/ccs-logic.cql">Cervical Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Cervical Cancer Screening library</td></tr>
+		<tr><td><a href="cql/ccs-logic-2018.cql">Cervical Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Cervical Cancer Screening library</td></tr>
 
 		<tr><td><a href="Library-library-cdc-logic.html">Comprehensive Diabetes Care Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of a Comprehensive Diabetes Care payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-cdc.html">Comprehensive Diabetes Care Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for a Comprehensive Diabetes Care payer quality measure</td></tr>
 		<tr><td><a href="elm/cdc-logic.elm.xml">Comprehensive Diabetes Care (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Comprehensive Diabetes Care library</td></tr>
-		<tr><td><a href="cql/cdc-logic.cql">Comprehensive Diabetes Care CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Comprehensive Diabetes Care library</td></tr>
+		<tr><td><a href="cql/cdc-logic-2018.cql">Comprehensive Diabetes Care CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Comprehensive Diabetes Care library</td></tr>
 
 		<tr><td><a href="Library-library-col-logic.html">Colorectal Cancer Screening Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of a Colorectal Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-col.html">Colorectal Cancer Screening Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for a Colorectal Cancer Screening payer quality measure</td></tr>
 		<tr><td><a href="elm/col-logic.elm.xml">Colorectal Cancer Screening (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Colorectal Cancer Screening library</td></tr>
-		<tr><td><a href="cql/col-logic.cql">Colorectal Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Colorectal Cancer Screening library</td></tr>
+		<tr><td><a href="cql/col-logic-2018.cql">Colorectal Cancer Screening CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Colorectal Cancer Screening library</td></tr>
 
 		<tr><td><a href="Library-library-wcc-aba-logic.html">Adult BMI Assessment Library</a></td><td><a href="{{site.data.fhir.path}}library.html">Library</a></td><td>Defines the cohort and data requirements to support calculation of an Adult BMI Assessment payer quality measure</td></tr>
 		<tr><td><a href="Measure-measure-wcc-aba.html">Adult BMI Assessment Measure</a></td><td><a href="{{site.data.fhir.path}}measure.html">Measure</a></td><td>Defines the measure structure and cohort definition for an Adult BMI Assessment payer quality measure</td></tr>
 		<tr><td><a href="elm/wcc-aba-logic.elm.xml">Adult BMI Assessment (ELM)</a></td><td><a href="{{site.data.fhir.path}}library.html">ELM Source</a></td><td>For reference, the complete ELM content of the Adult BMI Assessment library</td></tr>
-		<tr><td><a href="cql/wcc-aba-logic.cql">Adult BMI Assessment CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Adult BMI Assessment library</td></tr>
+		<tr><td><a href="cql/wcc-aba-logic-2018.cql">Adult BMI Assessment CQL</a></td><td>CQL Source</td><td>For reference, the complete CQL content of the Adult BMI Assessment library</td></tr>
 	</tbody>
 </table>
 
