@@ -10,10 +10,17 @@
 		"qa": "qa",
 		"specification": "http://hl7.org/fhir/"
 	},
+	"logging": ["init", "progress", "context", "html", "tx"],
 	"defaults": {
 		"Any": {
 			"template-format": "instance-template-format.html",
 			"template-base": "instance-template-base.html"
+		},
+		"Condition": {
+			"template-format": "instance-template-example.html"
+		},
+		"DiagnosticReport": {
+			"template-format": "instance-template-example.html"
 		},
 		"Observation": {
 			"template-format": "instance-template-example.html"
@@ -48,7 +55,9 @@
 		// "bundle-load-patient-12236"
 	],
 	"spreadsheets": [
-		"observation/observation-profile-spreadsheet.xml",
+		"condition/condition-profile-spreadsheet.xml",
+		"diagnosticreport/diagnosticreport-profile-spreadsheet.xml",
+		"observation/quantitativeobservation-profile-spreadsheet.xml",
 		"patient/patient-profile-spreadsheet.xml",
 		"procedure/procedure-profile-spreadsheet.xml"
 	],
@@ -176,10 +185,15 @@
 		"Practitioner/practitioner-12208": {
 			"base": "Practitioner-Practitioner-12208.html"
 		},
-		"StructureDefinition/hedis-observation": {
-			"source": "procedure/structuredefinition-hedis-observation.xml",
-			"defns": "hedis-observation-definitions.html",
-			"base": "hedis-observation.html"
+		"StructureDefinition/hedis-diagnosticreport": {
+			"source": "diagnosticreport/structuredefinition-hedis-diagnosticreport.xml",
+			"defns": "hedis-diagnosticreport-definitions.html",
+			"base": "hedis-diagnosticreport.html"
+		},
+		"StructureDefinition/hedis-condition": {
+			"source": "condition/structuredefinition-hedis-condition.xml",
+			"defns": "hedis-condition-definitions.html",
+			"base": "hedis-condition.html"
 		},
 		"StructureDefinition/hedis-patient": {
 			"source": "patient/structuredefinition-hedis-patient.xml",
@@ -191,9 +205,22 @@
 			"defns": "hedis-procedure-definitions.html",
 			"base": "hedis-procedure.html"
 		},
-		"Observation/observation-example-hedis": {
-			"source": "observation/observation-example-hedis.xml",
-			"base": "Observation-observation-example-hedis.html"
+		"StructureDefinition/hedis-quantitativeobservation": {
+			"source": "procedure/structuredefinition-hedis-quantitativeobservation.xml",
+			"defns": "hedis-quantitativeobservation-definitions.html",
+			"base": "hedis-quantitativeobservation.html"
+		},
+		"Condition/condition-example-hedis": {
+			"source": "condition/condition-example-hedis.xml",
+			"base": "Condition-condition-example-hedis.html"
+		},
+		"DiagnosticReport/diagnosticreport-example-hedis": {
+			"source": "diagnosticreport/diagnosticreport-example-hedis.xml",
+			"base": "DiagnosticReport-diagnosticreport-example-hedis.html"
+		},
+		"Observation/quantitativeobservation-example-hedis": {
+			"source": "observation/quantitativeobservation-example-hedis.xml",
+			"base": "Observation-quantitativeobservation-example-hedis.html"
 		},
 		"Patient/patient-example-hedis": {
 			"source": "patient/patient-example-hedis.xml",
