@@ -12,18 +12,28 @@ Description
 The percentage of women 50–74 years of age who had a mammogram to screen for breast cancer.
 */
 
-valueset "Mammography Value Set": 'TODO'
+valueset "Absence of Left Breast Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
+valueset "Absence of Right Breast Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
 
-valueset "Bilateral Mastectomy Value Set": 'TODO'
-valueset "Bilateral Modifier Value Set": 'TODO'
-valueset "History of Bilateral Mastectomy Value Set": 'TODO'
-valueset "Unilateral Mastectomy Value Set": 'TODO'
-valueset "Absence of Left Breast Value Set": 'TODO'
-valueset "Left Modifier Value Set": 'TODO'
-valueset "Unilateral Mastectomy Left Value Set": 'TODO'
-valueset "Absence of Right Breast Value Set": 'TODO'
-valueset "Right Modifier Value Set": 'TODO'
-valueset "Unilateral Mastectomy Right Value Set": 'TODO'
+valueset "Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1042.3' // ICD10PCS
+// valueset "Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1042.4' // ICD9CMProc
+
+valueset "Bilateral Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1043.5' // CPT-Mod
+valueset "History of Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1331.6' // ICD10CM
+valueset "Left Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1148.7' // CPT-Mod
+
+valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.8' // CPT
+// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.9' // HCPCS
+// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.10' // ICD9CMProc
+// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.11' // RevCode
+
+valueset "Right Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1230.12' // CPT-Mod
+
+valueset "Unilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1256.13' // CPT
+// valueset "Unilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1256.14' // ICD9CMProc
+
+valueset "Unilateral Mastectomy Left Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
+valueset "Unilateral Mastectomy Right Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
 
 valueset "Hospice Value Set": 'TODO'
 

@@ -12,14 +12,30 @@ Description
 The percentage of members 50–75 years of age who had appropriate screening for colorectal cancer.
 */
 
-valueset "FOBT Value Set": 'TODO'
-valueset "Flexible Sigmoidoscopy Value Set": 'TODO'
-valueset "Colonoscopy Value Set": 'TODO'
-valueset "CT Colonography Value Set": 'TODO'
-valueset "FIT-DNA Value Set": 'TODO'
+valueset "Colonoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.29' // CPT
+// valueset "Colonoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
+// valueset "Colonoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
 
-valueset "Colorectal Cancer Value Set": 'TODO'
-valueset "Total Colectomy Value Set": 'TODO'
+valueset "Colorectal Cancer Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
+// valueset "Colorectal Cancer Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD10CM
+
+valueset "CT Colonography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1421.34' // CPT
+
+valueset "FIT-DNA Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.35' // CPT
+// valueset "FIT-DNA Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
+// valueset "FIT-DNA Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.37' // LOINC
+
+valueset "Flexible Sigmoidoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.38' // CPT
+// valueset "Flexible Sigmoidoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
+// valueset "Flexible Sigmoidoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
+
+valueset "FOBT Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.41' // CPT
+// valueset "FOBT Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
+// valueset "FOBT Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
+
+valueset "Total Colectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.44' // CPT
+// valueset "Total Colectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
+// valueset "Total Colectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
 valueset "Hospice Value Set": 'TODO'
 

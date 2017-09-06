@@ -16,9 +16,20 @@ The percentage of women 21–64 years of age who were screened for cervical
 		(HPV) co-testing performed every 5 years.
 */
 
-valueset "Cervical Cytology Value Set": 'TODO'
-valueset "HPV Tests Value Set": 'TODO'
-valueset "Absence of Cervix Value Set": 'TODO'
+valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.17' // CPT
+// valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.18' // ICD10CM
+// valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.19' // ICD10PCS
+// valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.20' // ICD9CM
+// valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.21' // ICD9CMProc
+
+valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.22' // CPT
+// valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.23' // HCPCS
+// valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.24' // LOINC
+// valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.25' // RevCode
+
+valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.26' // CPT
+// valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.27' // HCPCS
+// valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.28' // LOINC
 
 valueset "Hospice Value Set": 'TODO'
 
