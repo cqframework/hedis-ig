@@ -49,12 +49,12 @@ valueset "X Long-Term in Institution Value Set": 'TODO'
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
 If one of these normal arguments is given, the patient will only be
-considered to be in the Eligible Population if they have an appropriate
+considered to be in the Initial Population if they have an appropriate
 continuous enrollment in that kind of medical plan.
 If instead a null argument is given, their enrollment status will have no
-effect on whether they are considered to be in the Eligible Population.
+effect on whether they are considered to be in the Initial Population.
 If instead some other argument is given (an unrecognized plan type),
-the patient will unconditionally NOT be in the Eligible Population.
+the patient will unconditionally NOT be in the Initial Population.
 */
 
 parameter "Product Line" String
@@ -92,11 +92,11 @@ that patient being given by the special context parameter Patient.
 context Patient
 
 /*
-Eligible Population
+Initial Population
 Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
 */
 
-define "Is In Eligible Population":
+define "Initial Population":
 	"Is Female"
 		and "Is Age 24 to 64 at End"
 		and (not "Is In Hospice")
@@ -238,12 +238,12 @@ define "Is Living Long-Term in Institution":
 Administrative Specification
 */
 
-define "Is In Denominator":
-	"Is In Eligible Population"
+define "Denominator":
+	"Initial Population"
 
-define "Is In Numerator":
+define "Numerator":
 	case
-		when (not "Is In Eligible Population") then false
+		when (not "Initial Population") then false
 		when "Is Cervical Cytology Test In Last 3 Years" then true
 		when (not "Is Age 30 to 64 at End") then false
 		when "Is Cervical Cytology Plus HPV Test In Last 5 Years" then true
@@ -296,7 +296,7 @@ define "Dates of HPV Tests":
 		where Obs.status.value in { 'final', 'amended' }
 		return ChoiceToIntervalOfDT(Obs.effective))
 
-define "Is In Administrative Exclusions":
+define "Denominator Exclusion":
 	exists(
 		[Procedure: "Cervical Cytology Value Set"] Proc
 			where Proc.status.value = 'completed'

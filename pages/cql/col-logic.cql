@@ -55,12 +55,12 @@ valueset "X Long-Term in Institution Value Set": 'TODO'
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
 If one of these normal arguments is given, the patient will only be
-considered to be in the Eligible Population if they have an appropriate
+considered to be in the Initial Population if they have an appropriate
 continuous enrollment in that kind of medical plan.
 If instead a null argument is given, their enrollment status will have no
-effect on whether they are considered to be in the Eligible Population.
+effect on whether they are considered to be in the Initial Population.
 If instead some other argument is given (an unrecognized plan type),
-the patient will unconditionally NOT be in the Eligible Population.
+the patient will unconditionally NOT be in the Initial Population.
 */
 
 parameter "Product Line" String
@@ -101,11 +101,11 @@ that patient being given by the special context parameter Patient.
 context Patient
 
 /*
-Eligible Population
+Initial Population
 Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
 */
 
-define "Is In Eligible Population":
+define "Initial Population":
 	"Is Age 51 to 75 at End"
 		and (not "Is In Hospice")
 		and "Is In Applicable Product Line"
@@ -243,11 +243,11 @@ define "Is Living Long-Term in Institution":
 Administrative Specification
 */
 
-define "Is In Denominator":
-	"Is In Eligible Population"
+define "Denominator":
+	"Initial Population"
 
-define "Is In Numerator":
-	"Is In Eligible Population"
+define "Numerator":
+	"Initial Population"
 		and "Is Colorectal Cancer Screening"
 
 define "Is Colorectal Cancer Screening":
@@ -292,7 +292,7 @@ define "Is FIT-DNA Test In Last Three Years":
 				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Lookback Interval Two More Years")
 	)
 
-define "Is In Administrative Exclusions":
+define "Denominator Exclusion":
 	"Is Colorectal Cancer"
 		or "Is Total Colectomy"
 
