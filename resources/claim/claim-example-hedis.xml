@@ -1,0 +1,252 @@
+<Claim 
+  xmlns="http://hl7.org/fhir">
+  <id value="hedis-claim-example"/>
+  <text>
+    <status value="generated"/>
+    <div 
+      xmlns="http://www.w3.org/1999/xhtml">
+      <p>
+        <strong>id</strong>: example            
+      </p>
+      <p>
+        <strong>identifier</strong>: 6612346            
+      </p>
+      <p>
+        <strong>type</strong>: vision      
+      </p>
+      <p>
+        <strong>use</strong>: complete      
+      </p>
+      <p>
+        <strong>patient</strong>:                 
+        <a href="Patient-qicore-patient-example.html">Patient/example</a>
+      </p>
+      <p>
+        <strong>insurer</strong>:                 
+        <a href="Organization-qicore-organization-example.html">Organization/example</a>
+      </p>
+      <p>
+        <strong>organization</strong>:                 
+        <a href="Organization-qicore-organization-example.html">Organization/example</a>
+      </p>
+      <p>
+        <strong>priority</strong>: normal      
+      </p>
+      <p>
+        <strong>prescription</strong>:                 
+        <a href="MedicationRequest-qicore-medicationrequest-example">MedicationRequest/example</a>
+      </p>
+      <p>
+        <strong>payee</strong>:
+        <a href="Provider-qicore-practitioner-example">Practitioner/example</a>
+      </p>
+      <p>
+        <strong>careTeam</strong>:
+        <a href="Provider-qicore-practitioner-example">Practitioner/example</a>
+      </p>
+      <p>
+        <strong>diagnosis</strong>: 654321      
+      </p>
+      <p>
+        <strong>insurance</strong>:                 
+        <a href="Coverage-qicore-converage-example">Coverage/example</a>
+      </p>
+      <blockquote>
+        <p>
+          <strong>item</strong>
+        </p>
+        <p>
+          <strong>service</strong>: glasses        
+        </p>
+        <p>
+          <strong>unitPrice</strong>: 214.00        
+        </p>
+        <p>
+          <strong>net</strong>: 214.00        
+        </p>
+        <blockquote>
+          <p><strong>detail 1</strong></p>
+          <p>
+            <strong>service</strong>: frame          
+          </p>
+          <p>
+            <strong>unitPrice</strong>: 100.00          
+          </p>
+          <p>
+            <strong>net</strong>: 100.00          
+          </p>
+        </blockquote>
+        <blockquote>
+          <p><strong>detail 2</strong></p>
+          <p>
+            <strong>service</strong>: lens          
+          </p>
+          <p>
+            <strong>unitPrice</strong>: 50.00          
+          </p>
+          <p>
+            <strong>net</strong>: 100.00          
+          </p>
+        </blockquote>
+        <blockquote>
+          <p><strong>detail 3</strong></p>
+          <p>
+            <strong>service</strong>: fst          
+          </p>
+          <p>
+            <strong>unitPrice</strong>: 200.00          
+          </p>
+          <p>
+            <strong>factor</strong>: 0.07          
+          </p>
+          <p>
+            <strong>net</strong>: 14.00          
+          </p>
+        </blockquote>
+      </blockquote>
+    </div>
+  </text>
+  <identifier>
+    <system value="http://happysight.com/claim"/>
+    <value value="6612346"/>
+  </identifier>
+  <status value="active"/>
+  <type>
+    <coding>
+      <system value="http://hl7.org/fhir/ex-claimtype"/>
+      <code value="vision"/>
+    </coding>
+  </type>
+  <use value="complete"/>
+  <patient>
+    <reference value="Patient/example"/>
+  </patient>
+  <created value="2014-08-16"/>
+  <insurer>
+    <reference value="Organization/example"/>
+  </insurer>
+  <organization>
+    <reference value="Organization/example"/>
+  </organization>
+  <priority>
+    <coding>
+      <code value="normal"/>
+    </coding>
+  </priority>
+  <prescription>
+    <reference value="MedicationRequest/example"/>
+  </prescription>
+  <payee>
+    <type>
+	  <coding>
+	    <code value="provider"/>
+	  </coding>
+	</type>
+    <party>
+	  <reference value="Provider/example"/>
+    </party>
+  </payee>
+  <careTeam>
+    <sequence value="1"/>
+    <provider>
+      <reference value="Practitioner/example"/>
+    </provider>
+  </careTeam>
+  <diagnosis>
+    <sequence value="1"/>
+    <diagnosisCodeableConcept>
+      <coding>
+        <code value="654321"/>
+      </coding>
+    </diagnosisCodeableConcept>
+  </diagnosis>
+  <insurance>
+    <sequence value="1"/>
+    <focal value="true"/>
+    <coverage>
+      <reference value="Coverage/9876B1"/>
+    </coverage>
+  </insurance>
+  <item>
+    <sequence value="1"/>
+    <careTeamLinkId value="1"/>
+    <service>
+      <coding>
+        <system value="http://hl7.org/fhir/ex-visionservice"/>
+        <code value="glasses"/>
+      </coding>
+    </service>
+    <servicedDate value="2014-08-16"/>
+    <unitPrice>
+      <value value="214.00"/>
+      <system value="urn:iso:std:iso:4217"/>
+      <code value="USD"/>
+    </unitPrice>
+    <net>
+      <value value="214.00"/>
+      <system value="urn:iso:std:iso:4217"/>
+      <code value="USD"/>
+    </net>
+    <detail>
+      <sequence value="1"/>
+      <service>
+        <coding>
+          <system value="http://hl7.org/fhir/ex-visionservice"/>
+          <code value="frame"/>
+        </coding>
+      </service>
+      <unitPrice>
+        <value value="100.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </unitPrice>
+      <net>
+        <value value="100.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </net>
+    </detail>
+    <detail>
+      <sequence value="2"/>
+      <service>
+        <coding>
+          <system value="http://hl7.org/fhir/ex-visionservice"/>
+          <code value="lens"/>
+        </coding>
+      </service>
+      <quantity>
+        <value value="2"/>
+      </quantity>
+      <unitPrice>
+        <value value="50.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </unitPrice>
+      <net>
+        <value value="100.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </net>
+    </detail>
+    <detail>
+      <sequence value="3"/>
+      <service>
+        <coding>
+          <system value="http://hl7.org/fhir/ex-visionservice"/>
+          <code value="fst"/>
+        </coding>
+      </service>
+      <unitPrice>
+        <value value="200.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </unitPrice>
+      <factor value="0.07"/>
+      <net>
+        <value value="14.00"/>
+        <system value="urn:iso:std:iso:4217"/>
+        <code value="USD"/>
+      </net>
+    </detail>
+  </item>
+</Claim>
