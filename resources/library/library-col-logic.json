@@ -96,27 +96,66 @@
       {
         "name": "X Long-Term in Institution Value Set",
         "identifier": "TODO"
-      },
+      }
     ],
     "dataRequirement": [
       {
         "type": "Patient"
       },
       {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Hospice Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Encounter Inpatient"
+          }
+        ]
+      },
+      {
+        "type": "ProcedureRequest",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Hospice care ambulatory"
+          }
+        ]
+      },
+      {
         "type": "Procedure",
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Colonoscopy"
+            "valueSet": "Hospice care ambulatory"
           }
-        ],
-        "dateFilter": [
+        ]
+      },
+      {
+        "type": "Coverage"
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
           {
-              "path": "performedDateTime.value",
-              "valueDuration": {
-                "value": 10,
-                "unit": "a"
-              }
+            "path": "code",
+            "valueSet": "X Institutional SNP Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "X Long-Term in Institution Value Set"
           }
         ]
       },
@@ -125,16 +164,43 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Colonoscopy"
+            "valueSet": "FOBT Value Set"
           }
-        ],
-        "dateFilter": [
+        ]
+      },
+      {
+        "type": "DiagnosticReport",
+        "codeFilter": [
           {
-              "path": "effectiveDateTime.value",
-              "valueDuration": {
-                "value": 10,
-                "unit": "a"
-              }
+            "path": "code",
+            "valueSet": "Flexible Sigmoidoscopy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "DiagnosticReport",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Colonoscopy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "DiagnosticReport",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "CT Colonography Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Observation",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "FIT-DNA Value Set"
           }
         ]
       },
@@ -143,7 +209,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Colorectal Cancer"
+            "valueSet": "Colorectal Cancer Value Set"
           }
         ]
       },
@@ -152,79 +218,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Flexible Sigmoidoscopy"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "performedDateTime.value",
-              "valueDuration": {
-                "value": 5,
-                "unit": "a"
-              }
-          }
-        ]
-      },
-      {
-        "type": "Observation",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSetString": "Flexible Sigmoidoscopy"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valueDuration": {
-                "value": 5,
-                "unit": "a"
-              }
-          }
-        ]
-      },
-      {
-        "type": "Procedure",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSetString": "Total Colectomy"
-          }
-        ]
-      },
-      {
-        "type": "Procedure",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSetString": "FOBT"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "performedDateTime.value",
-              "valueDuration": {
-                "value": 1,
-                "unit": "a"
-              }
-          }
-        ]
-      },
-      {
-        "type": "Observation",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSetString": "Fecal Occult Blood Test (FOBT)"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valueDuration": {
-                "value": 1,
-                "unit": "a"
-              }
+            "valueSet": "Total Colectomy Value Set"
           }
         ]
       }

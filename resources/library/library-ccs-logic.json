@@ -72,26 +72,57 @@
       {
         "name": "X Medicare Coverage Value Set",
         "identifier": "TODO"
-      },
+      }
     ],
     "dataRequirement": [
       {
         "type": "Patient"
       },
       {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Hospice Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Encounter Inpatient"
+          }
+        ]
+      },
+      {
+        "type": "ProcedureRequest",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Hospice care ambulatory"
+          }
+        ]
+      },
+      {
         "type": "Procedure",
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Cervical Cytology"
+            "valueSet": "Hospice care ambulatory"
           }
-        ],
-        "dateFilter": [
+        ]
+      },
+      {
+        "type": "Coverage"
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
           {
-              "path": "performedDateTime.value",
-              "valuePeriod": {
-                  "start": "2017-01-01T00:00:00+00:00"
-              }
+            "path": "code",
+            "valueSet": "Cervical Cytology Value Set"
           }
         ]
       },
@@ -100,15 +131,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Cervical Cytology"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valuePeriod": {
-                  "start": "2015-01-01T00:00:00+00:00"
-              }
+            "valueSet": "Cervical Cytology Value Set"
           }
         ]
       },
@@ -117,15 +140,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Cervical Cytology"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valuePeriod": {
-                  "start": "2015-01-01T00:00:00+00:00"
-              }
+            "valueSet": "Cervical Cytology Value Set"
           }
         ]
       },
@@ -134,15 +149,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "HPV Tests"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "performedDateTime.value",
-              "valuePeriod": {
-                  "start": "2015-01-01T00:00:00+00:00"
-              }
+            "valueSet": "HPV Tests Value Set"
           }
         ]
       },
@@ -151,15 +158,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "HPV Tests"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valuePeriod": {
-                  "start": "2015-01-01T00:00:00+00:00"
-              }
+            "valueSet": "HPV Tests Value Set"
           }
         ]
       },
@@ -168,15 +167,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "HPV Tests"
-          }
-        ],
-        "dateFilter": [
-          {
-              "path": "effectiveDateTime.value",
-              "valuePeriod": {
-                  "start": "2015-01-01T00:00:00+00:00"
-              }
+            "valueSet": "HPV Tests Value Set"
           }
         ]
       },
@@ -185,16 +176,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Hysterectomy"
-          }
-        ]
-      },
-      {
-        "type": "Procedure",
-        "codeFilter": [
-          {
-            "path": "code",
-            "valueSetString": "Absence of Cervix"
+            "valueSet": "Cervical Cytology Value Set"
           }
         ]
       }

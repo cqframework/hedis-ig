@@ -112,22 +112,36 @@
       {
         "name": "X Long-Term in Institution Value Set",
         "identifier": "TODO"
-      },
+      }
     ],
     "dataRequirement": [
       {
         "type": "Patient"
       },
       {
-        "type": "Procedure",
+        "type": "Encounter",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
+            "path": "code",
+            "valueSet": "Hospice Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Bilateral Mastectomy"
+            "valueSet": "Encounter Inpatient"
+          }
+        ]
+      },
+      {
+        "type": "ProcedureRequest",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Hospice care ambulatory"
           }
         ]
       },
@@ -135,12 +149,29 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
+            "path": "code",
+            "valueSet": "Hospice care ambulatory"
+          }
+        ]
+      },
+      {
+        "type": "Coverage"
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Unilateral Mastectomy + Bilateral Modifier"
+            "valueSet": "X Institutional SNP Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Encounter",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "X Long-Term in Institution Value Set"
           }
         ]
       },
@@ -148,12 +179,8 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
-          {
             "path": "code",
-            "valueSetString": "History of Bilateral Mastectomy"
+            "valueSet": "Mammography Value Set"
           }
         ]
       },
@@ -161,12 +188,8 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
-          {
             "path": "code",
-            "valueSetString": "Unilateral Mastectomy + Left Modifier"
+            "valueSet": "Bilateral Mastectomy Value Set"
           }
         ]
       },
@@ -174,12 +197,74 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
+            "path": "code",
+            "valueSet": "History of Bilateral Mastectomy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Claim"
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Unilateral Mastectomy Left"
+            "valueSet": "Unilateral Mastectomy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Bilateral Modifier Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Unilateral Mastectomy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Unilateral Mastectomy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Unilateral Mastectomy Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Left Modifier Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
+          {
+            "path": "code",
+            "valueSet": "Unilateral Mastectomy Left Value Set"
           }
         ]
       },
@@ -188,7 +273,7 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueCode": "Absence of Left Breast"
+            "valueSet": "Absence of Left Breast Value Set"
           }
         ]
       },
@@ -196,12 +281,8 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
-          {
             "path": "code",
-            "valueSetString": "Unilateral Mastectomy + Right Modifier"
+            "valueSet": "Unilateral Mastectomy Value Set"
           }
         ]
       },
@@ -209,12 +290,17 @@
         "type": "Procedure",
         "codeFilter": [
           {
-            "path": "status",
-            "valueCode": "completed"
-          },
+            "path": "code",
+            "valueSet": "Right Modifier Value Set"
+          }
+        ]
+      },
+      {
+        "type": "Procedure",
+        "codeFilter": [
           {
             "path": "code",
-            "valueSetString": "Unilateral Mastectomy Right"
+            "valueSet": "Unilateral Mastectomy Right Value Set"
           }
         ]
       },
@@ -223,25 +309,8 @@
         "codeFilter": [
           {
             "path": "code",
-            "valueCode": "Absence of Right Breast"
+            "valueSet": "Absence of Right Breast Value Set"
           }
-        ]
-      },
-      {
-        "type": "Procedure",
-        "codeFilter": [
-            {
-                "path": "status",
-                "valueSetString": "Mammography"
-            }
-        ],
-        "dateFilter": [
-            {
-                "path": "performedDateTime",
-                "valuePeriod": {
-                    "start": "2014-10-01T19:25:33+00:00"
-                }
-            }
         ]
       }
     ],
