@@ -53,12 +53,12 @@ valueset "X Long-Term in Institution Value Set": 'TODO'
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
 If one of these normal arguments is given, the patient will only be
-considered to be in the Eligible Population if they have an appropriate
+considered to be in the Initial Population if they have an appropriate
 continuous enrollment in that kind of medical plan.
 If instead a null argument is given, their enrollment status will have no
-effect on whether they are considered to be in the Eligible Population.
+effect on whether they are considered to be in the Initial Population.
 If instead some other argument is given (an unrecognized plan type),
-the patient will unconditionally NOT be in the Eligible Population.
+the patient will unconditionally NOT be in the Initial Population.
 */
 
 parameter "Product Line" String
@@ -93,11 +93,11 @@ that patient being given by the special context parameter Patient.
 context Patient
 
 /*
-Eligible Population
+Initial Population
 Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
 */
 
-define "Is In Eligible Population":
+define "Initial Population":
 	"Is Female"
 		and "Is Age 52 to 74 at End"
 		and (not "Is In Hospice")
@@ -239,11 +239,11 @@ define "Is Living Long-Term in Institution":
 Administrative Specification
 */
 
-define "Is In Denominator":
-	"Is In Eligible Population"
+define "Denominator":
+	"Initial Population"
 
-define "Is In Numerator":
-	"Is In Eligible Population"
+define "Numerator":
+	"Initial Population"
 		and "Is Mammogram In Last 39 Months"
 
 define "Is Mammogram In Last 39 Months":
@@ -253,10 +253,11 @@ define "Is Mammogram In Last 39 Months":
 				and IncludedIn(ChoiceToIntervalOfDT(Proc.performed), "Lookback Interval 27 More Months")
 	)
 
-define "Is In Administrative Exclusions":
-	"Is Lacking Both Breasts"
-		or ("Is Lacking Left Breast"
-			and "Is Lacking Right Breast")
+define "Denominator Exclusion":
+	"Initial Population"
+		and ("Is Lacking Both Breasts"
+			or ("Is Lacking Left Breast"
+				and "Is Lacking Right Breast"))
 
 define "Is Lacking Both Breasts":
 	"Is Bilateral Mastectomy"
