@@ -123,7 +123,7 @@ define "Heamoglobin A1C Level Greater than 9.0":
 define "ACE Inhibitor or ARB Medication Order":
   [MedicationRequest : "ACE Inhibitor or ARB"] A
     where A.status = 'completed'
-      and A.dateWritten during "Lookback Interval One Year"
+      and A.authoredOn during "Lookback Interval One Year"
 
 // Dilated Eye Exam Observation
 
