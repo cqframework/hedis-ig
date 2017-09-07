@@ -254,9 +254,10 @@ define "Is Mammogram In Last 39 Months":
 	)
 
 define "Denominator Exclusion":
-	"Is Lacking Both Breasts"
-		or ("Is Lacking Left Breast"
-			and "Is Lacking Right Breast")
+	"Initial Population"
+		and ("Is Lacking Both Breasts"
+			or ("Is Lacking Left Breast"
+				and "Is Lacking Right Breast"))
 
 define "Is Lacking Both Breasts":
 	"Is Bilateral Mastectomy"

@@ -297,8 +297,12 @@ define "Dates of HPV Tests":
 		return ChoiceToIntervalOfDT(Obs.effective))
 
 define "Denominator Exclusion":
+	"Initial Population"
+		and "Is Hysterectomy"
+
+define "Is Hysterectomy":
 	exists(
-		[Procedure: "Cervical Cytology Value Set"] Proc
+		[Procedure: "Absence of Cervix Value Set"] Proc
 			where Proc.status.value = 'completed'
 				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)

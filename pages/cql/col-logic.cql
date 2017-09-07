@@ -293,8 +293,9 @@ define "Is FIT-DNA Test In Last Three Years":
 	)
 
 define "Denominator Exclusion":
-	"Is Colorectal Cancer"
-		or "Is Total Colectomy"
+	"Initial Population"
+		and ("Is Colorectal Cancer"
+			or "Is Total Colectomy")
 
 define "Is Colorectal Cancer":
 	exists(
