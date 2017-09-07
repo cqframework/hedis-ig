@@ -42,9 +42,12 @@ valueset "X Commercial Coverage Value Set": 'TODO'
 valueset "X Medicaid Coverage Value Set": 'TODO'
 valueset "X Medicare Coverage Value Set": 'TODO'
 
+valueset "X Institutional SNP Value Set": 'TODO'
+valueset "X Long-Term in Institution Value Set": 'TODO'
+
 /*
 This library has an explicit parameter which is the product line.
-Recognized normal arguments are {'commercial', 'medicaid'}.
+Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
 If one of these normal arguments is given, the patient will only be
 considered to be in the Eligible Population if they have an appropriate
 continuous enrollment in that kind of medical plan.
@@ -90,7 +93,7 @@ context Patient
 
 /*
 Eligible Population
-Product lines -- Commercial, Medicaid (report each product line separately).
+Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
 */
 
 define "Is In Eligible Population":
@@ -139,6 +142,12 @@ define "Is In Applicable Product Line":
 		when ("Product Line" ~ null) then true
 		when ("Product Line" = 'commercial') then "Is Continuous Enrollment"
 		when ("Product Line" = 'medicaid') then "Is Continuous Enrollment"
+		when ("Product Line" = 'medicare') then
+			("Is Continuous Enrollment"
+				and (if "Is Age 65 Plus at Start"
+					then ("Is Enrolled in Institutional SNP"
+						or "Is Living Long-Term in Institution")
+					else false))
 		else false
 	end
 
@@ -205,6 +214,25 @@ define "Is Continuous Enrollment":
 		and "Is Continuous Enrollment In Year"("First Predecessor Year")
 		and "Is Continuous Enrollment In Year"("Second Predecessor Year")
 		and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
+
+define "Is Age 65 Plus at Start":
+	AgeInYearsAt(start of "Measurement Period") >= 65
+
+define "Is Enrolled in Institutional SNP":
+	exists(
+		[Encounter: "X Institutional SNP Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+	)
+	// TODO: Determine properly whether the patient was in SNP during the measurement year.
+
+define "Is Living Long-Term in Institution":
+	exists(
+		[Encounter: "X Long-Term in Institution Value Set"] Enc
+			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+	)
+	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 
 /*
 Administrative Specification

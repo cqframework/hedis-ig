@@ -53,7 +53,7 @@ valueset "X Long-Term in Institution Value Set": 'TODO'
 
 /*
 This library has an explicit parameter which is the product line.
-Recognized normal arguments are {'commercial', 'medicare'}.
+Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
 If one of these normal arguments is given, the patient will only be
 considered to be in the Eligible Population if they have an appropriate
 continuous enrollment in that kind of medical plan.
@@ -102,7 +102,7 @@ context Patient
 
 /*
 Eligible Population
-Product lines -- Commercial, Medicare (report each product line separately).
+Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
 */
 
 define "Is In Eligible Population":
@@ -146,6 +146,7 @@ define "Is In Applicable Product Line":
 	case
 		when ("Product Line" ~ null) then true
 		when ("Product Line" = 'commercial') then "Is Continuous Enrollment"
+		when ("Product Line" = 'medicaid') then "Is Continuous Enrollment"
 		when ("Product Line" = 'medicare') then
 			("Is Continuous Enrollment"
 				and (if "Is Age 65 Plus at Start"
