@@ -1,0 +1,217 @@
+{
+  "resourceType": "Bundle",
+  "id": "2e6d7173-6d68-445b-bdcf-dde5af434bd1",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-840",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-840",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2023-09-12T14:38:20-07:00",
+              "end": "2023-09-15T14:38:20-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-09-12T14:38:20-07:00",
+          "end": "2023-09-15T14:38:20-07:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-840"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-158432",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-158432",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "19180",
+              "display": "Mastectomy, simple, complete"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-840",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2023-09-13T09:10:20-07:00",
+          "end": "2023-09-13T09:10:20-07:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-158432"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-158434",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-158434",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-840",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2023-09-15T14:38:20-07:00",
+          "end": "2023-09-15T14:38:20-07:00"
+        },
+        "valueQuantity": {
+          "value": 79.34264189236652,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-158434"
+      }
+    }
+  ]
+}

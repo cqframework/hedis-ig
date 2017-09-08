@@ -1,0 +1,254 @@
+{
+  "resourceType": "Bundle",
+  "id": "ec12b0a8-7a7e-49a3-af01-0a341019906e",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-345",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-345",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2018-06-01T14:44:20-07:00",
+              "end": "2018-06-08T14:38:20-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-06-01T14:44:20-07:00",
+          "end": "2018-06-08T14:38:20-07:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-345"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-20040",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-20040",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
+              "code": "G0121",
+              "display": "Colorectal cancer screening; colonoscopy on individual not meeting criteria for high risk"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-345",
+          "display": "Gift of Mercy Hospital"
+        },
+        "performedPeriod": {
+          "start": "2018-06-01T15:20:20-07:00",
+          "end": "2018-06-01T15:20:20-07:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-20040"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-20041",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-20041",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45387",
+              "display": "Colonoscopy, flexible, proximal to splenic flexure; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-345",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectiveDateTime": "2018-06-01T15:20:20-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-20041"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-20043",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-20043",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-345",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2018-06-08T14:38:20-07:00",
+          "end": "2018-06-08T14:38:20-07:00"
+        },
+        "valueQuantity": {
+          "value": 93.15019001177727,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-20043"
+      }
+    }
+  ]
+}

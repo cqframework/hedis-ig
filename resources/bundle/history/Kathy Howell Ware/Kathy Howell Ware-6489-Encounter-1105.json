@@ -1,0 +1,254 @@
+{
+  "resourceType": "Bundle",
+  "id": "c23887f1-e3d3-403e-b5ca-1403c94d0613",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1105",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1105",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2019-08-22T14:47:20-07:00",
+              "end": "2026-09-25T14:38:20-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-08-22T14:47:20-07:00",
+          "end": "2026-09-25T14:38:20-07:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1105"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-236213",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-236213",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "44441009",
+              "display": "Flexible fiberoptic sigmoidoscopy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1105",
+          "display": "Windward General Hospital"
+        },
+        "performedPeriod": {
+          "start": "2019-08-22T15:23:20-07:00",
+          "end": "2019-08-22T15:23:20-07:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-236213"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-236214",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-236214",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45339",
+              "display": "Sigmoidoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1105",
+          "display": "Windward General Hospital"
+        },
+        "effectiveDateTime": "2019-08-22T15:23:20-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-236214"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-236216",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-236216",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1105",
+          "display": "Windward General Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2026-09-25T14:38:20-07:00",
+          "end": "2026-09-25T14:38:20-07:00"
+        },
+        "valueQuantity": {
+          "value": 83.74318929114925,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-236216"
+      }
+    }
+  ]
+}
