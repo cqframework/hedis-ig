@@ -1,0 +1,750 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-645",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-645",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2023-09-10T17:52:03-04:00",
+              "end": "2023-09-10T17:52:03-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-645"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-5843",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-5843",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "date": "2023-09-05T17:52:03-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-5843"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-7258",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-7258",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "43204002",
+              "display": "Bilateral mammography (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-7258"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7259",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-7259",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "168749009",
+              "display": "Mammography normal (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2023-09-10T17:52:03-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7259"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-7260",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-7260",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "42174-3",
+              "display": "Breast - bilateral FFD mammogram screening"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-7259",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-7260"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-7261",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-7261",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19766-5",
+              "display": "Microscopic observation [Identifier] in Cervical or vaginal smear or scraping by Cyto stain Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-7261"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7262",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-7262",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "289829007",
+              "display": "Normal uterine cervix (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2023-09-10T17:52:03-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7262"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-7263",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-7263",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38091-5",
+              "display": "Breast - left Mammogram W air"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-7262",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-7263"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7264",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-7264",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-645",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2023-09-10T17:52:03-04:00",
+          "end": "2023-09-10T17:52:03-04:00"
+        },
+        "valueQuantity": {
+          "value": 119.59026046483709,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-7264"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "Organization-1102",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://www.hl7.org/oid/",
+            "value": "1.2.3.4.1102"
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0203",
+                  "code": "TAX",
+                  "display": "Tax ID number"
+                }
+              ],
+              "text": "US Employer Identification Number"
+            },
+            "system": "http://hl7.org/fhir/sid/us-tax",
+            "value": "000001102"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "text": "General Practice"
+          }
+        ],
+        "name": "Pediatric and Adult Medicine",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "586-555-0939",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "663 Deleware Circle"
+            ],
+            "city": "Warren",
+            "district": "Macomb County",
+            "state": "MI",
+            "postalCode": "48093"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/http://localhost:8080/cqf-ruler/baseDstu3/Organization/Organization-1102"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Location",
+        "id": "Location-1102",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://www.hl7.org/oid/",
+            "value": "1.2.3.4.1102"
+          }
+        ],
+        "status": "active",
+        "name": "Pediatric and Adult Medicine",
+        "mode": "instance",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(810) 555-1217",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "type": "physical",
+          "line": [
+            "663 Deleware Circle"
+          ],
+          "city": "Warren",
+          "district": "Macomb County",
+          "state": "MI",
+          "postalCode": "48093"
+        },
+        "physicalType": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/location-physical-type",
+              "code": "bu",
+              "display": "Building"
+            }
+          ]
+        },
+        "position": {
+          "longitude": -82.48692837350966,
+          "latitude": 42.71162414519594
+        },
+        "managingOrganization": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/http://localhost:8080/cqf-ruler/baseDstu3/Location/Location-1102"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "Practitioner-2517",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/identifier-type",
+                  "code": "SB",
+                  "display": "Social Beneficiary Identifier"
+                }
+              ],
+              "text": "US Social Security Number"
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "000002517"
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "US National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "999992517"
+          }
+        ],
+        "name": [
+          {
+            "family": "Warner",
+            "given": [
+              "Cathy",
+              "Shannon"
+            ],
+            "suffix": [
+              "MD"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "616-555-9543",
+            "use": "work"
+          },
+          {
+            "system": "phone",
+            "value": "616-555-3505",
+            "use": "mobile"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "postal",
+            "line": [
+              "362 NW Cherry Street",
+              "#82"
+            ],
+            "city": "Fort Gratiot",
+            "district": "St Clair County",
+            "state": "MI",
+            "postalCode": "48059"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1973-09-19"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/http://localhost:8080/cqf-ruler/baseDstu3/Practitioner/Practitioner-2517"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "Patient-6540",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Race",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Ethnicity",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-religion",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/ReligiousAffiliation",
+                  "code": "1077",
+                  "display": "Protestant"
+                }
+              ]
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/identifier-type",
+                  "code": "SB",
+                  "display": "Social Beneficiary Identifier"
+                }
+              ],
+              "text": "US Social Security Number"
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "000006540"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Medina",
+            "given": [
+              "Helen",
+              "Marjorie"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "313-555-5714",
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "313-555-5598",
+            "use": "mobile"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1977-11-28",
+        "address": [
+          {
+            "use": "home",
+            "type": "postal",
+            "line": [
+              "938 Walnut Road",
+              "#39"
+            ],
+            "city": "Detroit",
+            "district": "Wayne County",
+            "state": "MI",
+            "postalCode": "48213"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/http://localhost:8080/cqf-ruler/baseDstu3/Patient/Patient-6540"
+      }
+    }
+  ]
+}
