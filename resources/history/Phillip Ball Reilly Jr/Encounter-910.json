@@ -1,0 +1,401 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-910",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2025-08-25T09:36:36-04:00",
+              "end": "2025-08-25T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-08-25T09:36:36-04:00",
+          "end": "2025-08-25T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1104",
+              "display": "Bay Area Family Practice"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1104",
+          "display": "Bay Area Family Practice"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-910"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-182336",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "date": "2025-08-19T09:36:36-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1104",
+          "display": "Bay Area Family Practice"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-182336"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-208084",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29771-3",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "performedPeriod": {
+          "start": "2025-08-25T09:36:36-04:00",
+          "end": "2025-08-25T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1104",
+          "display": "Bay Area Family Practice"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-208084"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-208085",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2335-8",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "effectiveDateTime": "2025-08-25T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-208085"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-208086",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "effectiveDateTime": "2025-08-25T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 174.20725942219204,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-208086"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-208087",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "effectiveDateTime": "2025-08-25T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 104.42215990443074,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-208087"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-208088",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm",
+              "code": "401.1",
+              "display": "Benign essential hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "onsetDateTime": "2025-08-25T09:36:36-04:00",
+        "assertedDate": "2025-08-25T09:36:36-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2525",
+          "display": "Kyle Christian Ballard MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-208088"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-208089",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-910",
+          "display": "Bay Area Family Practice"
+        },
+        "effectivePeriod": {
+          "start": "2025-08-25T09:36:36-04:00",
+          "end": "2025-08-25T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 104.42215990443074,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-208089"
+      }
+    }
+  ]
+}

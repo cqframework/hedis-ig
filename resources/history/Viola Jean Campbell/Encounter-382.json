@@ -1,0 +1,284 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-382",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2018-09-06T09:36:36-04:00",
+              "end": "2018-09-10T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-06T09:36:36-04:00",
+          "end": "2018-09-10T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-382"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-28661",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45340",
+              "display": "Sigmoidoscopy, flexible; with transendoscopic balloon dilation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-382",
+          "display": "Windward General Hospital"
+        },
+        "performedPeriod": {
+          "start": "2018-09-06T09:36:36-04:00",
+          "end": "2018-09-06T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-28661"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-28662",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "93683002",
+              "display": "Primary malignant neoplasm of ascending colon"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-382",
+          "display": "Windward General Hospital"
+        },
+        "onsetDateTime": "2018-09-06T09:36:36-04:00",
+        "assertedDate": "2018-09-06T09:36:36-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2535",
+          "display": "Clifton Terrence Carey MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-28662"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-28663",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "425634007",
+              "display": "Diagnostic endoscopic examination of lower bowel and sampling for bacterial overgrowth using fiberoptic sigmoidoscope"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-382",
+          "display": "Windward General Hospital"
+        },
+        "effectiveDateTime": "2018-09-06T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28663"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-28665",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-382",
+          "display": "Windward General Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2018-09-10T09:36:36-04:00",
+          "end": "2018-09-10T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 108.13248565921621,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28665"
+      }
+    }
+  ]
+}

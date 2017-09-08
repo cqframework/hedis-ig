@@ -1,0 +1,401 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-965",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2026-05-04T09:36:36-04:00",
+              "end": "2026-05-04T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-05-04T09:36:36-04:00",
+          "end": "2026-05-04T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1105",
+              "display": "Bayside Medical Group"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-965"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-199511",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "date": "2026-04-28T09:36:36-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-199511"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-226428",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27926-5",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --8th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "performedPeriod": {
+          "start": "2026-05-04T09:36:36-04:00",
+          "end": "2026-05-04T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-226428"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-226429",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27401-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --6th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2026-05-04T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-226429"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-226430",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2026-05-04T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 150.29339078401614,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-226430"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-226431",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2026-05-04T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 93.89271222790383,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-226431"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-226432",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "1201005",
+              "display": "Benign essential hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "onsetDateTime": "2026-05-04T09:36:36-04:00",
+        "assertedDate": "2026-05-04T09:36:36-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2526",
+          "display": "James Woodward Wilkins MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-226432"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-226433",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6489",
+          "display": "Kathy Howell Ware"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-965",
+          "display": "Bayside Medical Group"
+        },
+        "effectivePeriod": {
+          "start": "2026-05-04T09:36:36-04:00",
+          "end": "2026-05-04T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 93.89271222790383,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-226433"
+      }
+    }
+  ]
+}

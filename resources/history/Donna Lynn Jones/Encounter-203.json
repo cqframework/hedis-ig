@@ -1,0 +1,602 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-203",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2018-07-16T09:36:36-04:00",
+              "end": "2018-07-16T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1105",
+              "display": "Bayside Medical Group"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-203"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-590",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "date": "2018-07-10T09:36:36-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-590"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-24319",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27925-7",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --7th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "performedPeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-24319"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24320",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27401-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --6th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2018-07-16T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24320"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24321",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2018-07-16T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 130.1957792889146,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24321"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24322",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2018-07-16T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 77.4056107027036,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24322"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-24323",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "43204002",
+              "display": "Bilateral mammography (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "performedPeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-24323"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24324",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "168749009",
+              "display": "Mammography normal (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2018-07-16T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24324"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-24325",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "HCPCS",
+              "code": "G0206",
+              "display": "Diagnostic mammography, producing direct digital image, unilateral, all views"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectivePeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-24324",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-24325"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-24326",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33717-0",
+              "display": "Cytology Cervical or vaginal smear or scraping study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "performedPeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-24326"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24327",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "289829007",
+              "display": "Normal uterine cervix (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectiveDateTime": "2018-07-16T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24327"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-24328",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "46338-0",
+              "display": "Breast - unilateral Mammogram Single view"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectivePeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-24327",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-24328"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-24329",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1138",
+          "display": "Donna Lynn Jones"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-203",
+          "display": "Bayside Medical Group"
+        },
+        "effectivePeriod": {
+          "start": "2018-07-16T09:36:36-04:00",
+          "end": "2018-07-16T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 77.4056107027036,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-24329"
+      }
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-925",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2024-10-06T09:36:36-04:00",
+              "end": "2024-10-07T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-10-06T09:36:36-04:00",
+          "end": "2024-10-07T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-925"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-184832",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45337",
+              "display": "Sigmoidoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-925",
+          "display": "Gift of Mercy Hospital"
+        },
+        "performedPeriod": {
+          "start": "2024-10-06T09:36:36-04:00",
+          "end": "2024-10-06T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-184832"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-184833",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45347",
+              "display": "Sigmoidoscopy, flexible; with placement of endoscopic stent (includes pre- and post-dilation and guide wire passage, when performed)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-925",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectiveDateTime": "2024-10-06T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-184833"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-184835",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-925",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2024-10-07T09:36:36-04:00",
+          "end": "2024-10-07T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 81.0260195321393,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-184835"
+      }
+    }
+  ]
+}

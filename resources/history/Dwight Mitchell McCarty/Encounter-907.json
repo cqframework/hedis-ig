@@ -1,0 +1,249 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-907",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2024-08-04T09:36:36-04:00",
+              "end": "2024-08-05T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-08-04T09:36:36-04:00",
+          "end": "2024-08-05T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-907"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-180771",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45334",
+              "display": "Sigmoidoscopy, flexible; with control of bleeding, any method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-907",
+          "display": "Windward General Hospital"
+        },
+        "performedPeriod": {
+          "start": "2024-08-04T09:36:36-04:00",
+          "end": "2024-08-04T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-180771"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-180772",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "396226005",
+              "display": "Flexible fiberoptic sigmoidoscopy with biopsy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-907",
+          "display": "Windward General Hospital"
+        },
+        "effectiveDateTime": "2024-08-04T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-180772"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-180774",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-907",
+          "display": "Windward General Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2024-08-05T09:36:36-04:00",
+          "end": "2024-08-05T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 81.83714901531665,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-180774"
+      }
+    }
+  ]
+}

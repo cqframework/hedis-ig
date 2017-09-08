@@ -1,0 +1,366 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-687",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2023-02-20T09:36:36-05:00",
+              "end": "2023-02-20T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-02-20T09:36:36-05:00",
+          "end": "2023-02-20T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1101",
+              "display": "McKinley Health Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-687"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-117806",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "date": "2023-02-14T09:36:36-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-117806"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-143722",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27926-5",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --8th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-687",
+          "display": "McKinley Health Center"
+        },
+        "performedPeriod": {
+          "start": "2023-02-20T09:36:36-05:00",
+          "end": "2023-02-20T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-143722"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-143723",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "12503-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --4th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-687",
+          "display": "McKinley Health Center"
+        },
+        "effectiveDateTime": "2023-02-20T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-143723"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-143724",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-687",
+          "display": "McKinley Health Center"
+        },
+        "effectiveDateTime": "2023-02-20T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 139.75197537594826,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-143724"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-143725",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-687",
+          "display": "McKinley Health Center"
+        },
+        "effectiveDateTime": "2023-02-20T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.41234434669136,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-143725"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-143726",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-687",
+          "display": "McKinley Health Center"
+        },
+        "effectivePeriod": {
+          "start": "2023-02-20T09:36:36-05:00",
+          "end": "2023-02-20T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 85.41234434669136,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-143726"
+      }
+    }
+  ]
+}

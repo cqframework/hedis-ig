@@ -1,0 +1,637 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-392",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2019-11-18T09:36:36-05:00",
+              "end": "2019-11-18T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-392"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-33076",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "date": "2019-11-12T09:36:36-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-33076"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-59214",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58453-2",
+              "display": "Hemoglobin.gastrointestinal [Mass/volume] in Stool by Immunologic method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "performedPeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-59214"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59215",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "12503-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --4th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectiveDateTime": "2019-11-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59215"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59216",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectiveDateTime": "2019-11-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 168.4569318841043,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59216"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59217",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectiveDateTime": "2019-11-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.72327475381684,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59217"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-59218",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "78975002",
+              "display": "Malignant essential hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "onsetDateTime": "2019-11-18T09:36:36-05:00",
+        "assertedDate": "2019-11-18T09:36:36-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2530",
+          "display": "Terrence Ramirez McCormick MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-59218"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-59219",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "43204002",
+              "display": "Bilateral mammography (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "performedPeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-59219"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59220",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "168749009",
+              "display": "Mammography normal (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectiveDateTime": "2019-11-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59220"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-59221",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "42416-8",
+              "display": "Breast - left Mammogram Post Wire Placement"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectivePeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-59220",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-59221"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-59222",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19765-7",
+              "display": "Microscopic observation [Identifier] in Cervical or vaginal smear or scraping by Cyto stain"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "performedPeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-59222"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59223",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "289829007",
+              "display": "Normal uterine cervix (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectiveDateTime": "2019-11-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59223"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-59224",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "26350-9",
+              "display": "Breast - left Mammogram diagnostic limited"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectivePeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-59223",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-59224"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-59225",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6533",
+          "display": "Tammy Toni Robbins"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-392",
+          "display": "Acme Medical Center"
+        },
+        "effectivePeriod": {
+          "start": "2019-11-18T09:36:36-05:00",
+          "end": "2019-11-18T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 98.72327475381684,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-59225"
+      }
+    }
+  ]
+}

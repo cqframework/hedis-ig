@@ -1,0 +1,284 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1115",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2026-12-31T09:36:36-05:00",
+              "end": "2027-01-04T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-12-31T09:36:36-05:00",
+          "end": "2027-01-04T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1115"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-243369",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "425634007",
+              "display": "Diagnostic endoscopic examination of lower bowel and sampling for bacterial overgrowth using fiberoptic sigmoidoscope"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1115",
+          "display": "Windward General Hospital"
+        },
+        "performedPeriod": {
+          "start": "2026-12-31T09:36:36-05:00",
+          "end": "2026-12-31T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-243369"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-243370",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "94604000",
+              "display": "Secondary malignant neoplasm of splenic flexure of colon"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1115",
+          "display": "Windward General Hospital"
+        },
+        "onsetDateTime": "2026-12-31T09:36:36-05:00",
+        "assertedDate": "2026-12-31T09:36:36-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2534",
+          "display": "Pearl Rita Dawson MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-243370"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-243371",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45337",
+              "display": "Sigmoidoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1115",
+          "display": "Windward General Hospital"
+        },
+        "effectiveDateTime": "2026-12-31T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-243371"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-243373",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1115",
+          "display": "Windward General Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2027-01-04T09:36:36-05:00",
+          "end": "2027-01-04T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 91.823514770455,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-243373"
+      }
+    }
+  ]
+}

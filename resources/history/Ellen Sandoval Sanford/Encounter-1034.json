@@ -1,0 +1,249 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1034",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2026-02-11T09:36:36-05:00",
+              "end": "2026-02-16T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-11T09:36:36-05:00",
+          "end": "2026-02-16T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1034"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-220926",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44391",
+              "display": "Colonoscopy through stoma; with control of bleeding, any method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1034",
+          "display": "Gift of Mercy Hospital"
+        },
+        "performedPeriod": {
+          "start": "2026-02-11T09:36:36-05:00",
+          "end": "2026-02-11T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-220926"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-220927",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45379",
+              "display": "Colonoscopy, flexible; with removal of foreign body(s)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1034",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectiveDateTime": "2026-02-11T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-220927"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-220929",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1034",
+          "display": "Gift of Mercy Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-16T09:36:36-05:00",
+          "end": "2026-02-16T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 96.58013125341137,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-220929"
+      }
+    }
+  ]
+}

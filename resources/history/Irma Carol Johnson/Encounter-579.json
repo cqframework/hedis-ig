@@ -1,0 +1,366 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-579",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2021-11-29T09:36:36-05:00",
+              "end": "2021-11-29T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-11-29T09:36:36-05:00",
+          "end": "2021-11-29T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1106",
+              "display": "Cranston Family Medical"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-579"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-85265",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "date": "2021-11-23T09:36:36-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-85265"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-111331",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27396-1",
+              "display": "Hemoglobin.gastrointestinal [Mass/mass] in Stool"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-579",
+          "display": "Cranston Family Medical"
+        },
+        "performedPeriod": {
+          "start": "2021-11-29T09:36:36-05:00",
+          "end": "2021-11-29T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-111331"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-111332",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27926-5",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --8th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-579",
+          "display": "Cranston Family Medical"
+        },
+        "effectiveDateTime": "2021-11-29T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-111332"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-111333",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-579",
+          "display": "Cranston Family Medical"
+        },
+        "effectiveDateTime": "2021-11-29T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128.73525423635647,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-111333"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-111334",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-579",
+          "display": "Cranston Family Medical"
+        },
+        "effectiveDateTime": "2021-11-29T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 62.259248488324886,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-111334"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-111335",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-579",
+          "display": "Cranston Family Medical"
+        },
+        "effectivePeriod": {
+          "start": "2021-11-29T09:36:36-05:00",
+          "end": "2021-11-29T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 62.259248488324886,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-111335"
+      }
+    }
+  ]
+}

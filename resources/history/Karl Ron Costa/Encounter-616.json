@@ -1,0 +1,284 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-616",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6541",
+          "display": "Karl Ron Costa"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2021-04-04T09:36:36-04:00",
+              "end": "2021-04-05T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-04T09:36:36-04:00",
+          "end": "2021-04-05T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-616"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-95122",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "112870002",
+              "display": "Flexible fiberoptic sigmoidoscopy for removal of foreign body"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6541",
+          "display": "Karl Ron Costa"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-616",
+          "display": "Windward General Hospital"
+        },
+        "performedPeriod": {
+          "start": "2021-04-04T09:36:36-04:00",
+          "end": "2021-04-04T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-95122"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-95123",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "363406005",
+              "display": "Malignant tumor of colon"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6541",
+          "display": "Karl Ron Costa"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-616",
+          "display": "Windward General Hospital"
+        },
+        "onsetDateTime": "2021-04-04T09:36:36-04:00",
+        "assertedDate": "2021-04-04T09:36:36-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2521",
+          "display": "Heather Fuentes Guerra MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-95123"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-95124",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45335",
+              "display": "Sigmoidoscopy, flexible; with directed submucosal injection(s), any substance"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6541",
+          "display": "Karl Ron Costa"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-616",
+          "display": "Windward General Hospital"
+        },
+        "effectiveDateTime": "2021-04-04T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-95124"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-95126",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6541",
+          "display": "Karl Ron Costa"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-616",
+          "display": "Windward General Hospital"
+        },
+        "effectivePeriod": {
+          "start": "2021-04-05T09:36:36-04:00",
+          "end": "2021-04-05T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 114.45969003756804,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-95126"
+      }
+    }
+  ]
+}

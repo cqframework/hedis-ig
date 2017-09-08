@@ -1,0 +1,401 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-507",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2021-02-01T09:36:36-05:00",
+              "end": "2021-02-01T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-02-01T09:36:36-05:00",
+          "end": "2021-02-01T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-507"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-63574",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "date": "2021-01-26T09:36:36-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-63574"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-89616",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56491-4",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method --3rd specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2021-02-01T09:36:36-05:00",
+          "end": "2021-02-01T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-89616"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89617",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "12503-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --4th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-02-01T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89617"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89618",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-02-01T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 149.5694865966379,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89618"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89619",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-02-01T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 61.30039752792679,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89619"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-89620",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "1201005",
+              "display": "Benign essential hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "onsetDateTime": "2021-02-01T09:36:36-05:00",
+        "assertedDate": "2021-02-01T09:36:36-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2523",
+          "display": "Dean Andrew Davis MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-89620"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89621",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-507",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2021-02-01T09:36:36-05:00",
+          "end": "2021-02-01T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 61.30039752792679,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89621"
+      }
+    }
+  ]
+}

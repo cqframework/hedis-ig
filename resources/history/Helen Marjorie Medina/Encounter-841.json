@@ -1,0 +1,484 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-841",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2025-11-03T09:36:36-05:00",
+              "end": "2025-11-03T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-11-03T09:36:36-05:00",
+          "end": "2025-11-03T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-841"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-160928",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "date": "2025-10-29T09:36:36-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-160928"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-213280",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "56490-6",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method --2nd specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2025-11-03T09:36:36-05:00",
+          "end": "2025-11-03T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-213280"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-213281",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "27401-9",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --6th specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2025-11-03T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-213281"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-213282",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2025-11-03T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128.60155742073235,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-213282"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-213283",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2025-11-03T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 80.49277733001044,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-213283"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-213284",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "47528-5",
+              "display": "Cytology report of Cervical or vaginal smear or scraping Cyto stain"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2025-11-03T09:36:36-05:00",
+          "end": "2025-11-03T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-213284"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-213286",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "439888000",
+              "display": "Abnormal cervical Papanicolaou smear (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2025-11-03T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-213286"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-213287",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "HCPCS",
+              "code": "G0202",
+              "display": "Screening mammography, producing direct digital image, bilateral, all views"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2025-11-03T09:36:36-05:00",
+          "end": "2025-11-03T09:36:36-05:00"
+        },
+        "result": [
+          {
+            "reference": "Observation/Observation-213286",
+            "display": "Cervical_Cancer_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-213287"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-213288",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-841",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2025-11-03T09:36:36-05:00",
+          "end": "2025-11-03T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 80.49277733001044,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-213288"
+      }
+    }
+  ]
+}

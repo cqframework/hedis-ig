@@ -1,0 +1,401 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1053",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2027-05-10T09:36:36-04:00",
+              "end": "2027-05-10T09:36:36-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2027-05-10T09:36:36-04:00",
+          "end": "2027-05-10T09:36:36-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1053"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-225711",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "date": "2027-05-04T09:36:36-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-225711"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-251523",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57905-2",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method --1st specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2027-05-10T09:36:36-04:00",
+          "end": "2027-05-10T09:36:36-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-251523"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-251524",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "14565-6",
+              "display": "Hemoglobin.gastrointestinal [Presence] in Stool --3rd specimen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2027-05-10T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-251524"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-251525",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2027-05-10T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.88999447020112,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-251525"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-251526",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2027-05-10T09:36:36-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 117.24219804177648,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-251526"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-251527",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "65518004",
+              "display": "Labile diastolic hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "onsetDateTime": "2027-05-10T09:36:36-04:00",
+        "assertedDate": "2027-05-10T09:36:36-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2535",
+          "display": "Clifton Terrence Carey MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-251527"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-251528",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6538",
+          "display": "Denise Kristin Miles"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1053",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2027-05-10T09:36:36-04:00",
+          "end": "2027-05-10T09:36:36-04:00"
+        },
+        "valueQuantity": {
+          "value": 117.24219804177648,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-251528"
+      }
+    }
+  ]
+}

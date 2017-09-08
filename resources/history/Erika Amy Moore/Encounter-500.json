@@ -1,0 +1,401 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-500",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "other",
+          "display": "Other"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2021-01-18T09:36:36-05:00",
+              "end": "2021-01-18T09:36:36-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-01-18T09:36:36-05:00",
+          "end": "2021-01-18T09:36:36-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-500"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-63521",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "date": "2021-01-12T09:36:36-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-63521"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-89573",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58453-2",
+              "display": "Hemoglobin.gastrointestinal [Mass/volume] in Stool by Immunologic method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "performedPeriod": {
+          "start": "2021-01-18T09:36:36-05:00",
+          "end": "2021-01-18T09:36:36-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-89573"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89574",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58453-2",
+              "display": "Hemoglobin.gastrointestinal [Mass/volume] in Stool by Immunologic method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-01-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89574"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89575",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-01-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 142.92561797507327,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89575"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89576",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectiveDateTime": "2021-01-18T09:36:36-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 112.63930875279952,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89576"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-89577",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "59720008",
+              "display": "Sustained diastolic hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "onsetDateTime": "2021-01-18T09:36:36-05:00",
+        "assertedDate": "2021-01-18T09:36:36-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2523",
+          "display": "Dean Andrew Davis MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-89577"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-89578",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-500",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "effectivePeriod": {
+          "start": "2021-01-18T09:36:36-05:00",
+          "end": "2021-01-18T09:36:36-05:00"
+        },
+        "valueQuantity": {
+          "value": 112.63930875279952,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8302-2",
+                  "display": "Height"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29463-7",
+                  "display": "Weight"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "39156-5",
+                  "display": "BMI"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8310-5",
+                  "display": "Temperature"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8459-0",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8453-3",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-89578"
+      }
+    }
+  ]
+}
