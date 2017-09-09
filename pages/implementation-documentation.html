@@ -1,0 +1,519 @@
+---
+# jekyll header
+---
+{% include header.html %}
+
+<!-- ============BreadCrumb=============== -->
+
+{% include container-start.html %}
+
+<!-- ============CONTENT CONTENT=============== -->
+
+<a name="developer"> </a>
+<h2><span class="sectioncount">4.1.0</span> Evaluating HEDIS Quality Measures with CQL and FHIR <a href="implementation-documentation.html#developer" title="link to here" class="self-link"><img src="assets/images/link.svg" width="20" class="self-link" height="20"/></a></h2>
+
+<p>
+    This documentation is provided for developers interested in implementing a RESTful HEDIS quality
+    measure evaluation service. It is assumed that the developer will have a basic understanding of
+    Clinical Quality Language (CQL) and Fast Healthcare Interoperability Resources (FHIR). If you are
+    not familiar with CQL and FHIR, please refer to the links below.
+</p>
+
+<p>The following tools are referenced in this documentation:</p>
+<ul>
+    <li><a href="https://ecqi.healthit.gov/cql">CQL</a> - Language used to express the quality measure logic.</li>
+    <li><a href="http://hl7.org/fhir/">FHIR</a> - Framework used to represent clinical resources and terminology.</li>
+    <li><a href="http://hapifhir.io/doc_rest_server.html">HAPI FHIR Server</a> - Data/Terminology provider for FHIR resources.</li>
+    <li><a href="https://github.com/jamesagnew/hapi-fhir/">HAPI FHIR API</a> - Open source implementation of FHIR specification.</li>
+    <li><a href="https://github.com/DBCG/cql_engine">CQL Engine</a> - Uses the four tools above to evaluate the quality measure.</li>
+</ul>
+
+<a name="overview"> </a>
+<h3 class="self-link-parent"><span class="sectioncount">4.1.1</span> Overview <a href="implementation-documentation.html#overview" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a></h3>
+<p>
+    The following diagram offers a high-level layout of the measure calculation service structures and procedures:
+</p>
+
+<img src="hedis-big-picture.png" alt="Big Picture">
+
+<p>
+    Briefly, the measure evaluation is triggered by a RESTful HTTP GET request from the client to the
+    <a href="http://www.hl7.org/fhir/operation-measure-evaluate-measure.html">$evaluate</a>
+    operation within a clinical reasoning implementation. The $evaluate operation then gathers the resources from
+    a data provider necessary to run the measure, which are sent to the
+    <a href="https://github.com/DBCG/cql_engine/blob/master/cql-engine-fhir/src/main/java/org/opencds/cqf/cql/data/fhir/FhirMeasureEvaluator.java">FHIRMeasureEvaluator</a>
+    process in the CQL Engine. The FHIRMeasureEvaluator then executes the cql specified in the Measure population
+    criteria and returns a <a href="http://hl7.org/fhir/measurereport.html">MeasureReport</a>.
+</p>
+
+<a name="start"> </a>
+<h3 class="self-link-parent"><span class="sectioncount">4.1.2</span> Getting Started <a href="implementation-documentation.html#start" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a></h3>
+<p>
+    The quality measure evaluation process relies on a data provider to provide clinical resources, a
+    terminology provider to provide terminology, CQL libraries to provide logic needed to process the
+    measure, FHIR Measures to provide structure for calculation elements (i.e. populations),  and
+    terminology to provide the meaning of coded data within the clinical resources. In addition, all
+    the library, measure, and <a href="http://hl7.org/fhir/terminology-module.html">terminology</a>
+    resources should be loaded into their respective data or terminology provider. It is beyond the
+    scope of this implementation guide to go into detail on these topics. However, a brief discussion
+    of each topic is provided below.
+</p>
+
+<h4>Data and Terminology Providers</h4>
+<p>
+    A data provider is used to provide clinical resources that are referenced in the CQL libraries. This
+    guide uses the <a href="http://hl7.org/fhir/resourcelist.html">clinical resources</a> defined in FHIR.
+    You are welcome to create your own FHIR data provider from scratch. However, your implementation must
+    satisfy <a href="http://hl7.org/fhir/http.html">FHIR&apos;s RESTful API operations</a>. It is highly
+    recommended to use an existing FHIR API like HAPI or the
+    <a href="https://github.com/ewoutkramer/fhir-net-api">.NET API</a>.
+</p>
+<p>
+    A <a href="http://hl7.org/fhir/terminology-service.html">terminology provider</a> is used to decipher the coded data within FHIR resources. The terminology
+    resources will be represented as FHIR <a href="http://hl7.org/fhir/valueset.html">ValueSet</a> and
+    <a href="http://hl7.org/fhir/codesystem.html">CodeSystem</a> resources. FHIR terminology providers
+    must satisfy the <a href="http://hl7.org/fhir/terminology-service.html">operations specified in the
+      FHIR specification</a>. It is recommended to leverage the FHIR data provider to also serve as a
+      terminology provider (see the Optimizations section for more information).
+</p>
+
+<h4>CQL Library</h4>
+<p>
+    The CQL library provides the logic to retrieve and analyze the FHIR resources and terminology specified
+    in the quality measure. In order to store the CQL library in a FHIR data provider, the library must be
+    attached to a FHIR Library resource as a base64 encoded string. For more information, please review the
+    documentation regarding <a href="https://github.com/esacinc/CQL-Formatting-and-Usage-Wiki/wiki/Authoring-Measures-in-CQL">measure authoring with CQL</a>.
+</p>
+
+<div class="example">
+    <p>The following is an example of a FHIR resource with an attached CQL library:</p>
+    <pre class="json">
+{
+  "resourceType": "Library",
+  "id": "zika-virus-intervention-logic",
+  "version": "1.0.1",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "status": "draft",
+  "content": [
+    {
+      "contentType": "text/cql",
+      "data": "bGlicmFyeSAiemlrYS12aXJ1cy1pbnRlcnZlbnRpb24tbG9naWMiIHZlcnNpb24gJzEuMC4xJw0KDQp1c2luZyBGSElSIHZlcnNpb24gJzMuMC4wJw0KDQppbmNsdWRlIEZISVJIZWxwZXJzIHZlcnNpb24gJzMuMC4wJyBjYWxsZWQgRkhJUkhlbHBlcnMNCg0KY29kZXN5c3RlbSAiRXhhbXBsZSBRdWVzdGlvbm5haXJlcyI6ICdodHRwOi8vZXhhbXBsZS5vcmcvcXVlc3Rpb25uYWlyZXMnDQoNCnZhbHVlc2V0ICJQcmVnbmFuY3kiOiAndXJuOm9pZDpYLlkuWicNCnZhbHVlc2V0ICJaaWthIEFmZmVjdGVkIEFyZWFzIjogJ3VybjpvaWQ6Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDU3JyAvLyBWYWx1ZSBzZXQgaGFzIGJlZW4gY3JlYXRlZCBiYXNlZCB1cG9uIEphbiAyNnRoLCAyMDE2IHRyYXZlbCBub3RpY2UgZnJvbSBDREMgWmlrYSB2aXJ1cyBkaXNlYXNlIHdlYnNpdGUJaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDU3DQp2YWx1ZXNldCAiWmlrYSBWaXJ1cyBTaWducyBhbmQgU3ltcHRvbXMiOgknMi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDU5JyAvLyBodHRwczovL3BoaW52YWRzLmNkYy5nb3YvdmFkcy9WaWV3VmFsdWVTZXQuYWN0aW9uP29pZD0yLjE2Ljg0MC4xLjExNDIyMi40LjExLjc0NTkNCnZhbHVlc2V0ICJHZW5lcmFsIEFyYm92aXJ1cyBTaWducyBhbmQgU3ltcHRvbXMiOiAnMi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDYwJyAvLyBTaWducyBhbmQgU3ltcHRvbXMgb2YgQXJib3ZpcmFsIGRpc2Vhc2VzLiBUaGlzIHZhbHVlIHNldCB3b3VsZCBiZSB1c2VkIGZvciBwdWJsaWMgaGVhbHRoIGNhc2Ugbm90aWZpY2F0aW9uIGFuZCBpbmNsdWRlcyBzaWducyBhbmQgc3ltcHRvbXMgb2YgRGVuZ3VlLCBDaGlrdW5ndW55YSBhbmQgWmlrYS4JaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDYwDQp2YWx1ZXNldCAiWmlrYSBWaXJ1cyBUZXN0cyI6ICcyLjE2Ljg0MC4xLjExNDIyMi40LjExLjc0ODAnCS8vIGh0dHBzOi8vcGhpbnZhZHMuY2RjLmdvdi92YWRzL1ZpZXdWYWx1ZVNldC5hY3Rpb24/b2lkPTIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNzQ4MA0KdmFsdWVzZXQgIkFyYm92aXJ1cyBUZXN0cyI6ICcyLjE2Ljg0MC4xLjExNDIyMi40LjExLjQxMjAnIC8vIGh0dHBzOi8vcGhpbnZhZHMuY2RjLmdvdi92YWRzL1ZpZXdWYWx1ZVNldC5hY3Rpb24/b2lkPTIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNDEyMA0KdmFsdWVzZXQgIkNoaWt1bmd1bnlhIFRlc3RzIjogJzIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNzMzOScgLy8gaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS43MzM5DQp2YWx1ZXNldCAiRGVuZ3VlIFRlc3RzIjogJzIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNDE0MScgLy8JaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS40MTQxDQp2YWx1ZXNldCAiWmlrYSBWaXJ1cyBJZ00gRUxJU0EgUmVzdWx0cyI6ICcyLjE2Ljg0MC4xLjExNDIyMi40LjExLjc0NzYnIC8vIFRoaXMgdmFsdWUgc2V0IGlzIGludGVuZGVkIGZvciB1c2UgaW4gZWxlY3Ryb25pYyBsYWJvcmF0b3J5IHJlcG9ydGluZyBiYXNlZCBvbiB0aGUgcmVzdWx0cyByZWNlaXZlZCBmcm9tIHRoZSBsYWJvcmF0b3J5LiAgVGhlIGxhYm9yYXRvcnkgbWF5IGFsc28gcmVwb3J0IGEgcXVhbnRpdGF0aXZlIHRpdGVyIGlmIGFwcGxpY2FibGUuCWh0dHBzOi8vcGhpbnZhZHMuY2RjLmdvdi92YWRzL1ZpZXdWYWx1ZVNldC5hY3Rpb24/b2lkPTIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNzQ3Ng0KdmFsdWVzZXQgIlppa2EgVmlydXMgTmV1dHJhbGl6aW5nIEFudGlib2R5IFJlc3VsdHMiOiAnMi4xNi44NDAuMS4xMTQyMjIuNC4xMS43NDc3JyAvLyBUaGlzIHZhbHVlIHNldCBpcyBpbnRlbmRlZCBmb3IgdXNlIGluIGVsZWN0cm9uaWMgbGFib3JhdG9yeSByZXBvcnRpbmcgYmFzZWQgb24gdGhlIHJlc3VsdHMgcmVjZWl2ZWQgZnJvbSB0aGUgbGFib3JhdG9yeS4gIFRoZSBsYWJvcmF0b3J5IG1heSBhbHNvIHJlcG9ydCBhIHF1YW50aXRhdGl2ZSB0aXRlciBpZiBhcHBsaWNhYmxlLglodHRwczovL3BoaW52YWRzLmNkYy5nb3YvdmFkcy9WaWV3VmFsdWVTZXQuYWN0aW9uP29pZD0yLjE2Ljg0MC4xLjExNDIyMi40LjExLjc0NzcNCnZhbHVlc2V0ICJBcmJvdmlydXMgVGVzdCBSZXN1bHRzIjogJzIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNDAwMycgLy8JaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS40MDAzDQp2YWx1ZXNldCAiQ2hpa3VuZ3VueWEgVGVzdCBSZXN1bHRzIjogJzIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNzM0MycgLy8gVGhpcyB2YWx1ZSBzZXQgaXMgaW50ZW5kZWQgZm9yIHVzZSBpbiBlbGVjdHJvbmljIGxhYm9yYXRvcnkgcmVwb3J0aW5nIGJhc2VkIG9uIHRoZSByZXN1bHRzIHJlY2VpdmVkIGZyb20gdGhlIGxhYm9yYXRvcnkuICBUaGUgbGFib3JhdG9yeSBtYXkgYWxzbyByZXBvcnQgYSBxdWFudGl0YXRpdmUgdGl0ZXIgaWYgYXBwbGljYWJsZS4JaHR0cHM6Ly9waGludmFkcy5jZGMuZ292L3ZhZHMvVmlld1ZhbHVlU2V0LmFjdGlvbj9vaWQ9Mi4xNi44NDAuMS4xMTQyMjIuNC4xMS43MzQzDQp2YWx1ZXNldCAiRGVuZ3VlIFRlc3QgUmVzdWx0cyI6ICcyLjE2Ljg0MC4xLjExNDIyMi40LjExLjQwMjUnIC8vIFRoaXMgdmFsdWUgc2V0IGlzIGludGVuZGVkIGZvciB1c2UgaW4gZWxlY3Ryb25pYyBsYWJvcmF0b3J5IHJlcG9ydGluZyBiYXNlZCBvbiB0aGUgcmVzdWx0cyByZWNlaXZlZCBmcm9tIHRoZSBsYWJvcmF0b3J5LiAgVGhlIGxhYm9yYXRvcnkgbWF5IGFsc28gcmVwb3J0IGEgcXVhbnRpdGF0aXZlIHRpdGVyIGlmIGFwcGxpY2FibGUuCWh0dHBzOi8vcGhpbnZhZHMuY2RjLmdvdi92YWRzL1ZpZXdWYWx1ZVNldC5hY3Rpb24/b2lkPTIuMTYuODQwLjEuMTE0MjIyLjQuMTEuNDAyNQ0KDQpjb2RlICJDREU6IFJlc2lkZW50IG9mIG9yIEZyZXF1ZW50IFRyYXZlbGVyIHRvIFppa2EgQXJlYSI6ICdDREU6IFJlc2lkZW50IG9mIG9yIEZyZXF1ZW50IFRyYXZlbGVyIHRvIFppa2EgQXJlYScgZnJvbSAiRXhhbXBsZSBRdWVzdGlvbm5haXJlcyINCmNvZGUgIkNERTogUmVjZW50IFRyYXZlbCB0byBaaWthIEFyZWEiOiAnQ0RFOiBSZWNlbnQgVHJhdmVsIHRvIFppa2EgQXJlYScgZnJvbSAiRXhhbXBsZSBRdWVzdGlvbm5haXJlcyINCmNvZGUgIkNERTogVGltZSBTaW5jZSBSZXR1cm5lZCBGcm9tIFRyYXZlbCI6ICdDREU6IFRpbWUgU2luY2UgUmV0dXJuZWQgRnJvbSBUcmF2ZWwnIGZyb20gIkV4YW1wbGUgUXVlc3Rpb25uYWlyZXMiDQpjb2RlICJDREU6IFJlY2VudCBTZXh1YWwgRW5jb3VudGVyIFdpdGggVHJhdmVsZXIgdG8gWmlrYSBBcmVhIjogJ0NERTogUmVjZW50IFNleHVhbCBFbmNvdW50ZXIgV2l0aCBUcmF2ZWxlciB0byBaaWthIEFyZWEnIGZyb20gIkV4YW1wbGUgUXVlc3Rpb25uYWlyZXMiDQpjb2RlICJDREU6IFRpbWUgU2luY2UgU2V4dWFsIEVuY291bnRlciI6ICdDREU6IFRpbWUgU2luY2UgU2V4dWFsIEVuY291bnRlcicgZnJvbSAiRXhhbXBsZSBRdWVzdGlvbm5haXJlcyINCmNvZGUgIkNERTogUGxhbm5lZCBUcmF2ZWwgdG8gWmlrYSBBcmVhIjogJ0NERTogUGxhbm5lZCBUcmF2ZWwgdG8gWmlrYSBBcmVhJyBmcm9tICJFeGFtcGxlIFF1ZXN0aW9ubmFpcmVzIg0KDQpwYXJhbWV0ZXIgIkN1cnJlbnQgRW5jb3VudGVyIiBFbmNvdW50ZXINCg0KY29udGV4dCBQYXRpZW50DQoNCmRlZmluZSAiUHJlZ25hbmN5IENvbmRpdGlvbnMiOg0KICBbQ29uZGl0aW9uOiAiUHJlZ25hbmN5Il0gQw0KICAgIHdoZXJlIEMuY2xpbmljYWxTdGF0dXMgPSAnYWN0aXZlJw0KICAgICAgYW5kIEMudmVyaWZpY2F0aW9uU3RhdHVzID0gJ2NvbmZpcm1lZCcNCiAgICAgIC8vIHdlbGwsIHRoaXMgaXMgdWdseS4uLi4NCiAgICAgIGFuZCBJbnRlcnZhbFtDLm9uc2V0IGFzIGRhdGVUaW1lLCBDLmFiYXRlbWVudCBhcyBkYXRlVGltZV0gaW5jbHVkZXMgVG9kYXkoKQ0KDQpkZWZpbmUgIklzIFBhdGllbnQgUHJlZ25hbnQiOg0KICBQYXRpZW50LmdlbmRlciA9ICdmZW1hbGUnDQogICAgYW5kIGV4aXN0cyAoIlByZWduYW5jeSBDb25kaXRpb25zIikNCg0KZGVmaW5lICJaaWthIEV4cG9zdXJlIEFzc2Vzc21lbnQiOg0KICBDb2RlICdaaWthIFZpcnVzIEV4cG9zdXJlIEFzc2Vzc21lbnQnIGZyb20gIkV4YW1wbGUgUXVlc3Rpb25uYWlyZXMiDQoNCmRlZmluZSAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCI6DQogIEZpcnN0KA0KICAgIFtPYnNlcnZhdGlvbjogIlppa2EgRXhwb3N1cmUgQXNzZXNzbWVudCJdIE8NCiAgICAgIHdoZXJlIE8uc3RhdHVzID0gJ2ZpbmFsJw0KICAgIAlhbmQgTy4iY29udGV4dCIucmVmZXJlbmNlID0gIkN1cnJlbnQgRW5jb3VudGVyIi5pZCAvLyBUT0RPOiBmaXgNCiAgICAgIHNvcnQgYnkgZWZmZWN0aXZlIGRlc2MNCiAgKQ0KDQpkZWZpbmUgIkhhcyBaaWthIEV4cG9zdXJlIEFzc2Vzc21lbnQiOg0KICAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCIgaXMgbm90IG51bGwNCg0KZGVmaW5lICJaaWthIFN5bXB0b21zIjoNCiAgW0NvbmRpdGlvbjogIlppa2EgVmlydXMgU2lnbnMgYW5kIFN5bXB0b21zIl0gQw0KICAgIHdoZXJlIEMuY2xpbmljYWxTdGF0dXMgPSAnYWN0aXZlJw0KICAgICAgYW5kIEMudmVyaWZpY2F0aW9uU3RhdHVzID0gJ2NvbmZpcm1lZCcNCiAgICAgIGFuZCBDLiJjb250ZXh0Ii5yZWZlcmVuY2UgPSAiQ3VycmVudCBFbmNvdW50ZXIiLmlkIC8vIFRPRE86IGZpeA0KDQpkZWZpbmUgIkhhcyBaaWthIFN5bXB0b21zIjoNCiAgZXhpc3RzICJaaWthIFN5bXB0b21zIg0KDQpkZWZpbmUgIk5vIFppa2EgU3ltcHRvbXMiOg0KICBub3QgIkhhcyBaaWthIFN5bXB0b21zIg0KDQpkZWZpbmUgIlllcyI6IHsgJ1llcycgfQ0KDQpkZWZpbmUgIlJlc2lkZW50IG9mIG9yIEZyZXF1ZW50IFRyYXZlbGVyIHRvIFppa2EgQXJlYSI6DQogIGV4aXN0cyAoDQogICAgIlppa2EgRXhwb3N1cmUgQXNzZXNzbWVudCBSZXN1bHQiLmNvbXBvbmVudCBDDQogICAgICAvLyBUT0RPOiBOZWVkIHRvIHN0cmVhbWxpbmUsIHRoaXMgb3VnaHQgdG8gaGF2ZSB3b3JrZWQsIG5vdCBzdXJlIHdoeSBpdCBkaWRuJ3QgKHdpdGhvdXQgdGhlIGNvZGluZ1swXSBhY2Nlc3MpDQogICAgICB3aGVyZSBDLmNvZGUuY29kaW5nWzBdID0gIkNERTogUmVzaWRlbnQgb2Ygb3IgRnJlcXVlbnQgVHJhdmVsZXIgdG8gWmlrYSBBcmVhIg0KICAgICAgICBhbmQgQy52YWx1ZSBpbiAiWWVzIg0KICApDQoNCmRlZmluZSAiUmVjZW50IFRyYXZlbCB0byBaaWthIEFyZWEiOg0KICBleGlzdHMgKA0KICAgICJaaWthIEV4cG9zdXJlIEFzc2Vzc21lbnQgUmVzdWx0Ii5jb21wb25lbnQgQw0KICAgICAgd2hlcmUgQy5jb2RlLmNvZGluZ1swXSA9ICJDREU6IFJlY2VudCBUcmF2ZWwgdG8gWmlrYSBBcmVhIg0KICAgICAgICBhbmQgQy52YWx1ZSBpbiAiWWVzIg0KICApDQoNCmRlZmluZSAiVGltZSBTaW5jZSBSZXR1cm5lZCBGcm9tIFRyYXZlbCI6DQogIHNpbmdsZXRvbiBmcm9tICgNCiAgICAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCIuY29tcG9uZW50IEMNCiAgICAgIHdoZXJlIEMuY29kZS5jb2RpbmdbMF0gPSAiQ0RFOiBUaW1lIFNpbmNlIFJldHVybmVkIEZyb20gVHJhdmVsIg0KICAgICAgcmV0dXJuIEMudmFsdWUgYXMgUXVhbnRpdHkNCiAgKQ0KDQpkZWZpbmUgIlJlY2VudCBTZXh1YWwgRW5jb3VudGVyIFdpdGggVHJhdmVsZXIgdG8gWmlrYSBBcmVhIjoNCiAgZXhpc3RzICgNCiAgICAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCIuY29tcG9uZW50IEMNCiAgICAgIHdoZXJlIEMuY29kZS5jb2RpbmdbMF0gPSAiQ0RFOiBSZWNlbnQgU2V4dWFsIEVuY291bnRlciBXaXRoIFRyYXZlbGVyIHRvIFppa2EgQXJlYSINCiAgICAgICAgYW5kIEMudmFsdWUgaW4gIlllcyINCiAgKQ0KDQpkZWZpbmUgIlRpbWUgU2luY2UgU2V4dWFsIEVuY291bnRlciI6DQogIHNpbmdsZXRvbiBmcm9tICgNCiAgICAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCIuY29tcG9uZW50IEMNCiAgICAgIHdoZXJlIEMuY29kZS5jb2RpbmdbMF0gPSAiQ0RFOiBUaW1lIFNpbmNlIFNleHVhbCBFbmNvdW50ZXIiDQogICAgICByZXR1cm4gQy52YWx1ZSBhcyBRdWFudGl0eQ0KICApDQoNCmRlZmluZSAiVGltZSBTaW5jZSBQb3NzaWJsZSBFeHBvc3VyZSI6DQogIENvYWxlc2NlKCJUaW1lIFNpbmNlIFJldHVybmVkIEZyb20gVHJhdmVsIiwgIlRpbWUgU2luY2UgU2V4dWFsIEVuY291bnRlciIpDQoNCmRlZmluZSAiUGxhbm5lZCBUcmF2ZWwgdG8gWmlrYSBBcmVhIjoNCiAgZXhpc3RzICgNCiAgICAiWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IFJlc3VsdCIuY29tcG9uZW50IEMNCiAgICAgIHdoZXJlIEMuY29kZS5jb2RpbmdbMF0gPSAiQ0RFOiBQbGFubmVkIFRyYXZlbCB0byBaaWthIEFyZWEiDQogICAgICAgIGFuZCBDLnZhbHVlIGluICJZZXMiDQogICkNCg0KZGVmaW5lICJIYXMgUG9zc2libGUgWmlrYSBFeHBvc3VyZSI6DQogICJSZXNpZGVudCBvZiBvciBGcmVxdWVudCBUcmF2ZWxlciB0byBaaWthIEFyZWEiDQogICAgb3IgIlJlY2VudCBUcmF2ZWwgdG8gWmlrYSBBcmVhIg0KICAgIG9yICJSZWNlbnQgU2V4dWFsIEVuY291bnRlciBXaXRoIFRyYXZlbGVyIHRvIFppa2EgQXJlYSINCg0KZGVmaW5lICJaaWthIFN5bXB0b20gT25zZXQiOg0KICBGaXJzdCgNCiAgICAiWmlrYSBTeW1wdG9tcyIgUw0KICAgICAgc29ydCBieSAob25zZXQgYXMgZGF0ZVRpbWUpDQogICkub25zZXQNCg0KZGVmaW5lICJUaW1lIFNpbmNlIFN5bXB0b20gT25zZXQiOg0KICBTeXN0ZW0uUXVhbnRpdHkgeyB2YWx1ZTogd2Vla3MgYmV0d2VlbiAiWmlrYSBTeW1wdG9tIE9uc2V0IiBhbmQgVG9kYXkoKSwgdW5pdDogJ3drJyB9DQoNCmRlZmluZSAiU2hvdWxkIEFkbWluaXN0ZXIgWmlrYSBFeHBvc3VyZSBBc3Nlc3NtZW50IjoNCiAgbm90ICgiSGFzIFppa2EgRXhwb3N1cmUgQXNzZXNzbWVudCIpDQoNCmRlZmluZSAiU2hvdWxkIE9yZGVyIFNlcnVtICsgVXJpbmUgclJULVBDUiBUZXN0IjoNCiAgKCJIYXMgUG9zc2libGUgWmlrYSBFeHBvc3VyZSIgYW5kICJIYXMgWmlrYSBTeW1wdG9tcyIgYW5kICJUaW1lIFNpbmNlIFN5bXB0b20gT25zZXQiIDwgMiB3ZWVrcykNCiAgICBvciAoIk5vIFppa2EgU3ltcHRvbXMiIGFuZCAiVGltZSBTaW5jZSBQb3NzaWJsZSBFeHBvc3VyZSIgPCAyIHdlZWtzKQ0KDQpkZWZpbmUgIlNob3VsZCBPcmRlciBTZXJ1bSBaaWthIFZpcnVzIElnTSArIERlbmd1ZSBWaXJ1cyBJZ00iOg0KICAoIkhhcyBQb3NzaWJsZSBaaWthIEV4cG9zdXJlIiBhbmQgIkhhcyBaaWthIFN5bXB0b21zIiBhbmQgIlRpbWUgU2luY2UgU3ltcHRvbSBPbnNldCIgaW4gSW50ZXJ2YWxbMiB3ZWVrcywgMTIgd2Vla3MpKQ0KICAgIG9yICgiUmVzaWRlbnQgb2Ygb3IgRnJlcXVlbnQgVHJhdmVsZXIgdG8gWmlrYSBBcmVhIiBhbmQgIk5vIFppa2EgU3ltcHRvbXMiKQ0KICAgIG9yICgiTm8gWmlrYSBTeW1wdG9tcyIgYW5kICJUaW1lIFNpbmNlIFBvc3NpYmxlIEV4cG9zdXJlIiBpbiBJbnRlcnZhbFsyIHdlZWtzLCAxMiB3ZWVrcykpDQoNCmRlZmluZSAiU2hvdWxkIENvbnNpZGVyIElnTSBBbnRpYm9keSBUZXN0aW5nIjoNCiAgKCJIYXMgUG9zc2libGUgWmlrYSBFeHBvc3VyZSIgYW5kICJIYXMgWmlrYSBTeW1wdG9tcyIgYW5kICJUaW1lIFNpbmNlIFN5bXB0b20gT25zZXQiID49IDEyIHdlZWtzKQ0KICAgIG9yICgiTm8gWmlrYSBTeW1wdG9tcyIgYW5kICJUaW1lIFNpbmNlIFBvc3NpYmxlIEV4cG9zdXJlIiA+PSAxMiB3ZWVrcykNCg0KZGVmaW5lICJTaG91bGQgUHJvdmlkZSBNb3NxdWl0byBQcmV2ZW50aW9uIGFuZCBDb250cmFjZXB0aW9uIEFkdmljZSI6DQogICJQbGFubmVkIFRyYXZlbCB0byBaaWthIEFyZWEiDQo="
+    }
+  ]
+}
+    </pre>
+</div>
+
+<p>
+    Please use the following MIME types for the contentType:
+</p>
+<ul>
+    <li>text/cql</li>
+    <li>application/elm+xml (use this for ELM JSON)</li>
+    <li>application/elm+json (use this for ELM XML)</li>
+</ul>
+
+<h4>FHIR Measure</h4>
+<p>
+    The FHIR Measure resource provides focus, using population groupings, and structure specific to the
+    quality measure. Each population group within a FHIR Measure resource defines the criteria (references
+    to a CQL expression) necessary to calculate the quality measure. See the
+    <a href="http://www.hl7.org/fhir/cqif/cqif-quality-reporting.html#invoking-measures">quality reporting</a>
+    section of the FHIR spec for more information on representing quality measures.
+</p>
+
+<h4>Resource Loading</h4>
+<p>
+    Before measure evaluation takes place, clinical resources and terminology necessary to run the measure
+    must be loaded into their respective data and terminology provider. There are several ways to accomplish
+    this task; using an HTTP client like Postman to POST the resources, POSTing a transaction bundle, or
+    another preferred method for the developer. Please visit the following wiki page for more information on
+    the <a href="https://github.com/DBCG/cqf-ruler/blob/master/src/main/resources/md/load_resources.md">resource loading methods</a>.
+</p>
+<p>
+    Although there is not a standard method for loading resources, using a transaction bundle has
+    several benefits. By putting all the resources needed for running a measure in the same bundle, it keeps
+    things organized and easy to maintain. There is the added benefit, if you choose to use the same server as
+    both the data and terminology provider (see optimizations), of being able to load all necessary resources
+    in one shot. Navigate to the <a href="test-data.html">test data page</a> of this guide for examples of
+    transaction bundles.
+</p>
+
+<a name="evaluation"> </a>
+<h3 class="self-link-parent"><span class="sectioncount">4.1.3</span> Evaluation Process <a href="implementation-documentation.html#evaluation" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a></h3>
+<p>
+    The following diagram gives a more in-depth view of the evaluation process sequence of operations:
+</p>
+
+<img src="hedis-sequence-overview.png" alt="Evaluation Sequence">
+
+<h4>$evaluate Operation</h4>
+<p>
+    The measure evaluation process is initiated with a GET request to the service containing the $evaluate
+    operation. The $evaluate operation then collects the resources associated with the measure (the actual
+    measure resource, the libraries it references, and the specified Patient, Practitioner, or Population).
+    Then the returned libraries are used to create context in the CQL Engine. The engine uses runtime context
+    for retrieving clinical resources, terminology, filtering the retrievals so that only resources that are
+    relevant to the population are returned, and resolving library constructs. Next the data and terminology
+    providers are specified and registered with the context. Then the context is passed along with the Measure
+    resource, the population, the start period, and the end period are passed to the
+    FHIRMeasureEvaluator.evaluate() function in the CQL Engine. For an example implementation of this operation,
+    refer to the <a href="https://github.com/DBCG/cqf-ruler/blob/master/src/main/java/org/opencds/cqf/providers/MeasureResourceProvider.java#L83">MeasureResourceProvider</a> in the cqf-ruler project.
+</p>
+
+<h4>FHIRMeasureEvaluator</h4>
+<p>
+    The FHIRMeasureEvaluator
+    (FME) builds the MeasureReport by iterating through the Measure&apos;s
+    population groups and evaluating the expression specified in the criteria. As the criteria is evaluated, a count
+    is kept of the number of resources returned by the expression and is placed within a population report along with
+    the type of population (numerator, denominator, etc...). Once finished iterating through the Measure population
+    groupings, the FME returns the MeasureReport along with a bundle of the evaluated resources.
+</p>
+
+<a name="results"> </a>
+<h3 class="self-link-parent"><span class="sectioncount">4.1.4</span> Interpreting Results <a href="implementation-documentation.html#results" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a></h3>
+<p>
+    The output of the measure evaluation process is a MeasureReport.
+</p>
+
+<div class="example">
+    <p>The following is an example of a MeasureReport from the <a href="https://github.com/DBCG/cqf-ruler/blob/master/src/main/resources/col/measures/col.xml">COL Measure:</a></p>
+    <pre class="json">
+{
+    "resourceType": "MeasureReport",
+    "contained": [
+        {
+            "resourceType": "Bundle",
+            "id": "35e393ff-0eef-437a-8355-284357303568",
+            "type": "collection",
+            "entry": [
+                {
+                    "fullUrl": "Condition/Condition-13/_history/1",
+                    "resource": {
+                        "resourceType": "Condition",
+                        "id": "Condition-13",
+                        "meta": {
+                            "versionId": "1",
+                            "lastUpdated": "2017-07-17T16:34:10.814+00:00"
+                        },
+                        "extension": [
+                            {
+                                "url": "http://mihin.org/fhir/templateId",
+                                "valueString": "2.16.840.1.113883.10.20.22.4.3"
+                            },
+                            {
+                                "url": "http://mihin.org/fhir/templateId",
+                                "valueString": "2.16.840.1.113883.10.20.24.3.137"
+                            }
+                        ],
+                        "clinicalStatus": "active",
+                        "verificationStatus": "confirmed",
+                        "category": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://hl7.org/fhir/condition-category",
+                                        "code": "diagnosis",
+                                        "display": "Diagnosis"
+                                    }
+                                ],
+                                "text": "This is a judgment made by a healthcare provider that the patient has a particular disease or condition"
+                            }
+                        ],
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "363414004"
+                                }
+                            ],
+                            "text": "Diagnosis: Malignant Neoplasm Of Colon"
+                        },
+                        "subject": {
+                            "reference": "Patient/Patient-12214",
+                            "display": "2  N Geriatric Jr"
+                        },
+                        "asserter": {
+                            "reference": "Practitioner/Practitioner-12208",
+                            "display": "Jay McCann Sawyer MD"
+                        }
+                    }
+                },
+                {
+                    "fullUrl": "Procedure/Procedure-9/_history/1",
+                    "resource": {
+                        "resourceType": "Procedure",
+                        "id": "Procedure-9",
+                        "meta": {
+                            "versionId": "1",
+                            "lastUpdated": "2017-07-17T16:34:10.814+00:00"
+                        },
+                        "extension": [
+                            {
+                                "url": "http://mihin.org/fhir/templateId",
+                                "valueString": "2.16.840.1.113883.10.20.24.3.64"
+                            },
+                            {
+                                "url": "http://mihin.org/fhir/templateId",
+                                "valueString": "2.16.840.1.113883.10.20.22.4.14"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "system": "http://hl7.org/fhir/identifier",
+                                "value": "1.3.6.1.4.1.115:579f4eb5aeac500a550c5c7b"
+                            }
+                        ],
+                        "status": "completed",
+                        "category": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "387713003",
+                                    "display": "Surgical Procedure"
+                                }
+                            ]
+                        },
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://snomed.info/sct",
+                                    "code": "36192008"
+                                }
+                            ],
+                            "text": "Procedure, Performed: Total Colectomy"
+                        },
+                        "subject": {
+                            "reference": "Patient/Patient-12214",
+                            "display": "2  N Geriatric Jr"
+                        },
+                        "performedPeriod": {
+                            "start": "2010-10-12T06:00:00-04:00",
+                            "end": "2010-10-12T08:15:00-04:00"
+                        },
+                        "performer": [
+                            {
+                                "role": {
+                                    "coding": [
+                                        {
+                                            "system": "http://hl7.org/fhir/ValueSet/performer-role",
+                                            "code": "112247003",
+                                            "display": "Medical doctor (occupation)"
+                                        }
+                                    ]
+                                },
+                                "actor": {
+                                    "reference": "Practitioner/Practitioner-12208",
+                                    "display": "Jay McCann Sawyer MD"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "fullUrl": "Procedure/Procedure-14/_history/1",
+                    "resource": {
+                        "resourceType": "Procedure",
+                        "id": "Procedure-14",
+                        "meta": {
+                            "versionId": "1",
+                            "lastUpdated": "2017-07-23T19:42:24.540+00:00"
+                        },
+                        "identifier": [
+                            {
+                                "system": "mihin.org/fhir/sid/elementId",
+                                "value": "8948f0ed-62e2-4e4a-9f3e-7576d1341aa2"
+                            }
+                        ],
+                        "status": "completed",
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://www.ama-assn.org/go/cpt",
+                                    "code": "44155",
+                                    "display": "Colectomy, total, abdominal, with proctectomy; with ileostomy"
+                                }
+                            ]
+                        },
+                        "subject": {
+                            "reference": "Patient/Patient-12214"
+                        },
+                        "performedPeriod": {
+                            "start": "2016-08-16T13:56:34-04:00",
+                            "end": "2016-08-16T13:56:34-04:00"
+                        },
+                        "performer": [
+                            {
+                                "actor": {
+                                    "reference": "Practitioner/Practitioner-12208"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "type": "individual",
+    "measure": {
+        "reference": "Measure/col"
+    },
+    "patient": {
+        "reference": "Patient/Patient-12214"
+    },
+    "period": {
+        "start": "2014-01-01T00:00:00+00:00",
+        "end": "2014-12-31T00:00:00+00:00"
+    },
+    "group": [
+        {
+            "identifier": {
+                "value": "in-demographic"
+            },
+            "population": [
+                {
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "history-of-colorectal-cancer"
+            },
+            "population": [
+                {
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "history-of-total-colectomy"
+            },
+            "population": [
+                {
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "colonoscopy-performed"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "colonoscopy-results"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "sigmoidoscopy-procedure"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "sigmoidoscopy-observation"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "fobt-procedure"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        },
+        {
+            "identifier": {
+                "value": "fobt-observation"
+            },
+            "population": [
+                {
+                    "count": 0
+                }
+            ]
+        }
+    ],
+    "evaluatedResources": {
+        "reference": "#35e393ff-0eef-437a-8355-284357303568"
+    }
+}
+    </pre>
+</div>
+
+<p>
+    The returned MeasureReport will contain a bundle of the evaluated resources, which are the resources
+    that meet the membership requirements of the measure. Also included in the MeasureReport is the
+    population count for each grouping criteria. Typically the population grouping would also include
+    a measure score, which is calculated using the contents in the population groupings.
+</p>
+
+<a name="optimizations"> </a>
+<h3 class="self-link-parent"><span class="sectioncount">4.1.5</span> Optimizations <a href="implementation-documentation.html#optimizations" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a></h3>
+<p>
+    Processing quality measures can be an expensive operation. Communication with data and terminology providers
+    is typically achieved with RESTful HTTP requests. The performance of HTTP requests can be influenced by
+    several factors and are generally expensive. For measures with numerous retrieval and terminology requirements,
+    the time complexity can quickly become unreasonable. It is highly recommended to make optimizations wherever
+    possible.
+</p>
+
+<h4>Translate the CQL Libraries to ELM</h4>
+<p>
+    This is a small optimization that can have a big impact on performance, especially if you are using a
+    measure that references several libraries. The gist of this optimization is to load the quality measure
+    libraries as base64 encoded translated ELM xml instead of the CQL (see the CQL Library subheading under
+    the required artifacts topic). This saves the data provider the trouble of translating the library. Refer
+    to the CQL translator documentation for more information on translating CQL to ELM.
+</p>
+
+<h4>HAPI FHIR JPA Server</h4>
+<p>
+    The best way to optimize the performance of measure processing is to remove the need for HTTP requests.
+    HAPI provides a JPA server module that makes use of an embedded database to store FHIR resources along
+    with the <a href="https://en.wikipedia.org/wiki/Java_Persistence_API">Java Persistence API</a> to manage
+    the database.
+    The data within the embedded database is manipulated with the use of a
+    <a href="https://en.wikipedia.org/wiki/Data_access_object">Data Access Object</a> (DAO).
+    The DAO maintains direct access to the database's data access layer without exposing the details of the
+    database, which is fast and secure. Using the JPA server as both the data provider and terminology provider
+    can eliminate external HTTP calls altogether, assuming your $evaluate operation is within the data provider's
+    Measure resource provider.
+</p>
+
+
+<!-- ==============END CONTENT END CONTENT=================== -->
+
+{% include container-end.html %}
+
+{% include footer.html %}
