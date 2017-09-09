@@ -22,7 +22,8 @@ valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.17' /
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.20' // ICD9CM
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.21' // ICD9CMProc
 
-valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.22' // CPT
+valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208' // Grouping
+// valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.22' // CPT
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.23' // HCPCS
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.24' // LOINC
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.25' // RevCode

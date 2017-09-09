@@ -12,32 +12,39 @@ Description
 The percentage of members 50–75 years of age who had appropriate screening for colorectal cancer.
 */
 
-valueset "Colonoscopy Value Set": '2.16.840.1.113883.3.464.1004.1064.29' // CPT
-// valueset "Colonoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
-// valueset "Colonoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
-
-valueset "Colorectal Cancer Value Set": '2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
-// valueset "Colorectal Cancer Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD10CM
-
-valueset "CT Colonography Value Set": '2.16.840.1.113883.3.464.1004.1421.34' // CPT
-
-valueset "FIT-DNA Value Set": '2.16.840.1.113883.3.464.1004.1420.35' // CPT
-// valueset "FIT-DNA Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
-// valueset "FIT-DNA Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.37' // LOINC
-
-valueset "Flexible Sigmoidoscopy Value Set": '2.16.840.1.113883.3.464.1004.1102.38' // CPT
-// valueset "Flexible Sigmoidoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
-// valueset "Flexible Sigmoidoscopy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
-
-valueset "FOBT Value Set": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
-// valueset "FOBT Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
-// valueset "FOBT Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
-
-valueset "Total Colectomy Value Set": '2.16.840.1.113883.3.464.1004.1250.44' // CPT
-// valueset "Total Colectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
-// valueset "Total Colectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
-
 /*
+It is an outstanding question whether implementers would have an easier time dealing
+with single code system value sets for retrieval of data, or if the grouping value sets
+are easier to deal with. This mesaure is modified to take the approach of unioning
+the results in CQL, where the BCS and CCS measures take the grouping value set
+approach.
+*/
+
+valueset "Colonoscopy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.29' // CPT
+valueset "Colonoscopy Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
+valueset "Colonoscopy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
+
+valueset "Colorectal Cancer Value Set (ICD10)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
+valueset "Colorectal Cancer Value Set (ICD19)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD10CM
+
+valueset "CT Colonography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1421.34' // CPT
+
+valueset "FIT-DNA Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.35' // CPT
+valueset "FIT-DNA Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
+valueset "FIT-DNA Value Set (LOINC)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.37' // LOINC
+
+valueset "Flexible Sigmoidoscopy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.38' // CPT
+valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
+valueset "Flexible Sigmoidoscopy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
+
+valueset "FOBT Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.41' // CPT
+valueset "FOBT Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
+valueset "FOBT Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
+
+valueset "Total Colectomy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.44' // CPT
+valueset "Total Colectomy Value Set (ICD10)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
+valueset "Total Colectomy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
+
 valueset "Hospice Value Set": 'TODO'
 
 valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
@@ -51,7 +58,6 @@ valueset "X Medicare Coverage Value Set": 'TODO'
 
 valueset "X Institutional SNP Value Set": 'TODO'
 valueset "X Long-Term in Institution Value Set": 'TODO'
-*/
 
 /*
 This library has an explicit parameter which is the product line.
@@ -109,15 +115,12 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 
 define "Initial Population":
 	"Is Age 51 to 75 at End"
-/*
 		and (not "Is In Hospice")
 		and "Is In Applicable Product Line"
-*/
 
 define "Is Age 51 to 75 at End":
 	AgeInYearsAt(end of "Measurement Period") between 51 and 75
 
-/*
 define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
@@ -243,7 +246,6 @@ define "Is Living Long-Term in Institution":
 				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
-*/
 
 /*
 Administrative Specification
@@ -262,6 +264,9 @@ define "Is Colorectal Cancer Screening":
 		or "Is Colonoscopy In Last Ten Years"
 		or "Is CT Colonography In Last Five Years"
 		or "Is FIT-DNA Test In Last Three Years"
+
+define "FOBT Observations":
+	[Observation: "FOBT Value Set ()"]
 
 define "Is Fecal Occult Blood Test In Last Year":
 	exists(
