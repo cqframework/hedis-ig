@@ -37,10 +37,13 @@
 <img src="hedis-big-picture.png" alt="Big Picture">
 
 <p>
-    Briefly, the measure evaluation is triggered by a RESTful HTTP GET request from the client to the $evaluate
+    Briefly, the measure evaluation is triggered by a RESTful HTTP GET request from the client to the
+    <a href="http://www.hl7.org/fhir/operation-measure-evaluate-measure.html">$evaluate</a>
     operation within a clinical reasoning implementation. The $evaluate operation then gathers the resources from
-    a data provider necessary to run the measure, which are sent to the FHIRMeasureEvaluator process in the CQL Engine.
-    The FHIRMeasureEvaluator then executes the cql specified in the Measure population criteria and returns a MeasureReport.
+    a data provider necessary to run the measure, which are sent to the
+    <a href="https://github.com/DBCG/cql_engine/blob/master/cql-engine-fhir/src/main/java/org/opencds/cqf/cql/data/fhir/FhirMeasureEvaluator.java">FHIRMeasureEvaluator</a>
+    process in the CQL Engine. The FHIRMeasureEvaluator then executes the cql specified in the Measure population
+    criteria and returns a <a href="http://hl7.org/fhir/measurereport.html">MeasureReport</a>.
 </p>
 
 <a name="start"> </a>
@@ -120,7 +123,9 @@
 <p>
     The FHIR Measure resource provides focus, using population groupings, and structure specific to the
     quality measure. Each population group within a FHIR Measure resource defines the criteria (references
-    to a CQL expression) necessary to calculate the quality measure.
+    to a CQL expression) necessary to calculate the quality measure. See the
+    <a href="http://www.hl7.org/fhir/cqif/cqif-quality-reporting.html#invoking-measures">quality reporting</a>
+    section of the FHIR spec for more information on representing quality measures.
 </p>
 
 <h4>Resource Loading</h4>
@@ -164,8 +169,8 @@
 
 <h4>FHIRMeasureEvaluator</h4>
 <p>
-    The <a href="https://github.com/DBCG/cql_engine/blob/master/cql-engine-fhir/src/main/java/org/opencds/cqf/cql/data/fhir/FhirMeasureEvaluator.java">FHIRMeasureEvaluator</a>
-    (FME) builds the MeasureReport (http://hl7.org/fhir/measurereport.html) by iterating through the Measure&apos;s
+    The FHIRMeasureEvaluator
+    (FME) builds the MeasureReport by iterating through the Measure&apos;s
     population groups and evaluating the expression specified in the criteria. As the criteria is evaluated, a count
     is kept of the number of resources returned by the expression and is placed within a population report along with
     the type of population (numerator, denominator, etc...). Once finished iterating through the Measure population
@@ -175,7 +180,7 @@
 <a name="results"> </a>
 <h3 class="self-link-parent"><span class="sectioncount">4.1.4</span> Interpreting Results <a href="implementation-documentation.html#results" title="link to here" class="self-link"><img src="assets/images/link.svg" width="20" class="self-link" height="20"/></a></h3>
 <p>
-    The output of the measure evaluation process is a <a href="http://hl7.org/fhir/measurereport.html">MeasureReport</a>.
+    The output of the measure evaluation process is a MeasureReport.
 </p>
 
 <div class="example">
@@ -470,7 +475,7 @@
     The returned MeasureReport will contain a bundle of the evaluated resources, which are the resources
     that meet the membership requirements of the measure. Also included in the MeasureReport is the
     population count for each grouping criteria. Typically the population grouping would also include
-    a measure score calculated
+    a measure score, which is calculated using the contents in the population groupings.
 </p>
 
 <a name="optimizations"> </a>
@@ -503,7 +508,7 @@
     The DAO maintains direct access to the database's data access layer without exposing the details of the
     database, which is fast and secure. Using the JPA server as both the data provider and terminology provider
     can eliminate external HTTP calls altogether, assuming your $evaluate operation is within the data provider's
-    <a href="https://github.com/DBCG/cqf-ruler/blob/master/src/main/java/org/opencds/cqf/providers/MeasureResourceProvider.java">Measure resource provider</a>.
+    Measure resource provider.
 </p>
 
 
