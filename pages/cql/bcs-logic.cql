@@ -12,29 +12,30 @@ Description
 The percentage of women 50–74 years of age who had a mammogram to screen for breast cancer.
 */
 
-valueset "Absence of Left Breast Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
-valueset "Absence of Right Breast Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
+valueset "Absence of Left Breast Value Set": '2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
+valueset "Absence of Right Breast Value Set": '2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
 
-valueset "Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1042.3' // ICD10PCS
+valueset "Bilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1042.3' // ICD10PCS
 // valueset "Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1042.4' // ICD9CMProc
 
-valueset "Bilateral Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1043.5' // CPT-Mod
-valueset "History of Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1331.6' // ICD10CM
-valueset "Left Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1148.7' // CPT-Mod
+valueset "Bilateral Modifier Value Set": '2.16.840.1.113883.3.464.1004.1043.5' // CPT-Mod
+valueset "History of Bilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1331.6' // ICD10CM
+valueset "Left Modifier Value Set": '2.16.840.1.113883.3.464.1004.1148.7' // CPT-Mod
 
-valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.8' // CPT
+valueset "Mammography Value Set": '2.16.840.1.113883.3.464.1004.1168.8' // CPT
 // valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.9' // HCPCS
 // valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.10' // ICD9CMProc
 // valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.11' // RevCode
 
-valueset "Right Modifier Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1230.12' // CPT-Mod
+valueset "Right Modifier Value Set": '2.16.840.1.113883.3.464.1004.1230.12' // CPT-Mod
 
-valueset "Unilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1256.13' // CPT
+valueset "Unilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1256.13' // CPT
 // valueset "Unilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1256.14' // ICD9CMProc
 
-valueset "Unilateral Mastectomy Left Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
-valueset "Unilateral Mastectomy Right Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
+valueset "Unilateral Mastectomy Left Value Set": '2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
+valueset "Unilateral Mastectomy Right Value Set": '2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
 
+/*
 valueset "Hospice Value Set": 'TODO'
 
 valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
@@ -48,6 +49,7 @@ valueset "X Medicare Coverage Value Set": 'TODO'
 
 valueset "X Institutional SNP Value Set": 'TODO'
 valueset "X Long-Term in Institution Value Set": 'TODO'
+*/
 
 /*
 This library has an explicit parameter which is the product line.
@@ -100,8 +102,10 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 define "Initial Population":
 	"Is Female"
 		and "Is Age 52 to 74 at End"
+/*
 		and (not "Is In Hospice")
 		and "Is In Applicable Product Line"
+*/
 
 define "Is Female":
 	Patient.gender.value = 'female'
@@ -109,6 +113,7 @@ define "Is Female":
 define "Is Age 52 to 74 at End":
 	AgeInYearsAt(end of "Measurement Period") between 52 and 74
 
+/*
 define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
@@ -234,6 +239,7 @@ define "Is Living Long-Term in Institution":
 				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
+*/
 
 /*
 Administrative Specification

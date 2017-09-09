@@ -16,21 +16,22 @@ The percentage of women 21–64 years of age who were screened for cervical
 		(HPV) co-testing performed every 5 years.
 */
 
-valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.17' // CPT
+valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.17' // CPT
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.18' // ICD10CM
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.19' // ICD10PCS
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.20' // ICD9CM
 // valueset "Absence of Cervix Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1123.21' // ICD9CMProc
 
-valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.22' // CPT
+valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.22' // CPT
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.23' // HCPCS
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.24' // LOINC
 // valueset "Cervical Cytology Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1208.25' // RevCode
 
-valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.26' // CPT
+valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.26' // CPT
 // valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.27' // HCPCS
 // valueset "HPV Tests Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1265.28' // LOINC
 
+/*
 valueset "Hospice Value Set": 'TODO'
 
 valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
@@ -44,6 +45,7 @@ valueset "X Medicare Coverage Value Set": 'TODO'
 
 valueset "X Institutional SNP Value Set": 'TODO'
 valueset "X Long-Term in Institution Value Set": 'TODO'
+*/
 
 /*
 This library has an explicit parameter which is the product line.
@@ -99,8 +101,10 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 define "Initial Population":
 	"Is Female"
 		and "Is Age 24 to 64 at End"
+/*
 		and (not "Is In Hospice")
 		and "Is In Applicable Product Line"
+*/
 
 define "Is Female":
 	Patient.gender.value = 'female'
@@ -108,6 +112,7 @@ define "Is Female":
 define "Is Age 24 to 64 at End":
 	AgeInYearsAt(end of "Measurement Period") between 24 and 64
 
+/*
 define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
@@ -233,6 +238,7 @@ define "Is Living Long-Term in Institution":
 				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
+*/
 
 /*
 Administrative Specification
