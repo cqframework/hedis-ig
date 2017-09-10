@@ -25,7 +25,7 @@ valueset "Colonoscopy Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.
 valueset "Colonoscopy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
 
 valueset "Colorectal Cancer Value Set (ICD10)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
-valueset "Colorectal Cancer Value Set (ICD19)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD10CM
+valueset "Colorectal Cancer Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
 
 valueset "CT Colonography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1421.34' // CPT
 
@@ -266,25 +266,37 @@ define "Is Colorectal Cancer Screening":
 		or "Is FIT-DNA Test In Last Three Years"
 
 define "FOBT Observations":
-	[Observation: "FOBT Value Set ()"]
+	[Observation: "FOBT Value Set (CPT)"]
+	  union [Observation: "FOBT Value Set (HCPCS)"]
+		union [Observation: "FOBT Value Set (ICD9)"]
 
 define "Is Fecal Occult Blood Test In Last Year":
 	exists(
-		[Observation: "FOBT Value Set"] Obs
+		"FOBT Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
 				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Measurement Period")
 	)
+	
+define "Flexible Sigmoidoscopy Reports":
+  [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
+  	union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
+    union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
 
 define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
-		[DiagnosticReport: "Flexible Sigmoidoscopy Value Set"] DiagRep
+		"Flexible Sigmoidoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 
+define "Colonoscopy Reports":
+  [DiagnosticReport: "Colonoscopy Value Set (CPT)"]
+		union [DiagnosticReport: "Colonoscopy Value Set (HCPCS)"]
+		union [DiagnosticReport: "Colonoscopy Value Set (ICD9)"]
+
 define "Is Colonoscopy In Last Ten Years":
 	exists(
-		[DiagnosticReport: "Colonoscopy Value Set"] DiagRep
+		"Colonoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Nine More Years")
 	)
@@ -296,9 +308,14 @@ define "Is CT Colonography In Last Five Years":
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 
+define "FIT-DNA Observations":
+  [Observation: "FIT-DNA Value Set (CPT)"]
+	  union [Observation: "FIT-DNA Value Set (HCPCS)"]
+		union [Observation: "FIT-DNA Value Set (LOINC)"]
+
 define "Is FIT-DNA Test In Last Three Years":
 	exists(
-		[Observation: "FIT-DNA Value Set"] Obs
+		"FIT-DNA Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
 				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Lookback Interval Two More Years")
 	)
@@ -307,17 +324,26 @@ define "Denominator Exclusion":
 	"Initial Population"
 		and ("Is Colorectal Cancer"
 			or "Is Total Colectomy")
+			
+define "Colorectal Cancer Conditions":
+  [Condition: "Colorectal Cancer Value Set (ICD10)"]
+	  union [Condition: "Colorectal Cancer Value Set (ICD9)"]
 
 define "Is Colorectal Cancer":
 	exists(
-		[Condition: "Colorectal Cancer Value Set"] Cond
+		"Colorectal Cancer Conditions" Cond
 			where Cond.verificationStatus.value = 'confirmed'
 				and Cond.assertedDate.value before end of "Measurement Period"
 	)
+	
+define "Total Colectomy Procedures":
+  [Procedure: "Total Colectomy Value Set (CPT)"]
+	  union [Procedure: "Total Colectomy Value Set (ICD10)"]
+		union [Procedure: "Total Colectomy Value Set (ICD9)"]
 
 define "Is Total Colectomy":
 	exists(
-		[Procedure: "Total Colectomy Value Set"] Proc
+		"Total Colectomy Procedures" Proc
 			where Proc.status.value = 'completed'
 				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)
