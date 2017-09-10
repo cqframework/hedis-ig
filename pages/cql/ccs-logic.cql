@@ -280,28 +280,34 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 define "Dates of Cervical Cytology Tests":
 	([Procedure: "Cervical Cytology Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return ChoiceToIntervalOfDT(Proc.performed))
+		return case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end)
+		//return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
 		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-		return ChoiceToIntervalOfDT(DiagRep.effective))
+		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
+		//return ChoiceToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return ChoiceToIntervalOfDT(Obs.effective))
+		return case when Obs.effective is DateTime then Interval[Obs.effective.value, Obs.effective.value] else Interval[Obs.effective."start".value, Obs.effective."end".value] end)
+		//return ChoiceToIntervalOfDT(Obs.effective))
 
 define "Dates of HPV Tests":
 	([Procedure: "HPV Tests Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return ChoiceToIntervalOfDT(Proc.performed))
+		return case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end)
+		//return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
 		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
-		return ChoiceToIntervalOfDT(DiagRep.effective))
+		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
+		//return ChoiceToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "HPV Tests Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return ChoiceToIntervalOfDT(Obs.effective))
+		return case when Obs.effective is DateTime then Interval[Obs.effective.value, Obs.effective.value] else Interval[Obs.effective."start".value, Obs.effective."end".value] end)
+		//return ChoiceToIntervalOfDT(Obs.effective))
 
 define "Denominator Exclusion":
 	"Initial Population"
@@ -311,7 +317,8 @@ define "Is Hysterectomy":
 	exists(
 		[Procedure: "Absence of Cervix Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+				and end of case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end before end of "Measurement Period"
+				//and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)
 
 /*
