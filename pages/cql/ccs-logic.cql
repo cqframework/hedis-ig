@@ -9,10 +9,10 @@ using FHIR version '3.0.0'
 
 /*
 Description
-The percentage of women 21–64 years of age who were screened for cervical
+The percentage of women 21-64 years of age who were screened for cervical
 		cancer using either of the following criteria:
-•	Women 21–64 years of age who had cervical cytology performed every 3 years.
-•	Women 30–64 years of age who had cervical cytology/human papillomavirus
+*	Women 21-64 years of age who had cervical cytology performed every 3 years.
+*	Women 30-64 years of age who had cervical cytology/human papillomavirus
 		(HPV) co-testing performed every 5 years.
 */
 

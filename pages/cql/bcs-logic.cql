@@ -9,7 +9,7 @@ using FHIR version '3.0.0'
 
 /*
 Description
-The percentage of women 50–74 years of age who had a mammogram to screen for breast cancer.
+The percentage of women 50-74 years of age who had a mammogram to screen for breast cancer.
 */
 
 valueset "Absence of Left Breast Value Set": '2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
@@ -455,4 +455,3 @@ define function CodingToCode(coding FHIR.Coding):
 		display: coding.display.value
 	}
 	// From FHIRHelpers
-

@@ -9,7 +9,7 @@ using FHIR version '3.0.0'
 
 /*
 Description
-The percentage of members 50–75 years of age who had appropriate screening for colorectal cancer.
+The percentage of members 50-75 years of age who had appropriate screening for colorectal cancer.
 */
 
 /*
