@@ -10,16 +10,22 @@
 
 <h2>
 	<span class="sectioncount">1.0.0&nbsp;</span>
-	<span>HEDIS Implementation Guide – Cohort Definitions for Payer Quality Measures</span>
+	<span>HEDIS® Implementation Guide – Cohort Definitions for Quality Measures</span>
 	<a href="index.html#home" title="link to here" class="self-link"><img src="target.png" width="20" class="self-link" height="20"/></a>
 </h2>
 
 <p>
-	Done thoroughly, value-based care involes calculating payer-relation quality measures.
-	This calculation relies on access to patient information. 
+	<a id="ncqa-logo" no-external="true" href="http://www.ncqa.org" target="_blank"><img alt="ncqa logo" src="assets/images/ncqa-logo.png"/> </a>
+	NCQA's Healthcare Effectiveness Data and Information Set (HEDIS) is a tool used by more than 90 percent of America's health plans to measure performance on important dimensions of care and service.
+	Altogether, HEDIS consists of 81 measures across 5 domains of care.
+	Because so many plans collect HEDIS data, and because the measures are so specifically defined, HEDIS makes it possible to compare the performance of health plans on an "apples-to-apples" basis.
+</p>
+
+<p>
+	Modern value-based care involves calculating payer-relation quality measures––this calculation relies on access to patient information. 
 	FHIR's secure, RESTful, standards-based services for accessing patient information streamlines this process.
-	By combining FHIR with shareable knowledge artifacts, we significantly reduce the amount of engineering effort required to implement and maintain quality measure calculations that payers can use.
-	Healthcare providers also benefit from this reduced effort as they respond to quality reporting requests.
+	By combining FHIR with shareable knowledge artifacts, we significantly reduce the amount of engineering effort required to implement and maintain useful HEDIS quality measure calculations for payers.
+	Healthcare providers also experience reduced effort, as responding to quality reporting requests is greatly simplified with this approach.
 </p>
 
 <a name="overview" style="display:none;">&nbsp;</a>
@@ -35,9 +41,11 @@
 
 <img src="payer-extract.png" alt="Payer Extract Approach"/>
 
-<p>The measure processing component turns CQL-based measure definitions into FHIR requests against the EHRs.
+<p>
+	The measure processing component turns CQL-based measure definitions into FHIR requests against EHRs.
 	This can be done independently of the content of the measures, so it only has to be developed one time;
-	any measure written in CQL can be evaluated in this way.</p>
+	any measure written in CQL can be evaluated in this way.
+</p>
 
 <a name="measures" style="display:none;">&nbsp;</a>
 <h4>Measures</h4>
@@ -59,7 +67,7 @@
 	</tbody>
 </table>
 
-<p>The following profiles were derived from <a href="http://hl7.org/fhir/us/qicore" target="_blank">QI Core</a> in order to support the expression of HEDIS measures in FHIR:</p>
+<p>The following profiles were derived from <a href="http://hl7.org/fhir/us/qicore" target="_blank">QI Core</a>, a U.S. Realm Specification with support from the <a href="https://oncprojectracking.healthit.gov/wiki/display/TechLabSC/CQF+Home" target="_blank">Clinical Quality Framework (CQF) initiative</a>, in order to support the expression of HEDIS measures in FHIR:</p>
 
 <table class="grid">
 	<thead>

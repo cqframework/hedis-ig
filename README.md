@@ -1,8 +1,8 @@
 # HEDIS (Healthcare Effectiveness Data and Information Set)
 
-HEDIS Implementation Guide
+HEDIS® Implementation Guide
 
-This project provides the source for the HEDIS Implementation Guide.
+This project provides the source for the HEDIS® Implementation Guide.
 
 The implementation is based on the prior payerextract FHIR IG.
 
