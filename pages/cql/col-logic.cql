@@ -273,7 +273,7 @@ define "Is Colorectal Cancer Screening":
 
 define "FOBT Observations":
 	[Observation: "FOBT Value Set (CPT)"]
-	  union [Observation: "FOBT Value Set (HCPCS)"]
+		union [Observation: "FOBT Value Set (HCPCS)"]
 		union [Observation: "FOBT Value Set (ICD9)"]
 
 define "Is Fecal Occult Blood Test In Last Year":
@@ -282,11 +282,11 @@ define "Is Fecal Occult Blood Test In Last Year":
 			where Obs.status.value in { 'final', 'amended' }
 				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Measurement Period")
 	)
-	
+
 define "Flexible Sigmoidoscopy Reports":
-  [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
-  	union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
-    union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
+	[DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
+		union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
+		union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
 
 define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
@@ -296,7 +296,7 @@ define "Is Flexible Sigmoidoscopy In Last Five Years":
 	)
 
 define "Colonoscopy Reports":
-  [DiagnosticReport: "Colonoscopy Value Set (CPT)"]
+	[DiagnosticReport: "Colonoscopy Value Set (CPT)"]
 		union [DiagnosticReport: "Colonoscopy Value Set (HCPCS)"]
 		union [DiagnosticReport: "Colonoscopy Value Set (ICD9)"]
 
@@ -315,8 +315,8 @@ define "Is CT Colonography In Last Five Years":
 	)
 
 define "FIT-DNA Observations":
-  [Observation: "FIT-DNA Value Set (CPT)"]
-	  union [Observation: "FIT-DNA Value Set (HCPCS)"]
+	[Observation: "FIT-DNA Value Set (CPT)"]
+		union [Observation: "FIT-DNA Value Set (HCPCS)"]
 		union [Observation: "FIT-DNA Value Set (LOINC)"]
 
 define "Is FIT-DNA Test In Last Three Years":
@@ -330,10 +330,10 @@ define "Denominator Exclusion":
 	"Initial Population"
 		and ("Is Colorectal Cancer"
 			or "Is Total Colectomy")
-			
+
 define "Colorectal Cancer Conditions":
-  [Condition: "Colorectal Cancer Value Set (ICD10)"]
-	  union [Condition: "Colorectal Cancer Value Set (ICD9)"]
+	[Condition: "Colorectal Cancer Value Set (ICD10)"]
+		union [Condition: "Colorectal Cancer Value Set (ICD9)"]
 
 define "Is Colorectal Cancer":
 	exists(
@@ -341,10 +341,10 @@ define "Is Colorectal Cancer":
 			where Cond.verificationStatus.value = 'confirmed'
 				and Cond.assertedDate.value before end of "Measurement Period"
 	)
-	
+
 define "Total Colectomy Procedures":
-  [Procedure: "Total Colectomy Value Set (CPT)"]
-	  union [Procedure: "Total Colectomy Value Set (ICD10)"]
+	[Procedure: "Total Colectomy Value Set (CPT)"]
+		union [Procedure: "Total Colectomy Value Set (ICD10)"]
 		union [Procedure: "Total Colectomy Value Set (ICD9)"]
 
 define "Is Total Colectomy":

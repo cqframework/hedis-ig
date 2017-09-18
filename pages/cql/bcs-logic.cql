@@ -76,8 +76,6 @@ calendar year, and it will not behave properly otherwise; 2015 for example:
 Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2016,1,1,0,0,0,0))
 */
 
-// Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2015,12,31,0,0,0,0))
-
 parameter "Measurement Period" Interval<DateTime>
 
 define "First Predecessor Year":
@@ -125,8 +123,8 @@ define "Is In Hospice":
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
 	)
-  or
-  exists(
+	or
+	exists(
 		[Claim: "Hospice Value Set"] Clm
 			where Clm.status.value in { 'active', 'draft' }
 				and PeriodToIntervalOfDT(Clm.item.service.period) overlaps "Measurement Period"
