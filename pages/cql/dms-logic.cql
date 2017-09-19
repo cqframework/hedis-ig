@@ -22,7 +22,7 @@ valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.10
 valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074' // Grouping Value Set
 valueset "PHQ9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
 valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
-valueset "Pervasive Development Disorder": 'TODO'
+valueset "Pervasive Development Disorder": 'TODO' // not in spec Data Criteria
 
 /*
 This library has an explicit parameter which is the measurement year.

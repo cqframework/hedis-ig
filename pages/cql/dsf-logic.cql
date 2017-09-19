@@ -18,18 +18,20 @@ The percentage of members 12 years of age and older who were screened for
 		positive for depression and received appropriate follow-up care within 30 days.
 */
 
-valueset "Antidepressant Medication": 'TODO'
 valueset "Major Depression and Dysthymia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1151' // Grouping Value Set
 valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
 valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
+	// TODO: This isn't referenced in any define.
 valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
+	// TODO: This isn't referenced in any define.
 valueset "Behavioral Health Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
 valueset "Case Management Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
 valueset "ECDS Follow-Up Visit Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
-valueset "ECDS Follow-Up Visit (diagnosis: Major Depression and Dysthymia)": 'TODO'
 valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
 valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
 valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
+valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
+valueset "ECDS Follow-Up Visit (diagnosis: Major Depression and Dysthymia)": 'TODO' // not in spec Data Criteria
 
 /*
 This library has an explicit parameter which is the measurement year.
@@ -65,6 +67,7 @@ Exclusions
 
 define "Denominator Exclusion":
 	exists (
+		// TODO: The other 2 Bipolar Disorder valuesets aren't used anywhere, how about here?
 		[DiagnosticReport: "Bipolar Disorder"] BD
 			where BD.status.value in { 'final', 'appended', 'corrected' }
 				and months between start of ChoiceToIntervalOfDT(BD.effective) and end of "Measurement Period" <= 23
