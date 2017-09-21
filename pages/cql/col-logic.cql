@@ -151,7 +151,7 @@ define "Is In Hospice":
 	or
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
-			where HospicePerformed.status.value = 'completed'
+			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
 				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
 	)
 
@@ -291,7 +291,7 @@ define "Flexible Sigmoidoscopy Reports":
 define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
 		"Flexible Sigmoidoscopy Reports" DiagRep
-			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
+			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 
@@ -303,14 +303,14 @@ define "Colonoscopy Reports":
 define "Is Colonoscopy In Last Ten Years":
 	exists(
 		"Colonoscopy Reports" DiagRep
-			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
+			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Nine More Years")
 	)
 
 define "Is CT Colonography In Last Five Years":
 	exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
-			where DiagRep.status.value in { 'final', 'appended', 'corrected' }
+			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
 	)
 

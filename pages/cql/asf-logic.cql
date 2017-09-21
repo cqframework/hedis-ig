@@ -73,13 +73,13 @@ Exclusions
 define "Denominator Exclusion":
 	exists (
 		[DiagnosticReport: "Alcohol use disorder"] D
-			where D.status.value in { 'final', 'appended', 'corrected' }
+			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and ChoiceToIntervalOfDT(D.effective) starts 24 months or less before end of "Fourteen Month Measurement Period"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Dementia"] D
-			where D.status.value in { 'final', 'appended', 'corrected' }
+			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and ChoiceToIntervalOfDT(D.effective) overlaps "Intake Period"
 	)
 

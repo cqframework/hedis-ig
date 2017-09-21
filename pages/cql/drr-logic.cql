@@ -69,7 +69,7 @@ define "DRR Encounter":
 define "Depression Diagnosis Overlaps DRREncounter":
 	[DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
 		with "DRR Encounter" DRR
-			such that DepressionDiagnosis.status.value in { 'final', 'appended', 'corrected' }
+			such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and ChoiceToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
 		return DepressionDiagnosis
 
@@ -88,7 +88,7 @@ define "Exclusion Diagnoses":
 		union [DiagnosticReport: "Psychotic Disorder"]
 		union [DiagnosticReport: "Pervasive Developmental Disorder"]
 	) D
-		where D.status.value in { 'final', 'appended', 'corrected' }
+		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 
 define "Exclusion Diagnoses Overlapping Measurement Period":
 	"Exclusion Diagnoses" ED

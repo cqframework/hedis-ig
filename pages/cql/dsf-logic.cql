@@ -69,13 +69,13 @@ define "Denominator Exclusion":
 	exists (
 		// TODO: The other 2 Bipolar Disorder valuesets aren't used anywhere, how about here?
 		[DiagnosticReport: "Bipolar Disorder"] BD
-			where BD.status.value in { 'final', 'appended', 'corrected' }
+			where BD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and months between start of ChoiceToIntervalOfDT(BD.effective) and end of "Measurement Period" <= 23
 	)
 	or
 	exists (
 		[DiagnosticReport: "Major Depression and Dysthymia"] MDD
-			where MDD.status.value in { 'final', 'appended', 'corrected' }
+			where MDD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and months between end of ChoiceToIntervalOfDT(MDD.effective) and start of "Measurement Period" <= 12
 	)
 

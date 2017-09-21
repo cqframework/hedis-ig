@@ -139,7 +139,7 @@ define "Is In Hospice":
 	or
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
-			where HospicePerformed.status.value = 'completed'
+			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
 				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
 	)
 
@@ -284,7 +284,7 @@ define "Dates of Cervical Cytology Tests":
 		//return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
-		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
+		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
 		//return ChoiceToIntervalOfDT(DiagRep.effective))
 	union
@@ -300,7 +300,7 @@ define "Dates of HPV Tests":
 		//return ChoiceToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
-		where DiagRep.status.value in { 'final', 'appended', 'corrected' }
+		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
 		//return ChoiceToIntervalOfDT(DiagRep.effective))
 	union

@@ -61,16 +61,16 @@ define "Denominator Exclusion":
 	or
 	exists (
 		[DiagnosticReport: "Anaphylactic Reaction to Pneumococcal Conjugate Vaccine"] ReactionToVaccine
-			where ReactionToVaccine.status.value in { 'final', 'appended', 'corrected' }
+			where ReactionToVaccine.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and ChoiceToIntervalOfDT(ReactionToVaccine.effective) ends before day of start of "Measurement Period"
 	)
 
 define "Chemotherapy and Bone Marrow Transplant Procedures":
 	([Procedure: "Chemotherapy"] Proc
-		where Proc.status.value = 'completed')
+		where Proc.status.value in { 'in-progress', 'completed' })
 	union
 	([Procedure: "Bone Marrow Transplant"] Proc
-		where Proc.status.value = 'completed')
+		where Proc.status.value in { 'in-progress', 'completed' })
 
 /*
 Denominators and Numerators
@@ -88,25 +88,25 @@ define "Numerator":
 
 define "Pneumococcal Vaccine 13 After Age 60":
 	[Immunization: "Pneumococcal Conjugate Vaccine 13"] V13
-		where V13.status.value = 'completed'
+		where V13.status.value in { 'in-progress', 'completed' }
 			and AgeInYearsAt(V13."date".value) >= 60
 
 define "Pneumococcal Vaccine 23 After Age 60":
 	[Immunization: "Pneumococcal Conjugate Vaccine 23"] V23
-		where V23.status.value = 'completed'
+		where V23.status.value in { 'in-progress', 'completed' }
 			and AgeInYearsAt(V23."date".value) >= 60
 
 define "First Pneumococcal Vaccine 13 After Age 2":
 	First (
 		[Immunization: "Pneumococcal Conjugate Vaccine 13"] V13
-			where V13.status.value = 'completed'
+			where V13.status.value in { 'in-progress', 'completed' }
 				and AgeInYearsAt(V13."date".value) >= 2
 	)
 
 define "PVC13 and PVC23 8 Weeks Apart":
 	"First Pneumococcal Vaccine 13 After Age 2" V13
 		with [Immunization: "Pneumococcal Conjugate Vaccine 23"] V23
-			such that V23.status.value = 'completed'
+			such that V23.status.value in { 'in-progress', 'completed' }
 				and (weeks between V13."date".value and V23."date".value >= 8
 					or weeks between V23."date".value and V13."date".value >= 8)
 	return V13
@@ -132,11 +132,11 @@ define "Immunocompromised Diagnoses":
 		union [DiagnosticReport: "Functional or Aplastic Anemia"]
 		union [DiagnosticReport: "Immunocompromising Conditions"]
 	) D
-		where D.status.value in { 'final', 'appended', 'corrected' }
+		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 
 define "Cochlear Implants on or Before End of Measurement Period":
 	[Procedure: "Cochlear Implants"] CochlearImplant
-		where CochlearImplant.status.value = 'completed'
+		where CochlearImplant.status.value in { 'in-progress', 'completed' }
 			and start of ChoiceToIntervalOfDT(CochlearImplant.performed) same day or before end of "Measurement Period"
 
 /*

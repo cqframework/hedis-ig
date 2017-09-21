@@ -148,7 +148,7 @@ define "Is In Hospice":
 	or
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
-			where HospicePerformed.status.value = 'completed'
+			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
 				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
 	)
 
