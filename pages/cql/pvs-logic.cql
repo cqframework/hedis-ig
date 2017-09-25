@@ -56,21 +56,20 @@ Exclusions
 define "Denominator Exclusion":
 	exists (
 		"Chemotherapy and Bone Marrow Transplant Procedures" ProcedureUnion
-			where ChoiceToIntervalOfDT(ProcedureUnion.performed) during "Measurement Period"
+			where ProcedureUnion.status.value in { 'in-progress', 'completed' }
+				and ChoiceToIntervalOfDT(ProcedureUnion.performed) overlaps "Measurement Period"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Anaphylactic Reaction to Pneumococcal Conjugate Vaccine"] ReactionToVaccine
 			where ReactionToVaccine.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(ReactionToVaccine.effective) ends before day of start of "Measurement Period"
+				and ChoiceToIntervalOfDT(ReactionToVaccine.effective) before "Measurement Period"
 	)
 
 define "Chemotherapy and Bone Marrow Transplant Procedures":
-	([Procedure: "Chemotherapy"] Proc
-		where Proc.status.value in { 'in-progress', 'completed' })
+	[Procedure: "Chemotherapy"]
 	union
-	([Procedure: "Bone Marrow Transplant"] Proc
-		where Proc.status.value in { 'in-progress', 'completed' })
+	[Procedure: "Bone Marrow Transplant"]
 
 /*
 Denominators and Numerators
@@ -79,12 +78,25 @@ Denominators and Numerators
 define "Denominator":
 	"Initial Population"
 
+// TODO: The Numerator logic in the spec appears to have contradictions
+// with the intent of the spec, such as AND meaning union vs intersection;
+// this logic should be given another review.
+
 define "Numerator":
-	exists ("Pneumococcal Vaccine 13 After Age 60")
-		and exists ("Pneumococcal Vaccine 23 After Age 60")
-		and exists ("PVC13 and PVC23 12 Months Apart")
-		and "Immunocompromised Diagnoses or Cochlear Implants"
-		and exists ("PVC13 and PVC23 8 Weeks Apart")
+	"Initial Population"
+	and
+	(
+		"PVC13 After Age 60 And Then PVC23 After 12 More Months"
+		or
+		"PVC13 After Age 2 And Then PVC23 After 8 More Weeks"
+	)
+
+define "PVC13 After Age 60 And Then PVC23 After 12 More Months":
+	exists (
+		"Pneumococcal Vaccine 13 After Age 60" V13
+			with "Pneumococcal Vaccine 23 After Age 60" V23
+				such that months between V13."date".value and V23."date".value >= 12
+	)
 
 define "Pneumococcal Vaccine 13 After Age 60":
 	[Immunization: "Pneumococcal Conjugate Vaccine 13"] V13
@@ -96,43 +108,37 @@ define "Pneumococcal Vaccine 23 After Age 60":
 		where V23.status.value in { 'in-progress', 'completed' }
 			and AgeInYearsAt(V23."date".value) >= 60
 
-define "First Pneumococcal Vaccine 13 After Age 2":
-	First (
-		[Immunization: "Pneumococcal Conjugate Vaccine 13"] V13
-			where V13.status.value in { 'in-progress', 'completed' }
-				and AgeInYearsAt(V13."date".value) >= 2
+define "PVC13 After Age 2 And Then PVC23 After 8 More Weeks":
+	"Immunocompromised Diagnoses or Cochlear Implants"
+	and
+	exists (
+		"Pneumococcal Vaccine 13 After Age 2" V13
+			with "Pneumococcal Vaccine 23 After Age 2" V23
+				such that weeks between V13."date".value and V23."date".value >= 8
 	)
 
-define "PVC13 and PVC23 8 Weeks Apart":
-	"First Pneumococcal Vaccine 13 After Age 2" V13
-		with [Immunization: "Pneumococcal Conjugate Vaccine 23"] V23
-			such that V23.status.value in { 'in-progress', 'completed' }
-				and (weeks between V13."date".value and V23."date".value >= 8
-					or weeks between V23."date".value and V13."date".value >= 8)
-	return V13
+define "Pneumococcal Vaccine 13 After Age 2":
+	[Immunization: "Pneumococcal Conjugate Vaccine 13"] V13
+		where V13.status.value in { 'in-progress', 'completed' }
+			and AgeInYearsAt(V13."date".value) >= 2
 
-define "PVC13 and PVC23 12 Months Apart":
-	"Pneumococcal Vaccine 13 After Age 60" V13
-		with "Pneumococcal Vaccine 23 After Age 60" V23
-			such that months between V13."date".value and V23."date".value >= 12
-				or months between V23."date".value and V13."date".value >= 12
-	return V13
+define "Pneumococcal Vaccine 23 After Age 2":
+	[Immunization: "Pneumococcal Conjugate Vaccine 23"] V23
+		where V23.status.value in { 'in-progress', 'completed' }
+			and AgeInYearsAt(V23."date".value) >= 2
 
 define "Immunocompromised Diagnoses or Cochlear Implants":
 	exists ("Immunocompromised Diagnoses Overlapping Measurement Period")
 		or exists ("Cochlear Implants on or Before End of Measurement Period")
 
 define "Immunocompromised Diagnoses Overlapping Measurement Period":
-	"Immunocompromised Diagnoses" ImmunocompromisedUnion
-		where ChoiceToIntervalOfDT(ImmunocompromisedUnion.effective) overlaps "Measurement Period"
-
-define "Immunocompromised Diagnoses":
 	distinct (
 		[DiagnosticReport: "Cerebrospinal Fluid Leaks"]
 		union [DiagnosticReport: "Functional or Aplastic Anemia"]
 		union [DiagnosticReport: "Immunocompromising Conditions"]
 	) D
 		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+			and ChoiceToIntervalOfDT(D.effective) overlaps "Measurement Period"
 
 define "Cochlear Implants on or Before End of Measurement Period":
 	[Procedure: "Cochlear Implants"] CochlearImplant

@@ -21,9 +21,7 @@ The percentage of members 12 years of age and older who were screened for
 valueset "Major Depression and Dysthymia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1151' // Grouping Value Set
 valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
 valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
-	// TODO: This isn't referenced in any define.
 valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
-	// TODO: This isn't referenced in any define.
 valueset "Behavioral Health Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
 valueset "Case Management Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
 valueset "ECDS Follow-Up Visit Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
@@ -31,7 +29,6 @@ valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Gro
 valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
 valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
 valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
-valueset "ECDS Follow-Up Visit (diagnosis: Major Depression and Dysthymia)": 'TODO' // not in spec Data Criteria
 
 /*
 This library has an explicit parameter which is the measurement year.
@@ -43,8 +40,11 @@ Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2016,1,1,0,0,0,0))
 
 parameter "Measurement Period" Interval<DateTime>
 
-define "Follow-Up Period":
-	Interval[start of "Measurement Period", end of "Measurement Period" - 1 month)
+define "First Predecessor Year":
+	Interval[start of "Measurement Period" - 1 year, start of "Measurement Period")
+
+define "Lookback Interval One More Year":
+	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period")
 
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
@@ -67,17 +67,21 @@ Exclusions
 
 define "Denominator Exclusion":
 	exists (
-		// TODO: The other 2 Bipolar Disorder valuesets aren't used anywhere, how about here?
-		[DiagnosticReport: "Bipolar Disorder"] BD
+		"Bipolar Disorder Reports" BD
 			where BD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and months between start of ChoiceToIntervalOfDT(BD.effective) and end of "Measurement Period" <= 23
+				and ChoiceToIntervalOfDT(BD.effective) overlaps "Lookback Interval One More Year"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Major Depression and Dysthymia"] MDD
 			where MDD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and months between end of ChoiceToIntervalOfDT(MDD.effective) and start of "Measurement Period" <= 12
+				and ChoiceToIntervalOfDT(MDD.effective) overlaps "First Predecessor Year"
 	)
+
+define "Bipolar Disorder Reports":
+	[DiagnosticReport: "Bipolar Disorder"]
+		union [DiagnosticReport: "Bipolar Disorder ECDS"]
+		union [DiagnosticReport: "Other Bipolar Disorder"]
 
 /*
 Denominators and Numerators
@@ -89,36 +93,55 @@ define "Denominator 1":
 
 // Depression Screening
 define "Numerator 1":
+	"Initial Population"
+	and
 	exists (
 		[Observation: "Depression Screen"] DepressionScreen
 			where DepressionScreen.status.value in { 'final', 'amended' }
-				and ChoiceToIntervalOfDT(DepressionScreen.effective) during "Measurement Period"
+				and ChoiceToIntervalOfDT(DepressionScreen.effective) overlaps "Measurement Period"
 	)
-
-define "Positive Depression Screen During Follow-Up Period":
-	[Observation: "Positive Depression Screen"] PositiveScreen
-		where PositiveScreen.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(PositiveScreen.effective) during "Follow-Up Period"
 
 // Positive Follow-Up
 define "Denominator 2":
 	"Initial Population"
 	and exists ("Positive Depression Screen During Follow-Up Period")
 
+// Positive Follow-Up
+define "Numerator 2":
+	"Initial Population"
+	and
+	(
+		exists ("Dispensed Antidepressant Within 31 Days")
+		or exists ("Follow-Up Encounter Within 31 Days")
+		or exists ("Same Day Behavioral Encounter")
+		or exists ("Negative Depression Screen Within 31 Days")
+	)
+
+define "Positive Depression Screen During Follow-Up Period":
+	[Observation: "Positive Depression Screen"] PositiveScreen
+		where PositiveScreen.status.value in { 'final', 'amended' }
+			and ChoiceToIntervalOfDT(PositiveScreen.effective) overlaps "Measurement Period"
+
+define "First Positive Depression Screen During Follow-Up Period":
+	{First(
+		"Positive Depression Screen During Follow-Up Period" Obs
+			sort by start of ChoiceToIntervalOfDT(effective)
+	)}
+
 define "Follow-Up Care Encounters":
-	([Encounter: "Behavioral Health Encounter"] Enc
-		where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' })
-		// NOTE: This valueset appears to be mislabeled - should it be "ECDS Follow-Up Visit Encounter"?
-	union
-	([Encounter: "ECDS Follow-Up Visit (diagnosis: Major Depression and Dysthymia)"] Enc
-		where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' })
-	union
-	([Encounter: "Case Management Encounter"] Enc
-		where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' })
+	distinct (
+		[Encounter: "Behavioral Health Encounter"]
+		union
+		[Encounter: "ECDS Follow-Up Visit Encounter"]
+			// TODO: Filter this to Encounter with a diagnosis of depression ("Major Depression and Dysthymia" valueset).
+		union
+		[Encounter: "Case Management Encounter"]
+	) Enc
+		where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 
 define "Same Day Behavioral Encounter":
 	[Encounter: "Behavioral Health Encounter"] BehavioralEncounter
-		with "Positive Depression Screen During Follow-Up Period" PositiveScreen
+		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that BehavioralEncounter.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and start of PeriodToIntervalOfDT(BehavioralEncounter.period) same day as start of ChoiceToIntervalOfDT(PositiveScreen.effective)
 	return BehavioralEncounter
@@ -128,31 +151,24 @@ define "Dispensed Antidepressant Within 31 Days":
 	// OR
 	// TODO: Check for Medications outlined in table AMM-C in the spec
 	[MedicationDispense: "Antidepressant Medication"] Antidepressants
-		with "Positive Depression Screen During Follow-Up Period" PositiveScreen
+		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that Antidepressants.status.value = 'completed'
 				and days between Antidepressants.whenHandedOver.value and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
 	return Antidepressants
 
 define "Follow-Up Encounter Within 31 Days":
 	"Follow-Up Care Encounters" FollowUps
-		with "Positive Depression Screen During Follow-Up Period" PositiveScreen
+		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that days between start of PeriodToIntervalOfDT(FollowUps.period) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) >= 1
 				and days between start of PeriodToIntervalOfDT(FollowUps.period) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
 	return FollowUps
 
 define "Negative Depression Screen Within 31 Days":
 	[Observation: "Negative Depression Screen"] NegativeScreen
-		with "Positive Depression Screen During Follow-Up Period" PositiveScreen
+		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that NegativeScreen.status.value in { 'final', 'amended' }
 				and days between start of ChoiceToIntervalOfDT(NegativeScreen.effective) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
 	return NegativeScreen
-
-// Positive Follow-Up
-define "Numerator 2":
-	exists ("Dispensed Antidepressant Within 31 Days")
-	or exists ("Follow-Up Encounter Within 31 Days")
-	or exists ("Same Day Behavioral Encounter")
-	or exists ("Negative Depression Screen Within 31 Days")
 
 /*
 Stratifiers
