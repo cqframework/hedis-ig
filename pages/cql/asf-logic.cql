@@ -51,6 +51,9 @@ define "Fourteen Month Measurement Period":
 define "Intake Period":
 	Interval[start of "Measurement Period" - 2 months, end of "Measurement Period" - 2 months)
 
+define "Lookback Interval Total Two Years":
+	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period")
+
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
 that patient being given by the special context parameter Patient.
@@ -74,7 +77,7 @@ define "Denominator Exclusion":
 	exists (
 		[DiagnosticReport: "Alcohol use disorder"] D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) starts 24 months or less before end of "Fourteen Month Measurement Period"
+				and ChoiceToIntervalOfDT(D.effective) overlaps "Lookback Interval Total Two Years"
 	)
 	or
 	exists (
@@ -87,8 +90,22 @@ define "Denominator Exclusion":
 Denominators and Numerators
 */
 
+// Unhealthy Alcohol Use Screening
 define "Denominator 1":
 	"Initial Population"
+
+// Unhealthy Alcohol Use Screening
+define "Numerator 1":
+	"Initial Population"
+	and
+	(
+		exists ("AUDIT-C Assessment")
+		or exists ("AUDIT Assessment")
+		or ("Patient is Male" and exists ("Five or more drinks per day Assessment"))
+		or ("Patient is Female" and exists ("Four or more drinks per day Assessment"))
+		or ("Patient is over 65" and exists ("Four or more drinks per day Assessment"))
+			// Note: The spec doesn't include the over 65 test here but does in dependent N/D 2.
+	)
 
 define "AUDIT-C Assessment":
 	[Observation: "AUDIT-C Total Score (in points)"] A
@@ -123,15 +140,19 @@ define "Four or more drinks per day Assessment":
 			and ChoiceToIntervalOfDT(A.effective) during "Intake Period"
 			and A.value is not null
 
-define "Numerator 1":
+// Counseling or Other Follow-Up on Positive Screen
+define "Denominator 2":
 	"Initial Population"
 	and
-	(
-		exists ("AUDIT-C Assessment")
-		or exists ("AUDIT Assessment")
-		or ("Patient is Male" and exists ("Five or more drinks per day Assessment"))
-		or ("Patient is Female" and exists ("Four or more drinks per day Assessment"))
-		or ("Patient is over 65" and exists ("Four or more drinks per day Assessment"))
+	exists "Positive Assessment for Unhealthy Alcohol Use"
+
+// Counseling or Other Follow-Up on Positive Screen
+define "Numerator 2":
+	"Initial Population"
+	and
+	exists (
+		"Initial Positive Assessment for Unhealthy Alcohol Use" A
+			with "Followup Screening" F such that ChoiceToIntervalOfDT(F.effective) starts 2 months or less after end of ChoiceToIntervalOfDT(A.effective)
 	)
 
 define "Positive Assessment for Unhealthy Alcohol Use":
@@ -157,11 +178,6 @@ define "Positive Assessment for Unhealthy Alcohol Use":
 				and (A.value as Quantity).value.value >= 2
 	)
 
-define "Denominator 2":
-	"Initial Population"
-	and
-	exists "Positive Assessment for Unhealthy Alcohol Use"
-
 define "Followup Screening":
 	[Observation: "Alcohol Screening and Brief Counseling"] Obs
 		where Obs.status.value in { 'final', 'amended' }
@@ -171,14 +187,6 @@ define "Initial Positive Assessment for Unhealthy Alcohol Use":
 		"Positive Assessment for Unhealthy Alcohol Use" A
 			sort by start of ChoiceToIntervalOfDT(effective)
 	)}
-
-define "Numerator 2":
-	"Initial Population"
-	and
-	exists (
-		"Initial Positive Assessment for Unhealthy Alcohol Use" A
-			with "Followup Screening" F such that ChoiceToIntervalOfDT(F.effective) starts 2 months or less after end of ChoiceToIntervalOfDT(A.effective)
-	)
 
 /*
 Stratifiers
