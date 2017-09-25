@@ -22,7 +22,6 @@ valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.10
 valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074' // Grouping Value Set
 valueset "PHQ9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
 valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
-valueset "Pervasive Development Disorder": 'TODO' // not in spec Data Criteria
 
 /*
 This library has an explicit parameter which is the measurement year.
@@ -87,9 +86,13 @@ define "Denominator Exclusion":
 	exists (
 		distinct (
 			[DiagnosticReport: "Bipolar Disorder"]
+					// TODO: The spec mentions 3 Bipolar valuesets, which are like
+					// the ones in DSF, but it only gives OIDs for one of the 3
+					// and that OID is different than any in DSF.
+					// Note that DMS and DRR are in the same boat.
 				union [DiagnosticReport: "Personality Disorder"]
 				union [DiagnosticReport: "Psychotic Disorder"]
-				union [DiagnosticReport: "Pervasive Development Disorder"]
+				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and ChoiceToIntervalOfDT(D.effective) overlaps "Measurement Period"
@@ -129,14 +132,12 @@ define "Depression Encounters":
 
 define "PHQ-9 Score":
 	distinct (
-		([Observation: "PHQ-9 Tool"] A
-			where A.status.value in { 'final', 'amended' }
-				and A.value is not null)
+		[Observation: "PHQ-9 Tool"]
 		union
-		([Observation: "PHQ9 Modified Score"] A
-			where A.status.value in { 'final', 'amended' }
-				and A.value is not null)
-	)
+		[Observation: "PHQ9 Modified Score"]
+	) A
+		where A.status.value in { 'final', 'amended' }
+			and A.value is not null
 
 define "Numerator 1":
 	"Denominator 1" E

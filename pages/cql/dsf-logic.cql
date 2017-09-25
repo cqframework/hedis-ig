@@ -132,8 +132,13 @@ define "Follow-Up Care Encounters":
 	distinct (
 		[Encounter: "Behavioral Health Encounter"]
 		union
-		[Encounter: "ECDS Follow-Up Visit Encounter"]
-			// TODO: Filter this to Encounter with a diagnosis of depression ("Major Depression and Dysthymia" valueset).
+		(
+			[Encounter: "ECDS Follow-Up Visit Encounter"] E
+				with [DiagnosticReport: "Major Depression and Dysthymia"] D
+					such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
+						and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+						and ChoiceToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
+		)
 		union
 		[Encounter: "Case Management Encounter"]
 	) Enc

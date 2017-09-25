@@ -124,11 +124,15 @@ define "Four or more drinks per day Assessment":
 			and A.value is not null
 
 define "Numerator 1":
-	exists ("AUDIT-C Assessment")
-	or exists ("AUDIT Assessment")
-	or ("Patient is Male" and exists ("Five or more drinks per day Assessment"))
-	or ("Patient is Female" and exists ("Four or more drinks per day Assessment"))
-	or ("Patient is over 65" and exists ("Four or more drinks per day Assessment"))
+	"Initial Population"
+	and
+	(
+		exists ("AUDIT-C Assessment")
+		or exists ("AUDIT Assessment")
+		or ("Patient is Male" and exists ("Five or more drinks per day Assessment"))
+		or ("Patient is Female" and exists ("Four or more drinks per day Assessment"))
+		or ("Patient is over 65" and exists ("Four or more drinks per day Assessment"))
+	)
 
 define "Positive Assessment for Unhealthy Alcohol Use":
 	(
@@ -154,6 +158,8 @@ define "Positive Assessment for Unhealthy Alcohol Use":
 	)
 
 define "Denominator 2":
+	"Initial Population"
+	and
 	exists "Positive Assessment for Unhealthy Alcohol Use"
 
 define "Followup Screening":
@@ -167,6 +173,8 @@ define "Initial Positive Assessment for Unhealthy Alcohol Use":
 	)}
 
 define "Numerator 2":
+	"Initial Population"
+	and
 	exists (
 		"Initial Positive Assessment for Unhealthy Alcohol Use" A
 			with "Followup Screening" F such that ChoiceToIntervalOfDT(F.effective) starts 2 months or less after end of ChoiceToIntervalOfDT(A.effective)

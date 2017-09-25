@@ -41,6 +41,13 @@ Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2016,1,1,0,0,0,0))
 
 parameter "Measurement Period" Interval<DateTime>
 
+// Intake Period: June 1 of the year prior to the measurement period through May 31 of the measurement period.
+define "Intake Period As MP Shifted Back 7 Months":
+	Interval[start of "Measurement Period" - 7 months, end of "Measurement Period" - 7 months)
+
+define "Intake Period Union Measurement Period":
+	Interval[start of "Measurement Period" - 7 months, end of "Measurement Period" - 7 months)
+
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
 that patient being given by the special context parameter Patient.
@@ -55,49 +62,38 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 
 define "Initial Population":
 	AgeInYearsAt(start of "Measurement Period") >= 12
-		and exists ("DRR Encounter")
-		and exists ("Depression Diagnosis Overlaps DRREncounter")
+	and
+	exists (
+		"DRR Encounter" DRR
+			with [DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
+				such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+					and ChoiceToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
+	)
 
 define "DRR Encounter":
 	[Encounter: "Interactive Outpatient Encounter"] DRR
 		where DRR.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-			and start of PeriodToIntervalOfDT(DRR.period) same day or before start of "Measurement Period"
-			and months between start of PeriodToIntervalOfDT(DRR.period) and start of "Measurement Period" <= 6
-			or start of "Measurement Period" before day of start of PeriodToIntervalOfDT(DRR.period)
-				and months between start of "Measurement Period" and end of PeriodToIntervalOfDT(DRR.period) <= 5
-
-define "Depression Diagnosis Overlaps DRREncounter":
-	[DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
-		with "DRR Encounter" DRR
-			such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
-		return DepressionDiagnosis
+			and PeriodToIntervalOfDT(DRR.period) during "Intake Period As MP Shifted Back 7 Months"
 
 /*
 Exclusions
 */
 
 define "Denominator Exclusion":
-	exists ("Exclusion Diagnoses Overlapping Measurement Period")
-		or exists ("Exclusion Diagnoses 6 Months Before Measurement Period")
-
-define "Exclusion Diagnoses":
-	distinct (
-		[DiagnosticReport: "Bipolar Disorder"]
-		union [DiagnosticReport: "Personality Disorder"]
-		union [DiagnosticReport: "Psychotic Disorder"]
-		union [DiagnosticReport: "Pervasive Developmental Disorder"]
-	) D
-		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-
-define "Exclusion Diagnoses Overlapping Measurement Period":
-	"Exclusion Diagnoses" ED
-		where ChoiceToIntervalOfDT(ED.effective) overlaps "Measurement Period"
-
-define "Exclusion Diagnoses 6 Months Before Measurement Period":
-	"Exclusion Diagnoses" ED
-		where start of ChoiceToIntervalOfDT(ED.effective) before day of start of "Measurement Period"
-			and months between start of ChoiceToIntervalOfDT(ED.effective) and start of "Measurement Period" <= 6
+	exists (
+		distinct (
+			[DiagnosticReport: "Bipolar Disorder"]
+					// TODO: The spec mentions 3 Bipolar valuesets, which are like
+					// the ones in DSF, but it only gives OIDs for one of the 3
+					// and that OID is different than any in DSF.
+					// Note that DMS and DRR are in the same boat.
+				union [DiagnosticReport: "Personality Disorder"]
+				union [DiagnosticReport: "Psychotic Disorder"]
+				union [DiagnosticReport: "Pervasive Developmental Disorder"]
+		) D
+			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+				and ChoiceToIntervalOfDT(D.effective) overlaps "Intake Period Union Measurement Period"
+	)
 
 /*
 Denominators and Numerators
@@ -111,12 +107,16 @@ define "Denominator 1":
 
 // Depression Follow-Up
 define "Numerator 1":
-	"PHQ-9 Assessments" PHQ
-		with "Depression Index" DI
-			such that ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
-	return PHQ
+	"Initial Population"
+	and
+	exists (
+		"PHQ-9 Assessments" PHQ
+			with "Depression Index" DI
+				such that ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+		return PHQ
+	)
 
 // Depression Remission
 define "Denominator 2":
@@ -124,13 +124,17 @@ define "Denominator 2":
 
 // Depression Remission
 define "Numerator 2":
-	"PHQ-9 Assessments" PHQ
-		with "Depression Index" DI
-			such that (PHQ.value as Quantity).value.value < 5
-				and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
-	return PHQ
+	"Initial Population"
+	and
+	exists (
+		"PHQ-9 Assessments" PHQ
+			with "Depression Index" DI
+				such that (PHQ.value as Quantity).value.value < 5
+					and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+		return PHQ
+	)
 
 // Depression Response
 define "Denominator 3":
@@ -138,13 +142,17 @@ define "Denominator 3":
 
 // Depression Response
 define "Numerator 3":
-	"PHQ-9 Assessments" PHQ
-		with "Depression Index" DI
-			such that (PHQ.value as Quantity).value.value <= (DI.value as Quantity).value.value / 2
-				and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
-	return PHQ
+	"Initial Population"
+	and
+	exists (
+		"PHQ-9 Assessments" PHQ
+			with "Depression Index" DI
+				such that (PHQ.value as Quantity).value.value <= (DI.value as Quantity).value.value / 2
+					and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
+					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+		return PHQ
+	)
 
 define "Depression Index":
 	First (
@@ -160,14 +168,12 @@ define "Depression Index":
 
 define "PHQ-9 Assessments":
 	distinct (
-		([Observation: "PHQ-9 Tool"] PHQ
-			where PHQ.status.value in { 'final', 'amended' }
-				and PHQ.value is not null)
+		[Observation: "PHQ-9 Tool"]
 		union
-		([Observation: "PHQ-9 Modified Score"] PHQMOD
-			where PHQMOD.status.value in { 'final', 'amended' }
-				and PHQMOD.value is not null)
-	)
+		[Observation: "PHQ-9 Modified Score"]
+	) PHQ
+		where PHQ.status.value in { 'final', 'amended' }
+			and PHQ.value is not null
 
 /*
 Stratifiers
