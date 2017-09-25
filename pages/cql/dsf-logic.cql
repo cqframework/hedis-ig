@@ -83,10 +83,12 @@ define "Denominator Exclusion":
 Denominators and Numerators
 */
 
-define "Depression Screening Denominator":
+// Depression Screening
+define "Denominator 1":
 	"Initial Population"
 
-define "Depression Screening Numerator":
+// Depression Screening
+define "Numerator 1":
 	exists (
 		[Observation: "Depression Screen"] DepressionScreen
 			where DepressionScreen.status.value in { 'final', 'amended' }
@@ -98,7 +100,8 @@ define "Positive Depression Screen During Follow-Up Period":
 		where PositiveScreen.status.value in { 'final', 'amended' }
 			and ChoiceToIntervalOfDT(PositiveScreen.effective) during "Follow-Up Period"
 
-define "Positive Follow-Up Denominator":
+// Positive Follow-Up
+define "Denominator 2":
 	"Initial Population"
 	and exists ("Positive Depression Screen During Follow-Up Period")
 
@@ -144,7 +147,8 @@ define "Negative Depression Screen Within 31 Days":
 				and days between start of ChoiceToIntervalOfDT(NegativeScreen.effective) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
 	return NegativeScreen
 
-define "Positive Follow-Up Numerator":
+// Positive Follow-Up
+define "Numerator 2":
 	exists ("Dispensed Antidepressant Within 31 Days")
 	or exists ("Follow-Up Encounter Within 31 Days")
 	or exists ("Same Day Behavioral Encounter")

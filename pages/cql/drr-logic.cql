@@ -103,12 +103,14 @@ define "Exclusion Diagnoses 6 Months Before Measurement Period":
 Denominators and Numerators
 */
 
-define "Depression Follow-Up Denominator":
+// Depression Follow-Up
+define "Denominator 1":
 	"Initial Population"
 		and exists ("DRR Encounter")
 		and "Depression Index" is not null
 
-define "Depression Follow-Up Numerator":
+// Depression Follow-Up
+define "Numerator 1":
 	"PHQ-9 Assessments" PHQ
 		with "Depression Index" DI
 			such that ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
@@ -116,10 +118,12 @@ define "Depression Follow-Up Numerator":
 				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
 	return PHQ
 
-define "Depression Remission Denominator":
-	"Depression Follow-Up Denominator"
+// Depression Remission
+define "Denominator 2":
+	"Denominator 1"
 
-define "Depression Remission Numerator":
+// Depression Remission
+define "Numerator 2":
 	"PHQ-9 Assessments" PHQ
 		with "Depression Index" DI
 			such that (PHQ.value as Quantity).value.value < 5
@@ -128,10 +132,12 @@ define "Depression Remission Numerator":
 				and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
 	return PHQ
 
-define "Depression Response Denominator":
-	"Depression Follow-Up Denominator"
+// Depression Response
+define "Denominator 3":
+	"Denominator 1"
 
-define "Depression Response Numerator":
+// Depression Response
+define "Numerator 3":
 	"PHQ-9 Assessments" PHQ
 		with "Depression Index" DI
 			such that (PHQ.value as Quantity).value.value <= (DI.value as Quantity).value.value / 2
