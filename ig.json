@@ -1,450 +1,459 @@
 {
-	"tool": "jekyll",
-	"paths": {
-		"resources": [
-			"resources"
-		],
-		"pages": "pages",
-		"temp": "temp",
-		"output": "output",
-		"qa": "qa",
-		"specification": "http://hl7.org/fhir/"
-	},
-	"logging": ["init", "progress", "context", "html", "tx"],
-	"defaults": {
-		"Any": {
-			"template-format": "instance-template-format.html",
-			"template-base": "instance-template-base.html"
-		},
-		"Claim": {
-			"template-format": "instance-template-example.html"
-		},
-		"Condition": {
-			"template-format": "instance-template-example.html"
-		},
-		"Coverage": {
-			"template-format": "instance-template-example.html"
-		},
-		"DiagnosticReport": {
-			"template-format": "instance-template-example.html"
-		},
-		"Encounter": {
-			"template-format": "instance-template-example.html"
-		},
-		"MedicationDispense": {
-			"template-format": "instance-template-example.html"
-		},
-		"MedicationRequest": {
-			"template-format": "instance-template-example.html"
-		},
-		"Observation": {
-			"template-format": "instance-template-example.html"
-		},
-		"Patient": {
-			"template-format": "instance-template-example.html"
-		},
-		"Procedure": {
-			"template-format": "instance-template-example.html"
-		},
-		"StructureDefinition": {
-			"template-base": "instance-template-sd.html",
-			"template-mappings":"instance-template-sd-mappings.html",
-			"template-defns":"instance-template-sd-definitions.html"
-		}
-	},
-	"sct-edition": "http://snomed.info/sct/731000124108",
-	"extraTemplates": [
-		"mappings"
-	],
-	"canonicalBase": "http://hl7.org/fhir/us/hedis",
-	"source": "hedis.xml",
-	"bundles": [
-		"bundle-patient",
-		"bundle-network",
+  "tool": "jekyll",
+  "paths": {
+    "resources": [
+      "resources"
+    ],
+    "pages": "pages",
+    "temp": "temp",
+    "output": "output",
+    "qa": "qa",
+    "specification": "http://hl7.org/fhir/"
+  },
+  "logging": ["init", "progress", "context", "html", "tx"],
+  "defaults": {
+    "Any": {
+      "template-format": "instance-template-format.html",
+      "template-base": "instance-template-base.html"
+    },
+    "Claim": {
+      "template-format": "instance-template-example.html"
+    },
+    "Condition": {
+      "template-format": "instance-template-example.html"
+    },
+    "Coverage": {
+      "template-format": "instance-template-example.html"
+    },
+    "DiagnosticReport": {
+      "template-format": "instance-template-example.html"
+    },
+    "Encounter": {
+      "template-format": "instance-template-example.html"
+    },
+    "MedicationDispense": {
+      "template-format": "instance-template-example.html"
+    },
+    "MedicationRequest": {
+      "template-format": "instance-template-example.html"
+    },
+    "Observation": {
+      "template-format": "instance-template-example.html"
+    },
+    "Patient": {
+      "template-format": "instance-template-example.html"
+    },
+    "Procedure": {
+      "template-format": "instance-template-example.html"
+    },
+    "StructureDefinition": {
+      "template-base": "instance-template-sd.html",
+      "template-mappings":"instance-template-sd-mappings.html",
+      "template-defns":"instance-template-sd-definitions.html"
+    }
+  },
+  "sct-edition": "http://snomed.info/sct/731000124108",
+  "extraTemplates": [
+    "mappings"
+  ],
+  "canonicalBase": "http://hl7.org/fhir/us/hedis",
+  "source": "hedis.xml",
+  "bundles": [
+    "bundle-patient",
+    "bundle-network",
 
-		"bundle-amj-181",
-		"bundle-amj-318",
-		"bundle-amj-377",
-		"bundle-amj-421",
-		"bundle-amj-480",
-		"bundle-amj-523",
-		"bundle-amj-612",
-		"bundle-amj-703",
-		"bundle-amj-797",
-		"bundle-amj-889",
-		"bundle-amj-976",
-		"bundle-amj-1064",
+    "bundle-aes-asf",
+    "bundle-aes-dms",
 
-		"bundle-aes-182",
-		"bundle-aes-319",
-		"bundle-aes-607",
-		"bundle-aes-881",
+    "bundle-arg-asf",
+    "bundle-arg-col",
+    "bundle-arg-drr",
 
-		"bundle-arg-183",
-		"bundle-arg-324",
-		"bundle-arg-426",
-		"bundle-arg-525",
-		"bundle-arg-614",
-		"bundle-arg-705",
-		"bundle-arg-800",
-		"bundle-arg-891",
-		"bundle-arg-978",
-		"bundle-arg-1066",
+    "bundle-av-ccs",
+    "bundle-av-drr",
+    "bundle-av-dsf",
 
-		"bundle-acc-184",
-		"bundle-acc-414",
-		"bundle-acc-690",
-		"bundle-acc-962",
+    "bundle-aaw-dms",
+    "bundle-aaw-drr",
+    "bundle-aaw-dsf",
 
-		"bundle-av-185",
-		"bundle-av-375",
-		"bundle-av-653",
-		"bundle-av-927"
+    "bundle-ach-dms",
+    "bundle-ach-drr",
+    "bundle-ach-dsf",
 
-	],
-	"spreadsheets": [
-		"claim/claim-profile-spreadsheet.xml",
-		"condition/condition-profile-spreadsheet.xml",
-		"coverage/coverage-profile-spreadsheet.xml",
-		"diagnosticreport/diagnosticreport-profile-spreadsheet.xml",
-		"encounter/encounter-profile-spreadsheet.xml",
-		"medicationdispense/medicationdispense-profile-spreadsheet.xml",
-		"medicationrequest/medicationrequest-profile-spreadsheet.xml",
-		"observation/observation-profile-spreadsheet.xml",
-		"observation/quantitativeobservation-profile-spreadsheet.xml",
-		"patient/patient-profile-spreadsheet.xml",
-		"procedure/procedure-profile-spreadsheet.xml",
-		"procedurerequest/procedurerequest-profile-spreadsheet.xml"
-	],
-	"resources": {
-		"Bundle/bundle-network": {
-			"base": "Bundle-bundle-network.html"
-		},
-		"Bundle/bundle-patient": {
-			"base": "Bundle-bundle-patient.html"
-		},
+    "bundle-arn-asf",
+    "bundle-arn-bcs",
+    "bundle-arn-col",
 
-		"Bundle/bundle-amj-181": {
-			"base": "Bundle-bundle-amj-181.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-181.json"
-		},
-		"Bundle/bundle-amj-318": {
-			"base": "Bundle-bundle-amj-318.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-318.json"
-		},
-		"Bundle/bundle-amj-377": {
-			"base": "Bundle-bundle-amj-377.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-377.json"
-		},
-		"Bundle/bundle-amj-421": {
-			"base": "Bundle-bundle-amj-421.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-421.json"
-		},
-		"Bundle/bundle-amj-480": {
-			"base": "Bundle-bundle-amj-480.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-480.json"
-		},
-		"Bundle/bundle-amj-523": {
-			"base": "Bundle-bundle-amj-523.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-523.json"
-		},
-		"Bundle/bundle-amj-612": {
-			"base": "Bundle-bundle-amj-612.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-612.json"
-		},
-		"Bundle/bundle-amj-703": {
-			"base": "Bundle-bundle-amj-703.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-703.json"
-		},
-		"Bundle/bundle-amj-797": {
-			"base": "Bundle-bundle-amj-797.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-797.json"
-		},
-		"Bundle/bundle-amj-889": {
-			"base": "Bundle-bundle-amj-889.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-889.json"
-		},
-		"Bundle/bundle-amj-976": {
-			"base": "Bundle-bundle-amj-976.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-976.json"
-		},
-		"Bundle/bundle-amj-1064": {
-			"base": "Bundle-bundle-amj-1064.html",
-			"source": "bundle/history/Aiden Michael Jones/Aiden Michael Jones-1137-Encounter-1064.json"
-		},
+    "bundle-dsr-asf",
+    "bundle-dsr-col",
+    "bundle-dsr-dsf",
+    "bundle-dsr-pvs",
 
-		"Bundle/bundle-aes-182": {
-			"base": "Bundle-bundle-amj-182.html",
-			"source": "bundle/history/Alan Everett Shea III/Alan Everett Shea III-6529-Encounter-182.json"
-		},
-		"Bundle/bundle-aes-319": {
-			"base": "Bundle-bundle-amj-319.html",
-			"source": "bundle/history/Alan Everett Shea III/Alan Everett Shea III-6529-Encounter-319.json"
-		},
-		"Bundle/bundle-aes-607": {
-			"base": "Bundle-bundle-amj-607.html",
-			"source": "bundle/history/Alan Everett Shea III/Alan Everett Shea III-6529-Encounter-607.json"
-		},
-		"Bundle/bundle-aes-881": {
-			"base": "Bundle-bundle-amj-881.html",
-			"source": "bundle/history/Alan Everett Shea III/Alan Everett Shea III-6529-Encounter-881.json"
-		},
+    "bundle-dmg-dms",
+    "bundle-dmg-drr",
+    "bundle-dmg-dsf",
 
-		"Bundle/bundle-arg-183": {
-			"base": "Bundle-bundle-arg-183.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-183.json"
-		},
-		"Bundle/bundle-arg-324": {
-			"base": "Bundle-bundle-arg-324.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-324.json"
-		},
-		"Bundle/bundle-arg-426": {
-			"base": "Bundle-bundle-arg-426.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-426.json"
-		},
-		"Bundle/bundle-arg-525": {
-			"base": "Bundle-bundle-arg-525.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-525.json"
-		},
-		"Bundle/bundle-arg-614": {
-			"base": "Bundle-bundle-arg-614.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-614.json"
-		},
-		"Bundle/bundle-arg-705": {
-			"base": "Bundle-bundle-arg-705.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-705.json"
-		},
-		"Bundle/bundle-arg-800": {
-			"base": "Bundle-bundle-arg-800.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-800.json"
-		},
-		"Bundle/bundle-arg-891": {
-			"base": "Bundle-bundle-arg-891.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-891.json"
-		},
-		"Bundle/bundle-arg-978": {
-			"base": "Bundle-bundle-arg-978.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-978.json"
-		},
-		"Bundle/bundle-arg-1066": {
-			"base": "Bundle-bundle-arg-1066.html",
-			"source": "bundle/history/Alex Ramirez Gonzales/Alex Ramirez Gonzales-1132-Encounter-1066.json"
-		},
+    "bundle-mbw-asf",
+    "bundle-mbw-dms",
 
-		"Bundle/bundle-acc-184": {
-			"base": "Bundle-bundle-acc-184.html",
-			"source": "bundle/history/Alfredo Curtis Cooley III/Alfredo Curtis Cooley III-6481-Encounter-184.json"
-		},
-		"Bundle/bundle-acc-414": {
-			"base": "Bundle-bundle-acc-414.html",
-			"source": "bundle/history/Alfredo Curtis Cooley III/Alfredo Curtis Cooley III-6481-Encounter-414.json"
-		},
-		"Bundle/bundle-acc-690": {
-			"base": "Bundle-bundle-acc-690.html",
-			"source": "bundle/history/Alfredo Curtis Cooley III/Alfredo Curtis Cooley III-6481-Encounter-690.json"
-		},
-		"Bundle/bundle-acc-962": {
-			"base": "Bundle-bundle-acc-962.html",
-			"source": "bundle/history/Alfredo Curtis Cooley III/Alfredo Curtis Cooley III-6481-Encounter-962.json"
-		},
+    "bundle-vjc-asf",
+    "bundle-vjc-bcs",
+    "bundle-vjc-ccs",
+    "bundle-vjc-col",
+    "bundle-vjc-dms",
+    "bundle-vjc-drr",
+    "bundle-vjc-dsf",
+    "bundle-vjc-pvs"
+  ],
+  "spreadsheets": [
+    "claim/claim-profile-spreadsheet.xml",
+    "condition/condition-profile-spreadsheet.xml",
+    "coverage/coverage-profile-spreadsheet.xml",
+    "diagnosticreport/diagnosticreport-profile-spreadsheet.xml",
+    "encounter/encounter-profile-spreadsheet.xml",
+    "medicationdispense/medicationdispense-profile-spreadsheet.xml",
+    "medicationrequest/medicationrequest-profile-spreadsheet.xml",
+    "observation/observation-profile-spreadsheet.xml",
+    "observation/quantitativeobservation-profile-spreadsheet.xml",
+    "patient/patient-profile-spreadsheet.xml",
+    "procedure/procedure-profile-spreadsheet.xml",
+    "procedurerequest/procedurerequest-profile-spreadsheet.xml"
+  ],
+  "resources": {
+    "Bundle/bundle-network": {
+      "base": "Bundle-bundle-network.html"
+    },
+    "Bundle/bundle-patient": {
+      "base": "Bundle-bundle-patient.html"
+    },
 
-		"Bundle/bundle-av-185": {
-			"base": "Bundle-bundle-av-185.html",
-			"source": "bundle/history/Alice Vargas/Alice Vargas-1153-Encounter-185.json"
-		},
-		"Bundle/bundle-av-375": {
-			"base": "Bundle-bundle-av-375.html",
-			"source": "bundle/history/Alice Vargas/Alice Vargas-1153-Encounter-375.json"
-		},
-		"Bundle/bundle-av-653": {
-			"base": "Bundle-bundle-av-653.html",
-			"source": "bundle/history/Alice Vargas/Alice Vargas-1153-Encounter-653.json"
-		},
-		"Bundle/bundle-av-927": {
-			"base": "Bundle-bundle-av-927.html",
-			"source": "bundle/history/Alice Vargas/Alice Vargas-1153-Encounter-927.json"
-		},
-		
-		"CapabilityStatement/measure-calculation-service": {
-			"base": "CapabilityStatement-measure-calculation-service.html"
-		},
-		"Condition/Condition-13": {
-			"base": "Condition-Condition-13.html"
-		},
-		"Endpoint/001": {
-			"base": "Endpoint-endpoint-001.html"
-		},
-		"Library/library-bcs-logic": {
-			"base": "Library-library-bcs-logic.html"
-		},
-		"Library/library-cbp-logic": {
-			"base": "Library-library-cbp-logic.html"
-		},
-		"Library/library-ccs-logic": {
-			"base": "Library-library-ccs-logic.html"
-		},
-		"Library/library-cdc-logic": {
-			"base": "Library-library-cdc-logic.html"
-		},
-		"Library/library-col-logic": {
-			"base": "Library-library-col-logic.html"
-		},
-		"Library/library-wcc-aba-logic": {
-			"base": "Library-library-wcc-aba-logic.html"
-		},
-		"Measure/measure-bcs": {
-			"base": "Measure-measure-bcs.html"
-		},
-		"Measure/measure-cbp": {
-			"base": "Measure-measure-cbp.html"
-		},
-		"Measure/measure-ccs": {
-			"base": "Measure-measure-ccs.html"
-		},
-		"Measure/measure-cdc": {
-			"base": "Measure-measure-cdc.html"
-		},
-		"Measure/measure-col": {
-			"base": "Measure-measure-col.html"
-		},
-		"Measure/measure-wcc-aba": {
-			"base": "Measure-measure-wcc-aba.hmtl"
-		},
-		"Organization/organization-2002": {
-			"base": "Organization-Organization-2002.html"
-		},
-		"Organization/organization-2000": {
-			"base": "Organization-Organization-2000.html"
-		},
-		"Medication/medication-001": {
-			"base": "Medication-Medication-001.html"
-		},
-		"Patient/patient-12214": {
-			"base": "Patient-Patient-12214.html"
-		},
-		"Patient/patient-12215": {
-			"base": "Patient-Patient-12215.html"
-		},
-		"Patient/patient-12216": {
-			"base": "Patient-Patient-12216.html"
-		},
-		"Patient/patient-12217": {
-			"base": "Patient-Patient-12217.html"
-		},
-		"Patient/patient-12218": {
-			"base": "Patient-Patient-12218.html"
-		},
-		"Patient/patient-12219": {
-			"base": "Patient-Patient-12219.html"
-		},
-		"Patient/patient-12235": {
-			"base": "Patient-Patient-12235.html"
-		},
-		"Patient/patient-12236": {
-			"base": "Patient-Patient-12236.html"
-		},
-		"Practitioner/practitioner-12208": {
-			"base": "Practitioner-Practitioner-12208.html"
-		},
-		"StructureDefinition/hedis-claim": {
-			"source": "claim/structuredefinition-hedis-claim.xml",
-			"defns": "hedis-claim-definitions.html",
-			"base": "hedis-claim.html"
-		},
-		"StructureDefinition/hedis-condition": {
-			"source": "condition/structuredefinition-hedis-condition.xml",
-			"defns": "hedis-condition-definitions.html",
-			"base": "hedis-condition.html"
-		},
-		"StructureDefinition/hedis-coverage": {
-			"source": "coverage/structuredefinition-hedis-coverage.xml",
-			"defns": "hedis-coverage-definitions.html",
-			"base": "hedis-coverage.html"
-		},
-		"StructureDefinition/hedis-diagnosticreport": {
-			"source": "diagnosticreport/structuredefinition-hedis-diagnosticreport.xml",
-			"defns": "hedis-diagnosticreport-definitions.html",
-			"base": "hedis-diagnosticreport.html"
-		},
-		"StructureDefinition/hedis-encounter": {
-			"source": "encounter/structuredefinition-hedis-encounter.xml",
-			"defns": "hedis-encounter-definitions.html",
-			"base": "hedis-encounter.html"
-		},
-		"StructureDefinition/hedis-medicationdispense": {
-			"source": "procedure/structuredefinition-hedis-medicationdispense.xml",
-			"defns": "hedis-medicationdispense-definitions.html",
-			"base": "hedis-medicationdispense.html"
-		},
-		"StructureDefinition/hedis-medicationrequest": {
-			"source": "procedure/structuredefinition-hedis-medicationrequest.xml",
-			"defns": "hedis-medicationrequest-definitions.html",
-			"base": "hedis-medicationrequest.html"
-		},
-		"StructureDefinition/hedis-observation": {
-			"source": "procedure/structuredefinition-hedis-observation.xml",
-			"defns": "hedis-observation-definitions.html",
-			"base": "hedis-observation.html"
-		},
-		"StructureDefinition/hedis-patient": {
-			"source": "patient/structuredefinition-hedis-patient.xml",
-			"defns": "hedis-patient-definitions.html",
-			"base": "hedis-patient.html"
-		},
-		"StructureDefinition/hedis-procedure": {
-			"source": "procedure/structuredefinition-hedis-procedure.xml",
-			"defns": "hedis-procedure-definitions.html",
-			"base": "hedis-procedure.html"
-		},
-		"StructureDefinition/hedis-procedurerequest": {
-			"source": "procedurerequest/structuredefinition-hedis-procedurerequest.xml",
-			"defns": "hedis-procedurerequest-definitions.html",
-			"base": "hedis-procedurerequest.html"
-		},
-		"StructureDefinition/hedis-quantitativeobservation": {
-			"source": "procedure/structuredefinition-hedis-quantitativeobservation.xml",
-			"defns": "hedis-quantitativeobservation-definitions.html",
-			"base": "hedis-quantitativeobservation.html"
-		},
-		"Claim/claim-example-hedis": {
-			"source": "claim/claim-example-hedis.xml",
-			"base": "Claim-claim-example-hedis.html"
-		},
-		"Condition/condition-example-hedis": {
-			"source": "condition/condition-example-hedis.xml",
-			"base": "Condition-condition-example-hedis.html"
-		},
-		"Coverage/coverage-example-hedis": {
-			"source": "coverage/coverage-example-hedis.xml",
-			"base": "Coverage-coverage-example-hedis.html"
-		},
-		"DiagnosticReport/diagnosticreport-example-hedis": {
-			"source": "diagnosticreport/diagnosticreport-example-hedis.xml",
-			"base": "DiagnosticReport-diagnosticreport-example-hedis.html"
-		},
-		"MedicationDispense/medicationdispense-example-hedis": {
-			"source": "medicationdispense/medicationdispense-example-hedis.xml",
-			"base": "MedicationDispense-medicationdispense-example-hedis.html"
-		},
-		"MedicationRequest/medicationrequest-example-hedis": {
-			"source": "medicationrequest/medicationrequest-example-hedis.xml",
-			"base": "MedicationRequest-medicationrequest-example-hedis.html"
-		},
-		"Observation/observation-example-hedis": {
-			"source": "observation/observation-example-hedis.xml",
-			"base": "Observation-observation-example-hedis.html"
-		},
-		"Observation/quantitativeobservation-example-hedis": {
-			"source": "observation/quantitativeobservation-example-hedis.xml",
-			"base": "Observation-quantitativeobservation-example-hedis.html"
-		},
-		"Patient/patient-example-hedis": {
-			"source": "patient/patient-example-hedis.xml",
-			"base": "Patient-patient-example-hedis.html"
-		},
-		"Procedure/procedure-example-hedis": {
-			"source": "procedure/procedure-example-hedis.xml",
-			"base": "Procedure-procedure-example-hedis.html"
-		}
-	}
+    "Bundle/bundle-aes-asf": {
+      "base": "Bundle-bundle-aes-asf.html",
+      "source": "bundle/test/AlanEverettSheaIII/AES-2018-2027-35-44-ASF.json"
+    },
+    "Bundle/bundle-aes-dms": {
+      "base": "Bundle-bundle-aes-dms.html",
+      "source": "bundle/test/AlanEverettSheaIII/AES-2018-2027-35-44-DMS.json"
+    },
+
+    "Bundle/bundle-arg-asf": {
+      "base": "Bundle-bundle-arg-asf.html",
+      "source": "bundle/test/AlexRamirezGonzales/ARG-2018-2027-55-64-ASF.json"
+    },
+    "Bundle/bundle-arg-col": {
+      "base": "Bundle-bundle-arg-col.html",
+      "source": "bundle/test/AlexRamirezGonzales/ARG-2018-2027-55-64-COL.json"
+    },
+    "Bundle/bundle-arg-drr": {
+      "base": "Bundle-bundle-arg-drr.html",
+      "source": "bundle/test/AlexRamirezGonzales/ARG-2018-2027-55-64-DRR.json"
+    },
+
+    "Bundle/bundle-av-ccs": {
+      "base": "Bundle-bundle-av-ccs.html",
+      "source": "bundle/test/AliceVargas/AV-2018-2027-28-37-CCS.json"
+    },
+    "Bundle/bundle-av-drr": {
+      "base": "Bundle-bundle-av-drr.html",
+      "source": "bundle/test/AliceVargas/AV-2018-2027-28-37-DRR.json"
+    },
+    "Bundle/bundle-av-dsf": {
+      "base": "Bundle-bundle-av-dsf.html",
+      "source": "bundle/test/AliceVargas/AV-2018-2027-28-37-DSF.json"
+    },
+
+    "Bundle/bundle-aaw-dms": {
+      "base": "Bundle-bundle-aaw-dms.html",
+      "source": "bundle/test/AndreaAndradeWoodard/AAW-2018-2027-9-18-DMS.json"
+    },
+    "Bundle/bundle-aaw-drr": {
+      "base": "Bundle-bundle-aaw-drr.html",
+      "source": "bundle/test/AndreaAndradeWoodard/AAW-2018-2027-9-18-DRR.json"
+    },
+    "Bundle/bundle-aaw-dsf": {
+      "base": "Bundle-bundle-aaw-dsf.html",
+      "source": "bundle/test/AndreaAndradeWoodard/AAW-2018-2027-9-18-DSF.json"
+    },
+
+    "Bundle/bundle-ach-dms": {
+      "base": "Bundle-bundle-ach-dms.html",
+      "source": "bundle/test/AntonioCaseyHayden/ACH-2018-2027-8-17-DMS.json"
+    },
+    "Bundle/bundle-ach-drr": {
+      "base": "Bundle-bundle-ach-drr.html",
+      "source": "bundle/test/AntonioCaseyHayden/ACH-2018-2027-8-17-DRR.json"
+    },
+    "Bundle/bundle-ach-dsf": {
+      "base": "Bundle-bundle-ach-dsf.html",
+      "source": "bundle/test/AntonioCaseyHayden/ACH-2018-2027-8-17-DSF.json"
+    },
+
+    "Bundle/bundle-arn-asf": {
+      "base": "Bundle-bundle-arn-asf.html",
+      "source": "bundle/test/AprilRhodesNielsen/ARN-2018-2027-51-60-ASF.json"
+    },
+    "Bundle/bundle-arn-bcs": {
+      "base": "Bundle-bundle-arn-bcs.html",
+      "source": "bundle/test/AprilRhodesNielsen/ARN-2018-2027-51-60-BCS.json"
+    },
+    "Bundle/bundle-arn-col": {
+      "base": "Bundle-bundle-arn-col.html",
+      "source": "bundle/test/AprilRhodesNielsen/ARN-2018-2027-51-60-COL.json"
+    },
+
+    "Bundle/bundle-dsr-asf": {
+      "base": "Bundle-bundle-dsr-asf.html",
+      "source": "bundle/test/DarrellShafferRiggs/DSR-2018-2027-65-74-ASF.json"
+    },
+    "Bundle/bundle-dsr-col": {
+      "base": "Bundle-bundle-dsr-col.html",
+      "source": "bundle/test/DarrellShafferRiggs/DSR-2018-2027-65-74-COL.json"
+    },
+    "Bundle/bundle-dsr-dsf": {
+      "base": "Bundle-bundle-dsr-dsf.html",
+      "source": "bundle/test/DarrellShafferRiggs/DSR-2018-2027-65-74-DSF.json"
+    },
+    "Bundle/bundle-dsr-pvs": {
+      "base": "Bundle-bundle-dsr-pvs.html",
+      "source": "bundle/test/DarrellShafferRiggs/DSR-2018-2027-65-74-PVS.json"
+    },
+
+    "Bundle/bundle-dmg-dms": {
+      "base": "Bundle-bundle-dmg-dms.html",
+      "source": "bundle/test/DomingoMaderaGonzales/DMG-2018-2027-17-26-DMS.json"
+    },
+    "Bundle/bundle-dmg-drr": {
+      "base": "Bundle-bundle-dmg-drr.html",
+      "source": "bundle/test/DomingoMaderaGonzales/DMG-2018-2027-17-26-DRR.json"
+    },
+    "Bundle/bundle-dmg-dsf": {
+      "base": "Bundle-bundle-dmg-dsf.html",
+      "source": "bundle/test/DomingoMaderaGonzales/DMG-2018-2027-17-26-DSF.json"
+    },
+
+    "Bundle/bundle-mbw-asf": {
+      "base": "Bundle-bundle-mbw-asf.html",
+      "source": "bundle/test/MarthaBerthaWagner/MBW-2018-2027-17-26-ASF.json"
+    },
+    "Bundle/bundle-mbw-dms": {
+      "base": "Bundle-bundle-mbw-dms.html",
+      "source": "bundle/test/MarthaBerthaWagner/MBW-2018-2027-17-26-DMS.json"
+    },
+
+    "Bundle/bundle-vjc-asf": {
+      "base": "Bundle-bundle-vjc-asf.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-ASF.json"
+    },
+    "Bundle/bundle-vjc-bcs": {
+      "base": "Bundle-bundle-vjc-bcs.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-BCS.json"
+    },
+    "Bundle/bundle-vjc-ccs": {
+      "base": "Bundle-bundle-vjc-ccs.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-CCS.json"
+    },
+    "Bundle/bundle-vjc-col": {
+      "base": "Bundle-bundle-vjc-col.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-COL.json"
+    },
+    "Bundle/bundle-vjc-dms": {
+      "base": "Bundle-bundle-vjc-dms.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-DMS.json"
+    },
+    "Bundle/bundle-vjc-drr": {
+      "base": "Bundle-bundle-vjc-drr.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-DRR.json"
+    },
+    "Bundle/bundle-vjc-dsf": {
+      "base": "Bundle-bundle-vjc-dsf.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-DSF.json"
+    },
+    "Bundle/bundle-vjc-pvs": {
+      "base": "Bundle-bundle-vjc-pvs.html",
+      "source": "bundle/test/ViolaJeanCampbell/VJC-2018-2027-62-71-PVS.json"
+    },
+
+    "CapabilityStatement/measure-calculation-service": {
+      "base": "CapabilityStatement-measure-calculation-service.html"
+    },
+    "Condition/Condition-13": {
+      "base": "Condition-Condition-13.html"
+    },
+    "Endpoint/001": {
+      "base": "Endpoint-endpoint-001.html"
+    },
+    "Library/library-bcs-logic": {
+      "base": "Library-library-bcs-logic.html"
+    },
+    "Library/library-cbp-logic": {
+      "base": "Library-library-cbp-logic.html"
+    },
+    "Library/library-ccs-logic": {
+      "base": "Library-library-ccs-logic.html"
+    },
+    "Library/library-cdc-logic": {
+      "base": "Library-library-cdc-logic.html"
+    },
+    "Library/library-col-logic": {
+      "base": "Library-library-col-logic.html"
+    },
+    "Library/library-wcc-aba-logic": {
+      "base": "Library-library-wcc-aba-logic.html"
+    },
+    "Measure/measure-bcs": {
+      "base": "Measure-measure-bcs.html"
+    },
+    "Measure/measure-cbp": {
+      "base": "Measure-measure-cbp.html"
+    },
+    "Measure/measure-ccs": {
+      "base": "Measure-measure-ccs.html"
+    },
+    "Measure/measure-cdc": {
+      "base": "Measure-measure-cdc.html"
+    },
+    "Measure/measure-col": {
+      "base": "Measure-measure-col.html"
+    },
+    "Measure/measure-wcc-aba": {
+      "base": "Measure-measure-wcc-aba.hmtl"
+    },
+    "Organization/organization-2002": {
+      "base": "Organization-Organization-2002.html"
+    },
+    "Organization/organization-2000": {
+      "base": "Organization-Organization-2000.html"
+    },
+    "Medication/medication-001": {
+      "base": "Medication-Medication-001.html"
+    },
+    "Patient/patient-12214": {
+      "base": "Patient-Patient-12214.html"
+    },
+    "Patient/patient-12215": {
+      "base": "Patient-Patient-12215.html"
+    },
+    "Patient/patient-12216": {
+      "base": "Patient-Patient-12216.html"
+    },
+    "Patient/patient-12217": {
+      "base": "Patient-Patient-12217.html"
+    },
+    "Patient/patient-12218": {
+      "base": "Patient-Patient-12218.html"
+    },
+    "Patient/patient-12219": {
+      "base": "Patient-Patient-12219.html"
+    },
+    "Patient/patient-12235": {
+      "base": "Patient-Patient-12235.html"
+    },
+    "Patient/patient-12236": {
+      "base": "Patient-Patient-12236.html"
+    },
+    "Practitioner/practitioner-12208": {
+      "base": "Practitioner-Practitioner-12208.html"
+    },
+    "StructureDefinition/hedis-claim": {
+      "source": "claim/structuredefinition-hedis-claim.xml",
+      "defns": "hedis-claim-definitions.html",
+      "base": "hedis-claim.html"
+    },
+    "StructureDefinition/hedis-condition": {
+      "source": "condition/structuredefinition-hedis-condition.xml",
+      "defns": "hedis-condition-definitions.html",
+      "base": "hedis-condition.html"
+    },
+    "StructureDefinition/hedis-coverage": {
+      "source": "coverage/structuredefinition-hedis-coverage.xml",
+      "defns": "hedis-coverage-definitions.html",
+      "base": "hedis-coverage.html"
+    },
+    "StructureDefinition/hedis-diagnosticreport": {
+      "source": "diagnosticreport/structuredefinition-hedis-diagnosticreport.xml",
+      "defns": "hedis-diagnosticreport-definitions.html",
+      "base": "hedis-diagnosticreport.html"
+    },
+    "StructureDefinition/hedis-encounter": {
+      "source": "encounter/structuredefinition-hedis-encounter.xml",
+      "defns": "hedis-encounter-definitions.html",
+      "base": "hedis-encounter.html"
+    },
+    "StructureDefinition/hedis-medicationdispense": {
+      "source": "procedure/structuredefinition-hedis-medicationdispense.xml",
+      "defns": "hedis-medicationdispense-definitions.html",
+      "base": "hedis-medicationdispense.html"
+    },
+    "StructureDefinition/hedis-medicationrequest": {
+      "source": "procedure/structuredefinition-hedis-medicationrequest.xml",
+      "defns": "hedis-medicationrequest-definitions.html",
+      "base": "hedis-medicationrequest.html"
+    },
+    "StructureDefinition/hedis-observation": {
+      "source": "procedure/structuredefinition-hedis-observation.xml",
+      "defns": "hedis-observation-definitions.html",
+      "base": "hedis-observation.html"
+    },
+    "StructureDefinition/hedis-patient": {
+      "source": "patient/structuredefinition-hedis-patient.xml",
+      "defns": "hedis-patient-definitions.html",
+      "base": "hedis-patient.html"
+    },
+    "StructureDefinition/hedis-procedure": {
+      "source": "procedure/structuredefinition-hedis-procedure.xml",
+      "defns": "hedis-procedure-definitions.html",
+      "base": "hedis-procedure.html"
+    },
+    "StructureDefinition/hedis-procedurerequest": {
+      "source": "procedurerequest/structuredefinition-hedis-procedurerequest.xml",
+      "defns": "hedis-procedurerequest-definitions.html",
+      "base": "hedis-procedurerequest.html"
+    },
+    "StructureDefinition/hedis-quantitativeobservation": {
+      "source": "observation/structuredefinition-hedis-quantitativeobservation.xml",
+      "defns": "hedis-quantitativeobservation-definitions.html",
+      "base": "hedis-quantitativeobservation.html"
+    },
+    "Claim/claim-example-hedis": {
+      "source": "claim/claim-example-hedis.xml",
+      "base": "Claim-claim-example-hedis.html"
+    },
+    "Condition/condition-example-hedis": {
+      "source": "condition/condition-example-hedis.xml",
+      "base": "Condition-condition-example-hedis.html"
+    },
+    "Coverage/coverage-example-hedis": {
+      "source": "coverage/coverage-example-hedis.xml",
+      "base": "Coverage-coverage-example-hedis.html"
+    },
+    "DiagnosticReport/diagnosticreport-example-hedis": {
+      "source": "diagnosticreport/diagnosticreport-example-hedis.xml",
+      "base": "DiagnosticReport-diagnosticreport-example-hedis.html"
+    },
+    "MedicationDispense/medicationdispense-example-hedis": {
+      "source": "medicationdispense/medicationdispense-example-hedis.xml",
+      "base": "MedicationDispense-medicationdispense-example-hedis.html"
+    },
+    "MedicationRequest/medicationrequest-example-hedis": {
+      "source": "medicationrequest/medicationrequest-example-hedis.xml",
+      "base": "MedicationRequest-medicationrequest-example-hedis.html"
+    },
+    "Observation/observation-example-hedis": {
+      "source": "observation/observation-example-hedis.xml",
+      "base": "Observation-observation-example-hedis.html"
+    },
+    "Observation/quantitativeobservation-example-hedis": {
+      "source": "observation/quantitativeobservation-example-hedis.xml",
+      "base": "Observation-quantitativeobservation-example-hedis.html"
+    },
+    "Patient/patient-example-hedis": {
+      "source": "patient/patient-example-hedis.xml",
+      "base": "Patient-patient-example-hedis.html"
+    },
+    "Procedure/procedure-example-hedis": {
+      "source": "procedure/procedure-example-hedis.xml",
+      "base": "Procedure-procedure-example-hedis.html"
+    }
+  }
 }
