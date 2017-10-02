@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jerry-Phillip-Goodwall-1121-Encounter-851",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-851",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-851",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-12-11T00:09:00-05:00",
+              "end": "1988-12-11T01:26:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-12-11T00:09:00-05:00",
+          "end": "1988-12-11T01:26:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-851"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-132999",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-132999",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45382",
+              "display": "Colonoscopy, flexible; with control of bleeding, any method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-12-11T01:26:00-05:00",
+          "end": "1988-12-11T01:26:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-132999"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133000",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133000",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "73761001",
+              "display": "Colonoscopy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-12-11T01:26:00-05:00",
+          "end": "1988-12-11T01:26:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133000"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-133001",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-133001",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45390",
+              "display": "Colonoscopy, flexible; with endoscopic mucosal resection"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-12-11T01:26:00-05:00",
+          "end": "1988-12-11T01:26:00-05:00"
+        },
+        "issued": "1988-12-11T01:26:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-133000",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-133001"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133004",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133004",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133004"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133005",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133005",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 105.71680643087726,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133005"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133006",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133006",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 33.820460278914375,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133006"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133007",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133007",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133007"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133008",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133008",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128.4703093471093,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133008"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133009",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-133009",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-11T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.98243499302949,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-133009"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-133003",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-133003",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-851",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-12-11T00:09:00-05:00",
+          "end": "1988-12-11T00:09:00-05:00"
+        },
+        "issued": "1988-12-11T00:09:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-133004",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-133005",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-133006",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-133007",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-133008",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-133009",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-133003"
+      }
+    }
+  ]
+}
