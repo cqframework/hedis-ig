@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Renee-Yu-Cabrera-6492-Encounter-3096",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3096",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3096",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2000-11-23T00:07:00-05:00",
+              "end": "2000-11-23T00:47:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2000-11-23T00:07:00-05:00",
+          "end": "2000-11-23T00:47:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3096"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-652581",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-652581",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45390",
+              "display": "Colonoscopy, flexible; with endoscopic mucosal resection"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2000-11-23T00:47:00-05:00",
+          "end": "2000-11-23T00:47:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-652581"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652583",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652583",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "C18.5",
+              "display": "Malignant neoplasm of splenic flexure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-23T00:47:00-05:00",
+          "end": "2000-11-23T00:47:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652583"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-652584",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-652584",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45381",
+              "display": "Colonoscopy, flexible; with directed submucosal injection(s), any substance"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-23T00:47:00-05:00",
+          "end": "2000-11-23T00:47:00-05:00"
+        },
+        "issued": "2000-11-23T00:47:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-652583",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-652584"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652587",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652587",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652587"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652588",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652588",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99.57714506146851,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652588"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652589",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652589",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.40735990044854,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652589"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652590",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652590",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652590"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652591",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652591",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.96575654585357,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652591"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652592",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-652592",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-23T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 83.77327062183011,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-652592"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-652586",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-652586",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3096",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-23T00:07:00-05:00",
+          "end": "2000-11-23T00:07:00-05:00"
+        },
+        "issued": "2000-11-23T00:07:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-652587",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-652588",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-652589",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-652590",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-652591",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-652592",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-652586"
+      }
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Cassandra-Graham-Vasquez-6487-Encounter-1631",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1631",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1631",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2005-01-17T00:07:00-05:00",
+              "end": "2005-01-17T01:14:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2005-01-17T00:07:00-05:00",
+          "end": "2005-01-17T01:14:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1631"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-352801",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-352801",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45390",
+              "display": "Colonoscopy, flexible; with endoscopic mucosal resection"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2005-01-17T01:14:00-05:00",
+          "end": "2005-01-17T01:14:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-352801"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352802",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352802",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "303587008",
+              "display": "Therapeutic colonoscopy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2005-01-17T01:14:00-05:00",
+          "end": "2005-01-17T01:14:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352802"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-352803",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-352803",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44394",
+              "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2005-01-17T01:14:00-05:00",
+          "end": "2005-01-17T01:14:00-05:00"
+        },
+        "issued": "2005-01-17T01:14:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-352802",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-352803"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352806",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352806",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 171.6,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352806"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352807",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352807",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 101.3644175356574,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352807"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352808",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352808",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 34.42317796566302,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352808"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352809",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352809",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352809"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352810",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352810",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 105.53340373883609,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352810"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352811",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-352811",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2005-01-17T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.20901926299297,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-352811"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-352805",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-352805",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1631",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2005-01-17T00:07:00-05:00",
+          "end": "2005-01-17T00:07:00-05:00"
+        },
+        "issued": "2005-01-17T00:07:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-352806",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-352807",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-352808",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-352809",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-352810",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-352811",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-352805"
+      }
+    }
+  ]
+}

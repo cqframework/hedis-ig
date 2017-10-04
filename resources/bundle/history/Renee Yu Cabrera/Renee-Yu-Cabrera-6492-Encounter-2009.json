@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Renee-Yu-Cabrera-6492-Encounter-2009",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2009",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2009",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2000-11-13T00:07:00-05:00",
+              "end": "2000-11-13T01:02:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2000-11-13T00:07:00-05:00",
+          "end": "2000-11-13T01:02:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2009"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-440084",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-440084",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45341",
+              "display": "Sigmoidoscopy, flexible; with endoscopic ultrasound examination"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2000-11-13T01:02:00-05:00",
+          "end": "2000-11-13T01:02:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-440084"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440085",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440085",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45338",
+              "display": "Sigmoidoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-13T01:02:00-05:00",
+          "end": "2000-11-13T01:02:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440085"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-440086",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-440086",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45339",
+              "display": "Sigmoidoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-13T01:02:00-05:00",
+          "end": "2000-11-13T01:02:00-05:00"
+        },
+        "issued": "2000-11-13T01:02:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-440085",
+            "display": "Negative_Sigmoidoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-440086"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440089",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440089",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440089"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440090",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440090",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 97.22625641324493,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440090"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440091",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440091",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 34.57143755700167,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440091"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440092",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440092",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440092"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440093",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440093",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 157.36370205683093,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440093"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440094",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-440094",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "2000-11-13T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 116.83307832243364,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-440094"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-440088",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-440088",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2009",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2000-11-13T00:07:00-05:00",
+          "end": "2000-11-13T00:07:00-05:00"
+        },
+        "issued": "2000-11-13T00:07:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-440089",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-440090",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-440091",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-440092",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-440093",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-440094",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-440088"
+      }
+    }
+  ]
+}

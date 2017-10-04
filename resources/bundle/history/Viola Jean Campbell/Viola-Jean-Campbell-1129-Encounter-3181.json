@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Viola-Jean-Campbell-1129-Encounter-3181",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3181",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3181",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1998-06-20T00:05:00-04:00",
+              "end": "1998-06-20T00:51:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1998-06-20T00:05:00-04:00",
+          "end": "1998-06-20T00:51:00-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3181"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-671000",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-671000",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45387",
+              "display": "Colonoscopy, flexible, proximal to splenic flexure; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1998-06-20T00:51:00-04:00",
+          "end": "1998-06-20T00:51:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-671000"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671002",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671002",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "C18.7",
+              "display": "Malignant neoplasm of sigmoid colon"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1998-06-20T00:51:00-04:00",
+          "end": "1998-06-20T00:51:00-04:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671002"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671003",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-671003",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44403",
+              "display": "Colonoscopy through stoma; with endoscopic mucosal resection"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1998-06-20T00:51:00-04:00",
+          "end": "1998-06-20T00:51:00-04:00"
+        },
+        "issued": "1998-06-20T00:51:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-671002",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671003"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671006",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671006",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671006"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671007",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671007",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 76.39431863053538,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671007"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671008",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671008",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 30.21807627488445,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671008"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671009",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671009",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671009"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671010",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671010",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.48076872198038,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671010"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671011",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-671011",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 109.19416061382607,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671011"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671005",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-671005",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3181",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1998-06-20T00:05:00-04:00",
+          "end": "1998-06-20T00:05:00-04:00"
+        },
+        "issued": "1998-06-20T00:05:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-671006",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-671007",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-671008",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-671009",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-671010",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-671011",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671005"
+      }
+    }
+  ]
+}

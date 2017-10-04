@@ -4,7 +4,7 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1319",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1319",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-1319",
@@ -21,8 +21,8 @@
         "participant": [
           {
             "period": {
-              "start": "2001-08-03T19:00:00-04:00",
-              "end": "2001-08-03T19:00:00-04:00"
+              "start": "2001-11-09T00:00:00-05:00",
+              "end": "2001-11-09T00:00:00-05:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2516",
@@ -31,8 +31,8 @@
           }
         ],
         "period": {
-          "start": "2001-08-03T19:00:00-04:00",
-          "end": "2001-08-03T19:00:00-04:00"
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
         },
         "location": [
           {
@@ -49,14 +49,334 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1319"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1319"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265957",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-279577",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-279577",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "08",
+              "display": "Hep B, adolescent or pediatric"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "date": "2001-11-09T00:00:00-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-279577"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280654",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265957",
+        "id": "Observation-280654",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 144.0445638721745,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280654"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280655",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-280655",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 115.47651044769091,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280655"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-280656",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-280656",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "I10",
+              "display": "Essential (primary) hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "2001-11-09T00:00:00-05:00",
+        "assertedDate": "2001-11-09T00:00:00-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2516",
+          "display": "Agnes Tammy Larson MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-280656"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280657",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-280657",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 47.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280657"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280658",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-280658",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.4,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280658"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280661",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-280661",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6539",
+          "display": "Martha Bertha Wagner"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1319",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
+        },
+        "valueQuantity": {
+          "value": 115.47651044769091,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280661"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280663",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-280663",
         "status": "final",
         "code": {
           "coding": [
@@ -75,7 +395,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -83,20 +403,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 0.0,
+          "value": 47.7,
           "unit": "cm"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265957"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280663"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265958",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280664",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265958",
+        "id": "Observation-280664",
         "status": "final",
         "code": {
           "coding": [
@@ -115,7 +435,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -123,20 +443,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 0.0,
+          "value": 3.4,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265958"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280664"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265959",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280665",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265959",
+        "id": "Observation-280665",
         "status": "final",
         "code": {
           "coding": [
@@ -155,7 +475,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -163,20 +483,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 0.0,
+          "value": 14.943150103942791,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265959"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280665"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265960",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280666",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265960",
+        "id": "Observation-280666",
         "status": "final",
         "code": {
           "coding": [
@@ -195,7 +515,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -209,14 +529,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265960"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280666"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265961",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280667",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265961",
+        "id": "Observation-280667",
         "status": "final",
         "code": {
           "coding": [
@@ -235,7 +555,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -243,20 +563,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 113.43765712465827,
+          "value": 144.0445638721745,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265961"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280667"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265962",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280668",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-265962",
+        "id": "Observation-280668",
         "status": "final",
         "code": {
           "coding": [
@@ -275,7 +595,7 @@
           "reference": "Encounter/Encounter-1319",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2001-08-03T19:00:00-04:00",
+        "effectiveDateTime": "2001-11-09T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2516",
@@ -283,20 +603,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 80.05128001684753,
+          "value": 115.47651044769091,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-265962"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-280668"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-265956",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-280662",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-265956",
+        "id": "DiagnosticReport-280662",
         "status": "final",
         "code": {
           "coding": [
@@ -316,40 +636,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "2001-08-03T19:00:00-04:00",
-          "end": "2001-08-03T19:00:00-04:00"
+          "start": "2001-11-09T00:00:00-05:00",
+          "end": "2001-11-09T00:00:00-05:00"
         },
-        "issued": "2001-08-03T19:00:00.000-04:00",
+        "issued": "2001-11-09T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-265957",
+            "reference": "Observation/Observation-280663",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-265958",
+            "reference": "Observation/Observation-280664",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-265959",
+            "reference": "Observation/Observation-280665",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-265960",
+            "reference": "Observation/Observation-280666",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-265961",
+            "reference": "Observation/Observation-280667",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-265962",
+            "reference": "Observation/Observation-280668",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-265956"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-280662"
       }
     }
   ]

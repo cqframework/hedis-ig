@@ -4,15 +4,15 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2720",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2720",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2720",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "inpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6526",
@@ -21,18 +21,18 @@
         "participant": [
           {
             "period": {
-              "start": "1988-11-01T23:08:00-05:00",
-              "end": "1988-11-01T23:54:00-05:00"
+              "start": "2014-05-06T22:00:00-04:00",
+              "end": "2014-05-06T22:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2520",
-              "display": "Kimberly Christy Ashley MD"
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
             }
           }
         ],
         "period": {
-          "start": "1988-11-01T23:08:00-05:00",
-          "end": "1988-11-01T23:54:00-05:00"
+          "start": "2014-05-06T22:00:00-04:00",
+          "end": "2014-05-06T22:00:00-04:00"
         },
         "location": [
           {
@@ -49,21 +49,22 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2720"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2720"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-578576",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578238",
       "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-578576",
-        "status": "completed",
-        "code": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-578238",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45342",
-              "display": "Sigmoidoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s)"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
             }
           ]
         },
@@ -73,42 +74,57 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "performedPeriod": {
-          "start": "1988-11-01T23:54:00-05:00",
-          "end": "1988-11-01T23:54:00-05:00"
-        },
-        "performer": [
+        "authoredOn": "2014-05-06T22:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2520",
-              "display": "Kimberly Christy Ashley MD"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
         ],
-        "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2014-05-06T22:00:00-04:00",
+            "end": "2014-05-06T22:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-578576"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578238"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578577",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578239",
       "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-578577",
-        "status": "final",
-        "code": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-578239",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45349",
-              "display": "Sigmoidoscopy, flexible; with endoscopic mucosal resection"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1373463",
+              "display": "canagliflozin 100 MG Oral Tablet"
             }
           ]
         },
@@ -118,37 +134,57 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectivePeriod": {
-          "start": "1988-11-01T23:54:00-05:00",
-          "end": "1988-11-01T23:54:00-05:00"
-        },
-        "performer": [
+        "authoredOn": "2014-05-06T22:00:00-04:00",
+        "reasonCode": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
           }
         ],
-        "valueString": "NEGATIVE"
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2014-05-06T22:00:00-04:00",
+            "end": "2014-05-06T22:00:00-04:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578577"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578239"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-578578",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578240",
       "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-578578",
-        "status": "final",
-        "code": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-578240",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45334",
-              "display": "Sigmoidoscopy, flexible; with control of bleeding, any method"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
             }
           ]
         },
@@ -158,30 +194,49 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectivePeriod": {
-          "start": "1988-11-01T23:54:00-05:00",
-          "end": "1988-11-01T23:54:00-05:00"
-        },
-        "issued": "1988-11-01T23:54:00.000-05:00",
-        "result": [
+        "authoredOn": "2014-05-06T22:00:00-04:00",
+        "reasonCode": [
           {
-            "reference": "Observation/Observation-578577",
-            "display": "Negative_Sigmoidoscopy_Observation"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
           }
-        ]
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2014-05-06T22:00:00-04:00",
+            "end": "2014-05-06T22:00:00-04:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-578578"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-578240"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578581",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578243",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578581",
+        "id": "Observation-578243",
         "status": "final",
         "code": {
           "coding": [
@@ -198,13 +253,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
@@ -214,14 +269,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578581"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578243"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578582",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578244",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578582",
+        "id": "Observation-578244",
         "status": "final",
         "code": {
           "coding": [
@@ -238,30 +293,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 109.0376428874406,
+          "value": 109.81998326856954,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578582"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578244"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578583",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578245",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578583",
+        "id": "Observation-578245",
         "status": "final",
         "code": {
           "coding": [
@@ -278,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 37.02899180326687,
+          "value": 37.29467322110615,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578583"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578245"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578584",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578246",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578584",
+        "id": "Observation-578246",
         "status": "final",
         "code": {
           "coding": [
@@ -318,13 +373,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
@@ -334,14 +389,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578584"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578246"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578585",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578247",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578585",
+        "id": "Observation-578247",
         "status": "final",
         "code": {
           "coding": [
@@ -358,30 +413,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 106.6201386939469,
+          "value": 141.26652748594543,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578585"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578247"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578586",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578248",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-578586",
+        "id": "Observation-578248",
         "status": "final",
         "code": {
           "coding": [
@@ -398,30 +453,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-01T23:08:00-05:00",
+        "effectiveDateTime": "2014-05-06T22:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 71.86009289311116,
+          "value": 86.1234697864428,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-578586"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-578248"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-578580",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-578242",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-578580",
+        "id": "DiagnosticReport-578242",
         "status": "final",
         "code": {
           "coding": [
@@ -438,43 +493,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2720",
-          "display": "Sigmoidoscopy_Encounter"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "1988-11-01T23:08:00-05:00",
-          "end": "1988-11-01T23:08:00-05:00"
+          "start": "2014-05-06T22:00:00-04:00",
+          "end": "2014-05-06T22:00:00-04:00"
         },
-        "issued": "1988-11-01T23:08:00.000-05:00",
+        "issued": "2014-05-06T22:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-578581",
+            "reference": "Observation/Observation-578243",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-578582",
+            "reference": "Observation/Observation-578244",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-578583",
+            "reference": "Observation/Observation-578245",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-578584",
+            "reference": "Observation/Observation-578246",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-578585",
+            "reference": "Observation/Observation-578247",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-578586",
+            "reference": "Observation/Observation-578248",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-578580"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-578242"
       }
     }
   ]

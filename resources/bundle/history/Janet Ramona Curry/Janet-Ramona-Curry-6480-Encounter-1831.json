@@ -4,15 +4,15 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1831",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1831",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-1831",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6480",
@@ -21,82 +21,162 @@
         "participant": [
           {
             "period": {
-              "start": "2008-11-29T00:00:00-05:00",
-              "end": "2008-11-29T00:00:00-05:00"
+              "start": "2007-03-07T00:00:00-05:00",
+              "end": "2007-03-07T00:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
             }
           }
         ],
         "period": {
-          "start": "2008-11-29T00:00:00-05:00",
-          "end": "2008-11-29T00:00:00-05:00"
+          "start": "2007-03-07T00:00:00-05:00",
+          "end": "2007-03-07T00:00:00-05:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1102",
-              "display": "Pediatric and Adult Medicine"
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1102",
-          "display": "Pediatric and Adult Medicine"
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1831"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1831"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-400974",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-400687",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-400974",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-400687",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6480",
           "display": "Janet Ramona Curry"
         },
-        "date": "2008-11-29T00:00:00-05:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
+        "context": {
+          "reference": "Encounter/Encounter-1831",
+          "display": "Followup_Visit"
         },
-        "practitioner": [
+        "authoredOn": "2007-03-07T00:00:00-05:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
-        ]
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2007-03-07T00:00:00-05:00",
+            "end": "2007-03-07T00:00:00-05:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-400974"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-400687"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423791",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-400688",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-400688",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1373463",
+              "display": "canagliflozin 100 MG Oral Tablet"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1831",
+          "display": "Followup_Visit"
+        },
+        "authoredOn": "2007-03-07T00:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2007-03-07T00:00:00-05:00",
+            "end": "2007-03-07T00:00:00-05:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-400688"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400691",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423791",
+        "id": "Observation-400691",
         "status": "final",
         "code": {
           "coding": [
@@ -113,13 +193,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
@@ -129,14 +209,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423791"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400691"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423792",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400692",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423792",
+        "id": "Observation-400692",
         "status": "final",
         "code": {
           "coding": [
@@ -153,30 +233,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 98.32035306307942,
+          "value": 76.84312002149099,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423792"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400692"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423793",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400693",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423793",
+        "id": "Observation-400693",
         "status": "final",
         "code": {
           "coding": [
@@ -193,30 +273,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 36.86982361388202,
+          "value": 28.815928674656472,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423793"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400693"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423794",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400694",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423794",
+        "id": "Observation-400694",
         "status": "final",
         "code": {
           "coding": [
@@ -233,13 +313,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
@@ -249,14 +329,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423794"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400694"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423795",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400695",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423795",
+        "id": "Observation-400695",
         "status": "final",
         "code": {
           "coding": [
@@ -273,30 +353,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 111.01397339523564,
+          "value": 174.2714079969779,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423795"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400695"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423796",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400696",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-423796",
+        "id": "Observation-400696",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +393,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-11-29T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-07T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 77.07887344205635,
+          "value": 102.60060363704014,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-423796"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-400696"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-423790",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-400690",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-423790",
+        "id": "DiagnosticReport-400690",
         "status": "final",
         "code": {
           "coding": [
@@ -353,43 +433,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1831",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2008-11-29T00:00:00-05:00",
-          "end": "2008-11-29T00:00:00-05:00"
+          "start": "2007-03-07T00:00:00-05:00",
+          "end": "2007-03-07T00:00:00-05:00"
         },
-        "issued": "2008-11-29T00:00:00.000-05:00",
+        "issued": "2007-03-07T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-423791",
+            "reference": "Observation/Observation-400691",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-423792",
+            "reference": "Observation/Observation-400692",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-423793",
+            "reference": "Observation/Observation-400693",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-423794",
+            "reference": "Observation/Observation-400694",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-423795",
+            "reference": "Observation/Observation-400695",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-423796",
+            "reference": "Observation/Observation-400696",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-423790"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-400690"
       }
     }
   ]

@@ -4,7 +4,7 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-190",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-190",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-190",
@@ -21,8 +21,8 @@
         "participant": [
           {
             "period": {
-              "start": "1988-02-12T00:00:00-05:00",
-              "end": "1988-02-12T00:00:00-05:00"
+              "start": "1989-12-22T00:00:00-05:00",
+              "end": "1989-12-22T00:00:00-05:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2524",
@@ -31,8 +31,8 @@
           }
         ],
         "period": {
-          "start": "1988-02-12T00:00:00-05:00",
-          "end": "1988-02-12T00:00:00-05:00"
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
         },
         "location": [
           {
@@ -49,14 +49,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-190"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-190"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-247",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-263",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-247",
+        "id": "Immunization-263",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
@@ -72,7 +72,7 @@
           "reference": "Patient/Patient-6487",
           "display": "Cassandra Graham Vasquez"
         },
-        "date": "1988-02-12T00:00:00-05:00",
+        "date": "1989-12-22T00:00:00-05:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1103",
@@ -89,21 +89,143 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-247"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-263"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-1906",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36438",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36438",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 168.8779254414842,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36438"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36439",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36439",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70.01104620207227,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36439"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-36440",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-36440",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "56218007",
+              "display": "Systolic hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "1989-12-22T00:00:00-05:00",
+        "assertedDate": "1989-12-22T00:00:00-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2524",
+          "display": "Willie Vincent Riddle MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-36440"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-36441",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-1906",
+        "id": "Procedure-36441",
         "status": "completed",
         "code": {
           "coding": [
             {
               "system": "http://www.ama-assn.org/go/cpt",
-              "code": "87625",
-              "display": "Infectious agent detection by nucleic acid (DNA or RNA); Human Papillomavirus (HPV), types 16 and 18 only, includes type 45, if performed"
+              "code": "87622",
+              "display": "Infectious agent detection by nucleic acid (DNA or RNA); papillomavirus, human, quantification"
             }
           ]
         },
@@ -116,8 +238,8 @@
           "display": "Wellness Visit"
         },
         "performedPeriod": {
-          "start": "1988-02-12T00:00:00-05:00",
-          "end": "1988-02-12T00:00:00-05:00"
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
         },
         "performer": [
           {
@@ -134,14 +256,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Procedure/Procedure-1906"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-36441"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1907",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36442",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1907",
+        "id": "Observation-36442",
         "status": "final",
         "code": {
           "coding": [
@@ -161,8 +283,8 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1988-02-12T00:00:00-05:00",
-          "end": "1988-02-12T00:00:00-05:00"
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
         },
         "performer": [
           {
@@ -174,21 +296,21 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1907"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36442"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-1908",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36443",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-1908",
+        "id": "DiagnosticReport-36443",
         "status": "final",
         "code": {
           "coding": [
             {
               "system": "http://www.ama-assn.org/go/cpt",
-              "code": "88143",
-              "display": "Cytopathology, cervical or vaginal (any reporting system), collected in preservative fluid, automated thin layer preparation; with manual screening and rescreening under physician supervision"
+              "code": "88166",
+              "display": "Cytopathology, slides, cervical or vaginal (the Bethesda System); with manual screening and computer-assisted rescreening under physician supervision"
             }
           ]
         },
@@ -201,27 +323,907 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1988-02-12T00:00:00-05:00",
-          "end": "1988-02-12T00:00:00-05:00"
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
         },
-        "issued": "1988-02-12T00:00:00.000-05:00",
+        "issued": "1989-12-22T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-1907",
+            "reference": "Observation/Observation-36442",
             "display": "No_Cancer_Detected"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-1908"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36443"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1910",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36444",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1910",
+        "id": "Observation-36444",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 171.6,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36444"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36445",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36445",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.30263512041091,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36445"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36446",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36446",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 33.38340204098914,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36446"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36449",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36449",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/observation-category",
+                "code": "vital-signs",
+                "display": "vital-signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "valueQuantity": {
+          "value": 70.01104620207227,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36449"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36450",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36450",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.151331745775718,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36450"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36451",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36451",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 75.98689240089588,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36451"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36452",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36452",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 17.17607083138203,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36452"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36453",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36453",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.8052539796802523,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36453"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36454",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36454",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.9429293068865978,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36454"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36455",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36455",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140.53949042881405,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36455"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36456",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36456",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.973670721307005,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36456"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36457",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36457",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 109.9986260430881,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36457"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36458",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36458",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25.748136983742956,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36458"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36459",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-36459",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "issued": "1989-12-22T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-36451",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-36452",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-36453",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-36454",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-36455",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-36456",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-36457",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-36458",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36459"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36460",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36460",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 150.60991352221194,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36460"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36461",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36461",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 59.014164273516705,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36461"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36462",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36462",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 100.30409286205283,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36462"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36463",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36463",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 38.50298780545576,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36463"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36464",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-36464",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6487",
+          "display": "Cassandra Graham Vasquez"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-190",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
+        },
+        "issued": "1989-12-22T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-36460",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-36461",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-36462",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-36463",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36464"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36466",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36466",
         "status": "final",
         "code": {
           "coding": [
@@ -240,7 +1242,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -254,14 +1256,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1910"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36466"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1911",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36467",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1911",
+        "id": "Observation-36467",
         "status": "final",
         "code": {
           "coding": [
@@ -280,7 +1282,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -288,20 +1290,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 58.75406598512804,
+          "value": 98.30263512041091,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1911"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36467"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1912",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36468",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1912",
+        "id": "Observation-36468",
         "status": "final",
         "code": {
           "coding": [
@@ -320,7 +1322,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -328,20 +1330,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 19.952777501048693,
+          "value": 33.38340204098914,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1912"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36468"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1913",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36469",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1913",
+        "id": "Observation-36469",
         "status": "final",
         "code": {
           "coding": [
@@ -360,7 +1362,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -374,14 +1376,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1913"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36469"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1914",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36470",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1914",
+        "id": "Observation-36470",
         "status": "final",
         "code": {
           "coding": [
@@ -400,7 +1402,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -408,20 +1410,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 109.22713080512077,
+          "value": 168.8779254414842,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1914"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36470"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1915",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36471",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-1915",
+        "id": "Observation-36471",
         "status": "final",
         "code": {
           "coding": [
@@ -440,7 +1442,7 @@
           "reference": "Encounter/Encounter-190",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1988-02-12T00:00:00-05:00",
+        "effectiveDateTime": "1989-12-22T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2524",
@@ -448,20 +1450,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 81.1431577311297,
+          "value": 70.01104620207227,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-1915"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36471"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-1909",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36465",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-1909",
+        "id": "DiagnosticReport-36465",
         "status": "final",
         "code": {
           "coding": [
@@ -481,40 +1483,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1988-02-12T00:00:00-05:00",
-          "end": "1988-02-12T00:00:00-05:00"
+          "start": "1989-12-22T00:00:00-05:00",
+          "end": "1989-12-22T00:00:00-05:00"
         },
-        "issued": "1988-02-12T00:00:00.000-05:00",
+        "issued": "1989-12-22T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-1910",
+            "reference": "Observation/Observation-36466",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-1911",
+            "reference": "Observation/Observation-36467",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-1912",
+            "reference": "Observation/Observation-36468",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-1913",
+            "reference": "Observation/Observation-36469",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-1914",
+            "reference": "Observation/Observation-36470",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-1915",
+            "reference": "Observation/Observation-36471",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-1909"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36465"
       }
     }
   ]

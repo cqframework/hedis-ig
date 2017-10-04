@@ -4,14 +4,14 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2734",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2734",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2734",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
+          "code": "inpatient",
           "display": "Inpatient"
         },
         "subject": {
@@ -21,82 +21,167 @@
         "participant": [
           {
             "period": {
-              "start": "2016-04-14T00:00:00-04:00",
-              "end": "2016-04-14T00:00:00-04:00"
+              "start": "1988-03-07T00:07:00-05:00",
+              "end": "1988-03-07T00:52:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2520",
-              "display": "Kimberly Christy Ashley MD"
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
             }
           }
         ],
         "period": {
-          "start": "2016-04-14T00:00:00-04:00",
-          "end": "2016-04-14T00:00:00-04:00"
+          "start": "1988-03-07T00:07:00-05:00",
+          "end": "1988-03-07T00:52:00-05:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1105",
-              "display": "Bayside Medical Group"
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1105",
-          "display": "Bayside Medical Group"
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2734"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2734"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-582583",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-582209",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-582583",
+        "resourceType": "Procedure",
+        "id": "Procedure-582209",
         "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "code": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45331",
+              "display": "Sigmoidoscopy, flexible; with biopsy, single or multiple"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6503",
           "display": "Becky Trevino Craig"
         },
-        "date": "2016-04-14T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1105",
-          "display": "Bayside Medical Group"
+        "context": {
+          "reference": "Encounter/Encounter-2734",
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "practitioner": [
+        "performedPeriod": {
+          "start": "1988-03-07T00:52:00-05:00",
+          "end": "1988-03-07T00:52:00-05:00"
+        },
+        "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2520",
-              "display": "Kimberly Christy Ashley MD"
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
             }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-582209"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582211",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-582211",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "425634007",
+              "display": "Diagnostic endoscopic examination of lower bowel and sampling for bacterial overgrowth using fiberoptic sigmoidoscope"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6503",
+          "display": "Becky Trevino Craig"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2734",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-03-07T00:52:00-05:00",
+          "end": "1988-03-07T00:52:00-05:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582211"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-582212",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-582212",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45350",
+              "display": "Sigmoidoscopy, flexible; with band ligation(s) (eg, hemorrhoids)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6503",
+          "display": "Becky Trevino Craig"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2734",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-03-07T00:52:00-05:00",
+          "end": "1988-03-07T00:52:00-05:00"
+        },
+        "issued": "1988-03-07T00:52:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-582211",
+            "display": "Positive_Sigmoidoscopy_Observation"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-582583"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-582212"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608740",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582215",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608740",
+        "id": "Observation-582215",
         "status": "final",
         "code": {
           "coding": [
@@ -113,13 +198,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -129,14 +214,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608740"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582215"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608741",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582216",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608741",
+        "id": "Observation-582216",
         "status": "final",
         "code": {
           "coding": [
@@ -153,30 +238,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 105.59478338350954,
+          "value": 81.60970516797394,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608741"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582216"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608742",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582217",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608742",
+        "id": "Observation-582217",
         "status": "final",
         "code": {
           "coding": [
@@ -193,30 +278,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 37.54709473305206,
+          "value": 29.018548387466033,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608742"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582217"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608743",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582218",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608743",
+        "id": "Observation-582218",
         "status": "final",
         "code": {
           "coding": [
@@ -233,13 +318,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -249,14 +334,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608743"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582218"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608744",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582219",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608744",
+        "id": "Observation-582219",
         "status": "final",
         "code": {
           "coding": [
@@ -273,30 +358,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 130.69958379905893,
+          "value": 103.58440564886408,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608744"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582219"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608745",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582220",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-608745",
+        "id": "Observation-582220",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +398,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
-        "effectiveDateTime": "2016-04-14T00:00:00-04:00",
+        "effectiveDateTime": "1988-03-07T00:07:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2520",
-            "display": "Kimberly Christy Ashley MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 76.45452002003186,
+          "value": 72.12709814444182,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-608745"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-582220"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-608739",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-582214",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-608739",
+        "id": "DiagnosticReport-582214",
         "status": "final",
         "code": {
           "coding": [
@@ -353,43 +438,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2734",
-          "display": "Wellness Visit"
+          "display": "Sigmoidoscopy_Encounter"
         },
         "effectivePeriod": {
-          "start": "2016-04-14T00:00:00-04:00",
-          "end": "2016-04-14T00:00:00-04:00"
+          "start": "1988-03-07T00:07:00-05:00",
+          "end": "1988-03-07T00:07:00-05:00"
         },
-        "issued": "2016-04-14T00:00:00.000-04:00",
+        "issued": "1988-03-07T00:07:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-608740",
+            "reference": "Observation/Observation-582215",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-608741",
+            "reference": "Observation/Observation-582216",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-608742",
+            "reference": "Observation/Observation-582217",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-608743",
+            "reference": "Observation/Observation-582218",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-608744",
+            "reference": "Observation/Observation-582219",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-608745",
+            "reference": "Observation/Observation-582220",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-608739"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-582214"
       }
     }
   ]

@@ -1,0 +1,481 @@
+{
+  "resourceType": "Bundle",
+  "id": "Pauline-Shepherd-Sweeney-6499-Encounter-1988",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1988",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1988",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1989-06-24T00:09:00-04:00",
+              "end": "1989-06-24T01:21:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1989-06-24T00:09:00-04:00",
+          "end": "1989-06-24T01:21:00-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1988"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-435463",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-435463",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44407",
+              "display": "Colonoscopy through stoma; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s), includes endoscopic ultrasound examination limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1989-06-24T01:21:00-04:00",
+          "end": "1989-06-24T01:21:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-435463"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435464",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435464",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45381",
+              "display": "Colonoscopy, flexible; with directed submucosal injection(s), any substance"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1989-06-24T01:21:00-04:00",
+          "end": "1989-06-24T01:21:00-04:00"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435464"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-435465",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-435465",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44393",
+              "display": "Colonoscopy through stoma; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1989-06-24T01:21:00-04:00",
+          "end": "1989-06-24T01:21:00-04:00"
+        },
+        "issued": "1989-06-24T01:21:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-435464",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-435465"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435468",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435468",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435468"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435469",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435469",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.52444951624084,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435469"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435470",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435470",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 30.41054212229112,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435470"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435471",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435471",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435471"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435472",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435472",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 108.394822266613,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435472"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435473",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-435473",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-06-24T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.85625560269797,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-435473"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-435467",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-435467",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1988",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1989-06-24T00:09:00-04:00",
+          "end": "1989-06-24T00:09:00-04:00"
+        },
+        "issued": "1989-06-24T00:09:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-435468",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-435469",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-435470",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-435471",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-435472",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-435473",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-435467"
+      }
+    }
+  ]
+}

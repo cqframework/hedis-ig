@@ -4,15 +4,15 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2638",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2638",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2638",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6553",
@@ -21,122 +21,222 @@
         "participant": [
           {
             "period": {
-              "start": "2015-05-21T00:00:00-04:00",
-              "end": "2015-05-21T00:00:00-04:00"
+              "start": "2013-10-11T05:00:00-04:00",
+              "end": "2013-10-11T05:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2530",
-              "display": "Terrence Ramirez McCormick MD"
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
             }
           }
         ],
         "period": {
-          "start": "2015-05-21T00:00:00-04:00",
-          "end": "2015-05-21T00:00:00-04:00"
+          "start": "2013-10-11T05:00:00-04:00",
+          "end": "2013-10-11T05:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1103",
-              "display": "Acme Medical Center"
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1103",
-          "display": "Acme Medical Center"
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-2638"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2638"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-558997",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563868",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-558997",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-563868",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6553",
           "display": "Gabriel Bill Good"
         },
-        "date": "2015-05-21T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1103",
-          "display": "Acme Medical Center"
+        "context": {
+          "reference": "Encounter/Encounter-2638",
+          "display": "Followup_Visit"
         },
-        "practitioner": [
+        "authoredOn": "2013-10-11T05:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2530",
-              "display": "Terrence Ramirez McCormick MD"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
-        ]
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2013-10-11T05:00:00-04:00",
+            "end": "2013-10-11T05:00:00-04:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-558997"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563868"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-558998",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563869",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-558998",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-563869",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "113",
-              "display": "Td (adult) preservative free"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1373463",
+              "display": "canagliflozin 100 MG Oral Tablet"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6553",
           "display": "Gabriel Bill Good"
         },
-        "date": "2015-05-21T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1103",
-          "display": "Acme Medical Center"
+        "context": {
+          "reference": "Encounter/Encounter-2638",
+          "display": "Followup_Visit"
         },
-        "practitioner": [
+        "authoredOn": "2013-10-11T05:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2530",
-              "display": "Terrence Ramirez McCormick MD"
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
-        ]
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2013-10-11T05:00:00-04:00",
+            "end": "2013-10-11T05:00:00-04:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-558998"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563869"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584981",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563870",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-563870",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2638",
+          "display": "Followup_Visit"
+        },
+        "authoredOn": "2013-10-11T05:00:00-04:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "SNOMED-CT",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2013-10-11T05:00:00-04:00",
+            "end": "2013-10-11T05:00:00-04:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-563870"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563873",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584981",
+        "id": "Observation-563873",
         "status": "final",
         "code": {
           "coding": [
@@ -153,13 +253,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -169,14 +269,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584981"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563873"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584982",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563874",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584982",
+        "id": "Observation-563874",
         "status": "final",
         "code": {
           "coding": [
@@ -193,30 +293,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 85.19351182860046,
+          "value": 125.14144552098644,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584982"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563874"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584983",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563875",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584983",
+        "id": "Observation-563875",
         "status": "final",
         "code": {
           "coding": [
@@ -233,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 27.254737256032477,
+          "value": 40.03470621538079,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584983"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563875"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584984",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563876",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584984",
+        "id": "Observation-563876",
         "status": "final",
         "code": {
           "coding": [
@@ -273,13 +373,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -289,14 +389,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584984"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563876"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584985",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563877",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584985",
+        "id": "Observation-563877",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +413,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 133.85857776513782,
+          "value": 172.15075585433877,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584985"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563877"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584986",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563878",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-584986",
+        "id": "Observation-563878",
         "status": "final",
         "code": {
           "coding": [
@@ -353,30 +453,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2015-05-21T00:00:00-04:00",
+        "effectiveDateTime": "2013-10-11T05:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2530",
-            "display": "Terrence Ramirez McCormick MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 72.36468028729017,
+          "value": 76.39933224388855,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-584986"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-563878"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-584980",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-563872",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-584980",
+        "id": "DiagnosticReport-563872",
         "status": "final",
         "code": {
           "coding": [
@@ -393,43 +493,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2638",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2015-05-21T00:00:00-04:00",
-          "end": "2015-05-21T00:00:00-04:00"
+          "start": "2013-10-11T05:00:00-04:00",
+          "end": "2013-10-11T05:00:00-04:00"
         },
-        "issued": "2015-05-21T00:00:00.000-04:00",
+        "issued": "2013-10-11T05:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-584981",
+            "reference": "Observation/Observation-563873",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-584982",
+            "reference": "Observation/Observation-563874",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-584983",
+            "reference": "Observation/Observation-563875",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-584984",
+            "reference": "Observation/Observation-563876",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-584985",
+            "reference": "Observation/Observation-563877",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-584986",
+            "reference": "Observation/Observation-563878",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-584980"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-563872"
       }
     }
   ]

@@ -4,15 +4,15 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1788",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1788",
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-1788",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6551",
@@ -21,82 +21,150 @@
         "participant": [
           {
             "period": {
-              "start": "2008-04-06T00:00:00-04:00",
-              "end": "2008-04-06T00:00:00-04:00"
+              "start": "2006-10-04T11:00:00-04:00",
+              "end": "2006-10-04T11:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
             }
           }
         ],
         "period": {
-          "start": "2008-04-06T00:00:00-04:00",
-          "end": "2008-04-06T00:00:00-04:00"
+          "start": "2006-10-04T11:00:00-04:00",
+          "end": "2006-10-04T11:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1101",
-              "display": "McKinley Health Center"
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1101",
-          "display": "McKinley Health Center"
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Encounter/Encounter-1788"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1788"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-388065",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-390776",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-388065",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-390776",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "106892",
+              "display": "insulin human, isophane 70 UNT/ML / Regular Insulin, Human 30 UNT/ML Injectable Suspension [Humulin]"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6551",
           "display": "Darrell Shaffer Riggs"
         },
-        "date": "2008-04-06T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1101",
-          "display": "McKinley Health Center"
+        "context": {
+          "reference": "Encounter/Encounter-1788",
+          "display": "Followup_Visit"
         },
-        "practitioner": [
+        "authoredOn": "2006-10-04T11:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+            "coding": [
+              {
+                "system": "SNOMEDCT",
+                "code": "46635009",
+                "display": "Type 1 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
-        ]
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-10-04T11:00:00-04:00",
+            "end": "2006-10-04T11:00:00-04:00"
+          }
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Immunization/Immunization-388065"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-390776"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409931",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-390777",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-390777",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1788",
+          "display": "Followup_Visit"
+        },
+        "authoredOn": "2006-10-04T11:00:00-04:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "SNOMEDCT",
+                "code": "46635009",
+                "display": "Type 1 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-10-04T11:00:00-04:00",
+            "end": "2006-10-04T11:00:00-04:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-390777"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390780",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409931",
+        "id": "Observation-390780",
         "status": "final",
         "code": {
           "coding": [
@@ -113,13 +181,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
@@ -129,14 +197,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409931"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390780"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409932",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390781",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409932",
+        "id": "Observation-390781",
         "status": "final",
         "code": {
           "coding": [
@@ -153,30 +221,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
-          "value": 112.71807547795076,
+          "value": 67.61815563626902,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409932"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390781"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409933",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390782",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409933",
+        "id": "Observation-390782",
         "status": "final",
         "code": {
           "coding": [
@@ -193,30 +261,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
-          "value": 38.10102605393144,
+          "value": 22.85632626969613,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409933"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390782"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409934",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390783",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409934",
+        "id": "Observation-390783",
         "status": "final",
         "code": {
           "coding": [
@@ -233,13 +301,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
@@ -249,14 +317,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409934"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390783"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409935",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390784",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409935",
+        "id": "Observation-390784",
         "status": "final",
         "code": {
           "coding": [
@@ -273,30 +341,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
-          "value": 136.54560761341588,
+          "value": 119.462647881021,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409935"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390784"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409936",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390785",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-409936",
+        "id": "Observation-390785",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +381,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2008-04-06T00:00:00-04:00",
+        "effectiveDateTime": "2006-10-04T11:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
           }
         ],
         "valueQuantity": {
-          "value": 77.19723956273735,
+          "value": 73.33001701146304,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3Observation/Observation-409936"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-390785"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-409930",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-390779",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-409930",
+        "id": "DiagnosticReport-390779",
         "status": "final",
         "code": {
           "coding": [
@@ -353,43 +421,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1788",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2008-04-06T00:00:00-04:00",
-          "end": "2008-04-06T00:00:00-04:00"
+          "start": "2006-10-04T11:00:00-04:00",
+          "end": "2006-10-04T11:00:00-04:00"
         },
-        "issued": "2008-04-06T00:00:00.000-04:00",
+        "issued": "2006-10-04T11:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-409931",
+            "reference": "Observation/Observation-390780",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-409932",
+            "reference": "Observation/Observation-390781",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-409933",
+            "reference": "Observation/Observation-390782",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-409934",
+            "reference": "Observation/Observation-390783",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-409935",
+            "reference": "Observation/Observation-390784",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-409936",
+            "reference": "Observation/Observation-390785",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3DiagnosticReport/DiagnosticReport-409930"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-390779"
       }
     }
   ]
