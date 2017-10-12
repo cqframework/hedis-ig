@@ -24,15 +24,29 @@ The percentage of members 12 years of age and older with a diagnosis of
 
 codesystem "SNOMED": 'http://snomed.info/sct'
 
-valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
-valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
-valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
-valueset "Psychotic Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
-valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074'
-valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
-valueset "PHQ-9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // Grouping Value Set
+// valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
+// valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
+// valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
+// valueset "Psychotic Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
+// valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074'
+// valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
+// valueset "PHQ-9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // Grouping Value Set
+
+// update
+valueset "Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1044'
+valueset "Bipolar Disorder ECDS": '2.16.840.1.113883.3.464.1004.1346'
+valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
+valueset "Interactive Outpatient Encounter": '2.16.840.1.113883.3.464.1004.1347'
+valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
+valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'
+valueset "Personality Disorder": '2.16.840.1.113883.3.464.1004.1355'
+valueset "Pervasive Developmental Disorder": '2.16.840.1.113883.3.464.1004.1356'
+valueset "PHQ-9 Total Score": '2.16.840.1.113883.3.464.1004.1401'
+valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
 
 code "Major Depression and Dysthymia": '78667006' from "SNOMED"
+code "PHQ-9 Modified Score": '' from ""
+code "PHQ-9 Tool": '' from ""
 
 /*
 This library has an explicit parameter which is the measurement year.

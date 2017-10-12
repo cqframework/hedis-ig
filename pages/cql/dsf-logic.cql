@@ -20,18 +20,36 @@ The percentage of members 12 years of age and older who were screened for
 
 codesystem "SNOMED": 'http://snomed.info/sct'
 
-valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
-valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
-valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
-valueset "Behavioral Health Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
-valueset "Case Management Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
-valueset "ECDS Follow-Up Visit Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
-valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
-valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
-valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
+// valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
+// valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
+// valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
+// valueset "Behavioral Health Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
+// valueset "Depression Case Management Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
+// valueset "ECDS Follow-Up Visit": 'urn:oid:2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
+// valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
+// valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
+// valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
 valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
 
-code "Major Depression and Dysthymia": '78667006' from "SNOMED"
+// update
+valueset "Behavioral Health Encounter": '2.16.840.1.113883.3.464.1004.1383'
+valueset "Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1044'
+valueset "Bipolar Disorder ECDS": '2.16.840.1.113883.3.464.1004.1346'
+valueset "Depression": '2.16.840.1.113883.3.464.1004.1390'
+valueset "Depression Case Management Encounter": '2.16.840.1.113883.3.464.1004.1389'
+valueset "Depression Screen": '2.16.840.1.113883.3.464.1004.1384'
+valueset "ECDS Follow-Up Visit": '2.16.840.1.113883.3.464.1004.1385'
+valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
+valueset "Mental Illness": '2.16.840.1.113883.3.464.1004.1179'
+valueset "Mental Illness SNOMED": '2.16.840.1.113883.3.464.1004.1453'
+valueset "Negative Depression Screen": '2.16.840.1.113883.3.464.1004.1386'
+valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'
+valueset "Positive Depression Screen": '2.16.840.1.113883.3.464.1004.1387'
+valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
+
+// code "Major Depression and Dysthymia": '78667006' from "SNOMED"
+code "PHQ-9 Modified Score": '' from ""
+code "PHQ-9 Tool": '' from ""
 
 /*
 This library has an explicit parameter which is the measurement year.
@@ -136,14 +154,14 @@ define "Follow-Up Care Encounters":
 		[Encounter: "Behavioral Health Encounter"]
 		union
 		(
-			[Encounter: "ECDS Follow-Up Visit Encounter"] E
+			[Encounter: "ECDS Follow-Up Visit"] E
 				with [DiagnosticReport: "Major Depression and Dysthymia"] D
 					such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 						and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 						and ChoiceToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
 		)
 		union
-		[Encounter: "Case Management Encounter"]
+		[Encounter: "Depression Case Management Encounter"]
 	) Enc
 		where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 
