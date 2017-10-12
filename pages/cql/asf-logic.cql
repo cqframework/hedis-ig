@@ -19,15 +19,18 @@ The percentage of members 18 years of age and older who were screened for
 		other follow-up care within 2 months of a positive screening.
 */
 
+codesystem "LOINC": 'http://loinc.org'
+
 valueset "Alcohol Screening and Brief Counseling": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-valueset "AUDIT-C Total Score (in points)": 'urn:oid:2.16.840.1.113883.3.464.1003.107.12.1022' // Grouping Value Set
 valueset "Five or more drinks per day": 'urn:oid:2.16.840.1.113883.3.464.1003.106.11.1035' // Value Set
 valueset "Four or more drinks per day": 'urn:oid:2.16.840.1.113762.1.4.1072.14' // Value Set
-valueset "AUDIT Total Score (in points)": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
 valueset "Alcohol abuse or dependence": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1010' // Grouping Value Set
 	// TODO: This isn't referenced in any define.
 valueset "Dementia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1101' // Grouping Value Set
 valueset "Alcohol use disorder": 'TODO' // not in spec Data Criteria
+
+code "AUDIT Total Score (in points)": '75624-7' from "LOINC"
+code "AUDIT-C Total Score (in points)": '75626-2' from "LOINC"
 
 /*
 This library has an explicit parameter which is the measurement year.

@@ -14,14 +14,17 @@ depression or dysthymia, who had an outpatient encounter with a PHQ-9 score
 present in their record in the same assessment period as the encounter.
 */
 
+codesystem "SNOMED": 'http://snomed.info/sct'
+
 valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
-valueset "Major Depression and Dysthymia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1151' // Grouping Value Set
 valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
 valueset "Psychotic Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
 valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
 valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074' // Grouping Value Set
 valueset "PHQ-9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
 valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
+
+code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 
 /*
 This library has an explicit parameter which is the measurement year.

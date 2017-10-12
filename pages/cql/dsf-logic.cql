@@ -18,7 +18,8 @@ The percentage of members 12 years of age and older who were screened for
 		positive for depression and received appropriate follow-up care within 30 days.
 */
 
-valueset "Major Depression and Dysthymia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1151' // Grouping Value Set
+codesystem "SNOMED": 'http://snomed.info/sct'
+
 valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
 valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
 valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
@@ -29,6 +30,8 @@ valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Gro
 valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
 valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
 valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
+
+code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 
 /*
 This library has an explicit parameter which is the measurement year.
