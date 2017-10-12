@@ -20,7 +20,7 @@ valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' //
 valueset "Psychotic Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
 valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
 valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074' // Grouping Value Set
-valueset "PHQ9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
+valueset "PHQ-9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
 valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
 
 /*
@@ -134,7 +134,7 @@ define "PHQ-9 Score":
 	distinct (
 		[Observation: "PHQ-9 Tool"]
 		union
-		[Observation: "PHQ9 Modified Score"]
+		[Observation: "PHQ-9 Modified Score"]
 	) A
 		where A.status.value in { 'final', 'amended' }
 			and A.value is not null
