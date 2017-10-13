@@ -18,6 +18,7 @@ The percentage of members 12 years of age and older who were screened for
 		positive for depression and received appropriate follow-up care within 30 days.
 */
 
+codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 
 // valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
@@ -49,7 +50,7 @@ valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
 
 // code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 code "PHQ-9 Modified Score": '' from ""
-code "PHQ-9 Tool": '' from ""
+code "PHQ-9 Tool": '44249-1' from "LOINC"
 
 /*
 This library has an explicit parameter which is the measurement year.
