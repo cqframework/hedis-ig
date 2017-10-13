@@ -22,6 +22,7 @@ The percentage of members 12 years of age and older with a diagnosis of
 		within five to seven months after the initial elevated PHQ-9 score.
 */
 
+codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 
 // valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
@@ -44,9 +45,9 @@ valueset "Pervasive Developmental Disorder": '2.16.840.1.113883.3.464.1004.1356'
 valueset "PHQ-9 Total Score": '2.16.840.1.113883.3.464.1004.1401'
 valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
 
-code "Major Depression and Dysthymia": '78667006' from "SNOMED"
+// code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 code "PHQ-9 Modified Score": '' from ""
-code "PHQ-9 Tool": '' from ""
+code "PHQ-9 Tool": '44249-1' from "LOINC"
 
 /*
 This library has an explicit parameter which is the measurement year.

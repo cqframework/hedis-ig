@@ -21,10 +21,10 @@ The percentage of members 18 years of age and older who were screened for
 
 codesystem "LOINC": 'http://loinc.org'
 
-valueset "Alcohol Screening and Brief Counseling": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
+// valueset "Alcohol Screening and Brief Counseling": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
 // valueset "Five or more drinks per day": 'urn:oid:2.16.840.1.113883.3.464.1003.106.11.1035' // Value Set
 // valueset "Four or more drinks per day": 'urn:oid:2.16.840.1.113762.1.4.1072.14' // Value Set
-valueset "Alcohol abuse or dependence": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1010' // Grouping Value Set
+// valueset "Alcohol abuse or dependence": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1010' // Grouping Value Set
 // valueset "Dementia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1101' // Grouping Value Set
 // valueset "Alcohol use disorder": 'TODO' // not in spec Data Criteria
 
@@ -190,8 +190,11 @@ define "Positive Assessment for Unhealthy Alcohol Use":
 	)
 
 define "Followup Screening":
-	[Observation: "Alcohol Screening and Brief Counseling"] Obs
-		where Obs.status.value in { 'final', 'amended' }
+	([Observation: "Alcohol Counseling and Treatment"] Obs
+		where Obs.status.value in { 'final', 'amended' })
+	union
+	([Observation: "Alcohol Screening"] Obs
+		where Obs.status.value in { 'final', 'amended' })
 
 define "Initial Positive Assessment for Unhealthy Alcohol Use":
 	{First(

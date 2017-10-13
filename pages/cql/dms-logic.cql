@@ -14,6 +14,7 @@ depression or dysthymia, who had an outpatient encounter with a PHQ-9 score
 present in their record in the same assessment period as the encounter.
 */
 
+codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 
 // valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
@@ -38,7 +39,7 @@ valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
 
 // code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 code "PHQ-9 Modified Score": '' from ""
-code "PHQ-9 Tool": '' from ""
+code "PHQ-9 Tool": '44249-1' from "LOINC"
 
 /*
 This library has an explicit parameter which is the measurement year.
