@@ -8,10 +8,15 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2368",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
+          "code": "inpatient",
           "display": "Inpatient"
         },
         "subject": {
@@ -21,30 +26,41 @@
         "participant": [
           {
             "period": {
-              "start": "2012-12-14T00:00:00-05:00",
-              "end": "2012-12-14T00:00:00-05:00"
+              "start": "2007-03-23T01:00:00-04:00",
+              "end": "2007-03-23T19:15:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
             }
           }
         ],
         "period": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
+          "start": "2007-03-23T01:00:00-04:00",
+          "end": "2007-03-23T19:15:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1102",
-              "display": "Pediatric and Adult Medicine"
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1102",
-          "display": "Pediatric and Adult Medicine"
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
         }
       },
       "request": {
@@ -53,183 +69,22 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-513985",
-      "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-513985",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
-            }
-          ]
-        },
-        "patient": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "date": "2012-12-14T00:00:00-05:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
-        },
-        "practitioner": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-513985"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-513986",
-      "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-513986",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "113",
-              "display": "Td (adult) preservative free"
-            }
-          ]
-        },
-        "patient": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "date": "2012-12-14T00:00:00-05:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
-        },
-        "practitioner": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-513986"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541484",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541484",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8480-6",
-              "display": "Systolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 115.90048882998441,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541484"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541485",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541485",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8462-4",
-              "display": "Diastolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 84.09501915718808,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541485"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-541486",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-413457",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-541486",
+        "id": "Procedure-413457",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82270",
-              "display": "Blood, occult, by peroxidase activity (eg, guaiac), qualitative; feces, consecutive collected specimens with single determination, for colorectal neoplasm screening (ie, patient was provided 3 cards or single triple card for consecutive collection)"
+              "system": "https://www.cms.gov/Medicare/Coding/ICD10/index.html",
+              "code": "0HTT0ZZ",
+              "display": "Resection of Right Breast, Open Approach"
             }
           ]
         },
@@ -239,955 +94,35 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
         "performedPeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
+          "start": "2007-03-23T19:15:00-04:00",
+          "end": "2007-03-23T19:15:00-04:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
             }
           }
         ],
         "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-541486"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-413457"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541487",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413460",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541487",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82274",
-              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueString": "NEGATIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541487"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541488",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541488",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "Body Height"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 167.7,
-          "unit": "cm"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541488"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541489",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541489",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "29463-7",
-              "display": "Body Weight"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 98.7178358578558,
-          "unit": "kg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541489"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541490",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541490",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "Body Mass Index"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 35.10180916167911,
-          "unit": "kg/m2"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541490"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541493",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541493",
-        "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "55284-4",
-              "display": "Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "valueQuantity": {
-          "value": 84.09501915718808,
-          "unit": "mmHg"
-        },
-        "component": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8480-6",
-                  "display": "Systolic Blood Pressure"
-                }
-              ]
-            }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8462-4",
-                  "display": "Diastolic Blood Pressure"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541493"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541494",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541494",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "4548-4",
-              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 5.532905643954107,
-          "unit": "%"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541494"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541495",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541495",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2339-0",
-              "display": "Glucose"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 90.68408535410168,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541495"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541496",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541496",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6299-2",
-              "display": "Urea Nitrogen"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 15.645257769507685,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541496"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541497",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541497",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "38483-4",
-              "display": "Creatinine"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 1.4239847271820576,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541497"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541498",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541498",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "49765-1",
-              "display": "Calcium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 3.5539811819367384,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541498"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541499",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541499",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2947-0",
-              "display": "Sodium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 138.0252967097037,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541499"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541500",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541500",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6298-4",
-              "display": "Potassium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 4.719947243613096,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541500"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541501",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541501",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2069-3",
-              "display": "Chloride"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 105.15925631282514,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541501"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541502",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541502",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "20565-8",
-              "display": "Carbon Dioxide"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 28.99387286560758,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541502"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541503",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-541503",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "51990-0",
-              "display": "Basic Metabolic Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "issued": "2012-12-14T00:00:00.000-05:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-541495",
-            "display": "Record_Glucose"
-          },
-          {
-            "reference": "Observation/Observation-541496",
-            "display": "Record_UreaNitrogen"
-          },
-          {
-            "reference": "Observation/Observation-541497",
-            "display": "Record_Creatinine"
-          },
-          {
-            "reference": "Observation/Observation-541498",
-            "display": "Record_Calcium"
-          },
-          {
-            "reference": "Observation/Observation-541499",
-            "display": "Record_Sodium"
-          },
-          {
-            "reference": "Observation/Observation-541500",
-            "display": "Record_Potassium"
-          },
-          {
-            "reference": "Observation/Observation-541501",
-            "display": "Record_Chloride"
-          },
-          {
-            "reference": "Observation/Observation-541502",
-            "display": "Record_CO2"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541503"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541504",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541504",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2093-3",
-              "display": "Total Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 138.8685283539806,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541504"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541505",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541505",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2571-8",
-              "display": "Triglycerides"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 50.004926386853924,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541505"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541506",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541506",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "18262-6",
-              "display": "Low Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 70.7575126564608,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541506"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541507",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541507",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2085-9",
-              "display": "High Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 58.11003042014901,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541507"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541508",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-541508",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "57698-3",
-              "display": "Lipid Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
-        },
-        "issued": "2012-12-14T00:00:00.000-05:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-541504",
-            "display": "Record_Cholesterol"
-          },
-          {
-            "reference": "Observation/Observation-541505",
-            "display": "Record_Triglycerides"
-          },
-          {
-            "reference": "Observation/Observation-541506",
-            "display": "Record_LDL"
-          },
-          {
-            "reference": "Observation/Observation-541507",
-            "display": "Record_HDL"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541508"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541510",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-541510",
+        "id": "Observation-413460",
         "status": "final",
         "code": {
           "coding": [
@@ -1204,13 +139,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
@@ -1220,14 +155,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541510"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413460"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541511",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413461",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541511",
+        "id": "Observation-413461",
         "status": "final",
         "code": {
           "coding": [
@@ -1244,30 +179,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 98.7178358578558,
+          "value": 75.05789917076551,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541511"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413461"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541512",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413462",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541512",
+        "id": "Observation-413462",
         "status": "final",
         "code": {
           "coding": [
@@ -1284,30 +219,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 35.10180916167911,
+          "value": 26.688875722138317,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541512"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413462"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541513",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413463",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541513",
+        "id": "Observation-413463",
         "status": "final",
         "code": {
           "coding": [
@@ -1324,13 +259,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
@@ -1340,14 +275,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541513"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413463"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541514",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413464",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541514",
+        "id": "Observation-413464",
         "status": "final",
         "code": {
           "coding": [
@@ -1364,30 +299,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 115.90048882998441,
+          "value": 143.49798260329416,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541514"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413464"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541515",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413465",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-541515",
+        "id": "Observation-413465",
         "status": "final",
         "code": {
           "coding": [
@@ -1404,31 +339,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
-        "effectiveDateTime": "2012-12-14T00:00:00-05:00",
+        "effectiveDateTime": "2007-03-23T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 84.09501915718808,
+          "value": 97.7844840040028,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-541515"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-413465"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541509",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-413459",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-541509",
+        "id": "DiagnosticReport-413459",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1444,43 +393,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2368",
-          "display": "Wellness Visit"
+          "display": "Cancer_Treatment_Encounter"
         },
         "effectivePeriod": {
-          "start": "2012-12-14T00:00:00-05:00",
-          "end": "2012-12-14T00:00:00-05:00"
+          "start": "2007-03-23T01:00:00-04:00",
+          "end": "2007-03-23T01:00:00-04:00"
         },
-        "issued": "2012-12-14T00:00:00.000-05:00",
+        "issued": "2007-03-23T01:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-541510",
+            "reference": "Observation/Observation-413460",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-541511",
+            "reference": "Observation/Observation-413461",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-541512",
+            "reference": "Observation/Observation-413462",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-541513",
+            "reference": "Observation/Observation-413463",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-541514",
+            "reference": "Observation/Observation-413464",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-541515",
+            "reference": "Observation/Observation-413465",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-541509"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-413459"
       }
     }
   ]

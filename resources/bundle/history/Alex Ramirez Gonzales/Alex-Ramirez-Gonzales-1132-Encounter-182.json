@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-182",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
           "code": "outpatient",
-          "display": "Inpatient"
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-1132",
@@ -21,8 +26,8 @@
         "participant": [
           {
             "period": {
-              "start": "1990-12-28T00:00:00-05:00",
-              "end": "1990-12-28T00:00:00-05:00"
+              "start": "1990-08-17T00:00:00-04:00",
+              "end": "1990-08-17T00:00:00-04:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2528",
@@ -31,8 +36,8 @@
           }
         ],
         "period": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
+          "start": "1990-08-17T00:00:00-04:00",
+          "end": "1990-08-17T00:00:00-04:00"
         },
         "location": [
           {
@@ -72,7 +77,7 @@
           "reference": "Patient/Patient-1132",
           "display": "Alex Ramirez Gonzales"
         },
-        "date": "1990-12-28T00:00:00-05:00",
+        "date": "1990-08-17T00:00:00-04:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1101",
@@ -93,10 +98,110 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55586",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-49074",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-49074",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-182",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1990-08-17T00:00:00-04:00",
+          "end": "1990-08-17T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-49074"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49075",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55586",
+        "id": "Observation-49075",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704197006",
+              "display": "Admits alcohol use (finding) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-182",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49075"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49076",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-49076",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -115,10 +220,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -126,20 +228,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 154.1713212621807,
+          "value": 157.61803644226075,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55586"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49076"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55587",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49077",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55587",
+        "id": "Observation-49077",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -158,10 +265,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -169,28 +273,33 @@
           }
         ],
         "valueQuantity": {
-          "value": 115.00472048847661,
+          "value": 88.54420156630968,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55587"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49077"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-55588",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-49078",
       "resource": {
         "resourceType": "Condition",
-        "id": "Condition-55588",
+        "id": "Condition-49078",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
         "clinicalStatus": "active",
         "verificationStatus": "confirmed",
         "code": {
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "1201005",
-              "display": "Benign essential hypertension"
+              "code": "59621000",
+              "display": "Essential hypertension"
             }
           ]
         },
@@ -202,8 +311,8 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "onsetDateTime": "1990-12-28T00:00:00-05:00",
-        "assertedDate": "1990-12-28T00:00:00-05:00",
+        "onsetDateTime": "1990-08-17T00:00:00-04:00",
+        "assertedDate": "1990-08-17T00:00:00-04:00",
         "asserter": {
           "reference": "Practitioner/Practitioner-2528",
           "display": "Tanya Sally Wheeler MD"
@@ -211,14 +320,111 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-55588"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-49078"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55589",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-49079",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-49079",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G8511",
+              "display": "Screening for depression documented as positive, follow-up plan not documented, reason not given (G8511)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-182",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1990-08-17T00:00:00-04:00",
+          "end": "1990-08-17T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-49079"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49080",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55589",
+        "id": "Observation-49080",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G8510",
+              "display": "Screening for depression is documented as negative, a follow-up plan is not required (G8510)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-182",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49080"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49081",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-49081",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -237,10 +443,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -254,14 +457,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55589"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49081"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55590",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49082",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55590",
+        "id": "Observation-49082",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -280,10 +488,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -291,20 +496,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 99.15916944605752,
+          "value": 96.80159181557949,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55590"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49082"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55591",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49083",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55591",
+        "id": "Observation-49083",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -323,10 +533,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -334,32 +541,26 @@
           }
         ],
         "valueQuantity": {
-          "value": 30.03468115327888,
+          "value": 29.320585897932567,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55591"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49083"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55594",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49086",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55594",
+        "id": "Observation-49086",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -377,12 +578,9 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "valueQuantity": {
-          "value": 115.00472048847661,
+          "value": 88.54420156630968,
           "unit": "mmHg"
         },
         "component": [
@@ -412,693 +610,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55594"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49086"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55595",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49088",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55595",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "4548-4",
-              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 5.552733762529452,
-          "unit": "%"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55595"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55596",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55596",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2339-0",
-              "display": "Glucose"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 80.4887337649138,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55596"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55597",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55597",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6299-2",
-              "display": "Urea Nitrogen"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 10.252045270850374,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55597"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55598",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55598",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "38483-4",
-              "display": "Creatinine"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 0.7276648415642344,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55598"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55599",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55599",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "49765-1",
-              "display": "Calcium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 2.6460684855300998,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55599"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55600",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55600",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2947-0",
-              "display": "Sodium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 139.44243286235297,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55600"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55601",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55601",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6298-4",
-              "display": "Potassium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 4.466786062351235,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55601"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55602",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55602",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2069-3",
-              "display": "Chloride"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 102.2129770475898,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55602"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55603",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55603",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "20565-8",
-              "display": "Carbon Dioxide"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 27.379176156277172,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55603"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55604",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-55604",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "51990-0",
-              "display": "Basic Metabolic Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "issued": "1990-12-28T00:00:00.000-05:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-55596",
-            "display": "Record_Glucose"
-          },
-          {
-            "reference": "Observation/Observation-55597",
-            "display": "Record_UreaNitrogen"
-          },
-          {
-            "reference": "Observation/Observation-55598",
-            "display": "Record_Creatinine"
-          },
-          {
-            "reference": "Observation/Observation-55599",
-            "display": "Record_Calcium"
-          },
-          {
-            "reference": "Observation/Observation-55600",
-            "display": "Record_Sodium"
-          },
-          {
-            "reference": "Observation/Observation-55601",
-            "display": "Record_Potassium"
-          },
-          {
-            "reference": "Observation/Observation-55602",
-            "display": "Record_Chloride"
-          },
-          {
-            "reference": "Observation/Observation-55603",
-            "display": "Record_CO2"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55604"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55605",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55605",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2093-3",
-              "display": "Total Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 115.60517112425988,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55605"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55606",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55606",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2571-8",
-              "display": "Triglycerides"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 59.07641038505567,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55606"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55607",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55607",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "18262-6",
-              "display": "Low Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 63.76516273645244,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55607"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55608",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55608",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2085-9",
-              "display": "High Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 40.02472631079631,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55608"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55609",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-55609",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "57698-3",
-              "display": "Lipid Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1132",
-          "display": "Alex Ramirez Gonzales"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-182",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
-        },
-        "issued": "1990-12-28T00:00:00.000-05:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-55605",
-            "display": "Record_Cholesterol"
-          },
-          {
-            "reference": "Observation/Observation-55606",
-            "display": "Record_Triglycerides"
-          },
-          {
-            "reference": "Observation/Observation-55607",
-            "display": "Record_LDL"
-          },
-          {
-            "reference": "Observation/Observation-55608",
-            "display": "Record_HDL"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55609"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55611",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-55611",
+        "id": "Observation-49088",
         "status": "final",
         "code": {
           "coding": [
@@ -1117,7 +636,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1131,14 +650,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55611"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49088"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55612",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49089",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55612",
+        "id": "Observation-49089",
         "status": "final",
         "code": {
           "coding": [
@@ -1157,7 +676,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1165,20 +684,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 99.15916944605752,
+          "value": 96.80159181557949,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55612"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49089"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55613",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49090",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55613",
+        "id": "Observation-49090",
         "status": "final",
         "code": {
           "coding": [
@@ -1197,7 +716,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1205,20 +724,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 30.03468115327888,
+          "value": 29.320585897932567,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55613"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49090"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55614",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49091",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55614",
+        "id": "Observation-49091",
         "status": "final",
         "code": {
           "coding": [
@@ -1237,7 +756,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1251,14 +770,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55614"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49091"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55615",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49092",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55615",
+        "id": "Observation-49092",
         "status": "final",
         "code": {
           "coding": [
@@ -1277,7 +796,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1285,20 +804,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 154.1713212621807,
+          "value": 157.61803644226075,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55615"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49092"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55616",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49093",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-55616",
+        "id": "Observation-49093",
         "status": "final",
         "code": {
           "coding": [
@@ -1317,7 +836,7 @@
           "reference": "Encounter/Encounter-182",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1990-12-28T00:00:00-05:00",
+        "effectiveDateTime": "1990-08-17T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2528",
@@ -1325,21 +844,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 115.00472048847661,
+          "value": 88.54420156630968,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-55616"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-49093"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55610",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-49087",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-55610",
+        "id": "DiagnosticReport-49087",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1358,40 +891,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1990-12-28T00:00:00-05:00",
-          "end": "1990-12-28T00:00:00-05:00"
+          "start": "1990-08-17T00:00:00-04:00",
+          "end": "1990-08-17T00:00:00-04:00"
         },
-        "issued": "1990-12-28T00:00:00.000-05:00",
+        "issued": "1990-08-17T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-55611",
+            "reference": "Observation/Observation-49088",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-55612",
+            "reference": "Observation/Observation-49089",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-55613",
+            "reference": "Observation/Observation-49090",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-55614",
+            "reference": "Observation/Observation-49091",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-55615",
+            "reference": "Observation/Observation-49092",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-55616",
+            "reference": "Observation/Observation-49093",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-55610"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-49087"
       }
     }
   ]

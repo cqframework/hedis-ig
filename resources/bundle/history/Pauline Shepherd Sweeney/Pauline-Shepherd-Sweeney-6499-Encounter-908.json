@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Pauline-Shepherd-Sweeney-6499-Encounter-908",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-908",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-908",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-06-28T00:06:00-04:00",
+              "end": "1988-06-28T00:44:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-06-28T00:06:00-04:00",
+          "end": "1988-06-28T00:44:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-908"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-169939",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-169939",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45335",
+              "display": "Sigmoidoscopy, flexible; with directed submucosal injection(s), any substance"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-06-28T00:44:00-04:00",
+          "end": "1988-06-28T00:44:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-169939"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169940",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169940",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45345",
+              "display": "Sigmoidoscopy, flexible; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:44:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169940"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-169941",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-169941",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45345",
+              "display": "Sigmoidoscopy, flexible; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-06-28T00:44:00-04:00",
+          "end": "1988-06-28T00:44:00-04:00"
+        },
+        "issued": "1988-06-28T00:44:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-169940",
+            "display": "Negative_Sigmoidoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-169941"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169944",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169944",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169944"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169945",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169945",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 82.22336292675742,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169945"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169946",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169946",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 29.236751079534947,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169946"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169947",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169947",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169947"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169948",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169948",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 126.17009165730813,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169948"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169949",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-169949",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-06-28T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 103.40544765490053,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-169949"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-169943",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-169943",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6499",
+          "display": "Pauline Shepherd Sweeney"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-908",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-06-28T00:06:00-04:00",
+          "end": "1988-06-28T00:06:00-04:00"
+        },
+        "issued": "1988-06-28T00:06:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-169944",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-169945",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-169946",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-169947",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-169948",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-169949",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-169943"
+      }
+    }
+  ]
+}

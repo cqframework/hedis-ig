@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-191",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
           "code": "outpatient",
-          "display": "Inpatient"
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-6550",
@@ -21,8 +26,8 @@
         "participant": [
           {
             "period": {
-              "start": "1989-08-04T00:00:00-04:00",
-              "end": "1989-08-04T00:00:00-04:00"
+              "start": "1990-01-26T00:00:00-05:00",
+              "end": "1990-01-26T00:00:00-05:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2527",
@@ -31,8 +36,8 @@
           }
         ],
         "period": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
         },
         "location": [
           {
@@ -53,10 +58,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-289",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-291",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-289",
+        "id": "Immunization-291",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
@@ -72,7 +77,7 @@
           "reference": "Patient/Patient-6550",
           "display": "Claude Roberto Andersen Jr"
         },
-        "date": "1989-08-04T00:00:00-04:00",
+        "date": "1990-01-26T00:00:00-05:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1106",
@@ -89,14 +94,114 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-289"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-291"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28861",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-37952",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-37952",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-37952"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37953",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28861",
+        "id": "Observation-37953",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704198001",
+              "display": "Denies alcohol use (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37953"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37954",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37954",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -115,10 +220,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -126,20 +228,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 152.26768381292223,
+          "value": 154.0238462143891,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28861"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37954"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28862",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37955",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28862",
+        "id": "Observation-37955",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -158,10 +265,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -169,28 +273,33 @@
           }
         ],
         "valueQuantity": {
-          "value": 62.004952321873525,
+          "value": 110.55722085818914,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28862"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37955"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-28863",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-37956",
       "resource": {
         "resourceType": "Condition",
-        "id": "Condition-28863",
+        "id": "Condition-37956",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
         "clinicalStatus": "active",
         "verificationStatus": "confirmed",
         "code": {
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "10725009",
-              "display": "Benign hypertension"
+              "code": "46481004",
+              "display": "Low-renin essential hypertension"
             }
           ]
         },
@@ -202,8 +311,8 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "onsetDateTime": "1989-08-04T00:00:00-04:00",
-        "assertedDate": "1989-08-04T00:00:00-04:00",
+        "onsetDateTime": "1990-01-26T00:00:00-05:00",
+        "assertedDate": "1990-01-26T00:00:00-05:00",
         "asserter": {
           "reference": "Practitioner/Practitioner-2527",
           "display": "Lee Chris Mejia MD"
@@ -211,14 +320,111 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-28863"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-37956"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28864",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-37957",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-37957",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "428181000124104",
+              "display": "Depression screening positive (situation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2527",
+              "display": "Lee Chris Mejia MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-37957"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37958",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28864",
+        "id": "Observation-37958",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G8510",
+              "display": "Screening for depression is documented as negative, a follow-up plan is not required (G8510)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37958"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37959",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37959",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -237,10 +443,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -254,14 +457,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28864"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37959"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28865",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37960",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28865",
+        "id": "Observation-37960",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -280,10 +488,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -291,20 +496,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 77.92764944892075,
+          "value": 115.88440663429398,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28865"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37960"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28866",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37961",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28866",
+        "id": "Observation-37961",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -323,10 +533,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -334,32 +541,26 @@
           }
         ],
         "valueQuantity": {
-          "value": 22.525046088831292,
+          "value": 33.49647549840848,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28866"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37961"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28869",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37964",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28869",
+        "id": "Observation-37964",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -377,12 +578,9 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
-        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "valueQuantity": {
-          "value": 62.004952321873525,
+          "value": 110.55722085818914,
           "unit": "mmHg"
         },
         "component": [
@@ -412,14 +610,747 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28869"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37964"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28871",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37965",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28871",
+        "id": "Observation-37965",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.086223064773598,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37965"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37966",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37966",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 87.49564085038185,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37966"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37967",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37967",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 8.155703787512467,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37967"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37968",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37968",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.456295880811349,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37968"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37969",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37969",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.3158436557659914,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37969"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37970",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37970",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 138.41966739792088,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37970"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37971",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37971",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.5233123869855865,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37971"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37972",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37972",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 109.37757157055586,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37972"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37973",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37973",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25.597194730159202,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37973"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37974",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-37974",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
+        },
+        "issued": "1990-01-26T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-37966",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-37967",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-37968",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-37969",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-37970",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-37971",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-37972",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-37973",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37974"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37975",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37975",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141.85334526317502,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37975"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37976",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37976",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 41.09439510685725,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37976"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37977",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37977",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 75.060314795325,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37977"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37978",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37978",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2527",
+            "display": "Lee Chris Mejia MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 58.57415144647855,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37978"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37979",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-37979",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6550",
+          "display": "Claude Roberto Andersen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-191",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
+        },
+        "issued": "1990-01-26T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-37975",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-37976",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-37977",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-37978",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37979"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37981",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-37981",
         "status": "final",
         "code": {
           "coding": [
@@ -438,7 +1369,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -452,14 +1383,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28871"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37981"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28872",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37982",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28872",
+        "id": "Observation-37982",
         "status": "final",
         "code": {
           "coding": [
@@ -478,7 +1409,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -486,20 +1417,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 77.92764944892075,
+          "value": 115.88440663429398,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28872"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37982"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28873",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37983",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28873",
+        "id": "Observation-37983",
         "status": "final",
         "code": {
           "coding": [
@@ -518,7 +1449,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -526,20 +1457,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 22.525046088831292,
+          "value": 33.49647549840848,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28873"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37983"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28874",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37984",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28874",
+        "id": "Observation-37984",
         "status": "final",
         "code": {
           "coding": [
@@ -558,7 +1489,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -572,14 +1503,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28874"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37984"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28875",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37985",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28875",
+        "id": "Observation-37985",
         "status": "final",
         "code": {
           "coding": [
@@ -598,7 +1529,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -606,20 +1537,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 152.26768381292223,
+          "value": 154.0238462143891,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28875"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37985"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28876",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37986",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-28876",
+        "id": "Observation-37986",
         "status": "final",
         "code": {
           "coding": [
@@ -638,7 +1569,7 @@
           "reference": "Encounter/Encounter-191",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-08-04T00:00:00-04:00",
+        "effectiveDateTime": "1990-01-26T00:00:00-05:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2527",
@@ -646,21 +1577,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 62.004952321873525,
+          "value": 110.55722085818914,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-28876"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-37986"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-28870",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37980",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-28870",
+        "id": "DiagnosticReport-37980",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -679,40 +1624,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1989-08-04T00:00:00-04:00",
-          "end": "1989-08-04T00:00:00-04:00"
+          "start": "1990-01-26T00:00:00-05:00",
+          "end": "1990-01-26T00:00:00-05:00"
         },
-        "issued": "1989-08-04T00:00:00.000-04:00",
+        "issued": "1990-01-26T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-28871",
+            "reference": "Observation/Observation-37981",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-28872",
+            "reference": "Observation/Observation-37982",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-28873",
+            "reference": "Observation/Observation-37983",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-28874",
+            "reference": "Observation/Observation-37984",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-28875",
+            "reference": "Observation/Observation-37985",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-28876",
+            "reference": "Observation/Observation-37986",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-28870"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-37980"
       }
     }
   ]

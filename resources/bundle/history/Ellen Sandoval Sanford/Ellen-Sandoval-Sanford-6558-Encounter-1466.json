@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-1466",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6558",
@@ -21,30 +26,30 @@
         "participant": [
           {
             "period": {
-              "start": "2004-04-09T00:00:00-04:00",
-              "end": "2004-04-09T00:00:00-04:00"
+              "start": "2001-09-16T06:00:00-04:00",
+              "end": "2001-09-16T06:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
             }
           }
         ],
         "period": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
+          "start": "2001-09-16T06:00:00-04:00",
+          "end": "2001-09-16T06:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1102",
-              "display": "Pediatric and Adult Medicine"
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1102",
-          "display": "Pediatric and Adult Medicine"
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
         }
       },
       "request": {
@@ -53,57 +58,23 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-311671",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-282391",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-311671",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
-            }
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-282391",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "patient": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "date": "2004-04-09T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
-        },
-        "practitioner": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-311671"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-334562",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-334562",
-        "status": "completed",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "77067",
-              "display": "Screening mammography, bilateral (2-view study of each breast), including computer-aided detection (CAD) when performed"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
             }
           ]
         },
@@ -113,577 +84,62 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "performedPeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
-            }
-          }
-        ],
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-334562"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334563",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334563",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "168749009",
-              "display": "Mammography normal (finding)"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueString": "NEGATIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334563"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334564",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-334564",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "24610-8",
-              "display": "Breast Mammogram limited"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "issued": "2004-04-09T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-334563",
-            "display": "No_Cancer_Detected"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334564"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334565",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334565",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8480-6",
-              "display": "Systolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 105.50064472033425,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334565"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334566",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334566",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8462-4",
-              "display": "Diastolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 72.51582084804996,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334566"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-334567",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-334567",
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "87620",
-              "display": "Infectious agent detection by nucleic acid (DNA or RNA); papillomavirus, human, direct probe technique"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "performedPeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
-            }
-          }
-        ],
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-334567"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334568",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334568",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "289829007",
-              "display": "Normal uterine cervix (finding)"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueString": "NEGATIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334568"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334569",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-334569",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
-              "code": "G0141",
-              "display": "Screening cytopathology smears, cervical or vaginal, performed by automated system, with manual rescreening, requiring interpretation by physician"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "issued": "2004-04-09T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-334568",
-            "display": "No_Cancer_Detected"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334569"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334570",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334570",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "Body Height"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 159.0,
-          "unit": "cm"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334570"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334571",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334571",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "29463-7",
-              "display": "Body Weight"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 64.9573155303031,
-          "unit": "kg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334571"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334572",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334572",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "Body Mass Index"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 25.694124255489537,
-          "unit": "kg/m2"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334572"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334575",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334575",
-        "status": "final",
-        "category": [
+        "authoredOn": "2001-09-16T06:00:00-04:00",
+        "reasonCode": [
           {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
               }
             ]
           }
         ],
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "55284-4",
-              "display": "Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "valueQuantity": {
-          "value": 72.51582084804996,
-          "unit": "mmHg"
-        },
-        "component": [
+        "dosageInstruction": [
           {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8480-6",
-                  "display": "Systolic Blood Pressure"
-                }
-              ]
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8462-4",
-                  "display": "Diastolic Blood Pressure"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334575"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334576",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334576",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "4548-4",
-              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
           }
         ],
-        "valueQuantity": {
-          "value": 4.8977456545146,
-          "unit": "%"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2001-09-16T06:00:00-04:00",
+            "end": "2001-09-16T06:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334576"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-282391"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334577",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-282392",
       "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334577",
-        "status": "final",
-        "code": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-282392",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "http://loinc.org",
-              "code": "2339-0",
-              "display": "Glucose"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1373463",
+              "display": "canagliflozin 100 MG Oral Tablet"
             }
           ]
         },
@@ -693,626 +149,49 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
+        "authoredOn": "2001-09-16T06:00:00-04:00",
+        "reasonCode": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
           }
         ],
-        "valueQuantity": {
-          "value": 71.43120883534559,
-          "unit": "mg/dL"
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2001-09-16T06:00:00-04:00",
+            "end": "2001-09-16T06:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334577"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-282392"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334578",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282395",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334578",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6299-2",
-              "display": "Urea Nitrogen"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 11.29368851154152,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334578"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334579",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334579",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "38483-4",
-              "display": "Creatinine"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 1.0153245182896318,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334579"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334580",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334580",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "49765-1",
-              "display": "Calcium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 2.4488963740404253,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334580"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334581",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334581",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2947-0",
-              "display": "Sodium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 141.58897534583096,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334581"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334582",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334582",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "6298-4",
-              "display": "Potassium"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 4.494693320477849,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334582"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334583",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334583",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2069-3",
-              "display": "Chloride"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 104.44733940402746,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334583"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334584",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334584",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "20565-8",
-              "display": "Carbon Dioxide"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 28.411581779723623,
-          "unit": "mmol/L"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334584"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334585",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-334585",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "51990-0",
-              "display": "Basic Metabolic Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "issued": "2004-04-09T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-334577",
-            "display": "Record_Glucose"
-          },
-          {
-            "reference": "Observation/Observation-334578",
-            "display": "Record_UreaNitrogen"
-          },
-          {
-            "reference": "Observation/Observation-334579",
-            "display": "Record_Creatinine"
-          },
-          {
-            "reference": "Observation/Observation-334580",
-            "display": "Record_Calcium"
-          },
-          {
-            "reference": "Observation/Observation-334581",
-            "display": "Record_Sodium"
-          },
-          {
-            "reference": "Observation/Observation-334582",
-            "display": "Record_Potassium"
-          },
-          {
-            "reference": "Observation/Observation-334583",
-            "display": "Record_Chloride"
-          },
-          {
-            "reference": "Observation/Observation-334584",
-            "display": "Record_CO2"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334585"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334586",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334586",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2093-3",
-              "display": "Total Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 144.52148435874946,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334586"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334587",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334587",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2571-8",
-              "display": "Triglycerides"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 56.85943491490055,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334587"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334588",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334588",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "18262-6",
-              "display": "Low Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 71.57706024659136,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334588"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334589",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334589",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2085-9",
-              "display": "High Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 61.57253712917799,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334589"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334590",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-334590",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "57698-3",
-              "display": "Lipid Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6558",
-          "display": "Ellen Sandoval Sanford"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
-        },
-        "issued": "2004-04-09T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-334586",
-            "display": "Record_Cholesterol"
-          },
-          {
-            "reference": "Observation/Observation-334587",
-            "display": "Record_Triglycerides"
-          },
-          {
-            "reference": "Observation/Observation-334588",
-            "display": "Record_LDL"
-          },
-          {
-            "reference": "Observation/Observation-334589",
-            "display": "Record_HDL"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334590"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334592",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-334592",
+        "id": "Observation-282395",
         "status": "final",
         "code": {
           "coding": [
@@ -1329,13 +208,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -1345,14 +224,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334592"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282395"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334593",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282396",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334593",
+        "id": "Observation-282396",
         "status": "final",
         "code": {
           "coding": [
@@ -1369,30 +248,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 64.9573155303031,
+          "value": 85.55270683689783,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334593"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282396"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334594",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282397",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334594",
+        "id": "Observation-282397",
         "status": "final",
         "code": {
           "coding": [
@@ -1409,30 +288,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 25.694124255489537,
+          "value": 33.840713119298215,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334594"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282397"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334595",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282398",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334595",
+        "id": "Observation-282398",
         "status": "final",
         "code": {
           "coding": [
@@ -1449,13 +328,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -1465,14 +344,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334595"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282398"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334596",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282399",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334596",
+        "id": "Observation-282399",
         "status": "final",
         "code": {
           "coding": [
@@ -1489,30 +368,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 105.50064472033425,
+          "value": 157.5426584654497,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334596"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282399"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334597",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282400",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-334597",
+        "id": "Observation-282400",
         "status": "final",
         "code": {
           "coding": [
@@ -1529,31 +408,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2004-04-09T00:00:00-04:00",
+        "effectiveDateTime": "2001-09-16T06:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 72.51582084804996,
+          "value": 84.28517618646288,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-334597"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-282400"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334591",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-282394",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-334591",
+        "id": "DiagnosticReport-282394",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1569,43 +462,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1466",
-          "display": "Wellness Visit"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2004-04-09T00:00:00-04:00",
-          "end": "2004-04-09T00:00:00-04:00"
+          "start": "2001-09-16T06:00:00-04:00",
+          "end": "2001-09-16T06:00:00-04:00"
         },
-        "issued": "2004-04-09T00:00:00.000-04:00",
+        "issued": "2001-09-16T06:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-334592",
+            "reference": "Observation/Observation-282395",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-334593",
+            "reference": "Observation/Observation-282396",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-334594",
+            "reference": "Observation/Observation-282397",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-334595",
+            "reference": "Observation/Observation-282398",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-334596",
+            "reference": "Observation/Observation-282399",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-334597",
+            "reference": "Observation/Observation-282400",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-334591"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-282394"
       }
     }
   ]

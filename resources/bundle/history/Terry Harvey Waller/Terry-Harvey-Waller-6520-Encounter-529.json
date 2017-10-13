@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-529",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
           "code": "outpatient",
-          "display": "Inpatient"
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-6520",
@@ -21,8 +26,8 @@
         "participant": [
           {
             "period": {
-              "start": "1992-12-11T00:00:00-05:00",
-              "end": "1992-12-11T00:00:00-05:00"
+              "start": "1993-06-04T00:00:00-04:00",
+              "end": "1993-06-04T00:00:00-04:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2517",
@@ -31,8 +36,8 @@
           }
         ],
         "period": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
         },
         "location": [
           {
@@ -53,10 +58,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-73143",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-83258",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-73143",
+        "id": "Immunization-83258",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
@@ -72,7 +77,7 @@
           "reference": "Patient/Patient-6520",
           "display": "Terry Harvey Waller"
         },
-        "date": "1992-12-11T00:00:00-05:00",
+        "date": "1993-06-04T00:00:00-04:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1102",
@@ -89,14 +94,260 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-73143"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-83258"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94428",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103836",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-103836",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103836"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103837",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94428",
+        "id": "Observation-103837",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704197006",
+              "display": "Admits alcohol use (finding) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103837"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103838",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-103838",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "77063",
+              "display": "Screening digital breast tomosynthesis, bilateral (List separately in addition to code for primary procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103838"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103839",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-103839",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "168749009",
+              "display": "Mammography normal (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103839"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103840",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-103840",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "RAD",
+              "display": "Radiology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "37543-6",
+              "display": "Breast - bilateral Mammogram magnification"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "issued": "1993-06-04T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-103839",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103840"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103841",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-103841",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -115,10 +366,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -126,20 +374,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 171.60146162166131,
+          "value": 126.31240021147356,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94428"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103841"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94429",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103842",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94429",
+        "id": "Observation-103842",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -158,10 +411,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -169,63 +419,32 @@
           }
         ],
         "valueQuantity": {
-          "value": 60.26113003378534,
+          "value": 67.91857417551637,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94429"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103842"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-94430",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "Condition-94430",
-        "clinicalStatus": "active",
-        "verificationStatus": "confirmed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "46481004",
-              "display": "Low-renin essential hypertension"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6520",
-          "display": "Terry Harvey Waller"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-529",
-          "display": "Wellness Visit"
-        },
-        "onsetDateTime": "1992-12-11T00:00:00-05:00",
-        "assertedDate": "1992-12-11T00:00:00-05:00",
-        "asserter": {
-          "reference": "Practitioner/Practitioner-2517",
-          "display": "Cathy Shannon Warner MD"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-94430"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-94431",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103843",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-94431",
+        "id": "Procedure-103843",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
             {
               "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82270",
-              "display": "Blood, occult, by peroxidase activity (eg, guaiac), qualitative; feces, consecutive collected specimens with single determination, for colorectal neoplasm screening (ie, patient was provided 3 cards or single triple card for consecutive collection)"
+              "code": "87624",
+              "display": "Infectious agent detection by nucleic acid (DNA or RNA); Human Papillomavirus (HPV), high-risk types (eg, 16, 18, 31, 33, 35, 39, 45, 51, 52, 56, 58, 59, 68)"
             }
           ]
         },
@@ -238,8 +457,8 @@
           "display": "Wellness Visit"
         },
         "performedPeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
         },
         "performer": [
           {
@@ -256,14 +475,165 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-94431"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103843"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94432",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103844",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94432",
+        "id": "Observation-103844",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "289829007",
+              "display": "Normal uterine cervix (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103844"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103845",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-103845",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "88148",
+              "display": "Cytopathology smears, cervical or vaginal; screening by automated system with manual rescreening under physician supervision"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "issued": "1993-06-04T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-103844",
+            "display": "No_Cancer_Detected"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103845"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103846",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-103846",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82274",
+              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103846"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103847",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-103847",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -282,10 +652,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -296,14 +663,111 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94432"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103847"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94433",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103848",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-103848",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "70271-2",
+              "display": "Patient Health Questionnaire - Somatic, Anxiety, and Depressive Symptoms (PHQ-SADS) total score [Reported]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-103848"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103849",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94433",
+        "id": "Observation-103849",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G8510",
+              "display": "Screening for depression is documented as negative, a follow-up plan is not required (G8510)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6520",
+          "display": "Terry Harvey Waller"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-529",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103849"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103850",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-103850",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -322,10 +786,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -339,14 +800,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94433"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103850"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94434",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103851",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94434",
+        "id": "Observation-103851",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -365,10 +831,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -376,20 +839,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 78.115633286843,
+          "value": 95.9217918539953,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94434"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103851"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94435",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103852",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94435",
+        "id": "Observation-103852",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -408,10 +876,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -419,32 +884,26 @@
           }
         ],
         "valueQuantity": {
-          "value": 27.776136179957263,
+          "value": 34.10759973459554,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94435"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103852"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94438",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103855",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94438",
+        "id": "Observation-103855",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -462,12 +921,9 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "valueQuantity": {
-          "value": 60.26113003378534,
+          "value": 67.91857417551637,
           "unit": "mmHg"
         },
         "component": [
@@ -497,14 +953,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94438"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103855"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94439",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103856",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94439",
+        "id": "Observation-103856",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -523,10 +984,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -534,20 +992,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 5.231161248162539,
+          "value": 5.420887582049532,
           "unit": "%"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94439"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103856"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94440",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103857",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94440",
+        "id": "Observation-103857",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -566,10 +1029,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -577,20 +1037,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 92.30295041790288,
+          "value": 89.80376973785303,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94440"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103857"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94441",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103858",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94441",
+        "id": "Observation-103858",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -609,10 +1074,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -620,20 +1082,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 18.276055831211945,
+          "value": 12.496322664879749,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94441"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103858"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94442",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103859",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94442",
+        "id": "Observation-103859",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -652,10 +1119,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -663,20 +1127,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 0.5023993483312227,
+          "value": 1.0865243905129498,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94442"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103859"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94443",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103860",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94443",
+        "id": "Observation-103860",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -695,10 +1164,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -706,20 +1172,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 3.0550772170114646,
+          "value": 2.610802935642443,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94443"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103860"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94444",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103861",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94444",
+        "id": "Observation-103861",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -738,10 +1209,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -749,20 +1217,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 139.6825251469556,
+          "value": 139.09420423689733,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94444"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103861"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94445",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103862",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94445",
+        "id": "Observation-103862",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -781,10 +1254,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -792,20 +1262,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 4.176216424746829,
+          "value": 4.217454767612183,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94445"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103862"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94446",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103863",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94446",
+        "id": "Observation-103863",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -824,10 +1299,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -835,20 +1307,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 100.88684997878494,
+          "value": 103.25296607904144,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94446"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103863"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94447",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103864",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94447",
+        "id": "Observation-103864",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -867,10 +1344,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -878,21 +1352,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 21.00529669413593,
+          "value": 24.958958036974177,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94447"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103864"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94448",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103865",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-94448",
+        "id": "DiagnosticReport-103865",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -911,55 +1399,60 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
         },
-        "issued": "1992-12-11T00:00:00.000-05:00",
+        "issued": "1993-06-04T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-94440",
+            "reference": "Observation/Observation-103857",
             "display": "Record_Glucose"
           },
           {
-            "reference": "Observation/Observation-94441",
+            "reference": "Observation/Observation-103858",
             "display": "Record_UreaNitrogen"
           },
           {
-            "reference": "Observation/Observation-94442",
+            "reference": "Observation/Observation-103859",
             "display": "Record_Creatinine"
           },
           {
-            "reference": "Observation/Observation-94443",
+            "reference": "Observation/Observation-103860",
             "display": "Record_Calcium"
           },
           {
-            "reference": "Observation/Observation-94444",
+            "reference": "Observation/Observation-103861",
             "display": "Record_Sodium"
           },
           {
-            "reference": "Observation/Observation-94445",
+            "reference": "Observation/Observation-103862",
             "display": "Record_Potassium"
           },
           {
-            "reference": "Observation/Observation-94446",
+            "reference": "Observation/Observation-103863",
             "display": "Record_Chloride"
           },
           {
-            "reference": "Observation/Observation-94447",
+            "reference": "Observation/Observation-103864",
             "display": "Record_CO2"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94448"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103865"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94449",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103866",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94449",
+        "id": "Observation-103866",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -978,10 +1471,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -989,20 +1479,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 163.92956928631162,
+          "value": 145.92844713451905,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94449"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103866"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94450",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103867",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94450",
+        "id": "Observation-103867",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1021,10 +1516,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1032,20 +1524,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 56.59392063615036,
+          "value": 47.15810338867916,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94450"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103867"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94451",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103868",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94451",
+        "id": "Observation-103868",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1064,10 +1561,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1075,20 +1569,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 95.10833252911245,
+          "value": 80.69883015895368,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94451"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103868"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94452",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103869",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94452",
+        "id": "Observation-103869",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1107,10 +1606,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1118,21 +1614,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 57.5024526299691,
+          "value": 55.79799629782955,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94452"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103869"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94453",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103870",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-94453",
+        "id": "DiagnosticReport-103870",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1151,39 +1661,39 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
         },
-        "issued": "1992-12-11T00:00:00.000-05:00",
+        "issued": "1993-06-04T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-94449",
+            "reference": "Observation/Observation-103866",
             "display": "Record_Cholesterol"
           },
           {
-            "reference": "Observation/Observation-94450",
+            "reference": "Observation/Observation-103867",
             "display": "Record_Triglycerides"
           },
           {
-            "reference": "Observation/Observation-94451",
+            "reference": "Observation/Observation-103868",
             "display": "Record_LDL"
           },
           {
-            "reference": "Observation/Observation-94452",
+            "reference": "Observation/Observation-103869",
             "display": "Record_HDL"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94453"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103870"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94455",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103872",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94455",
+        "id": "Observation-103872",
         "status": "final",
         "code": {
           "coding": [
@@ -1202,7 +1712,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1216,14 +1726,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94455"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103872"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94456",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103873",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94456",
+        "id": "Observation-103873",
         "status": "final",
         "code": {
           "coding": [
@@ -1242,7 +1752,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1250,20 +1760,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 78.115633286843,
+          "value": 95.9217918539953,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94456"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103873"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94457",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103874",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94457",
+        "id": "Observation-103874",
         "status": "final",
         "code": {
           "coding": [
@@ -1282,7 +1792,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1290,20 +1800,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 27.776136179957263,
+          "value": 34.10759973459554,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94457"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103874"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94458",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103875",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94458",
+        "id": "Observation-103875",
         "status": "final",
         "code": {
           "coding": [
@@ -1322,7 +1832,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1336,14 +1846,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94458"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103875"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94459",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103876",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94459",
+        "id": "Observation-103876",
         "status": "final",
         "code": {
           "coding": [
@@ -1362,7 +1872,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1370,20 +1880,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 171.60146162166131,
+          "value": 126.31240021147356,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94459"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103876"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94460",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103877",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-94460",
+        "id": "Observation-103877",
         "status": "final",
         "code": {
           "coding": [
@@ -1402,7 +1912,7 @@
           "reference": "Encounter/Encounter-529",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1992-12-11T00:00:00-05:00",
+        "effectiveDateTime": "1993-06-04T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2517",
@@ -1410,21 +1920,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 60.26113003378534,
+          "value": 67.91857417551637,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-94460"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-103877"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94454",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103871",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-94454",
+        "id": "DiagnosticReport-103871",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1443,40 +1967,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1992-12-11T00:00:00-05:00",
-          "end": "1992-12-11T00:00:00-05:00"
+          "start": "1993-06-04T00:00:00-04:00",
+          "end": "1993-06-04T00:00:00-04:00"
         },
-        "issued": "1992-12-11T00:00:00.000-05:00",
+        "issued": "1993-06-04T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-94455",
+            "reference": "Observation/Observation-103872",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-94456",
+            "reference": "Observation/Observation-103873",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-94457",
+            "reference": "Observation/Observation-103874",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-94458",
+            "reference": "Observation/Observation-103875",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-94459",
+            "reference": "Observation/Observation-103876",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-94460",
+            "reference": "Observation/Observation-103877",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-94454"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-103871"
       }
     }
   ]

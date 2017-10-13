@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jerry-Phillip-Goodwall-1121-Encounter-258",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-258",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-258",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-04-02T00:10:00-05:00",
+              "end": "1988-04-02T01:32:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2522",
+              "display": "Lois Jean Kent MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-04-02T00:10:00-05:00",
+          "end": "1988-04-02T01:32:00-05:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-258"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-4831",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-4831",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45384",
+              "display": "Colonoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-04-02T01:32:00-05:00",
+          "end": "1988-04-02T01:32:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2522",
+              "display": "Lois Jean Kent MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-4831"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4832",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4832",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45379",
+              "display": "Colonoscopy, flexible; with removal of foreign body(s)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T01:32:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4832"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-4833",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-4833",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44389",
+              "display": "Colonoscopy through stoma; with biopsy, single or multiple"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-02T01:32:00-05:00",
+          "end": "1988-04-02T01:32:00-05:00"
+        },
+        "issued": "1988-04-02T01:32:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-4832",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-4833"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4836",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4836",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4836"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4837",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4837",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 108.12155372018307,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4837"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4838",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4838",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 34.58977655817572,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4838"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4839",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4839",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4839"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4840",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4840",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 116.90774185223503,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4840"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4841",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-4841",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-02T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 80.82035734275239,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-4841"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-4835",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-4835",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-258",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-02T00:10:00-05:00",
+          "end": "1988-04-02T00:10:00-05:00"
+        },
+        "issued": "1988-04-02T00:10:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-4836",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-4837",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-4838",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-4839",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-4840",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-4841",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-4835"
+      }
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jerry-Phillip-Goodwall-1121-Encounter-2428",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2428",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2428",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-04-01T00:10:00-05:00",
+              "end": "1988-04-01T01:01:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-04-01T00:10:00-05:00",
+          "end": "1988-04-01T01:01:00-05:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2428"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-421243",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-421243",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45342",
+              "display": "Sigmoidoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-04-01T01:01:00-05:00",
+          "end": "1988-04-01T01:01:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-421243"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421245",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421245",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45342",
+              "display": "Sigmoidoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T01:01:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421245"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-421246",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-421246",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
+              "code": "G0104",
+              "display": "Colorectal cancer screening; flexible sigmoidoscopy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-01T01:01:00-05:00",
+          "end": "1988-04-01T01:01:00-05:00"
+        },
+        "issued": "1988-04-01T01:01:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-421245",
+            "display": "Positive_Sigmoidoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-421246"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421249",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421249",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421249"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421250",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421250",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 115.95622306067744,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421250"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421251",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421251",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.09620985080332,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421251"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421252",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421252",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421252"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421253",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421253",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.97228330241003,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421253"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421254",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-421254",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-01T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 110.10543882737129,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-421254"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-421248",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-421248",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2428",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-01T00:10:00-05:00",
+          "end": "1988-04-01T00:10:00-05:00"
+        },
+        "issued": "1988-04-01T00:10:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-421249",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-421250",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-421251",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-421252",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-421253",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-421254",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-421248"
+      }
+    }
+  ]
+}

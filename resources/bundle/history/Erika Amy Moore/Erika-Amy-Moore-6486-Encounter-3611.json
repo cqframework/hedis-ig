@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Erika-Amy-Moore-6486-Encounter-3611",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3611",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3611",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1993-07-03T00:06:00-04:00",
+              "end": "1993-07-03T00:50:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1993-07-03T00:06:00-04:00",
+          "end": "1993-07-03T00:50:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3611"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-554251",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-554251",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45378",
+              "display": "Colonoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1993-07-03T00:50:00-04:00",
+          "end": "1993-07-03T00:50:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-554251"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554253",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554253",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "C18.3",
+              "display": "Malignant neoplasm of hepatic flexure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:50:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554253"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-554254",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-554254",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44406",
+              "display": "Colonoscopy through stoma; with endoscopic ultrasound examination, limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1993-07-03T00:50:00-04:00",
+          "end": "1993-07-03T00:50:00-04:00"
+        },
+        "issued": "1993-07-03T00:50:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-554253",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-554254"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554257",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554257",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554257"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554258",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554258",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 93.72084903451297,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554258"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554259",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554259",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.14502404836596,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554259"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554260",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554260",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554260"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554261",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554261",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141.47471409353852,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554261"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554262",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-554262",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1993-07-03T00:06:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 100.96179630392348,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-554262"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-554256",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-554256",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6486",
+          "display": "Erika Amy Moore"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3611",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1993-07-03T00:06:00-04:00",
+          "end": "1993-07-03T00:06:00-04:00"
+        },
+        "issued": "1993-07-03T00:06:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-554257",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-554258",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-554259",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-554260",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-554261",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-554262",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-554256"
+      }
+    }
+  ]
+}

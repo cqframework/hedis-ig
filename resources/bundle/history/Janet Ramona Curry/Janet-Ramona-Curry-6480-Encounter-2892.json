@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2892",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-6480",
@@ -21,30 +26,30 @@
         "participant": [
           {
             "period": {
-              "start": "2016-08-19T00:00:00-04:00",
-              "end": "2016-08-19T00:00:00-04:00"
+              "start": "2009-09-04T00:00:00-04:00",
+              "end": "2009-09-04T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
             }
           }
         ],
         "period": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
+          "start": "2009-09-04T00:00:00-04:00",
+          "end": "2009-09-04T00:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1102",
-              "display": "Pediatric and Adult Medicine"
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1102",
-          "display": "Pediatric and Adult Medicine"
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
         }
       },
       "request": {
@@ -53,57 +58,72 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-613433",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-474098",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-613433",
+        "resourceType": "Procedure",
+        "id": "Procedure-474098",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "code": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "PHQ-9 Tool"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6480",
           "display": "Janet Ramona Curry"
         },
-        "date": "2016-08-19T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1102",
-          "display": "Pediatric and Adult Medicine"
+        "context": {
+          "reference": "Encounter/Encounter-2892",
+          "display": "Followup_Encounter"
         },
-        "practitioner": [
+        "performedPeriod": {
+          "start": "2009-09-04T00:00:00-04:00",
+          "end": "2009-09-04T00:00:00-04:00"
+        },
+        "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
             }
           }
-        ]
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-613433"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-474098"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641411",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474099",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641411",
+        "id": "Observation-474099",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
             {
-              "system": "http://loinc.org",
-              "code": "8480-6",
-              "display": "Systolic blood pressure"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "display": "PHQ-9 Modified Score"
             }
           ]
         },
@@ -113,313 +133,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 104.41696689052513,
-          "unit": "mmHg"
+          "value": 5.0,
+          "unit": "score"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641411"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474099"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641412",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474102",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641412",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8462-4",
-              "display": "Diastolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 117.00065666263441,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641412"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-641413",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "Condition-641413",
-        "clinicalStatus": "active",
-        "verificationStatus": "confirmed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "371125006",
-              "display": "Labile essential hypertension"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "onsetDateTime": "2016-08-19T00:00:00-04:00",
-        "assertedDate": "2016-08-19T00:00:00-04:00",
-        "asserter": {
-          "reference": "Practitioner/Practitioner-2517",
-          "display": "Cathy Shannon Warner MD"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-641413"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641414",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-641414",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "Body Height"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 163.3,
-          "unit": "cm"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641414"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641415",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-641415",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "29463-7",
-              "display": "Body Weight"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 79.18059410578579,
-          "unit": "kg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641415"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641416",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-641416",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "Body Mass Index"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 29.692474115198955,
-          "unit": "kg/m2"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641416"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641419",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-641419",
-        "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "55284-4",
-              "display": "Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
-        },
-        "valueQuantity": {
-          "value": 117.00065666263441,
-          "unit": "mmHg"
-        },
-        "component": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8480-6",
-                  "display": "Systolic Blood Pressure"
-                }
-              ]
-            }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8462-4",
-                  "display": "Diastolic Blood Pressure"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641419"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641421",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-641421",
+        "id": "Observation-474102",
         "status": "final",
         "code": {
           "coding": [
@@ -436,13 +173,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
@@ -452,14 +189,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641421"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474102"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641422",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474103",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641422",
+        "id": "Observation-474103",
         "status": "final",
         "code": {
           "coding": [
@@ -476,30 +213,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 79.18059410578579,
+          "value": 94.14906748621789,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641422"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474103"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641423",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474104",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641423",
+        "id": "Observation-474104",
         "status": "final",
         "code": {
           "coding": [
@@ -516,30 +253,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 29.692474115198955,
+          "value": 35.30560462289299,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641423"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474104"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641424",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474105",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641424",
+        "id": "Observation-474105",
         "status": "final",
         "code": {
           "coding": [
@@ -556,13 +293,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
@@ -572,14 +309,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641424"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474105"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641425",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474106",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641425",
+        "id": "Observation-474106",
         "status": "final",
         "code": {
           "coding": [
@@ -596,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 104.41696689052513,
+          "value": 120.16442399963854,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641425"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474106"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641426",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474107",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-641426",
+        "id": "Observation-474107",
         "status": "final",
         "code": {
           "coding": [
@@ -636,31 +373,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2016-08-19T00:00:00-04:00",
+        "effectiveDateTime": "2009-09-04T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
           }
         ],
         "valueQuantity": {
-          "value": 117.00065666263441,
+          "value": 107.05258312235668,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641426"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-474107"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-641420",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-474101",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-641420",
+        "id": "DiagnosticReport-474101",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -676,43 +427,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2892",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
         "effectivePeriod": {
-          "start": "2016-08-19T00:00:00-04:00",
-          "end": "2016-08-19T00:00:00-04:00"
+          "start": "2009-09-04T00:00:00-04:00",
+          "end": "2009-09-04T00:00:00-04:00"
         },
-        "issued": "2016-08-19T00:00:00.000-04:00",
+        "issued": "2009-09-04T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-641421",
+            "reference": "Observation/Observation-474102",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-641422",
+            "reference": "Observation/Observation-474103",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-641423",
+            "reference": "Observation/Observation-474104",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-641424",
+            "reference": "Observation/Observation-474105",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-641425",
+            "reference": "Observation/Observation-474106",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-641426",
+            "reference": "Observation/Observation-474107",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-641420"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-474101"
       }
     }
   ]

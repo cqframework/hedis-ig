@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-187",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
           "code": "outpatient",
-          "display": "Inpatient"
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-6518",
@@ -21,8 +26,8 @@
         "participant": [
           {
             "period": {
-              "start": "1989-01-13T00:00:00-05:00",
-              "end": "1989-01-13T00:00:00-05:00"
+              "start": "1988-10-28T00:00:00-04:00",
+              "end": "1988-10-28T00:00:00-04:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2535",
@@ -31,8 +36,8 @@
           }
         ],
         "period": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
+          "start": "1988-10-28T00:00:00-04:00",
+          "end": "1988-10-28T00:00:00-04:00"
         },
         "location": [
           {
@@ -53,10 +58,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-185",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-187",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-185",
+        "id": "Immunization-187",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
@@ -72,7 +77,7 @@
           "reference": "Patient/Patient-6518",
           "display": "Brad Ray Stone Jr"
         },
-        "date": "1989-01-13T00:00:00-05:00",
+        "date": "1988-10-28T00:00:00-04:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1102",
@@ -89,14 +94,114 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-185"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-187"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18335",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-15106",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-15106",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-187",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1988-10-28T00:00:00-04:00",
+          "end": "1988-10-28T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-15106"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15107",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18335",
+        "id": "Observation-15107",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704198001",
+              "display": "Denies alcohol use (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-187",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15107"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15108",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-15108",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -115,10 +220,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -126,20 +228,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 128.46817665358645,
+          "value": 145.53616669173468,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18335"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15108"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18336",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15109",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18336",
+        "id": "Observation-15109",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -158,10 +265,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -169,28 +273,33 @@
           }
         ],
         "valueQuantity": {
-          "value": 110.2675946425612,
+          "value": 94.65225956129645,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18336"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15109"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-18337",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-15110",
       "resource": {
         "resourceType": "Condition",
-        "id": "Condition-18337",
+        "id": "Condition-15110",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
         "clinicalStatus": "active",
         "verificationStatus": "confirmed",
         "code": {
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "59720008",
-              "display": "Sustained diastolic hypertension"
+              "code": "371125006",
+              "display": "Labile essential hypertension"
             }
           ]
         },
@@ -202,8 +311,8 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "onsetDateTime": "1989-01-13T00:00:00-05:00",
-        "assertedDate": "1989-01-13T00:00:00-05:00",
+        "onsetDateTime": "1988-10-28T00:00:00-04:00",
+        "assertedDate": "1988-10-28T00:00:00-04:00",
         "asserter": {
           "reference": "Practitioner/Practitioner-2535",
           "display": "Clifton Terrence Carey MD"
@@ -211,14 +320,111 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-18337"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-15110"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18338",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-15111",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-15111",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "71354-5",
+              "display": "Edinburgh Postnatal Depression Scale [EPDS]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-187",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1988-10-28T00:00:00-04:00",
+          "end": "1988-10-28T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-15111"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15112",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18338",
+        "id": "Observation-15112",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G8510",
+              "display": "Screening for depression is documented as negative, a follow-up plan is not required (G8510)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6518",
+          "display": "Brad Ray Stone Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-187",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15112"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15113",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-15113",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -237,10 +443,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -248,20 +451,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 181.4,
+          "value": 181.3,
           "unit": "cm"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18338"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15113"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18339",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15114",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18339",
+        "id": "Observation-15114",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -280,10 +488,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -291,20 +496,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 63.235644498625284,
+          "value": 61.9,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18339"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15114"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18340",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15115",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18340",
+        "id": "Observation-15115",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -323,10 +533,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -334,32 +541,26 @@
           }
         ],
         "valueQuantity": {
-          "value": 19.21707936757514,
+          "value": 18.83193909038996,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18340"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15115"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18343",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15118",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18343",
+        "id": "Observation-15118",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -377,12 +578,9 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
-        },
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "valueQuantity": {
-          "value": 110.2675946425612,
+          "value": 94.65225956129645,
           "unit": "mmHg"
         },
         "component": [
@@ -412,14 +610,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18343"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15118"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18345",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15120",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18345",
+        "id": "Observation-15120",
         "status": "final",
         "code": {
           "coding": [
@@ -438,7 +636,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -446,20 +644,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 181.4,
+          "value": 181.3,
           "unit": "cm"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18345"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15120"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18346",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15121",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18346",
+        "id": "Observation-15121",
         "status": "final",
         "code": {
           "coding": [
@@ -478,7 +676,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -486,20 +684,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 63.235644498625284,
+          "value": 61.9,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18346"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15121"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18347",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15122",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18347",
+        "id": "Observation-15122",
         "status": "final",
         "code": {
           "coding": [
@@ -518,7 +716,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -526,20 +724,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 19.21707936757514,
+          "value": 18.83193909038996,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18347"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15122"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18348",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15123",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18348",
+        "id": "Observation-15123",
         "status": "final",
         "code": {
           "coding": [
@@ -558,7 +756,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -572,14 +770,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18348"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15123"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18349",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15124",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18349",
+        "id": "Observation-15124",
         "status": "final",
         "code": {
           "coding": [
@@ -598,7 +796,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -606,20 +804,20 @@
           }
         ],
         "valueQuantity": {
-          "value": 128.46817665358645,
+          "value": 145.53616669173468,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18349"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15124"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18350",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15125",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-18350",
+        "id": "Observation-15125",
         "status": "final",
         "code": {
           "coding": [
@@ -638,7 +836,7 @@
           "reference": "Encounter/Encounter-187",
           "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1989-01-13T00:00:00-05:00",
+        "effectiveDateTime": "1988-10-28T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2535",
@@ -646,21 +844,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 110.2675946425612,
+          "value": 94.65225956129645,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-18350"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-15125"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-18344",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-15119",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-18344",
+        "id": "DiagnosticReport-15119",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -679,40 +891,40 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1989-01-13T00:00:00-05:00",
-          "end": "1989-01-13T00:00:00-05:00"
+          "start": "1988-10-28T00:00:00-04:00",
+          "end": "1988-10-28T00:00:00-04:00"
         },
-        "issued": "1989-01-13T00:00:00.000-05:00",
+        "issued": "1988-10-28T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-18345",
+            "reference": "Observation/Observation-15120",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-18346",
+            "reference": "Observation/Observation-15121",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-18347",
+            "reference": "Observation/Observation-15122",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-18348",
+            "reference": "Observation/Observation-15123",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-18349",
+            "reference": "Observation/Observation-15124",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-18350",
+            "reference": "Observation/Observation-15125",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-18344"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-15119"
       }
     }
   ]

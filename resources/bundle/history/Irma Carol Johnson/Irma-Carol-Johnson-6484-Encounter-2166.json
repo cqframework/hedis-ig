@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2166",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
           "code": "outpatient",
-          "display": "Inpatient"
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-6484",
@@ -21,8 +26,8 @@
         "participant": [
           {
             "period": {
-              "start": "2011-06-03T00:00:00-04:00",
-              "end": "2011-06-03T00:00:00-04:00"
+              "start": "2007-04-20T00:00:00-04:00",
+              "end": "2007-04-20T00:00:00-04:00"
             },
             "individual": {
               "reference": "Practitioner/Practitioner-2521",
@@ -31,8 +36,8 @@
           }
         ],
         "period": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
         },
         "location": [
           {
@@ -53,10 +58,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475074",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-390634",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-475074",
+        "id": "Immunization-390634",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
@@ -72,7 +77,7 @@
           "reference": "Patient/Patient-6484",
           "display": "Irma Carol Johnson"
         },
-        "date": "2011-06-03T00:00:00-04:00",
+        "date": "2007-04-20T00:00:00-04:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1106",
@@ -89,22 +94,22 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475074"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-390634"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475075",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-390635",
       "resource": {
         "resourceType": "Immunization",
-        "id": "Immunization-475075",
+        "id": "Immunization-390635",
         "status": "completed",
         "notGiven": false,
         "vaccineCode": {
           "coding": [
             {
               "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "133",
-              "display": "Pneumococcal conjugate PCV 13"
+              "code": "113",
+              "display": "Td (adult) preservative free"
             }
           ]
         },
@@ -112,7 +117,7 @@
           "reference": "Patient/Patient-6484",
           "display": "Irma Carol Johnson"
         },
-        "date": "2011-06-03T00:00:00-04:00",
+        "date": "2007-04-20T00:00:00-04:00",
         "primarySource": true,
         "location": {
           "reference": "Location/Location-1106",
@@ -129,54 +134,260 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475075"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-390635"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475076",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415247",
       "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-475076",
+        "resourceType": "Procedure",
+        "id": "Procedure-415247",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
+        "code": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "33",
-              "display": "pneumococcal polysaccharide vaccine, 23 valent"
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
             }
           ]
         },
-        "patient": {
+        "subject": {
           "reference": "Patient/Patient-6484",
           "display": "Irma Carol Johnson"
         },
-        "date": "2011-06-03T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1106",
-          "display": "Cranston Family Medical"
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
         },
-        "practitioner": [
+        "performedPeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
+        },
+        "performer": [
           {
             "actor": {
               "reference": "Practitioner/Practitioner-2521",
               "display": "Heather Fuentes Guerra MD"
             }
           }
-        ]
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-475076"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415247"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499724",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415248",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499724",
+        "id": "Observation-415248",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704197006",
+              "display": "Admits alcohol use (finding) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415248"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415249",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-415249",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "77066",
+              "display": "Diagnostic mammography, including computer-aided detection (CAD) when performed; bilateral"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415249"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415251",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415251",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "397145000",
+              "display": "Mammography assessment (Category 5) - Highly suggestive of malignancy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415251"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415252",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-415252",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "RAD",
+              "display": "Radiology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38807-4",
+              "display": "Breast - right Mammogram spot"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
+        },
+        "issued": "2007-04-20T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-415251",
+            "display": "Breast_Cancer_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415252"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415253",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415253",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -195,10 +406,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -206,20 +414,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 159.89591620127104,
+          "value": 154.8042596871617,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499724"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415253"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499725",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415254",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499725",
+        "id": "Observation-415254",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -238,10 +451,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -249,28 +459,33 @@
           }
         ],
         "valueQuantity": {
-          "value": 100.98981797614876,
+          "value": 65.94017578829103,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499725"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415254"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-499726",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-415255",
       "resource": {
         "resourceType": "Condition",
-        "id": "Condition-499726",
+        "id": "Condition-415255",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
         "clinicalStatus": "active",
         "verificationStatus": "confirmed",
         "code": {
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "59720008",
-              "display": "Sustained diastolic hypertension"
+              "code": "78975002",
+              "display": "Malignant essential hypertension"
             }
           ]
         },
@@ -282,8 +497,8 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "onsetDateTime": "2011-06-03T00:00:00-04:00",
-        "assertedDate": "2011-06-03T00:00:00-04:00",
+        "onsetDateTime": "2007-04-20T00:00:00-04:00",
+        "assertedDate": "2007-04-20T00:00:00-04:00",
         "asserter": {
           "reference": "Practitioner/Practitioner-2521",
           "display": "Heather Fuentes Guerra MD"
@@ -291,60 +506,20 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-499726"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-415255"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-499727",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415256",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-499727",
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82274",
-              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
-            }
+        "id": "Procedure-415256",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
           ]
         },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "performedPeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2521",
-              "display": "Heather Fuentes Guerra MD"
-            }
-          }
-        ],
-        "location": {
-          "reference": "Location/Location-1106",
-          "display": "Cranston Family Medical"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-499727"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499728",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499728",
-        "status": "final",
+        "status": "completed",
         "code": {
           "coding": [
             {
@@ -362,10 +537,463 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
+        "performedPeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
         },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415256"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415257",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415257",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82274",
+              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415257"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415260",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415260",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415260"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415261",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415261",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 96.11534302250132,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415261"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415262",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415262",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 36.042951773716894,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415262"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415263",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415263",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415263"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415264",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415264",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 154.8042596871617,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415264"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415265",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415265",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2521",
+            "display": "Heather Fuentes Guerra MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 65.94017578829103,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415265"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415259",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-415259",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
+        },
+        "issued": "2007-04-20T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-415260",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-415261",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-415262",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-415263",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-415264",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-415265",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415259"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415277",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-415277",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "428161000124109",
+              "display": "Standardized adolescent depression screening tool completed (situation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2521",
+              "display": "Heather Fuentes Guerra MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-415277"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415278",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-415278",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "428171000124102",
+              "display": "Depression screening negative (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6484",
+          "display": "Irma Carol Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2166",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -376,14 +1004,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499728"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415278"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499729",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415279",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499729",
+        "id": "Observation-415279",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -402,10 +1035,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -419,14 +1049,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499729"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415279"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499730",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415280",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499730",
+        "id": "Observation-415280",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -445,10 +1080,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -456,20 +1088,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 84.24271262546416,
+          "value": 96.11534302250132,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499730"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415280"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499731",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415281",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499731",
+        "id": "Observation-415281",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -488,10 +1125,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -499,32 +1133,26 @@
           }
         ],
         "valueQuantity": {
-          "value": 31.59075266199552,
+          "value": 36.042951773716894,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499731"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415281"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499734",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415284",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499734",
+        "id": "Observation-415284",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
         "code": {
           "coding": [
             {
@@ -542,12 +1170,9 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "valueQuantity": {
-          "value": 100.98981797614876,
+          "value": 65.94017578829103,
           "unit": "mmHg"
         },
         "component": [
@@ -577,14 +1202,19 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499734"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415284"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499735",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415285",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499735",
+        "id": "Observation-415285",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -603,10 +1233,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -614,20 +1241,25 @@
           }
         ],
         "valueQuantity": {
-          "value": -0.000001333836528554824,
+          "value": 0.00011337524206232715,
           "unit": "%"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499735"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415285"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499736",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415286",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499736",
+        "id": "Observation-415286",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -646,10 +1278,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -657,20 +1286,25 @@
           }
         ],
         "valueQuantity": {
-          "value": -0.00018000395776119935,
+          "value": -0.00030182622334467787,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499736"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415286"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499737",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415287",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499737",
+        "id": "Observation-415287",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -689,10 +1323,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -700,20 +1331,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 14.810654309896114,
+          "value": 9.924907761100076,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499737"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415287"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499738",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415288",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499738",
+        "id": "Observation-415288",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -732,10 +1368,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -743,20 +1376,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 2.3850673295933698,
+          "value": 1.3623308378160208,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499738"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415288"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499739",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415289",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499739",
+        "id": "Observation-415289",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -775,10 +1413,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -786,20 +1421,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 2.8055889452503697,
+          "value": 1.7058057931505979,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499739"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415289"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499740",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415290",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499740",
+        "id": "Observation-415290",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -818,10 +1458,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -829,20 +1466,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 137.12639334362242,
+          "value": 138.0401794212445,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499740"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415290"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499741",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415291",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499741",
+        "id": "Observation-415291",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -861,10 +1503,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -872,20 +1511,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 5.5141178406287565,
+          "value": 5.207070191216513,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499741"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415291"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499742",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415292",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499742",
+        "id": "Observation-415292",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -904,10 +1548,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -915,20 +1556,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 104.91005486975328,
+          "value": 105.21550023507696,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499742"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415292"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499743",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415293",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499743",
+        "id": "Observation-415293",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -947,10 +1593,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -958,21 +1601,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 20.564119792635466,
+          "value": 24.07891129087623,
           "unit": "mmol/L"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499743"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415293"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499744",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415294",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-499744",
+        "id": "DiagnosticReport-415294",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -991,55 +1648,60 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
         },
-        "issued": "2011-06-03T00:00:00.000-04:00",
+        "issued": "2007-04-20T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-499736",
+            "reference": "Observation/Observation-415286",
             "display": "Record_Glucose"
           },
           {
-            "reference": "Observation/Observation-499737",
+            "reference": "Observation/Observation-415287",
             "display": "Record_UreaNitrogen"
           },
           {
-            "reference": "Observation/Observation-499738",
+            "reference": "Observation/Observation-415288",
             "display": "Record_Creatinine"
           },
           {
-            "reference": "Observation/Observation-499739",
+            "reference": "Observation/Observation-415289",
             "display": "Record_Calcium"
           },
           {
-            "reference": "Observation/Observation-499740",
+            "reference": "Observation/Observation-415290",
             "display": "Record_Sodium"
           },
           {
-            "reference": "Observation/Observation-499741",
+            "reference": "Observation/Observation-415291",
             "display": "Record_Potassium"
           },
           {
-            "reference": "Observation/Observation-499742",
+            "reference": "Observation/Observation-415292",
             "display": "Record_Chloride"
           },
           {
-            "reference": "Observation/Observation-499743",
+            "reference": "Observation/Observation-415293",
             "display": "Record_CO2"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499744"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415294"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499745",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415295",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499745",
+        "id": "Observation-415295",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1058,10 +1720,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -1069,20 +1728,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 142.00700045475764,
+          "value": 179.36832271037696,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499745"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415295"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499746",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415296",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499746",
+        "id": "Observation-415296",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1101,10 +1765,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -1112,20 +1773,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 55.833846726166975,
+          "value": 53.9707658394784,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499746"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415296"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499747",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415297",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499747",
+        "id": "Observation-415297",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1144,10 +1810,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -1155,20 +1818,25 @@
           }
         ],
         "valueQuantity": {
-          "value": 71.47985123764037,
+          "value": 109.05679866569427,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499747"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415297"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499748",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415298",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-499748",
+        "id": "Observation-415298",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -1187,10 +1855,7 @@
           "reference": "Encounter/Encounter-2166",
           "display": "Wellness Visit"
         },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2007-04-20T00:00:00-04:00",
         "performer": [
           {
             "reference": "Practitioner/Practitioner-2521",
@@ -1198,21 +1863,35 @@
           }
         ],
         "valueQuantity": {
-          "value": 59.36037987188386,
+          "value": 59.51737087678703,
           "unit": "mg/dL"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499748"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-415298"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499749",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415299",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-499749",
+        "id": "DiagnosticReport-415299",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1231,332 +1910,32 @@
           "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
+          "start": "2007-04-20T00:00:00-04:00",
+          "end": "2007-04-20T00:00:00-04:00"
         },
-        "issued": "2011-06-03T00:00:00.000-04:00",
+        "issued": "2007-04-20T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-499745",
+            "reference": "Observation/Observation-415295",
             "display": "Record_Cholesterol"
           },
           {
-            "reference": "Observation/Observation-499746",
+            "reference": "Observation/Observation-415296",
             "display": "Record_Triglycerides"
           },
           {
-            "reference": "Observation/Observation-499747",
+            "reference": "Observation/Observation-415297",
             "display": "Record_LDL"
           },
           {
-            "reference": "Observation/Observation-499748",
+            "reference": "Observation/Observation-415298",
             "display": "Record_HDL"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499749"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499751",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499751",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "Height"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 163.3,
-          "unit": "cm"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499751"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499752",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499752",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "29463-7",
-              "display": "Weight"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 84.24271262546416,
-          "unit": "kg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499752"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499753",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499753",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "BMI"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 31.59075266199552,
-          "unit": "kg/m2"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499753"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499754",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499754",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8310-5",
-              "display": "Temperature"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 37.0,
-          "unit": "C"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499754"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499755",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499755",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8459-0",
-              "display": "Systolic Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 159.89591620127104,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499755"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499756",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-499756",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8453-3",
-              "display": "Diastolic Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectiveDateTime": "2011-06-03T00:00:00-04:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 100.98981797614876,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-499756"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499750",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-499750",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8716-3",
-              "display": "Vital Signs Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6484",
-          "display": "Irma Carol Johnson"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2166",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2011-06-03T00:00:00-04:00",
-          "end": "2011-06-03T00:00:00-04:00"
-        },
-        "issued": "2011-06-03T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-499751",
-            "display": "Height"
-          },
-          {
-            "reference": "Observation/Observation-499752",
-            "display": "Weight"
-          },
-          {
-            "reference": "Observation/Observation-499753",
-            "display": "BMI"
-          },
-          {
-            "reference": "Observation/Observation-499754",
-            "display": "Temperature"
-          },
-          {
-            "reference": "Observation/Observation-499755",
-            "display": "Systolic Blood Pressure"
-          },
-          {
-            "reference": "Observation/Observation-499756",
-            "display": "Diastolic Blood Pressure"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-499750"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-415299"
       }
     }
   ]

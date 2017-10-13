@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-773",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
         "subject": {
           "reference": "Patient/Patient-6480",
@@ -21,30 +26,30 @@
         "participant": [
           {
             "period": {
-              "start": "1994-11-08T08:00:00-05:00",
-              "end": "1994-11-08T08:00:00-05:00"
+              "start": "1996-05-10T00:00:00-04:00",
+              "end": "1996-05-10T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2532",
-              "display": "Chad Espinoza Potter MD"
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
             }
           }
         ],
         "period": {
-          "start": "1994-11-08T08:00:00-05:00",
-          "end": "1994-11-08T08:00:00-05:00"
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1002",
-              "display": "Gift of Mercy Hospital"
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
@@ -53,18 +58,62 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-132936",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-144016",
       "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-132936",
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
+        "resourceType": "Immunization",
+        "id": "Immunization-144016",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
           "coding": [
             {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "860975",
-              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "date": "1996-05-10T00:00:00-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-144016"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165875",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-165875",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
             }
           ]
         },
@@ -74,109 +123,1371 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "authoredOn": "1994-11-08T08:00:00-05:00",
-        "reasonCode": [
+        "performedPeriod": {
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
+        },
+        "performer": [
           {
-            "coding": [
-              {
-                "system": "SNOMED-CT",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
             }
           }
         ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "1994-11-08T08:00:00-05:00",
-            "end": "1994-11-08T08:00:00-05:00"
-          }
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-132936"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165875"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-132937",
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-132937",
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "1373463",
-              "display": "canagliflozin 100 MG Oral Tablet"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6480",
-          "display": "Janet Ramona Curry"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
-        },
-        "authoredOn": "1994-11-08T08:00:00-05:00",
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "SNOMED-CT",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
-            }
-          }
-        ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "1994-11-08T08:00:00-05:00",
-            "end": "1994-11-08T08:00:00-05:00"
-          }
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-132937"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132940",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165876",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132940",
+        "id": "Observation-165876",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.106.11.1035",
+              "display": "Five or more drinks per day"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 10.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165876"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165877",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165877",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.107.12.1022",
+              "display": "AUDIT-C Total Score (in points)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165877"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165878",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165878",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 121.02079946992446,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165878"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165879",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165879",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 108.22981462630288,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165879"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-165880",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-165880",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "56218007",
+              "display": "Systolic hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "1996-05-10T00:00:00-04:00",
+        "assertedDate": "1996-05-10T00:00:00-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2517",
+          "display": "Cathy Shannon Warner MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-165880"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165881",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-165881",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82270",
+              "display": "Blood, occult, by peroxidase activity (eg, guaiac), qualitative; feces, consecutive collected specimens with single determination, for colorectal neoplasm screening (ie, patient was provided 3 cards or single triple card for consecutive collection)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165881"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165882",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165882",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82274",
+              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165882"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165883",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-165883",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "73831-0",
+              "display": "Adolescent depression screening assessment"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-165883"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165884",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165884",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "428171000124102",
+              "display": "Depression screening negative (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165884"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165885",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165885",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165885"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165886",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165886",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 90.41852892377243,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165886"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165887",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165887",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 33.906664378100494,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165887"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165890",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165890",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "valueQuantity": {
+          "value": 108.22981462630288,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165890"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165891",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165891",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.326238631354966,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165891"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165892",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165892",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 77.11981297476214,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165892"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165893",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165893",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 11.892808089528945,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165893"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165894",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165894",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.6583683290936512,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165894"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165895",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165895",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.6205173955442014,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165895"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165896",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165896",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 138.9501986278424,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165896"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165897",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165897",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.5803784578677496,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165897"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165898",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165898",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 100.7017087523894,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165898"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165899",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165899",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28.075733055285152,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165899"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165900",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-165900",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
+        },
+        "issued": "1996-05-10T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-165892",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-165893",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-165894",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-165895",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-165896",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-165897",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-165898",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-165899",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165900"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165901",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165901",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 132.2469998836462,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165901"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165902",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165902",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 36.52135087102589,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165902"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165903",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165903",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.64921559720047,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165903"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165904",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165904",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 43.29351411224055,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165904"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165905",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-165905",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-773",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
+        },
+        "issued": "1996-05-10T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-165901",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-165902",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-165903",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-165904",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165905"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165907",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-165907",
         "status": "final",
         "code": {
           "coding": [
@@ -193,13 +1504,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
@@ -209,14 +1520,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132940"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165907"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132941",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165908",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132941",
+        "id": "Observation-165908",
         "status": "final",
         "code": {
           "coding": [
@@ -233,30 +1544,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 74.09533916426612,
+          "value": 90.41852892377243,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132941"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165908"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132942",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165909",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132942",
+        "id": "Observation-165909",
         "status": "final",
         "code": {
           "coding": [
@@ -273,30 +1584,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 27.78551948287413,
+          "value": 33.906664378100494,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132942"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165909"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132943",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165910",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132943",
+        "id": "Observation-165910",
         "status": "final",
         "code": {
           "coding": [
@@ -313,13 +1624,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
@@ -329,14 +1640,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132943"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165910"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132944",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165911",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132944",
+        "id": "Observation-165911",
         "status": "final",
         "code": {
           "coding": [
@@ -353,30 +1664,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 113.63727792888643,
+          "value": 121.02079946992446,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132944"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165911"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132945",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165912",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-132945",
+        "id": "Observation-165912",
         "status": "final",
         "code": {
           "coding": [
@@ -393,31 +1704,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "1994-11-08T08:00:00-05:00",
+        "effectiveDateTime": "1996-05-10T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2532",
-            "display": "Chad Espinoza Potter MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 114.2199000785149,
+          "value": 108.22981462630288,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-132945"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-165912"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-132939",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165906",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-132939",
+        "id": "DiagnosticReport-165906",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -433,43 +1758,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-773",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "1994-11-08T08:00:00-05:00",
-          "end": "1994-11-08T08:00:00-05:00"
+          "start": "1996-05-10T00:00:00-04:00",
+          "end": "1996-05-10T00:00:00-04:00"
         },
-        "issued": "1994-11-08T08:00:00.000-05:00",
+        "issued": "1996-05-10T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-132940",
+            "reference": "Observation/Observation-165907",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-132941",
+            "reference": "Observation/Observation-165908",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-132942",
+            "reference": "Observation/Observation-165909",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-132943",
+            "reference": "Observation/Observation-165910",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-132944",
+            "reference": "Observation/Observation-165911",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-132945",
+            "reference": "Observation/Observation-165912",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-132939"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-165906"
       }
     }
   ]

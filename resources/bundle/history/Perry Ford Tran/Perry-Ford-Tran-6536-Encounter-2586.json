@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Perry-Ford-Tran-6536-Encounter-2586",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2586",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2586",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1989-01-20T00:10:00-05:00",
+              "end": "1989-01-20T00:10:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1989-01-20T00:10:00-05:00",
+          "end": "1989-01-20T00:10:00-05:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2586"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-439905",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-439905",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45337",
+              "display": "Sigmoidoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1989-01-20T00:10:00-05:00",
+          "end": "1989-01-20T00:10:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-439905"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439906",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439906",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45331",
+              "display": "Sigmoidoscopy, flexible; with biopsy, single or multiple"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439906"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-439907",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-439907",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
+              "code": "G0104",
+              "display": "Colorectal cancer screening; flexible sigmoidoscopy"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1989-01-20T00:10:00-05:00",
+          "end": "1989-01-20T00:10:00-05:00"
+        },
+        "issued": "1989-01-20T00:10:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-439906",
+            "display": "Negative_Sigmoidoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-439907"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439910",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439910",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439910"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439911",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439911",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 108.2627874441734,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439911"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439912",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 34.634959436031394,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439912"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439913",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439913",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439913"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439914",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439914",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 161.85305145399937,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439914"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439915",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-439915",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectiveDateTime": "1989-01-20T00:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 111.42787113946736,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-439915"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-439909",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-439909",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2586",
+          "display": "Sigmoidoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1989-01-20T00:10:00-05:00",
+          "end": "1989-01-20T00:10:00-05:00"
+        },
+        "issued": "1989-01-20T00:10:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-439910",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-439911",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-439912",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-439913",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-439914",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-439915",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-439909"
+      }
+    }
+  ]
+}

@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2469",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "inpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-1129",
@@ -21,18 +26,18 @@
         "participant": [
           {
             "period": {
-              "start": "1998-06-20T00:05:00-04:00",
-              "end": "1998-06-20T00:51:00-04:00"
+              "start": "2007-09-07T00:00:00-04:00",
+              "end": "2007-09-07T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2519",
-              "display": "Stanley Jason Garrett MD"
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
             }
           }
         ],
         "period": {
-          "start": "1998-06-20T00:05:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
         },
         "location": [
           {
@@ -53,17 +58,22 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-532036",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-425419",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-532036",
+        "id": "Procedure-425419",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45392",
-              "display": "Colonoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s), includes endoscopic ultrasound examination limited to the rectum, sigmoid, descending, transverse, or ascending colon and cecum, and adjacent structures"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "PHQ-9 Tool"
             }
           ]
         },
@@ -73,17 +83,17 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
         "performedPeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2519",
-              "display": "Stanley Jason Garrett MD"
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
             }
           }
         ],
@@ -94,21 +104,26 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-532036"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-425419"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532037",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425420",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532037",
+        "id": "Observation-425420",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
             {
-              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
-              "code": "G0105",
-              "display": "Colorectal cancer screening; colonoscopy on individual at high risk"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "display": "PHQ-9 Modified Score"
             }
           ]
         },
@@ -118,70 +133,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectivePeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
-        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
-        "valueString": "NEGATIVE"
+        "valueQuantity": {
+          "value": 4.0,
+          "unit": "score"
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532037"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425420"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-532038",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-532038",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45378",
-              "display": "Colonoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
-        },
-        "effectivePeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
-        },
-        "issued": "1998-06-20T00:51:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-532037",
-            "display": "Negative_Colonoscopy_Observation"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-532038"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532041",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425423",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532041",
+        "id": "Observation-425423",
         "status": "final",
         "code": {
           "coding": [
@@ -198,13 +173,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
@@ -214,14 +189,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532041"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425423"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532042",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425424",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532042",
+        "id": "Observation-425424",
         "status": "final",
         "code": {
           "coding": [
@@ -238,30 +213,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 75.31304221133746,
+          "value": 70.57873855258904,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532042"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425424"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532043",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425425",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532043",
+        "id": "Observation-425425",
         "status": "final",
         "code": {
           "coding": [
@@ -278,30 +253,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 29.79037309099223,
+          "value": 27.91770046777779,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532043"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425425"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532044",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425426",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532044",
+        "id": "Observation-425426",
         "status": "final",
         "code": {
           "coding": [
@@ -318,13 +293,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
@@ -334,14 +309,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532044"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425426"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532045",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425427",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532045",
+        "id": "Observation-425427",
         "status": "final",
         "code": {
           "coding": [
@@ -358,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 141.91951624686416,
+          "value": 106.73756480515443,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532045"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425427"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532046",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425428",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-532046",
+        "id": "Observation-425428",
         "status": "final",
         "code": {
           "coding": [
@@ -398,31 +373,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
           }
         ],
         "valueQuantity": {
-          "value": 117.8148385922451,
+          "value": 100.84808363004505,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-532046"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-425428"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-532040",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-425422",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-532040",
+        "id": "DiagnosticReport-425422",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -438,43 +427,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2469",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
         "effectivePeriod": {
-          "start": "1998-06-20T00:05:00-04:00",
-          "end": "1998-06-20T00:05:00-04:00"
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
         },
-        "issued": "1998-06-20T00:05:00.000-04:00",
+        "issued": "2007-09-07T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-532041",
+            "reference": "Observation/Observation-425423",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-532042",
+            "reference": "Observation/Observation-425424",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-532043",
+            "reference": "Observation/Observation-425425",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-532044",
+            "reference": "Observation/Observation-425426",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-532045",
+            "reference": "Observation/Observation-425427",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-532046",
+            "reference": "Observation/Observation-425428",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-532040"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-425422"
       }
     }
   ]

@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Doris-Bertha-Francis-6526-Encounter-3241",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3241",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3241",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-12-27T00:09:00-05:00",
+              "end": "1988-12-27T01:33:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-12-27T00:09:00-05:00",
+          "end": "1988-12-27T01:33:00-05:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3241"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-513880",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-513880",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45388",
+              "display": "Colonoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre- and post-dilation and guide wire passage, when performed)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-12-27T01:33:00-05:00",
+          "end": "1988-12-27T01:33:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-513880"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513882",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513882",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "C18.9",
+              "display": "Malignant neoplasm of colon, unspecified"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T01:33:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513882"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513883",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-513883",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44406",
+              "display": "Colonoscopy through stoma; with endoscopic ultrasound examination, limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-12-27T01:33:00-05:00",
+          "end": "1988-12-27T01:33:00-05:00"
+        },
+        "issued": "1988-12-27T01:33:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-513882",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513883"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513886",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513886",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 171.6,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513886"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513887",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513887",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128.16327108322307,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513887"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513888",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513888",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 43.52402150988879,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513888"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513889",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513889",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513889"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513890",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513890",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 111.06154963990801,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513890"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513891",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-513891",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 91.89669772042824,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513891"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513885",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-513885",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6526",
+          "display": "Doris Bertha Francis"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3241",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-12-27T00:09:00-05:00",
+          "end": "1988-12-27T00:09:00-05:00"
+        },
+        "issued": "1988-12-27T00:09:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-513886",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-513887",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-513888",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-513889",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-513890",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-513891",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513885"
+      }
+    }
+  ]
+}

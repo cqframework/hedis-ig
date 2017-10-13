@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-3181",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "inpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-1129",
@@ -21,18 +26,18 @@
         "participant": [
           {
             "period": {
-              "start": "1998-06-20T00:05:00-04:00",
-              "end": "1998-06-20T00:51:00-04:00"
+              "start": "2010-12-23T23:00:00-05:00",
+              "end": "2010-12-23T23:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2521",
-              "display": "Heather Fuentes Guerra MD"
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
             }
           }
         ],
         "period": {
-          "start": "1998-06-20T00:05:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
+          "start": "2010-12-23T23:00:00-05:00",
+          "end": "2010-12-23T23:00:00-05:00"
         },
         "location": [
           {
@@ -53,17 +58,22 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-671000",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-507132",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-671000",
+        "id": "Procedure-507132",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45387",
-              "display": "Colonoscopy, flexible, proximal to splenic flexure; with transendoscopic stent placement (includes predilation)"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "PHQ-9 Tool"
             }
           ]
         },
@@ -73,17 +83,17 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
         "performedPeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
+          "start": "2010-12-23T23:00:00-05:00",
+          "end": "2010-12-23T23:00:00-05:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2521",
-              "display": "Heather Fuentes Guerra MD"
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
             }
           }
         ],
@@ -94,21 +104,26 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-671000"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-507132"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671002",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507133",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671002",
+        "id": "Observation-507133",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/icd-10-us",
-              "code": "C18.7",
-              "display": "Malignant neoplasm of sigmoid colon"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "display": "PHQ-9 Modified Score"
             }
           ]
         },
@@ -118,70 +133,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectivePeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
-        },
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
-        "valueString": "POSITIVE"
+        "valueQuantity": {
+          "value": 4.0,
+          "unit": "score"
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671002"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507133"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671003",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-671003",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "44403",
-              "display": "Colonoscopy through stoma; with endoscopic mucosal resection"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
-        },
-        "effectivePeriod": {
-          "start": "1998-06-20T00:51:00-04:00",
-          "end": "1998-06-20T00:51:00-04:00"
-        },
-        "issued": "1998-06-20T00:51:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-671002",
-            "display": "Positive_Colonoscopy_Observation"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671003"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671006",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507136",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671006",
+        "id": "Observation-507136",
         "status": "final",
         "code": {
           "coding": [
@@ -198,13 +173,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -214,14 +189,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671006"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507136"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671007",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507137",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671007",
+        "id": "Observation-507137",
         "status": "final",
         "code": {
           "coding": [
@@ -238,30 +213,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 76.39431863053538,
+          "value": 71.78654505132367,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671007"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507137"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671008",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507138",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671008",
+        "id": "Observation-507138",
         "status": "final",
         "code": {
           "coding": [
@@ -278,30 +253,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 30.21807627488445,
+          "value": 28.39545312737774,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671008"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507138"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671009",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507139",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671009",
+        "id": "Observation-507139",
         "status": "final",
         "code": {
           "coding": [
@@ -318,13 +293,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -334,14 +309,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671009"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507139"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671010",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507140",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671010",
+        "id": "Observation-507140",
         "status": "final",
         "code": {
           "coding": [
@@ -358,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 167.48076872198038,
+          "value": 150.54214123887726,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671010"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507140"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671011",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507141",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-671011",
+        "id": "Observation-507141",
         "status": "final",
         "code": {
           "coding": [
@@ -398,31 +373,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "1998-06-20T00:05:00-04:00",
+        "effectiveDateTime": "2010-12-23T23:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2521",
-            "display": "Heather Fuentes Guerra MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 109.19416061382607,
+          "value": 104.38091646756192,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-671011"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-507141"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671005",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-507135",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-671005",
+        "id": "DiagnosticReport-507135",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -438,43 +427,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3181",
-          "display": "Colonoscopy_Encounter"
+          "display": "Followup_Encounter"
         },
         "effectivePeriod": {
-          "start": "1998-06-20T00:05:00-04:00",
-          "end": "1998-06-20T00:05:00-04:00"
+          "start": "2010-12-23T23:00:00-05:00",
+          "end": "2010-12-23T23:00:00-05:00"
         },
-        "issued": "1998-06-20T00:05:00.000-04:00",
+        "issued": "2010-12-23T23:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-671006",
+            "reference": "Observation/Observation-507136",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-671007",
+            "reference": "Observation/Observation-507137",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-671008",
+            "reference": "Observation/Observation-507138",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-671009",
+            "reference": "Observation/Observation-507139",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-671010",
+            "reference": "Observation/Observation-507140",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-671011",
+            "reference": "Observation/Observation-507141",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-671005"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-507135"
       }
     }
   ]

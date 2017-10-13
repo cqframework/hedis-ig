@@ -1,0 +1,532 @@
+{
+  "resourceType": "Bundle",
+  "id": "Ellen-Sandoval-Sanford-6558-Encounter-2658",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2658",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2658",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1992-07-03T00:09:00-04:00",
+              "end": "1992-07-03T01:33:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1992-07-03T00:09:00-04:00",
+          "end": "1992-07-03T01:33:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2658"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-448174",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-448174",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44405",
+              "display": "Colonoscopy through stoma; with transendoscopic balloon dilation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1992-07-03T01:33:00-04:00",
+          "end": "1992-07-03T01:33:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-448174"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448176",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448176",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-us",
+              "code": "C18.6",
+              "display": "Malignant neoplasm of descending colon"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T01:33:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448176"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-448177",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-448177",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45387",
+              "display": "Colonoscopy, flexible, proximal to splenic flexure; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1992-07-03T01:33:00-04:00",
+          "end": "1992-07-03T01:33:00-04:00"
+        },
+        "issued": "1992-07-03T01:33:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-448176",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-448177"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448180",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448180",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448180"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448181",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448181",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 87.19620148872319,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448181"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448182",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448182",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 34.49080395899022,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448182"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448183",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448183",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448183"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448184",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448184",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 130.52537133616624,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448184"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448185",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-448185",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1992-07-03T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.04213041447484,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-448185"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-448179",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-448179",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2658",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1992-07-03T00:09:00-04:00",
+          "end": "1992-07-03T00:09:00-04:00"
+        },
+        "issued": "1992-07-03T00:09:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-448180",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-448181",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-448182",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-448183",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-448184",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-448185",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-448179"
+      }
+    }
+  ]
+}

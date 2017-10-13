@@ -8,11 +8,16 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "Encounter-2079",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "outpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
         "subject": {
           "reference": "Patient/Patient-1129",
@@ -21,30 +26,30 @@
         "participant": [
           {
             "period": {
-              "start": "2010-07-23T00:00:00-04:00",
-              "end": "2010-07-23T00:00:00-04:00"
+              "start": "2005-10-14T00:00:00-04:00",
+              "end": "2005-10-14T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2524",
-              "display": "Willie Vincent Riddle MD"
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
             }
           }
         ],
         "period": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
+          "start": "2005-10-14T00:00:00-04:00",
+          "end": "2005-10-14T00:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1103",
-              "display": "Acme Medical Center"
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1103",
-          "display": "Acme Medical Center"
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
         }
       },
       "request": {
@@ -53,57 +58,22 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-455317",
-      "resource": {
-        "resourceType": "Immunization",
-        "id": "Immunization-455317",
-        "status": "completed",
-        "notGiven": false,
-        "vaccineCode": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/sid/cvx",
-              "code": "140",
-              "display": "Influenza, seasonal, injectable, preservative free"
-            }
-          ]
-        },
-        "patient": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "date": "2010-07-23T00:00:00-04:00",
-        "primarySource": true,
-        "location": {
-          "reference": "Location/Location-1103",
-          "display": "Acme Medical Center"
-        },
-        "practitioner": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2524",
-              "display": "Willie Vincent Riddle MD"
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-455317"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-478900",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-378365",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-478900",
+        "id": "Procedure-378365",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
         "status": "completed",
         "code": {
           "coding": [
             {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "77056",
-              "display": "Mammography; bilateral"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "PHQ-9 Tool"
             }
           ]
         },
@@ -113,42 +83,47 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
         "performedPeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
+          "start": "2005-10-14T00:00:00-04:00",
+          "end": "2005-10-14T00:00:00-04:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2524",
-              "display": "Willie Vincent Riddle MD"
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
             }
           }
         ],
         "location": {
-          "reference": "Location/Location-1103",
-          "display": "Acme Medical Center"
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-478900"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-378365"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478901",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378366",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478901",
+        "id": "Observation-378366",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
         "status": "final",
         "code": {
           "coding": [
             {
-              "system": "http://snomed.info/sct",
-              "code": "168749009",
-              "display": "Mammography normal (finding)"
+              "system": "TEST",
+              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "display": "PHQ-9 Modified Score"
             }
           ]
         },
@@ -158,702 +133,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueString": "NEGATIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478901"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478902",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-478902",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "38820-7",
-              "display": "Breast implant - right Mammogram"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "issued": "2010-07-23T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-478901",
-            "display": "No_Cancer_Detected"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478902"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478903",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478903",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8480-6",
-              "display": "Systolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 116.36611329945212,
-          "unit": "mmHg"
+          "value": 4.0,
+          "unit": "score"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478903"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378366"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478904",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378369",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478904",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8462-4",
-              "display": "Diastolic blood pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 94.04252017884058,
-          "unit": "mmHg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478904"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-478905",
-      "resource": {
-        "resourceType": "Condition",
-        "id": "Condition-478905",
-        "clinicalStatus": "active",
-        "verificationStatus": "confirmed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "56218007",
-              "display": "Systolic hypertension"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "onsetDateTime": "2010-07-23T00:00:00-04:00",
-        "assertedDate": "2010-07-23T00:00:00-04:00",
-        "asserter": {
-          "reference": "Practitioner/Practitioner-2524",
-          "display": "Willie Vincent Riddle MD"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-478905"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-478906",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-478906",
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82270",
-              "display": "Blood, occult, by peroxidase activity (eg, guaiac), qualitative; feces, consecutive collected specimens with single determination, for colorectal neoplasm screening (ie, patient was provided 3 cards or single triple card for consecutive collection)"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "performedPeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2524",
-              "display": "Willie Vincent Riddle MD"
-            }
-          }
-        ],
-        "location": {
-          "reference": "Location/Location-1103",
-          "display": "Acme Medical Center"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-478906"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478907",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478907",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "82274",
-              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueString": "NEGATIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478907"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478908",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478908",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "8302-2",
-              "display": "Body Height"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 159.0,
-          "unit": "cm"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478908"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478909",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478909",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "29463-7",
-              "display": "Body Weight"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 74.50647014106747,
-          "unit": "kg"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478909"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478910",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478910",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "39156-5",
-              "display": "Body Mass Index"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 29.471330303812135,
-          "unit": "kg/m2"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478910"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478913",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478913",
-        "status": "final",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/observation-category",
-                "code": "vital-signs",
-                "display": "vital-signs"
-              }
-            ]
-          }
-        ],
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "55284-4",
-              "display": "Blood Pressure"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "valueQuantity": {
-          "value": 94.04252017884058,
-          "unit": "mmHg"
-        },
-        "component": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8480-6",
-                  "display": "Systolic Blood Pressure"
-                }
-              ]
-            }
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "8462-4",
-                  "display": "Diastolic Blood Pressure"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478913"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478914",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478914",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2093-3",
-              "display": "Total Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 133.84484151315502,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478914"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478915",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478915",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2571-8",
-              "display": "Triglycerides"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 40.569603838252284,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478915"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478916",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478916",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "18262-6",
-              "display": "Low Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 63.80143802971681,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478916"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478917",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478917",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "2085-9",
-              "display": "High Density Lipoprotein Cholesterol"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
-          }
-        ],
-        "valueQuantity": {
-          "value": 61.92948271578775,
-          "unit": "mg/dL"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478917"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478918",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-478918",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "57698-3",
-              "display": "Lipid Panel"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-1129",
-          "display": "Viola Jean Campbell"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
-        },
-        "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
-        },
-        "issued": "2010-07-23T00:00:00.000-04:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-478914",
-            "display": "Record_Cholesterol"
-          },
-          {
-            "reference": "Observation/Observation-478915",
-            "display": "Record_Triglycerides"
-          },
-          {
-            "reference": "Observation/Observation-478916",
-            "display": "Record_LDL"
-          },
-          {
-            "reference": "Observation/Observation-478917",
-            "display": "Record_HDL"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478918"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478920",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-478920",
+        "id": "Observation-378369",
         "status": "final",
         "code": {
           "coding": [
@@ -870,13 +173,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -886,14 +189,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478920"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378369"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478921",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378370",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478921",
+        "id": "Observation-378370",
         "status": "final",
         "code": {
           "coding": [
@@ -910,30 +213,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 74.50647014106747,
+          "value": 70.06715950568065,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478921"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378370"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478922",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378371",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478922",
+        "id": "Observation-378371",
         "status": "final",
         "code": {
           "coding": [
@@ -950,30 +253,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 29.471330303812135,
+          "value": 27.71534334309586,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478922"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378371"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478923",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378372",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478923",
+        "id": "Observation-378372",
         "status": "final",
         "code": {
           "coding": [
@@ -990,13 +293,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -1006,14 +309,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478923"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378372"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478924",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378373",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478924",
+        "id": "Observation-378373",
         "status": "final",
         "code": {
           "coding": [
@@ -1030,30 +333,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 116.36611329945212,
+          "value": 129.58442824280732,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478924"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378373"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478925",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378374",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-478925",
+        "id": "Observation-378374",
         "status": "final",
         "code": {
           "coding": [
@@ -1070,31 +373,45 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
-        "effectiveDateTime": "2010-07-23T00:00:00-04:00",
+        "effectiveDateTime": "2005-10-14T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2524",
-            "display": "Willie Vincent Riddle MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 94.04252017884058,
+          "value": 96.11720222973597,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-478925"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378374"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478919",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-378368",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-478919",
+        "id": "DiagnosticReport-378368",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
         "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
         "code": {
           "coding": [
             {
@@ -1110,43 +427,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2079",
-          "display": "Wellness Visit"
+          "display": "Followup_Encounter"
         },
         "effectivePeriod": {
-          "start": "2010-07-23T00:00:00-04:00",
-          "end": "2010-07-23T00:00:00-04:00"
+          "start": "2005-10-14T00:00:00-04:00",
+          "end": "2005-10-14T00:00:00-04:00"
         },
-        "issued": "2010-07-23T00:00:00.000-04:00",
+        "issued": "2005-10-14T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-478920",
+            "reference": "Observation/Observation-378369",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-478921",
+            "reference": "Observation/Observation-378370",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-478922",
+            "reference": "Observation/Observation-378371",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-478923",
+            "reference": "Observation/Observation-378372",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-478924",
+            "reference": "Observation/Observation-378373",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-478925",
+            "reference": "Observation/Observation-378374",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-478919"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-378368"
       }
     }
   ]

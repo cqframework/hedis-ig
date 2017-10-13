@@ -1,0 +1,1085 @@
+{
+  "resourceType": "Bundle",
+  "id": "Gabriel-Bill-Good-6553-Encounter-201",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-201",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-201",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1989-12-15T00:00:00-05:00",
+              "end": "1989-12-15T00:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1989-12-15T00:00:00-05:00",
+          "end": "1989-12-15T00:00:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-201"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-559",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-559",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "date": "1989-12-15T00:00:00-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-559"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-36292",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-36292",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713127001",
+              "display": "Assessment of alcohol use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "1989-12-15T00:00:00-05:00",
+          "end": "1989-12-15T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-36292"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36293",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36293",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704198001",
+              "display": "Denies alcohol use (finding)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36293"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36294",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36294",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141.8081030249276,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36294"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36295",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36295",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 90.39066001675361,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36295"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-36296",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-36296",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "78975002",
+              "display": "Malignant essential hypertension"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "1989-12-15T00:00:00-05:00",
+        "assertedDate": "1989-12-15T00:00:00-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2530",
+          "display": "Terrence Ramirez McCormick MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-36296"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36297",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36297",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36297"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36298",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36298",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.45270602203358,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36298"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36299",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36299",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 27.337657533512306,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36299"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36302",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36302",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "valueQuantity": {
+          "value": 90.39066001675361,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36302"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36303",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36303",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 144.05533337371904,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36303"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36304",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36304",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 59.916198983973416,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36304"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36305",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36305",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 87.76879455055312,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36305"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36306",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36306",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 44.30329902637122,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36306"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36307",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-36307",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-15T00:00:00-05:00",
+          "end": "1989-12-15T00:00:00-05:00"
+        },
+        "issued": "1989-12-15T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-36303",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-36304",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-36305",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-36306",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36307"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36309",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36309",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36309"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36310",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36310",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.45270602203358,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36310"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36311",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36311",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 27.337657533512306,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36311"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36312",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36312",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36312"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36313",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36313",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141.8081030249276,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36313"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36314",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-36314",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "1989-12-15T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 90.39066001675361,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-36314"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36308",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-36308",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6553",
+          "display": "Gabriel Bill Good"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-201",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "1989-12-15T00:00:00-05:00",
+          "end": "1989-12-15T00:00:00-05:00"
+        },
+        "issued": "1989-12-15T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-36309",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-36310",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-36311",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-36312",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-36313",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-36314",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-36308"
+      }
+    }
+  ]
+}
