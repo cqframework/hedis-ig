@@ -44,7 +44,7 @@ valueset "Pervasive Developmental Disorder": '2.16.840.1.113883.3.464.1004.1356'
 valueset "PHQ-9 Total Score": '2.16.840.1.113883.3.464.1004.1401'
 valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
 
-code "Major Depression and Dysthymia": '78667006' from "SNOMED"
+// code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 code "PHQ-9 Modified Score": '' from ""
 code "PHQ-9 Tool": '' from ""
 
