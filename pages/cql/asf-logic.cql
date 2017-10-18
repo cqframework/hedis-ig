@@ -20,6 +20,7 @@ The percentage of members 18 years of age and older who were screened for
 */
 
 codesystem "LOINC": 'http://loinc.org'
+codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
 // valueset "Alcohol Screening and Brief Counseling": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
 // valueset "Five or more drinks per day": 'urn:oid:2.16.840.1.113883.3.464.1003.106.11.1035' // Value Set
@@ -35,8 +36,8 @@ valueset "Alcohol use disorder": '2.16.840.1.113883.3.464.1004.1339'
 valueset "Dementia": '2.16.840.1.113883.3.464.1004.1074'
 valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
 
-code "Five or more drinks per day": '' from ""
-code "Four or more drinks per day": '' from ""
+code "Five or more drinks per day": '00005' from "CQFramework"
+code "Four or more drinks per day": '00004' from "CQFramework"
 code "AUDIT Total Score (in points)": '75624-7' from "LOINC"
 code "AUDIT-C Total Score (in points)": '75626-2' from "LOINC"
 
@@ -88,13 +89,13 @@ define "Denominator Exclusion":
 	exists (
 		[DiagnosticReport: "Alcohol use disorder"] D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) overlaps "Lookback Interval Total Two Years"
+				and D.effective.value in "Lookback Interval Total Two Years"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Dementia"] D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) overlaps "Intake Period"
+				and D.effective.value in "Intake Period"
 	)
 
 /*
@@ -121,13 +122,13 @@ define "Numerator 1":
 define "AUDIT-C Assessment":
 	[Observation: "AUDIT-C Total Score (in points)"] A
 		where A.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(A.effective) during "Intake Period"
+			and A.effective.value in "Intake Period"
 			and A.value is not null
 
 define "AUDIT Assessment":
 	[Observation: "AUDIT Total Score (in points)"] A
 		where A.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(A.effective) during "Intake Period"
+			and A.effective.value in "Intake Period"
 			and A.value is not null
 
 define "Patient is Male":
@@ -136,7 +137,7 @@ define "Patient is Male":
 define "Five or more drinks per day Assessment":
 	[Observation: "Five or more drinks per day"] A
 		where A.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(A.effective) during "Intake Period"
+			and A.effective.value in "Intake Period"
 			and A.value is not null
 
 define "Patient is Female":
@@ -148,7 +149,7 @@ define "Patient is over 65":
 define "Four or more drinks per day Assessment":
 	[Observation: "Four or more drinks per day"] A
 		where A.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(A.effective) during "Intake Period"
+			and A.effective.value in "Intake Period"
 			and A.value is not null
 
 // Counseling or Other Follow-Up on Positive Screen
@@ -163,7 +164,7 @@ define "Numerator 2":
 	and
 	exists (
 		"Initial Positive Assessment for Unhealthy Alcohol Use" A
-			with "Followup Screening" F such that ChoiceToIntervalOfDT(F.effective) starts 2 months or less after end of ChoiceToIntervalOfDT(A.effective)
+			with "Followup Screening" F such that F.effective.value 2 months or less after day of A.effective.value
 	)
 
 define "Positive Assessment for Unhealthy Alcohol Use":
@@ -199,7 +200,7 @@ define "Followup Screening":
 define "Initial Positive Assessment for Unhealthy Alcohol Use":
 	{First(
 		"Positive Assessment for Unhealthy Alcohol Use" A
-			sort by start of ChoiceToIntervalOfDT(effective)
+			sort by effective.value
 	)}
 
 /*
@@ -218,24 +219,3 @@ define "Stratifier 3":
 define "Stratifier 4":
 	AgeInYearsAt(start of "Fourteen Month Measurement Period") >= 65
 
-/*
-Utility Functions
-*/
-
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
-
-define function PeriodToIntervalOfDT(value FHIR.Period):
-	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers

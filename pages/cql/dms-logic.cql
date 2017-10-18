@@ -16,6 +16,7 @@ present in their record in the same assessment period as the encounter.
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
+codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
 // valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
 // valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
@@ -38,7 +39,7 @@ valueset "PHQ-9 Total Score": '2.16.840.1.113883.3.464.1004.1401'
 valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
 
 // code "Major Depression and Dysthymia": '78667006' from "SNOMED"
-code "PHQ-9 Modified Score": '' from ""
+code "PHQ-9 Modified Score": '00009' from "CQFramework"
 code "PHQ-9 Tool": '44249-1' from "LOINC"
 
 /*
@@ -93,7 +94,7 @@ define "Initial Population":
 		and exists (
 			[DiagnosticReport: "Major Depression and Dysthymia"] D
 				where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and ChoiceToIntervalOfDT(D.effective) overlaps "Measurement Period"
+					and D.effective.value in "Measurement Period"
 		)
 
 /*
@@ -113,7 +114,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) overlaps "Measurement Period"
+				and D.effective.value in "Measurement Period"
 	)
 
 /*
@@ -146,7 +147,7 @@ define "Depression Encounters":
 		with [DiagnosticReport: "Major Depression and Dysthymia"] D
 			such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
+				and D.effective.value in PeriodToIntervalOfDT(E.period)
 
 define "PHQ-9 Score":
 	distinct (
@@ -160,17 +161,17 @@ define "PHQ-9 Score":
 define "Numerator 1":
 	"Denominator 1" E
 		with "PHQ-9 Score" A
-			such that ChoiceToIntervalOfDT(A.effective) during "Assessment Period One"
+			such that A.effective.value in "Assessment Period One"
 
 define "Numerator 2":
 	"Denominator 2" E
 		with "PHQ-9 Score" A
-			such that ChoiceToIntervalOfDT(A.effective) during "Assessment Period Two"
+			such that A.effective.value in "Assessment Period Two"
 
 define "Numerator 3":
 	"Denominator 3" E
 		with "PHQ-9 Score" A
-			such that ChoiceToIntervalOfDT(A.effective) during "Assessment Period Three"
+			such that A.effective.value in "Assessment Period Three"
 
 /*
 Stratifiers

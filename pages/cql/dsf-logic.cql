@@ -20,6 +20,7 @@ The percentage of members 12 years of age and older who were screened for
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
+codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
 // valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
 // valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
@@ -30,7 +31,7 @@ codesystem "SNOMED": 'http://snomed.info/sct'
 // valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
 // valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
 // valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
-valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
+// valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
 
 // update
 valueset "Behavioral Health Encounter": '2.16.840.1.113883.3.464.1004.1383'
@@ -48,8 +49,8 @@ valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'
 valueset "Positive Depression Screen": '2.16.840.1.113883.3.464.1004.1387'
 valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
 
-// code "Major Depression and Dysthymia": '78667006' from "SNOMED"
-code "PHQ-9 Modified Score": '' from ""
+code "Antidepressant Medication": '00001' from "CQFramework"
+code "PHQ-9 Modified Score": '00009' from "CQFramework"
 code "PHQ-9 Tool": '44249-1' from "LOINC"
 
 /*
@@ -91,13 +92,13 @@ define "Denominator Exclusion":
 	exists (
 		"Bipolar Disorder Reports" BD
 			where BD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(BD.effective) overlaps "Lookback Interval One More Year"
+				and BD.effective.value in "Lookback Interval One More Year"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Major Depression and Dysthymia"] MDD
 			where MDD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(MDD.effective) overlaps "First Predecessor Year"
+				and MDD.effective.value in "First Predecessor Year"
 	)
 
 define "Bipolar Disorder Reports":
@@ -120,7 +121,7 @@ define "Numerator 1":
 	exists (
 		[Observation: "Depression Screen"] DepressionScreen
 			where DepressionScreen.status.value in { 'final', 'amended' }
-				and ChoiceToIntervalOfDT(DepressionScreen.effective) overlaps "Measurement Period"
+				and DepressionScreen.effective.value in "Measurement Period"
 	)
 
 // Positive Follow-Up
@@ -142,12 +143,12 @@ define "Numerator 2":
 define "Positive Depression Screen During Follow-Up Period":
 	[Observation: "Positive Depression Screen"] PositiveScreen
 		where PositiveScreen.status.value in { 'final', 'amended' }
-			and ChoiceToIntervalOfDT(PositiveScreen.effective) overlaps "Measurement Period"
+			and PositiveScreen.effective.value in "Measurement Period"
 
 define "First Positive Depression Screen During Follow-Up Period":
 	{First(
 		"Positive Depression Screen During Follow-Up Period" Obs
-			sort by start of ChoiceToIntervalOfDT(effective)
+			sort by effective.value
 	)}
 
 define "Follow-Up Care Encounters":
@@ -159,7 +160,7 @@ define "Follow-Up Care Encounters":
 				with [DiagnosticReport: "Major Depression and Dysthymia"] D
 					such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 						and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-						and ChoiceToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
+						and D.effective.value in PeriodToIntervalOfDT(E.period)
 		)
 		union
 		[Encounter: "Depression Case Management Encounter"]
@@ -170,7 +171,7 @@ define "Same Day Behavioral Encounter":
 	[Encounter: "Behavioral Health Encounter"] BehavioralEncounter
 		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that BehavioralEncounter.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and start of PeriodToIntervalOfDT(BehavioralEncounter.period) same day as start of ChoiceToIntervalOfDT(PositiveScreen.effective)
+				and start of PeriodToIntervalOfDT(BehavioralEncounter.period) same day as PositiveScreen.effective.value
 	return BehavioralEncounter
 
 define "Dispensed Antidepressant Within 31 Days":
@@ -180,21 +181,21 @@ define "Dispensed Antidepressant Within 31 Days":
 	[MedicationDispense: "Antidepressant Medication"] Antidepressants
 		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that Antidepressants.status.value = 'completed'
-				and days between Antidepressants.whenHandedOver.value and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
+				and days between Antidepressants.whenHandedOver.value and PositiveScreen.effective.value <= 31
 	return Antidepressants
 
 define "Follow-Up Encounter Within 31 Days":
 	"Follow-Up Care Encounters" FollowUps
 		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
-			such that days between start of PeriodToIntervalOfDT(FollowUps.period) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) >= 1
-				and days between start of PeriodToIntervalOfDT(FollowUps.period) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
+			such that days between start of PeriodToIntervalOfDT(FollowUps.period) and PositiveScreen.effective.value >= 1
+				and days between start of PeriodToIntervalOfDT(FollowUps.period) and PositiveScreen.effective.value <= 31
 	return FollowUps
 
 define "Negative Depression Screen Within 31 Days":
 	[Observation: "Negative Depression Screen"] NegativeScreen
 		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that NegativeScreen.status.value in { 'final', 'amended' }
-				and days between start of ChoiceToIntervalOfDT(NegativeScreen.effective) and start of ChoiceToIntervalOfDT(PositiveScreen.effective) <= 31
+				and days between NegativeScreen.effective.value and PositiveScreen.effective.value <= 31
 	return NegativeScreen
 
 /*
@@ -217,20 +218,5 @@ define "Stratifier 4":
 Utility Functions
 */
 
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
-
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers
