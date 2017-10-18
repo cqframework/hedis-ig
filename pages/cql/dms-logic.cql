@@ -46,8 +46,8 @@ code "PHQ-9 Tool": '44249-1' from "LOINC"
 This library has an explicit parameter which is the measurement year.
 While the actual parameter's type accepts all intervals, this library
 expects it will only be given arguments corresponding exactly to one whole
-calendar year, and it will not behave properly otherwise; 2015 for example:
-Interval[DateTime(2015,1,1,0,0,0,0), DateTime(2016,1,1,0,0,0,0))
+calendar year, and it will not behave properly otherwise; 2017 for example:
+Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 */
 
 parameter "Measurement Period" Interval<DateTime>
