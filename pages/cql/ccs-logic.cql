@@ -317,8 +317,8 @@ define "Is Hysterectomy":
 	exists(
 		[Procedure: "Absence of Cervix Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end before end of "Measurement Period"
-				//and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+				and end of case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end same day or before end of "Measurement Period"
+				//and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 
 /*
