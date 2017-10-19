@@ -72,13 +72,13 @@ define "Denominator Exclusion":
 	exists (
 		"Chemotherapy and Bone Marrow Transplant Procedures" ProcedureUnion
 			where ProcedureUnion.status.value in { 'in-progress', 'completed' }
-				and ChoiceToIntervalOfDT(ProcedureUnion.performed) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(ProcedureUnion.performed) overlaps "Measurement Period"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Anaphylactic Reaction Due to Vaccine"] ReactionToVaccine
 			where ReactionToVaccine.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(ReactionToVaccine.effective) before "Measurement Period"
+				and ReactionToVaccine.effective.value before day of "Measurement Period"
 	)
 
 define "Chemotherapy and Bone Marrow Transplant Procedures":
@@ -153,12 +153,12 @@ define "Immunocompromised Diagnoses Overlapping Measurement Period":
 		union [DiagnosticReport: "Disorders of the Immune System"]
 	) D
 		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-			and ChoiceToIntervalOfDT(D.effective) overlaps "Measurement Period"
+			and D.effective.value in "Measurement Period"
 
 define "Cochlear Implants on or Before End of Measurement Period":
 	[Procedure: "Cochlear Implants"] CochlearImplant
 		where CochlearImplant.status.value in { 'in-progress', 'completed' }
-			and start of ChoiceToIntervalOfDT(CochlearImplant.performed) same day or before end of "Measurement Period"
+			and start of PeriodToIntervalOfDT(CochlearImplant.performed) same day or before end of "Measurement Period"
 
 /*
 Stratifiers
@@ -177,20 +177,5 @@ define "Stratifier 3":
 Utility Functions
 */
 
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
-
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers

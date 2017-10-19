@@ -193,20 +193,5 @@ define "Stratifier 4":
 Utility Functions
 */
 
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
-
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers

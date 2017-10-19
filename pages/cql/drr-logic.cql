@@ -86,7 +86,7 @@ define "Initial Population":
 		"DRR Encounter" DRR
 			with [DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
 				such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and ChoiceToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
+					and DepressionDiagnosis.effective.value in PeriodToIntervalOfDT(DRR.period)
 	)
 
 define "DRR Encounter":
@@ -111,7 +111,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ChoiceToIntervalOfDT(D.effective) overlaps "Intake Period Union Measurement Period"
+				and D.effective.value in "Intake Period Union Measurement Period"
 	)
 
 /*
@@ -131,9 +131,9 @@ define "Numerator 1":
 	exists (
 		"PHQ-9 Assessments" PHQ
 			with "Depression Index" DI
-				such that ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+				such that PHQ.effective.value after day of DI.effective.value
+					and days between DI.effective.value and PHQ.effective.value >= 150
+					and days between DI.effective.value and PHQ.effective.value <= 210
 		return PHQ
 	)
 
@@ -149,9 +149,9 @@ define "Numerator 2":
 		"PHQ-9 Assessments" PHQ
 			with "Depression Index" DI
 				such that (PHQ.value as Quantity).value.value < 5
-					and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+					and PHQ.effective.value after day of DI.effective.value
+					and days between DI.effective.value and PHQ.effective.value >= 150
+					and days between DI.effective.value and PHQ.effective.value <= 210
 		return PHQ
 	)
 
@@ -167,9 +167,9 @@ define "Numerator 3":
 		"PHQ-9 Assessments" PHQ
 			with "Depression Index" DI
 				such that (PHQ.value as Quantity).value.value <= (DI.value as Quantity).value.value / 2
-					and ChoiceToIntervalOfDT(PHQ.effective) after day of ChoiceToIntervalOfDT(DI.effective)
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) >= 150
-					and days between start of ChoiceToIntervalOfDT(DI.effective) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 210
+					and PHQ.effective.value after day of DI.effective.value
+					and days between DI.effective.value and PHQ.effective.value >= 150
+					and days between DI.effective.value and PHQ.effective.value <= 210
 		return PHQ
 	)
 
@@ -178,10 +178,10 @@ define "Depression Index":
 		"PHQ-9 Assessments" PHQ
 			with "DRR Encounter" DRR
 				such that (PHQ.value as Quantity).value.value > 9
-					and ((ChoiceToIntervalOfDT(PHQ.effective) same day or before start of PeriodToIntervalOfDT(DRR.period)
-							and days between start of ChoiceToIntervalOfDT(PHQ.effective) and start of PeriodToIntervalOfDT(DRR.period) <= 15)
-						or (ChoiceToIntervalOfDT(PHQ.effective) same day or after start of PeriodToIntervalOfDT(DRR.period)
-							and days between start of PeriodToIntervalOfDT(DRR.period) and start of ChoiceToIntervalOfDT(PHQ.effective) <= 15))
+					and ((PHQ.effective.value same day or before start of PeriodToIntervalOfDT(DRR.period)
+							and days between PHQ.effective.value and start of PeriodToIntervalOfDT(DRR.period) <= 15)
+						or (PHQ.effective.value same day or after start of PeriodToIntervalOfDT(DRR.period)
+							and days between start of PeriodToIntervalOfDT(DRR.period) and PHQ.effective.value <= 15))
 		return PHQ
 	)
 
@@ -214,20 +214,5 @@ define "Stratifier 4":
 Utility Functions
 */
 
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
-
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers
