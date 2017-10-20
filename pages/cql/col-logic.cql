@@ -20,38 +20,38 @@ the results in CQL, where the BCS and CCS measures take the grouping value set
 approach.
 */
 
-valueset "Colonoscopy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.29' // CPT
-valueset "Colonoscopy Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
-valueset "Colonoscopy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
+valueset "Colonoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1064.29' // CPT
+valueset "Colonoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
+valueset "Colonoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
 
-valueset "Colorectal Cancer Value Set (ICD10)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
-valueset "Colorectal Cancer Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
+valueset "Colorectal Cancer Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
+valueset "Colorectal Cancer Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
 
-valueset "CT Colonography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1421.34' // CPT
+valueset "CT Colonography Value Set": '2.16.840.1.113883.3.464.1004.1421.34' // CPT
 
-valueset "FIT-DNA Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.35' // CPT
-valueset "FIT-DNA Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
-valueset "FIT-DNA Value Set (LOINC)": 'urn:oid:2.16.840.1.113883.3.464.1004.1420.37' // LOINC
+valueset "FIT-DNA Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1420.35' // CPT
+valueset "FIT-DNA Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
+valueset "FIT-DNA Value Set (LOINC)": '2.16.840.1.113883.3.464.1004.1420.37' // LOINC
 
-valueset "Flexible Sigmoidoscopy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.38' // CPT
-valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
-valueset "Flexible Sigmoidoscopy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
+valueset "Flexible Sigmoidoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1102.38' // CPT
+valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
+valueset "Flexible Sigmoidoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
 
-valueset "FOBT Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.41' // CPT
-valueset "FOBT Value Set (HCPCS)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
-valueset "FOBT Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
+valueset "FOBT Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
+valueset "FOBT Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
+valueset "FOBT Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
 
-valueset "Total Colectomy Value Set (CPT)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.44' // CPT
-valueset "Total Colectomy Value Set (ICD10)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
-valueset "Total Colectomy Value Set (ICD9)": 'urn:oid:2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
+valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.44' // CPT
+valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
+valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
 /*
 valueset "Hospice Value Set": 'TODO'
 
-valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Discharged to Home for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Discharged to Health Care Facility for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Hospice care ambulatory": 'urn:oid:2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Discharged to Home for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Discharged to Health Care Facility for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+valueset "Hospice care ambulatory": '2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
 
 valueset "X Commercial Coverage Value Set": 'TODO'
 valueset "X Medicaid Coverage Value Set": 'TODO'
@@ -152,7 +152,7 @@ define "Is In Hospice":
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
+				and HospicePerformed.performed overlaps "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -280,7 +280,7 @@ define "Is Fecal Occult Blood Test In Last Year":
 	exists(
 		"FOBT Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Measurement Period")
+				and Obs.effective.value in "Measurement Period"
 	)
 
 define "Flexible Sigmoidoscopy Reports":
@@ -292,7 +292,7 @@ define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
 		"Flexible Sigmoidoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
+				and DiagRep.effective.value in "Lookback Interval Four More Years"
 	)
 
 define "Colonoscopy Reports":
@@ -304,14 +304,14 @@ define "Is Colonoscopy In Last Ten Years":
 	exists(
 		"Colonoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Nine More Years")
+				and DiagRep.effective.value in "Lookback Interval Nine More Years"
 	)
 
 define "Is CT Colonography In Last Five Years":
 	exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and IncludedIn(ChoiceToIntervalOfDT(DiagRep.effective), "Lookback Interval Four More Years")
+				and DiagRep.effective.value in "Lookback Interval Four More Years"
 	)
 
 define "FIT-DNA Observations":
@@ -323,7 +323,7 @@ define "Is FIT-DNA Test In Last Three Years":
 	exists(
 		"FIT-DNA Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and IncludedIn(ChoiceToIntervalOfDT(Obs.effective), "Lookback Interval Two More Years")
+				and Obs.effective.value in "Lookback Interval Two More Years"
 	)
 
 define "Denominator Exclusion":
@@ -339,7 +339,7 @@ define "Is Colorectal Cancer":
 	exists(
 		"Colorectal Cancer Conditions" Cond
 			where Cond.verificationStatus.value = 'confirmed'
-				and Cond.assertedDate.value before end of "Measurement Period"
+				and Cond.assertedDate.value before day of end of "Measurement Period"
 	)
 
 define "Total Colectomy Procedures":
@@ -351,7 +351,7 @@ define "Is Total Colectomy":
 	exists(
 		"Total Colectomy Procedures" Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) before day of end of "Measurement Period"
 	)
 
 /*
@@ -363,12 +363,6 @@ TODO, if needed
 /*
 Utility Functions
 */
-
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
 
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]

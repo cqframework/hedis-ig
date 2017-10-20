@@ -149,7 +149,7 @@ define "Is In Hospice":
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and ChoiceToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -265,7 +265,7 @@ define "Is Mammogram In Last 39 Months":
 	exists(
 		[Procedure: "Mammography Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and IncludedIn(ChoiceToIntervalOfDT(Proc.performed), "Lookback Interval 27 More Months")
+				and PeriodToIntervalOfDT(Proc.performed) included in "Lookback Interval 27 More Months"
 	)
 
 define "Denominator Exclusion":
@@ -294,14 +294,14 @@ define "Is Bilateral Mastectomy":
 	exists(
 		[Procedure: "Bilateral Mastectomy Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 
 define "Is History Of Bilateral Mastectomy":
 	exists(
 		[Procedure: "History of Bilateral Mastectomy Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 	// NOTE: This assumes the history of a procedure is also recorded as a procedure in FHIR
 
@@ -314,7 +314,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -323,7 +323,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					with (
 						[Procedure: "Bilateral Modifier Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -337,12 +337,12 @@ define "Is Unilateral Mastectomy Twice Spread Two Weeks":
 		(
 			[Procedure: "Unilateral Mastectomy Value Set"] Proc
 				where Proc.status.value = 'completed'
-				return ChoiceToIntervalOfDT(Proc.performed)
+				return PeriodToIntervalOfDT(Proc.performed)
 		) WhenUM1
 			with (
 				[Procedure: "Unilateral Mastectomy Value Set"] Proc
 					where Proc.status.value = 'completed'
-					return ChoiceToIntervalOfDT(Proc.performed)
+					return PeriodToIntervalOfDT(Proc.performed)
 			) WhenUM2
 				such that (((difference in days between start of WhenUM1 and start of WhenUM2) >= 14)
 					and end of WhenUM1 same day or before end of "Measurement Period"
@@ -358,7 +358,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -367,7 +367,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					with (
 						[Procedure: "Left Modifier Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -380,14 +380,14 @@ define "Is Unilateral Mastectomy Left":
 	exists(
 		[Procedure: "Unilateral Mastectomy Left Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 
 define "Is Absence Of Left Breast":
 	exists(
 		[Observation: "Absence of Left Breast Value Set"] Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and end of ChoiceToIntervalOfDT(Obs.effective) same day or before end of "Measurement Period"
+				and Obs.effective.value same day or before end of "Measurement Period"
 	)
 
 define "Is Unilateral Mastectomy With Right Modifier":
@@ -399,7 +399,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					with (
 						[Procedure: "Unilateral Mastectomy Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -408,7 +408,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					with (
 						[Procedure: "Right Modifier Value Set"] Proc
 							where Proc.status.value = 'completed'
-								and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
@@ -421,26 +421,20 @@ define "Is Unilateral Mastectomy Right":
 	exists(
 		[Procedure: "Unilateral Mastectomy Right Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 
 define "Is Absence Of Right Breast":
 	exists(
 		[Observation: "Absence of Right Breast Value Set"] Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and end of ChoiceToIntervalOfDT(Obs.effective) same day or before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Obs.effective) same day or before end of "Measurement Period"
 	)
 
 
 /*
 Utility Functions
 */
-
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
 
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
