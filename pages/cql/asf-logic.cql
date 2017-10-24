@@ -191,8 +191,14 @@ define "Positive Assessment for Unhealthy Alcohol Use":
 	)
 
 define "Followup Screening":
+	([Procedure: "Alcohol Counseling and Treatment"] Proc
+		where Proc.status.value = 'completed')
+	union
 	([Observation: "Alcohol Counseling and Treatment"] Obs
 		where Obs.status.value in { 'final', 'amended' })
+	union
+	([Procedure: "Alcohol Screening"] Proc
+		where Proc.status.value = 'completed')
 	union
 	([Observation: "Alcohol Screening"] Obs
 		where Obs.status.value in { 'final', 'amended' })
