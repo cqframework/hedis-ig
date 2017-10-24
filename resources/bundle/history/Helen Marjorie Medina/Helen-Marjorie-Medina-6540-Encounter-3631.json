@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Helen-Marjorie-Medina-6540-Encounter-3631",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3631",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3631",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "S0201",
+                "display": "Partial hospitalization services, less than 24 hours, per diem (S0201)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-03-28T01:00:00-04:00",
+              "end": "2017-03-28T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3631"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-667815",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-667815",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-667815"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667816",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667816",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667816"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667817",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-667817",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38451003",
+              "display": "Primary dysthymia early onset (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "issued": "2017-03-28T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667817"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667820",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667820",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667820"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667821",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667821",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 68.6074271971372,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667821"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667822",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667822",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25.727569730529957,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667822"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667823",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667823",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667823"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667824",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667824",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.77193238208537,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667824"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667825",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667825",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.88249596904878,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667825"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667819",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-667819",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6540",
+          "display": "Helen Marjorie Medina"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3631",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "issued": "2017-03-28T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-667820",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-667821",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-667822",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-667823",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-667824",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-667825",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667819"
+      }
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jeanette-Ramona-Pugh-6534-Encounter-3395",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3395",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3395",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-02-02T23:00:00-05:00",
+              "end": "2017-02-02T23:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2531",
+              "display": "Tracy Hampton Boone MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1104",
+              "display": "Bay Area Family Practice"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1104",
+          "display": "Bay Area Family Practice"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3395"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-659629",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-659629",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "428181000124104",
+              "display": "Depression screening positive (situation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-659629"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-659630",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-659630",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "310496002",
+              "display": "Moderate depression (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "onsetDateTime": "2017-02-02T23:00:00-05:00",
+        "assertedDate": "2017-02-02T23:00:00-05:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2531",
+          "display": "Tracy Hampton Boone MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-659630"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-659631",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-659631",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "Antidepressant.Medication",
+              "display": "Antidepressant Medication"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "authoredOn": "2017-02-02T23:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310496002",
+                "display": "Moderate depression (disorder)"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-659631"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-659632",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-659632",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "310497006",
+              "display": "MSevere depression (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "issued": "2017-02-02T23:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-659632"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662409",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662409",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 147.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662409"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662410",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662410",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 45.8,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662410"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662411",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662411",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 20.966049648337997,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662411"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662412",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662412",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662412"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662413",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662413",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 122.38406534803279,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662413"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662414",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-662414",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2531",
+            "display": "Tracy Hampton Boone MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 101.76427661447974,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-662414"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-662408",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-662408",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6534",
+          "display": "Jeanette Ramona Pugh"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3395",
+          "display": "Wellness_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "issued": "2017-02-02T23:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-662409",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-662410",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-662411",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-662412",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-662413",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-662414",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-662408"
+      }
+    }
+  ]
+}

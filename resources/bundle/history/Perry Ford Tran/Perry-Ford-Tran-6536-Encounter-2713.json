@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Wellness Visit"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6536",
           "display": "Perry Ford Tran"
@@ -26,30 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "2008-10-31T01:00:00-04:00",
-              "end": "2008-10-31T01:00:00-04:00"
+              "start": "2014-06-27T00:00:00-04:00",
+              "end": "2014-06-27T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
             }
           }
         ],
         "period": {
-          "start": "2008-10-31T01:00:00-04:00",
-          "end": "2008-10-31T01:00:00-04:00"
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1001",
-              "display": "Windward General Hospital"
+              "reference": "Location/Location-1106",
+              "display": "Cranston Family Medical"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1001",
-          "display": "Windward General Hospital"
+          "reference": "Organization/Organization-1106",
+          "display": "Cranston Family Medical"
         }
       },
       "request": {
@@ -58,10 +69,50 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-453899",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-556787",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-556787",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "date": "2014-06-27T00:00:00-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-556787"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-584149",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-453899",
+        "id": "Procedure-584149",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
@@ -71,9 +122,9 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.67.1.101.11.723",
-              "display": "PHQ-9 Tool"
+              "system": "http://snomed.info/sct",
+              "code": "713107002",
+              "display": "Screening for alcohol abuse (procedure)"
             }
           ]
         },
@@ -83,35 +134,35 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
         "performedPeriod": {
-          "start": "2008-10-31T01:00:00-04:00",
-          "end": "2008-10-31T01:00:00-04:00"
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2517",
-              "display": "Cathy Shannon Warner MD"
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
             }
           }
         ],
         "location": {
-          "reference": "Location/Location-1001",
-          "display": "Windward General Hospital"
+          "reference": "Location/Location-1106",
+          "display": "Cranston Family Medical"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-453899"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-584149"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453900",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584150",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453900",
+        "id": "Observation-584150",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
@@ -121,9 +172,9 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
-              "display": "PHQ-9 Modified Score"
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00005",
+              "display": "Five or more drinks per day"
             }
           ]
         },
@@ -133,30 +184,1144 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 3.0,
+          "value": 7.0,
           "unit": "score"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453900"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584150"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453903",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584151",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453903",
+        "id": "Observation-584151",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75626-2",
+              "display": "AUDIT-C Total Score (in points)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584151"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584152",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-584152",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F10.14",
+              "display": "[F10.14] Alcohol abuse with alcohol-induced mood disorder"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
+        },
+        "issued": "2014-06-27T00:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584152"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584153",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584153",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 136.9667935608578,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584153"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584154",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584154",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70.11242103702325,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584154"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584155",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584155",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584155"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584156",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584156",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99.87906145175657,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584156"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584157",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584157",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 31.95287433065859,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584157"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584160",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584160",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "valueQuantity": {
+          "value": 70.11242103702325,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584160"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584161",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584161",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.84164614993289,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584161"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584162",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584162",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70.9266341030655,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584162"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584163",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584163",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 10.829295097917202,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584163"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584164",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584164",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.5965556468218511,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584164"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584165",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584165",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.7789206650695566,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584165"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584166",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584166",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141.8595588100584,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584166"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584167",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584167",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.409302626060894,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584167"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584168",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584168",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.22239295609054,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584168"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584169",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584169",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25.64914581304567,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584169"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584170",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-584170",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
+        },
+        "issued": "2014-06-27T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-584162",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-584163",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-584164",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-584165",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-584166",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-584167",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-584168",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-584169",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584170"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584171",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584171",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 152.55347331342134,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584171"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584172",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584172",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 50.883572482454774,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584172"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584173",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584173",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.68243958887203,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584173"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584174",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584174",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 60.69431922805836,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584174"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584175",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-584175",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6536",
+          "display": "Perry Ford Tran"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2713",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
+        },
+        "issued": "2014-06-27T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-584171",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-584172",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-584173",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-584174",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584175"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584177",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-584177",
         "status": "final",
         "code": {
           "coding": [
@@ -173,13 +1338,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -189,14 +1354,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453903"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584177"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453904",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584178",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453904",
+        "id": "Observation-584178",
         "status": "final",
         "code": {
           "coding": [
@@ -213,30 +1378,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 108.57968182897187,
+          "value": 99.87906145175657,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453904"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584178"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453905",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584179",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453905",
+        "id": "Observation-584179",
         "status": "final",
         "code": {
           "coding": [
@@ -253,30 +1418,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 34.736338907427886,
+          "value": 31.95287433065859,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453905"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584179"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453906",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584180",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453906",
+        "id": "Observation-584180",
         "status": "final",
         "code": {
           "coding": [
@@ -293,13 +1458,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -309,14 +1474,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453906"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584180"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453907",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584181",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453907",
+        "id": "Observation-584181",
         "status": "final",
         "code": {
           "coding": [
@@ -333,30 +1498,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 119.85538556507032,
+          "value": 136.9667935608578,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453907"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584181"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453908",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584182",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-453908",
+        "id": "Observation-584182",
         "status": "final",
         "code": {
           "coding": [
@@ -373,30 +1538,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2008-10-31T01:00:00-04:00",
+        "effectiveDateTime": "2014-06-27T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2517",
-            "display": "Cathy Shannon Warner MD"
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 64.75787024020931,
+          "value": 70.11242103702325,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-453908"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-584182"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-453902",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584176",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-453902",
+        "id": "DiagnosticReport-584176",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -427,43 +1592,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-2713",
-          "display": "Followup_Encounter"
+          "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "2008-10-31T01:00:00-04:00",
-          "end": "2008-10-31T01:00:00-04:00"
+          "start": "2014-06-27T00:00:00-04:00",
+          "end": "2014-06-27T00:00:00-04:00"
         },
-        "issued": "2008-10-31T01:00:00.000-04:00",
+        "issued": "2014-06-27T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-453903",
+            "reference": "Observation/Observation-584177",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-453904",
+            "reference": "Observation/Observation-584178",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-453905",
+            "reference": "Observation/Observation-584179",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-453906",
+            "reference": "Observation/Observation-584180",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-453907",
+            "reference": "Observation/Observation-584181",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-453908",
+            "reference": "Observation/Observation-584182",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-453902"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-584176"
       }
     }
   ]

@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "90870",
+                "display": "ELECTROCONVULSIVE THERAPY"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6503",
           "display": "Becky Trevino Craig"
@@ -26,30 +37,41 @@
         "participant": [
           {
             "period": {
-              "start": "2011-08-26T01:00:00-04:00",
-              "end": "2011-08-26T01:00:00-04:00"
+              "start": "2017-02-03T00:00:00-05:00",
+              "end": "2017-02-03T00:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+              "reference": "Practitioner/Practitioner-2520",
+              "display": "Kimberly Christy Ashley MD"
             }
           }
         ],
         "period": {
-          "start": "2011-08-26T01:00:00-04:00",
-          "end": "2011-08-26T01:00:00-04:00"
+          "start": "2017-02-03T00:00:00-05:00",
+          "end": "2017-02-03T00:00:00-05:00"
         },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1002",
-              "display": "Gift of Mercy Hospital"
+              "reference": "Location/Location-1105",
+              "display": "Bayside Medical Group"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Organization/Organization-1105",
+          "display": "Bayside Medical Group"
         }
       },
       "request": {
@@ -58,10 +80,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-525168",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-658302",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-525168",
+        "id": "Procedure-658302",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
@@ -71,9 +93,9 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
+              "system": "http://test",
               "code": "2.16.840.1.113883.3.67.1.101.11.723",
-              "display": "PHQ-9 Tool"
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
             }
           ]
         },
@@ -83,35 +105,35 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
         "performedPeriod": {
-          "start": "2011-08-26T01:00:00-04:00",
-          "end": "2011-08-26T01:00:00-04:00"
+          "start": "2017-02-03T00:00:00-05:00",
+          "end": "2017-02-03T00:00:00-05:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+              "reference": "Practitioner/Practitioner-2520",
+              "display": "Kimberly Christy Ashley MD"
             }
           }
         ],
         "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-525168"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-658302"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525169",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658303",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525169",
+        "id": "Observation-658303",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
@@ -121,8 +143,8 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
               "display": "PHQ-9 Modified Score"
             }
           ]
@@ -133,30 +155,125 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
-          "value": 0.0,
+          "value": 5.0,
           "unit": "score"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525169"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658303"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525172",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658304",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-658304",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "310497006",
+              "display": "MSevere depression (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6503",
+          "display": "Becky Trevino Craig"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3342",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-02-03T00:00:00-05:00",
+          "end": "2017-02-03T00:00:00-05:00"
+        },
+        "issued": "2017-02-03T00:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658304"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-658305",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-658305",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "Antidepressant.Medication",
+              "display": "Antidepressant Medication"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6503",
+          "display": "Becky Trevino Craig"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3342",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "authoredOn": "2017-02-03T00:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-658305"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658308",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525172",
+        "id": "Observation-658308",
         "status": "final",
         "code": {
           "coding": [
@@ -173,13 +290,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
@@ -189,14 +306,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525172"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658308"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525173",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658309",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525173",
+        "id": "Observation-658309",
         "status": "final",
         "code": {
           "coding": [
@@ -213,30 +330,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
-          "value": 102.6465837415214,
+          "value": 97.72426886969622,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525173"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658309"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525174",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658310",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525174",
+        "id": "Observation-658310",
         "status": "final",
         "code": {
           "coding": [
@@ -253,30 +370,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
-          "value": 36.498782234056335,
+          "value": 34.74851941920602,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525174"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658310"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525175",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658311",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525175",
+        "id": "Observation-658311",
         "status": "final",
         "code": {
           "coding": [
@@ -293,13 +410,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
@@ -309,14 +426,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525175"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658311"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525176",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658312",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525176",
+        "id": "Observation-658312",
         "status": "final",
         "code": {
           "coding": [
@@ -333,30 +450,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
-          "value": 130.92469441480358,
+          "value": 135.68793923133086,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525176"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658312"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525177",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658313",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-525177",
+        "id": "Observation-658313",
         "status": "final",
         "code": {
           "coding": [
@@ -373,30 +490,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
-        "effectiveDateTime": "2011-08-26T01:00:00-04:00",
+        "effectiveDateTime": "2017-02-03T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
           }
         ],
         "valueQuantity": {
-          "value": 68.46157757429201,
+          "value": 84.4578533334867,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-525177"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658313"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-525171",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658307",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-525171",
+        "id": "DiagnosticReport-658307",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -427,43 +544,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3342",
-          "display": "Followup_Encounter"
+          "display": "Same_Day_DMS_Encounter"
         },
         "effectivePeriod": {
-          "start": "2011-08-26T01:00:00-04:00",
-          "end": "2011-08-26T01:00:00-04:00"
+          "start": "2017-02-03T00:00:00-05:00",
+          "end": "2017-02-03T00:00:00-05:00"
         },
-        "issued": "2011-08-26T01:00:00.000-04:00",
+        "issued": "2017-02-03T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-525172",
+            "reference": "Observation/Observation-658308",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-525173",
+            "reference": "Observation/Observation-658309",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-525174",
+            "reference": "Observation/Observation-658310",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-525175",
+            "reference": "Observation/Observation-658311",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-525176",
+            "reference": "Observation/Observation-658312",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-525177",
+            "reference": "Observation/Observation-658313",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-525171"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658307"
       }
     }
   ]

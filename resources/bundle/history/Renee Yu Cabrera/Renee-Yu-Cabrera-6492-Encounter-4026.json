@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "98960",
+                "display": "SELF-MGMT EDUC & TRAIN 1 PT"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6492",
           "display": "Renee Yu Cabrera"
@@ -26,30 +37,41 @@
         "participant": [
           {
             "period": {
-              "start": "2014-04-06T11:00:00-04:00",
-              "end": "2014-04-06T11:00:00-04:00"
+              "start": "2017-07-07T01:00:00-04:00",
+              "end": "2017-07-07T01:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2525",
-              "display": "Kyle Christian Ballard MD"
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
             }
           }
         ],
         "period": {
-          "start": "2014-04-06T11:00:00-04:00",
-          "end": "2014-04-06T11:00:00-04:00"
+          "start": "2017-07-07T01:00:00-04:00",
+          "end": "2017-07-07T01:00:00-04:00"
         },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1001",
-              "display": "Windward General Hospital"
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1001",
-          "display": "Windward General Hospital"
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
@@ -58,23 +80,22 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600593",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-682154",
       "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-600593",
+        "resourceType": "Procedure",
+        "id": "Procedure-682154",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
           ]
         },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
+        "status": "completed",
+        "code": {
           "coding": [
             {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "860975",
-              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
             }
           ]
         },
@@ -84,179 +105,128 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "authoredOn": "2014-04-06T11:00:00-04:00",
-        "reasonCode": [
+        "performedPeriod": {
+          "start": "2017-07-07T01:00:00-04:00",
+          "end": "2017-07-07T01:00:00-04:00"
+        },
+        "performer": [
           {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
+            "actor": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
             }
           }
         ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2014-04-06T11:00:00-04:00",
-            "end": "2014-04-06T11:00:00-04:00"
-          }
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600593"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-682154"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600594",
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-600594",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
-          ]
-        },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "1373463",
-              "display": "canagliflozin 100 MG Oral Tablet"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
-        },
-        "authoredOn": "2014-04-06T11:00:00-04:00",
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
-            }
-          }
-        ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2014-04-06T11:00:00-04:00",
-            "end": "2014-04-06T11:00:00-04:00"
-          }
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600594"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600595",
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-600595",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
-          ]
-        },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "897122",
-              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6492",
-          "display": "Renee Yu Cabrera"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
-        },
-        "authoredOn": "2014-04-06T11:00:00-04:00",
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
-            }
-          }
-        ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2014-04-06T11:00:00-04:00",
-            "end": "2014-04-06T11:00:00-04:00"
-          }
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-600595"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600598",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682155",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600598",
+        "id": "Observation-682155",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4026",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682155"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-682156",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-682156",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F33.41",
+              "display": "[F33.41] Major depressive disorder, recurrent, in partial remission"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6492",
+          "display": "Renee Yu Cabrera"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4026",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-07-07T01:00:00-04:00",
+          "end": "2017-07-07T01:00:00-04:00"
+        },
+        "issued": "2017-07-07T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-682156"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682159",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-682159",
         "status": "final",
         "code": {
           "coding": [
@@ -273,13 +243,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
@@ -289,14 +259,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600598"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682159"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600599",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682160",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600599",
+        "id": "Observation-682160",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +283,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 76.5846660200368,
+          "value": 74.50306716300878,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600599"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682160"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600600",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682161",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600600",
+        "id": "Observation-682161",
         "status": "final",
         "code": {
           "coding": [
@@ -353,30 +323,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 27.231759164748087,
+          "value": 26.491590124416028,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600600"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682161"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600601",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682162",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600601",
+        "id": "Observation-682162",
         "status": "final",
         "code": {
           "coding": [
@@ -393,13 +363,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
@@ -409,14 +379,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600601"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682162"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600602",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682163",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600602",
+        "id": "Observation-682163",
         "status": "final",
         "code": {
           "coding": [
@@ -433,30 +403,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 108.99268201948058,
+          "value": 158.7056959756233,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600602"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682163"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600603",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682164",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-600603",
+        "id": "Observation-682164",
         "status": "final",
         "code": {
           "coding": [
@@ -473,30 +443,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
-        "effectiveDateTime": "2014-04-06T11:00:00-04:00",
+        "effectiveDateTime": "2017-07-07T01:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2525",
-            "display": "Kyle Christian Ballard MD"
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
           }
         ],
         "valueQuantity": {
-          "value": 74.05546680663358,
+          "value": 71.57851067910438,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-600603"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-682164"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-600597",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-682158",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-600597",
+        "id": "DiagnosticReport-682158",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -527,43 +497,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-4026",
-          "display": "Followup_Visit"
+          "display": "DRR_Encounter"
         },
         "effectivePeriod": {
-          "start": "2014-04-06T11:00:00-04:00",
-          "end": "2014-04-06T11:00:00-04:00"
+          "start": "2017-07-07T01:00:00-04:00",
+          "end": "2017-07-07T01:00:00-04:00"
         },
-        "issued": "2014-04-06T11:00:00.000-04:00",
+        "issued": "2017-07-07T01:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-600598",
+            "reference": "Observation/Observation-682159",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-600599",
+            "reference": "Observation/Observation-682160",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-600600",
+            "reference": "Observation/Observation-682161",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-600601",
+            "reference": "Observation/Observation-682162",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-600602",
+            "reference": "Observation/Observation-682163",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-600603",
+            "reference": "Observation/Observation-682164",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-600597"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-682158"
       }
     }
   ]

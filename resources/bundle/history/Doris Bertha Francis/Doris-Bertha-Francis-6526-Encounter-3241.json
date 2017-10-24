@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "inpatient",
-          "display": "Inpatient"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6526",
           "display": "Doris Bertha Francis"
@@ -26,41 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "1988-12-27T00:09:00-05:00",
-              "end": "1988-12-27T01:33:00-05:00"
+              "start": "2017-01-06T00:00:00-05:00",
+              "end": "2017-01-06T00:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
+              "reference": "Practitioner/Practitioner-2523",
+              "display": "Dean Andrew Davis MD"
             }
           }
         ],
         "period": {
-          "start": "1988-12-27T00:09:00-05:00",
-          "end": "1988-12-27T01:33:00-05:00"
-        },
-        "hospitalization": {
-          "dischargeDisposition": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/discharge-disposition",
-                "code": "home",
-                "display": "Home"
-              }
-            ]
-          }
+          "start": "2017-01-06T00:00:00-05:00",
+          "end": "2017-01-06T00:00:00-05:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1002",
-              "display": "Gift of Mercy Hospital"
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
@@ -69,156 +69,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-513880",
-      "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-513880",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
-          ]
-        },
-        "status": "completed",
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "45388",
-              "display": "Colonoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre- and post-dilation and guide wire passage, when performed)"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6526",
-          "display": "Doris Bertha Francis"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
-        },
-        "performedPeriod": {
-          "start": "1988-12-27T01:33:00-05:00",
-          "end": "1988-12-27T01:33:00-05:00"
-        },
-        "performer": [
-          {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
-            }
-          }
-        ],
-        "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-513880"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513882",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658847",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513882",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
-          ]
-        },
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/sid/icd-10-us",
-              "code": "C18.9",
-              "display": "Malignant neoplasm of colon, unspecified"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6526",
-          "display": "Doris Bertha Francis"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
-        },
-        "effectiveDateTime": "1988-12-27T01:33:00-05:00",
-        "performer": [
-          {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
-          }
-        ],
-        "valueString": "POSITIVE"
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513882"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513883",
-      "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-513883",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
-          ]
-        },
-        "status": "final",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
-              "code": "CP",
-              "display": "Cytopathology"
-            }
-          ]
-        },
-        "code": {
-          "coding": [
-            {
-              "system": "http://www.ama-assn.org/go/cpt",
-              "code": "44406",
-              "display": "Colonoscopy through stoma; with endoscopic ultrasound examination, limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6526",
-          "display": "Doris Bertha Francis"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
-        },
-        "effectivePeriod": {
-          "start": "1988-12-27T01:33:00-05:00",
-          "end": "1988-12-27T01:33:00-05:00"
-        },
-        "issued": "1988-12-27T01:33:00.000-05:00",
-        "result": [
-          {
-            "reference": "Observation/Observation-513882",
-            "display": "Positive_Colonoscopy_Observation"
-          }
-        ]
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513883"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513886",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-513886",
+        "id": "Observation-658847",
         "status": "final",
         "code": {
           "coding": [
@@ -235,13 +89,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -251,14 +105,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513886"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658847"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513887",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658848",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513887",
+        "id": "Observation-658848",
         "status": "final",
         "code": {
           "coding": [
@@ -275,30 +129,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 128.16327108322307,
+          "value": 98.32321420456411,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513887"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658848"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513888",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658849",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513888",
+        "id": "Observation-658849",
         "status": "final",
         "code": {
           "coding": [
@@ -315,30 +169,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 43.52402150988879,
+          "value": 33.390390661783286,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513888"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658849"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513889",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658850",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513889",
+        "id": "Observation-658850",
         "status": "final",
         "code": {
           "coding": [
@@ -355,13 +209,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
@@ -371,14 +225,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513889"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658850"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513890",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658851",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513890",
+        "id": "Observation-658851",
         "status": "final",
         "code": {
           "coding": [
@@ -395,30 +249,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 111.06154963990801,
+          "value": 108.64316083086429,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513890"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658851"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513891",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658852",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-513891",
+        "id": "Observation-658852",
         "status": "final",
         "code": {
           "coding": [
@@ -435,30 +289,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
-        "effectiveDateTime": "1988-12-27T00:09:00-05:00",
+        "effectiveDateTime": "2017-01-06T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2523",
+            "display": "Dean Andrew Davis MD"
           }
         ],
         "valueQuantity": {
-          "value": 91.89669772042824,
+          "value": 106.98130849064182,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-513891"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658852"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513885",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658846",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-513885",
+        "id": "DiagnosticReport-658846",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -489,43 +343,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3241",
-          "display": "Colonoscopy_Encounter"
+          "display": "Wellness_Encounter"
         },
         "effectivePeriod": {
-          "start": "1988-12-27T00:09:00-05:00",
-          "end": "1988-12-27T00:09:00-05:00"
+          "start": "2017-01-06T00:00:00-05:00",
+          "end": "2017-01-06T00:00:00-05:00"
         },
-        "issued": "1988-12-27T00:09:00.000-05:00",
+        "issued": "2017-01-06T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-513886",
+            "reference": "Observation/Observation-658847",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-513887",
+            "reference": "Observation/Observation-658848",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-513888",
+            "reference": "Observation/Observation-658849",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-513889",
+            "reference": "Observation/Observation-658850",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-513890",
+            "reference": "Observation/Observation-658851",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-513891",
+            "reference": "Observation/Observation-658852",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-513885"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658846"
       }
     }
   ]

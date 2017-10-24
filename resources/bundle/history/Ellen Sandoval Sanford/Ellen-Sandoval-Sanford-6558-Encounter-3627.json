@@ -1,0 +1,587 @@
+{
+  "resourceType": "Bundle",
+  "id": "Ellen-Sandoval-Sanford-6558-Encounter-3627",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3627",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3627",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "99214",
+                "display": "OFFICE/OUTPATIENT VISIT EST"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-03-28T01:00:00-04:00",
+              "end": "2017-03-28T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3627"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-667750",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-667750",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-667750"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667751",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667751",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 6.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667751"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667752",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-667752",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "310495003",
+              "display": "Mild depression (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "issued": "2017-03-28T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667752"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-667753",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-667753",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "Antidepressant.Medication",
+              "display": "Antidepressant Medication"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "authoredOn": "2017-03-28T01:00:00-04:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-667753"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667756",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667756",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667756"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667757",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667757",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 94.58143996844373,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667757"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667758",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667758",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.412064383704646,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667758"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667759",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667759",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667759"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667760",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667760",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 139.09607109525825,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667760"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667761",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-667761",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-03-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 66.44316886890257,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-667761"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667755",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-667755",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3627",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-03-28T01:00:00-04:00",
+          "end": "2017-03-28T01:00:00-04:00"
+        },
+        "issued": "2017-03-28T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-667756",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-667757",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-667758",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-667759",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-667760",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-667761",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-667755"
+      }
+    }
+  ]
+}

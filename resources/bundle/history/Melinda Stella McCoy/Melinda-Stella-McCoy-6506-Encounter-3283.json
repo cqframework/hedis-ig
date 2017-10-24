@@ -1,0 +1,478 @@
+{
+  "resourceType": "Bundle",
+  "id": "Melinda-Stella-McCoy-6506-Encounter-3283",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3283",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3283",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "ambulatory",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-01-03T19:00:00-05:00",
+              "end": "2017-01-03T19:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-01-03T19:00:00-05:00",
+          "end": "2017-01-03T19:00:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3283"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-655786",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-655786",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "413473000",
+              "display": "Counseling about alcohol consumption (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-01-03T19:00:00-05:00",
+          "end": "2017-01-03T19:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-655786"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655787",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655787",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G0397",
+              "display": "Alcohol and/or substance (other than tobacco) abuse structured assessment (e.g., audit, dast), and intervention, greater than 30 minutes (G0397)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueString": "Why Not Procedure?"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655787"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655790",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655790",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 174.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655790"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655791",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655791",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 97.21105803044361,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655791"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655792",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655792",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 32.108289744498485,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655792"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655793",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655793",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655793"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655794",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655794",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 169.6533778005848,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655794"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655795",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-655795",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2017-01-03T19:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 112.76801667607937,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-655795"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-655789",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-655789",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6506",
+          "display": "Melinda Stella McCoy"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3283",
+          "display": "Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-01-03T19:00:00-05:00",
+          "end": "2017-01-03T19:00:00-05:00"
+        },
+        "issued": "2017-01-03T19:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-655790",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-655791",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-655792",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-655793",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-655794",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-655795",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-655789"
+      }
+    }
+  ]
+}

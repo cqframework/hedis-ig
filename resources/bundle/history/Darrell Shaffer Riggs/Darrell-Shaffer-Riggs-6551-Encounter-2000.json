@@ -1,0 +1,1635 @@
+{
+  "resourceType": "Bundle",
+  "id": "Darrell-Shaffer-Riggs-6551-Encounter-2000",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2000",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2000",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Wellness Visit"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2009-01-23T00:00:00-05:00",
+              "end": "2009-01-23T00:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1101",
+              "display": "McKinley Health Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2000"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-420897",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-420897",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "date": "2009-01-23T00:00:00-05:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-420897"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-444458",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-444458",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713107002",
+              "display": "Screening for alcohol abuse (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-444458"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444459",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444459",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00005",
+              "display": "Five or more drinks per day"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444459"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444460",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444460",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75626-2",
+              "display": "AUDIT-C Total Score (in points)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 8.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444460"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444461",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-444461",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "66590003",
+              "display": "Alcohol dependence (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "issued": "2009-01-23T00:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444461"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444462",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444462",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 135.69977028711256,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444462"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444463",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444463",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70.54841471459652,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444463"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444464",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444464",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444464"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444465",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444465",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 104.17553852260328,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444465"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444466",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444466",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.2134729997983,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444466"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444469",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444469",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "valueQuantity": {
+          "value": 70.54841471459652,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444469"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444470",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444470",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.4090186164269545,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444470"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444471",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444471",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 73.50509909482874,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444471"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444472",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444472",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 7.148919749611852,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444472"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444473",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444473",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.8959366814002063,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444473"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444474",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444474",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.903471999221494,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444474"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444475",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444475",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 138.55564197489335,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444475"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444476",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444476",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.855460808227918,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444476"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444477",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444477",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 107.5027001771531,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444477"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444478",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444478",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 21.46053151999035,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444478"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444479",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-444479",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "issued": "2009-01-23T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-444471",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-444472",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-444473",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-444474",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-444475",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-444476",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-444477",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-444478",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444479"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444480",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444480",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 158.8682164986361,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444480"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444481",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444481",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 57.677368796375205,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444481"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444482",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444482",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.14262320687996,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444482"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444483",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444483",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 41.19011953248106,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444483"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444484",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-444484",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "issued": "2009-01-23T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-444480",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-444481",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-444482",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-444483",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444484"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444486",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444486",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444486"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444487",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444487",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 104.17553852260328,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444487"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444488",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444488",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.2134729997983,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444488"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444489",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444489",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444489"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444490",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444490",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 135.69977028711256,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444490"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444491",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-444491",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-01-23T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70.54841471459652,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-444491"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444485",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-444485",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6551",
+          "display": "Darrell Shaffer Riggs"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2000",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-01-23T00:00:00-05:00",
+          "end": "2009-01-23T00:00:00-05:00"
+        },
+        "issued": "2009-01-23T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-444486",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-444487",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-444488",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-444489",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-444490",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-444491",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-444485"
+      }
+    }
+  ]
+}

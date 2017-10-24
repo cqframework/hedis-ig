@@ -1,0 +1,1675 @@
+{
+  "resourceType": "Bundle",
+  "id": "Dwight-Mitchell-McCarty-6501-Encounter-1843",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1843",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1843",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Wellness Visit"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2007-09-07T00:00:00-04:00",
+              "end": "2007-09-07T00:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1843"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-388057",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-388057",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "date": "2007-09-07T00:00:00-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-388057"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-411658",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-411658",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713107002",
+              "display": "Screening for alcohol abuse (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-411658"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411659",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411659",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704197006",
+              "display": "Admits alcohol use (finding) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411659"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411660",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411660",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 152.7816783957309,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411660"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411661",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411661",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 83.9885218087512,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411661"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-411662",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-411662",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "2007-09-07T00:00:00-04:00",
+        "assertedDate": "2007-09-07T00:00:00-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2518",
+          "display": "Jane Rosemary Saunders MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-411662"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-411663",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-411663",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82274",
+              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2518",
+              "display": "Jane Rosemary Saunders MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-411663"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411664",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411664",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "82274",
+              "display": "Blood, occult, by fecal hemoglobin determination by immunoassay, qualitative, feces, 1-3 simultaneous determinations"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411664"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411665",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411665",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 181.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411665"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411666",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411666",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88.43697867553655,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411666"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411667",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411667",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 26.786997829020954,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411667"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411670",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411670",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "valueQuantity": {
+          "value": 83.9885218087512,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411670"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411671",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411671",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.46083472557189,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411671"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411672",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411672",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 86.4661495064393,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411672"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411673",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411673",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16.98336253021143,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411673"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411674",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411674",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.8462551377846007,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411674"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411675",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411675",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.6729111947690226,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411675"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411676",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411676",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 139.03813339564837,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411676"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411677",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411677",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.9786305533035233,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411677"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411678",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411678",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 109.05813722385638,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411678"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411679",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411679",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24.18494798022441,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411679"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411680",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-411680",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "issued": "2007-09-07T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-411672",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-411673",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-411674",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-411675",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-411676",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-411677",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-411678",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-411679",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411680"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411681",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411681",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 150.50537643562802,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411681"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411682",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411682",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 45.65759718266993,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411682"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411683",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411683",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 84.57959162157186,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411683"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411684",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411684",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 56.79426537752219,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411684"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411685",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-411685",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "issued": "2007-09-07T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-411681",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-411682",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-411683",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-411684",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411685"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411687",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411687",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 181.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411687"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411688",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411688",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88.43697867553655,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411688"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411689",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411689",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 26.786997829020954,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411689"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411690",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411690",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411690"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411691",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411691",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 152.7816783957309,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411691"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411692",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-411692",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2007-09-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2518",
+            "display": "Jane Rosemary Saunders MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 83.9885218087512,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-411692"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411686",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-411686",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6501",
+          "display": "Dwight Mitchell McCarty"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1843",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2007-09-07T00:00:00-04:00",
+          "end": "2007-09-07T00:00:00-04:00"
+        },
+        "issued": "2007-09-07T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-411687",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-411688",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-411689",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-411690",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-411691",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-411692",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-411686"
+      }
+    }
+  ]
+}

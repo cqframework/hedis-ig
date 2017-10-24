@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Victoria-Palmer-Gray-6514-Encounter-4111",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4111",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-4111",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2006-07-19T00:09:00-04:00",
+              "end": "2006-07-19T01:29:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2006-07-19T00:09:00-04:00",
+          "end": "2006-07-19T01:29:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4111"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-685210",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-685210",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45383",
+              "display": "Colonoscopy, flexible, proximal to splenic flexure; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2006-07-19T01:29:00-04:00",
+          "end": "2006-07-19T01:29:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-685210"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685212",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685212",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T01:29:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685212"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685213",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-685213",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44393",
+              "display": "Colonoscopy through stoma; with ablation of tumor(s), polyp(s), or other lesion(s) not amenable to removal by hot biopsy forceps, bipolar cautery or snare technique"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2006-07-19T01:29:00-04:00",
+          "end": "2006-07-19T01:29:00-04:00"
+        },
+        "issued": "2006-07-19T01:29:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-685212",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685213"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685216",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685216",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685216"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685217",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685217",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.37348896895158,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685217"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685218",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685218",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 32.01479023948859,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685218"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685219",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685219",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685219"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685220",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685220",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 161.58298643684148,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685220"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685221",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685221",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2006-07-19T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 103.77782884681962,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685221"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685215",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-685215",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6514",
+          "display": "Victoria Palmer Gray"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4111",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2006-07-19T00:09:00-04:00",
+          "end": "2006-07-19T00:09:00-04:00"
+        },
+        "issued": "2006-07-19T00:09:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-685216",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-685217",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-685218",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-685219",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-685220",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-685221",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685215"
+      }
+    }
+  ]
+}

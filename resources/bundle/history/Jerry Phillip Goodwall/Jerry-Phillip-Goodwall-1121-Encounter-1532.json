@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jerry-Phillip-Goodwall-1121-Encounter-1532",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1532",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1532",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-04-30T00:10:00-04:00",
+              "end": "1988-04-30T00:48:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-04-30T00:10:00-04:00",
+          "end": "1988-04-30T00:48:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1532"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-317752",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-317752",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44389",
+              "display": "Colonoscopy through stoma; with biopsy, single or multiple"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-04-30T00:48:00-04:00",
+          "end": "1988-04-30T00:48:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-317752"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317753",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317753",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:48:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317753"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-317754",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-317754",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45378",
+              "display": "Colonoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-30T00:48:00-04:00",
+          "end": "1988-04-30T00:48:00-04:00"
+        },
+        "issued": "1988-04-30T00:48:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-317753",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-317754"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317757",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317757",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317757"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317758",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317758",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 91.75402233185389,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317758"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317759",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317759",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 29.353547202866793,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317759"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317760",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317760",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317760"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317761",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317761",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 168.2483726668788,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317761"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317762",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-317762",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.40207116765298,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-317762"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-317756",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-317756",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1121",
+          "display": "Jerry Phillip Goodwall"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1532",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-30T00:10:00-04:00",
+          "end": "1988-04-30T00:10:00-04:00"
+        },
+        "issued": "1988-04-30T00:10:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-317757",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-317758",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-317759",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-317760",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-317761",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-317762",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-317756"
+      }
+    }
+  ]
+}

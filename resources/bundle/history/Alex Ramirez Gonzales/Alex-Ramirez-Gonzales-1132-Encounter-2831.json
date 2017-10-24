@@ -1,0 +1,478 @@
+{
+  "resourceType": "Bundle",
+  "id": "Alex-Ramirez-Gonzales-1132-Encounter-2831",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2831",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2831",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "ambulatory",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2014-03-28T07:00:00-04:00",
+              "end": "2014-03-28T07:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2522",
+              "display": "Lois Jean Kent MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2014-03-28T07:00:00-04:00",
+          "end": "2014-03-28T07:00:00-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2831"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-577621",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-577621",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "413473000",
+              "display": "Counseling about alcohol consumption (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2014-03-28T07:00:00-04:00",
+          "end": "2014-03-28T07:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2522",
+              "display": "Lois Jean Kent MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-577621"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577622",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577622",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "G0396",
+              "display": "Alcohol and/or substance (other than tobacco) abuse structured assessment (e.g., audit, dast), and brief intervention 15 to 30 minutes (G0396)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueString": "Why Not Procedure?"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577622"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577625",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577625",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 181.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577625"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577626",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577626",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.25444703376743,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577626"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577627",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577627",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 32.183795564294606,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577627"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577628",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577628",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577628"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577629",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577629",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 103.3025218326385,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577629"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577630",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-577630",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2014-03-28T07:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 79.55077552539242,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-577630"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-577624",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-577624",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1132",
+          "display": "Alex Ramirez Gonzales"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2831",
+          "display": "Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2014-03-28T07:00:00-04:00",
+          "end": "2014-03-28T07:00:00-04:00"
+        },
+        "issued": "2014-03-28T07:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-577625",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-577626",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-577627",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-577628",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-577629",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-577630",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-577624"
+      }
+    }
+  ]
+}

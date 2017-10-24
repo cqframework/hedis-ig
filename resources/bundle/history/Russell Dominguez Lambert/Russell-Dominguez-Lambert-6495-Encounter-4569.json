@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Russell-Dominguez-Lambert-6495-Encounter-4569",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4569",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-4569",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "H2019",
+                "display": "Therapeutic behavioral services, per 15 minutes (H2019)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-11-24T00:00:00-05:00",
+              "end": "2017-11-24T00:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-11-24T00:00:00-05:00",
+          "end": "2017-11-24T00:00:00-05:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1105",
+              "display": "Bayside Medical Group"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4569"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-698602",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-698602",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-11-24T00:00:00-05:00",
+          "end": "2017-11-24T00:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2532",
+              "display": "Chad Espinoza Potter MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-698602"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698603",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698603",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698603"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-698604",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-698604",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F33.0",
+              "display": "[F33.0] Major depressive disorder, recurrent, mild"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-11-24T00:00:00-05:00",
+          "end": "2017-11-24T00:00:00-05:00"
+        },
+        "issued": "2017-11-24T00:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-698604"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698607",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698607",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698607"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698608",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698608",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 80.9383173891158,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698608"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698609",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698609",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25.893433983844194,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698609"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698610",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698610",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698610"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698611",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698611",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 104.57763081704299,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698611"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698612",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-698612",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-11-24T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2532",
+            "display": "Chad Espinoza Potter MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 89.86439977484045,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-698612"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-698606",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-698606",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6495",
+          "display": "Russell Dominguez Lambert"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4569",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-11-24T00:00:00-05:00",
+          "end": "2017-11-24T00:00:00-05:00"
+        },
+        "issued": "2017-11-24T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-698607",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-698608",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-698609",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-698610",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-698611",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-698612",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-698606"
+      }
+    }
+  ]
+}

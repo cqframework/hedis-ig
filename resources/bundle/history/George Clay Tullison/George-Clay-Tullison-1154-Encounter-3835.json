@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "George-Clay-Tullison-1154-Encounter-3835",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3835",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3835",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "S9480",
+                "display": "Intensive outpatient psychiatric services, per diem (S9480)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-05-19T01:00:00-04:00",
+              "end": "2017-05-19T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-05-19T01:00:00-04:00",
+          "end": "2017-05-19T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1101",
+              "display": "McKinley Health Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3835"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-675306",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-675306",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-05-19T01:00:00-04:00",
+          "end": "2017-05-19T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-675306"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675307",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675307",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 11.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675307"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-675308",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-675308",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "42810003",
+              "display": "Major depression in remission (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-05-19T01:00:00-04:00",
+          "end": "2017-05-19T01:00:00-04:00"
+        },
+        "issued": "2017-05-19T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-675308"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675311",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675311",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 181.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675311"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675312",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675312",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.50651624777255,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675312"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675313",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675313",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24.687804880698547,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675313"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675314",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675314",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675314"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675315",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 156.25153730909702,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675315"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675316",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-675316",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-05-19T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.36320714670147,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-675316"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-675310",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-675310",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1154",
+          "display": "George Clay Tullison"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3835",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-05-19T01:00:00-04:00",
+          "end": "2017-05-19T01:00:00-04:00"
+        },
+        "issued": "2017-05-19T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-675311",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-675312",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-675313",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-675314",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-675315",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-675316",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-675310"
+      }
+    }
+  ]
+}

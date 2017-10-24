@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jared-Gentry-Baldwin-6513-Encounter-3686",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3686",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3686",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "S0201",
+                "display": "Partial hospitalization services, less than 24 hours, per diem (S0201)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-04-07T01:00:00-04:00",
+              "end": "2017-04-07T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-04-07T01:00:00-04:00",
+          "end": "2017-04-07T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310496002",
+                "display": "Moderate depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3686"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-670461",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-670461",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-04-07T01:00:00-04:00",
+          "end": "2017-04-07T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-670461"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670462",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670462",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670462"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670463",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-670463",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19694002",
+              "display": "Late onset dysthymia (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-04-07T01:00:00-04:00",
+          "end": "2017-04-07T01:00:00-04:00"
+        },
+        "issued": "2017-04-07T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670463"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670466",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670466",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670466"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670467",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670467",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 39.52964357172444,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670467"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670468",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670468",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 13.361831926624001,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670468"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670469",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670469",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670469"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670470",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670470",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 147.01335748188623,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670470"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670471",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670471",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-07T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.61841826558904,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670471"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670465",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-670465",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6513",
+          "display": "Jared Gentry Baldwin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3686",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-04-07T01:00:00-04:00",
+          "end": "2017-04-07T01:00:00-04:00"
+        },
+        "issued": "2017-04-07T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-670466",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-670467",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-670468",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-670469",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-670470",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-670471",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670465"
+      }
+    }
+  ]
+}
