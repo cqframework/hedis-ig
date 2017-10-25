@@ -78,7 +78,7 @@ define "Denominator Exclusion":
 	exists (
 		[DiagnosticReport: "Anaphylactic Reaction Due to Vaccine"] ReactionToVaccine
 			where ReactionToVaccine.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and ReactionToVaccine.effective.value before day of "Measurement Period"
+				and start of PeriodToIntervalOfDT(ReactionToVaccine.effective) before day of "Measurement Period"
 	)
 
 define "Chemotherapy and Bone Marrow Transplant Procedures":
@@ -153,7 +153,7 @@ define "Immunocompromised Diagnoses Overlapping Measurement Period":
 		union [DiagnosticReport: "Disorders of the Immune System"]
 	) D
 		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-			and D.effective.value in "Measurement Period"
+			and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
 
 define "Cochlear Implants on or Before End of Measurement Period":
 	[Procedure: "Cochlear Implants"] CochlearImplant

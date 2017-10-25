@@ -86,7 +86,7 @@ define "Initial Population":
 		"DRR Encounter" DRR
 			with [DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
 				such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and DepressionDiagnosis.effective.value in PeriodToIntervalOfDT(DRR.period)
+					and PeriodToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
 	)
 
 define "DRR Encounter":
@@ -111,7 +111,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and D.effective.value in "Intake Period Union Measurement Period"
+				and PeriodToIntervalOfDT(D.effective) overlaps "Intake Period Union Measurement Period"
 	)
 
 /*

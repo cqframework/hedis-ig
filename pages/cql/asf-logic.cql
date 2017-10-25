@@ -89,13 +89,13 @@ define "Denominator Exclusion":
 	exists (
 		[DiagnosticReport: "Alcohol use disorder"] D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and D.effective.value in "Lookback Interval Total Two Years"
+				and PeriodToIntervalOfDT(D.effective) overlaps "Lookback Interval Total Two Years"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Dementia"] D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and D.effective.value in "Intake Period"
+				and PeriodToIntervalOfDT(D.effective) overlaps "Intake Period"
 	)
 
 /*
@@ -225,3 +225,10 @@ define "Stratifier 3":
 define "Stratifier 4":
 	AgeInYearsAt(start of "Fourteen Month Measurement Period") >= 65
 
+
+/*
+Utility Functions
+*/
+
+define function PeriodToIntervalOfDT(value FHIR.Period):
+	Interval[value."start".value, value."end".value]

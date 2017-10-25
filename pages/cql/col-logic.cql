@@ -292,7 +292,7 @@ define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
 		"Flexible Sigmoidoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and DiagRep.effective.value in "Lookback Interval Four More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Four More Years"
 	)
 
 define "Colonoscopy Reports":
@@ -304,14 +304,14 @@ define "Is Colonoscopy In Last Ten Years":
 	exists(
 		"Colonoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and DiagRep.effective.value in "Lookback Interval Nine More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Nine More Years"
 	)
 
 define "Is CT Colonography In Last Five Years":
 	exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and DiagRep.effective.value in "Lookback Interval Four More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Four More Years"
 	)
 
 define "FIT-DNA Observations":

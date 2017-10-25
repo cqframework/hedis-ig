@@ -285,8 +285,7 @@ define "Dates of Cervical Cytology Tests":
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
 		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
-		//return ChoiceToIntervalOfDT(DiagRep.effective))
+		return PeriodToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
@@ -301,8 +300,7 @@ define "Dates of HPV Tests":
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
 		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-		return case when DiagRep.effective is DateTime then Interval[DiagRep.effective.value, DiagRep.effective.value] else Interval[DiagRep.effective."start".value, DiagRep.effective."end".value] end)
-		//return ChoiceToIntervalOfDT(DiagRep.effective))
+		return PeriodToIntervalOfDT(DiagRep.effective))
 	union
 	([Observation: "HPV Tests Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }

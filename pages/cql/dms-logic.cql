@@ -94,7 +94,7 @@ define "Initial Population":
 		and exists (
 			[DiagnosticReport: "Major Depression and Dysthymia"] D
 				where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and D.effective.value in "Measurement Period"
+					and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
 		)
 
 /*
@@ -114,7 +114,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and D.effective.value in "Measurement Period"
+				and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
 	)
 
 /*
@@ -147,7 +147,7 @@ define "Depression Encounters":
 		with [DiagnosticReport: "Major Depression and Dysthymia"] D
 			such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and D.effective.value in PeriodToIntervalOfDT(E.period)
+				and PeriodToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
 
 define "PHQ-9 Score":
 	distinct (

@@ -92,13 +92,13 @@ define "Denominator Exclusion":
 	exists (
 		"Bipolar Disorder Reports" BD
 			where BD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and BD.effective.value in "Lookback Interval One More Year"
+				and PeriodToIntervalOfDT(BD.effective) overlaps "Lookback Interval One More Year"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Major Depression and Dysthymia"] MDD
 			where MDD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and MDD.effective.value in "First Predecessor Year"
+				and PeriodToIntervalOfDT(MDD.effective) overlaps "First Predecessor Year"
 	)
 
 define "Bipolar Disorder Reports":
@@ -160,7 +160,7 @@ define "Follow-Up Care Encounters":
 				with [DiagnosticReport: "Major Depression and Dysthymia"] D
 					such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 						and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-						and D.effective.value in PeriodToIntervalOfDT(E.period)
+						and PeriodToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
 		)
 		union
 		[Encounter: "Depression Case Management Encounter"]
