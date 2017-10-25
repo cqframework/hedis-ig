@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Wellness Visit"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6488",
           "display": "Erica Ortega Lam"
@@ -26,30 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "2000-05-21T13:00:00-04:00",
-              "end": "2000-05-21T13:00:00-04:00"
+              "start": "2002-06-07T00:00:00-04:00",
+              "end": "2002-06-07T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2519",
-              "display": "Stanley Jason Garrett MD"
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
             }
           }
         ],
         "period": {
-          "start": "2000-05-21T13:00:00-04:00",
-          "end": "2000-05-21T13:00:00-04:00"
+          "start": "2002-06-07T00:00:00-04:00",
+          "end": "2002-06-07T00:00:00-04:00"
         },
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1001",
-              "display": "Windward General Hospital"
+              "reference": "Location/Location-1104",
+              "display": "Bay Area Family Practice"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1001",
-          "display": "Windward General Hospital"
+          "reference": "Organization/Organization-1104",
+          "display": "Bay Area Family Practice"
         }
       },
       "request": {
@@ -58,23 +69,62 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253041",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-269390",
       "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-253041",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
-          ]
-        },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
+        "resourceType": "Immunization",
+        "id": "Immunization-269390",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
           "coding": [
             {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "860975",
-              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "date": "2002-06-07T00:00:00-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1104",
+          "display": "Bay Area Family Practice"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-269390"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-291716",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-291716",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713107002",
+              "display": "Screening for alcohol abuse (procedure)"
             }
           ]
         },
@@ -84,179 +134,1142 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "authoredOn": "2000-05-21T13:00:00-04:00",
-        "reasonCode": [
+        "performedPeriod": {
+          "start": "2002-06-07T00:00:00-04:00",
+          "end": "2002-06-07T00:00:00-04:00"
+        },
+        "performer": [
           {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
+            "actor": {
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
             }
           }
         ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2000-05-21T13:00:00-04:00",
-            "end": "2000-05-21T13:00:00-04:00"
-          }
+        "location": {
+          "reference": "Location/Location-1104",
+          "display": "Bay Area Family Practice"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253041"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-291716"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253042",
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-253042",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
-          ]
-        },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "1373463",
-              "display": "canagliflozin 100 MG Oral Tablet"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6488",
-          "display": "Erica Ortega Lam"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
-        },
-        "authoredOn": "2000-05-21T13:00:00-04:00",
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
-            }
-          }
-        ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2000-05-21T13:00:00-04:00",
-            "end": "2000-05-21T13:00:00-04:00"
-          }
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253042"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253043",
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "MedicationRequest-253043",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
-          ]
-        },
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {
-              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-              "code": "897122",
-              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/Patient-6488",
-          "display": "Erica Ortega Lam"
-        },
-        "context": {
-          "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
-        },
-        "authoredOn": "2000-05-21T13:00:00-04:00",
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "44054006",
-                "display": "Type 2 diabetes mellitus"
-              }
-            ]
-          }
-        ],
-        "dosageInstruction": [
-          {
-            "timing": {
-              "repeat": {
-                "frequency": 1
-              }
-            },
-            "doseQuantity": {
-              "value": 1
-            }
-          }
-        ],
-        "dispenseRequest": {
-          "validityPeriod": {
-            "start": "2000-05-21T13:00:00-04:00",
-            "end": "2000-05-21T13:00:00-04:00"
-          }
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-253043"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253046",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291717",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253046",
+        "id": "Observation-291717",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "704197006",
+              "display": "Admits alcohol use (finding) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.0,
+          "unit": "drinks/day"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291717"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291718",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291718",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 147.2005484440018,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291718"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291719",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291719",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 91.25291197369988,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291719"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-291720",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-291720",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "2002-06-07T00:00:00-04:00",
+        "assertedDate": "2002-06-07T00:00:00-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2525",
+          "display": "Kyle Christian Ballard MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-291720"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291721",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291721",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 171.6,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291721"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291722",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291722",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140.25027011022166,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291722"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291723",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291723",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 47.62874512684051,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291723"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291726",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291726",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "valueQuantity": {
+          "value": 91.25291197369988,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291726"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291727",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291727",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.4492159488248975,
+          "unit": "%"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291727"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291728",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291728",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 79.72934768142495,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291728"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291729",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291729",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6299-2",
+              "display": "Urea Nitrogen"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16.240227608755607,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291729"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291730",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291730",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "38483-4",
+              "display": "Creatinine"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.5493995508953704,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291730"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291731",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291731",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "49765-1",
+              "display": "Calcium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.49241628461353,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291731"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291732",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291732",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2947-0",
+              "display": "Sodium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140.47368712793835,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291732"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291733",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291733",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6298-4",
+              "display": "Potassium"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.398821331771946,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291733"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291734",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291734",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2069-3",
+              "display": "Chloride"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 110.70391374069908,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291734"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291735",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291735",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20565-8",
+              "display": "Carbon Dioxide"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 20.74748630566613,
+          "unit": "mmol/L"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291735"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291736",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-291736",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic Metabolic Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2002-06-07T00:00:00-04:00",
+          "end": "2002-06-07T00:00:00-04:00"
+        },
+        "issued": "2002-06-07T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-291728",
+            "display": "Record_Glucose"
+          },
+          {
+            "reference": "Observation/Observation-291729",
+            "display": "Record_UreaNitrogen"
+          },
+          {
+            "reference": "Observation/Observation-291730",
+            "display": "Record_Creatinine"
+          },
+          {
+            "reference": "Observation/Observation-291731",
+            "display": "Record_Calcium"
+          },
+          {
+            "reference": "Observation/Observation-291732",
+            "display": "Record_Sodium"
+          },
+          {
+            "reference": "Observation/Observation-291733",
+            "display": "Record_Potassium"
+          },
+          {
+            "reference": "Observation/Observation-291734",
+            "display": "Record_Chloride"
+          },
+          {
+            "reference": "Observation/Observation-291735",
+            "display": "Record_CO2"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291736"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291737",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291737",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Total Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128.05358983901763,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291737"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291738",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291738",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglycerides"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 57.73741321557927,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291738"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291739",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291739",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18262-6",
+              "display": "Low Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 68.91593028364801,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291739"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291740",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291740",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "High Density Lipoprotein Cholesterol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 47.59017691225378,
+          "unit": "mg/dL"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291740"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291741",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-291741",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1321",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2002-06-07T00:00:00-04:00",
+          "end": "2002-06-07T00:00:00-04:00"
+        },
+        "issued": "2002-06-07T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-291737",
+            "display": "Record_Cholesterol"
+          },
+          {
+            "reference": "Observation/Observation-291738",
+            "display": "Record_Triglycerides"
+          },
+          {
+            "reference": "Observation/Observation-291739",
+            "display": "Record_LDL"
+          },
+          {
+            "reference": "Observation/Observation-291740",
+            "display": "Record_HDL"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291741"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291743",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-291743",
         "status": "final",
         "code": {
           "coding": [
@@ -273,13 +1286,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -289,14 +1302,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253046"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291743"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253047",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291744",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253047",
+        "id": "Observation-291744",
         "status": "final",
         "code": {
           "coding": [
@@ -313,30 +1326,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 100.54050467096133,
+          "value": 140.25027011022166,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253047"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291744"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253048",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291745",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253048",
+        "id": "Observation-291745",
         "status": "final",
         "code": {
           "coding": [
@@ -353,30 +1366,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 34.143378605501404,
+          "value": 47.62874512684051,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253048"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291745"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253049",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291746",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253049",
+        "id": "Observation-291746",
         "status": "final",
         "code": {
           "coding": [
@@ -393,13 +1406,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -409,14 +1422,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253049"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291746"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253050",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291747",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253050",
+        "id": "Observation-291747",
         "status": "final",
         "code": {
           "coding": [
@@ -433,30 +1446,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 159.4887953445408,
+          "value": 147.2005484440018,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253050"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291747"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253051",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291748",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-253051",
+        "id": "Observation-291748",
         "status": "final",
         "code": {
           "coding": [
@@ -473,30 +1486,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
-        "effectiveDateTime": "2000-05-21T13:00:00-04:00",
+        "effectiveDateTime": "2002-06-07T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2519",
-            "display": "Stanley Jason Garrett MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 110.09506690054084,
+          "value": 91.25291197369988,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-253051"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-291748"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-253045",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291742",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-253045",
+        "id": "DiagnosticReport-291742",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -527,43 +1540,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1321",
-          "display": "Followup_Visit"
+          "display": "Wellness Visit"
         },
         "effectivePeriod": {
-          "start": "2000-05-21T13:00:00-04:00",
-          "end": "2000-05-21T13:00:00-04:00"
+          "start": "2002-06-07T00:00:00-04:00",
+          "end": "2002-06-07T00:00:00-04:00"
         },
-        "issued": "2000-05-21T13:00:00.000-04:00",
+        "issued": "2002-06-07T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-253046",
+            "reference": "Observation/Observation-291743",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-253047",
+            "reference": "Observation/Observation-291744",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-253048",
+            "reference": "Observation/Observation-291745",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-253049",
+            "reference": "Observation/Observation-291746",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-253050",
+            "reference": "Observation/Observation-291747",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-253051",
+            "reference": "Observation/Observation-291748",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-253045"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-291742"
       }
     }
   ]

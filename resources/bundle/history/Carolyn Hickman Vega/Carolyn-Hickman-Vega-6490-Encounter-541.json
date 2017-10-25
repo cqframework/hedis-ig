@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Carolyn-Hickman-Vega-6490-Encounter-541",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-541",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-541",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-09-29T00:09:00-04:00",
+              "end": "1988-09-29T01:36:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2519",
+              "display": "Stanley Jason Garrett MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-09-29T00:09:00-04:00",
+          "end": "1988-09-29T01:36:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-541"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-69824",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-69824",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45384",
+              "display": "Colonoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-09-29T01:36:00-04:00",
+          "end": "1988-09-29T01:36:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2519",
+              "display": "Stanley Jason Garrett MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-69824"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69825",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69825",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T01:36:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69825"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-69826",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-69826",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45386",
+              "display": "Colonoscopy, flexible; with transendoscopic balloon dilation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-09-29T01:36:00-04:00",
+          "end": "1988-09-29T01:36:00-04:00"
+        },
+        "issued": "1988-09-29T01:36:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-69825",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-69826"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69829",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69829",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69829"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69830",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69830",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 75.84775911388786,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69830"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69831",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69831",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 30.001882486407915,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69831"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69832",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69832",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69832"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69833",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69833",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 134.31923792578513,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69833"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69834",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-69834",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-09-29T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2519",
+            "display": "Stanley Jason Garrett MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 76.44113257033416,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-69834"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-69828",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-69828",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6490",
+          "display": "Carolyn Hickman Vega"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-541",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-09-29T00:09:00-04:00",
+          "end": "1988-09-29T00:09:00-04:00"
+        },
+        "issued": "1988-09-29T00:09:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-69829",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-69830",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-69831",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-69832",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-69833",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-69834",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-69828"
+      }
+    }
+  ]
+}

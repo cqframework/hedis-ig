@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "ambulatory",
-          "display": "Ambulatory"
+          "code": "outpatient",
+          "display": "Outpatient"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "99217",
+                "display": "OBSERVATION CARE DISCHARGE"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6480",
           "display": "Janet Ramona Curry"
@@ -26,30 +37,41 @@
         "participant": [
           {
             "period": {
-              "start": "2012-05-18T00:00:00-04:00",
-              "end": "2012-05-18T00:00:00-04:00"
+              "start": "2017-03-02T00:00:00-05:00",
+              "end": "2017-03-02T00:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
             }
           }
         ],
         "period": {
-          "start": "2012-05-18T00:00:00-04:00",
-          "end": "2012-05-18T00:00:00-04:00"
+          "start": "2017-03-02T00:00:00-05:00",
+          "end": "2017-03-02T00:00:00-05:00"
         },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "718636001",
+                "display": "Minimal depression (disorder)"
+              }
+            ]
+          }
+        ],
         "location": [
           {
             "location": {
-              "reference": "Location/Location-1002",
-              "display": "Gift of Mercy Hospital"
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
             }
           }
         ],
         "serviceProvider": {
-          "reference": "Organization/Organization-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
@@ -58,10 +80,10 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-546089",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-664614",
       "resource": {
         "resourceType": "Procedure",
-        "id": "Procedure-546089",
+        "id": "Procedure-664614",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
@@ -71,9 +93,9 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
+              "system": "http://test",
               "code": "2.16.840.1.113883.3.67.1.101.11.723",
-              "display": "PHQ-9 Tool"
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
             }
           ]
         },
@@ -83,35 +105,35 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
         "performedPeriod": {
-          "start": "2012-05-18T00:00:00-04:00",
-          "end": "2012-05-18T00:00:00-04:00"
+          "start": "2017-03-02T00:00:00-05:00",
+          "end": "2017-03-02T00:00:00-05:00"
         },
         "performer": [
           {
             "actor": {
-              "reference": "Practitioner/Practitioner-2528",
-              "display": "Tanya Sally Wheeler MD"
+              "reference": "Practitioner/Practitioner-2517",
+              "display": "Cathy Shannon Warner MD"
             }
           }
         ],
         "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-546089"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-664614"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546090",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664615",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546090",
+        "id": "Observation-664615",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
@@ -121,8 +143,8 @@
         "code": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
               "display": "PHQ-9 Modified Score"
             }
           ]
@@ -133,30 +155,125 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 5.0,
+          "value": 2.0,
           "unit": "score"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546090"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664615"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546093",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-664616",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-664616",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "310496002",
+              "display": "Moderate depression (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3536",
+          "display": "DMS_Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-03-02T00:00:00-05:00",
+          "end": "2017-03-02T00:00:00-05:00"
+        },
+        "issued": "2017-03-02T00:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-664616"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-664617",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-664617",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "Antidepressant.Medication",
+              "display": "Antidepressant Medication"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6480",
+          "display": "Janet Ramona Curry"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3536",
+          "display": "DMS_Followup_Encounter"
+        },
+        "authoredOn": "2017-03-02T00:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "718636001",
+                "display": "Minimal depression (disorder)"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-664617"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664620",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546093",
+        "id": "Observation-664620",
         "status": "final",
         "code": {
           "coding": [
@@ -173,13 +290,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
@@ -189,14 +306,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546093"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664620"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546094",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664621",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546094",
+        "id": "Observation-664621",
         "status": "final",
         "code": {
           "coding": [
@@ -213,30 +330,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 94.6513255627766,
+          "value": 78.3516376570067,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546094"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664621"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546095",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664622",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546095",
+        "id": "Observation-664622",
         "status": "final",
         "code": {
           "coding": [
@@ -253,30 +370,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 35.49394982421145,
+          "value": 29.381618050326345,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546095"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664622"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546096",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664623",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546096",
+        "id": "Observation-664623",
         "status": "final",
         "code": {
           "coding": [
@@ -293,13 +410,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
@@ -309,14 +426,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546096"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664623"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546097",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664624",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546097",
+        "id": "Observation-664624",
         "status": "final",
         "code": {
           "coding": [
@@ -333,30 +450,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 135.468532865339,
+          "value": 158.0482564919092,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546097"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664624"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546098",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664625",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-546098",
+        "id": "Observation-664625",
         "status": "final",
         "code": {
           "coding": [
@@ -373,30 +490,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
-        "effectiveDateTime": "2012-05-18T00:00:00-04:00",
+        "effectiveDateTime": "2017-03-02T00:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2528",
-            "display": "Tanya Sally Wheeler MD"
+            "reference": "Practitioner/Practitioner-2517",
+            "display": "Cathy Shannon Warner MD"
           }
         ],
         "valueQuantity": {
-          "value": 82.76134170916097,
+          "value": 64.83683761814561,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-546098"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-664625"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-546092",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-664619",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-546092",
+        "id": "DiagnosticReport-664619",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -427,43 +544,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3536",
-          "display": "Followup_Encounter"
+          "display": "DMS_Followup_Encounter"
         },
         "effectivePeriod": {
-          "start": "2012-05-18T00:00:00-04:00",
-          "end": "2012-05-18T00:00:00-04:00"
+          "start": "2017-03-02T00:00:00-05:00",
+          "end": "2017-03-02T00:00:00-05:00"
         },
-        "issued": "2012-05-18T00:00:00.000-04:00",
+        "issued": "2017-03-02T00:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-546093",
+            "reference": "Observation/Observation-664620",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-546094",
+            "reference": "Observation/Observation-664621",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-546095",
+            "reference": "Observation/Observation-664622",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-546096",
+            "reference": "Observation/Observation-664623",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-546097",
+            "reference": "Observation/Observation-664624",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-546098",
+            "reference": "Observation/Observation-664625",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-546092"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-664619"
       }
     }
   ]

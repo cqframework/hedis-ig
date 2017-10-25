@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Tricia-Lynn-Franklin-1119-Encounter-4110",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4110",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-4110",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "H0039",
+                "display": "Assertive community treatment, face-to-face, per 15 minutes (H0039)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-07-28T01:00:00-04:00",
+              "end": "2017-07-28T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-07-28T01:00:00-04:00",
+          "end": "2017-07-28T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1101",
+              "display": "McKinley Health Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4110"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-685161",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-685161",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-07-28T01:00:00-04:00",
+          "end": "2017-07-28T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2516",
+              "display": "Agnes Tammy Larson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-685161"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685162",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685162",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685162"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685163",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-685163",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "191604000",
+              "display": "Single major depressive episode, severe, with psychosis (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-07-28T01:00:00-04:00",
+          "end": "2017-07-28T01:00:00-04:00"
+        },
+        "issued": "2017-07-28T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685163"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685166",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685166",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 155.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685166"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685167",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685167",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 84.89359791289701,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685167"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685168",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685168",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.335524625555465,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685168"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685169",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685169",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685169"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685170",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685170",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 131.1161148063966,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685170"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685171",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-685171",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-07-28T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2516",
+            "display": "Agnes Tammy Larson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 61.83980681099881,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-685171"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685165",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-685165",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1119",
+          "display": "Tricia Lynn Franklin"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4110",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-07-28T01:00:00-04:00",
+          "end": "2017-07-28T01:00:00-04:00"
+        },
+        "issued": "2017-07-28T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-685166",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-685167",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-685168",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-685169",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-685170",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-685171",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-685165"
+      }
+    }
+  ]
+}

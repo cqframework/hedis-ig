@@ -1,0 +1,563 @@
+{
+  "resourceType": "Bundle",
+  "id": "Shawn-Conley-Owen-Jr-6509-Encounter-1802",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1802",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1802",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2006-03-10T00:00:00-05:00",
+              "end": "2006-03-10T09:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2006-03-10T00:00:00-05:00",
+          "end": "2006-03-10T09:00:00-05:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "46635009",
+                "display": "Type 1 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1802"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/CarePlan/CarePlan-378015",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "CarePlan-378015",
+        "status": "active",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "698360004",
+                "display": "Diabetes self management plan"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "author": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/CarePlan/CarePlan-378015"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-378016",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-378016",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "106892",
+              "display": "insulin human, isophane 70 UNT/ML / Regular Insulin, Human 30 UNT/ML Injectable Suspension [Humulin]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "authoredOn": "2006-03-10T00:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "46635009",
+                "display": "Type 1 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-03-10T00:00:00-05:00",
+            "end": "2006-03-10T00:00:00-05:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-378016"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-378017",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-378017",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "authoredOn": "2006-03-10T00:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "46635009",
+                "display": "Type 1 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-03-10T00:00:00-05:00",
+            "end": "2006-03-10T00:00:00-05:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-378017"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378300",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378300",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378300"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378301",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378301",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88.659805686051,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378301"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378302",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378302",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28.363658889960213,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378302"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378303",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378303",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378303"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378304",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378304",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 135.94334495722973,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378304"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378305",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-378305",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectiveDateTime": "2006-03-10T00:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 111.61053678297428,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-378305"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-378299",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-378299",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1802",
+          "display": "T1_Admit_Inpatient"
+        },
+        "effectivePeriod": {
+          "start": "2006-03-10T00:00:00-05:00",
+          "end": "2006-03-10T00:00:00-05:00"
+        },
+        "issued": "2006-03-10T00:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-378300",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-378301",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-378302",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-378303",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-378304",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-378305",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-378299"
+      }
+    }
+  ]
+}

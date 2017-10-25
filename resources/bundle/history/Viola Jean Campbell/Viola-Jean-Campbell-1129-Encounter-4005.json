@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Viola-Jean-Campbell-1129-Encounter-4005",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4005",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-4005",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "99205",
+                "display": "OFFICE/OUTPATIENT VISIT NEW"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-06-30T01:00:00-04:00",
+              "end": "2017-06-30T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2524",
+              "display": "Willie Vincent Riddle MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-06-30T01:00:00-04:00",
+          "end": "2017-06-30T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-4005"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-681665",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-681665",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-06-30T01:00:00-04:00",
+          "end": "2017-06-30T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2524",
+              "display": "Willie Vincent Riddle MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-681665"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681666",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681666",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681666"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-681667",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-681667",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "36923009",
+              "display": "Major depression, single episode (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-06-30T01:00:00-04:00",
+          "end": "2017-06-30T01:00:00-04:00"
+        },
+        "issued": "2017-06-30T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-681667"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681670",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681670",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681670"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681671",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681671",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 101.43639598872615,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681671"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681672",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681672",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 40.123569474595996,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681672"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681673",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681673",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681673"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681674",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681674",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 136.93309377879777,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681674"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681675",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-681675",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-30T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2524",
+            "display": "Willie Vincent Riddle MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 110.7122333597412,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-681675"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-681669",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-681669",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1129",
+          "display": "Viola Jean Campbell"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-4005",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-06-30T01:00:00-04:00",
+          "end": "2017-06-30T01:00:00-04:00"
+        },
+        "issued": "2017-06-30T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-681670",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-681671",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-681672",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-681673",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-681674",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-681675",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-681669"
+      }
+    }
+  ]
+}

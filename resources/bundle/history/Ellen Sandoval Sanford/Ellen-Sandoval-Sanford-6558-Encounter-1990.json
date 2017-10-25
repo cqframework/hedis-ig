@@ -1,0 +1,478 @@
+{
+  "resourceType": "Bundle",
+  "id": "Ellen-Sandoval-Sanford-6558-Encounter-1990",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1990",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1990",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "ambulatory",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2007-12-21T05:00:00-05:00",
+              "end": "2007-12-21T05:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2520",
+              "display": "Kimberly Christy Ashley MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2007-12-21T05:00:00-05:00",
+          "end": "2007-12-21T05:00:00-05:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1990"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-418991",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-418991",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "413473000",
+              "display": "Counseling about alcohol consumption (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2007-12-21T05:00:00-05:00",
+          "end": "2007-12-21T05:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2520",
+              "display": "Kimberly Christy Ashley MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-418991"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418992",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418992",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+              "code": "H0016",
+              "display": "Alcohol and/or drug services; medical/somatic (medical intervention in ambulatory setting) (H0016)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueString": "Why Not Procedure?"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418992"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418995",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418995",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 159.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418995"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418996",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418996",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 91.92389097792866,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418996"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418997",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418997",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 36.3608603211616,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418997"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418998",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418998",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418998"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418999",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-418999",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172.39826672771753,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-418999"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-419000",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-419000",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectiveDateTime": "2007-12-21T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2520",
+            "display": "Kimberly Christy Ashley MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 80.35162750355266,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-419000"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-418994",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-418994",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6558",
+          "display": "Ellen Sandoval Sanford"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1990",
+          "display": "Followup_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2007-12-21T05:00:00-05:00",
+          "end": "2007-12-21T05:00:00-05:00"
+        },
+        "issued": "2007-12-21T05:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-418995",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-418996",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-418997",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-418998",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-418999",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-419000",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-418994"
+      }
+    }
+  ]
+}

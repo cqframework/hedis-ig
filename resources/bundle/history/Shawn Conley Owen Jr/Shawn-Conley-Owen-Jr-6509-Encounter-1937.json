@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Shawn-Conley-Owen-Jr-6509-Encounter-1937",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1937",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1937",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1996-06-30T00:10:00-04:00",
+              "end": "1996-06-30T01:30:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1996-06-30T00:10:00-04:00",
+          "end": "1996-06-30T01:30:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1937"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-409032",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-409032",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44388",
+              "display": "Colonoscopy through stoma; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1996-06-30T01:30:00-04:00",
+          "end": "1996-06-30T01:30:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-409032"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409034",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409034",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T01:30:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409034"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-409035",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-409035",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45387",
+              "display": "Colonoscopy, flexible, proximal to splenic flexure; with transendoscopic stent placement (includes predilation)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1996-06-30T01:30:00-04:00",
+          "end": "1996-06-30T01:30:00-04:00"
+        },
+        "issued": "1996-06-30T01:30:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-409034",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-409035"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409038",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409038",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409038"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409039",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409039",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 89.4901802354244,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409039"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409040",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409040",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28.629308699217997,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409040"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409041",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409041",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409041"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409042",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409042",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 167.7604508252269,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409042"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409043",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-409043",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1996-06-30T00:10:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 63.06178504102932,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-409043"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-409037",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-409037",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1937",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1996-06-30T00:10:00-04:00",
+          "end": "1996-06-30T00:10:00-04:00"
+        },
+        "issued": "1996-06-30T00:10:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-409038",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-409039",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-409040",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-409041",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-409042",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-409043",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-409037"
+      }
+    }
+  ]
+}

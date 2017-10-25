@@ -299,11 +299,10 @@ define "Is Bilateral Mastectomy":
 
 define "Is History Of Bilateral Mastectomy":
 	exists(
-		[Procedure: "History of Bilateral Mastectomy Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
+		[Condition: "History of Bilateral Mastectomy Value Set"] Cond
+			where Cond.verificationStatus.value = 'confirmed'
+				and Cond.assertedDate.value same day or before end of "Measurement Period"
 	)
-	// NOTE: This assumes the history of a procedure is also recorded as a procedure in FHIR
 
 define "Is Unilateral Mastectomy With Bilateral Modifier":
 	exists(

@@ -1,0 +1,943 @@
+{
+  "resourceType": "Bundle",
+  "id": "Shawn-Conley-Owen-Jr-6509-Encounter-2052",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2052",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2052",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Wellness Visit"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2009-07-31T00:00:00-04:00",
+              "end": "2009-07-31T00:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2009-07-31T00:00:00-04:00",
+          "end": "2009-07-31T00:00:00-04:00"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1105",
+              "display": "Bayside Medical Group"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2052"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-432567",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "Immunization-432567",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "140",
+              "display": "Influenza, seasonal, injectable, preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "date": "2009-07-31T00:00:00-04:00",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        },
+        "practitioner": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Immunization/Immunization-432567"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-456155",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-456155",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "713107002",
+              "display": "Screening for alcohol abuse (procedure)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "performedPeriod": {
+          "start": "2009-07-31T00:00:00-04:00",
+          "end": "2009-07-31T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2526",
+              "display": "James Woodward Wilkins MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1105",
+          "display": "Bayside Medical Group"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-456155"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456156",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456156",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00005",
+              "display": "Five or more drinks per day"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 12.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456156"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456157",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456157",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75626-2",
+              "display": "AUDIT-C Total Score (in points)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 10.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456157"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-456158",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-456158",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "66590003",
+              "display": "Alcohol dependence (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-07-31T00:00:00-04:00",
+          "end": "2009-07-31T00:00:00-04:00"
+        },
+        "issued": "2009-07-31T00:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-456158"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456159",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456159",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Systolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 147.56235541856014,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456159"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456160",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456160",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "Diastolic blood pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 112.74963033558787,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456160"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-456161",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "Condition-456161",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-condition"
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "onsetDateTime": "2009-07-31T00:00:00-04:00",
+        "assertedDate": "2009-07-31T00:00:00-04:00",
+        "asserter": {
+          "reference": "Practitioner/Practitioner-2526",
+          "display": "James Woodward Wilkins MD"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Condition/Condition-456161"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456162",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456162",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456162"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456163",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456163",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 90.90584385329927,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456163"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456164",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456164",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body Mass Index"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 29.082201638127824,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456164"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456167",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456167",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "valueQuantity": {
+          "value": 112.74963033558787,
+          "unit": "mmHg"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic Blood Pressure"
+                }
+              ]
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic Blood Pressure"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456167"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456169",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456169",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456169"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456170",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456170",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 90.90584385329927,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456170"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456171",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456171",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 29.082201638127824,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456171"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456172",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456172",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456172"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456173",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456173",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 147.56235541856014,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456173"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456174",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-456174",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectiveDateTime": "2009-07-31T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2526",
+            "display": "James Woodward Wilkins MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 112.74963033558787,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-456174"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-456168",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-456168",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6509",
+          "display": "Shawn Conley Owen Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2052",
+          "display": "Wellness Visit"
+        },
+        "effectivePeriod": {
+          "start": "2009-07-31T00:00:00-04:00",
+          "end": "2009-07-31T00:00:00-04:00"
+        },
+        "issued": "2009-07-31T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-456169",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-456170",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-456171",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-456172",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-456173",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-456174",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-456168"
+      }
+    }
+  ]
+}

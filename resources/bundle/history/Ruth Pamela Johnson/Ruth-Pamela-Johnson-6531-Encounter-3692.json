@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Ruth-Pamela-Johnson-6531-Encounter-3692",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3692",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3692",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo",
+                "code": "H2020",
+                "display": "Therapeutic behavioral services, per diem (H2020)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-04-11T00:00:00-04:00",
+              "end": "2017-04-11T00:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-04-11T00:00:00-04:00",
+          "end": "2017-04-11T00:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "718636001",
+                "display": "Minimal depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1101",
+              "display": "McKinley Health Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3692"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-670600",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-670600",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-04-11T00:00:00-04:00",
+          "end": "2017-04-11T00:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1101",
+          "display": "McKinley Health Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-670600"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670601",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670601",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670601"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670602",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-670602",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38451003",
+              "display": "Primary dysthymia early onset (disorder)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-04-11T00:00:00-04:00",
+          "end": "2017-04-11T00:00:00-04:00"
+        },
+        "issued": "2017-04-11T00:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670602"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670605",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670605",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 91.1,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670605"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670606",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670606",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 12.2,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670606"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670607",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670607",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14.700194355848328,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670607"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670608",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670608",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670608"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670609",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670609",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 100.92582969137227,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670609"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670610",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-670610",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-04-11T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.07279785023584,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-670610"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670604",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-670604",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6531",
+          "display": "Ruth Pamela Johnson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3692",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-04-11T00:00:00-04:00",
+          "end": "2017-04-11T00:00:00-04:00"
+        },
+        "issued": "2017-04-11T00:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-670605",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-670606",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-670607",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-670608",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-670609",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-670610",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-670604"
+      }
+    }
+  ]
+}

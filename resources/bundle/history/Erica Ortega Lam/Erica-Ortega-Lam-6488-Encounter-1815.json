@@ -16,9 +16,20 @@
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/encounter-class",
-          "code": "inpatient",
-          "display": "Inpatient"
+          "code": "ambulatory",
+          "display": "Ambulatory"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6488",
           "display": "Erica Ortega Lam"
@@ -26,30 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "1988-11-22T01:26:00-05:00",
-              "end": "1988-11-22T06:26:00-05:00"
+              "start": "2006-05-12T14:00:00-04:00",
+              "end": "2006-05-12T14:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
+              "reference": "Practitioner/Practitioner-2525",
+              "display": "Kyle Christian Ballard MD"
             }
           }
         ],
         "period": {
-          "start": "1988-11-22T01:26:00-05:00",
-          "end": "1988-11-22T06:26:00-05:00"
+          "start": "2006-05-12T14:00:00-04:00",
+          "end": "2006-05-12T14:00:00-04:00"
         },
-        "hospitalization": {
-          "dischargeDisposition": {
+        "reason": [
+          {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/discharge-disposition",
-                "code": "home",
-                "display": "Home"
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
               }
             ]
           }
-        },
+        ],
         "location": [
           {
             "location": {
@@ -69,22 +80,23 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-337748",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382050",
       "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-337748",
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-382050",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "status": "completed",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "https://www.cms.gov/Medicare/Coding/ICD10/index.html",
-              "code": "0DTE7ZZ",
-              "display": "Resection of Large Intestine, Via Natural or Artificial Opening"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "24 HR Metformin hydrochloride 500 MG Extended Release Oral Tablet"
             }
           ]
         },
@@ -94,35 +106,179 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "performedPeriod": {
-          "start": "1988-11-22T06:26:00-05:00",
-          "end": "1988-11-22T06:26:00-05:00"
-        },
-        "performer": [
+        "authoredOn": "2006-05-12T14:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2535",
-              "display": "Clifton Terrence Carey MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
         ],
-        "location": {
-          "reference": "Location/Location-1001",
-          "display": "Windward General Hospital"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-05-12T14:00:00-04:00",
+            "end": "2006-05-12T14:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-337748"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382050"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337751",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382051",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-382051",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1373463",
+              "display": "canagliflozin 100 MG Oral Tablet"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1815",
+          "display": "Followup_Visit"
+        },
+        "authoredOn": "2006-05-12T14:00:00-04:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-05-12T14:00:00-04:00",
+            "end": "2006-05-12T14:00:00-04:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382051"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382052",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-382052",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6488",
+          "display": "Erica Ortega Lam"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1815",
+          "display": "Followup_Visit"
+        },
+        "authoredOn": "2006-05-12T14:00:00-04:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
+            }
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2006-05-12T14:00:00-04:00",
+            "end": "2006-05-12T14:00:00-04:00"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-382052"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382055",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337751",
+        "id": "Observation-382055",
         "status": "final",
         "code": {
           "coding": [
@@ -139,13 +295,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -155,14 +311,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337751"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382055"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337752",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382056",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337752",
+        "id": "Observation-382056",
         "status": "final",
         "code": {
           "coding": [
@@ -179,30 +335,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 101.55730213147966,
+          "value": 140.68258483756387,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337752"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382056"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337753",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382057",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337753",
+        "id": "Observation-382057",
         "status": "final",
         "code": {
           "coding": [
@@ -219,30 +375,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 34.48868123525453,
+          "value": 47.77555844810527,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337753"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382057"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337754",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382058",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337754",
+        "id": "Observation-382058",
         "status": "final",
         "code": {
           "coding": [
@@ -259,13 +415,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
@@ -275,14 +431,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337754"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382058"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337755",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382059",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337755",
+        "id": "Observation-382059",
         "status": "final",
         "code": {
           "coding": [
@@ -299,30 +455,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 165.94991618499392,
+          "value": 172.4598406905976,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337755"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382059"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337756",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382060",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-337756",
+        "id": "Observation-382060",
         "status": "final",
         "code": {
           "coding": [
@@ -339,30 +495,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "1988-11-22T01:26:00-05:00",
+        "effectiveDateTime": "2006-05-12T14:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2535",
-            "display": "Clifton Terrence Carey MD"
+            "reference": "Practitioner/Practitioner-2525",
+            "display": "Kyle Christian Ballard MD"
           }
         ],
         "valueQuantity": {
-          "value": 113.80286848697557,
+          "value": 77.69148998850385,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-337756"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-382060"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-337750",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-382054",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-337750",
+        "id": "DiagnosticReport-382054",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -393,43 +549,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-1815",
-          "display": "Colectomy_Encounter"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "1988-11-22T01:26:00-05:00",
-          "end": "1988-11-22T01:26:00-05:00"
+          "start": "2006-05-12T14:00:00-04:00",
+          "end": "2006-05-12T14:00:00-04:00"
         },
-        "issued": "1988-11-22T01:26:00.000-05:00",
+        "issued": "2006-05-12T14:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-337751",
+            "reference": "Observation/Observation-382055",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-337752",
+            "reference": "Observation/Observation-382056",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-337753",
+            "reference": "Observation/Observation-382057",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-337754",
+            "reference": "Observation/Observation-382058",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-337755",
+            "reference": "Observation/Observation-382059",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-337756",
+            "reference": "Observation/Observation-382060",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-337750"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-382054"
       }
     }
   ]

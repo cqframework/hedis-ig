@@ -1,0 +1,587 @@
+{
+  "resourceType": "Bundle",
+  "id": "Alice-Vargas-1153-Encounter-3335",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3335",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3335",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "90791",
+                "display": "PSYCH DIAGNOSTIC EVALUATION"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-02-02T23:00:00-05:00",
+              "end": "2017-02-02T23:00:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1102",
+              "display": "Pediatric and Adult Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3335"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-658130",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-658130",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2535",
+              "display": "Clifton Terrence Carey MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1102",
+          "display": "Pediatric and Adult Medicine"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-658130"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658131",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658131",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658131"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658132",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-658132",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "720452006",
+              "display": "Moderately severe recurrent major depression (disorder) "
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "issued": "2017-02-02T23:00:00.000-05:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658132"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-658133",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-658133",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
+          ]
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "Antidepressant.Medication",
+              "display": "Antidepressant Medication"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "authoredOn": "2017-02-02T23:00:00-05:00",
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-658133"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658136",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658136",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 163.3,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658136"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658137",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658137",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 64.57778281311366,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658137"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658138",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658138",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24.216465742017032,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658138"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658139",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658139",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658139"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658140",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658140",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 111.02482359782084,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658140"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658141",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-658141",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectiveDateTime": "2017-02-02T23:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2535",
+            "display": "Clifton Terrence Carey MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 113.23233146673171,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-658141"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658135",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-658135",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-1153",
+          "display": "Alice Vargas"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3335",
+          "display": "Same_Day_DMS_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-02-02T23:00:00-05:00",
+          "end": "2017-02-02T23:00:00-05:00"
+        },
+        "issued": "2017-02-02T23:00:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-658136",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-658137",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-658138",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-658139",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-658140",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-658141",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-658135"
+      }
+    }
+  ]
+}

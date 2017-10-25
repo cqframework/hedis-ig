@@ -1,0 +1,540 @@
+{
+  "resourceType": "Bundle",
+  "id": "Gabriel-Oconnell-Stevenson-6493-Encounter-3885",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3885",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-3885",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "outpatient",
+          "display": "Outpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "99212",
+                "display": "OFFICE/OUTPATIENT VISIT EST"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2017-06-02T01:00:00-04:00",
+              "end": "2017-06-02T01:00:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2017-06-02T01:00:00-04:00",
+          "end": "2017-06-02T01:00:00-04:00"
+        },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "310495003",
+                "display": "Mild depression (disorder)"
+              }
+            ]
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1103",
+              "display": "Acme Medical Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-3885"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-677833",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-677833",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://test",
+              "code": "2.16.840.1.113883.3.67.1.101.11.723",
+              "display": "2.16.840.1.113883.3.67.1.101.11.723"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2017-06-02T01:00:00-04:00",
+          "end": "2017-06-02T01:00:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2530",
+              "display": "Terrence Ramirez McCormick MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1103",
+          "display": "Acme Medical Center"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-677833"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677834",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677834",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cqframework.info/codesystem/placeholder",
+              "code": "00009",
+              "display": "PHQ-9 Modified Score"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.0,
+          "unit": "score"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677834"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-677835",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-677835",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "OTH",
+              "display": "Other"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm",
+              "code": "296.21",
+              "display": "Major depressive affective disorder, single episode, mild"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-06-02T01:00:00-04:00",
+          "end": "2017-06-02T01:00:00-04:00"
+        },
+        "issued": "2017-06-02T01:00:00.000-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-677835"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677838",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677838",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 176.8,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677838"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677839",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677839",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 73.71731850750938,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677839"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677840",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677840",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 23.58332347166999,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677840"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677841",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677841",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677841"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677842",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677842",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 126.93936603101525,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677842"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677843",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-677843",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectiveDateTime": "2017-06-02T01:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2530",
+            "display": "Terrence Ramirez McCormick MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 119.99041780145829,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-677843"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-677837",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-677837",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6493",
+          "display": "Gabriel Oconnell Stevenson"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-3885",
+          "display": "DRR_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2017-06-02T01:00:00-04:00",
+          "end": "2017-06-02T01:00:00-04:00"
+        },
+        "issued": "2017-06-02T01:00:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-677838",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-677839",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-677840",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-677841",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-677842",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-677843",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-677837"
+      }
+    }
+  ]
+}

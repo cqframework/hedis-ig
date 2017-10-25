@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Phillip-Ball-Reilly-Jr-6528-Encounter-2757",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2757",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-2757",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "2002-09-10T00:05:00-04:00",
+              "end": "2002-09-10T01:30:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2002-09-10T00:05:00-04:00",
+          "end": "2002-09-10T01:30:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1002",
+              "display": "Gift of Mercy Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-2757"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-565095",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-565095",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45393",
+              "display": "Colonoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "2002-09-10T01:30:00-04:00",
+          "end": "2002-09-10T01:30:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2529",
+              "display": "Stanley Floyd Nielsen MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1002",
+          "display": "Gift of Mercy Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-565095"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565097",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565097",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T01:30:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueString": "POSITIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565097"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-565098",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-565098",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45386",
+              "display": "Colonoscopy, flexible; with transendoscopic balloon dilation"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2002-09-10T01:30:00-04:00",
+          "end": "2002-09-10T01:30:00-04:00"
+        },
+        "issued": "2002-09-10T01:30:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-565097",
+            "display": "Positive_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-565098"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565101",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565101",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 186.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565101"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565102",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565102",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 109.89938390582657,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565102"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565103",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565103",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 31.766500146209548,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565103"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565104",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565104",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565104"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565105",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565105",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 121.33903907568099,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565105"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565106",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-565106",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "2002-09-10T00:05:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2529",
+            "display": "Stanley Floyd Nielsen MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 85.14147392373161,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-565106"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-565100",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-565100",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6528",
+          "display": "Phillip Ball Reilly Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-2757",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "2002-09-10T00:05:00-04:00",
+          "end": "2002-09-10T00:05:00-04:00"
+        },
+        "issued": "2002-09-10T00:05:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-565101",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-565102",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-565103",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-565104",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-565105",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-565106",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-565100"
+      }
+    }
+  ]
+}

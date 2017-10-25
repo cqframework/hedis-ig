@@ -19,6 +19,17 @@
           "code": "ambulatory",
           "display": "Ambulatory"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6526",
           "display": "Doris Bertha Francis"
@@ -26,19 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "2010-07-23T01:00:00-04:00",
-              "end": "2010-07-23T01:00:00-04:00"
+              "start": "2016-02-22T21:00:00-05:00",
+              "end": "2016-02-22T21:00:00-05:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
+              "reference": "Practitioner/Practitioner-2522",
+              "display": "Lois Jean Kent MD"
             }
           }
         ],
         "period": {
-          "start": "2010-07-23T01:00:00-04:00",
-          "end": "2010-07-23T01:00:00-04:00"
+          "start": "2016-02-22T21:00:00-05:00",
+          "end": "2016-02-22T21:00:00-05:00"
         },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
         "location": [
           {
             "location": {
@@ -58,22 +80,23 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-496480",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-630319",
       "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-496480",
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-630319",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "status": "completed",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.67.1.101.11.723",
-              "display": "PHQ-9 Tool"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "106892",
+              "display": "insulin human, isophane 70 UNT/ML / Regular Insulin, Human 30 UNT/ML Injectable Suspension [Humulin]"
             }
           ]
         },
@@ -83,47 +106,62 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "performedPeriod": {
-          "start": "2010-07-23T01:00:00-04:00",
-          "end": "2010-07-23T01:00:00-04:00"
-        },
-        "performer": [
+        "authoredOn": "2016-02-22T21:00:00-05:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2529",
-              "display": "Stanley Floyd Nielsen MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
         ],
-        "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2016-02-22T21:00:00-05:00",
+            "end": "2016-02-22T21:00:00-05:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-496480"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-630319"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496481",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-630320",
       "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-496481",
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-630320",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "status": "final",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
-              "display": "PHQ-9 Modified Score"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
             }
           ]
         },
@@ -133,30 +171,37 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
-        "performer": [
+        "authoredOn": "2016-02-22T21:00:00-05:00",
+        "reasonCode": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
           }
         ],
-        "valueQuantity": {
-          "value": 3.0,
-          "unit": "score"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2016-02-22T21:00:00-05:00",
+            "end": "2016-02-22T21:00:00-05:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496481"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-630320"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496484",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630323",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496484",
+        "id": "Observation-630323",
         "status": "final",
         "code": {
           "coding": [
@@ -173,13 +218,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
@@ -189,14 +234,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496484"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630323"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496485",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630324",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496485",
+        "id": "Observation-630324",
         "status": "final",
         "code": {
           "coding": [
@@ -213,30 +258,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
-          "value": 127.94383624611076,
+          "value": 98.17632383220577,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496485"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630324"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496486",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630325",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496486",
+        "id": "Observation-630325",
         "status": "final",
         "code": {
           "coding": [
@@ -253,30 +298,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
-          "value": 43.44950182503857,
+          "value": 33.3405069496083,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496486"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630325"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496487",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630326",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496487",
+        "id": "Observation-630326",
         "status": "final",
         "code": {
           "coding": [
@@ -293,13 +338,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
@@ -309,14 +354,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496487"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630326"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496488",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630327",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496488",
+        "id": "Observation-630327",
         "status": "final",
         "code": {
           "coding": [
@@ -333,30 +378,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
-          "value": 110.86165364934416,
+          "value": 156.5172082236081,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496488"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630327"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496489",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630328",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-496489",
+        "id": "Observation-630328",
         "status": "final",
         "code": {
           "coding": [
@@ -373,30 +418,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-07-23T01:00:00-04:00",
+        "effectiveDateTime": "2016-02-22T21:00:00-05:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2529",
-            "display": "Stanley Floyd Nielsen MD"
+            "reference": "Practitioner/Practitioner-2522",
+            "display": "Lois Jean Kent MD"
           }
         ],
         "valueQuantity": {
-          "value": 92.11977390319714,
+          "value": 91.70883689515348,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-496489"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-630328"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-496483",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-630322",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-496483",
+        "id": "DiagnosticReport-630322",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -427,43 +472,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3081",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2010-07-23T01:00:00-04:00",
-          "end": "2010-07-23T01:00:00-04:00"
+          "start": "2016-02-22T21:00:00-05:00",
+          "end": "2016-02-22T21:00:00-05:00"
         },
-        "issued": "2010-07-23T01:00:00.000-04:00",
+        "issued": "2016-02-22T21:00:00.000-05:00",
         "result": [
           {
-            "reference": "Observation/Observation-496484",
+            "reference": "Observation/Observation-630323",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-496485",
+            "reference": "Observation/Observation-630324",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-496486",
+            "reference": "Observation/Observation-630325",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-496487",
+            "reference": "Observation/Observation-630326",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-496488",
+            "reference": "Observation/Observation-630327",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-496489",
+            "reference": "Observation/Observation-630328",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-496483"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-630322"
       }
     }
   ]

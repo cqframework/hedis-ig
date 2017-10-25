@@ -19,6 +19,17 @@
           "code": "ambulatory",
           "display": "Ambulatory"
         },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185345009",
+                "display": "Encounter for symptom"
+              }
+            ]
+          }
+        ],
         "subject": {
           "reference": "Patient/Patient-6526",
           "display": "Doris Bertha Francis"
@@ -26,19 +37,30 @@
         "participant": [
           {
             "period": {
-              "start": "2010-10-01T01:00:00-04:00",
-              "end": "2010-10-01T01:00:00-04:00"
+              "start": "2016-07-24T00:00:00-04:00",
+              "end": "2016-07-24T00:00:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/Practitioner-2527",
-              "display": "Lee Chris Mejia MD"
+              "reference": "Practitioner/Practitioner-2528",
+              "display": "Tanya Sally Wheeler MD"
             }
           }
         ],
         "period": {
-          "start": "2010-10-01T01:00:00-04:00",
-          "end": "2010-10-01T01:00:00-04:00"
+          "start": "2016-07-24T00:00:00-04:00",
+          "end": "2016-07-24T00:00:00-04:00"
         },
+        "reason": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
         "location": [
           {
             "location": {
@@ -58,22 +80,23 @@
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-501349",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-641821",
       "resource": {
-        "resourceType": "Procedure",
-        "id": "Procedure-501349",
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-641821",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "status": "completed",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.67.1.101.11.723",
-              "display": "PHQ-9 Tool"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "106892",
+              "display": "insulin human, isophane 70 UNT/ML / Regular Insulin, Human 30 UNT/ML Injectable Suspension [Humulin]"
             }
           ]
         },
@@ -83,47 +106,62 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "performedPeriod": {
-          "start": "2010-10-01T01:00:00-04:00",
-          "end": "2010-10-01T01:00:00-04:00"
-        },
-        "performer": [
+        "authoredOn": "2016-07-24T00:00:00-04:00",
+        "reasonCode": [
           {
-            "actor": {
-              "reference": "Practitioner/Practitioner-2527",
-              "display": "Lee Chris Mejia MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 1
+              }
+            },
+            "doseQuantity": {
+              "value": 1
             }
           }
         ],
-        "location": {
-          "reference": "Location/Location-1002",
-          "display": "Gift of Mercy Hospital"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2016-07-24T00:00:00-04:00",
+            "end": "2016-07-24T00:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-501349"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-641821"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501350",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-641822",
       "resource": {
-        "resourceType": "Observation",
-        "id": "Observation-501350",
+        "resourceType": "MedicationRequest",
+        "id": "MedicationRequest-641822",
         "meta": {
           "profile": [
-            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-medicationrequest"
           ]
         },
-        "status": "final",
-        "code": {
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "system": "TEST",
-              "code": "2.16.840.1.113883.3.464.1003.105.12.1154",
-              "display": "PHQ-9 Modified Score"
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "897122",
+              "display": "3 ML liraglutide 6 MG/ML Pen Injector"
             }
           ]
         },
@@ -133,30 +171,37 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
-        "performer": [
+        "authoredOn": "2016-07-24T00:00:00-04:00",
+        "reasonCode": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "44054006",
+                "display": "Type 2 diabetes mellitus"
+              }
+            ]
           }
         ],
-        "valueQuantity": {
-          "value": 3.0,
-          "unit": "score"
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2016-07-24T00:00:00-04:00",
+            "end": "2016-07-24T00:00:00-04:00"
+          }
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501350"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/MedicationRequest/MedicationRequest-641822"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501353",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641825",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501353",
+        "id": "Observation-641825",
         "status": "final",
         "code": {
           "coding": [
@@ -173,13 +218,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
@@ -189,14 +234,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501353"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641825"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501354",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641826",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501354",
+        "id": "Observation-641826",
         "status": "final",
         "code": {
           "coding": [
@@ -213,30 +258,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
-          "value": 128.00045032953264,
+          "value": 98.17014721253048,
           "unit": "kg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501354"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641826"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501355",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641827",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501355",
+        "id": "Observation-641827",
         "status": "final",
         "code": {
           "coding": [
@@ -253,30 +298,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
-          "value": 43.46872786822388,
+          "value": 33.338409380426945,
           "unit": "kg/m2"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501355"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641827"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501356",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641828",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501356",
+        "id": "Observation-641828",
         "status": "final",
         "code": {
           "coding": [
@@ -293,13 +338,13 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
@@ -309,14 +354,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501356"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641828"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501357",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641829",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501357",
+        "id": "Observation-641829",
         "status": "final",
         "code": {
           "coding": [
@@ -333,30 +378,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
-          "value": 110.90710382603214,
+          "value": 156.44495307797357,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501357"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641829"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501358",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641830",
       "resource": {
         "resourceType": "Observation",
-        "id": "Observation-501358",
+        "id": "Observation-641830",
         "status": "final",
         "code": {
           "coding": [
@@ -373,30 +418,30 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
-        "effectiveDateTime": "2010-10-01T01:00:00-04:00",
+        "effectiveDateTime": "2016-07-24T00:00:00-04:00",
         "performer": [
           {
-            "reference": "Practitioner/Practitioner-2527",
-            "display": "Lee Chris Mejia MD"
+            "reference": "Practitioner/Practitioner-2528",
+            "display": "Tanya Sally Wheeler MD"
           }
         ],
         "valueQuantity": {
-          "value": 92.08266984737868,
+          "value": 91.79409814839192,
           "unit": "mmHg"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-501358"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-641830"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-501352",
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-641824",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "DiagnosticReport-501352",
+        "id": "DiagnosticReport-641824",
         "meta": {
           "profile": [
             "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
@@ -427,43 +472,43 @@
         },
         "context": {
           "reference": "Encounter/Encounter-3131",
-          "display": "Followup_Encounter"
+          "display": "Followup_Visit"
         },
         "effectivePeriod": {
-          "start": "2010-10-01T01:00:00-04:00",
-          "end": "2010-10-01T01:00:00-04:00"
+          "start": "2016-07-24T00:00:00-04:00",
+          "end": "2016-07-24T00:00:00-04:00"
         },
-        "issued": "2010-10-01T01:00:00.000-04:00",
+        "issued": "2016-07-24T00:00:00.000-04:00",
         "result": [
           {
-            "reference": "Observation/Observation-501353",
+            "reference": "Observation/Observation-641825",
             "display": "Height"
           },
           {
-            "reference": "Observation/Observation-501354",
+            "reference": "Observation/Observation-641826",
             "display": "Weight"
           },
           {
-            "reference": "Observation/Observation-501355",
+            "reference": "Observation/Observation-641827",
             "display": "BMI"
           },
           {
-            "reference": "Observation/Observation-501356",
+            "reference": "Observation/Observation-641828",
             "display": "Temperature"
           },
           {
-            "reference": "Observation/Observation-501357",
+            "reference": "Observation/Observation-641829",
             "display": "Systolic Blood Pressure"
           },
           {
-            "reference": "Observation/Observation-501358",
+            "reference": "Observation/Observation-641830",
             "display": "Diastolic Blood Pressure"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-501352"
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-641824"
       }
     }
   ]

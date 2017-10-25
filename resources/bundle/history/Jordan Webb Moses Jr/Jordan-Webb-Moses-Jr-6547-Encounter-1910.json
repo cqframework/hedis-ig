@@ -1,0 +1,543 @@
+{
+  "resourceType": "Bundle",
+  "id": "Jordan-Webb-Moses-Jr-6547-Encounter-1910",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1910",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1910",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/encounter-class",
+          "code": "inpatient",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "34285007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1990-02-08T00:07:00-05:00",
+              "end": "1990-02-08T01:11:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1990-02-08T00:07:00-05:00",
+          "end": "1990-02-08T01:11:00-05:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1910"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-401572",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-401572",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-procedure"
+          ]
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44402",
+              "display": "Colonoscopy through stoma; with endoscopic stent placement (including pre- and post-dilation and guide wire passage, when performed)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1990-02-08T01:11:00-05:00",
+          "end": "1990-02-08T01:11:00-05:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2533",
+              "display": "Lena Dickerson Ballard MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-401572"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401573",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401573",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-observation"
+          ]
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "TBD",
+              "code": "TBD",
+              "display": "TBD"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T01:11:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401573"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-401574",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-401574",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44391",
+              "display": "Colonoscopy through stoma; with control of bleeding, any method"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1990-02-08T01:11:00-05:00",
+          "end": "1990-02-08T01:11:00-05:00"
+        },
+        "issued": "1990-02-08T01:11:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-401573",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-401574"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401577",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401577",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 186.0,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401577"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401578",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401578",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 106.67491005104938,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401578"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401579",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401579",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 30.834463536550285,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401579"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401580",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401580",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401580"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401581",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401581",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 155.4889118049783,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401581"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401582",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-401582",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1990-02-08T00:07:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2533",
+            "display": "Lena Dickerson Ballard MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 74.29579617858857,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-401582"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-401576",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-401576",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/hedis/StructureDefinition/hedis-diagnosticreport"
+          ]
+        },
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital Signs Panel"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6547",
+          "display": "Jordan Webb Moses Jr"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1910",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1990-02-08T00:07:00-05:00",
+          "end": "1990-02-08T00:07:00-05:00"
+        },
+        "issued": "1990-02-08T00:07:00.000-05:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-401577",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-401578",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-401579",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-401580",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-401581",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-401582",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-401576"
+      }
+    }
+  ]
+}
