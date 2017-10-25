@@ -1,0 +1,2225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+    <identifier id="DRR_FHIR" version="1.0.0"/>
+    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+    <usings>
+        <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+        <def localId="1" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+    </usings>
+    <parameters>
+        <def localId="21" name="Measurement Period" accessLevel="Public">
+            <parameterTypeSpecifier localId="20" xsi:type="IntervalTypeSpecifier">
+                <pointType localId="19" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </parameterTypeSpecifier>
+        </def>
+    </parameters>
+    <codeSystems>
+        <def localId="2" name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+        <def localId="3" name="SNOMED" id="http://snomed.info/sct" accessLevel="Public"/>
+        <def localId="4" name="CQFramework" id="http://cqframework.info/codesystem/placeholder" accessLevel="Public"/>
+    </codeSystems>
+    <valueSets>
+        <def localId="5" name="Bipolar Disorder" id="2.16.840.1.113883.3.464.1004.1044" accessLevel="Public"/>
+        <def localId="6" name="Bipolar Disorder ECDS" id="2.16.840.1.113883.3.464.1004.1346" accessLevel="Public"/>
+        <def localId="7" name="Hospice" id="2.16.840.1.113883.3.464.1004.1418" accessLevel="Public"/>
+        <def localId="8" name="Interactive Outpatient Encounter" id="2.16.840.1.113883.3.464.1004.1347" accessLevel="Public"/>
+        <def localId="9" name="Major Depression and Dysthymia" id="2.16.840.1.113883.3.464.1004.1351" accessLevel="Public"/>
+        <def localId="10" name="Other Bipolar Disorder" id="2.16.840.1.113883.3.464.1004.1399" accessLevel="Public"/>
+        <def localId="11" name="Personality Disorder" id="2.16.840.1.113883.3.464.1004.1355" accessLevel="Public"/>
+        <def localId="12" name="Pervasive Developmental Disorder" id="2.16.840.1.113883.3.464.1004.1356" accessLevel="Public"/>
+        <def localId="13" name="PHQ-9 Total Score" id="2.16.840.1.113883.3.464.1004.1401" accessLevel="Public"/>
+        <def localId="14" name="Psychotic Disorder" id="2.16.840.1.113883.3.464.1004.1352" accessLevel="Public"/>
+    </valueSets>
+    <codes>
+        <def localId="16" name="PHQ-9 Modified Score" id="00009" accessLevel="Public">
+            <codeSystem localId="15" name="CQFramework"/>
+        </def>
+        <def localId="18" name="PHQ-9 Tool" id="44249-1" accessLevel="Public">
+            <codeSystem localId="17" name="LOINC"/>
+        </def>
+    </codes>
+    <statements>
+        <def localId="31" name="Intake Period As MP Shifted Back 7 Months" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="31">
+                    <a:s>define &quot;Intake Period As MP Shifted Back 7 Months&quot;:
+                    </a:s>
+                    <a:s r="30">
+                        <a:s>Interval[</a:s>
+                        <a:s r="25">
+                            <a:s r="23">
+                                <a:s>start of </a:s>
+                                <a:s r="22">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="24">
+                                <a:s>7 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="29">
+                            <a:s r="27">
+                                <a:s>end of </a:s>
+                                <a:s r="26">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="28">
+                                <a:s>7 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="30" lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low localId="25" xsi:type="Subtract">
+                    <operand localId="23" xsi:type="Start">
+                        <operand localId="22" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="24" value="7" unit="months" xsi:type="Quantity"/>
+                </low>
+                <high localId="29" xsi:type="Subtract">
+                    <operand localId="27" xsi:type="End">
+                        <operand localId="26" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="28" value="7" unit="months" xsi:type="Quantity"/>
+                </high>
+            </expression>
+        </def>
+        <def localId="41" name="Intake Period Union Measurement Period" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="41">
+                    <a:s>define &quot;Intake Period Union Measurement Period&quot;:
+                    </a:s>
+                    <a:s r="40">
+                        <a:s>Interval[</a:s>
+                        <a:s r="35">
+                            <a:s r="33">
+                                <a:s>start of </a:s>
+                                <a:s r="32">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="34">
+                                <a:s>7 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="39">
+                            <a:s r="37">
+                                <a:s>end of </a:s>
+                                <a:s r="36">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="38">
+                                <a:s>7 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="40" lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low localId="35" xsi:type="Subtract">
+                    <operand localId="33" xsi:type="Start">
+                        <operand localId="32" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="34" value="7" unit="months" xsi:type="Quantity"/>
+                </low>
+                <high localId="39" xsi:type="Subtract">
+                    <operand localId="37" xsi:type="End">
+                        <operand localId="36" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="38" value="7" unit="months" xsi:type="Quantity"/>
+                </high>
+            </expression>
+        </def>
+        <def name="Patient" context="Patient">
+            <expression xsi:type="SingletonFrom">
+                <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+            </expression>
+        </def>
+        <def localId="70" name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="70">
+                    <a:s>define function PeriodToIntervalOfDT(value </a:s>
+                    <a:s r="62">
+                        <a:s>FHIR.Period</a:s>
+                    </a:s>
+                    <a:s>):
+                    </a:s>
+                    <a:s r="69">
+                        <a:s r="69">
+                            <a:s>Interval[</a:s>
+                            <a:s r="65">
+                                <a:s r="64">
+                                    <a:s r="63">
+                                        <a:s>value</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="64">
+                                        <a:s>&quot;start&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="65">
+                                    <a:s>value</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>, </a:s>
+                            <a:s r="68">
+                                <a:s r="67">
+                                    <a:s r="66">
+                                        <a:s>value</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="67">
+                                        <a:s>&quot;end&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="68">
+                                    <a:s>value</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="69" lowClosed="true" highClosed="true" xsi:type="Interval">
+                <low localId="65" path="value" xsi:type="Property">
+                    <source localId="64" path="start" xsi:type="Property">
+                        <source localId="63" name="value" xsi:type="OperandRef"/>
+                    </source>
+                </low>
+                <high localId="68" path="value" xsi:type="Property">
+                    <source localId="67" path="end" xsi:type="Property">
+                        <source localId="66" name="value" xsi:type="OperandRef"/>
+                    </source>
+                </high>
+            </expression>
+            <operand name="value">
+                <operandTypeSpecifier localId="62" name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+            </operand>
+        </def>
+        <def localId="76" name="DRR Encounter" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="76">
+                    <a:s>define &quot;DRR Encounter&quot;:
+                    </a:s>
+                    <a:s r="75">
+                        <a:s>
+                            <a:s r="48">
+                                <a:s r="47">
+                                    <a:s r="47">
+                                        <a:s>[Encounter: </a:s>
+                                        <a:s>
+                                            <a:s>&quot;Interactive Outpatient Encounter&quot;</a:s>
+                                        </a:s>
+                                        <a:s>]</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s> DRR</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="74">
+                            <a:s>where </a:s>
+                            <a:s r="74">
+                                <a:s r="59">
+                                    <a:s r="51">
+                                        <a:s r="50">
+                                            <a:s r="49">
+                                                <a:s>DRR</a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="50">
+                                                <a:s>status</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>.</a:s>
+                                        <a:s r="51">
+                                            <a:s>value</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> in </a:s>
+                                    <a:s r="58">
+                                        <a:s>{ </a:s>
+                                        <a:s r="52">
+                                            <a:s>'planned'</a:s>
+                                        </a:s>
+                                        <a:s>, </a:s>
+                                        <a:s r="53">
+                                            <a:s>'arrived'</a:s>
+                                        </a:s>
+                                        <a:s>, </a:s>
+                                        <a:s r="54">
+                                            <a:s>'triaged'</a:s>
+                                        </a:s>
+                                        <a:s>, </a:s>
+                                        <a:s r="55">
+                                            <a:s>'in-progress'</a:s>
+                                        </a:s>
+                                        <a:s>, </a:s>
+                                        <a:s r="56">
+                                            <a:s>'onleave'</a:s>
+                                        </a:s>
+                                        <a:s>, </a:s>
+                                        <a:s r="57">
+                                            <a:s>'finished'</a:s>
+                                        </a:s>
+                                        <a:s> }</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    and </a:s>
+                                <a:s r="73">
+                                    <a:s r="71">
+                                        <a:s>PeriodToIntervalOfDT(</a:s>
+                                        <a:s r="61">
+                                            <a:s r="60">
+                                                <a:s>DRR</a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="61">
+                                                <a:s>period</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>)</a:s>
+                                    </a:s>
+                                    <a:s> during </a:s>
+                                    <a:s r="72">
+                                        <a:s>&quot;Intake Period As MP Shifted Back 7 Months&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="75" xsi:type="Query">
+                <source localId="48" alias="DRR">
+                    <expression localId="47" dataType="fhir:Encounter" codeProperty="type" xsi:type="Retrieve">
+                        <codes name="Interactive Outpatient Encounter" xsi:type="ValueSetRef"/>
+                    </expression>
+                </source>
+                <where localId="74" xsi:type="And">
+                    <operand localId="59" xsi:type="In">
+                        <operand localId="51" path="value" xsi:type="Property">
+                            <source localId="50" path="status" scope="DRR" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="58" xsi:type="List">
+                            <element localId="52" valueType="t:String" value="planned" xsi:type="Literal"/>
+                            <element localId="53" valueType="t:String" value="arrived" xsi:type="Literal"/>
+                            <element localId="54" valueType="t:String" value="triaged" xsi:type="Literal"/>
+                            <element localId="55" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                            <element localId="56" valueType="t:String" value="onleave" xsi:type="Literal"/>
+                            <element localId="57" valueType="t:String" value="finished" xsi:type="Literal"/>
+                        </operand>
+                    </operand>
+                    <operand localId="73" xsi:type="IncludedIn">
+                        <operand localId="71" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                            <operand localId="61" path="period" scope="DRR" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="72" name="Intake Period As MP Shifted Back 7 Months" xsi:type="ExpressionRef"/>
+                    </operand>
+                </where>
+            </expression>
+        </def>
+        <def localId="103" name="Initial Population" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="103">
+                    <a:s>define &quot;Initial Population&quot;:
+                    </a:s>
+                    <a:s r="102">
+                        <a:s r="46">
+                            <a:s r="44">
+                                <a:s>AgeInYearsAt(</a:s>
+                                <a:s r="43">
+                                    <a:s>start of </a:s>
+                                    <a:s r="42">
+                                        <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>)</a:s>
+                            </a:s>
+                            <a:s> >= 12</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="101">
+                            <a:s>exists </a:s>
+                            <a:s r="100">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="100">
+                                    <a:s>
+                                        <a:s r="78">
+                                            <a:s r="77">
+                                                <a:s>
+                                                    <a:s>&quot;DRR Encounter&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> DRR</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="99">
+                                        <a:s>with </a:s>
+                                        <a:s r="80">
+                                            <a:s r="79">
+                                                <a:s r="79">
+                                                    <a:s>[DiagnosticReport: </a:s>
+                                                    <a:s>
+                                                        <a:s>&quot;Major Depression and Dysthymia&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>]</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> DepressionDiagnosis</a:s>
+                                        </a:s>
+                                        <a:s>
+                                            such that </a:s>
+                                        <a:s r="98">
+                                            <a:s r="90">
+                                                <a:s r="83">
+                                                    <a:s r="82">
+                                                        <a:s r="81">
+                                                            <a:s>DepressionDiagnosis</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="82">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="83">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="89">
+                                                    <a:s>{ </a:s>
+                                                    <a:s r="84">
+                                                        <a:s>'preliminary'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="85">
+                                                        <a:s>'final'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="86">
+                                                        <a:s>'amended'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="87">
+                                                        <a:s>'corrected'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="88">
+                                                        <a:s>'appended'</a:s>
+                                                    </a:s>
+                                                    <a:s> }</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="97">
+                                                <a:s r="93">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="92">
+                                                        <a:s r="91">
+                                                            <a:s>DepressionDiagnosis</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="92">
+                                                            <a:s>effective</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s> overlaps </a:s>
+                                                <a:s r="96">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="95">
+                                                        <a:s r="94">
+                                                            <a:s>DRR</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="95">
+                                                            <a:s>period</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="102" xsi:type="And">
+                <operand localId="46" xsi:type="GreaterOrEqual">
+                    <operand localId="44" precision="Year" xsi:type="CalculateAgeAt">
+                        <operand path="birthDate.value" xsi:type="Property">
+                            <source name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                        <operand localId="43" xsi:type="Start">
+                            <operand localId="42" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </operand>
+                    </operand>
+                    <operand localId="45" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                </operand>
+                <operand localId="101" xsi:type="Exists">
+                    <operand localId="100" xsi:type="Query">
+                        <source localId="78" alias="DRR">
+                            <expression localId="77" name="DRR Encounter" xsi:type="ExpressionRef"/>
+                        </source>
+                        <relationship localId="99" alias="DepressionDiagnosis" xsi:type="With">
+                            <expression localId="79" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="Major Depression and Dysthymia" xsi:type="ValueSetRef"/>
+                            </expression>
+                            <suchThat localId="98" xsi:type="And">
+                                <operand localId="90" xsi:type="In">
+                                    <operand localId="83" path="value" xsi:type="Property">
+                                        <source localId="82" path="status" scope="DepressionDiagnosis" xsi:type="Property"/>
+                                    </operand>
+                                    <operand localId="89" xsi:type="List">
+                                        <element localId="84" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                                        <element localId="85" valueType="t:String" value="final" xsi:type="Literal"/>
+                                        <element localId="86" valueType="t:String" value="amended" xsi:type="Literal"/>
+                                        <element localId="87" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                                        <element localId="88" valueType="t:String" value="appended" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="97" xsi:type="Overlaps">
+                                    <operand localId="93" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                        <operand asType="fhir:Period" xsi:type="As">
+                                            <operand localId="92" path="effective" scope="DepressionDiagnosis" xsi:type="Property"/>
+                                            <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="96" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                        <operand localId="95" path="period" scope="DRR" xsi:type="Property"/>
+                                    </operand>
+                                </operand>
+                            </suchThat>
+                        </relationship>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="131" name="Denominator Exclusion" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="131">
+                    <a:s>define &quot;Denominator Exclusion&quot;:
+                    </a:s>
+                    <a:s r="130">
+                        <a:s>exists </a:s>
+                        <a:s r="129">
+                            <a:s>(
+                            </a:s>
+                            <a:s r="129">
+                                <a:s>distinct </a:s>
+                                <a:s r="128">
+                                    <a:s>
+                                        <a:s r="111">
+                                            <a:s r="110">
+                                                <a:s>(
+                                                </a:s>
+                                                <a:s r="110">
+                                                    <a:s r="108">
+                                                        <a:s r="106">
+                                                            <a:s r="104">
+                                                                <a:s>[DiagnosticReport: </a:s>
+                                                                <a:s>
+                                                                    <a:s>&quot;Bipolar Disorder&quot;</a:s>
+                                                                </a:s>
+                                                                <a:s>]</a:s>
+                                                            </a:s>
+                                                            <a:s>
+                                                                // TODO: The spec mentions 3 Bipolar valuesets, which are like
+                                                                // the ones in DSF, but it only gives OIDs for one of the 3
+                                                                // and that OID is different than any in DSF.
+                                                                // Note that DMS and DRR are in the same boat.
+                                                                union </a:s>
+                                                            <a:s r="105">
+                                                                <a:s>[DiagnosticReport: </a:s>
+                                                                <a:s>
+                                                                    <a:s>&quot;Personality Disorder&quot;</a:s>
+                                                                </a:s>
+                                                                <a:s>]</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>
+                                                            union </a:s>
+                                                        <a:s r="107">
+                                                            <a:s>[DiagnosticReport: </a:s>
+                                                            <a:s>
+                                                                <a:s>&quot;Psychotic Disorder&quot;</a:s>
+                                                            </a:s>
+                                                            <a:s>]</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>
+                                                        union </a:s>
+                                                    <a:s r="109">
+                                                        <a:s>[DiagnosticReport: </a:s>
+                                                        <a:s>
+                                                            <a:s>&quot;Pervasive Developmental Disorder&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s>]</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>
+                                                    )</a:s>
+                                            </a:s>
+                                            <a:s> D</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="127">
+                                        <a:s>where </a:s>
+                                        <a:s r="127">
+                                            <a:s r="121">
+                                                <a:s r="114">
+                                                    <a:s r="113">
+                                                        <a:s r="112">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="113">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="114">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="120">
+                                                    <a:s>{ </a:s>
+                                                    <a:s r="115">
+                                                        <a:s>'preliminary'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="116">
+                                                        <a:s>'final'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="117">
+                                                        <a:s>'amended'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="118">
+                                                        <a:s>'corrected'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="119">
+                                                        <a:s>'appended'</a:s>
+                                                    </a:s>
+                                                    <a:s> }</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="126">
+                                                <a:s r="124">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="123">
+                                                        <a:s r="122">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="123">
+                                                            <a:s>effective</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s> overlaps </a:s>
+                                                <a:s r="125">
+                                                    <a:s>&quot;Intake Period Union Measurement Period&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                )</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="130" xsi:type="Exists">
+                <operand localId="129" xsi:type="Distinct">
+                    <operand localId="128" xsi:type="Query">
+                        <source localId="111" alias="D">
+                            <expression localId="110" xsi:type="Union">
+                                <operand localId="108" xsi:type="Union">
+                                    <operand localId="106" xsi:type="Union">
+                                        <operand localId="104" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                            <codes name="Bipolar Disorder" xsi:type="ValueSetRef"/>
+                                        </operand>
+                                        <operand localId="105" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                            <codes name="Personality Disorder" xsi:type="ValueSetRef"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="107" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                        <codes name="Psychotic Disorder" xsi:type="ValueSetRef"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="109" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Pervasive Developmental Disorder" xsi:type="ValueSetRef"/>
+                                </operand>
+                            </expression>
+                        </source>
+                        <where localId="127" xsi:type="And">
+                            <operand localId="121" xsi:type="In">
+                                <operand localId="114" path="value" xsi:type="Property">
+                                    <source localId="113" path="status" scope="D" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="120" xsi:type="List">
+                                    <element localId="115" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                                    <element localId="116" valueType="t:String" value="final" xsi:type="Literal"/>
+                                    <element localId="117" valueType="t:String" value="amended" xsi:type="Literal"/>
+                                    <element localId="118" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                                    <element localId="119" valueType="t:String" value="appended" xsi:type="Literal"/>
+                                </operand>
+                            </operand>
+                            <operand localId="126" xsi:type="Overlaps">
+                                <operand localId="124" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand asType="fhir:Period" xsi:type="As">
+                                        <operand localId="123" path="effective" scope="D" xsi:type="Property"/>
+                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="125" name="Intake Period Union Measurement Period" xsi:type="ExpressionRef"/>
+                            </operand>
+                        </where>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="153" name="PHQ-9 Assessments" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="153">
+                    <a:s>define &quot;PHQ-9 Assessments&quot;:
+                    </a:s>
+                    <a:s r="152">
+                        <a:s>distinct </a:s>
+                        <a:s r="151">
+                            <a:s>
+                                <a:s r="139">
+                                    <a:s r="138">
+                                        <a:s>(
+                                        </a:s>
+                                        <a:s r="138">
+                                            <a:s r="136">
+                                                <a:s>[Observation: </a:s>
+                                                <a:s>
+                                                    <a:s>&quot;PHQ-9 Tool&quot;</a:s>
+                                                </a:s>
+                                                <a:s>]</a:s>
+                                            </a:s>
+                                            <a:s>
+                                                union
+                                            </a:s>
+                                            <a:s r="137">
+                                                <a:s>[Observation: </a:s>
+                                                <a:s>
+                                                    <a:s>&quot;PHQ-9 Modified Score&quot;</a:s>
+                                                </a:s>
+                                                <a:s>]</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                            )</a:s>
+                                    </a:s>
+                                    <a:s> PHQ</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                            </a:s>
+                            <a:s r="150">
+                                <a:s>where </a:s>
+                                <a:s r="150">
+                                    <a:s r="146">
+                                        <a:s r="142">
+                                            <a:s r="141">
+                                                <a:s r="140">
+                                                    <a:s>PHQ</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="141">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="142">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="145">
+                                            <a:s>{ </a:s>
+                                            <a:s r="143">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="144">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="149">
+                                        <a:s r="148">
+                                            <a:s r="147">
+                                                <a:s>PHQ</a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="148">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> is not null</a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="152" xsi:type="Distinct">
+                <operand localId="151" xsi:type="Query">
+                    <source localId="139" alias="PHQ">
+                        <expression localId="138" xsi:type="Union">
+                            <operand localId="136" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="PHQ-9 Tool" xsi:type="CodeRef"/>
+                            </operand>
+                            <operand localId="137" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="PHQ-9 Modified Score" xsi:type="CodeRef"/>
+                            </operand>
+                        </expression>
+                    </source>
+                    <where localId="150" xsi:type="And">
+                        <operand localId="146" xsi:type="In">
+                            <operand localId="142" path="value" xsi:type="Property">
+                                <source localId="141" path="status" scope="PHQ" xsi:type="Property"/>
+                            </operand>
+                            <operand localId="145" xsi:type="List">
+                                <element localId="143" valueType="t:String" value="final" xsi:type="Literal"/>
+                                <element localId="144" valueType="t:String" value="amended" xsi:type="Literal"/>
+                            </operand>
+                        </operand>
+                        <operand localId="149" xsi:type="Not">
+                            <operand xsi:type="IsNull">
+                                <operand localId="148" path="value" scope="PHQ" xsi:type="Property"/>
+                            </operand>
+                        </operand>
+                    </where>
+                </operand>
+            </expression>
+        </def>
+        <def localId="211" name="Depression Index" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="211">
+                    <a:s>define &quot;Depression Index&quot;:
+                    </a:s>
+                    <a:s r="210">
+                        <a:s>First (
+                        </a:s>
+                        <a:s r="209">
+                            <a:s>
+                                <a:s r="155">
+                                    <a:s r="154">
+                                        <a:s>
+                                            <a:s>&quot;PHQ-9 Assessments&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> PHQ</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                            </a:s>
+                            <a:s r="206">
+                                <a:s>with </a:s>
+                                <a:s r="157">
+                                    <a:s r="156">
+                                        <a:s>
+                                            <a:s>&quot;DRR Encounter&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> DRR</a:s>
+                                </a:s>
+                                <a:s>
+                                    such that </a:s>
+                                <a:s r="205">
+                                    <a:s r="165">
+                                        <a:s r="163">
+                                            <a:s r="162">
+                                                <a:s r="161">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="161">
+                                                        <a:s r="159">
+                                                            <a:s r="158">
+                                                                <a:s>PHQ</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="159">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> as </a:s>
+                                                        <a:s r="160">
+                                                            <a:s>Quantity</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="162">
+                                                    <a:s>value</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="163">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> > 9</a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="204">
+                                        <a:s>(</a:s>
+                                        <a:s r="204">
+                                            <a:s r="184">
+                                                <a:s>(</a:s>
+                                                <a:s r="184">
+                                                    <a:s r="173">
+                                                        <a:s r="168">
+                                                            <a:s r="167">
+                                                                <a:s r="166">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="167">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="168">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> same day or before </a:s>
+                                                        <a:s r="172">
+                                                            <a:s>start of </a:s>
+                                                            <a:s r="171">
+                                                                <a:s>PeriodToIntervalOfDT(</a:s>
+                                                                <a:s r="170">
+                                                                    <a:s r="169">
+                                                                        <a:s>DRR</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="170">
+                                                                        <a:s>period</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>)</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>
+                                                        and </a:s>
+                                                    <a:s r="183">
+                                                        <a:s r="181">
+                                                            <a:s>days between </a:s>
+                                                            <a:s r="176">
+                                                                <a:s r="175">
+                                                                    <a:s r="174">
+                                                                        <a:s>PHQ</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="175">
+                                                                        <a:s>effective</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="176">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> and </a:s>
+                                                            <a:s r="180">
+                                                                <a:s>start of </a:s>
+                                                                <a:s r="179">
+                                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                                    <a:s r="178">
+                                                                        <a:s r="177">
+                                                                            <a:s>DRR</a:s>
+                                                                        </a:s>
+                                                                        <a:s>.</a:s>
+                                                                        <a:s r="178">
+                                                                            <a:s>period</a:s>
+                                                                        </a:s>
+                                                                    </a:s>
+                                                                    <a:s>)</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> &lt;= 15</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>)</a:s>
+                                            </a:s>
+                                            <a:s>
+                                                or </a:s>
+                                            <a:s r="203">
+                                                <a:s>(</a:s>
+                                                <a:s r="203">
+                                                    <a:s r="192">
+                                                        <a:s r="187">
+                                                            <a:s r="186">
+                                                                <a:s r="185">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="186">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="187">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> same day or after </a:s>
+                                                        <a:s r="191">
+                                                            <a:s>start of </a:s>
+                                                            <a:s r="190">
+                                                                <a:s>PeriodToIntervalOfDT(</a:s>
+                                                                <a:s r="189">
+                                                                    <a:s r="188">
+                                                                        <a:s>DRR</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="189">
+                                                                        <a:s>period</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>)</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>
+                                                        and </a:s>
+                                                    <a:s r="202">
+                                                        <a:s r="200">
+                                                            <a:s>days between </a:s>
+                                                            <a:s r="196">
+                                                                <a:s>start of </a:s>
+                                                                <a:s r="195">
+                                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                                    <a:s r="194">
+                                                                        <a:s r="193">
+                                                                            <a:s>DRR</a:s>
+                                                                        </a:s>
+                                                                        <a:s>.</a:s>
+                                                                        <a:s r="194">
+                                                                            <a:s>period</a:s>
+                                                                        </a:s>
+                                                                    </a:s>
+                                                                    <a:s>)</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> and </a:s>
+                                                            <a:s r="199">
+                                                                <a:s r="198">
+                                                                    <a:s r="197">
+                                                                        <a:s>PHQ</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="198">
+                                                                        <a:s>effective</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="199">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> &lt;= 15</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>)</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>)</a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                            </a:s>
+                            <a:s r="208">
+                                <a:s>return </a:s>
+                                <a:s r="207">
+                                    <a:s>PHQ</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                            )</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="210" xsi:type="First">
+                <source localId="209" xsi:type="Query">
+                    <source localId="155" alias="PHQ">
+                        <expression localId="154" name="PHQ-9 Assessments" xsi:type="ExpressionRef"/>
+                    </source>
+                    <relationship localId="206" alias="DRR" xsi:type="With">
+                        <expression localId="156" name="DRR Encounter" xsi:type="ExpressionRef"/>
+                        <suchThat localId="205" xsi:type="And">
+                            <operand localId="165" xsi:type="Greater">
+                                <operand localId="163" path="value" xsi:type="Property">
+                                    <source localId="162" path="value" xsi:type="Property">
+                                        <source localId="161" strict="false" xsi:type="As">
+                                            <operand localId="159" path="value" scope="PHQ" xsi:type="Property"/>
+                                            <asTypeSpecifier localId="160" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                        </source>
+                                    </source>
+                                </operand>
+                                <operand xsi:type="ToDecimal">
+                                    <operand localId="164" valueType="t:Integer" value="9" xsi:type="Literal"/>
+                                </operand>
+                            </operand>
+                            <operand localId="204" xsi:type="Or">
+                                <operand localId="184" xsi:type="And">
+                                    <operand localId="173" precision="Day" xsi:type="SameOrBefore">
+                                        <operand localId="168" path="value" xsi:type="Property">
+                                            <source localId="167" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="172" xsi:type="Start">
+                                            <operand localId="171" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                                <operand localId="170" path="period" scope="DRR" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="183" xsi:type="LessOrEqual">
+                                        <operand localId="181" precision="Day" xsi:type="DurationBetween">
+                                            <operand localId="176" path="value" xsi:type="Property">
+                                                <source localId="175" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="180" xsi:type="Start">
+                                                <operand localId="179" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                                    <operand localId="178" path="period" scope="DRR" xsi:type="Property"/>
+                                                </operand>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="182" valueType="t:Integer" value="15" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="203" xsi:type="And">
+                                    <operand localId="192" precision="Day" xsi:type="SameOrAfter">
+                                        <operand localId="187" path="value" xsi:type="Property">
+                                            <source localId="186" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="191" xsi:type="Start">
+                                            <operand localId="190" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                                <operand localId="189" path="period" scope="DRR" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="202" xsi:type="LessOrEqual">
+                                        <operand localId="200" precision="Day" xsi:type="DurationBetween">
+                                            <operand localId="196" xsi:type="Start">
+                                                <operand localId="195" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                                    <operand localId="194" path="period" scope="DRR" xsi:type="Property"/>
+                                                </operand>
+                                            </operand>
+                                            <operand localId="199" path="value" xsi:type="Property">
+                                                <source localId="198" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="201" valueType="t:Integer" value="15" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                            </operand>
+                        </suchThat>
+                    </relationship>
+                    <return localId="208">
+                        <expression localId="207" name="PHQ" xsi:type="AliasRef"/>
+                    </return>
+                </source>
+            </expression>
+        </def>
+        <def localId="215" name="Denominator 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="215">
+                    <a:s>define &quot;Denominator 1&quot;:
+                    </a:s>
+                    <a:s r="214">
+                        <a:s r="135">
+                            <a:s r="132">
+                                <a:s>&quot;Initial Population&quot;</a:s>
+                            </a:s>
+                            <a:s>
+                                and </a:s>
+                            <a:s r="134">
+                                <a:s>exists </a:s>
+                                <a:s r="133">
+                                    <a:s>(</a:s>
+                                    <a:s r="133">
+                                        <a:s>&quot;DRR Encounter&quot;</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                            and </a:s>
+                        <a:s r="213">
+                            <a:s r="212">
+                                <a:s>&quot;Depression Index&quot;</a:s>
+                            </a:s>
+                            <a:s> is not null</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="214" xsi:type="And">
+                <operand localId="135" xsi:type="And">
+                    <operand localId="132" name="Initial Population" xsi:type="ExpressionRef"/>
+                    <operand localId="134" xsi:type="Exists">
+                        <operand localId="133" name="DRR Encounter" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="213" xsi:type="Not">
+                    <operand xsi:type="IsNull">
+                        <operand localId="212" name="Depression Index" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="254" name="Numerator 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="254">
+                    <a:s>define &quot;Numerator 1&quot;:
+                    </a:s>
+                    <a:s r="253">
+                        <a:s r="216">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="252">
+                            <a:s>exists </a:s>
+                            <a:s r="251">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="251">
+                                    <a:s>
+                                        <a:s r="218">
+                                            <a:s r="217">
+                                                <a:s>
+                                                    <a:s>&quot;PHQ-9 Assessments&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="248">
+                                        <a:s>with </a:s>
+                                        <a:s r="220">
+                                            <a:s r="219">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Index&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> DI</a:s>
+                                        </a:s>
+                                        <a:s>
+                                            such that </a:s>
+                                        <a:s r="247">
+                                            <a:s r="237">
+                                                <a:s r="227">
+                                                    <a:s r="223">
+                                                        <a:s r="222">
+                                                            <a:s r="221">
+                                                                <a:s>PHQ</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="222">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="223">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> after day of </a:s>
+                                                    <a:s r="226">
+                                                        <a:s r="225">
+                                                            <a:s r="224">
+                                                                <a:s>DI</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="225">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="226">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>
+                                                    and </a:s>
+                                                <a:s r="236">
+                                                    <a:s r="234">
+                                                        <a:s>days between </a:s>
+                                                        <a:s r="230">
+                                                            <a:s r="229">
+                                                                <a:s r="228">
+                                                                    <a:s>DI</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="229">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="230">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> and </a:s>
+                                                        <a:s r="233">
+                                                            <a:s r="232">
+                                                                <a:s r="231">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="232">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="233">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> >= 150</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="246">
+                                                <a:s r="244">
+                                                    <a:s>days between </a:s>
+                                                    <a:s r="240">
+                                                        <a:s r="239">
+                                                            <a:s r="238">
+                                                                <a:s>DI</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="239">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="240">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> and </a:s>
+                                                    <a:s r="243">
+                                                        <a:s r="242">
+                                                            <a:s r="241">
+                                                                <a:s>PHQ</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="242">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="243">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> &lt;= 210</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="250">
+                                        <a:s>return </a:s>
+                                        <a:s r="249">
+                                            <a:s>PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="253" xsi:type="And">
+                <operand localId="216" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="252" xsi:type="Exists">
+                    <operand localId="251" xsi:type="Query">
+                        <source localId="218" alias="PHQ">
+                            <expression localId="217" name="PHQ-9 Assessments" xsi:type="ExpressionRef"/>
+                        </source>
+                        <relationship localId="248" alias="DI" xsi:type="With">
+                            <expression localId="219" name="Depression Index" xsi:type="ExpressionRef"/>
+                            <suchThat localId="247" xsi:type="And">
+                                <operand localId="237" xsi:type="And">
+                                    <operand localId="227" precision="Day" xsi:type="After">
+                                        <operand localId="223" path="value" xsi:type="Property">
+                                            <source localId="222" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="226" path="value" xsi:type="Property">
+                                            <source localId="225" path="effective" scope="DI" xsi:type="Property"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="236" xsi:type="GreaterOrEqual">
+                                        <operand localId="234" precision="Day" xsi:type="DurationBetween">
+                                            <operand localId="230" path="value" xsi:type="Property">
+                                                <source localId="229" path="effective" scope="DI" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="233" path="value" xsi:type="Property">
+                                                <source localId="232" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="235" valueType="t:Integer" value="150" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="246" xsi:type="LessOrEqual">
+                                    <operand localId="244" precision="Day" xsi:type="DurationBetween">
+                                        <operand localId="240" path="value" xsi:type="Property">
+                                            <source localId="239" path="effective" scope="DI" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="243" path="value" xsi:type="Property">
+                                            <source localId="242" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="245" valueType="t:Integer" value="210" xsi:type="Literal"/>
+                                </operand>
+                            </suchThat>
+                        </relationship>
+                        <return localId="250">
+                            <expression localId="249" name="PHQ" xsi:type="AliasRef"/>
+                        </return>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="256" name="Denominator 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="256">
+                    <a:s>define &quot;Denominator 2&quot;:
+                    </a:s>
+                    <a:s r="255">
+                        <a:s>&quot;Denominator 1&quot;</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="255" name="Denominator 1" xsi:type="ExpressionRef"/>
+        </def>
+        <def localId="304" name="Numerator 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="304">
+                    <a:s>define &quot;Numerator 2&quot;:
+                    </a:s>
+                    <a:s r="303">
+                        <a:s r="257">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="302">
+                            <a:s>exists </a:s>
+                            <a:s r="301">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="301">
+                                    <a:s>
+                                        <a:s r="259">
+                                            <a:s r="258">
+                                                <a:s>
+                                                    <a:s>&quot;PHQ-9 Assessments&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="298">
+                                        <a:s>with </a:s>
+                                        <a:s r="261">
+                                            <a:s r="260">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Index&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> DI</a:s>
+                                        </a:s>
+                                        <a:s>
+                                            such that </a:s>
+                                        <a:s r="297">
+                                            <a:s r="287">
+                                                <a:s r="277">
+                                                    <a:s r="269">
+                                                        <a:s r="267">
+                                                            <a:s r="266">
+                                                                <a:s r="265">
+                                                                    <a:s>(</a:s>
+                                                                    <a:s r="265">
+                                                                        <a:s r="263">
+                                                                            <a:s r="262">
+                                                                                <a:s>PHQ</a:s>
+                                                                            </a:s>
+                                                                            <a:s>.</a:s>
+                                                                            <a:s r="263">
+                                                                                <a:s>value</a:s>
+                                                                            </a:s>
+                                                                        </a:s>
+                                                                        <a:s> as </a:s>
+                                                                        <a:s r="264">
+                                                                            <a:s>Quantity</a:s>
+                                                                        </a:s>
+                                                                    </a:s>
+                                                                    <a:s>)</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="266">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="267">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> &lt; 5</a:s>
+                                                    </a:s>
+                                                    <a:s>
+                                                        and </a:s>
+                                                    <a:s r="276">
+                                                        <a:s r="272">
+                                                            <a:s r="271">
+                                                                <a:s r="270">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="271">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="272">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> after day of </a:s>
+                                                        <a:s r="275">
+                                                            <a:s r="274">
+                                                                <a:s r="273">
+                                                                    <a:s>DI</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="274">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="275">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>
+                                                    and </a:s>
+                                                <a:s r="286">
+                                                    <a:s r="284">
+                                                        <a:s>days between </a:s>
+                                                        <a:s r="280">
+                                                            <a:s r="279">
+                                                                <a:s r="278">
+                                                                    <a:s>DI</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="279">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="280">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> and </a:s>
+                                                        <a:s r="283">
+                                                            <a:s r="282">
+                                                                <a:s r="281">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="282">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="283">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> >= 150</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="296">
+                                                <a:s r="294">
+                                                    <a:s>days between </a:s>
+                                                    <a:s r="290">
+                                                        <a:s r="289">
+                                                            <a:s r="288">
+                                                                <a:s>DI</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="289">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="290">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> and </a:s>
+                                                    <a:s r="293">
+                                                        <a:s r="292">
+                                                            <a:s r="291">
+                                                                <a:s>PHQ</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="292">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="293">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> &lt;= 210</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="300">
+                                        <a:s>return </a:s>
+                                        <a:s r="299">
+                                            <a:s>PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="303" xsi:type="And">
+                <operand localId="257" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="302" xsi:type="Exists">
+                    <operand localId="301" xsi:type="Query">
+                        <source localId="259" alias="PHQ">
+                            <expression localId="258" name="PHQ-9 Assessments" xsi:type="ExpressionRef"/>
+                        </source>
+                        <relationship localId="298" alias="DI" xsi:type="With">
+                            <expression localId="260" name="Depression Index" xsi:type="ExpressionRef"/>
+                            <suchThat localId="297" xsi:type="And">
+                                <operand localId="287" xsi:type="And">
+                                    <operand localId="277" xsi:type="And">
+                                        <operand localId="269" xsi:type="Less">
+                                            <operand localId="267" path="value" xsi:type="Property">
+                                                <source localId="266" path="value" xsi:type="Property">
+                                                    <source localId="265" strict="false" xsi:type="As">
+                                                        <operand localId="263" path="value" scope="PHQ" xsi:type="Property"/>
+                                                        <asTypeSpecifier localId="264" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                                    </source>
+                                                </source>
+                                            </operand>
+                                            <operand xsi:type="ToDecimal">
+                                                <operand localId="268" valueType="t:Integer" value="5" xsi:type="Literal"/>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="276" precision="Day" xsi:type="After">
+                                            <operand localId="272" path="value" xsi:type="Property">
+                                                <source localId="271" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="275" path="value" xsi:type="Property">
+                                                <source localId="274" path="effective" scope="DI" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="286" xsi:type="GreaterOrEqual">
+                                        <operand localId="284" precision="Day" xsi:type="DurationBetween">
+                                            <operand localId="280" path="value" xsi:type="Property">
+                                                <source localId="279" path="effective" scope="DI" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="283" path="value" xsi:type="Property">
+                                                <source localId="282" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="285" valueType="t:Integer" value="150" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="296" xsi:type="LessOrEqual">
+                                    <operand localId="294" precision="Day" xsi:type="DurationBetween">
+                                        <operand localId="290" path="value" xsi:type="Property">
+                                            <source localId="289" path="effective" scope="DI" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="293" path="value" xsi:type="Property">
+                                            <source localId="292" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="295" valueType="t:Integer" value="210" xsi:type="Literal"/>
+                                </operand>
+                            </suchThat>
+                        </relationship>
+                        <return localId="300">
+                            <expression localId="299" name="PHQ" xsi:type="AliasRef"/>
+                        </return>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="306" name="Denominator 3" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="306">
+                    <a:s>define &quot;Denominator 3&quot;:
+                    </a:s>
+                    <a:s r="305">
+                        <a:s>&quot;Denominator 1&quot;</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="305" name="Denominator 1" xsi:type="ExpressionRef"/>
+        </def>
+        <def localId="361" name="Numerator 3" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="361">
+                    <a:s>define &quot;Numerator 3&quot;:
+                    </a:s>
+                    <a:s r="360">
+                        <a:s r="307">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="359">
+                            <a:s>exists </a:s>
+                            <a:s r="358">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="358">
+                                    <a:s>
+                                        <a:s r="309">
+                                            <a:s r="308">
+                                                <a:s>
+                                                    <a:s>&quot;PHQ-9 Assessments&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="355">
+                                        <a:s>with </a:s>
+                                        <a:s r="311">
+                                            <a:s r="310">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Index&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> DI</a:s>
+                                        </a:s>
+                                        <a:s>
+                                            such that </a:s>
+                                        <a:s r="354">
+                                            <a:s r="344">
+                                                <a:s r="334">
+                                                    <a:s r="326">
+                                                        <a:s r="317">
+                                                            <a:s r="316">
+                                                                <a:s r="315">
+                                                                    <a:s>(</a:s>
+                                                                    <a:s r="315">
+                                                                        <a:s r="313">
+                                                                            <a:s r="312">
+                                                                                <a:s>PHQ</a:s>
+                                                                            </a:s>
+                                                                            <a:s>.</a:s>
+                                                                            <a:s r="313">
+                                                                                <a:s>value</a:s>
+                                                                            </a:s>
+                                                                        </a:s>
+                                                                        <a:s> as </a:s>
+                                                                        <a:s r="314">
+                                                                            <a:s>Quantity</a:s>
+                                                                        </a:s>
+                                                                    </a:s>
+                                                                    <a:s>)</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="316">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="317">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> &lt;= </a:s>
+                                                        <a:s r="325">
+                                                            <a:s r="323">
+                                                                <a:s r="322">
+                                                                    <a:s r="321">
+                                                                        <a:s>(</a:s>
+                                                                        <a:s r="321">
+                                                                            <a:s r="319">
+                                                                                <a:s r="318">
+                                                                                    <a:s>DI</a:s>
+                                                                                </a:s>
+                                                                                <a:s>.</a:s>
+                                                                                <a:s r="319">
+                                                                                    <a:s>value</a:s>
+                                                                                </a:s>
+                                                                            </a:s>
+                                                                            <a:s> as </a:s>
+                                                                            <a:s r="320">
+                                                                                <a:s>Quantity</a:s>
+                                                                            </a:s>
+                                                                        </a:s>
+                                                                        <a:s>)</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="322">
+                                                                        <a:s>value</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="323">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> / 2</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>
+                                                        and </a:s>
+                                                    <a:s r="333">
+                                                        <a:s r="329">
+                                                            <a:s r="328">
+                                                                <a:s r="327">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="328">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="329">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> after day of </a:s>
+                                                        <a:s r="332">
+                                                            <a:s r="331">
+                                                                <a:s r="330">
+                                                                    <a:s>DI</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="331">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="332">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>
+                                                    and </a:s>
+                                                <a:s r="343">
+                                                    <a:s r="341">
+                                                        <a:s>days between </a:s>
+                                                        <a:s r="337">
+                                                            <a:s r="336">
+                                                                <a:s r="335">
+                                                                    <a:s>DI</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="336">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="337">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s> and </a:s>
+                                                        <a:s r="340">
+                                                            <a:s r="339">
+                                                                <a:s r="338">
+                                                                    <a:s>PHQ</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="339">
+                                                                    <a:s>effective</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="340">
+                                                                <a:s>value</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> >= 150</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="353">
+                                                <a:s r="351">
+                                                    <a:s>days between </a:s>
+                                                    <a:s r="347">
+                                                        <a:s r="346">
+                                                            <a:s r="345">
+                                                                <a:s>DI</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="346">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="347">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s> and </a:s>
+                                                    <a:s r="350">
+                                                        <a:s r="349">
+                                                            <a:s r="348">
+                                                                <a:s>PHQ</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="349">
+                                                                <a:s>effective</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="350">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> &lt;= 210</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="357">
+                                        <a:s>return </a:s>
+                                        <a:s r="356">
+                                            <a:s>PHQ</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="360" xsi:type="And">
+                <operand localId="307" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="359" xsi:type="Exists">
+                    <operand localId="358" xsi:type="Query">
+                        <source localId="309" alias="PHQ">
+                            <expression localId="308" name="PHQ-9 Assessments" xsi:type="ExpressionRef"/>
+                        </source>
+                        <relationship localId="355" alias="DI" xsi:type="With">
+                            <expression localId="310" name="Depression Index" xsi:type="ExpressionRef"/>
+                            <suchThat localId="354" xsi:type="And">
+                                <operand localId="344" xsi:type="And">
+                                    <operand localId="334" xsi:type="And">
+                                        <operand localId="326" xsi:type="LessOrEqual">
+                                            <operand localId="317" path="value" xsi:type="Property">
+                                                <source localId="316" path="value" xsi:type="Property">
+                                                    <source localId="315" strict="false" xsi:type="As">
+                                                        <operand localId="313" path="value" scope="PHQ" xsi:type="Property"/>
+                                                        <asTypeSpecifier localId="314" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                                    </source>
+                                                </source>
+                                            </operand>
+                                            <operand localId="325" xsi:type="Divide">
+                                                <operand localId="323" path="value" xsi:type="Property">
+                                                    <source localId="322" path="value" xsi:type="Property">
+                                                        <source localId="321" strict="false" xsi:type="As">
+                                                            <operand localId="319" path="value" scope="DI" xsi:type="Property"/>
+                                                            <asTypeSpecifier localId="320" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                                        </source>
+                                                    </source>
+                                                </operand>
+                                                <operand xsi:type="ToDecimal">
+                                                    <operand localId="324" valueType="t:Integer" value="2" xsi:type="Literal"/>
+                                                </operand>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="333" precision="Day" xsi:type="After">
+                                            <operand localId="329" path="value" xsi:type="Property">
+                                                <source localId="328" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="332" path="value" xsi:type="Property">
+                                                <source localId="331" path="effective" scope="DI" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="343" xsi:type="GreaterOrEqual">
+                                        <operand localId="341" precision="Day" xsi:type="DurationBetween">
+                                            <operand localId="337" path="value" xsi:type="Property">
+                                                <source localId="336" path="effective" scope="DI" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="340" path="value" xsi:type="Property">
+                                                <source localId="339" path="effective" scope="PHQ" xsi:type="Property"/>
+                                            </operand>
+                                        </operand>
+                                        <operand localId="342" valueType="t:Integer" value="150" xsi:type="Literal"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="353" xsi:type="LessOrEqual">
+                                    <operand localId="351" precision="Day" xsi:type="DurationBetween">
+                                        <operand localId="347" path="value" xsi:type="Property">
+                                            <source localId="346" path="effective" scope="DI" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="350" path="value" xsi:type="Property">
+                                            <source localId="349" path="effective" scope="PHQ" xsi:type="Property"/>
+                                        </operand>
+                                    </operand>
+                                    <operand localId="352" valueType="t:Integer" value="210" xsi:type="Literal"/>
+                                </operand>
+                            </suchThat>
+                        </relationship>
+                        <return localId="357">
+                            <expression localId="356" name="PHQ" xsi:type="AliasRef"/>
+                        </return>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="369" name="Stratifier 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="369">
+                    <a:s>define &quot;Stratifier 1&quot;:
+                    </a:s>
+                    <a:s r="368">
+                        <a:s r="364">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="363">
+                                <a:s>start of </a:s>
+                                <a:s r="362">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="367">
+                            <a:s>Interval[12, 17]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="368" xsi:type="In">
+                <operand localId="364" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="363" xsi:type="Start">
+                        <operand localId="362" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                </operand>
+                <operand localId="367" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="365" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                    <high localId="366" valueType="t:Integer" value="17" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="377" name="Stratifier 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="377">
+                    <a:s>define &quot;Stratifier 2&quot;:
+                    </a:s>
+                    <a:s r="376">
+                        <a:s r="372">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="371">
+                                <a:s>start of </a:s>
+                                <a:s r="370">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="375">
+                            <a:s>Interval[18, 44]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="376" xsi:type="In">
+                <operand localId="372" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="371" xsi:type="Start">
+                        <operand localId="370" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                </operand>
+                <operand localId="375" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="373" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                    <high localId="374" valueType="t:Integer" value="44" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="385" name="Stratifier 3" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="385">
+                    <a:s>define &quot;Stratifier 3&quot;:
+                    </a:s>
+                    <a:s r="384">
+                        <a:s r="380">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="379">
+                                <a:s>start of </a:s>
+                                <a:s r="378">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="383">
+                            <a:s>Interval[45, 64]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="384" xsi:type="In">
+                <operand localId="380" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="379" xsi:type="Start">
+                        <operand localId="378" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                </operand>
+                <operand localId="383" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="381" valueType="t:Integer" value="45" xsi:type="Literal"/>
+                    <high localId="382" valueType="t:Integer" value="64" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="391" name="Stratifier 4" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="391">
+                    <a:s>define &quot;Stratifier 4&quot;:
+                    </a:s>
+                    <a:s r="390">
+                        <a:s r="388">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="387">
+                                <a:s>start of </a:s>
+                                <a:s r="386">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 65</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="390" xsi:type="GreaterOrEqual">
+                <operand localId="388" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="387" xsi:type="Start">
+                        <operand localId="386" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                </operand>
+                <operand localId="389" valueType="t:Integer" value="65" xsi:type="Literal"/>
+            </expression>
+        </def>
+    </statements>
+</library>

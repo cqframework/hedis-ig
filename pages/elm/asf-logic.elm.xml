@@ -1,0 +1,2441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+    <identifier id="ASF_FHIR" version="1.0.0"/>
+    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+    <usings>
+        <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+        <def localId="1" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+    </usings>
+    <parameters>
+        <def localId="19" name="Measurement Period" accessLevel="Public">
+            <parameterTypeSpecifier localId="18" xsi:type="IntervalTypeSpecifier">
+                <pointType localId="17" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </parameterTypeSpecifier>
+        </def>
+    </parameters>
+    <codeSystems>
+        <def localId="2" name="LOINC" id="http://loinc.org" accessLevel="Public"/>
+        <def localId="3" name="CQFramework" id="http://cqframework.info/codesystem/placeholder" accessLevel="Public"/>
+    </codeSystems>
+    <valueSets>
+        <def localId="4" name="Alcohol Counseling and Treatment" id="2.16.840.1.113883.3.464.1004.1437" accessLevel="Public"/>
+        <def localId="5" name="Alcohol Screening" id="2.16.840.1.113883.3.464.1004.1337" accessLevel="Public"/>
+        <def localId="6" name="Alcohol use disorder" id="2.16.840.1.113883.3.464.1004.1339" accessLevel="Public"/>
+        <def localId="7" name="Dementia" id="2.16.840.1.113883.3.464.1004.1074" accessLevel="Public"/>
+        <def localId="8" name="Hospice" id="2.16.840.1.113883.3.464.1004.1418" accessLevel="Public"/>
+    </valueSets>
+    <codes>
+        <def localId="10" name="Five or more drinks per day" id="00005" accessLevel="Public">
+            <codeSystem localId="9" name="CQFramework"/>
+        </def>
+        <def localId="12" name="Four or more drinks per day" id="00004" accessLevel="Public">
+            <codeSystem localId="11" name="CQFramework"/>
+        </def>
+        <def localId="14" name="AUDIT Total Score (in points)" id="75624-7" accessLevel="Public">
+            <codeSystem localId="13" name="LOINC"/>
+        </def>
+        <def localId="16" name="AUDIT-C Total Score (in points)" id="75626-2" accessLevel="Public">
+            <codeSystem localId="15" name="LOINC"/>
+        </def>
+    </codes>
+    <statements>
+        <def localId="27" name="Fourteen Month Measurement Period" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="27">
+                    <a:s>define &quot;Fourteen Month Measurement Period&quot;:
+                    </a:s>
+                    <a:s r="26">
+                        <a:s>Interval[</a:s>
+                        <a:s r="23">
+                            <a:s r="21">
+                                <a:s>start of </a:s>
+                                <a:s r="20">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="22">
+                                <a:s>2 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="25">
+                            <a:s>end of </a:s>
+                            <a:s r="24">
+                                <a:s>&quot;Measurement Period&quot;</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="26" lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low localId="23" xsi:type="Subtract">
+                    <operand localId="21" xsi:type="Start">
+                        <operand localId="20" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="22" value="2" unit="months" xsi:type="Quantity"/>
+                </low>
+                <high localId="25" xsi:type="End">
+                    <operand localId="24" name="Measurement Period" xsi:type="ParameterRef"/>
+                </high>
+            </expression>
+        </def>
+        <def localId="37" name="Intake Period" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="37">
+                    <a:s>define &quot;Intake Period&quot;:
+                    </a:s>
+                    <a:s r="36">
+                        <a:s>Interval[</a:s>
+                        <a:s r="31">
+                            <a:s r="29">
+                                <a:s>start of </a:s>
+                                <a:s r="28">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="30">
+                                <a:s>2 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="35">
+                            <a:s r="33">
+                                <a:s>end of </a:s>
+                                <a:s r="32">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="34">
+                                <a:s>2 months</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="36" lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low localId="31" xsi:type="Subtract">
+                    <operand localId="29" xsi:type="Start">
+                        <operand localId="28" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="30" value="2" unit="months" xsi:type="Quantity"/>
+                </low>
+                <high localId="35" xsi:type="Subtract">
+                    <operand localId="33" xsi:type="End">
+                        <operand localId="32" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="34" value="2" unit="months" xsi:type="Quantity"/>
+                </high>
+            </expression>
+        </def>
+        <def localId="45" name="Lookback Interval Total Two Years" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="45">
+                    <a:s>define &quot;Lookback Interval Total Two Years&quot;:
+                    </a:s>
+                    <a:s r="44">
+                        <a:s>Interval[</a:s>
+                        <a:s r="41">
+                            <a:s r="39">
+                                <a:s>start of </a:s>
+                                <a:s r="38">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s> - </a:s>
+                            <a:s r="40">
+                                <a:s>1 year</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="43">
+                            <a:s>end of </a:s>
+                            <a:s r="42">
+                                <a:s>&quot;Measurement Period&quot;</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="44" lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low localId="41" xsi:type="Subtract">
+                    <operand localId="39" xsi:type="Start">
+                        <operand localId="38" name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                    <operand localId="40" value="1" unit="year" xsi:type="Quantity"/>
+                </low>
+                <high localId="43" xsi:type="End">
+                    <operand localId="42" name="Measurement Period" xsi:type="ParameterRef"/>
+                </high>
+            </expression>
+        </def>
+        <def name="Patient" context="Patient">
+            <expression xsi:type="SingletonFrom">
+                <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+            </expression>
+        </def>
+        <def localId="51" name="Initial Population" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="51">
+                    <a:s>define &quot;Initial Population&quot;:
+                    </a:s>
+                    <a:s r="50">
+                        <a:s r="48">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="47">
+                                <a:s>start of </a:s>
+                                <a:s r="46">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 18</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="50" xsi:type="GreaterOrEqual">
+                <operand localId="48" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="47" xsi:type="Start">
+                        <operand localId="46" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="49" valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </expression>
+        </def>
+        <def localId="74" name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="74">
+                    <a:s>define function PeriodToIntervalOfDT(value </a:s>
+                    <a:s r="66">
+                        <a:s>FHIR.Period</a:s>
+                    </a:s>
+                    <a:s>):
+                    </a:s>
+                    <a:s r="73">
+                        <a:s r="73">
+                            <a:s>Interval[</a:s>
+                            <a:s r="69">
+                                <a:s r="68">
+                                    <a:s r="67">
+                                        <a:s>value</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="68">
+                                        <a:s>&quot;start&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="69">
+                                    <a:s>value</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>, </a:s>
+                            <a:s r="72">
+                                <a:s r="71">
+                                    <a:s r="70">
+                                        <a:s>value</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="71">
+                                        <a:s>&quot;end&quot;</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="72">
+                                    <a:s>value</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="73" lowClosed="true" highClosed="true" xsi:type="Interval">
+                <low localId="69" path="value" xsi:type="Property">
+                    <source localId="68" path="start" xsi:type="Property">
+                        <source localId="67" name="value" xsi:type="OperandRef"/>
+                    </source>
+                </low>
+                <high localId="72" path="value" xsi:type="Property">
+                    <source localId="71" path="end" xsi:type="Property">
+                        <source localId="70" name="value" xsi:type="OperandRef"/>
+                    </source>
+                </high>
+            </expression>
+            <operand name="value">
+                <operandTypeSpecifier localId="66" name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+            </operand>
+        </def>
+        <def localId="102" name="Denominator Exclusion" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="102">
+                    <a:s>define &quot;Denominator Exclusion&quot;:
+                    </a:s>
+                    <a:s r="101">
+                        <a:s r="80">
+                            <a:s>exists </a:s>
+                            <a:s r="79">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="79">
+                                    <a:s>
+                                        <a:s r="53">
+                                            <a:s r="52">
+                                                <a:s r="52">
+                                                    <a:s>[DiagnosticReport: </a:s>
+                                                    <a:s>
+                                                        <a:s>&quot;Alcohol use disorder&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>]</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> D</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="78">
+                                        <a:s>where </a:s>
+                                        <a:s r="78">
+                                            <a:s r="63">
+                                                <a:s r="56">
+                                                    <a:s r="55">
+                                                        <a:s r="54">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="55">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="56">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="62">
+                                                    <a:s>{ </a:s>
+                                                    <a:s r="57">
+                                                        <a:s>'preliminary'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="58">
+                                                        <a:s>'final'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="59">
+                                                        <a:s>'amended'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="60">
+                                                        <a:s>'corrected'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="61">
+                                                        <a:s>'appended'</a:s>
+                                                    </a:s>
+                                                    <a:s> }</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="77">
+                                                <a:s r="75">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="65">
+                                                        <a:s r="64">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="65">
+                                                            <a:s>effective</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s> overlaps </a:s>
+                                                <a:s r="76">
+                                                    <a:s>&quot;Lookback Interval Total Two Years&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                            or
+                        </a:s>
+                        <a:s r="100">
+                            <a:s>exists </a:s>
+                            <a:s r="99">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="99">
+                                    <a:s>
+                                        <a:s r="82">
+                                            <a:s r="81">
+                                                <a:s r="81">
+                                                    <a:s>[DiagnosticReport: </a:s>
+                                                    <a:s>
+                                                        <a:s>&quot;Dementia&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>]</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> D</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="98">
+                                        <a:s>where </a:s>
+                                        <a:s r="98">
+                                            <a:s r="92">
+                                                <a:s r="85">
+                                                    <a:s r="84">
+                                                        <a:s r="83">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="84">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="85">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="91">
+                                                    <a:s>{ </a:s>
+                                                    <a:s r="86">
+                                                        <a:s>'preliminary'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="87">
+                                                        <a:s>'final'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="88">
+                                                        <a:s>'amended'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="89">
+                                                        <a:s>'corrected'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="90">
+                                                        <a:s>'appended'</a:s>
+                                                    </a:s>
+                                                    <a:s> }</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                and </a:s>
+                                            <a:s r="97">
+                                                <a:s r="95">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="94">
+                                                        <a:s r="93">
+                                                            <a:s>D</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="94">
+                                                            <a:s>effective</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s> overlaps </a:s>
+                                                <a:s r="96">
+                                                    <a:s>&quot;Intake Period&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="101" xsi:type="Or">
+                <operand localId="80" xsi:type="Exists">
+                    <operand localId="79" xsi:type="Query">
+                        <source localId="53" alias="D">
+                            <expression localId="52" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="Alcohol use disorder" xsi:type="ValueSetRef"/>
+                            </expression>
+                        </source>
+                        <where localId="78" xsi:type="And">
+                            <operand localId="63" xsi:type="In">
+                                <operand localId="56" path="value" xsi:type="Property">
+                                    <source localId="55" path="status" scope="D" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="62" xsi:type="List">
+                                    <element localId="57" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                                    <element localId="58" valueType="t:String" value="final" xsi:type="Literal"/>
+                                    <element localId="59" valueType="t:String" value="amended" xsi:type="Literal"/>
+                                    <element localId="60" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                                    <element localId="61" valueType="t:String" value="appended" xsi:type="Literal"/>
+                                </operand>
+                            </operand>
+                            <operand localId="77" xsi:type="Overlaps">
+                                <operand localId="75" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand asType="fhir:Period" xsi:type="As">
+                                        <operand localId="65" path="effective" scope="D" xsi:type="Property"/>
+                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="76" name="Lookback Interval Total Two Years" xsi:type="ExpressionRef"/>
+                            </operand>
+                        </where>
+                    </operand>
+                </operand>
+                <operand localId="100" xsi:type="Exists">
+                    <operand localId="99" xsi:type="Query">
+                        <source localId="82" alias="D">
+                            <expression localId="81" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="Dementia" xsi:type="ValueSetRef"/>
+                            </expression>
+                        </source>
+                        <where localId="98" xsi:type="And">
+                            <operand localId="92" xsi:type="In">
+                                <operand localId="85" path="value" xsi:type="Property">
+                                    <source localId="84" path="status" scope="D" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="91" xsi:type="List">
+                                    <element localId="86" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                                    <element localId="87" valueType="t:String" value="final" xsi:type="Literal"/>
+                                    <element localId="88" valueType="t:String" value="amended" xsi:type="Literal"/>
+                                    <element localId="89" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                                    <element localId="90" valueType="t:String" value="appended" xsi:type="Literal"/>
+                                </operand>
+                            </operand>
+                            <operand localId="97" xsi:type="Overlaps">
+                                <operand localId="95" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand asType="fhir:Period" xsi:type="As">
+                                        <operand localId="94" path="effective" scope="D" xsi:type="Property"/>
+                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                    </operand>
+                                </operand>
+                                <operand localId="96" name="Intake Period" xsi:type="ExpressionRef"/>
+                            </operand>
+                        </where>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="104" name="Denominator 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="104">
+                    <a:s>define &quot;Denominator 1&quot;:
+                    </a:s>
+                    <a:s r="103">
+                        <a:s>&quot;Initial Population&quot;</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="103" name="Initial Population" xsi:type="ExpressionRef"/>
+        </def>
+        <def localId="126" name="AUDIT-C Assessment" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="126">
+                    <a:s>define &quot;AUDIT-C Assessment&quot;:
+                    </a:s>
+                    <a:s r="125">
+                        <a:s>
+                            <a:s r="107">
+                                <a:s r="106">
+                                    <a:s r="106">
+                                        <a:s>[Observation: </a:s>
+                                        <a:s>
+                                            <a:s>&quot;AUDIT-C Total Score (in points)&quot;</a:s>
+                                        </a:s>
+                                        <a:s>]</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s> A</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="124">
+                            <a:s>where </a:s>
+                            <a:s r="124">
+                                <a:s r="120">
+                                    <a:s r="114">
+                                        <a:s r="110">
+                                            <a:s r="109">
+                                                <a:s r="108">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="109">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="110">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="113">
+                                            <a:s>{ </a:s>
+                                            <a:s r="111">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="112">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="119">
+                                        <a:s r="117">
+                                            <a:s r="116">
+                                                <a:s r="115">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="116">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="117">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="118">
+                                            <a:s>&quot;Intake Period&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    and </a:s>
+                                <a:s r="123">
+                                    <a:s r="122">
+                                        <a:s r="121">
+                                            <a:s>A</a:s>
+                                        </a:s>
+                                        <a:s>.</a:s>
+                                        <a:s r="122">
+                                            <a:s>value</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> is not null</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="125" xsi:type="Query">
+                <source localId="107" alias="A">
+                    <expression localId="106" dataType="fhir:Observation" codeProperty="code" dateProperty="effective.value" xsi:type="Retrieve">
+                        <codes name="AUDIT-C Total Score (in points)" xsi:type="CodeRef"/>
+                        <dateRange localId="118" name="Intake Period" xsi:type="ExpressionRef"/>
+                    </expression>
+                </source>
+                <where localId="124" xsi:type="And">
+                    <operand localId="114" xsi:type="In">
+                        <operand localId="110" path="value" xsi:type="Property">
+                            <source localId="109" path="status" scope="A" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="113" xsi:type="List">
+                            <element localId="111" valueType="t:String" value="final" xsi:type="Literal"/>
+                            <element localId="112" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        </operand>
+                    </operand>
+                    <operand localId="123" xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                            <operand localId="122" path="value" scope="A" xsi:type="Property"/>
+                        </operand>
+                    </operand>
+                </where>
+            </expression>
+        </def>
+        <def localId="149" name="AUDIT Assessment" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="149">
+                    <a:s>define &quot;AUDIT Assessment&quot;:
+                    </a:s>
+                    <a:s r="148">
+                        <a:s>
+                            <a:s r="130">
+                                <a:s r="129">
+                                    <a:s r="129">
+                                        <a:s>[Observation: </a:s>
+                                        <a:s>
+                                            <a:s>&quot;AUDIT Total Score (in points)&quot;</a:s>
+                                        </a:s>
+                                        <a:s>]</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s> A</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="147">
+                            <a:s>where </a:s>
+                            <a:s r="147">
+                                <a:s r="143">
+                                    <a:s r="137">
+                                        <a:s r="133">
+                                            <a:s r="132">
+                                                <a:s r="131">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="132">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="133">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="136">
+                                            <a:s>{ </a:s>
+                                            <a:s r="134">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="135">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="142">
+                                        <a:s r="140">
+                                            <a:s r="139">
+                                                <a:s r="138">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="139">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="140">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="141">
+                                            <a:s>&quot;Intake Period&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    and </a:s>
+                                <a:s r="146">
+                                    <a:s r="145">
+                                        <a:s r="144">
+                                            <a:s>A</a:s>
+                                        </a:s>
+                                        <a:s>.</a:s>
+                                        <a:s r="145">
+                                            <a:s>value</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> is not null</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="148" xsi:type="Query">
+                <source localId="130" alias="A">
+                    <expression localId="129" dataType="fhir:Observation" codeProperty="code" dateProperty="effective.value" xsi:type="Retrieve">
+                        <codes name="AUDIT Total Score (in points)" xsi:type="CodeRef"/>
+                        <dateRange localId="141" name="Intake Period" xsi:type="ExpressionRef"/>
+                    </expression>
+                </source>
+                <where localId="147" xsi:type="And">
+                    <operand localId="137" xsi:type="In">
+                        <operand localId="133" path="value" xsi:type="Property">
+                            <source localId="132" path="status" scope="A" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="136" xsi:type="List">
+                            <element localId="134" valueType="t:String" value="final" xsi:type="Literal"/>
+                            <element localId="135" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        </operand>
+                    </operand>
+                    <operand localId="146" xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                            <operand localId="145" path="value" scope="A" xsi:type="Property"/>
+                        </operand>
+                    </operand>
+                </where>
+            </expression>
+        </def>
+        <def localId="158" name="Patient is Male" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="158">
+                    <a:s>define &quot;Patient is Male&quot;:
+                    </a:s>
+                    <a:s r="157">
+                        <a:s r="155">
+                            <a:s r="154">
+                                <a:s r="153">
+                                    <a:s>Patient</a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="154">
+                                    <a:s>gender</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>.</a:s>
+                            <a:s r="155">
+                                <a:s>value</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="156">
+                            <a:s>'male'</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="157" xsi:type="Equal">
+                <operand localId="155" path="value" xsi:type="Property">
+                    <source localId="154" path="gender" xsi:type="Property">
+                        <source localId="153" name="Patient" xsi:type="ExpressionRef"/>
+                    </source>
+                </operand>
+                <operand localId="156" valueType="t:String" value="male" xsi:type="Literal"/>
+            </expression>
+        </def>
+        <def localId="180" name="Five or more drinks per day Assessment" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="180">
+                    <a:s>define &quot;Five or more drinks per day Assessment&quot;:
+                    </a:s>
+                    <a:s r="179">
+                        <a:s>
+                            <a:s r="161">
+                                <a:s r="160">
+                                    <a:s r="160">
+                                        <a:s>[Observation: </a:s>
+                                        <a:s>
+                                            <a:s>&quot;Five or more drinks per day&quot;</a:s>
+                                        </a:s>
+                                        <a:s>]</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s> A</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="178">
+                            <a:s>where </a:s>
+                            <a:s r="178">
+                                <a:s r="174">
+                                    <a:s r="168">
+                                        <a:s r="164">
+                                            <a:s r="163">
+                                                <a:s r="162">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="163">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="164">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="167">
+                                            <a:s>{ </a:s>
+                                            <a:s r="165">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="166">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="173">
+                                        <a:s r="171">
+                                            <a:s r="170">
+                                                <a:s r="169">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="170">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="171">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="172">
+                                            <a:s>&quot;Intake Period&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    and </a:s>
+                                <a:s r="177">
+                                    <a:s r="176">
+                                        <a:s r="175">
+                                            <a:s>A</a:s>
+                                        </a:s>
+                                        <a:s>.</a:s>
+                                        <a:s r="176">
+                                            <a:s>value</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> is not null</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="179" xsi:type="Query">
+                <source localId="161" alias="A">
+                    <expression localId="160" dataType="fhir:Observation" codeProperty="code" dateProperty="effective.value" xsi:type="Retrieve">
+                        <codes name="Five or more drinks per day" xsi:type="CodeRef"/>
+                        <dateRange localId="172" name="Intake Period" xsi:type="ExpressionRef"/>
+                    </expression>
+                </source>
+                <where localId="178" xsi:type="And">
+                    <operand localId="168" xsi:type="In">
+                        <operand localId="164" path="value" xsi:type="Property">
+                            <source localId="163" path="status" scope="A" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="167" xsi:type="List">
+                            <element localId="165" valueType="t:String" value="final" xsi:type="Literal"/>
+                            <element localId="166" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        </operand>
+                    </operand>
+                    <operand localId="177" xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                            <operand localId="176" path="value" scope="A" xsi:type="Property"/>
+                        </operand>
+                    </operand>
+                </where>
+            </expression>
+        </def>
+        <def localId="190" name="Patient is Female" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="190">
+                    <a:s>define &quot;Patient is Female&quot;:
+                    </a:s>
+                    <a:s r="189">
+                        <a:s r="187">
+                            <a:s r="186">
+                                <a:s r="185">
+                                    <a:s>Patient</a:s>
+                                </a:s>
+                                <a:s>.</a:s>
+                                <a:s r="186">
+                                    <a:s>gender</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>.</a:s>
+                            <a:s r="187">
+                                <a:s>value</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="188">
+                            <a:s>'female'</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="189" xsi:type="Equal">
+                <operand localId="187" path="value" xsi:type="Property">
+                    <source localId="186" path="gender" xsi:type="Property">
+                        <source localId="185" name="Patient" xsi:type="ExpressionRef"/>
+                    </source>
+                </operand>
+                <operand localId="188" valueType="t:String" value="female" xsi:type="Literal"/>
+            </expression>
+        </def>
+        <def localId="212" name="Four or more drinks per day Assessment" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="212">
+                    <a:s>define &quot;Four or more drinks per day Assessment&quot;:
+                    </a:s>
+                    <a:s r="211">
+                        <a:s>
+                            <a:s r="193">
+                                <a:s r="192">
+                                    <a:s r="192">
+                                        <a:s>[Observation: </a:s>
+                                        <a:s>
+                                            <a:s>&quot;Four or more drinks per day&quot;</a:s>
+                                        </a:s>
+                                        <a:s>]</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s> A</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="210">
+                            <a:s>where </a:s>
+                            <a:s r="210">
+                                <a:s r="206">
+                                    <a:s r="200">
+                                        <a:s r="196">
+                                            <a:s r="195">
+                                                <a:s r="194">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="195">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="196">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="199">
+                                            <a:s>{ </a:s>
+                                            <a:s r="197">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="198">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        and </a:s>
+                                    <a:s r="205">
+                                        <a:s r="203">
+                                            <a:s r="202">
+                                                <a:s r="201">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="202">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="203">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="204">
+                                            <a:s>&quot;Intake Period&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    and </a:s>
+                                <a:s r="209">
+                                    <a:s r="208">
+                                        <a:s r="207">
+                                            <a:s>A</a:s>
+                                        </a:s>
+                                        <a:s>.</a:s>
+                                        <a:s r="208">
+                                            <a:s>value</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s> is not null</a:s>
+                                </a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="211" xsi:type="Query">
+                <source localId="193" alias="A">
+                    <expression localId="192" dataType="fhir:Observation" codeProperty="code" dateProperty="effective.value" xsi:type="Retrieve">
+                        <codes name="Four or more drinks per day" xsi:type="CodeRef"/>
+                        <dateRange localId="204" name="Intake Period" xsi:type="ExpressionRef"/>
+                    </expression>
+                </source>
+                <where localId="210" xsi:type="And">
+                    <operand localId="200" xsi:type="In">
+                        <operand localId="196" path="value" xsi:type="Property">
+                            <source localId="195" path="status" scope="A" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="199" xsi:type="List">
+                            <element localId="197" valueType="t:String" value="final" xsi:type="Literal"/>
+                            <element localId="198" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        </operand>
+                    </operand>
+                    <operand localId="209" xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                            <operand localId="208" path="value" scope="A" xsi:type="Property"/>
+                        </operand>
+                    </operand>
+                </where>
+            </expression>
+        </def>
+        <def localId="222" name="Patient is over 65" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="222">
+                    <a:s>define &quot;Patient is over 65&quot;:
+                    </a:s>
+                    <a:s r="221">
+                        <a:s r="219">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="218">
+                                <a:s>start of </a:s>
+                                <a:s r="217">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 65</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="221" xsi:type="GreaterOrEqual">
+                <operand localId="219" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="218" xsi:type="Start">
+                        <operand localId="217" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="220" valueType="t:Integer" value="65" xsi:type="Literal"/>
+            </expression>
+        </def>
+        <def localId="229" name="Numerator 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="229">
+                    <a:s>define &quot;Numerator 1&quot;:
+                    </a:s>
+                    <a:s r="228">
+                        <a:s r="105">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="227">
+                            <a:s>(
+                            </a:s>
+                            <a:s r="227">
+                                <a:s r="216">
+                                    <a:s r="184">
+                                        <a:s r="152">
+                                            <a:s r="128">
+                                                <a:s>exists </a:s>
+                                                <a:s r="127">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="127">
+                                                        <a:s>&quot;AUDIT-C Assessment&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>
+                                                or </a:s>
+                                            <a:s r="151">
+                                                <a:s>exists </a:s>
+                                                <a:s r="150">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="150">
+                                                        <a:s>&quot;AUDIT Assessment&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                            or </a:s>
+                                        <a:s r="183">
+                                            <a:s>(</a:s>
+                                            <a:s r="183">
+                                                <a:s r="159">
+                                                    <a:s>&quot;Patient is Male&quot;</a:s>
+                                                </a:s>
+                                                <a:s> and </a:s>
+                                                <a:s r="182">
+                                                    <a:s>exists </a:s>
+                                                    <a:s r="181">
+                                                        <a:s>(</a:s>
+                                                        <a:s r="181">
+                                                            <a:s>&quot;Five or more drinks per day Assessment&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s>)</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>)</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        or </a:s>
+                                    <a:s r="215">
+                                        <a:s>(</a:s>
+                                        <a:s r="215">
+                                            <a:s r="191">
+                                                <a:s>&quot;Patient is Female&quot;</a:s>
+                                            </a:s>
+                                            <a:s> and </a:s>
+                                            <a:s r="214">
+                                                <a:s>exists </a:s>
+                                                <a:s r="213">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="213">
+                                                        <a:s>&quot;Four or more drinks per day Assessment&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>)</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    or </a:s>
+                                <a:s r="226">
+                                    <a:s>(</a:s>
+                                    <a:s r="226">
+                                        <a:s r="223">
+                                            <a:s>&quot;Patient is over 65&quot;</a:s>
+                                        </a:s>
+                                        <a:s> and </a:s>
+                                        <a:s r="225">
+                                            <a:s>exists </a:s>
+                                            <a:s r="224">
+                                                <a:s>(</a:s>
+                                                <a:s r="224">
+                                                    <a:s>&quot;Four or more drinks per day Assessment&quot;</a:s>
+                                                </a:s>
+                                                <a:s>)</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                // Note: The spec doesn't include the over 65 test here but does in dependent N/D 2.
+                                )</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="228" xsi:type="And">
+                <operand localId="105" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="227" xsi:type="Or">
+                    <operand localId="216" xsi:type="Or">
+                        <operand localId="184" xsi:type="Or">
+                            <operand localId="152" xsi:type="Or">
+                                <operand localId="128" xsi:type="Exists">
+                                    <operand localId="127" name="AUDIT-C Assessment" xsi:type="ExpressionRef"/>
+                                </operand>
+                                <operand localId="151" xsi:type="Exists">
+                                    <operand localId="150" name="AUDIT Assessment" xsi:type="ExpressionRef"/>
+                                </operand>
+                            </operand>
+                            <operand localId="183" xsi:type="And">
+                                <operand localId="159" name="Patient is Male" xsi:type="ExpressionRef"/>
+                                <operand localId="182" xsi:type="Exists">
+                                    <operand localId="181" name="Five or more drinks per day Assessment" xsi:type="ExpressionRef"/>
+                                </operand>
+                            </operand>
+                        </operand>
+                        <operand localId="215" xsi:type="And">
+                            <operand localId="191" name="Patient is Female" xsi:type="ExpressionRef"/>
+                            <operand localId="214" xsi:type="Exists">
+                                <operand localId="213" name="Four or more drinks per day Assessment" xsi:type="ExpressionRef"/>
+                            </operand>
+                        </operand>
+                    </operand>
+                    <operand localId="226" xsi:type="And">
+                        <operand localId="223" name="Patient is over 65" xsi:type="ExpressionRef"/>
+                        <operand localId="225" xsi:type="Exists">
+                            <operand localId="224" name="Four or more drinks per day Assessment" xsi:type="ExpressionRef"/>
+                        </operand>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="297" name="Positive Assessment for Unhealthy Alcohol Use" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="297">
+                    <a:s>define &quot;Positive Assessment for Unhealthy Alcohol Use&quot;:
+                    </a:s>
+                    <a:s r="296">
+                        <a:s r="280">
+                            <a:s r="266">
+                                <a:s r="241">
+                                    <a:s>(
+                                    </a:s>
+                                    <a:s r="241">
+                                        <a:s>
+                                            <a:s r="232">
+                                                <a:s r="231">
+                                                    <a:s>
+                                                        <a:s>&quot;AUDIT Assessment&quot;</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> A</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                        </a:s>
+                                        <a:s r="240">
+                                            <a:s>where </a:s>
+                                            <a:s r="240">
+                                                <a:s r="238">
+                                                    <a:s r="237">
+                                                        <a:s r="236">
+                                                            <a:s>(</a:s>
+                                                            <a:s r="236">
+                                                                <a:s r="234">
+                                                                    <a:s r="233">
+                                                                        <a:s>A</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="234">
+                                                                        <a:s>value</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s> as </a:s>
+                                                                <a:s r="235">
+                                                                    <a:s>Quantity</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>)</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="237">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="238">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> >= 8</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        )</a:s>
+                                </a:s>
+                                <a:s>
+                                    union
+                                </a:s>
+                                <a:s r="265">
+                                    <a:s>(
+                                    </a:s>
+                                    <a:s r="265">
+                                        <a:s>
+                                            <a:s r="243">
+                                                <a:s r="242">
+                                                    <a:s>
+                                                        <a:s>&quot;AUDIT-C Assessment&quot;</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> A</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                        </a:s>
+                                        <a:s r="264">
+                                            <a:s>where </a:s>
+                                            <a:s r="264">
+                                                <a:s r="253">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="253">
+                                                        <a:s r="244">
+                                                            <a:s>&quot;Patient is Male&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s> and </a:s>
+                                                        <a:s r="252">
+                                                            <a:s r="250">
+                                                                <a:s r="249">
+                                                                    <a:s r="248">
+                                                                        <a:s>(</a:s>
+                                                                        <a:s r="248">
+                                                                            <a:s r="246">
+                                                                                <a:s r="245">
+                                                                                    <a:s>A</a:s>
+                                                                                </a:s>
+                                                                                <a:s>.</a:s>
+                                                                                <a:s r="246">
+                                                                                    <a:s>value</a:s>
+                                                                                </a:s>
+                                                                            </a:s>
+                                                                            <a:s> as </a:s>
+                                                                            <a:s r="247">
+                                                                                <a:s>Quantity</a:s>
+                                                                            </a:s>
+                                                                        </a:s>
+                                                                        <a:s>)</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="249">
+                                                                        <a:s>value</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="250">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> >= 4</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                                <a:s>
+                                                    or </a:s>
+                                                <a:s r="263">
+                                                    <a:s>(</a:s>
+                                                    <a:s r="263">
+                                                        <a:s r="254">
+                                                            <a:s>&quot;Patient is Female&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s> and </a:s>
+                                                        <a:s r="262">
+                                                            <a:s r="260">
+                                                                <a:s r="259">
+                                                                    <a:s r="258">
+                                                                        <a:s>(</a:s>
+                                                                        <a:s r="258">
+                                                                            <a:s r="256">
+                                                                                <a:s r="255">
+                                                                                    <a:s>A</a:s>
+                                                                                </a:s>
+                                                                                <a:s>.</a:s>
+                                                                                <a:s r="256">
+                                                                                    <a:s>value</a:s>
+                                                                                </a:s>
+                                                                            </a:s>
+                                                                            <a:s> as </a:s>
+                                                                            <a:s r="257">
+                                                                                <a:s>Quantity</a:s>
+                                                                            </a:s>
+                                                                        </a:s>
+                                                                        <a:s>)</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="259">
+                                                                        <a:s>value</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="260">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> >= 3</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                        )</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                union
+                            </a:s>
+                            <a:s r="279">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="279">
+                                    <a:s>
+                                        <a:s r="268">
+                                            <a:s r="267">
+                                                <a:s>
+                                                    <a:s>&quot;Five or more drinks per day Assessment&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> A</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="278">
+                                        <a:s>where </a:s>
+                                        <a:s r="278">
+                                            <a:s r="269">
+                                                <a:s>&quot;Patient is Male&quot;</a:s>
+                                            </a:s>
+                                            <a:s> and </a:s>
+                                            <a:s r="277">
+                                                <a:s r="275">
+                                                    <a:s r="274">
+                                                        <a:s r="273">
+                                                            <a:s>(</a:s>
+                                                            <a:s r="273">
+                                                                <a:s r="271">
+                                                                    <a:s r="270">
+                                                                        <a:s>A</a:s>
+                                                                    </a:s>
+                                                                    <a:s>.</a:s>
+                                                                    <a:s r="271">
+                                                                        <a:s>value</a:s>
+                                                                    </a:s>
+                                                                </a:s>
+                                                                <a:s> as </a:s>
+                                                                <a:s r="272">
+                                                                    <a:s>Quantity</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s>)</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="274">
+                                                            <a:s>value</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="275">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> >= 2</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                            union
+                        </a:s>
+                        <a:s r="295">
+                            <a:s>(
+                            </a:s>
+                            <a:s r="295">
+                                <a:s>
+                                    <a:s r="282">
+                                        <a:s r="281">
+                                            <a:s>
+                                                <a:s>&quot;Four or more drinks per day Assessment&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> A</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="294">
+                                    <a:s>where </a:s>
+                                    <a:s r="294">
+                                        <a:s r="285">
+                                            <a:s>(</a:s>
+                                            <a:s r="285">
+                                                <a:s r="283">
+                                                    <a:s>&quot;Patient is Female&quot;</a:s>
+                                                </a:s>
+                                                <a:s> or </a:s>
+                                                <a:s r="284">
+                                                    <a:s>&quot;Patient is over 65&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>)</a:s>
+                                        </a:s>
+                                        <a:s>
+                                            and </a:s>
+                                        <a:s r="293">
+                                            <a:s r="291">
+                                                <a:s r="290">
+                                                    <a:s r="289">
+                                                        <a:s>(</a:s>
+                                                        <a:s r="289">
+                                                            <a:s r="287">
+                                                                <a:s r="286">
+                                                                    <a:s>A</a:s>
+                                                                </a:s>
+                                                                <a:s>.</a:s>
+                                                                <a:s r="287">
+                                                                    <a:s>value</a:s>
+                                                                </a:s>
+                                                            </a:s>
+                                                            <a:s> as </a:s>
+                                                            <a:s r="288">
+                                                                <a:s>Quantity</a:s>
+                                                            </a:s>
+                                                        </a:s>
+                                                        <a:s>)</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="290">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="291">
+                                                    <a:s>value</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> >= 2</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                )</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="296" xsi:type="Union">
+                <operand localId="280" xsi:type="Union">
+                    <operand localId="266" xsi:type="Union">
+                        <operand localId="241" xsi:type="Query">
+                            <source localId="232" alias="A">
+                                <expression localId="231" name="AUDIT Assessment" xsi:type="ExpressionRef"/>
+                            </source>
+                            <where localId="240" xsi:type="GreaterOrEqual">
+                                <operand localId="238" path="value" xsi:type="Property">
+                                    <source localId="237" path="value" xsi:type="Property">
+                                        <source localId="236" strict="false" xsi:type="As">
+                                            <operand localId="234" path="value" scope="A" xsi:type="Property"/>
+                                            <asTypeSpecifier localId="235" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                        </source>
+                                    </source>
+                                </operand>
+                                <operand xsi:type="ToDecimal">
+                                    <operand localId="239" valueType="t:Integer" value="8" xsi:type="Literal"/>
+                                </operand>
+                            </where>
+                        </operand>
+                        <operand localId="265" xsi:type="Query">
+                            <source localId="243" alias="A">
+                                <expression localId="242" name="AUDIT-C Assessment" xsi:type="ExpressionRef"/>
+                            </source>
+                            <where localId="264" xsi:type="Or">
+                                <operand localId="253" xsi:type="And">
+                                    <operand localId="244" name="Patient is Male" xsi:type="ExpressionRef"/>
+                                    <operand localId="252" xsi:type="GreaterOrEqual">
+                                        <operand localId="250" path="value" xsi:type="Property">
+                                            <source localId="249" path="value" xsi:type="Property">
+                                                <source localId="248" strict="false" xsi:type="As">
+                                                    <operand localId="246" path="value" scope="A" xsi:type="Property"/>
+                                                    <asTypeSpecifier localId="247" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                                </source>
+                                            </source>
+                                        </operand>
+                                        <operand xsi:type="ToDecimal">
+                                            <operand localId="251" valueType="t:Integer" value="4" xsi:type="Literal"/>
+                                        </operand>
+                                    </operand>
+                                </operand>
+                                <operand localId="263" xsi:type="And">
+                                    <operand localId="254" name="Patient is Female" xsi:type="ExpressionRef"/>
+                                    <operand localId="262" xsi:type="GreaterOrEqual">
+                                        <operand localId="260" path="value" xsi:type="Property">
+                                            <source localId="259" path="value" xsi:type="Property">
+                                                <source localId="258" strict="false" xsi:type="As">
+                                                    <operand localId="256" path="value" scope="A" xsi:type="Property"/>
+                                                    <asTypeSpecifier localId="257" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                                </source>
+                                            </source>
+                                        </operand>
+                                        <operand xsi:type="ToDecimal">
+                                            <operand localId="261" valueType="t:Integer" value="3" xsi:type="Literal"/>
+                                        </operand>
+                                    </operand>
+                                </operand>
+                            </where>
+                        </operand>
+                    </operand>
+                    <operand localId="279" xsi:type="Query">
+                        <source localId="268" alias="A">
+                            <expression localId="267" name="Five or more drinks per day Assessment" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where localId="278" xsi:type="And">
+                            <operand localId="269" name="Patient is Male" xsi:type="ExpressionRef"/>
+                            <operand localId="277" xsi:type="GreaterOrEqual">
+                                <operand localId="275" path="value" xsi:type="Property">
+                                    <source localId="274" path="value" xsi:type="Property">
+                                        <source localId="273" strict="false" xsi:type="As">
+                                            <operand localId="271" path="value" scope="A" xsi:type="Property"/>
+                                            <asTypeSpecifier localId="272" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                        </source>
+                                    </source>
+                                </operand>
+                                <operand xsi:type="ToDecimal">
+                                    <operand localId="276" valueType="t:Integer" value="2" xsi:type="Literal"/>
+                                </operand>
+                            </operand>
+                        </where>
+                    </operand>
+                </operand>
+                <operand localId="295" xsi:type="Query">
+                    <source localId="282" alias="A">
+                        <expression localId="281" name="Four or more drinks per day Assessment" xsi:type="ExpressionRef"/>
+                    </source>
+                    <where localId="294" xsi:type="And">
+                        <operand localId="285" xsi:type="Or">
+                            <operand localId="283" name="Patient is Female" xsi:type="ExpressionRef"/>
+                            <operand localId="284" name="Patient is over 65" xsi:type="ExpressionRef"/>
+                        </operand>
+                        <operand localId="293" xsi:type="GreaterOrEqual">
+                            <operand localId="291" path="value" xsi:type="Property">
+                                <source localId="290" path="value" xsi:type="Property">
+                                    <source localId="289" strict="false" xsi:type="As">
+                                        <operand localId="287" path="value" scope="A" xsi:type="Property"/>
+                                        <asTypeSpecifier localId="288" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    </source>
+                                </source>
+                            </operand>
+                            <operand xsi:type="ToDecimal">
+                                <operand localId="292" valueType="t:Integer" value="2" xsi:type="Literal"/>
+                            </operand>
+                        </operand>
+                    </where>
+                </operand>
+            </expression>
+        </def>
+        <def localId="301" name="Denominator 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="301">
+                    <a:s>define &quot;Denominator 2&quot;:
+                    </a:s>
+                    <a:s r="300">
+                        <a:s r="230">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="299">
+                            <a:s>exists </a:s>
+                            <a:s r="298">
+                                <a:s>&quot;Positive Assessment for Unhealthy Alcohol Use&quot;</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="300" xsi:type="And">
+                <operand localId="230" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="299" xsi:type="Exists">
+                    <operand localId="298" name="Positive Assessment for Unhealthy Alcohol Use" xsi:type="ExpressionRef"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="312" name="Initial Positive Assessment for Unhealthy Alcohol Use" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="312">
+                    <a:s>define &quot;Initial Positive Assessment for Unhealthy Alcohol Use&quot;:
+                    </a:s>
+                    <a:s r="311">
+                        <a:s>{</a:s>
+                        <a:s r="310">
+                            <a:s>First(
+                            </a:s>
+                            <a:s r="309">
+                                <a:s>
+                                    <a:s r="304">
+                                        <a:s r="303">
+                                            <a:s>
+                                                <a:s>&quot;Positive Assessment for Unhealthy Alcohol Use&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> A</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="308">
+                                    <a:s>sort by </a:s>
+                                    <a:s r="307">
+                                        <a:s r="306">
+                                            <a:s r="305">
+                                                <a:s>effective</a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="306">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                )</a:s>
+                        </a:s>
+                        <a:s>}</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="311" xsi:type="List">
+                <element localId="310" xsi:type="First">
+                    <source localId="309" xsi:type="Query">
+                        <source localId="304" alias="A">
+                            <expression localId="303" name="Positive Assessment for Unhealthy Alcohol Use" xsi:type="ExpressionRef"/>
+                        </source>
+                        <sort localId="308">
+                            <by localId="307" direction="asc" xsi:type="ByExpression">
+                                <expression localId="306" path="value" xsi:type="Property">
+                                    <source localId="305" name="effective" xsi:type="IdentifierRef"/>
+                                </expression>
+                            </by>
+                        </sort>
+                    </source>
+                </element>
+            </expression>
+        </def>
+        <def localId="354" name="Followup Screening" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="354">
+                    <a:s>define &quot;Followup Screening&quot;:
+                    </a:s>
+                    <a:s r="353">
+                        <a:s r="342">
+                            <a:s r="333">
+                                <a:s r="322">
+                                    <a:s>(</a:s>
+                                    <a:s r="322">
+                                        <a:s>
+                                            <a:s r="316">
+                                                <a:s r="315">
+                                                    <a:s r="315">
+                                                        <a:s>[Procedure: </a:s>
+                                                        <a:s>
+                                                            <a:s>&quot;Alcohol Counseling and Treatment&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s>]</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> Proc</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                        </a:s>
+                                        <a:s r="321">
+                                            <a:s>where </a:s>
+                                            <a:s r="321">
+                                                <a:s r="319">
+                                                    <a:s r="318">
+                                                        <a:s r="317">
+                                                            <a:s>Proc</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="318">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="319">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> = </a:s>
+                                                <a:s r="320">
+                                                    <a:s>'completed'</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                </a:s>
+                                <a:s>
+                                    union
+                                </a:s>
+                                <a:s r="332">
+                                    <a:s>(</a:s>
+                                    <a:s r="332">
+                                        <a:s>
+                                            <a:s r="324">
+                                                <a:s r="323">
+                                                    <a:s r="323">
+                                                        <a:s>[Observation: </a:s>
+                                                        <a:s>
+                                                            <a:s>&quot;Alcohol Counseling and Treatment&quot;</a:s>
+                                                        </a:s>
+                                                        <a:s>]</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> Obs</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s>
+                                        </a:s>
+                                        <a:s r="331">
+                                            <a:s>where </a:s>
+                                            <a:s r="331">
+                                                <a:s r="327">
+                                                    <a:s r="326">
+                                                        <a:s r="325">
+                                                            <a:s>Obs</a:s>
+                                                        </a:s>
+                                                        <a:s>.</a:s>
+                                                        <a:s r="326">
+                                                            <a:s>status</a:s>
+                                                        </a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="327">
+                                                        <a:s>value</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="330">
+                                                    <a:s>{ </a:s>
+                                                    <a:s r="328">
+                                                        <a:s>'final'</a:s>
+                                                    </a:s>
+                                                    <a:s>, </a:s>
+                                                    <a:s r="329">
+                                                        <a:s>'amended'</a:s>
+                                                    </a:s>
+                                                    <a:s> }</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>
+                                union
+                            </a:s>
+                            <a:s r="341">
+                                <a:s>(</a:s>
+                                <a:s r="341">
+                                    <a:s>
+                                        <a:s r="335">
+                                            <a:s r="334">
+                                                <a:s r="334">
+                                                    <a:s>[Procedure: </a:s>
+                                                    <a:s>
+                                                        <a:s>&quot;Alcohol Screening&quot;</a:s>
+                                                    </a:s>
+                                                    <a:s>]</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> Proc</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="340">
+                                        <a:s>where </a:s>
+                                        <a:s r="340">
+                                            <a:s r="338">
+                                                <a:s r="337">
+                                                    <a:s r="336">
+                                                        <a:s>Proc</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="337">
+                                                        <a:s>status</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="338">
+                                                    <a:s>value</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> = </a:s>
+                                            <a:s r="339">
+                                                <a:s>'completed'</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>)</a:s>
+                            </a:s>
+                        </a:s>
+                        <a:s>
+                            union
+                        </a:s>
+                        <a:s r="352">
+                            <a:s>(</a:s>
+                            <a:s r="352">
+                                <a:s>
+                                    <a:s r="344">
+                                        <a:s r="343">
+                                            <a:s r="343">
+                                                <a:s>[Observation: </a:s>
+                                                <a:s>
+                                                    <a:s>&quot;Alcohol Screening&quot;</a:s>
+                                                </a:s>
+                                                <a:s>]</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> Obs</a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="351">
+                                    <a:s>where </a:s>
+                                    <a:s r="351">
+                                        <a:s r="347">
+                                            <a:s r="346">
+                                                <a:s r="345">
+                                                    <a:s>Obs</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="346">
+                                                    <a:s>status</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="347">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in </a:s>
+                                        <a:s r="350">
+                                            <a:s>{ </a:s>
+                                            <a:s r="348">
+                                                <a:s>'final'</a:s>
+                                            </a:s>
+                                            <a:s>, </a:s>
+                                            <a:s r="349">
+                                                <a:s>'amended'</a:s>
+                                            </a:s>
+                                            <a:s> }</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="353" xsi:type="Union">
+                <operand xsi:type="As">
+                    <operand localId="342" xsi:type="Union">
+                        <operand xsi:type="As">
+                            <operand localId="333" xsi:type="Union">
+                                <operand xsi:type="As">
+                                    <operand localId="322" xsi:type="Query">
+                                        <source localId="316" alias="Proc">
+                                            <expression localId="315" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                                                <codes name="Alcohol Counseling and Treatment" xsi:type="ValueSetRef"/>
+                                            </expression>
+                                        </source>
+                                        <where localId="321" xsi:type="Equal">
+                                            <operand localId="319" path="value" xsi:type="Property">
+                                                <source localId="318" path="status" scope="Proc" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="320" valueType="t:String" value="completed" xsi:type="Literal"/>
+                                        </where>
+                                    </operand>
+                                    <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                        <elementType xsi:type="ChoiceTypeSpecifier">
+                                            <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                                            <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                                        </elementType>
+                                    </asTypeSpecifier>
+                                </operand>
+                                <operand xsi:type="As">
+                                    <operand localId="332" xsi:type="Query">
+                                        <source localId="324" alias="Obs">
+                                            <expression localId="323" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                                                <codes name="Alcohol Counseling and Treatment" xsi:type="ValueSetRef"/>
+                                            </expression>
+                                        </source>
+                                        <where localId="331" xsi:type="In">
+                                            <operand localId="327" path="value" xsi:type="Property">
+                                                <source localId="326" path="status" scope="Obs" xsi:type="Property"/>
+                                            </operand>
+                                            <operand localId="330" xsi:type="List">
+                                                <element localId="328" valueType="t:String" value="final" xsi:type="Literal"/>
+                                                <element localId="329" valueType="t:String" value="amended" xsi:type="Literal"/>
+                                            </operand>
+                                        </where>
+                                    </operand>
+                                    <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                        <elementType xsi:type="ChoiceTypeSpecifier">
+                                            <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                                            <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                                        </elementType>
+                                    </asTypeSpecifier>
+                                </operand>
+                            </operand>
+                            <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                <elementType xsi:type="ChoiceTypeSpecifier">
+                                    <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                                </elementType>
+                            </asTypeSpecifier>
+                        </operand>
+                        <operand xsi:type="As">
+                            <operand localId="341" xsi:type="Query">
+                                <source localId="335" alias="Proc">
+                                    <expression localId="334" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                                        <codes name="Alcohol Screening" xsi:type="ValueSetRef"/>
+                                    </expression>
+                                </source>
+                                <where localId="340" xsi:type="Equal">
+                                    <operand localId="338" path="value" xsi:type="Property">
+                                        <source localId="337" path="status" scope="Proc" xsi:type="Property"/>
+                                    </operand>
+                                    <operand localId="339" valueType="t:String" value="completed" xsi:type="Literal"/>
+                                </where>
+                            </operand>
+                            <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                <elementType xsi:type="ChoiceTypeSpecifier">
+                                    <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                                </elementType>
+                            </asTypeSpecifier>
+                        </operand>
+                    </operand>
+                    <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                            <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                            <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                    </asTypeSpecifier>
+                </operand>
+                <operand xsi:type="As">
+                    <operand localId="352" xsi:type="Query">
+                        <source localId="344" alias="Obs">
+                            <expression localId="343" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                                <codes name="Alcohol Screening" xsi:type="ValueSetRef"/>
+                            </expression>
+                        </source>
+                        <where localId="351" xsi:type="In">
+                            <operand localId="347" path="value" xsi:type="Property">
+                                <source localId="346" path="status" scope="Obs" xsi:type="Property"/>
+                            </operand>
+                            <operand localId="350" xsi:type="List">
+                                <element localId="348" valueType="t:String" value="final" xsi:type="Literal"/>
+                                <element localId="349" valueType="t:String" value="amended" xsi:type="Literal"/>
+                            </operand>
+                        </where>
+                    </operand>
+                    <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                            <type name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                            <type name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                    </asTypeSpecifier>
+                </operand>
+            </expression>
+        </def>
+        <def localId="369" name="Numerator 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="369">
+                    <a:s>define &quot;Numerator 2&quot;:
+                    </a:s>
+                    <a:s r="368">
+                        <a:s r="302">
+                            <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                            and
+                        </a:s>
+                        <a:s r="367">
+                            <a:s>exists </a:s>
+                            <a:s r="366">
+                                <a:s>(
+                                </a:s>
+                                <a:s r="366">
+                                    <a:s>
+                                        <a:s r="314">
+                                            <a:s r="313">
+                                                <a:s>
+                                                    <a:s>&quot;Initial Positive Assessment for Unhealthy Alcohol Use&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> A</a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="365">
+                                        <a:s>with </a:s>
+                                        <a:s r="356">
+                                            <a:s r="355">
+                                                <a:s>
+                                                    <a:s>&quot;Followup Screening&quot;</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> F</a:s>
+                                        </a:s>
+                                        <a:s> such that </a:s>
+                                        <a:s r="364">
+                                            <a:s r="359">
+                                                <a:s r="358">
+                                                    <a:s r="357">
+                                                        <a:s>F</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="358">
+                                                        <a:s>effective</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="359">
+                                                    <a:s>value</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s> </a:s>
+                                            <a:s r="364">
+                                                <a:s r="363">
+                                                    <a:s>2 months</a:s>
+                                                </a:s>
+                                                <a:s> or less after day of</a:s>
+                                            </a:s>
+                                            <a:s> </a:s>
+                                            <a:s r="362">
+                                                <a:s r="361">
+                                                    <a:s r="360">
+                                                        <a:s>A</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="361">
+                                                        <a:s>effective</a:s>
+                                                    </a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="362">
+                                                    <a:s>value</a:s>
+                                                </a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
+                                <a:s>
+                                    )</a:s>
+                            </a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="368" xsi:type="And">
+                <operand localId="302" name="Initial Population" xsi:type="ExpressionRef"/>
+                <operand localId="367" xsi:type="Exists">
+                    <operand localId="366" xsi:type="Query">
+                        <source localId="314" alias="A">
+                            <expression localId="313" name="Initial Positive Assessment for Unhealthy Alcohol Use" xsi:type="ExpressionRef"/>
+                        </source>
+                        <relationship localId="365" alias="F" xsi:type="With">
+                            <expression localId="355" name="Followup Screening" xsi:type="ExpressionRef"/>
+                            <suchThat localId="364" precision="Day" xsi:type="In">
+                                <operand localId="359" path="value" xsi:type="Property">
+                                    <source localId="358" path="effective" scope="F" xsi:type="Property"/>
+                                </operand>
+                                <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                                    <low localId="362" path="value" xsi:type="Property">
+                                        <source localId="361" path="effective" scope="A" xsi:type="Property"/>
+                                    </low>
+                                    <high xsi:type="Add">
+                                        <operand localId="362" path="value" xsi:type="Property">
+                                            <source localId="361" path="effective" scope="A" xsi:type="Property"/>
+                                        </operand>
+                                        <operand localId="363" value="2" unit="months" xsi:type="Quantity"/>
+                                    </high>
+                                </operand>
+                            </suchThat>
+                        </relationship>
+                    </operand>
+                </operand>
+            </expression>
+        </def>
+        <def localId="377" name="Stratifier 1" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="377">
+                    <a:s>define &quot;Stratifier 1&quot;:
+                    </a:s>
+                    <a:s r="376">
+                        <a:s r="372">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="371">
+                                <a:s>start of </a:s>
+                                <a:s r="370">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="375">
+                            <a:s>Interval[18, 25]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="376" xsi:type="In">
+                <operand localId="372" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="371" xsi:type="Start">
+                        <operand localId="370" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="375" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="373" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                    <high localId="374" valueType="t:Integer" value="25" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="385" name="Stratifier 2" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="385">
+                    <a:s>define &quot;Stratifier 2&quot;:
+                    </a:s>
+                    <a:s r="384">
+                        <a:s r="380">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="379">
+                                <a:s>start of </a:s>
+                                <a:s r="378">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="383">
+                            <a:s>Interval[26, 44]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="384" xsi:type="In">
+                <operand localId="380" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="379" xsi:type="Start">
+                        <operand localId="378" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="383" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="381" valueType="t:Integer" value="26" xsi:type="Literal"/>
+                    <high localId="382" valueType="t:Integer" value="44" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="393" name="Stratifier 3" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="393">
+                    <a:s>define &quot;Stratifier 3&quot;:
+                    </a:s>
+                    <a:s r="392">
+                        <a:s r="388">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="387">
+                                <a:s>start of </a:s>
+                                <a:s r="386">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="391">
+                            <a:s>Interval[45, 64]</a:s>
+                        </a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="392" xsi:type="In">
+                <operand localId="388" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="387" xsi:type="Start">
+                        <operand localId="386" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="391" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="389" valueType="t:Integer" value="45" xsi:type="Literal"/>
+                    <high localId="390" valueType="t:Integer" value="64" xsi:type="Literal"/>
+                </operand>
+            </expression>
+        </def>
+        <def localId="399" name="Stratifier 4" context="Patient" accessLevel="Public">
+            <annotation xsi:type="a:Annotation">
+                <a:s r="399">
+                    <a:s>define &quot;Stratifier 4&quot;:
+                    </a:s>
+                    <a:s r="398">
+                        <a:s r="396">
+                            <a:s>AgeInYearsAt(</a:s>
+                            <a:s r="395">
+                                <a:s>start of </a:s>
+                                <a:s r="394">
+                                    <a:s>&quot;Fourteen Month Measurement Period&quot;</a:s>
+                                </a:s>
+                            </a:s>
+                            <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 65</a:s>
+                    </a:s>
+                </a:s>
+            </annotation>
+            <expression localId="398" xsi:type="GreaterOrEqual">
+                <operand localId="396" precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand localId="395" xsi:type="Start">
+                        <operand localId="394" name="Fourteen Month Measurement Period" xsi:type="ExpressionRef"/>
+                    </operand>
+                </operand>
+                <operand localId="397" valueType="t:Integer" value="65" xsi:type="Literal"/>
+            </expression>
+        </def>
+    </statements>
+</library>

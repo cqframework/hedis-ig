@@ -1,122 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
-   <annotation startLine="268" startChar="3" endLine="268" endChar="33" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="275" startChar="3" endLine="275" endChar="56" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="282" startChar="3" endLine="282" endChar="45" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="289" startChar="3" endLine="289" endChar="49" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="296" startChar="3" endLine="296" endChar="36" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="308" startChar="3" endLine="308" endChar="44" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
-   <annotation startLine="315" startChar="3" endLine="315" endChar="42" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
    <identifier id="COL_FHIR" version="1.0.0"/>
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+      <def localId="1" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
    </usings>
    <parameters>
-      <def name="Product Line" accessLevel="Public">
-         <parameterTypeSpecifier name="t:String" xsi:type="NamedTypeSpecifier"/>
+      <def localId="21" name="Product Line" accessLevel="Public">
+         <parameterTypeSpecifier localId="20" name="t:String" xsi:type="NamedTypeSpecifier"/>
       </def>
-      <def name="Measurement Period" accessLevel="Public">
-         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
-            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+      <def localId="24" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="23" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="22" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
          </parameterTypeSpecifier>
       </def>
    </parameters>
    <valueSets>
-      <def name="Colonoscopy Value Set" id="2.16.840.1.113883.3.464.1004.1064.29" accessLevel="Public"/>
-      <def name="Colorectal Cancer Value Set" id="2.16.840.1.113883.3.464.1004.1065.32" accessLevel="Public"/>
-      <def name="CT Colonography Value Set" id="2.16.840.1.113883.3.464.1004.1421.34" accessLevel="Public"/>
-      <def name="FIT-DNA Value Set" id="2.16.840.1.113883.3.464.1004.1420.35" accessLevel="Public"/>
-      <def name="Flexible Sigmoidoscopy Value Set" id="2.16.840.1.113883.3.464.1004.1102.38" accessLevel="Public"/>
-      <def name="FOBT Value Set" id="2.16.840.1.113883.3.464.1004.1093.41" accessLevel="Public"/>
-      <def name="Total Colectomy Value Set" id="2.16.840.1.113883.3.464.1004.1250.44" accessLevel="Public"/>
+      <def localId="2" name="Colonoscopy Value Set (CPT)" id="2.16.840.1.113883.3.464.1004.1064.29" accessLevel="Public"/>
+      <def localId="3" name="Colonoscopy Value Set (HCPCS)" id="2.16.840.1.113883.3.464.1004.1064.30" accessLevel="Public"/>
+      <def localId="4" name="Colonoscopy Value Set (ICD9)" id="2.16.840.1.113883.3.464.1004.1064.31" accessLevel="Public"/>
+      <def localId="5" name="Colorectal Cancer Value Set (ICD10)" id="2.16.840.1.113883.3.464.1004.1065.32" accessLevel="Public"/>
+      <def localId="6" name="Colorectal Cancer Value Set (ICD9)" id="2.16.840.1.113883.3.464.1004.1065.33" accessLevel="Public"/>
+      <def localId="7" name="CT Colonography Value Set" id="2.16.840.1.113883.3.464.1004.1421.34" accessLevel="Public"/>
+      <def localId="8" name="FIT-DNA Value Set (CPT)" id="2.16.840.1.113883.3.464.1004.1420.35" accessLevel="Public"/>
+      <def localId="9" name="FIT-DNA Value Set (HCPCS)" id="2.16.840.1.113883.3.464.1004.1420.36" accessLevel="Public"/>
+      <def localId="10" name="FIT-DNA Value Set (LOINC)" id="2.16.840.1.113883.3.464.1004.1420.37" accessLevel="Public"/>
+      <def localId="11" name="Flexible Sigmoidoscopy Value Set (CPT)" id="2.16.840.1.113883.3.464.1004.1102.38" accessLevel="Public"/>
+      <def localId="12" name="Flexible Sigmoidoscopy Value Set (HCPCS)" id="2.16.840.1.113883.3.464.1004.1102.39" accessLevel="Public"/>
+      <def localId="13" name="Flexible Sigmoidoscopy Value Set (ICD9)" id="2.16.840.1.113883.3.464.1004.1102.40" accessLevel="Public"/>
+      <def localId="14" name="FOBT Value Set (CPT)" id="2.16.840.1.113883.3.464.1004.1093.41" accessLevel="Public"/>
+      <def localId="15" name="FOBT Value Set (HCPCS)" id="2.16.840.1.113883.3.464.1004.1093.42" accessLevel="Public"/>
+      <def localId="16" name="FOBT Value Set (ICD9)" id="2.16.840.1.113883.3.464.1004.1093.43" accessLevel="Public"/>
+      <def localId="17" name="Total Colectomy Value Set (CPT)" id="2.16.840.1.113883.3.464.1004.1250.44" accessLevel="Public"/>
+      <def localId="18" name="Total Colectomy Value Set (ICD10)" id="2.16.840.1.113883.3.464.1004.1250.45" accessLevel="Public"/>
+      <def localId="19" name="Total Colectomy Value Set (ICD9)" id="2.16.840.1.113883.3.464.1004.1250.46" accessLevel="Public"/>
    </valueSets>
    <statements>
-      <def name="First Predecessor Year" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="32" name="First Predecessor Year" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="32">
+               <a:s>define &quot;First Predecessor Year&quot;:
+               </a:s>
+               <a:s r="31">
+                  <a:s>Interval[</a:s>
+                  <a:s r="28">
+                     <a:s r="26">
+                        <a:s>start of </a:s>
+                        <a:s r="25">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="27">
+                        <a:s>1 year</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="30">
+                     <a:s>start of </a:s>
+                     <a:s r="29">
+                        <a:s>&quot;Measurement Period&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="31" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="28" xsi:type="Subtract">
+               <operand localId="26" xsi:type="Start">
+                  <operand localId="25" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="1" unit="year" xsi:type="Quantity"/>
+               <operand localId="27" value="1" unit="year" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="Start">
-               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="30" xsi:type="Start">
+               <operand localId="29" name="Measurement Period" xsi:type="ParameterRef"/>
             </high>
          </expression>
       </def>
-      <def name="Second Predecessor Year" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="42" name="Second Predecessor Year" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="42">
+               <a:s>define &quot;Second Predecessor Year&quot;:
+               </a:s>
+               <a:s r="41">
+                  <a:s>Interval[</a:s>
+                  <a:s r="36">
+                     <a:s r="34">
+                        <a:s>start of </a:s>
+                        <a:s r="33">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="35">
+                        <a:s>2 years</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="40">
+                     <a:s r="38">
+                        <a:s>start of </a:s>
+                        <a:s r="37">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="39">
+                        <a:s>1 year</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="41" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="36" xsi:type="Subtract">
+               <operand localId="34" xsi:type="Start">
+                  <operand localId="33" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="2" unit="years" xsi:type="Quantity"/>
+               <operand localId="35" value="2" unit="years" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="40" xsi:type="Subtract">
+               <operand localId="38" xsi:type="Start">
+                  <operand localId="37" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="1" unit="year" xsi:type="Quantity"/>
+               <operand localId="39" value="1" unit="year" xsi:type="Quantity"/>
             </high>
          </expression>
       </def>
-      <def name="Third Predecessor Quarter" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Subtract">
-                  <operand xsi:type="Start">
-                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="54" name="Third Predecessor Quarter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="54">
+               <a:s>define &quot;Third Predecessor Quarter&quot;:
+               </a:s>
+               <a:s r="53">
+                  <a:s>Interval[</a:s>
+                  <a:s r="48">
+                     <a:s r="46">
+                        <a:s r="44">
+                           <a:s>start of </a:s>
+                           <a:s r="43">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> - </a:s>
+                        <a:s r="45">
+                           <a:s>2 years</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="47">
+                        <a:s>3 months</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="52">
+                     <a:s r="50">
+                        <a:s>start of </a:s>
+                        <a:s r="49">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="51">
+                        <a:s>2 years</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="53" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="48" xsi:type="Subtract">
+               <operand localId="46" xsi:type="Subtract">
+                  <operand localId="44" xsi:type="Start">
+                     <operand localId="43" name="Measurement Period" xsi:type="ParameterRef"/>
                   </operand>
-                  <operand value="2" unit="years" xsi:type="Quantity"/>
+                  <operand localId="45" value="2" unit="years" xsi:type="Quantity"/>
                </operand>
-               <operand value="3" unit="months" xsi:type="Quantity"/>
+               <operand localId="47" value="3" unit="months" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="52" xsi:type="Subtract">
+               <operand localId="50" xsi:type="Start">
+                  <operand localId="49" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="2" unit="years" xsi:type="Quantity"/>
+               <operand localId="51" value="2" unit="years" xsi:type="Quantity"/>
             </high>
          </expression>
       </def>
-      <def name="Lookback Interval Two More Years" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="62" name="Lookback Interval Two More Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="62">
+               <a:s>define &quot;Lookback Interval Two More Years&quot;:
+               </a:s>
+               <a:s r="61">
+                  <a:s>Interval[</a:s>
+                  <a:s r="58">
+                     <a:s r="56">
+                        <a:s>start of </a:s>
+                        <a:s r="55">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="57">
+                        <a:s>2 years</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="60">
+                     <a:s>end of </a:s>
+                     <a:s r="59">
+                        <a:s>&quot;Measurement Period&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="61" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="58" xsi:type="Subtract">
+               <operand localId="56" xsi:type="Start">
+                  <operand localId="55" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="2" unit="years" xsi:type="Quantity"/>
+               <operand localId="57" value="2" unit="years" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="End">
-               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="60" xsi:type="End">
+               <operand localId="59" name="Measurement Period" xsi:type="ParameterRef"/>
             </high>
          </expression>
       </def>
-      <def name="Lookback Interval Four More Years" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="70" name="Lookback Interval Four More Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="70">
+               <a:s>define &quot;Lookback Interval Four More Years&quot;:
+               </a:s>
+               <a:s r="69">
+                  <a:s>Interval[</a:s>
+                  <a:s r="66">
+                     <a:s r="64">
+                        <a:s>start of </a:s>
+                        <a:s r="63">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="65">
+                        <a:s>4 years</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="68">
+                     <a:s>end of </a:s>
+                     <a:s r="67">
+                        <a:s>&quot;Measurement Period&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="69" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="66" xsi:type="Subtract">
+               <operand localId="64" xsi:type="Start">
+                  <operand localId="63" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="4" unit="years" xsi:type="Quantity"/>
+               <operand localId="65" value="4" unit="years" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="End">
-               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="68" xsi:type="End">
+               <operand localId="67" name="Measurement Period" xsi:type="ParameterRef"/>
             </high>
          </expression>
       </def>
-      <def name="Lookback Interval Nine More Years" context="Patient" accessLevel="Public">
-         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
-            <low xsi:type="Subtract">
-               <operand xsi:type="Start">
-                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+      <def localId="78" name="Lookback Interval Nine More Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="78">
+               <a:s>define &quot;Lookback Interval Nine More Years&quot;:
+               </a:s>
+               <a:s r="77">
+                  <a:s>Interval[</a:s>
+                  <a:s r="74">
+                     <a:s r="72">
+                        <a:s>start of </a:s>
+                        <a:s r="71">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="73">
+                        <a:s>9 years</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="76">
+                     <a:s>end of </a:s>
+                     <a:s r="75">
+                        <a:s>&quot;Measurement Period&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="77" lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low localId="74" xsi:type="Subtract">
+               <operand localId="72" xsi:type="Start">
+                  <operand localId="71" name="Measurement Period" xsi:type="ParameterRef"/>
                </operand>
-               <operand value="9" unit="years" xsi:type="Quantity"/>
+               <operand localId="73" value="9" unit="years" xsi:type="Quantity"/>
             </low>
-            <high xsi:type="End">
-               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            <high localId="76" xsi:type="End">
+               <operand localId="75" name="Measurement Period" xsi:type="ParameterRef"/>
             </high>
          </expression>
       </def>
@@ -125,357 +321,1495 @@
             <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
          </expression>
       </def>
-      <def name="Is Age 51 to 75 at End" context="Patient" accessLevel="Public">
-         <expression xsi:type="And">
+      <def localId="85" name="Is Age 51 to 75 at End" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="85">
+               <a:s>define &quot;Is Age 51 to 75 at End&quot;:
+               </a:s>
+               <a:s r="84">
+                  <a:s r="81">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="80">
+                        <a:s>end of </a:s>
+                        <a:s r="79">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> between 51 and 75</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="84" xsi:type="And">
             <operand xsi:type="GreaterOrEqual">
-               <operand precision="Year" xsi:type="CalculateAgeAt">
+               <operand localId="81" precision="Year" xsi:type="CalculateAgeAt">
                   <operand path="birthDate.value" xsi:type="Property">
                      <source name="Patient" xsi:type="ExpressionRef"/>
                   </operand>
-                  <operand xsi:type="End">
-                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  <operand localId="80" xsi:type="End">
+                     <operand localId="79" name="Measurement Period" xsi:type="ParameterRef"/>
                   </operand>
                </operand>
-               <operand valueType="t:Integer" value="51" xsi:type="Literal"/>
+               <operand localId="82" valueType="t:Integer" value="51" xsi:type="Literal"/>
             </operand>
             <operand xsi:type="LessOrEqual">
-               <operand precision="Year" xsi:type="CalculateAgeAt">
+               <operand localId="81" precision="Year" xsi:type="CalculateAgeAt">
                   <operand path="birthDate.value" xsi:type="Property">
                      <source name="Patient" xsi:type="ExpressionRef"/>
                   </operand>
-                  <operand xsi:type="End">
-                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  <operand localId="80" xsi:type="End">
+                     <operand localId="79" name="Measurement Period" xsi:type="ParameterRef"/>
                   </operand>
                </operand>
-               <operand valueType="t:Integer" value="75" xsi:type="Literal"/>
+               <operand localId="83" valueType="t:Integer" value="75" xsi:type="Literal"/>
             </operand>
          </expression>
       </def>
-      <def name="Initial Population" context="Patient" accessLevel="Public">
-         <expression name="Is Age 51 to 75 at End" xsi:type="ExpressionRef"/>
+      <def localId="87" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="87">
+               <a:s>define &quot;Initial Population&quot;:
+               </a:s>
+               <a:s r="86">
+                  <a:s>&quot;Is Age 51 to 75 at End&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="86" name="Is Age 51 to 75 at End" xsi:type="ExpressionRef"/>
       </def>
-      <def name="Denominator" context="Patient" accessLevel="Public">
-         <expression name="Initial Population" xsi:type="ExpressionRef"/>
+      <def localId="89" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="89">
+               <a:s>define &quot;Denominator&quot;:
+               </a:s>
+               <a:s r="88">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="88" name="Initial Population" xsi:type="ExpressionRef"/>
       </def>
-      <def name="ChoiceToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
-         <expression xsi:type="If">
-            <condition asType="t:Boolean" xsi:type="As">
-               <operand xsi:type="Is">
-                  <operand name="value" xsi:type="OperandRef"/>
-                  <isTypeSpecifier name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+      <def localId="96" name="FOBT Observations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="96">
+               <a:s>define &quot;FOBT Observations&quot;:
+               </a:s>
+               <a:s r="95">
+                  <a:s r="93">
+                     <a:s r="91">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;FOBT Value Set (CPT)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>
+                        union </a:s>
+                     <a:s r="92">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;FOBT Value Set (HCPCS)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="94">
+                     <a:s>[Observation: </a:s>
+                     <a:s>
+                        <a:s>&quot;FOBT Value Set (ICD9)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="95" xsi:type="Union">
+            <operand localId="93" xsi:type="Union">
+               <operand localId="91" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="FOBT Value Set (CPT)" xsi:type="ValueSetRef"/>
                </operand>
-               <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
-            </condition>
-            <then lowClosed="true" highClosed="true" xsi:type="Interval">
-               <low path="value" xsi:type="Property">
-                  <source name="value" xsi:type="OperandRef"/>
-               </low>
-               <high path="value" xsi:type="Property">
-                  <source name="value" xsi:type="OperandRef"/>
-               </high>
-            </then>
-            <else lowClosed="true" highClosed="true" xsi:type="Interval">
-               <low path="value" xsi:type="Property">
-                  <source path="start" xsi:type="Property">
-                     <source name="value" xsi:type="OperandRef"/>
-                  </source>
-               </low>
-               <high path="value" xsi:type="Property">
-                  <source path="end" xsi:type="Property">
-                     <source name="value" xsi:type="OperandRef"/>
-                  </source>
-               </high>
-            </else>
-         </expression>
-         <operand name="value">
-            <operandTypeSpecifier xsi:type="ChoiceTypeSpecifier">
-               <type name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
-               <type name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
-            </operandTypeSpecifier>
-         </operand>
-      </def>
-      <def name="Is Fecal Occult Blood Test In Last Year" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="Obs">
-                  <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="FOBT Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="In">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="Obs" xsi:type="Property"/>
-                     </operand>
-                     <operand xsi:type="List">
-                        <element valueType="t:String" value="final" xsi:type="Literal"/>
-                        <element valueType="t:String" value="amended" xsi:type="Literal"/>
-                     </operand>
-                  </operand>
-                  <operand xsi:type="IncludedIn">
-                     <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                        <operand path="effective" scope="Obs" xsi:type="Property"/>
-                     </operand>
-                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
-                  </operand>
-               </where>
-            </operand>
-         </expression>
-      </def>
-      <def name="Is Flexible Sigmoidoscopy In Last Five Years" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="DiagRep">
-                  <expression dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="Flexible Sigmoidoscopy Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="In">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand xsi:type="List">
-                        <element valueType="t:String" value="final" xsi:type="Literal"/>
-                        <element valueType="t:String" value="appended" xsi:type="Literal"/>
-                        <element valueType="t:String" value="corrected" xsi:type="Literal"/>
-                     </operand>
-                  </operand>
-                  <operand xsi:type="IncludedIn">
-                     <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                        <operand path="effective" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand name="Lookback Interval Four More Years" xsi:type="ExpressionRef"/>
-                  </operand>
-               </where>
-            </operand>
-         </expression>
-      </def>
-      <def name="Is Colonoscopy In Last Ten Years" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="DiagRep">
-                  <expression dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="Colonoscopy Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="In">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand xsi:type="List">
-                        <element valueType="t:String" value="final" xsi:type="Literal"/>
-                        <element valueType="t:String" value="appended" xsi:type="Literal"/>
-                        <element valueType="t:String" value="corrected" xsi:type="Literal"/>
-                     </operand>
-                  </operand>
-                  <operand xsi:type="IncludedIn">
-                     <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                        <operand path="effective" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand name="Lookback Interval Nine More Years" xsi:type="ExpressionRef"/>
-                  </operand>
-               </where>
-            </operand>
-         </expression>
-      </def>
-      <def name="Is CT Colonography In Last Five Years" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="DiagRep">
-                  <expression dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="CT Colonography Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="In">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand xsi:type="List">
-                        <element valueType="t:String" value="final" xsi:type="Literal"/>
-                        <element valueType="t:String" value="appended" xsi:type="Literal"/>
-                        <element valueType="t:String" value="corrected" xsi:type="Literal"/>
-                     </operand>
-                  </operand>
-                  <operand xsi:type="IncludedIn">
-                     <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                        <operand path="effective" scope="DiagRep" xsi:type="Property"/>
-                     </operand>
-                     <operand name="Lookback Interval Four More Years" xsi:type="ExpressionRef"/>
-                  </operand>
-               </where>
-            </operand>
-         </expression>
-      </def>
-      <def name="Is FIT-DNA Test In Last Three Years" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="Obs">
-                  <expression dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="FIT-DNA Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="In">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="Obs" xsi:type="Property"/>
-                     </operand>
-                     <operand xsi:type="List">
-                        <element valueType="t:String" value="final" xsi:type="Literal"/>
-                        <element valueType="t:String" value="amended" xsi:type="Literal"/>
-                     </operand>
-                  </operand>
-                  <operand xsi:type="IncludedIn">
-                     <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                        <operand path="effective" scope="Obs" xsi:type="Property"/>
-                     </operand>
-                     <operand name="Lookback Interval Two More Years" xsi:type="ExpressionRef"/>
-                  </operand>
-               </where>
-            </operand>
-         </expression>
-      </def>
-      <def name="Is Colorectal Cancer Screening" context="Patient" accessLevel="Public">
-         <expression xsi:type="Or">
-            <operand xsi:type="Or">
-               <operand xsi:type="Or">
-                  <operand xsi:type="Or">
-                     <operand name="Is Fecal Occult Blood Test In Last Year" xsi:type="ExpressionRef"/>
-                     <operand name="Is Flexible Sigmoidoscopy In Last Five Years" xsi:type="ExpressionRef"/>
-                  </operand>
-                  <operand name="Is Colonoscopy In Last Ten Years" xsi:type="ExpressionRef"/>
+               <operand localId="92" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="FOBT Value Set (HCPCS)" xsi:type="ValueSetRef"/>
                </operand>
-               <operand name="Is CT Colonography In Last Five Years" xsi:type="ExpressionRef"/>
             </operand>
-            <operand name="Is FIT-DNA Test In Last Three Years" xsi:type="ExpressionRef"/>
+            <operand localId="94" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <codes name="FOBT Value Set (ICD9)" xsi:type="ValueSetRef"/>
+            </operand>
          </expression>
       </def>
-      <def name="Numerator" context="Patient" accessLevel="Public">
-         <expression xsi:type="And">
-            <operand name="Initial Population" xsi:type="ExpressionRef"/>
-            <operand name="Is Colorectal Cancer Screening" xsi:type="ExpressionRef"/>
-         </expression>
-      </def>
-      <def name="Is Colorectal Cancer" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="Cond">
-                  <expression dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="Colorectal Cancer Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
+      <def localId="114" name="Is Fecal Occult Blood Test In Last Year" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="114">
+               <a:s>define &quot;Is Fecal Occult Blood Test In Last Year&quot;:
+               </a:s>
+               <a:s r="113">
+                  <a:s>exists</a:s>
+                  <a:s r="112">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="112">
+                        <a:s>
+                           <a:s r="98">
+                              <a:s r="97">
+                                 <a:s>
+                                    <a:s>&quot;FOBT Observations&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Obs</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="111">
+                           <a:s>where </a:s>
+                           <a:s r="111">
+                              <a:s r="105">
+                                 <a:s r="101">
+                                    <a:s r="100">
+                                       <a:s r="99">
+                                          <a:s>Obs</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="100">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="101">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="104">
+                                    <a:s>{ </a:s>
+                                    <a:s r="102">
+                                       <a:s>'final'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="103">
+                                       <a:s>'amended'</a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="110">
+                                 <a:s r="108">
+                                    <a:s r="107">
+                                       <a:s r="106">
+                                          <a:s>Obs</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="107">
+                                          <a:s>effective</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="108">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="109">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="113" xsi:type="Exists">
+            <operand localId="112" xsi:type="Query">
+               <source localId="98" alias="Obs">
+                  <expression localId="97" name="FOBT Observations" xsi:type="ExpressionRef"/>
                </source>
-               <where xsi:type="And">
-                  <operand xsi:type="Equal">
-                     <operand path="value" xsi:type="Property">
-                        <source path="verificationStatus" scope="Cond" xsi:type="Property"/>
+               <where localId="111" xsi:type="And">
+                  <operand localId="105" xsi:type="In">
+                     <operand localId="101" path="value" xsi:type="Property">
+                        <source localId="100" path="status" scope="Obs" xsi:type="Property"/>
                      </operand>
-                     <operand valueType="t:String" value="confirmed" xsi:type="Literal"/>
+                     <operand localId="104" xsi:type="List">
+                        <element localId="102" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="103" valueType="t:String" value="amended" xsi:type="Literal"/>
+                     </operand>
                   </operand>
-                  <operand xsi:type="Before">
-                     <operand path="value" xsi:type="Property">
-                        <source path="assertedDate" scope="Cond" xsi:type="Property"/>
+                  <operand localId="110" xsi:type="In">
+                     <operand localId="108" path="value" xsi:type="Property">
+                        <source localId="107" path="effective" scope="Obs" xsi:type="Property"/>
                      </operand>
-                     <operand xsi:type="End">
-                        <operand name="Measurement Period" xsi:type="ParameterRef"/>
-                     </operand>
+                     <operand localId="109" name="Measurement Period" xsi:type="ParameterRef"/>
                   </operand>
                </where>
             </operand>
          </expression>
       </def>
-      <def name="Is Total Colectomy" context="Patient" accessLevel="Public">
-         <expression xsi:type="Exists">
-            <operand xsi:type="Query">
-               <source alias="Proc">
-                  <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
-                     <codes name="Total Colectomy Value Set" xsi:type="ValueSetRef"/>
-                  </expression>
-               </source>
-               <where xsi:type="And">
-                  <operand xsi:type="Equal">
-                     <operand path="value" xsi:type="Property">
-                        <source path="status" scope="Proc" xsi:type="Property"/>
-                     </operand>
-                     <operand valueType="t:String" value="completed" xsi:type="Literal"/>
-                  </operand>
-                  <operand xsi:type="Before">
-                     <operand xsi:type="End">
-                        <operand name="ChoiceToIntervalOfDT" xsi:type="FunctionRef">
-                           <operand path="performed" scope="Proc" xsi:type="Property"/>
-                        </operand>
-                     </operand>
-                     <operand xsi:type="End">
-                        <operand name="Measurement Period" xsi:type="ParameterRef"/>
-                     </operand>
-                  </operand>
-               </where>
+      <def localId="121" name="Flexible Sigmoidoscopy Reports" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="121">
+               <a:s>define &quot;Flexible Sigmoidoscopy Reports&quot;:
+               </a:s>
+               <a:s r="120">
+                  <a:s r="118">
+                     <a:s r="116">
+                        <a:s>[DiagnosticReport: </a:s>
+                        <a:s>
+                           <a:s>&quot;Flexible Sigmoidoscopy Value Set (CPT)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>
+                        union </a:s>
+                     <a:s r="117">
+                        <a:s>[DiagnosticReport: </a:s>
+                        <a:s>
+                           <a:s>&quot;Flexible Sigmoidoscopy Value Set (HCPCS)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="119">
+                     <a:s>[DiagnosticReport: </a:s>
+                     <a:s>
+                        <a:s>&quot;Flexible Sigmoidoscopy Value Set (ICD9)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="120" xsi:type="Union">
+            <operand localId="118" xsi:type="Union">
+               <operand localId="116" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Flexible Sigmoidoscopy Value Set (CPT)" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="117" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Flexible Sigmoidoscopy Value Set (HCPCS)" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="119" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Flexible Sigmoidoscopy Value Set (ICD9)" xsi:type="ValueSetRef"/>
             </operand>
          </expression>
       </def>
-      <def name="Denominator Exclusion" context="Patient" accessLevel="Public">
-         <expression xsi:type="And">
-            <operand name="Initial Population" xsi:type="ExpressionRef"/>
-            <operand xsi:type="Or">
-               <operand name="Is Colorectal Cancer" xsi:type="ExpressionRef"/>
-               <operand name="Is Total Colectomy" xsi:type="ExpressionRef"/>
-            </operand>
-         </expression>
-      </def>
-      <def name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
-         <expression lowClosed="true" highClosed="true" xsi:type="Interval">
-            <low path="value" xsi:type="Property">
-               <source path="start" xsi:type="Property">
-                  <source name="value" xsi:type="OperandRef"/>
+      <def localId="144" name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="144">
+               <a:s>define function PeriodToIntervalOfDT(value </a:s>
+               <a:s r="136">
+                  <a:s>FHIR.Period</a:s>
+               </a:s>
+               <a:s>):
+               </a:s>
+               <a:s r="143">
+                  <a:s r="143">
+                     <a:s>Interval[</a:s>
+                     <a:s r="139">
+                        <a:s r="138">
+                           <a:s r="137">
+                              <a:s>value</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="138">
+                              <a:s>&quot;start&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="139">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="142">
+                        <a:s r="141">
+                           <a:s r="140">
+                              <a:s>value</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="141">
+                              <a:s>&quot;end&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="142">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="143" lowClosed="true" highClosed="true" xsi:type="Interval">
+            <low localId="139" path="value" xsi:type="Property">
+               <source localId="138" path="start" xsi:type="Property">
+                  <source localId="137" name="value" xsi:type="OperandRef"/>
                </source>
             </low>
-            <high path="value" xsi:type="Property">
-               <source path="end" xsi:type="Property">
-                  <source name="value" xsi:type="OperandRef"/>
+            <high localId="142" path="value" xsi:type="Property">
+               <source localId="141" path="end" xsi:type="Property">
+                  <source localId="140" name="value" xsi:type="OperandRef"/>
                </source>
             </high>
          </expression>
          <operand name="value">
-            <operandTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+            <operandTypeSpecifier localId="136" name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
          </operand>
       </def>
-      <def name="CodingToCode" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
-         <expression classType="t:Code" xsi:type="Instance">
+      <def localId="151" name="Is Flexible Sigmoidoscopy In Last Five Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="151">
+               <a:s>define &quot;Is Flexible Sigmoidoscopy In Last Five Years&quot;:
+               </a:s>
+               <a:s r="150">
+                  <a:s>exists</a:s>
+                  <a:s r="149">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="149">
+                        <a:s>
+                           <a:s r="123">
+                              <a:s r="122">
+                                 <a:s>
+                                    <a:s>&quot;Flexible Sigmoidoscopy Reports&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> DiagRep</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="148">
+                           <a:s>where </a:s>
+                           <a:s r="148">
+                              <a:s r="133">
+                                 <a:s r="126">
+                                    <a:s r="125">
+                                       <a:s r="124">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="125">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="126">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="132">
+                                    <a:s>{ </a:s>
+                                    <a:s r="127">
+                                       <a:s>'preliminary'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="128">
+                                       <a:s>'final'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="129">
+                                       <a:s>'amended'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="130">
+                                       <a:s>'corrected'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="131">
+                                       <a:s>'appended'</a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="147">
+                                 <a:s r="145">
+                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                    <a:s r="135">
+                                       <a:s r="134">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="135">
+                                          <a:s>effective</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                                 <a:s> overlaps </a:s>
+                                 <a:s r="146">
+                                    <a:s>&quot;Lookback Interval Four More Years&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="150" xsi:type="Exists">
+            <operand localId="149" xsi:type="Query">
+               <source localId="123" alias="DiagRep">
+                  <expression localId="122" name="Flexible Sigmoidoscopy Reports" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="148" xsi:type="And">
+                  <operand localId="133" xsi:type="In">
+                     <operand localId="126" path="value" xsi:type="Property">
+                        <source localId="125" path="status" scope="DiagRep" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="132" xsi:type="List">
+                        <element localId="127" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                        <element localId="128" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="129" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        <element localId="130" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                        <element localId="131" valueType="t:String" value="appended" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="147" xsi:type="Overlaps">
+                     <operand localId="145" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                        <operand asType="fhir:Period" xsi:type="As">
+                           <operand localId="135" path="effective" scope="DiagRep" xsi:type="Property"/>
+                           <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                     <operand localId="146" name="Lookback Interval Four More Years" xsi:type="ExpressionRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="159" name="Colonoscopy Reports" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="159">
+               <a:s>define &quot;Colonoscopy Reports&quot;:
+               </a:s>
+               <a:s r="158">
+                  <a:s r="156">
+                     <a:s r="154">
+                        <a:s>[DiagnosticReport: </a:s>
+                        <a:s>
+                           <a:s>&quot;Colonoscopy Value Set (CPT)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>
+                        union </a:s>
+                     <a:s r="155">
+                        <a:s>[DiagnosticReport: </a:s>
+                        <a:s>
+                           <a:s>&quot;Colonoscopy Value Set (HCPCS)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="157">
+                     <a:s>[DiagnosticReport: </a:s>
+                     <a:s>
+                        <a:s>&quot;Colonoscopy Value Set (ICD9)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="158" xsi:type="Union">
+            <operand localId="156" xsi:type="Union">
+               <operand localId="154" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Colonoscopy Value Set (CPT)" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="155" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Colonoscopy Value Set (HCPCS)" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="157" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Colonoscopy Value Set (ICD9)" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="180" name="Is Colonoscopy In Last Ten Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="180">
+               <a:s>define &quot;Is Colonoscopy In Last Ten Years&quot;:
+               </a:s>
+               <a:s r="179">
+                  <a:s>exists</a:s>
+                  <a:s r="178">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="178">
+                        <a:s>
+                           <a:s r="161">
+                              <a:s r="160">
+                                 <a:s>
+                                    <a:s>&quot;Colonoscopy Reports&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> DiagRep</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="177">
+                           <a:s>where </a:s>
+                           <a:s r="177">
+                              <a:s r="171">
+                                 <a:s r="164">
+                                    <a:s r="163">
+                                       <a:s r="162">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="163">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="164">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="170">
+                                    <a:s>{ </a:s>
+                                    <a:s r="165">
+                                       <a:s>'preliminary'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="166">
+                                       <a:s>'final'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="167">
+                                       <a:s>'amended'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="168">
+                                       <a:s>'corrected'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="169">
+                                       <a:s>'appended'</a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="176">
+                                 <a:s r="174">
+                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                    <a:s r="173">
+                                       <a:s r="172">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="173">
+                                          <a:s>effective</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                                 <a:s> overlaps </a:s>
+                                 <a:s r="175">
+                                    <a:s>&quot;Lookback Interval Nine More Years&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="179" xsi:type="Exists">
+            <operand localId="178" xsi:type="Query">
+               <source localId="161" alias="DiagRep">
+                  <expression localId="160" name="Colonoscopy Reports" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="177" xsi:type="And">
+                  <operand localId="171" xsi:type="In">
+                     <operand localId="164" path="value" xsi:type="Property">
+                        <source localId="163" path="status" scope="DiagRep" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="170" xsi:type="List">
+                        <element localId="165" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                        <element localId="166" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="167" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        <element localId="168" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                        <element localId="169" valueType="t:String" value="appended" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="176" xsi:type="Overlaps">
+                     <operand localId="174" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                        <operand asType="fhir:Period" xsi:type="As">
+                           <operand localId="173" path="effective" scope="DiagRep" xsi:type="Property"/>
+                           <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                     <operand localId="175" name="Lookback Interval Nine More Years" xsi:type="ExpressionRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="203" name="Is CT Colonography In Last Five Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="203">
+               <a:s>define &quot;Is CT Colonography In Last Five Years&quot;:
+               </a:s>
+               <a:s r="202">
+                  <a:s>exists</a:s>
+                  <a:s r="201">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="201">
+                        <a:s>
+                           <a:s r="184">
+                              <a:s r="183">
+                                 <a:s r="183">
+                                    <a:s>[DiagnosticReport: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;CT Colonography Value Set&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> DiagRep</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="200">
+                           <a:s>where </a:s>
+                           <a:s r="200">
+                              <a:s r="194">
+                                 <a:s r="187">
+                                    <a:s r="186">
+                                       <a:s r="185">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="186">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="187">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="193">
+                                    <a:s>{ </a:s>
+                                    <a:s r="188">
+                                       <a:s>'preliminary'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="189">
+                                       <a:s>'final'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="190">
+                                       <a:s>'amended'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="191">
+                                       <a:s>'corrected'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="192">
+                                       <a:s>'appended'</a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="199">
+                                 <a:s r="197">
+                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                    <a:s r="196">
+                                       <a:s r="195">
+                                          <a:s>DiagRep</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="196">
+                                          <a:s>effective</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                                 <a:s> overlaps </a:s>
+                                 <a:s r="198">
+                                    <a:s>&quot;Lookback Interval Four More Years&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="202" xsi:type="Exists">
+            <operand localId="201" xsi:type="Query">
+               <source localId="184" alias="DiagRep">
+                  <expression localId="183" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="CT Colonography Value Set" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where localId="200" xsi:type="And">
+                  <operand localId="194" xsi:type="In">
+                     <operand localId="187" path="value" xsi:type="Property">
+                        <source localId="186" path="status" scope="DiagRep" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="193" xsi:type="List">
+                        <element localId="188" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                        <element localId="189" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="190" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        <element localId="191" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                        <element localId="192" valueType="t:String" value="appended" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="199" xsi:type="Overlaps">
+                     <operand localId="197" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                        <operand asType="fhir:Period" xsi:type="As">
+                           <operand localId="196" path="effective" scope="DiagRep" xsi:type="Property"/>
+                           <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                     <operand localId="198" name="Lookback Interval Four More Years" xsi:type="ExpressionRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="211" name="FIT-DNA Observations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>define &quot;FIT-DNA Observations&quot;:
+               </a:s>
+               <a:s r="210">
+                  <a:s r="208">
+                     <a:s r="206">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;FIT-DNA Value Set (CPT)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>
+                        union </a:s>
+                     <a:s r="207">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;FIT-DNA Value Set (HCPCS)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="209">
+                     <a:s>[Observation: </a:s>
+                     <a:s>
+                        <a:s>&quot;FIT-DNA Value Set (LOINC)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="210" xsi:type="Union">
+            <operand localId="208" xsi:type="Union">
+               <operand localId="206" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="FIT-DNA Value Set (CPT)" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="207" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="FIT-DNA Value Set (HCPCS)" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="209" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+               <codes name="FIT-DNA Value Set (LOINC)" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="229" name="Is FIT-DNA Test In Last Three Years" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="229">
+               <a:s>define &quot;Is FIT-DNA Test In Last Three Years&quot;:
+               </a:s>
+               <a:s r="228">
+                  <a:s>exists</a:s>
+                  <a:s r="227">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="227">
+                        <a:s>
+                           <a:s r="213">
+                              <a:s r="212">
+                                 <a:s>
+                                    <a:s>&quot;FIT-DNA Observations&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Obs</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="226">
+                           <a:s>where </a:s>
+                           <a:s r="226">
+                              <a:s r="220">
+                                 <a:s r="216">
+                                    <a:s r="215">
+                                       <a:s r="214">
+                                          <a:s>Obs</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="215">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="216">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="219">
+                                    <a:s>{ </a:s>
+                                    <a:s r="217">
+                                       <a:s>'final'</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="218">
+                                       <a:s>'amended'</a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="225">
+                                 <a:s r="223">
+                                    <a:s r="222">
+                                       <a:s r="221">
+                                          <a:s>Obs</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="222">
+                                          <a:s>effective</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="223">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="224">
+                                    <a:s>&quot;Lookback Interval Two More Years&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="228" xsi:type="Exists">
+            <operand localId="227" xsi:type="Query">
+               <source localId="213" alias="Obs">
+                  <expression localId="212" name="FIT-DNA Observations" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="226" xsi:type="And">
+                  <operand localId="220" xsi:type="In">
+                     <operand localId="216" path="value" xsi:type="Property">
+                        <source localId="215" path="status" scope="Obs" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="219" xsi:type="List">
+                        <element localId="217" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="218" valueType="t:String" value="amended" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="225" xsi:type="In">
+                     <operand localId="223" path="value" xsi:type="Property">
+                        <source localId="222" path="effective" scope="Obs" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="224" name="Lookback Interval Two More Years" xsi:type="ExpressionRef"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="232" name="Is Colorectal Cancer Screening" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="232">
+               <a:s>define &quot;Is Colorectal Cancer Screening&quot;:
+               </a:s>
+               <a:s r="231">
+                  <a:s r="205">
+                     <a:s r="182">
+                        <a:s r="153">
+                           <a:s r="115">
+                              <a:s>&quot;Is Fecal Occult Blood Test In Last Year&quot;</a:s>
+                           </a:s>
+                           <a:s>
+                              or </a:s>
+                           <a:s r="152">
+                              <a:s>&quot;Is Flexible Sigmoidoscopy In Last Five Years&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                           or </a:s>
+                        <a:s r="181">
+                           <a:s>&quot;Is Colonoscopy In Last Ten Years&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        or </a:s>
+                     <a:s r="204">
+                        <a:s>&quot;Is CT Colonography In Last Five Years&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     or </a:s>
+                  <a:s r="230">
+                     <a:s>&quot;Is FIT-DNA Test In Last Three Years&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="231" xsi:type="Or">
+            <operand localId="205" xsi:type="Or">
+               <operand localId="182" xsi:type="Or">
+                  <operand localId="153" xsi:type="Or">
+                     <operand localId="115" name="Is Fecal Occult Blood Test In Last Year" xsi:type="ExpressionRef"/>
+                     <operand localId="152" name="Is Flexible Sigmoidoscopy In Last Five Years" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="181" name="Is Colonoscopy In Last Ten Years" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="204" name="Is CT Colonography In Last Five Years" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="230" name="Is FIT-DNA Test In Last Three Years" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="235" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="235">
+               <a:s>define &quot;Numerator&quot;:
+               </a:s>
+               <a:s r="234">
+                  <a:s r="90">
+                     <a:s>&quot;Initial Population&quot;</a:s>
+                  </a:s>
+                  <a:s>
+                     and </a:s>
+                  <a:s r="233">
+                     <a:s>&quot;Is Colorectal Cancer Screening&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="234" xsi:type="And">
+            <operand localId="90" name="Initial Population" xsi:type="ExpressionRef"/>
+            <operand localId="233" name="Is Colorectal Cancer Screening" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="240" name="Colorectal Cancer Conditions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="240">
+               <a:s>define &quot;Colorectal Cancer Conditions&quot;:
+               </a:s>
+               <a:s r="239">
+                  <a:s r="237">
+                     <a:s>[Condition: </a:s>
+                     <a:s>
+                        <a:s>&quot;Colorectal Cancer Value Set (ICD10)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="238">
+                     <a:s>[Condition: </a:s>
+                     <a:s>
+                        <a:s>&quot;Colorectal Cancer Value Set (ICD9)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="239" xsi:type="Union">
+            <operand localId="237" dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Colorectal Cancer Value Set (ICD10)" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand localId="238" dataType="fhir:Condition" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Colorectal Cancer Value Set (ICD9)" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="257" name="Is Colorectal Cancer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="257">
+               <a:s>define &quot;Is Colorectal Cancer&quot;:
+               </a:s>
+               <a:s r="256">
+                  <a:s>exists</a:s>
+                  <a:s r="255">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="255">
+                        <a:s>
+                           <a:s r="242">
+                              <a:s r="241">
+                                 <a:s>
+                                    <a:s>&quot;Colorectal Cancer Conditions&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Cond</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="254">
+                           <a:s>where </a:s>
+                           <a:s r="254">
+                              <a:s r="247">
+                                 <a:s r="245">
+                                    <a:s r="244">
+                                       <a:s r="243">
+                                          <a:s>Cond</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="244">
+                                          <a:s>verificationStatus</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="245">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> = </a:s>
+                                 <a:s r="246">
+                                    <a:s>'confirmed'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="253">
+                                 <a:s r="250">
+                                    <a:s r="249">
+                                       <a:s r="248">
+                                          <a:s>Cond</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="249">
+                                          <a:s>assertedDate</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="250">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> before day of </a:s>
+                                 <a:s r="252">
+                                    <a:s>end of </a:s>
+                                    <a:s r="251">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="256" xsi:type="Exists">
+            <operand localId="255" xsi:type="Query">
+               <source localId="242" alias="Cond">
+                  <expression localId="241" name="Colorectal Cancer Conditions" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="254" xsi:type="And">
+                  <operand localId="247" xsi:type="Equal">
+                     <operand localId="245" path="value" xsi:type="Property">
+                        <source localId="244" path="verificationStatus" scope="Cond" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="246" valueType="t:String" value="confirmed" xsi:type="Literal"/>
+                  </operand>
+                  <operand localId="253" precision="Day" xsi:type="Before">
+                     <operand localId="250" path="value" xsi:type="Property">
+                        <source localId="249" path="assertedDate" scope="Cond" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="252" xsi:type="End">
+                        <operand localId="251" name="Measurement Period" xsi:type="ParameterRef"/>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="264" name="Total Colectomy Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="264">
+               <a:s>define &quot;Total Colectomy Procedures&quot;:
+               </a:s>
+               <a:s r="263">
+                  <a:s r="261">
+                     <a:s r="259">
+                        <a:s>[Procedure: </a:s>
+                        <a:s>
+                           <a:s>&quot;Total Colectomy Value Set (CPT)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>
+                        union </a:s>
+                     <a:s r="260">
+                        <a:s>[Procedure: </a:s>
+                        <a:s>
+                           <a:s>&quot;Total Colectomy Value Set (ICD10)&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+                     union </a:s>
+                  <a:s r="262">
+                     <a:s>[Procedure: </a:s>
+                     <a:s>
+                        <a:s>&quot;Total Colectomy Value Set (ICD9)&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="263" xsi:type="Union">
+            <operand localId="261" xsi:type="Union">
+               <operand localId="259" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Total Colectomy Value Set (CPT)" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="260" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Total Colectomy Value Set (ICD10)" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="262" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Total Colectomy Value Set (ICD9)" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="282" name="Is Total Colectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="282">
+               <a:s>define &quot;Is Total Colectomy&quot;:
+               </a:s>
+               <a:s r="281">
+                  <a:s>exists</a:s>
+                  <a:s r="280">
+                     <a:s>(
+                     </a:s>
+                     <a:s r="280">
+                        <a:s>
+                           <a:s r="266">
+                              <a:s r="265">
+                                 <a:s>
+                                    <a:s>&quot;Total Colectomy Procedures&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Proc</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="279">
+                           <a:s>where </a:s>
+                           <a:s r="279">
+                              <a:s r="271">
+                                 <a:s r="269">
+                                    <a:s r="268">
+                                       <a:s r="267">
+                                          <a:s>Proc</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="268">
+                                          <a:s>status</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="269">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> = </a:s>
+                                 <a:s r="270">
+                                    <a:s>'completed'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+                                 and </a:s>
+                              <a:s r="278">
+                                 <a:s r="275">
+                                    <a:s>end of </a:s>
+                                    <a:s r="274">
+                                       <a:s>PeriodToIntervalOfDT(</a:s>
+                                       <a:s r="273">
+                                          <a:s r="272">
+                                             <a:s>Proc</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="273">
+                                             <a:s>performed</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> before day of </a:s>
+                                 <a:s r="277">
+                                    <a:s>end of </a:s>
+                                    <a:s r="276">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="281" xsi:type="Exists">
+            <operand localId="280" xsi:type="Query">
+               <source localId="266" alias="Proc">
+                  <expression localId="265" name="Total Colectomy Procedures" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="279" xsi:type="And">
+                  <operand localId="271" xsi:type="Equal">
+                     <operand localId="269" path="value" xsi:type="Property">
+                        <source localId="268" path="status" scope="Proc" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="270" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+                  <operand localId="278" precision="Day" xsi:type="Before">
+                     <operand localId="275" xsi:type="End">
+                        <operand localId="274" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                           <operand asType="fhir:Period" xsi:type="As">
+                              <operand localId="273" path="performed" scope="Proc" xsi:type="Property"/>
+                              <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="277" xsi:type="End">
+                        <operand localId="276" name="Measurement Period" xsi:type="ParameterRef"/>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="286" name="Denominator Exclusion" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="286">
+               <a:s>define &quot;Denominator Exclusion&quot;:
+               </a:s>
+               <a:s r="285">
+                  <a:s r="236">
+                     <a:s>&quot;Initial Population&quot;</a:s>
+                  </a:s>
+                  <a:s>
+                     and </a:s>
+                  <a:s r="284">
+                     <a:s>(</a:s>
+                     <a:s r="284">
+                        <a:s r="258">
+                           <a:s>&quot;Is Colorectal Cancer&quot;</a:s>
+                        </a:s>
+                        <a:s>
+                           or </a:s>
+                        <a:s r="283">
+                           <a:s>&quot;Is Total Colectomy&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="285" xsi:type="And">
+            <operand localId="236" name="Initial Population" xsi:type="ExpressionRef"/>
+            <operand localId="284" xsi:type="Or">
+               <operand localId="258" name="Is Colorectal Cancer" xsi:type="ExpressionRef"/>
+               <operand localId="283" name="Is Total Colectomy" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="303" name="CodingToCode" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="303">
+               <a:s>define function CodingToCode(coding </a:s>
+               <a:s r="289">
+                  <a:s>FHIR.Coding</a:s>
+               </a:s>
+               <a:s>):
+               </a:s>
+               <a:s r="302">
+                  <a:s r="302">
+                     <a:s>System.Code {
+                     </a:s>
+                     <a:s>
+                        <a:s>code: </a:s>
+                        <a:s r="292">
+                           <a:s r="291">
+                              <a:s r="290">
+                                 <a:s>coding</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="291">
+                                 <a:s>code</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="292">
+                              <a:s>value</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,
+                     </a:s>
+                     <a:s>
+                        <a:s>system: </a:s>
+                        <a:s r="295">
+                           <a:s r="294">
+                              <a:s r="293">
+                                 <a:s>coding</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="294">
+                                 <a:s>system</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="295">
+                              <a:s>value</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,
+                     </a:s>
+                     <a:s>
+                        <a:s>version: </a:s>
+                        <a:s r="298">
+                           <a:s r="297">
+                              <a:s r="296">
+                                 <a:s>coding</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="297">
+                                 <a:s>version</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="298">
+                              <a:s>value</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,
+                     </a:s>
+                     <a:s>
+                        <a:s>display: </a:s>
+                        <a:s r="301">
+                           <a:s r="300">
+                              <a:s r="299">
+                                 <a:s>coding</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="300">
+                                 <a:s>display</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="301">
+                              <a:s>value</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+                        }</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="302" classType="t:Code" xsi:type="Instance">
             <element name="code">
-               <value path="value" xsi:type="Property">
-                  <source path="code" xsi:type="Property">
-                     <source name="coding" xsi:type="OperandRef"/>
+               <value localId="292" path="value" xsi:type="Property">
+                  <source localId="291" path="code" xsi:type="Property">
+                     <source localId="290" name="coding" xsi:type="OperandRef"/>
                   </source>
                </value>
             </element>
             <element name="system">
-               <value path="value" xsi:type="Property">
-                  <source path="system" xsi:type="Property">
-                     <source name="coding" xsi:type="OperandRef"/>
+               <value localId="295" path="value" xsi:type="Property">
+                  <source localId="294" path="system" xsi:type="Property">
+                     <source localId="293" name="coding" xsi:type="OperandRef"/>
                   </source>
                </value>
             </element>
             <element name="version">
-               <value path="value" xsi:type="Property">
-                  <source path="version" xsi:type="Property">
-                     <source name="coding" xsi:type="OperandRef"/>
+               <value localId="298" path="value" xsi:type="Property">
+                  <source localId="297" path="version" xsi:type="Property">
+                     <source localId="296" name="coding" xsi:type="OperandRef"/>
                   </source>
                </value>
             </element>
             <element name="display">
-               <value path="value" xsi:type="Property">
-                  <source path="display" xsi:type="Property">
-                     <source name="coding" xsi:type="OperandRef"/>
+               <value localId="301" path="value" xsi:type="Property">
+                  <source localId="300" path="display" xsi:type="Property">
+                     <source localId="299" name="coding" xsi:type="OperandRef"/>
                   </source>
                </value>
             </element>
          </expression>
          <operand name="coding">
-            <operandTypeSpecifier name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
+            <operandTypeSpecifier localId="289" name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
          </operand>
       </def>
    </statements>
 </library>
-
-
