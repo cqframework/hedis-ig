@@ -70,7 +70,7 @@ calendar year, and it will not behave properly otherwise; 2017 for example:
 Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 */
 
-parameter "Measurement Period" Interval<DateTime>
+parameter "Measurement Period" default Interval[DateTime(2017, 01, 01), DateTime(2017, 12, 31)]
 
 define "First Predecessor Year":
 	Interval[start of "Measurement Period" - 1 year, start of "Measurement Period")
@@ -263,8 +263,33 @@ define "Is Age 30 to 64 at End":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where IncludedIn(WhenCC, "Lookback Interval Two More Years")
+			where WhenCC included in "Lookback Interval Two More Years"
 	)
+
+define x:
+	"Dates of Cervical Cytology Tests" WhenCC
+			with "Dates of HPV Tests" WhenHPV
+				such that difference in days between start of WhenCC and start of WhenHPV <= 4
+
+define y:
+	"Dates of Cervical Cytology Tests" WhenCC
+			with "Dates of HPV Tests" WhenHPV
+				such that AgeInYearsAt(start of WhenCC) >= 30
+
+define z:
+	"Dates of Cervical Cytology Tests" WhenCC
+			with "Dates of HPV Tests" WhenHPV
+				such that AgeInYearsAt(start of WhenHPV) >= 30
+
+define a:
+	"Dates of Cervical Cytology Tests" WhenCC
+			with "Dates of HPV Tests" WhenHPV
+				such that WhenCC included in "Lookback Interval Four More Years"
+
+define b:
+	"Dates of Cervical Cytology Tests" WhenCC
+			with "Dates of HPV Tests" WhenHPV
+				such that WhenHPV included in "Lookback Interval Four More Years"
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 	exists(
@@ -273,15 +298,14 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 				such that (((difference in days between start of WhenCC and start of WhenHPV) <= 4)
 					and AgeInYearsAt(start of WhenCC) >= 30
 					and AgeInYearsAt(start of WhenHPV) >= 30
-					and IncludedIn(WhenCC, "Lookback Interval Four More Years")
-					and IncludedIn(WhenHPV, "Lookback Interval Four More Years"))
+					and WhenCC included in "Lookback Interval Four More Years"
+					and WhenHPV included in "Lookback Interval Four More Years")
 	)
 
 define "Dates of Cervical Cytology Tests":
 	([Procedure: "Cervical Cytology Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end)
-		//return ChoiceToIntervalOfDT(Proc.performed))
+		return PeriodToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
 		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
@@ -289,14 +313,12 @@ define "Dates of Cervical Cytology Tests":
 	union
 	([Observation: "Cervical Cytology Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return case when Obs.effective is DateTime then Interval[Obs.effective.value, Obs.effective.value] else Interval[Obs.effective."start".value, Obs.effective."end".value] end)
-		//return ChoiceToIntervalOfDT(Obs.effective))
+		return DateTimeToInterval(Obs.effective))
 
 define "Dates of HPV Tests":
 	([Procedure: "HPV Tests Value Set"] Proc
 		where Proc.status.value = 'completed'
-		return case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end)
-		//return ChoiceToIntervalOfDT(Proc.performed))
+		return PeriodToIntervalOfDT(Proc.performed))
 	union
 	([DiagnosticReport: "HPV Tests Value Set"] DiagRep
 		where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
@@ -304,8 +326,7 @@ define "Dates of HPV Tests":
 	union
 	([Observation: "HPV Tests Value Set"] Obs
 		where Obs.status.value in { 'final', 'amended' }
-		return case when Obs.effective is DateTime then Interval[Obs.effective.value, Obs.effective.value] else Interval[Obs.effective."start".value, Obs.effective."end".value] end)
-		//return ChoiceToIntervalOfDT(Obs.effective))
+		return DateTimeToInterval(Obs.effective))
 
 define "Denominator Exclusion":
 	"Initial Population"
@@ -316,7 +337,6 @@ define "Is Hysterectomy":
 		[Procedure: "Absence of Cervix Value Set"] Proc
 			where Proc.status.value = 'completed'
 				and end of case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end same day or before end of "Measurement Period"
-				//and end of ChoiceToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
 	)
 
 /*
@@ -329,11 +349,8 @@ TODO, if needed
 Utility Functions
 */
 
-define function ChoiceToIntervalOfDT(value Choice<FHIR.dateTime, FHIR.Period>):
-	if value is FHIR.dateTime then
-		Interval[value.value, value.value]
-	else
-		Interval[value."start".value, value."end".value]
+define function DateTimeToInterval(date FHIR.dateTime):
+	Interval[date.value, date.value]
 
 define function PeriodToIntervalOfDT(value FHIR.Period):
 	Interval[value."start".value, value."end".value]
@@ -346,3 +363,5 @@ define function CodingToCode(coding FHIR.Coding):
 		display: coding.display.value
 	}
 	// From FHIRHelpers
+
+
