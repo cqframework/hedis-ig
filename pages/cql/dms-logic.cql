@@ -29,7 +29,7 @@ codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 // update
 valueset "Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1044'
 valueset "Bipolar Disorder ECDS": '2.16.840.1.113883.3.464.1004.1346'
-valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
+// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
 valueset "Interactive Outpatient Encounter": '2.16.840.1.113883.3.464.1004.1347'
 valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
 valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'

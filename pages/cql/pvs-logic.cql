@@ -35,7 +35,7 @@ valueset "Chemotherapy SNOMED/CPT": '2.16.840.1.113883.3.464.1004.1441'
 valueset "Cochlear Implants": '2.16.840.1.113883.3.464.1004.1447'
 valueset "Disorders of the Immune System": '2.16.840.1.113883.3.464.1004.1139'
 valueset "Functional or Aplastic Anemia": '2.16.840.1.113883.3.464.1004.1449'
-valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
+// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
 valueset "Pneumococcal Conjugate Vaccine 13": '2.16.840.1.113883.3.464.1004.1439'
 valueset "Pneumococcal Conjugate Vaccine 23": '2.16.840.1.113883.3.464.1004.1440'
 

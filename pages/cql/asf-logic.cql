@@ -34,7 +34,7 @@ valueset "Alcohol Counseling and Treatment": '2.16.840.1.113883.3.464.1004.1437'
 valueset "Alcohol Screening": '2.16.840.1.113883.3.464.1004.1337'
 valueset "Alcohol use disorder": '2.16.840.1.113883.3.464.1004.1339'
 valueset "Dementia": '2.16.840.1.113883.3.464.1004.1074'
-valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
+// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
 
 code "Five or more drinks per day": '00005' from "CQFramework"
 code "Four or more drinks per day": '00004' from "CQFramework"
