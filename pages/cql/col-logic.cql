@@ -45,21 +45,16 @@ valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.4
 valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
 valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
-/*
-valueset "Hospice Value Set": 'TODO'
-
-valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Discharged to Home for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Discharged to Health Care Facility for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-valueset "Hospice care ambulatory": '2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-
-valueset "X Commercial Coverage Value Set": 'TODO'
-valueset "X Medicaid Coverage Value Set": 'TODO'
-valueset "X Medicare Coverage Value Set": 'TODO'
-
-valueset "X Institutional SNP Value Set": 'TODO'
-valueset "X Long-Term in Institution Value Set": 'TODO'
-*/
+// valueset "Hospice Value Set": 'TODO'
+// valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+// valueset "Discharged to Home for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+// valueset "Discharged to Health Care Facility for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+// valueset "Hospice care ambulatory": '2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
+// valueset "X Commercial Coverage Value Set": 'TODO'
+// valueset "X Medicaid Coverage Value Set": 'TODO'
+// valueset "X Medicare Coverage Value Set": 'TODO'
+// valueset "X Institutional SNP Value Set": 'TODO'
+// valueset "X Long-Term in Institution Value Set": 'TODO'
 
 /*
 This library has an explicit parameter which is the product line.
