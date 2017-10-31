@@ -65,7 +65,7 @@ calendar year, and it will not behave properly otherwise; 2017 for example:
 Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 */
 
-parameter "Measurement Period" default Interval[DateTime(2017, 01, 01), DateTime(2017, 12, 31)]
+parameter "Measurement Period" Interval<DateTime>
 
 define "First Predecessor Year":
 	Interval[start of "Measurement Period" - 1 year, start of "Measurement Period")
@@ -260,31 +260,6 @@ define "Is Cervical Cytology Test In Last 3 Years":
 		"Dates of Cervical Cytology Tests" WhenCC
 			where WhenCC included in "Lookback Interval Two More Years"
 	)
-
-define x:
-	"Dates of Cervical Cytology Tests" WhenCC
-			with "Dates of HPV Tests" WhenHPV
-				such that difference in days between start of WhenCC and start of WhenHPV <= 4
-
-define y:
-	"Dates of Cervical Cytology Tests" WhenCC
-			with "Dates of HPV Tests" WhenHPV
-				such that AgeInYearsAt(start of WhenCC) >= 30
-
-define z:
-	"Dates of Cervical Cytology Tests" WhenCC
-			with "Dates of HPV Tests" WhenHPV
-				such that AgeInYearsAt(start of WhenHPV) >= 30
-
-define a:
-	"Dates of Cervical Cytology Tests" WhenCC
-			with "Dates of HPV Tests" WhenHPV
-				such that WhenCC included in "Lookback Interval Four More Years"
-
-define b:
-	"Dates of Cervical Cytology Tests" WhenCC
-			with "Dates of HPV Tests" WhenHPV
-				such that WhenHPV included in "Lookback Interval Four More Years"
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 	exists(
