@@ -175,10 +175,7 @@ define "Same Day Behavioral Encounter":
 	return BehavioralEncounter
 
 define "Dispensed Antidepressant Within 31 Days":
-	// NOTE: Missing the valueset: "Antidepressant Medication"
-	// OR
-	// TODO: Check for Medications outlined in table AMM-C in the spec
-	[MedicationDispense: "Antidepressant Medication"] Antidepressants
+	[MedicationDispense: medication in "Antidepressant Medication"] Antidepressants
 		with "First Positive Depression Screen During Follow-Up Period" PositiveScreen
 			such that Antidepressants.status.value = 'completed'
 				and days between Antidepressants.whenHandedOver.value and PositiveScreen.effective.value <= 31
