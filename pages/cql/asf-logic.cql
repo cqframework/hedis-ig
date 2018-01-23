@@ -164,7 +164,7 @@ define "Numerator 2":
 	and
 	exists (
 		"Initial Positive Assessment for Unhealthy Alcohol Use" A
-			with "Followup Screening" F such that F.effective.value 2 months or less after day of A.effective.value
+			with "Followup Screening Date" F such that F 2 months or less after day of A.effective.value
 	)
 
 define "Positive Assessment for Unhealthy Alcohol Use":
@@ -190,18 +190,22 @@ define "Positive Assessment for Unhealthy Alcohol Use":
 				and (A.value as Quantity).value.value >= 2
 	)
 
-define "Followup Screening":
+define "Followup Screening Date":
 	([Procedure: "Alcohol Counseling and Treatment"] Proc
-		where Proc.status.value = 'completed')
+		where Proc.status.value = 'completed'
+		return Proc.performed.value)
 	union
 	([Observation: "Alcohol Counseling and Treatment"] Obs
-		where Obs.status.value in { 'final', 'amended' })
+		where Obs.status.value in { 'final', 'amended' }
+		return Obs.effective.value)
 	union
 	([Procedure: "Alcohol Screening"] Proc
-		where Proc.status.value = 'completed')
+		where Proc.status.value = 'completed'
+		return Proc.performed.value)
 	union
 	([Observation: "Alcohol Screening"] Obs
-		where Obs.status.value in { 'final', 'amended' })
+		where Obs.status.value in { 'final', 'amended' }
+		return Obs.effective.value)
 
 define "Initial Positive Assessment for Unhealthy Alcohol Use":
 	{First(
