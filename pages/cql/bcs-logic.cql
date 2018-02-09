@@ -2,7 +2,7 @@
 Breast Cancer Screening (BCS)
 */
 
-library BCS_FHIR version '1.0.0'
+library BCS_FHIR version '1.0.1'
 
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
@@ -109,7 +109,7 @@ define "Is Female":
 	Patient.gender.value = 'female'
 
 define "Is Age 52 to 74 at End":
-	AgeInYearsAt(end of "Measurement Period") between 52 and 74
+	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 52 and 74
 
 /*
 define "Is In Hospice":
@@ -226,7 +226,7 @@ define "Is Continuous Enrollment":
 		and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
 
 define "Is Age 65 Plus at Start":
-	AgeInYearsAt(start of "Measurement Period") >= 65
+	CalendarAgeInYearsAt(Patient.birthDate.value, start of "Measurement Period") >= 65
 
 define "Is Enrolled in Institutional SNP":
 	exists(
@@ -441,3 +441,9 @@ define function CodingToCode(coding FHIR.Coding):
 		display: coding.display.value
 	}
 	// From FHIRHelpers
+
+define function "ToDate"(Value DateTime ):
+	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
+
+define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
+    years between ToDate(BirthDateTime)and ToDate(AsOf)

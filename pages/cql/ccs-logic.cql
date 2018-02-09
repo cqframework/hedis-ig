@@ -2,7 +2,7 @@
 Cervical Cancer Screening (CCS)
 */
 
-library CCS_FHIR version '1.0.0'
+library CCS_FHIR version '1.0.1'
 
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
@@ -68,13 +68,13 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 parameter "Measurement Period" Interval<DateTime>
 
 define "First Predecessor Year":
-	Interval[start of "Measurement Period" - 1 year, start of "Measurement Period")
+	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year)
 
 define "Second Predecessor Year":
-	Interval[start of "Measurement Period" - 2 years, start of "Measurement Period" - 1 year)
+	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period" - 2 year)
 
 define "Third Predecessor Quarter":
-	Interval[start of "Measurement Period" - 2 years - 3 months, start of "Measurement Period" - 2 years)
+	Interval[start of "Measurement Period" - 2 years - 3 months, end of "Measurement Period" - 3 years)
 
 define "Lookback Interval Two More Years":
 	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
@@ -106,7 +106,7 @@ define "Is Female":
 	Patient.gender.value = 'female'
 
 define "Is Age 24 to 64 at End":
-	AgeInYearsAt(end of "Measurement Period") between 24 and 64
+	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 24 and 64
 
 /*
 define "Is In Hospice":
@@ -217,7 +217,7 @@ define "Is Continuous Enrollment":
 		and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
 
 define "Is Age 65 Plus at Start":
-	AgeInYearsAt(start of "Measurement Period") >= 65
+	CalendarAgeInYearsAt(Patient.birthDate.value, start of "Measurement Period") >= 65
 
 define "Is Enrolled in Institutional SNP":
 	exists(
@@ -253,7 +253,7 @@ define "Numerator":
 	end
 
 define "Is Age 30 to 64 at End":
-	AgeInYearsAt(end of "Measurement Period") between 30 and 64
+	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 30 and 64
 
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
@@ -266,8 +266,8 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 		"Dates of Cervical Cytology Tests" WhenCC
 			with "Dates of HPV Tests" WhenHPV
 				such that (((difference in days between start of WhenCC and start of WhenHPV) <= 4)
-					and AgeInYearsAt(start of WhenCC) >= 30
-					and AgeInYearsAt(start of WhenHPV) >= 30
+					and CalendarAgeInYearsAt(Patient.birthDate.value, start of WhenCC) >= 30
+					and CalendarAgeInYearsAt(Patient.birthDate.value, start of WhenHPV) >= 30
 					and WhenCC included in "Lookback Interval Four More Years"
 					and WhenHPV included in "Lookback Interval Four More Years")
 	)
@@ -334,4 +334,8 @@ define function CodingToCode(coding FHIR.Coding):
 	}
 	// From FHIRHelpers
 
+define function "ToDate"(Value DateTime ):
+	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
 
+define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
+    years between ToDate(BirthDateTime)and ToDate(AsOf)

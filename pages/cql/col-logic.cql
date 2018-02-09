@@ -2,7 +2,7 @@
 Colorectal Cancer Screening (COL)
 */
 
-library COL_FHIR version '1.0.0'
+library COL_FHIR version '1.0.1'
 
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
@@ -81,13 +81,13 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 parameter "Measurement Period" Interval<DateTime>
 
 define "First Predecessor Year":
-	Interval[start of "Measurement Period" - 1 year, start of "Measurement Period")
+	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year)
 
 define "Second Predecessor Year":
-	Interval[start of "Measurement Period" - 2 years, start of "Measurement Period" - 1 year)
+	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period" - 2 years)
 
 define "Third Predecessor Quarter":
-	Interval[start of "Measurement Period" - 2 years - 3 months, start of "Measurement Period" - 2 years)
+	Interval[start of "Measurement Period" - 2 years - 3 months, end of "Measurement Period" - 3 years)
 
 define "Lookback Interval Two More Years":
 	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
@@ -118,7 +118,7 @@ define "Initial Population":
 */
 
 define "Is Age 51 to 75 at End":
-	AgeInYearsAt(end of "Measurement Period") between 51 and 75
+	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 51 and 75
 
 /*
 define "Is In Hospice":
@@ -226,10 +226,10 @@ define "Is Continuous Enrollment":
 	"Is Continuous Enrollment In Year"("Measurement Period")
 		and "Is Continuous Enrollment In Year"("First Predecessor Year")
 		and "Is Continuous Enrollment In Year"("Second Predecessor Year")
-		and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
+		// and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
 
 define "Is Age 65 Plus at Start":
-	AgeInYearsAt(start of "Measurement Period") >= 65
+	CalendarAgeInYearsAt(Patient.birthDate.value, start of "Measurement Period") >= 65
 
 define "Is Enrolled in Institutional SNP":
 	exists(
@@ -334,7 +334,7 @@ define "Is Colorectal Cancer":
 	exists(
 		"Colorectal Cancer Conditions" Cond
 			where Cond.verificationStatus.value = 'confirmed'
-				and Cond.assertedDate.value before day of end of "Measurement Period"
+				and Cond.assertedDate.value before end of "Measurement Period"
 	)
 
 define "Total Colectomy Procedures":
@@ -346,7 +346,7 @@ define "Is Total Colectomy":
 	exists(
 		"Total Colectomy Procedures" Proc
 			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) before day of end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) before end of "Measurement Period"
 	)
 
 /*
@@ -370,3 +370,9 @@ define function CodingToCode(coding FHIR.Coding):
 		display: coding.display.value
 	}
 	// From FHIRHelpers
+
+define function "ToDate"(Value DateTime ):
+	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
+
+define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
+    years between ToDate(BirthDateTime)and ToDate(AsOf)
