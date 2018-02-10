@@ -1,0 +1,595 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-wdv-1328",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1328",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "Encounter-1328",
+        "status": "finished",
+        "class": {
+          "system": "http://hl7.org/fhir/v3/ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "32485007",
+                "display": "Hospital admission"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "participant": [
+          {
+            "period": {
+              "start": "1988-04-25T00:09:00-04:00",
+              "end": "1988-04-25T01:23:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "1988-04-25T00:09:00-04:00",
+          "end": "1988-04-25T01:23:00-04:00"
+        },
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ]
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/Location-1001",
+              "display": "Windward General Hospital"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/Organization-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Encounter/Encounter-1328"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-271175",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "Procedure-271175",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "45388",
+              "display": "Colonoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre- and post-dilation and guide wire passage, when performed)"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "performedPeriod": {
+          "start": "1988-04-25T01:23:00-04:00",
+          "end": "1988-04-25T01:23:00-04:00"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/Practitioner-2534",
+              "display": "Pearl Rita Dawson MD"
+            }
+          }
+        ],
+        "location": {
+          "reference": "Location/Location-1001",
+          "display": "Windward General Hospital"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Procedure/Procedure-271175"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271176",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271176",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "procedure",
+                "display" : "Procedure"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "77353-1",
+              "display": "Noninvasive colorectal cancer DNA and occult blood screening [Interpretation] in Stool Narrative"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T01:23:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueString": "NEGATIVE"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271176"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-271177",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-271177",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0074",
+              "code": "CP",
+              "display": "Cytopathology"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "44404",
+              "display": "Colonoscopy through stoma; with directed submucosal injection(s), any substance"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-25T01:23:00-04:00",
+          "end": "1988-04-25T01:23:00-04:00"
+        },
+        "issued": "1988-04-25T01:23:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-271176",
+            "display": "Negative_Colonoscopy_Observation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-271177"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271180",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271180",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 152.7,
+          "unit": "cm"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271180"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271181",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271181",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 67.97106370778826,
+          "unit": "kg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271181"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271182",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271182",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "BMI"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 29.1504989249558,
+          "unit": "kg/m2"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271182"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271183",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271183",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37.0,
+          "unit": "C"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271183"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271184",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271184",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8459-0",
+              "display": "Systolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 170.4586203394794,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271184"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271185",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "Observation-271185",
+        "status": "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://hl7.org/fhir/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8453-3",
+              "display": "Diastolic Blood Pressure"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectiveDateTime": "1988-04-25T00:09:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/Practitioner-2534",
+            "display": "Pearl Rita Dawson MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 84.12067172275782,
+          "unit": "mmHg"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/Observation-271185"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-271179",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "DiagnosticReport-271179",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0074",
+              "code": "LAB",
+              "display": "Laboratory"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital signs"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/Patient-6523",
+          "display": "Wendy Danielle Vaughn"
+        },
+        "context": {
+          "reference": "Encounter/Encounter-1328",
+          "display": "Colonoscopy_Encounter"
+        },
+        "effectivePeriod": {
+          "start": "1988-04-25T00:09:00-04:00",
+          "end": "1988-04-25T00:09:00-04:00"
+        },
+        "issued": "1988-04-25T00:09:00.000-04:00",
+        "result": [
+          {
+            "reference": "Observation/Observation-271180",
+            "display": "Height"
+          },
+          {
+            "reference": "Observation/Observation-271181",
+            "display": "Weight"
+          },
+          {
+            "reference": "Observation/Observation-271182",
+            "display": "BMI"
+          },
+          {
+            "reference": "Observation/Observation-271183",
+            "display": "Temperature"
+          },
+          {
+            "reference": "Observation/Observation-271184",
+            "display": "Systolic Blood Pressure"
+          },
+          {
+            "reference": "Observation/Observation-271185",
+            "display": "Diastolic Blood Pressure"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost:8080/cqf-ruler/baseDstu3/DiagnosticReport/DiagnosticReport-271179"
+      }
+    }
+  ]
+}

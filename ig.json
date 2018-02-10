@@ -12,6 +12,13 @@
   },
   "version": "3.0.1",
   "logging": ["init", "progress", "context", "html", "tx"],
+  "dependencyList": [
+    {
+      "name": "qicore",
+      "location": "http://hl7.org/fhir/us/qicore",
+      "source": "lib/qicore"
+    }
+  ],
   "defaults": {
     "Any": {
       "template-format": "instance-template-format.html",
@@ -79,7 +86,7 @@
   "resources": {
     "Bundle/bundle-adj-2636": {
       "base": "Bundle-bundle-adj-2636.html",
-      "source": "bundle/history/Angelica Desiree Jones/Angelica-Desiree-Jones-1136-Encounter-2636.json"
+      "source": "bundle/bundle-adj-2636.json"
     },
     "Encounter/Encounter-2636": {
       "base": "Encounter-Encounter-2636.html",
@@ -88,6 +95,10 @@
     "Location/Location-1106": {
       "base": "Location-Location-1106.html",
       "source": "location/location-1106.json"
+    },
+    "Observation/Observation-621145": {
+      "base": "Observation-Observation-621145.html",
+      "source": "observation/observation-621145.json"
     },
     "Observation/Observation-621154": {
       "base": "Observation-Observation-621154.html",
@@ -128,7 +139,7 @@
 
     "Bundle/bundle-icj-2387": {
       "base": "Bundle-bundle-icj-2387.html",
-      "source": "bundle/history/Irma Carol Johnson/Irma-Carol-Johnson-6484-Encounter-2387.json"
+      "source": "bundle/bundle-icj-2387.json"
     },
     "Encounter/Encounter-2387": {
       "base": "Encounter-Encounter-2387.html",
@@ -173,7 +184,7 @@
 
     "Bundle/bundle-icj-4882": {
       "base": "Bundle-bundle-icj-4882.html",
-      "source": "bundle/history/Irma Carol Johnson/Irma-Carol-Johnson-6484-Encounter-4882.json"
+      "source": "bundle/bundle-icj-4882.json"
     },
     "Encounter/Encounter-4882": {
       "base": "Encounter-Encounter-4882.html",
@@ -210,7 +221,7 @@
 
     "Bundle/bundle-thw-789": {
       "base": "Bundle-bundle-thw-789.html",
-      "source": "bundle/history/Terry Harvey Waller/Terry-Harvey-Waller-6520-Encounter-789.json"
+      "source": "bundle/bundle-thw-789.json"
     },
     "Encounter/Encounter-789": {
       "base": "Encounter-Encounter-789.html",
@@ -251,7 +262,7 @@
 
     "Bundle/bundle-wdv-902": {
       "base": "Bundle-bundle-wdv-902.html",
-      "source": "bundle/history/Wendy Danielle Vaughn/Wendy-Danielle-Vaughn-6523-Encounter-902.json"
+      "source": "bundle/bundle-wdv-902.json"
     },
     "Encounter/Encounter-902": {
       "base": "Encounter-Encounter-902.html",
@@ -352,7 +363,7 @@
 
     "Bundle/bundle-wdv-1328": {
       "base": "Bundle-bundle-wdv-1328.html",
-      "source": "bundle/history/Wendy Danielle Vaughn/Wendy-Danielle-Vaughn-6523-Encounter-1328.json"
+      "source": "bundle/bundle-wdv-1328.json"
     },
     "Encounter/Encounter-1328": {
       "base": "Encounter-Encounter-1328.html",
@@ -476,62 +487,50 @@
       "base": "Medication-Medication-001.html"
     },
     "StructureDefinition/hedis-claim": {
-      "source": "claim/structuredefinition-hedis-claim.xml",
       "defns": "hedis-claim-definitions.html",
       "base": "hedis-claim.html"
     },
     "StructureDefinition/hedis-condition": {
-      "source": "condition/structuredefinition-hedis-condition.xml",
       "defns": "hedis-condition-definitions.html",
       "base": "hedis-condition.html"
     },
     "StructureDefinition/hedis-coverage": {
-      "source": "coverage/structuredefinition-hedis-coverage.xml",
       "defns": "hedis-coverage-definitions.html",
       "base": "hedis-coverage.html"
     },
     "StructureDefinition/hedis-diagnosticreport": {
-      "source": "diagnosticreport/structuredefinition-hedis-diagnosticreport.xml",
       "defns": "hedis-diagnosticreport-definitions.html",
       "base": "hedis-diagnosticreport.html"
     },
     "StructureDefinition/hedis-encounter": {
-      "source": "encounter/structuredefinition-hedis-encounter.xml",
       "defns": "hedis-encounter-definitions.html",
       "base": "hedis-encounter.html"
     },
     "StructureDefinition/hedis-medicationdispense": {
-      "source": "procedure/structuredefinition-hedis-medicationdispense.xml",
       "defns": "hedis-medicationdispense-definitions.html",
       "base": "hedis-medicationdispense.html"
     },
     "StructureDefinition/hedis-medicationrequest": {
-      "source": "procedure/structuredefinition-hedis-medicationrequest.xml",
       "defns": "hedis-medicationrequest-definitions.html",
       "base": "hedis-medicationrequest.html"
     },
     "StructureDefinition/hedis-observation": {
-      "source": "procedure/structuredefinition-hedis-observation.xml",
       "defns": "hedis-observation-definitions.html",
       "base": "hedis-observation.html"
     },
     "StructureDefinition/hedis-patient": {
-      "source": "patient/structuredefinition-hedis-patient.xml",
       "defns": "hedis-patient-definitions.html",
       "base": "hedis-patient.html"
     },
     "StructureDefinition/hedis-procedure": {
-      "source": "procedure/structuredefinition-hedis-procedure.xml",
       "defns": "hedis-procedure-definitions.html",
       "base": "hedis-procedure.html"
     },
     "StructureDefinition/hedis-procedurerequest": {
-      "source": "procedurerequest/structuredefinition-hedis-procedurerequest.xml",
       "defns": "hedis-procedurerequest-definitions.html",
       "base": "hedis-procedurerequest.html"
     },
     "StructureDefinition/hedis-quantitativeobservation": {
-      "source": "observation/structuredefinition-hedis-quantitativeobservation.xml",
       "defns": "hedis-quantitativeobservation-definitions.html",
       "base": "hedis-quantitativeobservation.html"
     },
