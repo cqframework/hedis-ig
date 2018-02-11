@@ -253,11 +253,11 @@ Administrative Specification
 */
 
 define "Denominator":
-	"Initial Population"
+	// was "Initial Population", but that will always be true if this expression is executed
+    true
 
 define "Numerator":
-	"Initial Population"
-		and "Is Colorectal Cancer Screening"
+	"Is Colorectal Cancer Screening"
 
 define "Is Colorectal Cancer Screening":
 	"Is Fecal Occult Blood Test In Last Year"
@@ -322,9 +322,8 @@ define "Is FIT-DNA Test In Last Three Years":
 	)
 
 define "Denominator Exclusion":
-	"Initial Population"
-		and ("Is Colorectal Cancer"
-			or "Is Total Colectomy")
+	"Is Colorectal Cancer"
+			or "Is Total Colectomy"
 
 define "Colorectal Cancer Conditions":
 	[Condition: "Colorectal Cancer Value Set (ICD10)"]

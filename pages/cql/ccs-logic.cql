@@ -241,11 +241,11 @@ Administrative Specification
 */
 
 define "Denominator":
-	"Initial Population"
+	// was "Initial Population", but that will always be true if this expression is executed
+    true
 
 define "Numerator":
 	case
-		when (not "Initial Population") then false
 		when "Is Cervical Cytology Test In Last 3 Years" then true
 		when (not "Is Age 30 to 64 at End") then false
 		when "Is Cervical Cytology Plus HPV Test In Last 5 Years" then true
@@ -299,8 +299,7 @@ define "Dates of HPV Tests":
 		return DateTimeToInterval(Obs.effective))
 
 define "Denominator Exclusion":
-	"Initial Population"
-		and "Is Hysterectomy"
+	"Is Hysterectomy"
 
 define "Is Hysterectomy":
 	exists(

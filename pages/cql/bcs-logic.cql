@@ -250,11 +250,11 @@ Administrative Specification
 */
 
 define "Denominator":
-	"Initial Population"
+    // was "Initial Population", but that will always be true if this expression is executed
+	true
 
 define "Numerator":
-	"Initial Population"
-		and "Is Mammogram In Last 39 Months"
+	"Is Mammogram In Last 39 Months"
 
 define "Is Mammogram In Last 39 Months":
 	exists(
@@ -264,8 +264,7 @@ define "Is Mammogram In Last 39 Months":
 	)
 
 define "Denominator Exclusion":
-	"Initial Population"
-		and ("Is Lacking Both Breasts"
+	("Is Lacking Both Breasts"
 			or ("Is Lacking Left Breast"
 				and "Is Lacking Right Breast"))
 
@@ -442,7 +441,7 @@ define function CodingToCode(coding FHIR.Coding):
 	}
 	// From FHIRHelpers
 
-define function "ToDate"(Value DateTime ):
+define function "ToDate"(Value DateTime):
 	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
 
 define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
