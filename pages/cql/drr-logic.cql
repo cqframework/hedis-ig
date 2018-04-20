@@ -86,13 +86,13 @@ define "Initial Population":
 		"DRR Encounter" DRR
 			with [DiagnosticReport: "Major Depression and Dysthymia"] DepressionDiagnosis
 				such that DepressionDiagnosis.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and PeriodToIntervalOfDT(DepressionDiagnosis.effective) overlaps PeriodToIntervalOfDT(DRR.period)
+					and PeriodToIntervalOfDT(DepressionDiagnosis.effective) overlaps day of PeriodToIntervalOfDT(DRR.period)
 	)
 
 define "DRR Encounter":
 	[Encounter: "Interactive Outpatient Encounter"] DRR
 		where DRR.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-			and PeriodToIntervalOfDT(DRR.period) during "Intake Period As MP Shifted Back 7 Months"
+			and PeriodToIntervalOfDT(DRR.period) during day of "Intake Period As MP Shifted Back 7 Months"
 
 /*
 Exclusions
@@ -111,7 +111,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(D.effective) overlaps "Intake Period Union Measurement Period"
+				and PeriodToIntervalOfDT(D.effective) overlaps day of "Intake Period Union Measurement Period"
 	)
 
 /*

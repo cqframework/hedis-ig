@@ -89,12 +89,12 @@ define "Initial Population":
 		and exists (
 			[Encounter: "Interactive Outpatient Encounter"] E
 				where E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-					and PeriodToIntervalOfDT(E.period) during "Measurement Period"
+					and PeriodToIntervalOfDT(E.period) during day of "Measurement Period"
 		)
 		and exists (
 			[DiagnosticReport: "Major Depression and Dysthymia"] D
 				where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-					and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
+					and PeriodToIntervalOfDT(D.effective) overlaps day of "Measurement Period"
 		)
 
 /*
@@ -114,7 +114,7 @@ define "Denominator Exclusion":
 				union [DiagnosticReport: "Pervasive Developmental Disorder"]
 		) D
 			where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(D.effective) overlaps day of "Measurement Period"
 	)
 
 /*
@@ -147,7 +147,7 @@ define "Depression Encounters":
 		with [DiagnosticReport: "Major Depression and Dysthymia"] D
 			such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
+				and PeriodToIntervalOfDT(D.effective) overlaps day of PeriodToIntervalOfDT(E.period)
 
 define "PHQ-9 Score":
 	distinct (
@@ -161,17 +161,17 @@ define "PHQ-9 Score":
 define "Numerator 1":
 	"Denominator 1" E
 		with "PHQ-9 Score" A
-			such that A.effective.value in "Assessment Period One"
+			such that A.effective.value in day of "Assessment Period One"
 
 define "Numerator 2":
 	"Denominator 2" E
 		with "PHQ-9 Score" A
-			such that A.effective.value in "Assessment Period Two"
+			such that A.effective.value in day of "Assessment Period Two"
 
 define "Numerator 3":
 	"Denominator 3" E
 		with "PHQ-9 Score" A
-			such that A.effective.value in "Assessment Period Three"
+			such that A.effective.value in day of "Assessment Period Three"
 
 /*
 Stratifiers

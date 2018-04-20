@@ -125,7 +125,7 @@ define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	or
 	exists(
@@ -135,19 +135,19 @@ define "Is In Hospice":
 						in "Discharged to Home for Hospice Care"
 					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
 						in "Discharged to Health Care Facility for Hospice Care")
-				and PeriodToIntervalOfDT(DischargeHospice.period) ends during "Measurement Period"
+				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of "Measurement Period"
 	)
 	or
 	exists(
 		[ProcedureRequest: "Hospice care ambulatory"] HospiceOrder
 			where HospiceOrder.status.value in { 'active', 'completed' }
-				and HospiceOrder.authoredOn.value during "Measurement Period"
+				and HospiceOrder.authoredOn.value during day of "Measurement Period"
 	)
 	or
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and HospicePerformed.performed overlaps "Measurement Period"
+				and HospicePerformed.performed overlaps day of "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -187,8 +187,8 @@ define "Enrollment Periods":
 
 define function "Enrollment Periods In Year"(Year Interval<DateTime>):
 	"Enrollment Periods" EnrP
-		where EnrP overlaps Year
-		return EnrP intersect Year
+		where EnrP overlaps day of Year
+		return EnrP intersect day of Year
 
 define function "Is Continuous Enrollment In Year"(Year Interval<DateTime>):
 	case Count("Enrollment Periods In Year"(Year))
@@ -235,7 +235,7 @@ define "Is Enrolled in Institutional SNP":
 	exists(
 		[Encounter: "X Institutional SNP Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in SNP during the measurement year.
 
@@ -243,7 +243,7 @@ define "Is Living Long-Term in Institution":
 	exists(
 		[Encounter: "X Long-Term in Institution Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 */
@@ -275,7 +275,7 @@ define "Is Fecal Occult Blood Test In Last Year":
 	exists(
 		"FOBT Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and Obs.effective.value in "Measurement Period"
+				and Obs.effective.value in day of "Measurement Period"
 	)
 
 define "Flexible Sigmoidoscopy Reports":
@@ -287,7 +287,7 @@ define "Is Flexible Sigmoidoscopy In Last Five Years":
 	exists(
 		"Flexible Sigmoidoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Four More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Four More Years"
 	)
 
 define "Colonoscopy Reports":
@@ -299,14 +299,14 @@ define "Is Colonoscopy In Last Ten Years":
 	exists(
 		"Colonoscopy Reports" DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Nine More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Nine More Years"
 	)
 
 define "Is CT Colonography In Last Five Years":
 	exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps "Lookback Interval Four More Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Four More Years"
 	)
 
 define "FIT-DNA Observations":
@@ -318,7 +318,7 @@ define "Is FIT-DNA Test In Last Three Years":
 	exists(
 		"FIT-DNA Observations" Obs
 			where Obs.status.value in { 'final', 'amended' }
-				and Obs.effective.value in "Lookback Interval Two More Years"
+				and Obs.effective.value in day of "Lookback Interval Two More Years"
 	)
 
 define "Denominator Exclusion":
@@ -333,7 +333,7 @@ define "Is Colorectal Cancer":
 	exists(
 		"Colorectal Cancer Conditions" Cond
 			where Cond.verificationStatus.value = 'confirmed'
-				and Cond.assertedDate.value before end of "Measurement Period"
+				and Cond.assertedDate.value before day of end of "Measurement Period"
 	)
 
 define "Total Colectomy Procedures":
@@ -345,7 +345,7 @@ define "Is Total Colectomy":
 	exists(
 		"Total Colectomy Procedures" Proc
 			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) before end of "Measurement Period"
+				and end of PeriodToIntervalOfDT(Proc.performed) before day of end of "Measurement Period"
 	)
 
 /*

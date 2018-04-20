@@ -77,7 +77,7 @@ define "Is Mammogram In Last 39 Months":
 	exists(
 		[Procedure: "Mammography Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and PeriodToIntervalOfDT(Proc.performed) included in "Lookback Interval 27 More Months"
+				and PeriodToIntervalOfDT(Proc.performed) included in day of "Lookback Interval 27 More Months"
 	)
 
 define "Is Lacking Both Breasts":
@@ -236,6 +236,14 @@ define "Is Absence Of Right Breast":
 				and end of PeriodToIntervalOfDT(Obs.effective) same day or before Today()
 	)
 
+define MammogramSummary:
+    'A Mammogram procedure for the patient is recommended'
+
+define MammogramDetail:
+    'The patient has not had a Mammogram procedure in the last 39 months'
+
+define MammogramIndicator:
+    'warning'
 
 /*
 Utility Functions

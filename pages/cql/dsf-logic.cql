@@ -92,13 +92,13 @@ define "Denominator Exclusion":
 	exists (
 		"Bipolar Disorder Reports" BD
 			where BD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(BD.effective) overlaps "Lookback Interval One More Year"
+				and PeriodToIntervalOfDT(BD.effective) overlaps day of "Lookback Interval One More Year"
 	)
 	or
 	exists (
 		[DiagnosticReport: "Major Depression and Dysthymia"] MDD
 			where MDD.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(MDD.effective) overlaps "First Predecessor Year"
+				and PeriodToIntervalOfDT(MDD.effective) overlaps day of "First Predecessor Year"
 	)
 
 define "Bipolar Disorder Reports":
@@ -121,7 +121,7 @@ define "Numerator 1":
 	exists (
 		[Observation: "Depression Screen"] DepressionScreen
 			where DepressionScreen.status.value in { 'final', 'amended' }
-				and DepressionScreen.effective.value in "Measurement Period"
+				and DepressionScreen.effective.value in day of "Measurement Period"
 	)
 
 // Positive Follow-Up
@@ -143,7 +143,7 @@ define "Numerator 2":
 define "Positive Depression Screen During Follow-Up Period":
 	[Observation: "Positive Depression Screen"] PositiveScreen
 		where PositiveScreen.status.value in { 'final', 'amended' }
-			and PositiveScreen.effective.value in "Measurement Period"
+			and PositiveScreen.effective.value in day of "Measurement Period"
 
 define "First Positive Depression Screen During Follow-Up Period":
 	{First(
@@ -160,7 +160,7 @@ define "Follow-Up Care Encounters":
 				with [DiagnosticReport: "Major Depression and Dysthymia"] D
 					such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 						and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-						and PeriodToIntervalOfDT(D.effective) overlaps PeriodToIntervalOfDT(E.period)
+						and PeriodToIntervalOfDT(D.effective) overlaps day of PeriodToIntervalOfDT(E.period)
 		)
 		union
 		[Encounter: "Depression Case Management Encounter"]

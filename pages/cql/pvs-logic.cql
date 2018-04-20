@@ -72,7 +72,7 @@ define "Denominator Exclusion":
 	exists (
 		"Chemotherapy and Bone Marrow Transplant Procedures" ProcedureUnion
 			where ProcedureUnion.status.value in { 'in-progress', 'completed' }
-				and PeriodToIntervalOfDT(ProcedureUnion.performed) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(ProcedureUnion.performed) overlaps day of "Measurement Period"
 	)
 	or
 	exists (
@@ -153,7 +153,7 @@ define "Immunocompromised Diagnoses Overlapping Measurement Period":
 		union [DiagnosticReport: "Disorders of the Immune System"]
 	) D
 		where D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-			and PeriodToIntervalOfDT(D.effective) overlaps "Measurement Period"
+			and PeriodToIntervalOfDT(D.effective) overlaps day of "Measurement Period"
 
 define "Cochlear Implants on or Before End of Measurement Period":
 	[Procedure: "Cochlear Implants"] CochlearImplant

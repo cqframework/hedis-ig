@@ -77,27 +77,27 @@ define "In Demographic":
 define "BP: Systolic Less Than 140": 
     [Observation: "Systolic Less Than 140"] O 
         where O.status.value in { 'final', 'amended' } 
-            and O.effectiveDateTime.value during "Lookback Interval One Year" 
+            and O.effectiveDateTime.value during day of "Lookback Interval One Year"
  
 define "BP: Systolic Greater Than/Equal To 140": 
     [Observation: "Systolic Greater Than/Equal To 140"] O 
         where O.status.value in { 'final', 'amended' } 
-            and O.effectiveDateTime.value during "Lookback Interval One Year" 
+            and O.effectiveDateTime.value during day of "Lookback Interval One Year"
  
 define "BP: Diastolic Greater Less Than 80": 
     [Observation: "Diastolic Less Than 80"] O 
         where O.status.value in { 'final', 'amended' } 
-            and O.effectiveDateTime.value during "Lookback Interval One Year" 
+            and O.effectiveDateTime.value during day of "Lookback Interval One Year"
  
 define "BP: Diastolic 80-89": 
     [Observation: "Diastolic 80-89"] O 
         where O.status.value in { 'final', 'amended' } 
-            and O.effectiveDateTime.value during "Lookback Interval One Year" 
+            and O.effectiveDateTime.value during day of "Lookback Interval One Year"
  
 define "BP: Diastolic Greater Than/Equal To 90": 
     [Observation: "Diastolic Greater Than/Equal To 90"] O 
         where O.status.value in { 'final', 'amended' } 
-            and O.effectiveDateTime.value during "Lookback Interval One Year" 
+            and O.effectiveDateTime.value during day of "Lookback Interval One Year"
  
 */ 
 
@@ -105,9 +105,9 @@ define "BP: Diastolic Greater Than/Equal To 90":
 define "BP: Systolic": 
   [Observation: "Systolic Blood Pressure"] O 
     where O.status.value in { 'final', 'amended' } 
-      //and O.effectiveDateTime.value during "Lookback Interval One Year" 
+      //and O.effectiveDateTime.value during day of "Lookback Interval One Year"
       // w/ FHIRHelpers 
-      //and O.effectiveDateTime during "Lookback Interval One Year" 
+      //and O.effectiveDateTime during day of "Lookback Interval One Year"
       // w/ FHIR Choice Types 
       and O.effective during "Lookback Interval One Year" 
 
@@ -115,14 +115,14 @@ define "BP: Systolic":
 define "BP: Diastolic": 
   [Observation: "Diastolic Blood Pressure"] O 
     where O.status.value in { 'final', 'amended' } 
-      and O.effective during "Lookback Interval One Year" 
+      and O.effective during day of "Lookback Interval One Year"
 
 
 // Using DAF Profiles (LOINC Code) 
 /*define "Blood Pressure Observations": 
   [Observation: "Blood Pressure"] O 
     where O.status.value in { 'final', 'amended' } 
-      and O.effective during "Lookback Interval One Year" 
+      and O.effective during day of "Lookback Interval One Year"
  
 define "BP: Systolic": 
   "Blood Pressure Observations" O 
@@ -167,18 +167,18 @@ define "Hypertension Diagnosis":
   [Condition: "Essential Hypertension"] H 
     where H.clinicalStatus = 'active' 
         and H.verificationStatus = 'confirmed' 
-        and H.onset during "Lookback Interval Three Years" 
+        and H.onset during day of "Lookback Interval Three Years"
 
 
 // Date of first diagnosis of Hypertension 
 define "Hx HTN": 
-  First("Hypertension Diagnosis" D sort by (D.onset as dateTime)).assertedDate 
+  First("Hypertension Diagnosis" D sort by (onset as dateTime)).assertedDate
 
 
 // Outpatient Encounters with a diagnosis of Essential Hypertension during the first 6 months of the measurement period 
-define "Outpatient Encounter": 
+/*define "Outpatient Encounter":
   [Encounter: "Outpatient Without UBREV"] E 
-    where E.period."start" during Interval[start of MeasurementPeriod, start of MeasurementPeriod + 6 months] 
+    where E.period."start" during day of Interval[start of MeasurementPeriod, start of MeasurementPeriod + 6 months]*/
 
 
 // End-Stage Renal Disease (ESRD) 
@@ -189,13 +189,13 @@ define "End Stage Renal Disease Diagnosis":
   [Condition: "End Stage Renal Disease"] C 
     where C.clinicalStatus = 'active' 
       and C.verificationStatus = 'confirmed' 
-      and C.onset same day or before end of MeasurementPeriod 
+      and C.onset same day or before end of MeasurementPeriod
 
 
 define "Kidney Transplant Procedure": 
   [Procedure: "Kidney Transplant"] P 
     where P.status = 'completed' 
-      and P.performed same day or before end of MeasurementPeriod 
+      and P.performed same day or before end of MeasurementPeriod
 
 
 // Pregnancy 
@@ -204,50 +204,50 @@ define "Kidney Transplant Procedure":
 define "Pregnancy Condition": 
   [Condition: "Pregnancy"] P 
     where P.verificationStatus = 'confirmed' 
-      and Interval[P.onset as dateTime, P.abatement as dateTime] overlaps MeasurementPeriod 
+      and Interval[P.onset as dateTime, P.abatement as dateTime] overlaps day of MeasurementPeriod
 
 
 // Non-Acute Inpatient Admission 
 
 
-define "Non-Acute Inpatient Admission": 
+/*define "Non-Acute Inpatient Admission":
   [Encounter: "Inpatient Stay"] E 
     where E.status = 'finished' 
-      and E.period."end" during MeasurementPeriod 
+      and E.period."end" during day of MeasurementPeriod*/
 
 
 // Identify Diabetic patients 
 
 
-define "Outpatient Encounter": 
+/*define "Outpatient Encounter":
   [Encounter: "Outpatient"] E 
     where E.status = 'finished' 
-      and E.period."start" during "Lookback Interval One Year" 
+      and E.period."start" during day of "Lookback Interval One Year"*/
 
 
-define "Non-Acute Inpatient Admission": 
+/*define "Non-Acute Inpatient Admission":
   [Encounter: "Nonacute Inpatient"] E 
     where E.status = 'finished' 
-      and E.period."start" during "Lookback Interval One Year" 
+      and E.period."start" during day of "Lookback Interval One Year"*/
 
 
 define "MedicationDispense": 
   [MedicationDispense: "Insulin or Hypo-/Antihyper-glycemics"] M 
     where M.status = 'completed' 
-      and M.whenHandedOver during "Lookback Interval One Year" 
+      and M.whenHandedOver during day of "Lookback Interval One Year"
 
 
 define "Any Setting Encounter": 
   [Encounter] E 
     where E.status = 'finished' 
-      and E.period."start" during "Lookback Interval One Year" 
+      and E.period."start" during day of "Lookback Interval One Year"
 
 
 define "Gestational or Steroid-induced Diabetes Condition": 
   [Condition: "Gestational or Steroid-induced Diabetes"] C 
     where C.clinicalStatus = 'active' 
       and C.verificationStatus = 'confirmed' 
-      and C.onset during "Lookback Interval One Year" 
+      and C.onset during day of "Lookback Interval One Year"
 
 
 // TODO: Determine the member's Primary Care Provider 
