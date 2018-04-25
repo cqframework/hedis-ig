@@ -75,11 +75,11 @@ Exclusions
 define "Denominator Exclusion":
 	exists ( [Condition: "Alcohol use disorder"] AlcoholUse
 			where AlcoholUse.clinicalStatus in { 'active', 'recurrence', 'relapse', 'well-controlled', 'poorly-controlled' }
-				and AlcoholUse.assertedDate during Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
+				and AlcoholUse.assertedDate during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
 	)
 		or exists ( [Condition: "Dementia"] D
 				where D.clinicalStatus in { 'active', 'recurrence', 'relapse', 'well-controlled', 'poorly-controlled' }
-					and D.assertedDate during Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
+					and D.assertedDate during day of Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
 		)
 
 /*
@@ -112,13 +112,13 @@ define "Numerator 1":
 define "AUDIT-C Assessment":
 	[Observation: "AUDIT-C Total Score (in points)"] A
 		where A.status.value in { 'final', 'amended' }
-			and A.effective.value in "Measurement Period"
+			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
 define "AUDIT Assessment":
 	[Observation: "AUDIT Total Score (in points)"] A
 		where A.status.value in { 'final', 'amended' }
-			and A.effective.value in "Measurement Period"
+			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
 define "Patient is Male":
@@ -127,7 +127,7 @@ define "Patient is Male":
 define "Five or more drinks per day Assessment":
 	[Observation: "Five or more drinks per day"] A
 		where A.status.value in { 'final', 'amended' }
-			and A.effective.value in "Measurement Period"
+			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
 define "Patient is Female":
@@ -139,7 +139,7 @@ define "Patient is 65 or Over":
 define "Four or more drinks per day Assessment":
 	[Observation: "Four or more drinks per day"] A
 		where A.status.value in { 'final', 'amended' }
-			and A.effective.value in "Measurement Period"
+			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
 // Counseling or Other Follow-Up on Positive Screen

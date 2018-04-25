@@ -1,62 +1,64 @@
 {
-    "resourceType": "Measure",
-    "id": "measure-cdc",
-    "text": {
-        "status": "generated"
-    },
-    "identifier": [
+  "resourceType": "Measure",
+  "id": "measure-cdc",
+  "text": {
+    "status": "generated"
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://hl7.org/fhir/cqi/ecqm/Measure/Identifier/payer-extract",
+      "value": "CDC"
+    }
+  ],
+  "version": "1.0.0",
+  "title": "Comprehensive Diabetes Care Cohort Definition",
+  "status": "active",
+  "experimental": true,
+  "date": "2015-03-08",
+  "description": "Comprehensive Diabetes Care Cohort Definition",
+  "topic": [
+    {
+      "coding": [
         {
-            "use": "official",
-            "system": "http://hl7.org/fhir/cqi/ecqm/Measure/Identifier/payer-extract",
-            "value": "CDC"
+          "system": "http://hl7.org/fhir/c80-doc-typecodes",
+          "code": "57024-2"
         }
-    ],
-    "version": "1.0.0",
-    "title": "Comprehensive Diabetes Care Cohort Definition",
-    "status": "active",
-    "experimental": true,
-    "date": "2015-03-08",
-    "description": "Comprehensive Diabetes Care Cohort Definition",
-    "topic": [
-        {
-            "coding": {
-                "system": "http://hl7.org/fhir/c80-doc-typecodes",
-                "code": "57024-2"
-            }
-        }
-    ],
-    "library": [
-        {
-            "reference": "Library/library-cdc-logic"
-        }
-    ],
-    "scoring": {
-        "coding": [
-            {
-                "code": "cohort"
-            }
-        ]
-    },
-    "group": [
-        {
-            "identifier": {
-                "value": "CDC-cohort"
-            },
-            "population": [
-                {
-                    "identifier": {
-                        "value": "initial-population-identifier"
-                    },
-                    "code": {
-                        "coding": [
-                            {
-                                "code": "initial-population"
-                            }
-                        ]
-                    },
-                    "criteria": "CDC.&quot;In Demographic&quot;"
-                }
-            ]
-        }
+      ]
+    }
+  ],
+  "library": [
+    {
+      "reference": "Library/library-cdc-logic"
+    }
+  ],
+  "scoring": {
+    "coding": [
+      {
+        "code": "cohort"
+      }
     ]
+  },
+  "group": [
+    {
+      "identifier": {
+        "value": "CDC-cohort"
+      },
+      "population": [
+        {
+          "identifier": {
+            "value": "initial-population-identifier"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "initial-population"
+              }
+            ]
+          },
+          "criteria": "CDC.&quot;In Demographic&quot;"
+        }
+      ]
+    }
+  ]
 }

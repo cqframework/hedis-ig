@@ -113,7 +113,7 @@ define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	or
 	exists(
@@ -123,19 +123,19 @@ define "Is In Hospice":
 						in "Discharged to Home for Hospice Care"
 					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
 						in "Discharged to Health Care Facility for Hospice Care")
-				and PeriodToIntervalOfDT(DischargeHospice.period) ends during "Measurement Period"
+				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of "Measurement Period"
 	)
 	or
 	exists(
 		[ProcedureRequest: "Hospice care ambulatory"] HospiceOrder
 			where HospiceOrder.status.value in { 'active', 'completed' }
-				and HospiceOrder.authoredOn.value during "Measurement Period"
+				and HospiceOrder.authoredOn.value during day of "Measurement Period"
 	)
 	or
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and PeriodToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -175,7 +175,7 @@ define "Enrollment Periods":
 
 define function "Enrollment Periods In Year"(Year Interval<DateTime>):
 	"Enrollment Periods" EnrP
-		where EnrP overlaps Year
+		where EnrP overlaps day of Year
 		return EnrP intersect Year
 
 define function "Is Continuous Enrollment In Year"(Year Interval<DateTime>):
@@ -223,7 +223,7 @@ define "Is Enrolled in Institutional SNP":
 	exists(
 		[Encounter: "X Institutional SNP Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in SNP during the measurement year.
 
@@ -231,7 +231,7 @@ define "Is Living Long-Term in Institution":
 	exists(
 		[Encounter: "X Long-Term in Institution Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 */
@@ -258,7 +258,7 @@ define "Is Age 30 to 64 at End":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where WhenCC included in "Lookback Interval Two More Years"
+			where WhenCC included in day of "Lookback Interval Two More Years"
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
@@ -268,8 +268,8 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 				such that (((difference in days between start of WhenCC and start of WhenHPV) <= 4)
 					and CalendarAgeInYearsAt(Patient.birthDate.value, start of WhenCC) >= 30
 					and CalendarAgeInYearsAt(Patient.birthDate.value, start of WhenHPV) >= 30
-					and WhenCC included in "Lookback Interval Four More Years"
-					and WhenHPV included in "Lookback Interval Four More Years")
+					and WhenCC included in day of "Lookback Interval Four More Years"
+					and WhenHPV included in day of "Lookback Interval Four More Years")
 	)
 
 define "Dates of Cervical Cytology Tests":

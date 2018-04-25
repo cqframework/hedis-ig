@@ -83,7 +83,7 @@ define "Needs Cervical Cytology Test":
 define "Is Cervical Cytology Test In Last 3 Years":
 	exists(
 		"Dates of Cervical Cytology Tests" WhenCC
-			where WhenCC included in "Lookback Interval Two More Years"
+			where WhenCC included in day of "Lookback Interval Two More Years"
 	)
 
 define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
@@ -130,6 +130,14 @@ define "Is Hysterectomy":
 				and end of case when Proc.performed is DateTime then Interval[Proc.performed.value, Proc.performed.value] else Interval[Proc.performed."start".value, Proc.performed."end".value] end same day or before end of "Measurement Period"
 	)
 
+define CervicalCytologySummary:
+    'A Cervical Cytology procedure for the patient is recommended'
+
+define CervicalCytologyDetail:
+    'The patient has not had a Cervical Cytology procedure in the last 3 years'
+
+define CervicalCytologyIndicator:
+    'warning'
 
 /*
 Utility Functions

@@ -48,24 +48,24 @@ define "In Demographic":
 define "BMI Percent":
   [Observation: "BMI Percentile"] P
     where P.status in { 'final', 'amended' }
-      and P.effective during "Lookback Interval Two Years"
+      and P.effective during day of "Lookback Interval Two Years"
 
 /* Body Mass Index (BMI) Value	  value identifying body mass */
 
 define "Body Mass Index (BMI) Value":
   [Observation: "BMI Value"] V
     where V.status in { 'final', 'amended' }
-      and V.effective during "Lookback Interval Two Years"
+      and V.effective during day of "Lookback Interval Two Years"
 
 /* Height */
 
 define "Height":
   [Observation: "Body Height"] O
     where O.status in { 'final', 'amended' }
-      and O.effective during "Lookback Interval Two Years"
+      and O.effective during day of "Lookback Interval Two Years"
 
 /* Body Weight */
 define "Weight":
   [Observation: "Body Weight"] O
     where O.status in { 'final', 'amended' }
-      and O.effective during "Lookback Interval Two Years"
+      and O.effective during day of "Lookback Interval Two Years"

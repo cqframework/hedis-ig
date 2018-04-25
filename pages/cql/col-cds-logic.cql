@@ -57,12 +57,21 @@ define "FOBT Observations":
 define "Fecal Occult Blood Tests":
     "FOBT Observations" Obs
     			where Obs.status.value in { 'final', 'amended' }
-    				and Obs.effective.value in "Lookback Interval One Year"
+    				and Obs.effective.value in day of "Lookback Interval One Year"
 
 define "Needs Fecal Occult Blood Test":
 	if "Fecal Occult Blood Tests" is null
 	    then true
 	else not exists "Fecal Occult Blood Tests"
+
+define FOBTSummary:
+    'A Fecal Occult Blood test for the patient is recommended'
+
+define FOBTDetail:
+    'The patient has not had a Fecal Occult Blood test in the last year'
+
+define Indicator:
+    'warning'
 
 define "Flexible Sigmoidoscopy Reports":
 	[DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
@@ -72,12 +81,18 @@ define "Flexible Sigmoidoscopy Reports":
 define "Flexible Sigmoidoscopy Diagnostics":
     "Flexible Sigmoidoscopy Reports" DiagRep
     			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-    				and PeriodToIntervalOfDT(DiagRep.effective) included in "Lookback Interval Five Years"
+    				and PeriodToIntervalOfDT(DiagRep.effective) included in day of "Lookback Interval Five Years"
 
 define "Needs Flexible Sigmoidoscopy":
 	if "Flexible Sigmoidoscopy Diagnostics" is null
 	    then true
 	else not exists "Flexible Sigmoidoscopy Diagnostics"
+
+define FlexibleSigmoidoscopySummary:
+    'A Flexible Sigmoidoscopy procedure for the patient is recommended'
+
+define FlexibleSigmoidoscopyDetail:
+    'The patient has not had a Flexible Sigmoidoscopy procedure in the last 5 years'
 
 define "Colonoscopy Reports":
 	[DiagnosticReport: "Colonoscopy Value Set (CPT)"]
@@ -87,19 +102,31 @@ define "Colonoscopy Reports":
 define "Colonoscopy Diagnostics":
     "Colonoscopy Reports" DiagRep
     			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-    				and PeriodToIntervalOfDT(DiagRep.effective) included in "Lookback Interval Ten Years"
+    				and PeriodToIntervalOfDT(DiagRep.effective) included in day of "Lookback Interval Ten Years"
 
 define "Needs Colonoscopy":
 	if "Colonoscopy Diagnostics" is null
 	    then true
 	else not exists "Colonoscopy Diagnostics"
 
+define ColonoscopySummary:
+    'A Colonoscopy procedure for the patient is recommended'
+
+define ColonoscopyDetail:
+    'The patient has not had a Colonoscopy procedure in the last 10 years'
+
 define "Needs CT Colonography":
 	not exists(
 		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
 			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) included in "Lookback Interval Five Years"
+				and PeriodToIntervalOfDT(DiagRep.effective) included in day of "Lookback Interval Five Years"
 	)
+
+define ColonographySummary:
+    'A Colonography procedure for the patient is recommended'
+
+define ColonographyDetail:
+    'The patient has not had a Colonography procedure in the last 5 years'
 
 define "FIT-DNA Observations":
 	[Observation: "FIT-DNA Value Set (CPT)"]
@@ -109,12 +136,18 @@ define "FIT-DNA Observations":
 define "FIT-DNA Tests":
     "FIT-DNA Observations" Obs
     			where Obs.status.value in { 'final', 'amended' }
-    				and Obs.effective.value in "Lookback Interval Three Years"
+    				and Obs.effective.value in day of "Lookback Interval Three Years"
 
 define "Needs FIT-DNA Test":
 	if "FIT-DNA Tests" is null
 	    then true
 	else not exists "FIT-DNA Tests"
+
+define FITDNASummary:
+    'A FIT-DNA test for the patient is recommended'
+
+define FITDNADetail:
+    'The patient has not had a FIT-DNA test in the last 3 years'
 
 define "Colorectal Cancer Conditions":
 	[Condition: "Colorectal Cancer Value Set (ICD10)"]

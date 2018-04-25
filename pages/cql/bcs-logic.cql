@@ -116,13 +116,13 @@ define "Is In Hospice":
 	exists(
 		[Encounter: "Hospice Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	or
 	exists(
 		[Claim: "Hospice Value Set"] Clm
 			where Clm.status.value in { 'active', 'draft' }
-				and PeriodToIntervalOfDT(Clm.item.service.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Clm.item.service.period) overlaps day of "Measurement Period"
 	)
 	or
 	exists(
@@ -132,7 +132,7 @@ define "Is In Hospice":
 						in "Discharged to Home for Hospice Care"
 					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
 						in "Discharged to Health Care Facility for Hospice Care")
-				and PeriodToIntervalOfDT(DischargeHospice.period) ends during "Measurement Period"
+				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of "Measurement Period"
 	)
 	or
 	exists(
@@ -144,7 +144,7 @@ define "Is In Hospice":
 	exists(
 		[Procedure: "Hospice care ambulatory"] HospicePerformed
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and PeriodToIntervalOfDT(HospicePerformed.performed) overlaps "Measurement Period"
+				and date form PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of "Measurement Period"
 	)
 
 define "Is In Applicable Product Line":
@@ -232,7 +232,7 @@ define "Is Enrolled in Institutional SNP":
 	exists(
 		[Encounter: "X Institutional SNP Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in SNP during the measurement year.
 
@@ -240,7 +240,7 @@ define "Is Living Long-Term in Institution":
 	exists(
 		[Encounter: "X Long-Term in Institution Value Set"] Enc
 			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps "Measurement Period"
+				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
 	)
 	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 */
@@ -260,7 +260,7 @@ define "Is Mammogram In Last 39 Months":
 	exists(
 		[Procedure: "Mammography Value Set"] Proc
 			where Proc.status.value = 'completed'
-				and PeriodToIntervalOfDT(Proc.performed) included in "Lookback Interval 27 More Months"
+				and PeriodToIntervalOfDT(Proc.performed) included in day of "Lookback Interval 27 More Months"
 	)
 
 define "Denominator Exclusion":
