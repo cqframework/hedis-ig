@@ -73,14 +73,16 @@ Exclusions
 */
 
 define "Denominator Exclusion":
-	exists ( [Condition: "Alcohol use disorder"] AlcoholUse
-			where AlcoholUse.clinicalStatus in { 'active', 'recurrence', 'relapse', 'well-controlled', 'poorly-controlled' }
-				and AlcoholUse.assertedDate during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
+	exists (
+	    [Condition: "Alcohol use disorder"] AlcoholUse
+			where AlcoholUse.clinicalStatus in { 'active', 'recurrence' }
+            and AlcoholUse.assertedDate during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
 	)
-		or exists ( [Condition: "Dementia"] D
-				where D.clinicalStatus in { 'active', 'recurrence', 'relapse', 'well-controlled', 'poorly-controlled' }
-					and D.assertedDate during day of Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
-		)
+    or exists (
+        [Condition: "Dementia"] D
+            where D.clinicalStatus in { 'active', 'recurrence' }
+            and D.assertedDate during day of Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
+    )
 
 /*
 Denominators and Numerators
@@ -89,35 +91,44 @@ Denominators and Numerators
 // Unhealthy Alcohol Use Screening
 
 define "Denominator 1":
-	"Initial Population"
+	// "Initial Population"
+	true
 
 // Unhealthy Alcohol Use Screening
 
 define "Numerator 1":
-	"Initial Population"
-		and ( exists ( "AUDIT-C Assessment" )
-				or exists ( "AUDIT Assessment" )
-				or ( "Patient is Male"
-						and exists ( "Five or more drinks per day Assessment" )
-				)
-				or ( "Patient is Female"
-						and exists ( "Four or more drinks per day Assessment" )
-				)
-				or ( "Patient is 65 or Over"
-						and exists ( "Four or more drinks per day Assessment" )
-				)
-       // Note: The spec doesn't include the over 65 test here but does in dependent N/D 2.
-		)
+	// "Initial Population"
+	exists ( "AUDIT-C Assessment" )
+    or exists ( "AUDIT Assessment" )
+    or (
+        "Patient is Male"
+        and exists ( "Five or more drinks per day Assessment" )
+    )
+    or (
+        "Patient is Female"
+        and (
+            exists ( "Four or more drinks per day Assessment" )
+            or exists ( "Five or more drinks per day Assessment" )
+        )
+    )
+    or (
+        "Patient is 65 or Over"
+            and (
+                exists ( "Four or more drinks per day Assessment" )
+                or exists ( "Five or more drinks per day Assessment" )
+            )
+    )
+   // Note: The spec doesn't include the over 65 test here but does in dependent N/D 2.
 
 define "AUDIT-C Assessment":
 	[Observation: "AUDIT-C Total Score (in points)"] A
-		where A.status.value in { 'final', 'amended' }
+		where A.status.value in { 'final', 'amended', 'corrected' }
 			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
 define "AUDIT Assessment":
 	[Observation: "AUDIT Total Score (in points)"] A
-		where A.status.value in { 'final', 'amended' }
+		where A.status.value in { 'final', 'amended', 'corrected' }
 			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
@@ -126,7 +137,7 @@ define "Patient is Male":
 
 define "Five or more drinks per day Assessment":
 	[Observation: "Five or more drinks per day"] A
-		where A.status.value in { 'final', 'amended' }
+		where A.status.value in { 'final', 'amended', 'corrected' }
 			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
@@ -138,7 +149,7 @@ define "Patient is 65 or Over":
 
 define "Four or more drinks per day Assessment":
 	[Observation: "Four or more drinks per day"] A
-		where A.status.value in { 'final', 'amended' }
+		where A.status.value in { 'final', 'amended', 'corrected' }
 			and A.effective.value in day of "Measurement Period"
 			and A.value is not null
 
@@ -150,59 +161,77 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 */
 
 define "Denominator 2":
-	"Initial Population"
-		and exists "Positive Assessment for Unhealthy Alcohol Use"
+	// "Initial Population"
+	exists "Positive Assessment for Unhealthy Alcohol Use"
 
 // Counseling or Other Follow-Up on Positive Screen
 
 define "Numerator 2":
-	"Initial Population"
-		and exists ( "Initial Positive Assessment for Unhealthy Alcohol Use" A
-				with "Followup After Positive Screen" F
-					such that F.effective.value 2 months or less on or after day of A.effective.value
-		)
+	// "Initial Population"
+    exists (
+        "Initial Positive Assessment for Unhealthy Alcohol Use" A
+            with "Followup After Positive Screen" F
+                such that
+                if F is Observation then F.effective.value 2 months or less on or after day of A.effective.value
+                else F.performed."end".value 2 months or less on or after day of A.effective.value
+    )
 
 define "Positive Assessment for Unhealthy Alcohol Use":
-	( "AUDIT Assessment" A
+	(
+	    "AUDIT Assessment" A
 			where ( A.value as Quantity ).value.value >= 8
 	)
-		union ( "AUDIT-C Assessment" A
-				where ( "Patient is Male"
-						and ( A.value as Quantity ).value.value >= 4
-				)
-					or ( "Patient is Female"
-							and ( A.value as Quantity ).value.value >= 3
-					)
-		)
-		union ( "Five or more drinks per day Assessment" A
-				where "Patient is Male"
-					and ( A.value as Quantity ).value.value >= 1
-		)
-		union ( "Four or more drinks per day Assessment" A
-				where ( "Patient is Female"
-						or "Patient is 65 or Over"
-				)
-					and ( A.value as Quantity ).value.value >= 1
-		)
+    union (
+        "AUDIT-C Assessment" A
+            where
+                (
+                    "Patient is Male"
+                        and ( A.value as Quantity ).value.value >= 4
+                )
+				or (
+				    "Patient is Female"
+                        and ( A.value as Quantity ).value.value >= 3
+                )
+    )
+    union (
+        "Five or more drinks per day Assessment" A
+            where "Patient is Male"
+            and ( A.value as Quantity ).value.value >= 1
+    )
+    union (
+        "Four or more drinks per day Assessment" A
+            where (
+                "Patient is Female"
+                    or "Patient is 65 or Over"
+            )
+            and ( A.value as Quantity ).value.value >= 1
+    )
 
 define "Followup After Positive Screen":
-	( [Procedure: "Alcohol Counseling and Treatment"] Proc
+	(
+	    [Procedure: "Alcohol Counseling and Treatment"] Proc
 			where Proc.status.value = 'completed'
 	)
-		union ( [Observation: "Alcohol Counseling and Treatment"] Obs
-				where Obs.status.value in { 'final', 'amended' }
-		)
-		union ( [Procedure: "Alcohol Screening"] Proc
-				where Proc.status.value = 'completed'
-		)
-		union ( [Observation: "Alcohol Screening"] Obs
-				where Obs.status.value in { 'final', 'amended' }
-		)
+    union (
+        [Observation: "Alcohol Counseling and Treatment"] Obs
+            where Obs.status.value in { 'final', 'amended', 'corrected' }
+    )
+    union (
+        [Procedure: "Alcohol Screening"] Proc
+            where Proc.status.value = 'completed'
+    )
+    union (
+        [Observation: "Alcohol Screening"] Obs
+            where Obs.status.value in { 'final', 'amended', 'corrected' }
+    )
 
 define "Initial Positive Assessment for Unhealthy Alcohol Use":
-	{ First("Positive Assessment for Unhealthy Alcohol Use" A
-			sort by effective.value
-	)}
+	{
+	    First(
+	        "Positive Assessment for Unhealthy Alcohol Use" A
+			    sort by effective.value
+        )
+    }
 
 /*
 Stratifiers
