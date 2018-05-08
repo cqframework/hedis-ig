@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+    <annotation message="List-valued expression was demoted to a singleton." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="90" startChar="4" endLine="90" endChar="50" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="95" startChar="4" endLine="95" endChar="55" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="107" startChar="4" endLine="107" endChar="41" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="112" startChar="11" endLine="112" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="113" startChar="11" endLine="113" endChar="50" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="114" startChar="11" endLine="114" endChar="64" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation message="List-valued expression was demoted to a singleton." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="152" startChar="2" endLine="152" endChar="48" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="153" startChar="8" endLine="153" endChar="59" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="161" startChar="3" endLine="161" endChar="29" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="163" startChar="3" endLine="163" endChar="39" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
     <identifier id="DMS_FHIR" version="1.0.0"/>
     <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
     <usings>
@@ -51,7 +63,7 @@
                                 <a:s>&quot;Measurement Period&quot;</a:s>
                             </a:s>
                         </a:s>
-                        <a:s>           , </a:s>
+                        <a:s>, </a:s>
                         <a:s r="26">
                             <a:s r="24">
                                 <a:s>end of </a:s>
@@ -350,7 +362,7 @@
                                                         </a:s>
                                                         <a:s>)</a:s>
                                                     </a:s>
-                                                    <a:s> during </a:s>
+                                                    <a:s> during day of </a:s>
                                                     <a:s r="77">
                                                         <a:s>&quot;Measurement Period&quot;</a:s>
                                                     </a:s>
@@ -447,7 +459,7 @@
                                                     </a:s>
                                                     <a:s>)</a:s>
                                                 </a:s>
-                                                <a:s> overlaps </a:s>
+                                                <a:s> overlaps day of </a:s>
                                                 <a:s r="98">
                                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                                 </a:s>
@@ -496,7 +508,7 @@
                                         <element localId="62" valueType="t:String" value="finished" xsi:type="Literal"/>
                                     </operand>
                                 </operand>
-                                <operand localId="78" xsi:type="IncludedIn">
+                                <operand localId="78" precision="Day" xsi:type="IncludedIn">
                                     <operand localId="76" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
                                         <operand localId="66" path="period" scope="E" xsi:type="Property"/>
                                     </operand>
@@ -526,11 +538,10 @@
                                     <element localId="92" valueType="t:String" value="appended" xsi:type="Literal"/>
                                 </operand>
                             </operand>
-                            <operand localId="99" xsi:type="Overlaps">
+                            <operand localId="99" precision="Day" xsi:type="Overlaps">
                                 <operand localId="97" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
                                     <operand asType="fhir:Period" xsi:type="As">
                                         <operand localId="96" path="effective" scope="D" xsi:type="Property"/>
-                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
                                     </operand>
                                 </operand>
                                 <operand localId="98" name="Measurement Period" xsi:type="ParameterRef"/>
@@ -670,7 +681,7 @@
                                                     </a:s>
                                                     <a:s>)</a:s>
                                                 </a:s>
-                                                <a:s> overlaps </a:s>
+                                                <a:s> overlaps day of </a:s>
                                                 <a:s r="126">
                                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                                 </a:s>
@@ -721,11 +732,10 @@
                                     <element localId="120" valueType="t:String" value="appended" xsi:type="Literal"/>
                                 </operand>
                             </operand>
-                            <operand localId="127" xsi:type="Overlaps">
+                            <operand localId="127" precision="Day" xsi:type="Overlaps">
                                 <operand localId="125" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
                                     <operand asType="fhir:Period" xsi:type="As">
                                         <operand localId="124" path="effective" scope="D" xsi:type="Property"/>
-                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
                                     </operand>
                                 </operand>
                                 <operand localId="126" name="Measurement Period" xsi:type="ParameterRef"/>
@@ -735,12 +745,12 @@
                 </operand>
             </expression>
         </def>
-        <def localId="169" name="Depression Encounters" context="Patient" accessLevel="Public">
+        <def localId="171" name="Depression Encounters" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="169">
+                <a:s r="171">
                     <a:s>define &quot;Depression Encounters&quot;:
                     </a:s>
-                    <a:s r="168">
+                    <a:s r="170">
                         <a:s>
                             <a:s r="134">
                                 <a:s r="133">
@@ -880,7 +890,7 @@
                                         </a:s>
                                         <a:s>)</a:s>
                                     </a:s>
-                                    <a:s> overlaps </a:s>
+                                    <a:s> overlaps day of </a:s>
                                     <a:s r="164">
                                         <a:s>PeriodToIntervalOfDT(</a:s>
                                         <a:s r="163">
@@ -897,10 +907,18 @@
                                 </a:s>
                             </a:s>
                         </a:s>
+                        <a:s>
+                        </a:s>
+                        <a:s r="169">
+                            <a:s>return </a:s>
+                            <a:s r="168">
+                                <a:s>E</a:s>
+                            </a:s>
+                        </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="168" xsi:type="Query">
+            <expression localId="170" xsi:type="Query">
                 <source localId="134" alias="E">
                     <expression localId="133" dataType="fhir:Encounter" codeProperty="type" xsi:type="Retrieve">
                         <codes name="Interactive Outpatient Encounter" xsi:type="ValueSetRef"/>
@@ -938,11 +956,10 @@
                                 </operand>
                             </operand>
                         </operand>
-                        <operand localId="165" xsi:type="Overlaps">
+                        <operand localId="165" precision="Day" xsi:type="Overlaps">
                             <operand localId="161" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
                                 <operand asType="fhir:Period" xsi:type="As">
                                     <operand localId="160" path="effective" scope="D" xsi:type="Property"/>
-                                    <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
                                 </operand>
                             </operand>
                             <operand localId="164" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
@@ -951,308 +968,332 @@
                         </operand>
                     </suchThat>
                 </relationship>
+                <return localId="169">
+                    <expression localId="168" name="E" xsi:type="AliasRef"/>
+                </return>
             </expression>
         </def>
-        <def localId="185" name="Denominator 1" context="Patient" accessLevel="Public">
+        <def localId="187" name="Denominator 1" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="185">
+                <a:s r="187">
                     <a:s>define &quot;Denominator 1&quot;:
                     </a:s>
-                    <a:s r="184">
-                        <a:s>{</a:s>
-                        <a:s r="183">
-                            <a:s>First(
+                    <a:s r="186">
+                        <a:s>exists </a:s>
+                        <a:s r="185">
+                            <a:s>(
                             </a:s>
-                            <a:s r="182">
-                                <a:s>
-                                    <a:s r="171">
-                                        <a:s r="170">
-                                            <a:s>
-                                                <a:s>&quot;Depression Encounters&quot;</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> E</a:s>
-                                    </a:s>
+                            <a:s r="185">
+                                <a:s>First(
                                 </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="176">
-                                    <a:s>where </a:s>
-                                    <a:s r="176">
-                                        <a:s r="174">
-                                            <a:s>PeriodToIntervalOfDT(</a:s>
-                                            <a:s r="173">
-                                                <a:s r="172">
-                                                    <a:s>E</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="173">
-                                                    <a:s>period</a:s>
+                                <a:s r="184">
+                                    <a:s>
+                                        <a:s r="173">
+                                            <a:s r="172">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Encounters&quot;</a:s>
                                                 </a:s>
                                             </a:s>
-                                            <a:s>)</a:s>
-                                        </a:s>
-                                        <a:s> during </a:s>
-                                        <a:s r="175">
-                                            <a:s>&quot;Assessment Period One&quot;</a:s>
+                                            <a:s> E</a:s>
                                         </a:s>
                                     </a:s>
-                                </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="181">
-                                    <a:s>sort by </a:s>
-                                    <a:s r="180">
-                                        <a:s r="179">
-                                            <a:s>start of </a:s>
-                                            <a:s r="178">
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="178">
+                                        <a:s>where </a:s>
+                                        <a:s r="178">
+                                            <a:s r="176">
                                                 <a:s>PeriodToIntervalOfDT(</a:s>
-                                                <a:s r="177">
-                                                    <a:s>period</a:s>
+                                                <a:s r="175">
+                                                    <a:s r="174">
+                                                        <a:s>E</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="175">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
                                                 </a:s>
                                                 <a:s>)</a:s>
                                             </a:s>
+                                            <a:s> during day of </a:s>
+                                            <a:s r="177">
+                                                <a:s>&quot;Assessment Period One&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="183">
+                                        <a:s>sort by </a:s>
+                                        <a:s r="182">
+                                            <a:s r="181">
+                                                <a:s>start of </a:s>
+                                                <a:s r="180">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="179">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
                                         </a:s>
                                     </a:s>
                                 </a:s>
+                                <a:s>
+                                    )</a:s>
                             </a:s>
                             <a:s>
                                 )</a:s>
                         </a:s>
-                        <a:s>}</a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="184" xsi:type="List">
-                <element localId="183" xsi:type="First">
-                    <source localId="182" xsi:type="Query">
-                        <source localId="171" alias="E">
-                            <expression localId="170" name="Depression Encounters" xsi:type="ExpressionRef"/>
+            <expression localId="186" xsi:type="Exists">
+                <operand xsi:type="ToList">
+                    <operand localId="185" xsi:type="First">
+                        <source localId="184" xsi:type="Query">
+                            <source localId="173" alias="E">
+                                <expression localId="172" name="Depression Encounters" xsi:type="ExpressionRef"/>
+                            </source>
+                            <where localId="178" precision="Day" xsi:type="IncludedIn">
+                                <operand localId="176" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand localId="175" path="period" scope="E" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="177" name="Assessment Period One" xsi:type="ExpressionRef"/>
+                            </where>
+                            <sort localId="183">
+                                <by localId="182" direction="asc" xsi:type="ByExpression">
+                                    <expression localId="181" xsi:type="Start">
+                                        <operand localId="180" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                            <operand localId="179" name="period" xsi:type="IdentifierRef"/>
+                                        </operand>
+                                    </expression>
+                                </by>
+                            </sort>
                         </source>
-                        <where localId="176" xsi:type="IncludedIn">
-                            <operand localId="174" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                <operand localId="173" path="period" scope="E" xsi:type="Property"/>
-                            </operand>
-                            <operand localId="175" name="Assessment Period One" xsi:type="ExpressionRef"/>
-                        </where>
-                        <sort localId="181">
-                            <by localId="180" direction="asc" xsi:type="ByExpression">
-                                <expression localId="179" xsi:type="Start">
-                                    <operand localId="178" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                        <operand localId="177" name="period" xsi:type="IdentifierRef"/>
-                                    </operand>
-                                </expression>
-                            </by>
-                        </sort>
-                    </source>
-                </element>
+                    </operand>
+                </operand>
             </expression>
         </def>
-        <def localId="201" name="Denominator 2" context="Patient" accessLevel="Public">
+        <def localId="203" name="Denominator 2" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="201">
+                <a:s r="203">
                     <a:s>define &quot;Denominator 2&quot;:
                     </a:s>
-                    <a:s r="200">
-                        <a:s>{</a:s>
-                        <a:s r="199">
-                            <a:s>First(
+                    <a:s r="202">
+                        <a:s>exists </a:s>
+                        <a:s r="201">
+                            <a:s>(
                             </a:s>
-                            <a:s r="198">
-                                <a:s>
-                                    <a:s r="187">
-                                        <a:s r="186">
-                                            <a:s>
-                                                <a:s>&quot;Depression Encounters&quot;</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> E</a:s>
-                                    </a:s>
+                            <a:s r="201">
+                                <a:s>First(
                                 </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="192">
-                                    <a:s>where </a:s>
-                                    <a:s r="192">
-                                        <a:s r="190">
-                                            <a:s>PeriodToIntervalOfDT(</a:s>
-                                            <a:s r="189">
-                                                <a:s r="188">
-                                                    <a:s>E</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="189">
-                                                    <a:s>period</a:s>
+                                <a:s r="200">
+                                    <a:s>
+                                        <a:s r="189">
+                                            <a:s r="188">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Encounters&quot;</a:s>
                                                 </a:s>
                                             </a:s>
-                                            <a:s>)</a:s>
-                                        </a:s>
-                                        <a:s> during </a:s>
-                                        <a:s r="191">
-                                            <a:s>&quot;Assessment Period Two&quot;</a:s>
+                                            <a:s> E</a:s>
                                         </a:s>
                                     </a:s>
-                                </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="197">
-                                    <a:s>sort by </a:s>
-                                    <a:s r="196">
-                                        <a:s r="195">
-                                            <a:s>start of </a:s>
-                                            <a:s r="194">
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="194">
+                                        <a:s>where </a:s>
+                                        <a:s r="194">
+                                            <a:s r="192">
                                                 <a:s>PeriodToIntervalOfDT(</a:s>
-                                                <a:s r="193">
-                                                    <a:s>period</a:s>
+                                                <a:s r="191">
+                                                    <a:s r="190">
+                                                        <a:s>E</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="191">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
                                                 </a:s>
                                                 <a:s>)</a:s>
                                             </a:s>
+                                            <a:s> during day of </a:s>
+                                            <a:s r="193">
+                                                <a:s>&quot;Assessment Period Two&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="199">
+                                        <a:s>sort by </a:s>
+                                        <a:s r="198">
+                                            <a:s r="197">
+                                                <a:s>start of </a:s>
+                                                <a:s r="196">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="195">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
                                         </a:s>
                                     </a:s>
                                 </a:s>
+                                <a:s>
+                                    )</a:s>
                             </a:s>
                             <a:s>
                                 )</a:s>
                         </a:s>
-                        <a:s>}</a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="200" xsi:type="List">
-                <element localId="199" xsi:type="First">
-                    <source localId="198" xsi:type="Query">
-                        <source localId="187" alias="E">
-                            <expression localId="186" name="Depression Encounters" xsi:type="ExpressionRef"/>
+            <expression localId="202" xsi:type="Exists">
+                <operand xsi:type="ToList">
+                    <operand localId="201" xsi:type="First">
+                        <source localId="200" xsi:type="Query">
+                            <source localId="189" alias="E">
+                                <expression localId="188" name="Depression Encounters" xsi:type="ExpressionRef"/>
+                            </source>
+                            <where localId="194" precision="Day" xsi:type="IncludedIn">
+                                <operand localId="192" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand localId="191" path="period" scope="E" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="193" name="Assessment Period Two" xsi:type="ExpressionRef"/>
+                            </where>
+                            <sort localId="199">
+                                <by localId="198" direction="asc" xsi:type="ByExpression">
+                                    <expression localId="197" xsi:type="Start">
+                                        <operand localId="196" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                            <operand localId="195" name="period" xsi:type="IdentifierRef"/>
+                                        </operand>
+                                    </expression>
+                                </by>
+                            </sort>
                         </source>
-                        <where localId="192" xsi:type="IncludedIn">
-                            <operand localId="190" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                <operand localId="189" path="period" scope="E" xsi:type="Property"/>
-                            </operand>
-                            <operand localId="191" name="Assessment Period Two" xsi:type="ExpressionRef"/>
-                        </where>
-                        <sort localId="197">
-                            <by localId="196" direction="asc" xsi:type="ByExpression">
-                                <expression localId="195" xsi:type="Start">
-                                    <operand localId="194" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                        <operand localId="193" name="period" xsi:type="IdentifierRef"/>
-                                    </operand>
-                                </expression>
-                            </by>
-                        </sort>
-                    </source>
-                </element>
+                    </operand>
+                </operand>
             </expression>
         </def>
-        <def localId="217" name="Denominator 3" context="Patient" accessLevel="Public">
+        <def localId="219" name="Denominator 3" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="217">
+                <a:s r="219">
                     <a:s>define &quot;Denominator 3&quot;:
                     </a:s>
-                    <a:s r="216">
-                        <a:s>{</a:s>
-                        <a:s r="215">
-                            <a:s>First(
+                    <a:s r="218">
+                        <a:s>exists </a:s>
+                        <a:s r="217">
+                            <a:s>(
                             </a:s>
-                            <a:s r="214">
-                                <a:s>
-                                    <a:s r="203">
-                                        <a:s r="202">
-                                            <a:s>
-                                                <a:s>&quot;Depression Encounters&quot;</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> E</a:s>
-                                    </a:s>
+                            <a:s r="217">
+                                <a:s>First(
                                 </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="208">
-                                    <a:s>where </a:s>
-                                    <a:s r="208">
-                                        <a:s r="206">
-                                            <a:s>PeriodToIntervalOfDT(</a:s>
-                                            <a:s r="205">
-                                                <a:s r="204">
-                                                    <a:s>E</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="205">
-                                                    <a:s>period</a:s>
+                                <a:s r="216">
+                                    <a:s>
+                                        <a:s r="205">
+                                            <a:s r="204">
+                                                <a:s>
+                                                    <a:s>&quot;Depression Encounters&quot;</a:s>
                                                 </a:s>
                                             </a:s>
-                                            <a:s>)</a:s>
-                                        </a:s>
-                                        <a:s> during </a:s>
-                                        <a:s r="207">
-                                            <a:s>&quot;Assessment Period Three&quot;</a:s>
+                                            <a:s> E</a:s>
                                         </a:s>
                                     </a:s>
-                                </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="213">
-                                    <a:s>sort by </a:s>
-                                    <a:s r="212">
-                                        <a:s r="211">
-                                            <a:s>start of </a:s>
-                                            <a:s r="210">
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="210">
+                                        <a:s>where </a:s>
+                                        <a:s r="210">
+                                            <a:s r="208">
                                                 <a:s>PeriodToIntervalOfDT(</a:s>
-                                                <a:s r="209">
-                                                    <a:s>period</a:s>
+                                                <a:s r="207">
+                                                    <a:s r="206">
+                                                        <a:s>E</a:s>
+                                                    </a:s>
+                                                    <a:s>.</a:s>
+                                                    <a:s r="207">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
                                                 </a:s>
                                                 <a:s>)</a:s>
                                             </a:s>
+                                            <a:s> during day of </a:s>
+                                            <a:s r="209">
+                                                <a:s>&quot;Assessment Period Three&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                    </a:s>
+                                    <a:s>
+                                    </a:s>
+                                    <a:s r="215">
+                                        <a:s>sort by </a:s>
+                                        <a:s r="214">
+                                            <a:s r="213">
+                                                <a:s>start of </a:s>
+                                                <a:s r="212">
+                                                    <a:s>PeriodToIntervalOfDT(</a:s>
+                                                    <a:s r="211">
+                                                        <a:s>period</a:s>
+                                                    </a:s>
+                                                    <a:s>)</a:s>
+                                                </a:s>
+                                            </a:s>
                                         </a:s>
                                     </a:s>
                                 </a:s>
+                                <a:s>
+                                    )</a:s>
                             </a:s>
                             <a:s>
                                 )</a:s>
                         </a:s>
-                        <a:s>}</a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="216" xsi:type="List">
-                <element localId="215" xsi:type="First">
-                    <source localId="214" xsi:type="Query">
-                        <source localId="203" alias="E">
-                            <expression localId="202" name="Depression Encounters" xsi:type="ExpressionRef"/>
+            <expression localId="218" xsi:type="Exists">
+                <operand xsi:type="ToList">
+                    <operand localId="217" xsi:type="First">
+                        <source localId="216" xsi:type="Query">
+                            <source localId="205" alias="E">
+                                <expression localId="204" name="Depression Encounters" xsi:type="ExpressionRef"/>
+                            </source>
+                            <where localId="210" precision="Day" xsi:type="IncludedIn">
+                                <operand localId="208" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                    <operand localId="207" path="period" scope="E" xsi:type="Property"/>
+                                </operand>
+                                <operand localId="209" name="Assessment Period Three" xsi:type="ExpressionRef"/>
+                            </where>
+                            <sort localId="215">
+                                <by localId="214" direction="asc" xsi:type="ByExpression">
+                                    <expression localId="213" xsi:type="Start">
+                                        <operand localId="212" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                            <operand localId="211" name="period" xsi:type="IdentifierRef"/>
+                                        </operand>
+                                    </expression>
+                                </by>
+                            </sort>
                         </source>
-                        <where localId="208" xsi:type="IncludedIn">
-                            <operand localId="206" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                <operand localId="205" path="period" scope="E" xsi:type="Property"/>
-                            </operand>
-                            <operand localId="207" name="Assessment Period Three" xsi:type="ExpressionRef"/>
-                        </where>
-                        <sort localId="213">
-                            <by localId="212" direction="asc" xsi:type="ByExpression">
-                                <expression localId="211" xsi:type="Start">
-                                    <operand localId="210" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                        <operand localId="209" name="period" xsi:type="IdentifierRef"/>
-                                    </operand>
-                                </expression>
-                            </by>
-                        </sort>
-                    </source>
-                </element>
+                    </operand>
+                </operand>
             </expression>
         </def>
-        <def localId="235" name="PHQ-9 Score" context="Patient" accessLevel="Public">
+        <def localId="237" name="PHQ-9 Score" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="235">
+                <a:s r="237">
                     <a:s>define &quot;PHQ-9 Score&quot;:
                     </a:s>
-                    <a:s r="234">
+                    <a:s r="236">
                         <a:s>distinct </a:s>
-                        <a:s r="233">
+                        <a:s r="235">
                             <a:s>
-                                <a:s r="221">
-                                    <a:s r="220">
+                                <a:s r="223">
+                                    <a:s r="222">
                                         <a:s>(
                                         </a:s>
-                                        <a:s r="220">
-                                            <a:s r="218">
+                                        <a:s r="222">
+                                            <a:s r="220">
                                                 <a:s>[Observation: </a:s>
                                                 <a:s>
                                                     <a:s>&quot;PHQ-9 Tool&quot;</a:s>
@@ -1262,7 +1303,7 @@
                                             <a:s>
                                                 union
                                             </a:s>
-                                            <a:s r="219">
+                                            <a:s r="221">
                                                 <a:s>[Observation: </a:s>
                                                 <a:s>
                                                     <a:s>&quot;PHQ-9 Modified Score&quot;</a:s>
@@ -1278,33 +1319,33 @@
                             </a:s>
                             <a:s>
                             </a:s>
-                            <a:s r="232">
+                            <a:s r="234">
                                 <a:s>where </a:s>
-                                <a:s r="232">
-                                    <a:s r="228">
-                                        <a:s r="224">
-                                            <a:s r="223">
-                                                <a:s r="222">
+                                <a:s r="234">
+                                    <a:s r="230">
+                                        <a:s r="226">
+                                            <a:s r="225">
+                                                <a:s r="224">
                                                     <a:s>A</a:s>
                                                 </a:s>
                                                 <a:s>.</a:s>
-                                                <a:s r="223">
+                                                <a:s r="225">
                                                     <a:s>status</a:s>
                                                 </a:s>
                                             </a:s>
                                             <a:s>.</a:s>
-                                            <a:s r="224">
+                                            <a:s r="226">
                                                 <a:s>value</a:s>
                                             </a:s>
                                         </a:s>
                                         <a:s> in </a:s>
-                                        <a:s r="227">
+                                        <a:s r="229">
                                             <a:s>{ </a:s>
-                                            <a:s r="225">
+                                            <a:s r="227">
                                                 <a:s>'final'</a:s>
                                             </a:s>
                                             <a:s>, </a:s>
-                                            <a:s r="226">
+                                            <a:s r="228">
                                                 <a:s>'amended'</a:s>
                                             </a:s>
                                             <a:s> }</a:s>
@@ -1312,13 +1353,13 @@
                                     </a:s>
                                     <a:s>
                                         and </a:s>
-                                    <a:s r="231">
-                                        <a:s r="230">
-                                            <a:s r="229">
+                                    <a:s r="233">
+                                        <a:s r="232">
+                                            <a:s r="231">
                                                 <a:s>A</a:s>
                                             </a:s>
                                             <a:s>.</a:s>
-                                            <a:s r="230">
+                                            <a:s r="232">
                                                 <a:s>value</a:s>
                                             </a:s>
                                         </a:s>
@@ -1330,31 +1371,31 @@
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="234" xsi:type="Distinct">
-                <operand localId="233" xsi:type="Query">
-                    <source localId="221" alias="A">
-                        <expression localId="220" xsi:type="Union">
-                            <operand localId="218" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+            <expression localId="236" xsi:type="Distinct">
+                <operand localId="235" xsi:type="Query">
+                    <source localId="223" alias="A">
+                        <expression localId="222" xsi:type="Union">
+                            <operand localId="220" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                                 <codes name="PHQ-9 Tool" xsi:type="CodeRef"/>
                             </operand>
-                            <operand localId="219" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
+                            <operand localId="221" dataType="fhir:Observation" codeProperty="code" xsi:type="Retrieve">
                                 <codes name="PHQ-9 Modified Score" xsi:type="CodeRef"/>
                             </operand>
                         </expression>
                     </source>
-                    <where localId="232" xsi:type="And">
-                        <operand localId="228" xsi:type="In">
-                            <operand localId="224" path="value" xsi:type="Property">
-                                <source localId="223" path="status" scope="A" xsi:type="Property"/>
+                    <where localId="234" xsi:type="And">
+                        <operand localId="230" xsi:type="In">
+                            <operand localId="226" path="value" xsi:type="Property">
+                                <source localId="225" path="status" scope="A" xsi:type="Property"/>
                             </operand>
-                            <operand localId="227" xsi:type="List">
-                                <element localId="225" valueType="t:String" value="final" xsi:type="Literal"/>
-                                <element localId="226" valueType="t:String" value="amended" xsi:type="Literal"/>
+                            <operand localId="229" xsi:type="List">
+                                <element localId="227" valueType="t:String" value="final" xsi:type="Literal"/>
+                                <element localId="228" valueType="t:String" value="amended" xsi:type="Literal"/>
                             </operand>
                         </operand>
-                        <operand localId="231" xsi:type="Not">
+                        <operand localId="233" xsi:type="Not">
                             <operand xsi:type="IsNull">
-                                <operand localId="230" path="value" scope="A" xsi:type="Property"/>
+                                <operand localId="232" path="value" scope="A" xsi:type="Property"/>
                             </operand>
                         </operand>
                     </where>
@@ -1367,335 +1408,332 @@
                     <a:s>define &quot;Numerator 1&quot;:
                     </a:s>
                     <a:s r="246">
-                        <a:s>
-                            <a:s r="237">
-                                <a:s r="236">
-                                    <a:s>
-                                        <a:s>&quot;Denominator 1&quot;</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> E</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
+                        <a:s>exists </a:s>
                         <a:s r="245">
-                            <a:s>with </a:s>
-                            <a:s r="239">
-                                <a:s r="238">
-                                    <a:s>
-                                        <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                            <a:s>(
+                                // &quot;Denominator 1&quot; E
+                            </a:s>
+                            <a:s r="245">
+                                <a:s>
+                                    <a:s r="239">
+                                        <a:s r="238">
+                                            <a:s>
+                                                <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> A</a:s>
                                     </a:s>
                                 </a:s>
-                                <a:s> A</a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="244">
+                                    <a:s>where </a:s>
+                                    <a:s r="244">
+                                        <a:s r="242">
+                                            <a:s r="241">
+                                                <a:s r="240">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="241">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="242">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in day of </a:s>
+                                        <a:s r="243">
+                                            <a:s>&quot;Assessment Period One&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
                             </a:s>
                             <a:s>
-                                such that </a:s>
-                            <a:s r="244">
-                                <a:s r="242">
-                                    <a:s r="241">
-                                        <a:s r="240">
-                                            <a:s>A</a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="241">
-                                            <a:s>effective</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s>.</a:s>
-                                    <a:s r="242">
-                                        <a:s>value</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> in </a:s>
-                                <a:s r="243">
-                                    <a:s>&quot;Assessment Period One&quot;</a:s>
-                                </a:s>
-                            </a:s>
+                                )</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="246" xsi:type="Query">
-                <source localId="237" alias="E">
-                    <expression localId="236" name="Denominator 1" xsi:type="ExpressionRef"/>
-                </source>
-                <relationship localId="245" alias="A" xsi:type="With">
-                    <expression localId="238" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
-                    <suchThat localId="244" xsi:type="In">
+            <expression localId="246" xsi:type="Exists">
+                <operand localId="245" xsi:type="Query">
+                    <source localId="239" alias="A">
+                        <expression localId="238" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
+                    </source>
+                    <where localId="244" precision="Day" xsi:type="In">
                         <operand localId="242" path="value" xsi:type="Property">
                             <source localId="241" path="effective" scope="A" xsi:type="Property"/>
                         </operand>
                         <operand localId="243" name="Assessment Period One" xsi:type="ExpressionRef"/>
-                    </suchThat>
-                </relationship>
+                    </where>
+                </operand>
             </expression>
         </def>
-        <def localId="259" name="Numerator 2" context="Patient" accessLevel="Public">
+        <def localId="257" name="Numerator 2" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="259">
+                <a:s r="257">
                     <a:s>define &quot;Numerator 2&quot;:
                     </a:s>
-                    <a:s r="258">
-                        <a:s>
-                            <a:s r="249">
-                                <a:s r="248">
-                                    <a:s>
-                                        <a:s>&quot;Denominator 2&quot;</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> E</a:s>
+                    <a:s r="256">
+                        <a:s>exists </a:s>
+                        <a:s r="255">
+                            <a:s>(
+                                // &quot;Denominator 2&quot; E
                             </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="257">
-                            <a:s>with </a:s>
-                            <a:s r="251">
-                                <a:s r="250">
-                                    <a:s>
-                                        <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                            <a:s r="255">
+                                <a:s>
+                                    <a:s r="249">
+                                        <a:s r="248">
+                                            <a:s>
+                                                <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> A</a:s>
                                     </a:s>
                                 </a:s>
-                                <a:s> A</a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="254">
+                                    <a:s>where </a:s>
+                                    <a:s r="254">
+                                        <a:s r="252">
+                                            <a:s r="251">
+                                                <a:s r="250">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="251">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="252">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in day of </a:s>
+                                        <a:s r="253">
+                                            <a:s>&quot;Assessment Period Two&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
                             </a:s>
                             <a:s>
-                                such that </a:s>
-                            <a:s r="256">
-                                <a:s r="254">
-                                    <a:s r="253">
-                                        <a:s r="252">
-                                            <a:s>A</a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="253">
-                                            <a:s>effective</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s>.</a:s>
-                                    <a:s r="254">
-                                        <a:s>value</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> in </a:s>
-                                <a:s r="255">
-                                    <a:s>&quot;Assessment Period Two&quot;</a:s>
-                                </a:s>
-                            </a:s>
+                                )</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="258" xsi:type="Query">
-                <source localId="249" alias="E">
-                    <expression localId="248" name="Denominator 2" xsi:type="ExpressionRef"/>
-                </source>
-                <relationship localId="257" alias="A" xsi:type="With">
-                    <expression localId="250" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
-                    <suchThat localId="256" xsi:type="In">
-                        <operand localId="254" path="value" xsi:type="Property">
-                            <source localId="253" path="effective" scope="A" xsi:type="Property"/>
+            <expression localId="256" xsi:type="Exists">
+                <operand localId="255" xsi:type="Query">
+                    <source localId="249" alias="A">
+                        <expression localId="248" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
+                    </source>
+                    <where localId="254" precision="Day" xsi:type="In">
+                        <operand localId="252" path="value" xsi:type="Property">
+                            <source localId="251" path="effective" scope="A" xsi:type="Property"/>
                         </operand>
-                        <operand localId="255" name="Assessment Period Two" xsi:type="ExpressionRef"/>
-                    </suchThat>
-                </relationship>
+                        <operand localId="253" name="Assessment Period Two" xsi:type="ExpressionRef"/>
+                    </where>
+                </operand>
             </expression>
         </def>
-        <def localId="271" name="Numerator 3" context="Patient" accessLevel="Public">
+        <def localId="267" name="Numerator 3" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="271">
+                <a:s r="267">
                     <a:s>define &quot;Numerator 3&quot;:
                     </a:s>
-                    <a:s r="270">
-                        <a:s>
-                            <a:s r="261">
-                                <a:s r="260">
-                                    <a:s>
-                                        <a:s>&quot;Denominator 3&quot;</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> E</a:s>
+                    <a:s r="266">
+                        <a:s>exists </a:s>
+                        <a:s r="265">
+                            <a:s>(
+                                //&quot;Denominator 3&quot; E
                             </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="269">
-                            <a:s>with </a:s>
-                            <a:s r="263">
-                                <a:s r="262">
-                                    <a:s>
-                                        <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                            <a:s r="265">
+                                <a:s>
+                                    <a:s r="259">
+                                        <a:s r="258">
+                                            <a:s>
+                                                <a:s>&quot;PHQ-9 Score&quot;</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> A</a:s>
                                     </a:s>
                                 </a:s>
-                                <a:s> A</a:s>
+                                <a:s>
+                                </a:s>
+                                <a:s r="264">
+                                    <a:s>where </a:s>
+                                    <a:s r="264">
+                                        <a:s r="262">
+                                            <a:s r="261">
+                                                <a:s r="260">
+                                                    <a:s>A</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="261">
+                                                    <a:s>effective</a:s>
+                                                </a:s>
+                                            </a:s>
+                                            <a:s>.</a:s>
+                                            <a:s r="262">
+                                                <a:s>value</a:s>
+                                            </a:s>
+                                        </a:s>
+                                        <a:s> in day of </a:s>
+                                        <a:s r="263">
+                                            <a:s>&quot;Assessment Period Three&quot;</a:s>
+                                        </a:s>
+                                    </a:s>
+                                </a:s>
                             </a:s>
                             <a:s>
-                                such that </a:s>
-                            <a:s r="268">
-                                <a:s r="266">
-                                    <a:s r="265">
-                                        <a:s r="264">
-                                            <a:s>A</a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="265">
-                                            <a:s>effective</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s>.</a:s>
-                                    <a:s r="266">
-                                        <a:s>value</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> in </a:s>
-                                <a:s r="267">
-                                    <a:s>&quot;Assessment Period Three&quot;</a:s>
-                                </a:s>
-                            </a:s>
+                                )</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="270" xsi:type="Query">
-                <source localId="261" alias="E">
-                    <expression localId="260" name="Denominator 3" xsi:type="ExpressionRef"/>
-                </source>
-                <relationship localId="269" alias="A" xsi:type="With">
-                    <expression localId="262" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
-                    <suchThat localId="268" xsi:type="In">
-                        <operand localId="266" path="value" xsi:type="Property">
-                            <source localId="265" path="effective" scope="A" xsi:type="Property"/>
+            <expression localId="266" xsi:type="Exists">
+                <operand localId="265" xsi:type="Query">
+                    <source localId="259" alias="A">
+                        <expression localId="258" name="PHQ-9 Score" xsi:type="ExpressionRef"/>
+                    </source>
+                    <where localId="264" precision="Day" xsi:type="In">
+                        <operand localId="262" path="value" xsi:type="Property">
+                            <source localId="261" path="effective" scope="A" xsi:type="Property"/>
                         </operand>
-                        <operand localId="267" name="Assessment Period Three" xsi:type="ExpressionRef"/>
-                    </suchThat>
-                </relationship>
+                        <operand localId="263" name="Assessment Period Three" xsi:type="ExpressionRef"/>
+                    </where>
+                </operand>
             </expression>
         </def>
-        <def localId="279" name="Stratifier 1" context="Patient" accessLevel="Public">
+        <def localId="275" name="Stratifier 1" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="279">
+                <a:s r="275">
                     <a:s>define &quot;Stratifier 1&quot;:
                     </a:s>
-                    <a:s r="278">
-                        <a:s r="274">
+                    <a:s r="274">
+                        <a:s r="270">
                             <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="273">
+                            <a:s r="269">
                                 <a:s>start of </a:s>
-                                <a:s r="272">
+                                <a:s r="268">
                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                 </a:s>
                             </a:s>
                             <a:s>)</a:s>
                         </a:s>
                         <a:s> in </a:s>
-                        <a:s r="277">
+                        <a:s r="273">
                             <a:s>Interval[12, 17]</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="278" xsi:type="In">
-                <operand localId="274" precision="Year" xsi:type="CalculateAgeAt">
+            <expression localId="274" xsi:type="In">
+                <operand localId="270" precision="Year" xsi:type="CalculateAgeAt">
                     <operand path="birthDate.value" xsi:type="Property">
                         <source name="Patient" xsi:type="ExpressionRef"/>
                     </operand>
-                    <operand localId="273" xsi:type="Start">
-                        <operand localId="272" name="Measurement Period" xsi:type="ParameterRef"/>
+                    <operand localId="269" xsi:type="Start">
+                        <operand localId="268" name="Measurement Period" xsi:type="ParameterRef"/>
                     </operand>
                 </operand>
-                <operand localId="277" lowClosed="true" highClosed="true" xsi:type="Interval">
-                    <low localId="275" valueType="t:Integer" value="12" xsi:type="Literal"/>
-                    <high localId="276" valueType="t:Integer" value="17" xsi:type="Literal"/>
+                <operand localId="273" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="271" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                    <high localId="272" valueType="t:Integer" value="17" xsi:type="Literal"/>
                 </operand>
             </expression>
         </def>
-        <def localId="287" name="Stratifier 2" context="Patient" accessLevel="Public">
+        <def localId="283" name="Stratifier 2" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="287">
+                <a:s r="283">
                     <a:s>define &quot;Stratifier 2&quot;:
                     </a:s>
-                    <a:s r="286">
-                        <a:s r="282">
+                    <a:s r="282">
+                        <a:s r="278">
                             <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="281">
+                            <a:s r="277">
                                 <a:s>start of </a:s>
-                                <a:s r="280">
+                                <a:s r="276">
                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                 </a:s>
                             </a:s>
                             <a:s>)</a:s>
                         </a:s>
                         <a:s> in </a:s>
-                        <a:s r="285">
+                        <a:s r="281">
                             <a:s>Interval[18, 44]</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="286" xsi:type="In">
-                <operand localId="282" precision="Year" xsi:type="CalculateAgeAt">
+            <expression localId="282" xsi:type="In">
+                <operand localId="278" precision="Year" xsi:type="CalculateAgeAt">
                     <operand path="birthDate.value" xsi:type="Property">
                         <source name="Patient" xsi:type="ExpressionRef"/>
                     </operand>
-                    <operand localId="281" xsi:type="Start">
-                        <operand localId="280" name="Measurement Period" xsi:type="ParameterRef"/>
+                    <operand localId="277" xsi:type="Start">
+                        <operand localId="276" name="Measurement Period" xsi:type="ParameterRef"/>
                     </operand>
                 </operand>
-                <operand localId="285" lowClosed="true" highClosed="true" xsi:type="Interval">
-                    <low localId="283" valueType="t:Integer" value="18" xsi:type="Literal"/>
-                    <high localId="284" valueType="t:Integer" value="44" xsi:type="Literal"/>
+                <operand localId="281" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="279" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                    <high localId="280" valueType="t:Integer" value="44" xsi:type="Literal"/>
                 </operand>
             </expression>
         </def>
-        <def localId="295" name="Stratifier 3" context="Patient" accessLevel="Public">
+        <def localId="291" name="Stratifier 3" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="295">
+                <a:s r="291">
                     <a:s>define &quot;Stratifier 3&quot;:
                     </a:s>
-                    <a:s r="294">
-                        <a:s r="290">
+                    <a:s r="290">
+                        <a:s r="286">
                             <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="289">
+                            <a:s r="285">
                                 <a:s>start of </a:s>
-                                <a:s r="288">
+                                <a:s r="284">
                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                 </a:s>
                             </a:s>
                             <a:s>)</a:s>
                         </a:s>
                         <a:s> in </a:s>
-                        <a:s r="293">
+                        <a:s r="289">
                             <a:s>Interval[45, 64]</a:s>
                         </a:s>
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="294" xsi:type="In">
-                <operand localId="290" precision="Year" xsi:type="CalculateAgeAt">
+            <expression localId="290" xsi:type="In">
+                <operand localId="286" precision="Year" xsi:type="CalculateAgeAt">
                     <operand path="birthDate.value" xsi:type="Property">
                         <source name="Patient" xsi:type="ExpressionRef"/>
                     </operand>
-                    <operand localId="289" xsi:type="Start">
-                        <operand localId="288" name="Measurement Period" xsi:type="ParameterRef"/>
+                    <operand localId="285" xsi:type="Start">
+                        <operand localId="284" name="Measurement Period" xsi:type="ParameterRef"/>
                     </operand>
                 </operand>
-                <operand localId="293" lowClosed="true" highClosed="true" xsi:type="Interval">
-                    <low localId="291" valueType="t:Integer" value="45" xsi:type="Literal"/>
-                    <high localId="292" valueType="t:Integer" value="64" xsi:type="Literal"/>
+                <operand localId="289" lowClosed="true" highClosed="true" xsi:type="Interval">
+                    <low localId="287" valueType="t:Integer" value="45" xsi:type="Literal"/>
+                    <high localId="288" valueType="t:Integer" value="64" xsi:type="Literal"/>
                 </operand>
             </expression>
         </def>
-        <def localId="301" name="Stratifier 4" context="Patient" accessLevel="Public">
+        <def localId="297" name="Stratifier 4" context="Patient" accessLevel="Public">
             <annotation xsi:type="a:Annotation">
-                <a:s r="301">
+                <a:s r="297">
                     <a:s>define &quot;Stratifier 4&quot;:
                     </a:s>
-                    <a:s r="300">
-                        <a:s r="298">
+                    <a:s r="296">
+                        <a:s r="294">
                             <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="297">
+                            <a:s r="293">
                                 <a:s>start of </a:s>
-                                <a:s r="296">
+                                <a:s r="292">
                                     <a:s>&quot;Measurement Period&quot;</a:s>
                                 </a:s>
                             </a:s>
@@ -1705,16 +1743,16 @@
                     </a:s>
                 </a:s>
             </annotation>
-            <expression localId="300" xsi:type="GreaterOrEqual">
-                <operand localId="298" precision="Year" xsi:type="CalculateAgeAt">
+            <expression localId="296" xsi:type="GreaterOrEqual">
+                <operand localId="294" precision="Year" xsi:type="CalculateAgeAt">
                     <operand path="birthDate.value" xsi:type="Property">
                         <source name="Patient" xsi:type="ExpressionRef"/>
                     </operand>
-                    <operand localId="297" xsi:type="Start">
-                        <operand localId="296" name="Measurement Period" xsi:type="ParameterRef"/>
+                    <operand localId="293" xsi:type="Start">
+                        <operand localId="292" name="Measurement Period" xsi:type="ParameterRef"/>
                     </operand>
                 </operand>
-                <operand localId="299" valueType="t:Integer" value="65" xsi:type="Literal"/>
+                <operand localId="295" valueType="t:Integer" value="65" xsi:type="Literal"/>
             </expression>
         </def>
     </statements>

@@ -63,7 +63,7 @@ The measurement period is divided into three assessment periods with specific da
 */
 
 define "Assessment Period One":
-	Interval[start of "Measurement Period"           , end of "Measurement Period" - 8 months)
+	Interval[start of "Measurement Period", end of "Measurement Period" - 8 months)
 
 define "Assessment Period Two":
 	Interval[start of "Measurement Period" + 4 months, end of "Measurement Period" - 4 months)
@@ -122,25 +122,31 @@ Denominators and Numerators
 */
 
 define "Denominator 1":
-	{First(
-		"Depression Encounters" E
-			where PeriodToIntervalOfDT(E.period) during "Assessment Period One"
-			sort by start of PeriodToIntervalOfDT(period)
-	)}
+	exists (
+	    First(
+            "Depression Encounters" E
+                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period One"
+                    sort by start of PeriodToIntervalOfDT(period)
+        )
+    )
 
 define "Denominator 2":
-	{First(
-		"Depression Encounters" E
-			where PeriodToIntervalOfDT(E.period) during "Assessment Period Two"
-			sort by start of PeriodToIntervalOfDT(period)
-	)}
+    exists (
+	    First(
+            "Depression Encounters" E
+                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Two"
+                sort by start of PeriodToIntervalOfDT(period)
+        )
+    )
 
 define "Denominator 3":
-	{First(
-		"Depression Encounters" E
-			where PeriodToIntervalOfDT(E.period) during "Assessment Period Three"
-			sort by start of PeriodToIntervalOfDT(period)
-	)}
+    exists (
+	    First(
+            "Depression Encounters" E
+                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Three"
+                sort by start of PeriodToIntervalOfDT(period)
+        )
+    )
 
 define "Depression Encounters":
 	[Encounter: "Interactive Outpatient Encounter"] E
@@ -148,6 +154,7 @@ define "Depression Encounters":
 			such that E.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
 				and D.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
 				and PeriodToIntervalOfDT(D.effective) overlaps day of PeriodToIntervalOfDT(E.period)
+            return E
 
 define "PHQ-9 Score":
 	distinct (
@@ -159,19 +166,25 @@ define "PHQ-9 Score":
 			and A.value is not null
 
 define "Numerator 1":
-	"Denominator 1" E
-		with "PHQ-9 Score" A
-			such that A.effective.value in day of "Assessment Period One"
+	exists (
+	    // "Denominator 1" E
+        "PHQ-9 Score" A
+            where A.effective.value in day of "Assessment Period One"
+    )
 
 define "Numerator 2":
-	"Denominator 2" E
-		with "PHQ-9 Score" A
-			such that A.effective.value in day of "Assessment Period Two"
+    exists (
+	    // "Denominator 2" E
+        "PHQ-9 Score" A
+            where A.effective.value in day of "Assessment Period Two"
+    )
 
 define "Numerator 3":
-	"Denominator 3" E
-		with "PHQ-9 Score" A
-			such that A.effective.value in day of "Assessment Period Three"
+    exists (
+	    //"Denominator 3" E
+        "PHQ-9 Score" A
+			where A.effective.value in day of "Assessment Period Three"
+    )
 
 /*
 Stratifiers
