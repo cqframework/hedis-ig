@@ -1,0 +1,94 @@
+{
+  "resourceType": "Measure",
+  "id": "measure-mrp",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2018-06-01T16:03:22.000+00:00"
+  },
+  "text": {
+    "status": "generated"
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://hl7.org/fhir/cqi/ecqm/Measure/Identifier/payer-extract",
+      "value": "MRP"
+    }
+  ],
+  "version": "1.0.0",
+  "title": "Medication Reconciliation Post-Discharge Cohort Definition",
+  "status": "active",
+  "experimental": true,
+  "date": "2015-03-08",
+  "description": "Medication Reconciliation Post-Discharge Cohort Definition",
+  "topic": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/c80-doc-typecodes",
+          "code": "57024-2"
+        }
+      ]
+    }
+  ],
+  "library": [
+    {
+      "reference": "Library/library-mrp-logic"
+    }
+  ],
+  "scoring": {
+    "coding": [
+      {
+        "code": "proportion"
+      }
+    ]
+  },
+  "group": [
+    {
+      "identifier": {
+        "value": "MRP-cohort"
+      },
+      "population": [
+        {
+          "identifier": {
+            "value": "initial-population"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "initial-population"
+              }
+            ]
+          },
+          "criteria": "Initial Population"
+        },
+        {
+          "identifier": {
+            "value": "numerator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "numerator"
+              }
+            ]
+          },
+          "criteria": "Numerator"
+        },
+        {
+          "identifier": {
+            "value": "denominator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "denominator"
+              }
+            ]
+          },
+          "criteria": "Denominator"
+        }
+      ]
+    }
+  ]
+}
