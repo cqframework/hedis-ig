@@ -1,0 +1,112 @@
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+    <annotation startLine="27" startChar="3" endLine="27" endChar="55" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <annotation startLine="34" startChar="3" endLine="34" endChar="56" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+    <identifier id="MRP_FHIR"/>
+    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+    <usings>
+        <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+        <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+    </usings>
+    <parameters>
+        <def name="Measurement Period" accessLevel="Public">
+            <default lowClosed="true" highClosed="false" xsi:type="Interval">
+                <low xsi:type="DateTime">
+                    <year valueType="t:Integer" value="2018" xsi:type="Literal"/>
+                    <month valueType="t:Integer" value="1" xsi:type="Literal"/>
+                    <day valueType="t:Integer" value="1" xsi:type="Literal"/>
+                    <hour valueType="t:Integer" value="0" xsi:type="Literal"/>
+                    <minute valueType="t:Integer" value="0" xsi:type="Literal"/>
+                </low>
+                <high xsi:type="DateTime">
+                    <year valueType="t:Integer" value="2019" xsi:type="Literal"/>
+                    <month valueType="t:Integer" value="1" xsi:type="Literal"/>
+                    <day valueType="t:Integer" value="1" xsi:type="Literal"/>
+                    <hour valueType="t:Integer" value="0" xsi:type="Literal"/>
+                    <minute valueType="t:Integer" value="0" xsi:type="Literal"/>
+                </high>
+            </default>
+        </def>
+    </parameters>
+    <codeSystems>
+        <def name="SNOMED" id="http://snomed.info/sct" accessLevel="Public"/>
+        <def name="CPT" id="http://www.ama-assn.org/go/cpt" accessLevel="Public"/>
+    </codeSystems>
+    <valueSets>
+        <def name="Inpatient Encounter" id="http://ncqa.org/hedis/ValueSet/inpatientvalueset" accessLevel="Public"/>
+        <def name="Medication Reconciliation Value Set" id="http://ncqa.org/hedis/ValueSet/hedismedrecvalueset" accessLevel="Public"/>
+    </valueSets>
+    <codes>
+        <def name="Drug rehabilitation and detoxification" id="56876005" accessLevel="Public">
+            <codeSystem name="SNOMED"/>
+        </def>
+        <def name="Medication reconciliation postdischarge" id="1111F" accessLevel="Public">
+            <codeSystem name="CPT"/>
+        </def>
+    </codes>
+    <statements>
+        <def name="Patient" context="Patient">
+            <expression xsi:type="SingletonFrom">
+                <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+            </expression>
+        </def>
+        <def name="Initial Population" context="Patient" accessLevel="Public">
+            <expression xsi:type="GreaterOrEqual">
+                <operand precision="Year" xsi:type="CalculateAgeAt">
+                    <operand path="birthDate.value" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                    </operand>
+                    <operand xsi:type="End">
+                        <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                    </operand>
+                </operand>
+                <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </expression>
+        </def>
+        <def name="Encounters" context="Patient" accessLevel="Public">
+            <expression xsi:type="Query">
+                <source alias="E">
+                    <expression dataType="fhir:Encounter" codeProperty="type" xsi:type="Retrieve">
+                        <codes name="Drug rehabilitation and detoxification" xsi:type="CodeRef"/>
+                    </expression>
+                </source>
+            </expression>
+        </def>
+        <def name="Denominator" context="Patient" accessLevel="Public">
+            <expression xsi:type="Exists">
+                <operand name="Encounters" xsi:type="ExpressionRef"/>
+            </expression>
+        </def>
+        <def name="Procedures" context="Patient" accessLevel="Public">
+            <expression dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                <codes name="Medication reconciliation postdischarge" xsi:type="CodeRef"/>
+            </expression>
+        </def>
+        <def name="Numerator" context="Patient" accessLevel="Public">
+            <expression xsi:type="Exists">
+                <operand xsi:type="Query">
+                    <source alias="E">
+                        <expression name="Encounters" xsi:type="ExpressionRef"/>
+                    </source>
+                    <relationship alias="P" xsi:type="With">
+                        <expression name="Procedures" xsi:type="ExpressionRef"/>
+                        <suchThat xsi:type="Before">
+                            <operand path="value" xsi:type="Property">
+                                <source path="end" xsi:type="Property">
+                                    <source path="performed" scope="P" xsi:type="Property"/>
+                                </source>
+                            </operand>
+                            <operand xsi:type="Add">
+                                <operand path="value" xsi:type="Property">
+                                    <source path="end" xsi:type="Property">
+                                        <source path="period" scope="E" xsi:type="Property"/>
+                                    </source>
+                                </operand>
+                                <operand value="30" unit="days" xsi:type="Quantity"/>
+                            </operand>
+                        </suchThat>
+                    </relationship>
+                </operand>
+            </expression>
+        </def>
+    </statements>
+</library>
