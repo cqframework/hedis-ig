@@ -1,0 +1,249 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library NCQA_Common_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.10.000&#39;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> FHIRHelpers
+
+codesystem <span style="color: #AA6600">&quot;LOINC&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.6.1&#39;</span>
+codesystem <span style="color: #AA6600">&quot;SNOMEDCT&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.6.96&#39;</span>
+codesystem <span style="color: #AA6600">&quot;SNOMEDCT:2015-09&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.6.96&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:2015-09&#39;</span>
+codesystem <span style="color: #AA6600">&quot;SNOMEDCT:2016-03&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.6.96&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:2016-03&#39;</span>
+
+valueset <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.3.666.5.307&#39;</span>
+valueset <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1108.15&#39;</span>
+valueset <span style="color: #AA6600">&quot;Care Services in Long-Term Residential Facility&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.3.464.1003.101.12.1014&#39;</span>
+valueset <span style="color: #AA6600">&quot;X Institutional SNP Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.43&#39;</span>
+valueset <span style="color: #AA6600">&quot;Commercial&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.46&#39;</span>
+valueset <span style="color: #AA6600">&quot;Medicaid&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.45&#39;</span>
+valueset <span style="color: #AA6600">&quot;Medicare&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.44&#39;</span>
+valueset <span style="color: #AA6600">&quot;NCQA Payer&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.42&#39;</span>
+
+code <span style="color: #AA6600">&quot;Birthdate&quot;</span>: <span style="background-color: #fff0f0">&#39;21112-8&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;LOINC&quot;</span> display <span style="background-color: #fff0f0">&#39;Birthdate&#39;</span>
+code <span style="color: #AA6600">&quot;Dead&quot;</span>: <span style="background-color: #fff0f0">&#39;419099009&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT&quot;</span> display <span style="background-color: #fff0f0">&#39;Dead&#39;</span>
+code <span style="color: #AA6600">&quot;Discharge to healthcare facility for hospice care (procedure)&quot;</span>: <span style="background-color: #fff0f0">&#39;428371000124100&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT:2015-09&quot;</span> display <span style="background-color: #fff0f0">&#39;Discharge to healthcare facility for hospice care (procedure)&#39;</span>
+code <span style="color: #AA6600">&quot;Discharge to home for hospice care (procedure)&quot;</span>: <span style="background-color: #fff0f0">&#39;428361000124107&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT:2015-09&quot;</span> display <span style="background-color: #fff0f0">&#39;Discharge to home for hospice care (procedure)&#39;</span>
+code <span style="color: #AA6600">&quot;Long term care hospital (environment)&quot;</span>: <span style="background-color: #fff0f0">&#39;32074000&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT:2016-03&quot;</span> display <span style="background-color: #fff0f0">&#39;Long term care hospital (environment)&#39;</span>
+code <span style="color: #AA6600">&quot;Patient transfer, to another health care facility (procedure)&quot;</span>: <span style="background-color: #fff0f0">&#39;19712007&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT:2016-03&quot;</span> display <span style="background-color: #fff0f0">&#39;Patient transfer, to another health care facility (procedure)&#39;</span>
+code <span style="color: #AA6600">&quot;Referral to long term care service (procedure)&quot;</span>: <span style="background-color: #fff0f0">&#39;417708006&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;SNOMEDCT:2016-03&quot;</span> display <span style="background-color: #fff0f0">&#39;Referral to long term care service (procedure)&#39;</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>
+
+context Patient
+
+define <span style="color: #AA6600">&quot;Is Enrolled in Institutional SNP&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Encounter&quot;</span>: <span style="color: #AA6600">&quot;X Institutional SNP Value Set&quot;</span>] SNP
+      <span style="color: #008800; font-weight: bold">where</span> SNP.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;in-progress&#39;</span>, <span style="background-color: #fff0f0">&#39;finished&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        <span style="color: #008800; font-weight: bold">and</span> SNP.period <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+
+define <span style="color: #AA6600">&quot;Is Living Long Term in Institution&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Encounter&quot;</span>: <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>] DischargeLongTerm
+      <span style="color: #008800; font-weight: bold">where</span> DischargeLongTerm.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;in-progress&#39;</span>, <span style="background-color: #fff0f0">&#39;finished&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        <span style="color: #008800; font-weight: bold">and</span> ( FHIRHelpers.ToConcept(DischargeLongTerm.hospitalization.dischargeDisposition) <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Patient transfer, to another health care facility (procedure)&quot;</span>
+          <span style="color: #008800; font-weight: bold">or</span> FHIRHelpers.ToConcept(DischargeLongTerm.hospitalization.dischargeDisposition) <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Referral to long term care service (procedure)&quot;</span>
+      )
+        <span style="color: #008800; font-weight: bold">and</span> DischargeLongTerm.period ends during <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+    <span style="color: #333333">//</span> TODO: Consider whether this should be <span style="color: #008800; font-weight: bold">Procedure</span> <span style="color: #008800; font-weight: bold">or</span> Task<span style="color: #333333">?</span> (See http:<span style="color: #333333">//</span>build.fhir.org<span style="color: #333333">/</span>ig<span style="color: #333333">/</span>cqframework<span style="color: #333333">/</span>qi<span style="color: #333333">-</span>core<span style="color: #333333">/</span>Intervention.html<span style="color: #333333">#</span>Intervention)
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Task&quot;</span>: <span style="color: #AA6600">&quot;Care Services in Long-Term Residential Facility&quot;</span>] LongTermOrder
+        <span style="color: #008800; font-weight: bold">where</span> LongTermOrder.intent <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;order&#39;</span>
+          <span style="color: #008800; font-weight: bold">and</span> (LongTermOrder.authoredOn during <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            <span style="color: #008800; font-weight: bold">or</span> LongTermOrder.executionPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+          )
+    )
+    <span style="color: #333333">//</span> TODO: <span style="color: #008800; font-weight: bold">For</span> the mapping <span style="color: #008800; font-weight: bold">to</span> task, <span style="color: #008800; font-weight: bold">both</span> <span style="color: #008800; font-weight: bold">Order</span> <span style="color: #008800; font-weight: bold">and</span> Performed <span style="color: #008800; font-weight: bold">map</span> <span style="color: #008800; font-weight: bold">to</span> a Task <span style="color: #008800; font-weight: bold">with</span> intent <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">order</span>, the fact that
+    <span style="color: #333333">//</span> the task <span style="color: #008800; font-weight: bold">is</span> performed seems <span style="color: #008800; font-weight: bold">to</span> be best captured <span style="color: #008800; font-weight: bold">by</span> the presence <span style="color: #008800; font-weight: bold">of</span> an executionPeriod... This would be
+    <span style="color: #333333">//</span> worth <span style="color: #008800; font-weight: bold">some</span> discussion <span style="color: #008800; font-weight: bold">with</span> the Workflow <span style="color: #008800; font-weight: bold">Group</span> <span style="color: #008800; font-weight: bold">on</span> the intended representation here
+    <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Task&quot;</span>: <span style="color: #AA6600">&quot;Care Services in Long-Term Residential Facility&quot;</span>] LongTermPerformed
+    <span style="color: #333333">//</span>    <span style="color: #008800; font-weight: bold">where</span> LongTermPerformed.
+    <span style="color: #333333">//</span>    LongTermPerformed.relevantPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+    <span style="color: #333333">//</span>)
+
+define <span style="color: #AA6600">&quot;Is Age 65 Plus at Start&quot;</span>:
+  CalendarAgeInYearsAt(Patient.birthDate, <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)<span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">65</span>
+
+define <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>:
+  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">4</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>:
+  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>]
+
+<span style="color: #888888">/*This is the standard NCQA Hospice exclusion logic from 3.6.2018*/</span>
+define <span style="color: #AA6600">&quot;Has Hospice&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Encounter&quot;</span>: <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>] DischargeHospice
+      <span style="color: #008800; font-weight: bold">where</span> DischargeHospice.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;in-progress&#39;</span>, <span style="background-color: #fff0f0">&#39;finished&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        <span style="color: #008800; font-weight: bold">and</span> ( FHIRHelpers.ToConcept(DischargeHospice.hospitalization.dischargeDisposition) <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Discharge to home for hospice care (procedure)&quot;</span>
+          <span style="color: #008800; font-weight: bold">or</span> FHIRHelpers.ToConcept(DischargeHospice.hospitalization.dischargeDisposition) <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Discharge to healthcare facility for hospice care (procedure)&quot;</span>
+      )
+        <span style="color: #008800; font-weight: bold">and</span> DischargeHospice.period ends during <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Task&quot;</span>: <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>] HospiceTask
+        <span style="color: #008800; font-weight: bold">where</span> HospiceTask.intent <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;order&#39;</span>
+          <span style="color: #008800; font-weight: bold">and</span> (HospiceTask.authoredOn during <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            <span style="color: #008800; font-weight: bold">or</span> HospiceTask.executionPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+          )
+    )
+    <span style="color: #333333">//</span> TODO: See discussion <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Is Living Long Term in Institution&quot;</span>
+    <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Intervention, Order&quot;</span>: <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>] HospiceOrder
+    <span style="color: #333333">//</span>    <span style="color: #008800; font-weight: bold">where</span> HospiceOrder.authorDatetime during <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+    <span style="color: #333333">//</span>)
+    <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Intervention, Performed&quot;</span>: <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>] HospicePerformed
+    <span style="color: #333333">//</span>    <span style="color: #008800; font-weight: bold">where</span> HospicePerformed.relevantPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+    <span style="color: #333333">//</span>)
+
+<span style="color: #333333">//</span> TODO: <span style="color: #008800; font-weight: bold">From</span> a QDM perspective, these really ought <span style="color: #008800; font-weight: bold">to</span> just be Participation, <span style="color: #008800; font-weight: bold">right</span><span style="color: #333333">?</span> There<span style="background-color: #fff0f0">&#39;s no need for this characteristic anymore?</span>
+<span style="background-color: #fff0f0">//define &quot;Is Medicaid&quot;:</span>
+<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Medicaid&quot;] )</span>
+
+<span style="background-color: #fff0f0">//define &quot;Is Commercial&quot;:</span>
+<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Commercial&quot;] )</span>
+
+<span style="background-color: #fff0f0">//define &quot;Is Medicare&quot;:</span>
+<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Medicare&quot;] )</span>
+
+<span style="background-color: #fff0f0">define &quot;Medicaid Product&quot;:</span>
+<span style="background-color: #fff0f0">  &#39;</span>medicaid<span style="background-color: #fff0f0">&#39;</span>
+
+<span style="background-color: #fff0f0">define &quot;Commercial Product&quot;:</span>
+<span style="background-color: #fff0f0">  &#39;</span>commercial<span style="background-color: #fff0f0">&#39;</span>
+
+<span style="background-color: #fff0f0">define &quot;Medicare Product&quot;:</span>
+<span style="background-color: #fff0f0">  &#39;</span>medicare<span style="background-color: #fff0f0">&#39;</span>
+
+<span style="background-color: #fff0f0">define &quot;Is Enrolled Commercial&quot;:</span>
+<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Commercial Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Commercial Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Commercial Product&quot;)</span>
+
+<span style="background-color: #fff0f0">define &quot;Is Enrolled Medicaid&quot;:</span>
+<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Medicaid Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Medicaid Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Medicaid Product&quot;)</span>
+
+<span style="background-color: #fff0f0">define &quot;Is Enrolled Medicare&quot;:</span>
+<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Medicare Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Medicare Product&quot;)</span>
+<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Medicare Product&quot;)</span>
+
+<span style="background-color: #fff0f0">define &quot;First Predecessor Year&quot;:</span>
+<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 1 year, start of &quot;Measurement Period&quot; )</span>
+
+<span style="background-color: #fff0f0">define &quot;Second Predecessor Quarter&quot;:</span>
+<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 1 years - 3 months, start of &quot;Measurement Period&quot; - 1 year )</span>
+
+<span style="background-color: #fff0f0">define &quot;Second Predecessor Year&quot;:</span>
+<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 2 years, start of &quot;Measurement Period&quot; - 1 year )</span>
+
+<span style="background-color: #fff0f0">/*ToDate takes a given DateTime value and returns a DateTime with the time components &quot;zeroed&quot;, and the timezone of the input value, for example */</span>
+<span style="background-color: #fff0f0">define function &quot;ToDate&quot;(Value DateTime ):</span>
+<span style="background-color: #fff0f0">  DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)</span>
+
+<span style="background-color: #fff0f0">/*CalendarAgeInDaysAt calculates the calendar age (meaning the age without considering time components) in days*/</span>
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInDaysAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
+<span style="background-color: #fff0f0">  days between ToDate(BirthDateTime)and ToDate(AsOf)</span>
+
+<span style="background-color: #fff0f0">/*CalendarAgeInDays calculates the calendar age (meaning the age without considering time components) in days as of today*/</span>
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInDays&quot;(BirthDateTime DateTime ):</span>
+<span style="background-color: #fff0f0">  CalendarAgeInDaysAt(BirthDateTime, Today())</span>
+
+<span style="background-color: #fff0f0">/*CalendarAgeInMonthsAt calculates the calendar age (meaning the age without considering time components) in months*/</span>
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInMonthsAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
+<span style="background-color: #fff0f0">  months between ToDate(BirthDateTime)and ToDate(AsOf)</span>
+
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInMonths&quot;(BirthDateTime DateTime ):</span>
+<span style="background-color: #fff0f0">  CalendarAgeInMonthsAt(BirthDateTime, Today())</span>
+
+<span style="background-color: #fff0f0">/*calculates the difference in calendar days between the start and end of the given interval*/</span>
+<span style="background-color: #fff0f0">define function &quot;LengthInDays&quot;(Value Interval&lt;DateTime&gt; ):</span>
+<span style="background-color: #fff0f0">  difference in days between start of Value and end of Value</span>
+
+<span style="background-color: #fff0f0">/*CalendarAgeInYearsAt calculates the calendar age (meaning the age without considering time components) in years*/</span>
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInYearsAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
+<span style="background-color: #fff0f0">  years between ToDate(BirthDateTime)and ToDate(AsOf)</span>
+
+<span style="background-color: #fff0f0">/*CalendarAgeInYears calculates the calendar age (meaning the age without considering time components) in years as of today */</span>
+<span style="background-color: #fff0f0">define function &quot;CalendarAgeInYears&quot;(BirthDateTime DateTime ):</span>
+<span style="background-color: #fff0f0">  CalendarAgeInYearsAt(BirthDateTime, Today())</span>
+
+<span style="background-color: #fff0f0">define function &quot;Enrollment Periods&quot;(ProductLine String ):</span>
+<span style="background-color: #fff0f0">  collapse ( ( case ProductLine </span>
+<span style="background-color: #fff0f0">        when &quot;Commercial Product&quot; then [&quot;Coverage&quot;: &quot;Commercial&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
+<span style="background-color: #fff0f0">        when &quot;Medicare Product&quot; then [&quot;Coverage&quot;: &quot;Medicare&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
+<span style="background-color: #fff0f0">        when &quot;Medicaid Product&quot; then [&quot;Coverage&quot;: &quot;Medicaid&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
+<span style="background-color: #fff0f0">        else [&quot;Coverage&quot;: &quot;NCQA Payer&quot;] C where C.status = &#39;</span>active<span style="color: #FF0000; background-color: #FFAAAA">&#39;</span>
+      <span style="color: #008800; font-weight: bold">end</span> 
+    ) Coverage
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">all</span> Coverage.period
+  )
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment in Quarter&quot;</span>(ProductLine String, Quarter <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
+  ( <span style="color: #FF0000; background-color: #FFAAAA">{</span>
+    ProductLine: ProductLine,
+    Quarter: Quarter
+  <span style="color: #FF0000; background-color: #FFAAAA">}</span> ) <span style="color: #008800; font-weight: bold">Input</span>
+    let Periods: <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(<span style="color: #008800; font-weight: bold">Input</span>.ProductLine, <span style="color: #008800; font-weight: bold">Input</span>.Quarter)
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">Count</span>(Periods)<span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
+      <span style="color: #008800; font-weight: bold">and</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">=</span> Quarter
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(ProductLine String, <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
+  (<span style="color: #AA6600">&quot;Enrollment Periods&quot;</span>(ProductLine)) EnrP
+    <span style="color: #008800; font-weight: bold">where</span> EnrP <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #008800; font-weight: bold">Year</span>
+    <span style="color: #008800; font-weight: bold">return</span> EnrP <span style="color: #008800; font-weight: bold">intersect</span> <span style="color: #008800; font-weight: bold">Year</span>
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine String ):
+  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>)
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine String ):
+  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>)
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Second Predecessor Year&quot;</span>)
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment in Quarter&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Second Predecessor Quarter&quot;</span>)
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is In Applicable Product Line&quot;</span>(ProductLine String ):
+  <span style="color: #008800; font-weight: bold">case</span> 
+    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> ) <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span> 
+    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Commercial Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
+      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
+    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Medicaid Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
+      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
+    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Medicare Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
+      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
+        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span> 
+  <span style="color: #008800; font-weight: bold">end</span>
+
+  <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">and</span>  (if <span style="color: #AA6600">&quot;Is Age 65 Plus at Start&quot;</span> <span style="color: #008800; font-weight: bold">then</span> ( <span style="color: #AA6600">&quot;Is Enrolled in Institutional SNP&quot;</span>
+  <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Living Long Term in Institution&quot;</span>
+  <span style="color: #333333">//</span>) <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>
+  <span style="color: #333333">//</span>)
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine String ):
+  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine String, <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
+  ( <span style="color: #FF0000; background-color: #FFAAAA">{</span>
+    ProductLine: ProductLine,
+    <span style="color: #008800; font-weight: bold">Year</span>: <span style="color: #008800; font-weight: bold">Year</span>
+  <span style="color: #FF0000; background-color: #FFAAAA">}</span> ) <span style="color: #008800; font-weight: bold">Input</span>
+    let Periods: <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(<span style="color: #008800; font-weight: bold">Input</span>.ProductLine, <span style="color: #008800; font-weight: bold">Input</span>.<span style="color: #008800; font-weight: bold">Year</span>)
+    <span style="color: #008800; font-weight: bold">return</span> 
+      <span style="color: #008800; font-weight: bold">case</span> <span style="color: #008800; font-weight: bold">Count</span>(Periods)
+        <span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">then</span> ( ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">Year</span>
+            <span style="color: #008800; font-weight: bold">and</span> ( ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">Year</span> ) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
+          )
+          <span style="color: #008800; font-weight: bold">or</span> ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] ends <span style="color: #008800; font-weight: bold">Year</span>
+            <span style="color: #008800; font-weight: bold">and</span> ( ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">Year</span> ) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
+          )
+        ) 
+        <span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #008800; font-weight: bold">then</span> ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #008800; font-weight: bold">and</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>] ends <span style="color: #008800; font-weight: bold">Year</span>
+          <span style="color: #008800; font-weight: bold">and</span> ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
+        ) 
+        <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span> 
+      <span style="color: #008800; font-weight: bold">end</span>
+</pre></div>

@@ -1,0 +1,378 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888">Colorectal Cancer Screening (COL)</span>
+<span style="color: #888888">*/</span>
+
+library COL_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.1&#39;</span>
+
+<span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.1&#39;</span>
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Description</span>
+<span style="color: #888888">The percentage of members 50-75 years of age who had appropriate screening for colorectal cancer.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">It is an outstanding question whether implementers would have an easier time dealing</span>
+<span style="color: #888888">with single code system value sets for retrieval of data, or if the grouping value sets</span>
+<span style="color: #888888">are easier to deal with. This mesaure is modified to take the approach of unioning</span>
+<span style="color: #888888">the results in CQL, where the BCS and CCS measures take the grouping value set</span>
+<span style="color: #888888">approach.</span>
+<span style="color: #888888">*/</span>
+
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.29&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.30&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.31&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD10)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1065.32&#39;</span> <span style="color: #333333">//</span> ICD10CM
+valueset <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1065.33&#39;</span> <span style="color: #333333">//</span> ICD9CM
+
+valueset <span style="color: #AA6600">&quot;CT Colonography Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1421.34&#39;</span> <span style="color: #333333">//</span> CPT
+
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.35&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.36&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (LOINC)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.37&#39;</span> <span style="color: #333333">//</span> LOINC
+
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.38&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.39&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.40&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.41&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.42&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.43&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.44&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD10)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.45&#39;</span> <span style="color: #333333">//</span> ICD10PCS
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.46&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.666.5.307&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Home for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.117.1.7.1.209&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Health Care Facility for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.117.1.7.1.207&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113762.1.4.1108.15&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Commercial Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicaid Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicare Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Institutional SNP Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Long-Term in Institution Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This library has an explicit parameter which is the product line.</span>
+<span style="color: #888888">Recognized normal arguments are {&#39;commercial&#39;, &#39;medicaid&#39;, &#39;medicare&#39;}.</span>
+<span style="color: #888888">If one of these normal arguments is given, the patient will only be</span>
+<span style="color: #888888">considered to be in the Initial Population if they have an appropriate</span>
+<span style="color: #888888">continuous enrollment in that kind of medical plan.</span>
+<span style="color: #888888">If instead a null argument is given, their enrollment status will have no</span>
+<span style="color: #888888">effect on whether they are considered to be in the Initial Population.</span>
+<span style="color: #888888">If instead some other argument is given (an unrecognized plan type),</span>
+<span style="color: #888888">the patient will unconditionally NOT be in the Initial Population.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Product Line&quot;</span> String
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This library has an explicit parameter which is the measurement year.</span>
+<span style="color: #888888">While the actual parameter&#39;s type accepts all intervals, this library</span>
+<span style="color: #888888">expects it will only be given arguments corresponding exactly to one whole</span>
+<span style="color: #888888">calendar year, and it will not behave properly otherwise; 2017 for example:</span>
+<span style="color: #888888">Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>
+
+define <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>)
+
+define <span style="color: #AA6600">&quot;Second Predecessor Year&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years)
+
+define <span style="color: #AA6600">&quot;Third Predecessor Quarter&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> years)
+
+define <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">4</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #AA6600">&quot;Lookback Interval Nine More Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">9</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This library evaluates with respect to exactly 1 candidate patient at a time,</span>
+<span style="color: #888888">that patient being given by the special context parameter Patient.</span>
+<span style="color: #888888">*/</span>
+
+context Patient
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Initial Population</span>
+<span style="color: #888888">Product lines -- Commercial, Medicaid, Medicare (report each product line separately).</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Initial Population&quot;</span>:
+	<span style="color: #AA6600">&quot;Is Age 51 to 75 at End&quot;</span>
+<span style="color: #888888">/*</span>
+<span style="color: #888888">		and (not &quot;Is In Hospice&quot;)</span>
+<span style="color: #888888">		and &quot;Is In Applicable Product Line&quot;</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Is Age 51 to 75 at End&quot;</span>:
+	CalendarAgeInYearsAt(Patient.birthDate.value, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>) <span style="color: #008800; font-weight: bold">between</span> <span style="color: #0000DD; font-weight: bold">51</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">75</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">define &quot;Is In Hospice&quot;:</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[Encounter: &quot;Hospice Value Set&quot;] Enc</span>
+<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
+<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	or</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[Encounter: &quot;Encounter Inpatient&quot;] DischargeHospice</span>
+<span style="color: #888888">			where DischargeHospice.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
+<span style="color: #888888">				and (CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)</span>
+<span style="color: #888888">						in &quot;Discharged to Home for Hospice Care&quot;</span>
+<span style="color: #888888">					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)</span>
+<span style="color: #888888">						in &quot;Discharged to Health Care Facility for Hospice Care&quot;)</span>
+<span style="color: #888888">				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	or</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[ProcedureRequest: &quot;Hospice care ambulatory&quot;] HospiceOrder</span>
+<span style="color: #888888">			where HospiceOrder.status.value in { &#39;active&#39;, &#39;completed&#39; }</span>
+<span style="color: #888888">				and HospiceOrder.authoredOn.value during day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	or</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[Procedure: &quot;Hospice care ambulatory&quot;] HospicePerformed</span>
+<span style="color: #888888">			where HospicePerformed.status.value in { &#39;preparation&#39;, &#39;in-progress&#39;, &#39;suspended&#39;, &#39;aborted&#39;, &#39;completed&#39; }</span>
+<span style="color: #888888">				and HospicePerformed.performed overlaps day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+
+<span style="color: #888888">define &quot;Is In Applicable Product Line&quot;:</span>
+<span style="color: #888888">	case</span>
+<span style="color: #888888">		when (&quot;Product Line&quot; ~ null) then true</span>
+<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;commercial&#39;) then &quot;Is Continuous Enrollment&quot;</span>
+<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;medicaid&#39;) then &quot;Is Continuous Enrollment&quot;</span>
+<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;medicare&#39;) then</span>
+<span style="color: #888888">			(&quot;Is Continuous Enrollment&quot;</span>
+<span style="color: #888888">				and (if &quot;Is Age 65 Plus at Start&quot;</span>
+<span style="color: #888888">					then (&quot;Is Enrolled in Institutional SNP&quot;</span>
+<span style="color: #888888">						or &quot;Is Living Long-Term in Institution&quot;)</span>
+<span style="color: #888888">					else false))</span>
+<span style="color: #888888">		else false</span>
+<span style="color: #888888">	end</span>
+
+<span style="color: #888888">define &quot;Enrollment Periods&quot;:</span>
+<span style="color: #888888">	collapse(</span>
+<span style="color: #888888">		[Coverage] Cov</span>
+<span style="color: #888888">			where Cov.status.value in { &#39;active&#39;, &#39;cancelled&#39; }</span>
+<span style="color: #888888">				and case &quot;Product Line&quot;</span>
+<span style="color: #888888">					when &#39;commercial&#39; then</span>
+<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Commercial Coverage Value Set&quot;</span>
+<span style="color: #888888">					when &#39;medicaid&#39; then</span>
+<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Medicaid Coverage Value Set&quot;</span>
+<span style="color: #888888">					when &#39;medicare&#39; then</span>
+<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Medicare Coverage Value Set&quot;</span>
+<span style="color: #888888">					else false</span>
+<span style="color: #888888">				end</span>
+<span style="color: #888888">			return PeriodToIntervalOfDT(Cov.period)</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	// We assume [Coverage] in Patient context implicitly has this filter:</span>
+<span style="color: #888888">	// Cov.beneficiary.identifier ~ Patient.identifier</span>
+<span style="color: #888888">	// ... and that the paitient is not connected as a policy holder or payor.</span>
+<span style="color: #888888">	// TODO: Properly determine organization(s) for the product line.</span>
+<span style="color: #888888">	// Note: collapse() also puts the resulting intervals in order.</span>
+
+<span style="color: #888888">define function &quot;Enrollment Periods In Year&quot;(Year Interval&lt;DateTime&gt;):</span>
+<span style="color: #888888">	&quot;Enrollment Periods&quot; EnrP</span>
+<span style="color: #888888">		where EnrP overlaps day of Year</span>
+<span style="color: #888888">		return EnrP intersect day of Year</span>
+
+<span style="color: #888888">define function &quot;Is Continuous Enrollment In Year&quot;(Year Interval&lt;DateTime&gt;):</span>
+<span style="color: #888888">	case Count(&quot;Enrollment Periods In Year&quot;(Year))</span>
+<span style="color: #888888">		when 1 then (</span>
+<span style="color: #888888">			((&quot;Enrollment Periods In Year&quot;(Year)[0] starts Year)</span>
+<span style="color: #888888">				and ((difference in days between</span>
+<span style="color: #888888">						end of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
+<span style="color: #888888">						and end of Year</span>
+<span style="color: #888888">					) &lt;= 45))</span>
+<span style="color: #888888">			or</span>
+<span style="color: #888888">			((&quot;Enrollment Periods In Year&quot;(Year)[0] ends Year)</span>
+<span style="color: #888888">				and ((difference in days between</span>
+<span style="color: #888888">						start of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
+<span style="color: #888888">						and start of Year</span>
+<span style="color: #888888">					) &lt;= 45))</span>
+<span style="color: #888888">		)</span>
+<span style="color: #888888">		when 2 then (</span>
+<span style="color: #888888">			(&quot;Enrollment Periods In Year&quot;(Year)[0] starts Year)</span>
+<span style="color: #888888">				and (&quot;Enrollment Periods In Year&quot;(Year)[1] ends Year)</span>
+<span style="color: #888888">				and ((difference in days between</span>
+<span style="color: #888888">						end of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
+<span style="color: #888888">						and start of &quot;Enrollment Periods In Year&quot;(Year)[1]</span>
+<span style="color: #888888">					) &lt;= 45)</span>
+<span style="color: #888888">		)</span>
+<span style="color: #888888">		else false</span>
+<span style="color: #888888">	end</span>
+
+<span style="color: #888888">define function &quot;Is Continuous Enrollment In Quarter&quot;(Quarter Interval&lt;DateTime&gt;):</span>
+<span style="color: #888888">	case Count(&quot;Enrollment Periods In Year&quot;(Quarter))</span>
+<span style="color: #888888">		when 1 then (&quot;Enrollment Periods In Year&quot;(Quarter)[0] = Quarter)</span>
+<span style="color: #888888">		else false</span>
+<span style="color: #888888">	end</span>
+
+<span style="color: #888888">define &quot;Is Continuous Enrollment&quot;:</span>
+<span style="color: #888888">	&quot;Is Continuous Enrollment In Year&quot;(&quot;Measurement Period&quot;)</span>
+<span style="color: #888888">		and &quot;Is Continuous Enrollment In Year&quot;(&quot;First Predecessor Year&quot;)</span>
+<span style="color: #888888">		and &quot;Is Continuous Enrollment In Year&quot;(&quot;Second Predecessor Year&quot;)</span>
+<span style="color: #888888">		// and &quot;Is Continuous Enrollment In Quarter&quot;(&quot;Third Predecessor Quarter&quot;)</span>
+
+<span style="color: #888888">define &quot;Is Age 65 Plus at Start&quot;:</span>
+<span style="color: #888888">	CalendarAgeInYearsAt(Patient.birthDate.value, start of &quot;Measurement Period&quot;) &gt;= 65</span>
+
+<span style="color: #888888">define &quot;Is Enrolled in Institutional SNP&quot;:</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[Encounter: &quot;X Institutional SNP Value Set&quot;] Enc</span>
+<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
+<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	// TODO: Determine properly whether the patient was in SNP during the measurement year.</span>
+
+<span style="color: #888888">define &quot;Is Living Long-Term in Institution&quot;:</span>
+<span style="color: #888888">	exists(</span>
+<span style="color: #888888">		[Encounter: &quot;X Long-Term in Institution Value Set&quot;] Enc</span>
+<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
+<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
+<span style="color: #888888">	)</span>
+<span style="color: #888888">	// TODO: Determine properly whether the patient was in LTI during the measurement year.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Administrative Specification</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Denominator&quot;</span>:
+	<span style="color: #333333">//</span> was <span style="color: #AA6600">&quot;Initial Population&quot;</span>, but that will always be <span style="color: #008800; font-weight: bold">true</span> if this expression <span style="color: #008800; font-weight: bold">is</span> executed
+    <span style="color: #008800; font-weight: bold">true</span>
+
+define <span style="color: #AA6600">&quot;Numerator&quot;</span>:
+	<span style="color: #AA6600">&quot;Is Colorectal Cancer Screening&quot;</span>
+
+define <span style="color: #AA6600">&quot;Is Colorectal Cancer Screening&quot;</span>:
+	<span style="color: #AA6600">&quot;Is Fecal Occult Blood Test In Last Year&quot;</span>
+		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Flexible Sigmoidoscopy In Last Five Years&quot;</span>
+		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Colonoscopy In Last Ten Years&quot;</span>
+		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is CT Colonography In Last Five Years&quot;</span>
+		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is FIT-DNA Test In Last Three Years&quot;</span>
+
+define <span style="color: #AA6600">&quot;FOBT Observations&quot;</span>:
+	[Observation: <span style="color: #AA6600">&quot;FOBT Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FOBT Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FOBT Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is Fecal Occult Blood Test In Last Year&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;FOBT Observations&quot;</span> Obs
+			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> Obs.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Reports&quot;</span>:
+	[DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is Flexible Sigmoidoscopy In Last Five Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Reports&quot;</span> DiagRep
+			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Colonoscopy Reports&quot;</span>:
+	[DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is Colonoscopy In Last Ten Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Colonoscopy Reports&quot;</span> DiagRep
+			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Nine More Years&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Is CT Colonography In Last Five Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		[DiagnosticReport: <span style="color: #AA6600">&quot;CT Colonography Value Set&quot;</span>] DiagRep
+			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;FIT-DNA Observations&quot;</span>:
+	[Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (LOINC)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is FIT-DNA Test In Last Three Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;FIT-DNA Observations&quot;</span> Obs
+			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> Obs.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Denominator Exclusion&quot;</span>:
+	<span style="color: #AA6600">&quot;Is Colorectal Cancer&quot;</span>
+			<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Total Colectomy&quot;</span>
+
+define <span style="color: #AA6600">&quot;Colorectal Cancer Conditions&quot;</span>:
+	[Condition: <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD10)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Condition: <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is Colorectal Cancer&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Colorectal Cancer Conditions&quot;</span> Cond
+			<span style="color: #008800; font-weight: bold">where</span> Cond.verificationStatus.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+				<span style="color: #008800; font-weight: bold">and</span> Cond.assertedDate.value <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Total Colectomy Procedures&quot;</span>:
+	[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD10)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Is Total Colectomy&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Total Colectomy Procedures&quot;</span> Proc
+			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+	)
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Hybrid Specification</span>
+<span style="color: #888888">TODO, if needed</span>
+<span style="color: #888888">*/</span>
+
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Utility Functions</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #008800; font-weight: bold">function</span> PeriodToIntervalOfDT(value FHIR.Period):
+	<span style="color: #007020">Interval</span>[value.<span style="color: #AA6600">&quot;start&quot;</span>.value, value.<span style="color: #AA6600">&quot;end&quot;</span>.value]
+
+define <span style="color: #008800; font-weight: bold">function</span> CodingToCode(coding FHIR.Coding):
+	<span style="color: #008800; font-weight: bold">System</span>.Code <span style="color: #FF0000; background-color: #FFAAAA">{</span>
+		code: coding.code.value,
+		<span style="color: #008800; font-weight: bold">system</span>: coding.<span style="color: #008800; font-weight: bold">system</span>.value,
+		<span style="color: #008800; font-weight: bold">version</span>: coding.<span style="color: #008800; font-weight: bold">version</span>.value,
+		display: coding.display.value
+	<span style="color: #FF0000; background-color: #FFAAAA">}</span>
+	<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">From</span> FHIRHelpers
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;ToDate&quot;</span>(Value DateTime ):
+	DateTime(<span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">month</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, timezone <span style="color: #008800; font-weight: bold">from</span> Value)
+
+define <span style="color: #008800; font-weight: bold">function</span> CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
+    years <span style="color: #008800; font-weight: bold">between</span> ToDate(BirthDateTime)<span style="color: #008800; font-weight: bold">and</span> ToDate(AsOf)
+</pre></div>

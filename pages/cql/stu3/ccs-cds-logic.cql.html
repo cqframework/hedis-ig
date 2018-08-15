@@ -1,0 +1,160 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888">Cervical Cancer Screening (CCS)</span>
+<span style="color: #888888">*/</span>
+
+library CCS_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span>
+
+<span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.1&#39;</span>
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Description</span>
+<span style="color: #888888">The percentage of women 21-64 years of age who were screened for cervical</span>
+<span style="color: #888888">		cancer using either of the following criteria:</span>
+<span style="color: #888888">	* Women 21-64 years of age who had cervical cytology performed every 3 years.</span>
+<span style="color: #888888">	* Women 30-64 years of age who had cervical cytology/human papillomavirus</span>
+<span style="color: #888888">		(HPV) co-testing performed every 5 years.</span>
+<span style="color: #888888">*/</span>
+
+valueset <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1123.17&#39;</span> <span style="color: #333333">//</span> CPT
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1123.18&#39;</span> <span style="color: #333333">//</span> ICD10CM
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1123.19&#39;</span> <span style="color: #333333">//</span> ICD10PCS
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1123.20&#39;</span> <span style="color: #333333">//</span> ICD9CM
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1123.21&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1208&#39;</span> <span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Grouping</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1208.22&#39;</span> <span style="color: #333333">//</span> CPT
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1208.23&#39;</span> <span style="color: #333333">//</span> HCPCS
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1208.24&#39;</span> <span style="color: #333333">//</span> LOINC
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1208.25&#39;</span> <span style="color: #333333">//</span> RevCode
+
+valueset <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1265.26&#39;</span> <span style="color: #333333">//</span> CPT
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1265.27&#39;</span> <span style="color: #333333">//</span> HCPCS
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1265.28&#39;</span> <span style="color: #333333">//</span> LOINC
+
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.666.5.307&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Home for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.117.1.7.1.209&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Health Care Facility for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.117.1.7.1.207&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113762.1.4.1108.15&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Commercial Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicaid Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicare Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Institutional SNP Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Long-Term in Institution Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #008800; font-weight: bold">default</span> <span style="color: #007020">Interval</span>[Today() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>, Today()]
+
+context Patient
+
+define <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>, <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #AA6600">&quot;Second Predecessor Year&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>)
+
+define <span style="color: #AA6600">&quot;Third Predecessor Quarter&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> months, <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years)
+
+define <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">4</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+
+define <span style="color: #AA6600">&quot;Does Patient Qualify?&quot;</span>:
+	<span style="color: #AA6600">&quot;Is Female&quot;</span>
+		<span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Age 24 to 64 at End&quot;</span>
+		<span style="color: #008800; font-weight: bold">and</span> if <span style="color: #AA6600">&quot;Is Hysterectomy&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+		        <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+		    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #AA6600">&quot;Is Hysterectomy&quot;</span>
+
+define <span style="color: #AA6600">&quot;Is Female&quot;</span>:
+	Patient.gender.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;female&#39;</span>
+
+define <span style="color: #AA6600">&quot;Is Age 24 to 64 at End&quot;</span>:
+	AgeInYearsAt(<span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>) <span style="color: #008800; font-weight: bold">between</span> <span style="color: #0000DD; font-weight: bold">24</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">64</span>
+
+define <span style="color: #AA6600">&quot;Needs Cervical Cytology Test&quot;</span>:
+    if <span style="color: #AA6600">&quot;Is Cervical Cytology Test In Last 3 Years&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+        <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #AA6600">&quot;Is Cervical Cytology Test In Last 3 Years&quot;</span>
+
+define <span style="color: #AA6600">&quot;Is Cervical Cytology Test In Last 3 Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Dates of Cervical Cytology Tests&quot;</span> WhenCC
+			<span style="color: #008800; font-weight: bold">where</span> WhenCC included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Is Cervical Cytology Plus HPV Test In Last 5 Years&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Dates of Cervical Cytology Tests&quot;</span> WhenCC
+			<span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Dates of HPV Tests&quot;</span> WhenHPV
+				such that (((difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenCC <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenHPV) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">4</span>)
+					<span style="color: #008800; font-weight: bold">and</span> AgeInYearsAt(<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenCC) <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">30</span>
+					<span style="color: #008800; font-weight: bold">and</span> AgeInYearsAt(<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenHPV) <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">30</span>
+					<span style="color: #008800; font-weight: bold">and</span> WhenCC included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>
+					<span style="color: #008800; font-weight: bold">and</span> WhenHPV included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>)
+	)
+
+define <span style="color: #AA6600">&quot;Dates of Cervical Cytology Tests&quot;</span>:
+	([<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>] Proc
+		<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+		<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(Proc.performed))
+	<span style="color: #008800; font-weight: bold">union</span>
+	([DiagnosticReport: <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>] DiagRep
+		<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+		<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(DiagRep.effective))
+	<span style="color: #008800; font-weight: bold">union</span>
+	([Observation: <span style="color: #AA6600">&quot;Cervical Cytology Value Set&quot;</span>] Obs
+		<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+		<span style="color: #008800; font-weight: bold">return</span> DateTimeToInterval(Obs.effective))
+
+define <span style="color: #AA6600">&quot;Dates of HPV Tests&quot;</span>:
+	([<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>] Proc
+		<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+		<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(Proc.performed))
+	<span style="color: #008800; font-weight: bold">union</span>
+	([DiagnosticReport: <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>] DiagRep
+		<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+		<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(DiagRep.effective))
+	<span style="color: #008800; font-weight: bold">union</span>
+	([Observation: <span style="color: #AA6600">&quot;HPV Tests Value Set&quot;</span>] Obs
+		<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+		<span style="color: #008800; font-weight: bold">return</span> DateTimeToInterval(Obs.effective))
+
+define <span style="color: #AA6600">&quot;Is Hysterectomy&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Absence of Cervix Value Set&quot;</span>] Proc
+			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">case</span> <span style="color: #008800; font-weight: bold">when</span> Proc.performed <span style="color: #008800; font-weight: bold">is</span> DateTime <span style="color: #008800; font-weight: bold">then</span> <span style="color: #007020">Interval</span>[Proc.performed.value, Proc.performed.value] <span style="color: #008800; font-weight: bold">else</span> <span style="color: #007020">Interval</span>[Proc.performed.<span style="color: #AA6600">&quot;start&quot;</span>.value, Proc.performed.<span style="color: #AA6600">&quot;end&quot;</span>.value] <span style="color: #008800; font-weight: bold">end</span> same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+	)
+
+define CervicalCytologySummary:
+    <span style="background-color: #fff0f0">&#39;A Cervical Cytology procedure for the patient is recommended&#39;</span>
+
+define CervicalCytologyDetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a Cervical Cytology procedure in the last 3 years&#39;</span>
+
+define CervicalCytologyIndicator:
+    <span style="background-color: #fff0f0">&#39;warning&#39;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Utility Functions</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #008800; font-weight: bold">function</span> DateTimeToInterval(<span style="color: #007020">date</span> FHIR.dateTime):
+	<span style="color: #007020">Interval</span>[<span style="color: #007020">date</span>.value, <span style="color: #007020">date</span>.value]
+
+define <span style="color: #008800; font-weight: bold">function</span> PeriodToIntervalOfDT(value FHIR.Period):
+	<span style="color: #007020">Interval</span>[value.<span style="color: #AA6600">&quot;start&quot;</span>.value, value.<span style="color: #AA6600">&quot;end&quot;</span>.value]
+
+define <span style="color: #008800; font-weight: bold">function</span> CodingToCode(coding FHIR.Coding):
+	<span style="color: #008800; font-weight: bold">System</span>.Code <span style="color: #FF0000; background-color: #FFAAAA">{</span>
+		code: coding.code.value,
+		<span style="color: #008800; font-weight: bold">system</span>: coding.<span style="color: #008800; font-weight: bold">system</span>.value,
+		<span style="color: #008800; font-weight: bold">version</span>: coding.<span style="color: #008800; font-weight: bold">version</span>.value,
+		display: coding.display.value
+	<span style="color: #FF0000; background-color: #FFAAAA">}</span>
+	<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">From</span> FHIRHelpers
+</pre></div>

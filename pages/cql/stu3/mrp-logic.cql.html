@@ -1,0 +1,54 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<span style="color: #888888">Medication reconciliation postdischarge (MRP)</span>
+<span style="color: #888888">*/</span>
+
+library MRP_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.000&#39;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+<span style="color: #333333">//</span> Use http:<span style="color: #333333">//</span>fhir.ext.apelon.com<span style="color: #333333">/</span>dtsserverws<span style="color: #333333">/</span>fhir <span style="color: #008800; font-weight: bold">to</span> evaluate, but these <span style="color: #008800; font-weight: bold">are</span> the canonical urls
+valueset <span style="color: #AA6600">&quot;Inpatient Encounter&quot;</span>: <span style="background-color: #fff0f0">&#39;http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.307&#39;</span> <span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">In</span> VSAC
+valueset <span style="color: #AA6600">&quot;Medication Reconciliation Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1174&#39;</span> <span style="color: #333333">//</span> HEDIS IG<span style="color: #333333">?</span>
+
+<span style="color: #333333">//</span> Prescribing Practitioner, Clinical Pharmacist <span style="color: #008800; font-weight: bold">or</span> Registered Nurse
+<span style="color: #333333">//</span> http:<span style="color: #333333">//</span>hl7.org<span style="color: #333333">/</span>fhir<span style="color: #333333">/</span>v2<span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">0360</span><span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">2</span>.<span style="color: #0000DD; font-weight: bold">7</span><span style="color: #333333">/</span><span style="color: #008800; font-weight: bold">index</span>.html <span style="color: #FF0000; background-color: #FFAAAA">{</span> CNP, CRN, <span style="color: #008800; font-weight: bold">DO</span>, MD, NP, PharmD, RN, RPH <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+valueset <span style="color: #AA6600">&quot;Valid Medication Reconciliation Performer Qualifications&quot;</span>: <span style="background-color: #fff0f0">&#39;http://ncqa.org/hedis/ValueSet/hedis-med-rec-practitioner&#39;</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #008800; font-weight: bold">default</span> <span style="color: #007020">Interval</span>[<span style="color: #333333">@</span><span style="color: #0000DD; font-weight: bold">2018</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span>T00:<span style="color: #0000DD; font-weight: bold">00</span>, <span style="color: #333333">@</span><span style="color: #0000DD; font-weight: bold">2019</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span>T00:<span style="color: #0000DD; font-weight: bold">00</span>)
+
+context Patient
+
+define Encounters:
+  [Encounter: <span style="color: #AA6600">&quot;Inpatient Encounter&quot;</span>] E
+    <span style="color: #008800; font-weight: bold">where</span> E.period ends during <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">30</span> days]
+
+define <span style="color: #AA6600">&quot;Initial Population&quot;</span>:
+  Encounters E
+    <span style="color: #008800; font-weight: bold">where</span> AgeInYearsAt(<span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>) <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">18</span>
+
+define Denominator:
+  <span style="color: #008800; font-weight: bold">true</span>
+  
+define Practitioners:
+  [Practitioner] P
+    <span style="color: #008800; font-weight: bold">where</span> P.active
+      <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (P.qualification Q <span style="color: #008800; font-weight: bold">where</span> Q.code <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Valid Medication Reconciliation Performer Qualifications&quot;</span>)
+  
+define Tasks:
+  [Task: <span style="color: #AA6600">&quot;Medication Reconciliation Value Set&quot;</span>] T
+    <span style="color: #008800; font-weight: bold">where</span> T.intent <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;order&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> T.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (Practitioners P <span style="color: #008800; font-weight: bold">where</span> EndsWith(T.<span style="color: #008800; font-weight: bold">owner</span>.reference, P.id))
+      
+define Observations:
+  [Observation: <span style="color: #AA6600">&quot;Medication Reconciliation Value Set&quot;</span>] O
+    <span style="color: #008800; font-weight: bold">where</span> O.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+      <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (Practitioners P <span style="color: #008800; font-weight: bold">where</span> EndsWith(O.performer[<span style="color: #0000DD; font-weight: bold">0</span>].reference, P.id))
+
+define Numerator:
+  Encounters E 
+    <span style="color: #008800; font-weight: bold">where</span> <span style="color: #008800; font-weight: bold">exists</span> (Tasks T <span style="color: #008800; font-weight: bold">where</span> FHIRHelpers.ToInterval(T.executionPeriod) during <span style="color: #007020">Interval</span>[E.period.<span style="color: #AA6600">&quot;end&quot;</span>, E.period.<span style="color: #AA6600">&quot;end&quot;</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">30</span> days])
+      <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> (Observations O <span style="color: #008800; font-weight: bold">where</span> O.effective during <span style="color: #007020">Interval</span>[E.period.<span style="color: #AA6600">&quot;end&quot;</span>, E.period.<span style="color: #AA6600">&quot;end&quot;</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">30</span> days])
+</pre></div>

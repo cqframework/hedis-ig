@@ -1,0 +1,178 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library colPlandefinitionLogic <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0&#39;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.41&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.42&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;FOBT Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1093.43&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.38&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.39&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1102.40&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.35&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.36&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;FIT-DNA Value Set (LOINC)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1420.37&#39;</span> <span style="color: #333333">//</span> LOINC
+
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.29&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (HCPCS)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.30&#39;</span> <span style="color: #333333">//</span> HCPCS
+valueset <span style="color: #AA6600">&quot;Colonoscopy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1064.31&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+valueset <span style="color: #AA6600">&quot;CT Colonography Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1421.34&#39;</span> <span style="color: #333333">//</span> CPT
+
+valueset <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD10)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1065.32&#39;</span> <span style="color: #333333">//</span> ICD10CM
+valueset <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1065.33&#39;</span> <span style="color: #333333">//</span> ICD9CM
+
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (CPT)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.44&#39;</span> <span style="color: #333333">//</span> CPT
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD10)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.45&#39;</span> <span style="color: #333333">//</span> ICD10PCS
+valueset <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD9)&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1250.46&#39;</span> <span style="color: #333333">//</span> ICD9CMProc
+
+context Patient
+
+define <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>:
+	<span style="color: #007020">Interval</span>[Today() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> years, Today())
+
+define <span style="color: #AA6600">&quot;Lookback Interval Three Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[Today() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> years, Today())
+
+define <span style="color: #AA6600">&quot;Lookback Interval Five Years&quot;</span>:
+	<span style="color: #007020">Interval</span>[Today() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">5</span> years, Today())
+
+define <span style="color: #AA6600">&quot;Lookback Interval Ten Years&quot;</span>:
+    <span style="color: #007020">Interval</span>[Today() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">10</span> years, Today())
+
+define <span style="color: #AA6600">&quot;Does Patient Qualify?&quot;</span>:
+    <span style="color: #AA6600">&quot;Is in Age Range&quot;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #AA6600">&quot;Has Total Colectomy&quot;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #AA6600">&quot;Has Colorectal Cancer&quot;</span>
+
+define <span style="color: #AA6600">&quot;Is in Age Range&quot;</span>:
+	AgeInYears() <span style="color: #008800; font-weight: bold">between</span> <span style="color: #0000DD; font-weight: bold">51</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">75</span>
+
+define <span style="color: #AA6600">&quot;FOBT Observations&quot;</span>:
+	[Observation: <span style="color: #AA6600">&quot;FOBT Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FOBT Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FOBT Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Fecal Occult Blood Tests&quot;</span>:
+    <span style="color: #AA6600">&quot;FOBT Observations&quot;</span> Obs
+    			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+    				<span style="color: #008800; font-weight: bold">and</span> Obs.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>
+
+define <span style="color: #AA6600">&quot;Needs Fecal Occult Blood Test&quot;</span>:
+	if <span style="color: #AA6600">&quot;Fecal Occult Blood Tests&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+	    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+	<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span> <span style="color: #AA6600">&quot;Fecal Occult Blood Tests&quot;</span>
+
+define FOBTSummary:
+    <span style="background-color: #fff0f0">&#39;A Fecal Occult Blood test for the patient is recommended&#39;</span>
+
+define FOBTDetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a Fecal Occult Blood test in the last year&#39;</span>
+
+define Indicator:
+    <span style="background-color: #fff0f0">&#39;warning&#39;</span>
+
+define <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Reports&quot;</span>:
+	[DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Diagnostics&quot;</span>:
+    <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Reports&quot;</span> DiagRep
+    			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+    				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Five Years&quot;</span>
+
+define <span style="color: #AA6600">&quot;Needs Flexible Sigmoidoscopy&quot;</span>:
+	if <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Diagnostics&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+	    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+	<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span> <span style="color: #AA6600">&quot;Flexible Sigmoidoscopy Diagnostics&quot;</span>
+
+define FlexibleSigmoidoscopySummary:
+    <span style="background-color: #fff0f0">&#39;A Flexible Sigmoidoscopy procedure for the patient is recommended&#39;</span>
+
+define FlexibleSigmoidoscopyDetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a Flexible Sigmoidoscopy procedure in the last 5 years&#39;</span>
+
+define <span style="color: #AA6600">&quot;Colonoscopy Reports&quot;</span>:
+	[DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [DiagnosticReport: <span style="color: #AA6600">&quot;Colonoscopy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Colonoscopy Diagnostics&quot;</span>:
+    <span style="color: #AA6600">&quot;Colonoscopy Reports&quot;</span> DiagRep
+    			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+    				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Ten Years&quot;</span>
+
+define <span style="color: #AA6600">&quot;Needs Colonoscopy&quot;</span>:
+	if <span style="color: #AA6600">&quot;Colonoscopy Diagnostics&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+	    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+	<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span> <span style="color: #AA6600">&quot;Colonoscopy Diagnostics&quot;</span>
+
+define ColonoscopySummary:
+    <span style="background-color: #fff0f0">&#39;A Colonoscopy procedure for the patient is recommended&#39;</span>
+
+define ColonoscopyDetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a Colonoscopy procedure in the last 10 years&#39;</span>
+
+define <span style="color: #AA6600">&quot;Needs CT Colonography&quot;</span>:
+	<span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span>(
+		[DiagnosticReport: <span style="color: #AA6600">&quot;CT Colonography Value Set&quot;</span>] DiagRep
+			<span style="color: #008800; font-weight: bold">where</span> DiagRep.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;preliminary&#39;</span>, <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span>, <span style="background-color: #fff0f0">&#39;corrected&#39;</span>, <span style="background-color: #fff0f0">&#39;appended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(DiagRep.effective) included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Five Years&quot;</span>
+	)
+
+define ColonographySummary:
+    <span style="background-color: #fff0f0">&#39;A Colonography procedure for the patient is recommended&#39;</span>
+
+define ColonographyDetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a Colonography procedure in the last 5 years&#39;</span>
+
+define <span style="color: #AA6600">&quot;FIT-DNA Observations&quot;</span>:
+	[Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (HCPCS)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Observation: <span style="color: #AA6600">&quot;FIT-DNA Value Set (LOINC)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;FIT-DNA Tests&quot;</span>:
+    <span style="color: #AA6600">&quot;FIT-DNA Observations&quot;</span> Obs
+    			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+    				<span style="color: #008800; font-weight: bold">and</span> Obs.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval Three Years&quot;</span>
+
+define <span style="color: #AA6600">&quot;Needs FIT-DNA Test&quot;</span>:
+	if <span style="color: #AA6600">&quot;FIT-DNA Tests&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span>
+	    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+	<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span> <span style="color: #AA6600">&quot;FIT-DNA Tests&quot;</span>
+
+define FITDNASummary:
+    <span style="background-color: #fff0f0">&#39;A FIT-DNA test for the patient is recommended&#39;</span>
+
+define FITDNADetail:
+    <span style="background-color: #fff0f0">&#39;The patient has not had a FIT-DNA test in the last 3 years&#39;</span>
+
+define <span style="color: #AA6600">&quot;Colorectal Cancer Conditions&quot;</span>:
+	[Condition: <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD10)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [Condition: <span style="color: #AA6600">&quot;Colorectal Cancer Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Has Colorectal Cancer&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Colorectal Cancer Conditions&quot;</span> Cond
+			<span style="color: #008800; font-weight: bold">where</span> Cond.verificationStatus.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+				<span style="color: #008800; font-weight: bold">and</span> Cond.assertedDate.value <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>
+	)
+
+define <span style="color: #AA6600">&quot;Total Colectomy Procedures&quot;</span>:
+	[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (CPT)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD10)&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Total Colectomy Value Set (ICD9)&quot;</span>]
+
+define <span style="color: #AA6600">&quot;Has Total Colectomy&quot;</span>:
+	<span style="color: #008800; font-weight: bold">exists</span>(
+		<span style="color: #AA6600">&quot;Total Colectomy Procedures&quot;</span> Proc
+			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>
+	)
+
+<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Conversion</span> functions
+define <span style="color: #008800; font-weight: bold">function</span> PeriodToIntervalOfDT(value FHIR.Period):
+	<span style="color: #007020">Interval</span>[value.<span style="color: #AA6600">&quot;start&quot;</span>.value, value.<span style="color: #AA6600">&quot;end&quot;</span>.value]
+</pre></div>

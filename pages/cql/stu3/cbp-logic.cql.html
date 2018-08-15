@@ -1,0 +1,464 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library CBP <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;2&#39;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> FHIRHelpers
+
+<span style="color: #888888">/*</span>
+
+<span style="color: #888888">Description:</span>
+<span style="color: #888888">The percentage of members 18–85 years of age who had a diagnosis of hypertension (HTN)</span>
+<span style="color: #888888">  and whose BP was adequately controlled during the measurement year</span>
+<span style="color: #888888">  based on the following criteria:</span>
+<span style="color: #888888">    - Members 18–59 years of age whose BP was &lt;140/90 mm Hg.</span>
+<span style="color: #888888">    - Members 60–85 years of age with a diagnosis of diabetes whose BP was &lt;140/90 mm Hg.</span>
+<span style="color: #888888">    - Members 60–85 years of age without a diagnosis of diabetes whose BP was &lt;150/90 mm Hg.</span>
+<span style="color: #888888">Note: Use the Hybrid Method for this measure. A single rate is reported and is the sum of all three groups.</span>
+
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">// These are valuesets containing CPT codes indicating these concepts</span>
+<span style="color: #888888">valueset &quot;Systolic Less Than 140&quot;: &#39;2.16.840.1.113883.3.464.1004.1243&#39;</span>
+<span style="color: #888888">valueset &quot;Systolic Greater Than/Equal To 140&quot;: &#39;2.16.840.1.113883.3.464.1004.1242&#39;</span>
+<span style="color: #888888">valueset &quot;Diastolic Less Than 80&quot;: &#39;2.16.840.1.113883.3.464.1004.1084&#39;</span>
+<span style="color: #888888">valueset &quot;Diastolic 80-89&quot;: &#39;2.16.840.1.113883.3.464.1004.1082&#39;</span>
+<span style="color: #888888">valueset &quot;Diastolic Greater Than/Equal To 90&quot;: &#39;2.16.840.1.113883.3.464.1004.1083&#39;</span>
+<span style="color: #888888">*/</span>
+
+codesystem <span style="color: #AA6600">&quot;LOINC&quot;</span>: <span style="background-color: #fff0f0">&#39;http://loinc.org&#39;</span>
+
+valueset <span style="color: #AA6600">&quot;Acute Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1017&#39;</span>
+valueset <span style="color: #AA6600">&quot;Diabetes&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1077&#39;</span>
+valueset <span style="color: #AA6600">&quot;Diabetes Exclusions&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1105&#39;</span>
+valueset <span style="color: #AA6600">&quot;ED&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1086&#39;</span>
+valueset <span style="color: #AA6600">&quot;ESRD&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1089&#39;</span>
+valueset <span style="color: #AA6600">&quot;ESRD Obsolete&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1090&#39;</span>
+valueset <span style="color: #AA6600">&quot;Essential Hypertension&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1122&#39;</span>
+valueset <span style="color: #AA6600">&quot;Inpatient Stay&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1395&#39;</span>
+valueset <span style="color: #AA6600">&quot;Kidney Transplant&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1141&#39;</span>
+valueset <span style="color: #AA6600">&quot;Nonacute Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1189&#39;</span>
+valueset <span style="color: #AA6600">&quot;Nonacute Inpatient Stay&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1398&#39;</span>
+valueset <span style="color: #AA6600">&quot;Observation&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1191&#39;</span>
+valueset <span style="color: #AA6600">&quot;Outpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1202&#39;</span>
+valueset <span style="color: #AA6600">&quot;Outpatient Without UBREV&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1203&#39;</span>
+valueset <span style="color: #AA6600">&quot;Pregnancy&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1219&#39;</span>
+
+valueset <span style="color: #AA6600">&quot;Diabetes Medications List&quot;</span>: <span style="background-color: #fff0f0">&#39;DiabetesMedicationsList&#39;</span> <span style="color: #333333">//</span> NDC Codes
+
+code <span style="color: #AA6600">&quot;Blood Pressure&quot;</span>: <span style="background-color: #fff0f0">&#39;55284-4&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;LOINC&quot;</span> display <span style="background-color: #fff0f0">&#39;Blood pressure&#39;</span>
+code <span style="color: #AA6600">&quot;Systolic Blood Pressure&quot;</span>: <span style="background-color: #fff0f0">&#39;8480-6&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;LOINC&quot;</span> display <span style="background-color: #fff0f0">&#39;Systolic blood pressure&#39;</span>
+code <span style="color: #AA6600">&quot;Diastolic Blood Pressure&quot;</span>: <span style="background-color: #fff0f0">&#39;8462-4&#39;</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #AA6600">&quot;LOINC&quot;</span> display <span style="background-color: #fff0f0">&#39;Diastolic blood pressure&#39;</span>
+
+<span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #008800; font-weight: bold">default</span> <span style="color: #007020">Interval</span>[<span style="color: #333333">@</span><span style="color: #0000DD; font-weight: bold">2018</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span>, <span style="color: #333333">@</span><span style="color: #0000DD; font-weight: bold">2019</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span><span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">01</span>)
+
+context Patient
+
+define <span style="color: #AA6600">&quot;First 6 Months of Measurement Period&quot;</span>:
+  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, DateTime(<span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #0000DD; font-weight: bold">6</span>, <span style="color: #0000DD; font-weight: bold">30</span>)]
+
+define <span style="color: #AA6600">&quot;Initial Population&quot;</span>:
+  <span style="color: #AA6600">&quot;In Demographic&quot;</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Event Diagnosis&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    TODO: Members in hospice are excluded from the eligible population.</span>
+<span style="color: #888888">      If a member is found to be in hospice or using hospice services during medical record review,</span>
+<span style="color: #888888">      the member is removed from the sample and replaced by a member from the oversample.</span>
+<span style="color: #888888">      Refer to General Guideline 20: Members in Hospice.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #333333">//</span> TODO: Product lines <span style="color: #333333">-</span> Commercial, Medicaid, Medicare (report <span style="color: #008800; font-weight: bold">each</span> product line separately).
+<span style="color: #333333">//</span> TODO: Continuous enrollment <span style="color: #333333">-</span> The measurement <span style="color: #008800; font-weight: bold">year</span>.
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    TODO: Allowable gap	No more than one gap in continuous enrollment of up to 45 days during the measurement year.</span>
+<span style="color: #888888">      To determine continuous enrollment for a Medicaid beneficiary for whom enrollment is verified monthly,</span>
+<span style="color: #888888">      the member may not have more than a 1-month gap in coverage (i.e., a member whose coverage lapses for</span>
+<span style="color: #888888">      2 months [60 days] is not considered continuously enrolled).</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    TODO: Required exclusion	Exclude Medicare members age 65 and older as of January 1 of the measurement year who are:</span>
+<span style="color: #888888">      Enrolled in an Institutional SNP (I-SNP) any time during the measurement year.</span>
+<span style="color: #888888">      Living long-term in an institution any time during the measurement year.</span>
+<span style="color: #888888">      Organizations may use the LTI flag in the Medicare Part C monthly membership file.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #333333">//</span> Ages	<span style="color: #0000DD; font-weight: bold">18</span><span style="color: #FF0000; background-color: #FFAAAA">–</span><span style="color: #0000DD; font-weight: bold">85</span> years <span style="color: #008800; font-weight: bold">as</span> <span style="color: #008800; font-weight: bold">of</span> December <span style="color: #0000DD; font-weight: bold">31</span> <span style="color: #008800; font-weight: bold">of</span> the measurement <span style="color: #008800; font-weight: bold">year</span>.
+define <span style="color: #AA6600">&quot;In Demographic&quot;</span>:
+  AgeInYearsAt(DateTime(<span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">from</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #0000DD; font-weight: bold">12</span>, <span style="color: #0000DD; font-weight: bold">31</span>)) <span style="color: #008800; font-weight: bold">in</span> <span style="color: #007020">Interval</span>[<span style="color: #0000DD; font-weight: bold">18</span>, <span style="color: #0000DD; font-weight: bold">85</span>]
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Members are identified as hypertensive if there is at least one outpatient visit (Outpatient Without UBREV Value Set)</span>
+<span style="color: #888888">    with a diagnosis of hypertension (Essential Hypertension Value Set) during the first six months of the measurement year.</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Outpatient Encounters Without UBREV&quot;</span>:
+  [Encounter: <span style="color: #AA6600">&quot;Outpatient Without UBREV&quot;</span>] Encounters
+    <span style="color: #008800; font-weight: bold">where</span> Encounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> Encounters.period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;First 6 Months of Measurement Period&quot;</span>
+
+define <span style="color: #AA6600">&quot;Hypertension Diagnosis&quot;</span>:
+  [Condition: <span style="color: #AA6600">&quot;Essential Hypertension&quot;</span>] HTDiagnosis
+    <span style="color: #008800; font-weight: bold">where</span> HTDiagnosis.clinicalStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> HTDiagnosis.verificationStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> HTDiagnosis.assertedDate <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;First 6 Months of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> assertedDate <span style="color: #008800; font-weight: bold">desc</span>
+
+define <span style="color: #AA6600">&quot;Event Diagnosis&quot;</span>:
+  AnyTrue( <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="color: #AA6600">&quot;Event Diagnosis Context Match&quot;</span>, <span style="color: #AA6600">&quot;Event Diagnosis Date Match&quot;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span> )
+
+<span style="color: #333333">//</span> one way <span style="color: #333333">-</span> <span style="color: #008800; font-weight: bold">match</span> context reference <span style="color: #008800; font-weight: bold">to</span> Encounter id
+define <span style="color: #AA6600">&quot;Event Diagnosis Context Match&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>(
+    <span style="color: #AA6600">&quot;Outpatient Encounters Without UBREV&quot;</span> Encounters <span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Hypertension Diagnosis&quot;</span> HTDiagnosis
+      such that EndsWith(HTDiagnosis.<span style="color: #AA6600">&quot;context&quot;</span>.reference, Encounters.id)
+  )
+
+<span style="color: #333333">//</span> another way <span style="color: #333333">-</span> if they occur <span style="color: #008800; font-weight: bold">on</span> the same <span style="color: #008800; font-weight: bold">day</span>
+define <span style="color: #AA6600">&quot;Event Diagnosis Date Match&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>(
+    <span style="color: #AA6600">&quot;Outpatient Encounters Without UBREV&quot;</span> Encounters <span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Hypertension Diagnosis&quot;</span> HTDiagnosis
+      such that HTDiagnosis.assertedDate <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> Encounters.period
+  )
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    After the Eligible Population is identified, assign each member either a diabetic</span>
+<span style="color: #888888">    or not diabetic flag using only administrative data and the steps below. The flag</span>
+<span style="color: #888888">    is used to determine the appropriate BP threshold to use during numerator assessment</span>
+<span style="color: #888888">    (the threshold for members with diabetes is different than the threshold for members without diabetes).</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 1:</span>
+<span style="color: #888888">      Assign a flag of diabetic to members identified as diabetic using *** claim/encounter data *** or</span>
+<span style="color: #888888">      *** pharmacy data ***. The organization must use both methods to assign the diabetes flag, but a</span>
+<span style="color: #888888">      member only needs to be identified by one method. Members may be identified as having diabetes during</span>
+<span style="color: #888888">      the measurement year or the year prior to the measurement year.</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>:
+  <span style="color: #007020">Interval</span>[
+    <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>,
+    <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  ]
+
+define <span style="color: #AA6600">&quot;Step 1 Is Diabetic Flag&quot;</span>:
+  <span style="color: #AA6600">&quot;Is Diabetic Using Claim and Encounter Data?&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Diabetic Using Pharmacy Data&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Claim/encounter data. Members who met any of the following criteria during the measurement year</span>
+<span style="color: #888888">    or the year prior to the measurement year (count services that occur over both years):</span>
+<span style="color: #888888">      - At least two outpatient visits (Outpatient Value Set), observation visits (Observation Value Set),</span>
+<span style="color: #888888">        ED visits (ED Value Set) or nonacute inpatient encounters (Nonacute Inpatient Value Set) on different</span>
+<span style="color: #888888">        dates of service, with a diagnosis of diabetes (Diabetes Value Set). Visit type need not be the same</span>
+<span style="color: #888888">        for the two visits.</span>
+<span style="color: #888888">      - At least one acute inpatient encounter (Acute Inpatient Value Set) with a diagnosis of diabetes (Diabetes Value Set).</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    TODO - determine best method to use for Claim data</span>
+<span style="color: #888888">      Current best guess:</span>
+<span style="color: #888888">      Claim during &quot;Lookback Period Year Prior to End of Measurement Period&quot; with Diabetes diagnosis (see &quot;Get Concept from Claim Diagnosis&quot; function)</span>
+<span style="color: #888888">        AND (</span>
+<span style="color: #888888">          At least two outpatient visits,</span>
+<span style="color: #888888">            observation visits,</span>
+<span style="color: #888888">            ED visits</span>
+<span style="color: #888888">            or nonacute inpatient encounters</span>
+<span style="color: #888888">              on different dates of service</span>
+<span style="color: #888888">          OR At least one acute inpatient encounter</span>
+<span style="color: #888888">        )</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Is Diabetic Using Claim and Encounter Data?&quot;</span>:
+  if <span style="color: #008800; font-weight: bold">exists</span>(<span style="color: #AA6600">&quot;Diabetes Condition&quot;</span>)
+    <span style="color: #008800; font-weight: bold">then</span> (<span style="color: #AA6600">&quot;Count Encounters with Diabetes Diagnosis on Different Dates of Service&quot;</span> <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">2</span>
+      <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Count Acute Encounters with Diabetes Diagnosis&quot;</span> <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">1</span>)
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>
+
+<span style="color: #333333">//</span> TODO <span style="color: #333333">-</span> Hmmm... need <span style="color: #008800; font-weight: bold">to</span> verify that this <span style="color: #008800; font-weight: bold">method</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">valid</span>
+define <span style="color: #AA6600">&quot;Diabetes Condition&quot;</span>:
+  [Condition: code <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Diabetes&quot;</span>] DiabetesCondition
+    <span style="color: #008800; font-weight: bold">where</span> DiabetesCondition.clinicalStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> DiabetesCondition.verificationStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span>(
+        DiabetesCondition.category CategoryConcepts
+          <span style="color: #008800; font-weight: bold">where</span> <span style="color: #008800; font-weight: bold">exists</span>(
+            CategoryConcepts.coding ConceptCodes
+              <span style="color: #008800; font-weight: bold">where</span> ConceptCodes.code <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;encounter-diagnosis&#39;</span>
+          )
+      )
+      <span style="color: #008800; font-weight: bold">and</span> DiabetesCondition.assertedDate <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+
+define <span style="color: #AA6600">&quot;Count Encounters with Diabetes Diagnosis on Different Dates of Service&quot;</span>:
+  <span style="color: #008800; font-weight: bold">Count</span>(
+    <span style="color: #AA6600">&quot;Encounters with Diabetes Diagnosis&quot;</span> DiabetesDiagnosisEncounters
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">distinct</span>(DiabetesDiagnosisEncounters.period)
+  )
+
+define <span style="color: #AA6600">&quot;Count Acute Encounters with Diabetes Diagnosis&quot;</span>:
+  <span style="color: #008800; font-weight: bold">Count</span>(
+    <span style="color: #AA6600">&quot;Acute Encounters with Diabetes Diagnosis&quot;</span> DiabetesDiagnosisEncounters
+  )
+
+define <span style="color: #AA6600">&quot;Encounters with Diabetes Diagnosis&quot;</span>:
+  (
+    <span style="color: #AA6600">&quot;Outpatient Encounters&quot;</span>
+      <span style="color: #008800; font-weight: bold">union</span> <span style="color: #AA6600">&quot;Observation Encounters&quot;</span>
+      <span style="color: #008800; font-weight: bold">union</span> <span style="color: #AA6600">&quot;ED Encounters&quot;</span>
+      <span style="color: #008800; font-weight: bold">union</span> <span style="color: #AA6600">&quot;Nonacute Inpatient Encounters&quot;</span>
+  ) Encounters
+      <span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Diabetes Condition&quot;</span> DiabetesCondition
+        such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+          <span style="color: #008800; font-weight: bold">or</span> EndsWith(DiabetesCondition.<span style="color: #AA6600">&quot;context&quot;</span>.reference, Encounters.id)
+      <span style="color: #008800; font-weight: bold">return</span> Encounters
+
+define <span style="color: #AA6600">&quot;Acute Encounters with Diabetes Diagnosis&quot;</span>:
+  <span style="color: #AA6600">&quot;Acute Inpatient Encounters&quot;</span> Encounters
+    <span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Diabetes Condition&quot;</span> DiabetesCondition
+      such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+        <span style="color: #008800; font-weight: bold">or</span> EndsWith(DiabetesCondition.<span style="color: #AA6600">&quot;context&quot;</span>.reference, Encounters.id)
+    <span style="color: #008800; font-weight: bold">return</span> Encounters
+
+define <span style="color: #AA6600">&quot;Outpatient Encounters&quot;</span>:
+  [Encounter: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Outpatient&quot;</span>] OutpatientEncounters
+    <span style="color: #008800; font-weight: bold">where</span> OutpatientEncounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> OutpatientEncounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+
+define <span style="color: #AA6600">&quot;Observation Encounters&quot;</span>:
+  [Encounter: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Observation&quot;</span>] ObservationEncounters
+    <span style="color: #008800; font-weight: bold">where</span> ObservationEncounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> ObservationEncounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+
+define <span style="color: #AA6600">&quot;ED Encounters&quot;</span>:
+  [Encounter: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;ED&quot;</span>] EDEncounters
+    <span style="color: #008800; font-weight: bold">where</span> EDEncounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> EDEncounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+
+define <span style="color: #AA6600">&quot;Nonacute Inpatient Encounters&quot;</span>:
+  [Encounter: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Nonacute Inpatient&quot;</span>] NonacuteEncounters
+    <span style="color: #008800; font-weight: bold">where</span> NonacuteEncounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> NonacuteEncounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+
+define <span style="color: #AA6600">&quot;Acute Inpatient Encounters&quot;</span>:
+  [Encounter: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Nonacute Inpatient&quot;</span>] AcuteEncounters
+    <span style="color: #008800; font-weight: bold">where</span> AcuteEncounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> AcuteEncounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+        sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Pharmacy data. Members who were dispensed insulin or hypoglycemics/ antihyperglycemics</span>
+<span style="color: #888888">      on an ambulatory basis during the measurement year or the year prior to the</span>
+<span style="color: #888888">      measurement year (Diabetes Medications List).</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Is Diabetic Using Pharmacy Data&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>( <span style="color: #AA6600">&quot;Members Dispensed Diabetes Medications During Step 1 Period&quot;</span> )
+
+define <span style="color: #AA6600">&quot;Members Dispensed Diabetes Medications During Step 1 Period&quot;</span>:
+  [MedicationDispense: medicationCodeableConcept <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Diabetes Medications List&quot;</span>] DiabetesMedicationDispense
+    <span style="color: #008800; font-weight: bold">where</span> DiabetesMedicationDispense.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> DiabetesMedicationDispense.whenHandedOver <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 2:</span>
+<span style="color: #888888">      From the members identified in step 1, assign a flag of not diabetic to members who</span>
+<span style="color: #888888">        do not have a diagnosis of diabetes (Diabetes Value Set), in any setting, during the</span>
+<span style="color: #888888">        measurement year or year prior to the measurement year and who had a diagnosis of</span>
+<span style="color: #888888">        gestational diabetes or steroid-induced diabetes (Diabetes Exclusions Value Set),</span>
+<span style="color: #888888">        in any setting, during the measurement year or the year prior to the measurement year.</span>
+<span style="color: #888888">      Note: Members classified as diabetic in step 1 based on pharmacy data alone and who had</span>
+<span style="color: #888888">        a diagnosis of gestational or steroid-induced diabetes as specified above are reclassified</span>
+<span style="color: #888888">        as not diabetic in this step.</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Step 2 Is Diabetic Flag&quot;</span>:
+  <span style="color: #008800; font-weight: bold">not</span> (
+    (
+      <span style="color: #008800; font-weight: bold">not</span> <span style="color: #AA6600">&quot;Diabetes Diagnosis in Any Setting&quot;</span>
+        <span style="color: #008800; font-weight: bold">or</span> (
+          <span style="color: #AA6600">&quot;Is Diabetic Using Pharmacy Data&quot;</span>
+            <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">exists</span>(<span style="color: #AA6600">&quot;Encounters with Diabetes Diagnosis&quot;</span>)
+        )
+    )
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span>(<span style="color: #AA6600">&quot;Has Diagnosis of Gestational or Steroid-Induced Diabetes&quot;</span>)
+  )
+
+define <span style="color: #AA6600">&quot;Diabetes Diagnosis in Any Setting&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>(
+    [Encounter] Encounters
+      <span style="color: #008800; font-weight: bold">with</span> <span style="color: #AA6600">&quot;Diabetes Condition&quot;</span> DiabetesCondition
+        such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+          <span style="color: #008800; font-weight: bold">or</span> EndsWith(DiabetesCondition.<span style="color: #AA6600">&quot;context&quot;</span>.reference, Encounters.id)
+      <span style="color: #008800; font-weight: bold">return</span> Encounters
+  )
+
+define <span style="color: #AA6600">&quot;Has Diagnosis of Gestational or Steroid-Induced Diabetes&quot;</span>:
+  [Condition: code <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Diabetes Exclusions&quot;</span>] InducedDiabetesCondition
+    <span style="color: #008800; font-weight: bold">where</span> InducedDiabetesCondition.clinicalStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> InducedDiabetesCondition.verificationStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+      <span style="color: #008800; font-weight: bold">and</span> InducedDiabetesCondition.assertedDate <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Period Year Prior to End of Measurement Period&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 3:</span>
+<span style="color: #888888">      Assign a flag of not diabetic to members who were not assigned a flag in step 1 or step 2.</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Step 3 Is Diabetic Flag&quot;</span>:
+  if ( <span style="color: #AA6600">&quot;Step 1 Is Diabetic Flag&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Step 2 Is Diabetic Flag&quot;</span> <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> )
+    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">false</span>
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #AA6600">&quot;Step 1 Is Diabetic Flag&quot;</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Step 2 Is Diabetic Flag&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Denominator:</span>
+<span style="color: #888888">      To confirm the diagnosis of hypertension, the organization must find notation of one of</span>
+<span style="color: #888888">        the following in the medical record anytime during the member’s history on or before</span>
+<span style="color: #888888">        June 30 of the measurement year:</span>
+<span style="color: #888888">          - Hypertension</span>
+<span style="color: #888888">          - HTN</span>
+<span style="color: #888888">          - High BP (HBP)</span>
+<span style="color: #888888">          - Elevated BP (BP)</span>
+<span style="color: #888888">          - Borderline HTN</span>
+<span style="color: #888888">          - Intermittent HTN</span>
+<span style="color: #888888">          - History of HTN</span>
+<span style="color: #888888">          - Hypertensive vascular disease (HVD)</span>
+<span style="color: #888888">          - Hyperpiesia</span>
+<span style="color: #888888">          - Hyperpiesis</span>
+<span style="color: #888888">          - A diagnosis code for hypertension documented in the medical record</span>
+<span style="color: #888888">      It does not matter if hypertension was treated or is currently being treated.</span>
+<span style="color: #888888">        The notation indicating a diagnosis of hypertension may be recorded in any</span>
+<span style="color: #888888">        of the following documents:</span>
+<span style="color: #888888">          - Problem list (this may include a diagnosis prior to June 30 of the measurement year</span>
+<span style="color: #888888">              or an undated diagnosis that is not part of the office visit note; see the Note at</span>
+<span style="color: #888888">              the end of this section)</span>
+<span style="color: #888888">          - Office note</span>
+<span style="color: #888888">          - Subjective, Objective, Assessment, Plan (SOAP) note</span>
+<span style="color: #888888">          - Encounter form</span>
+<span style="color: #888888">          - Diagnostic report</span>
+<span style="color: #888888">          - Hospital discharge summary</span>
+
+<span style="color: #888888">      * If the diagnosis of hypertension cannot be confirmed, the member is excluded and replaced</span>
+<span style="color: #888888">        by the next member from the oversample.</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Denominator&quot;</span>:
+  <span style="color: #008800; font-weight: bold">true</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Use one medical record for both the confirmation of the diagnosis of hypertension and the</span>
+<span style="color: #888888">      representative BP. All eligible BP measurements recorded in the record must be considered.</span>
+<span style="color: #888888">      NOTE - If an organization cannot find the medical record, the member remains in the measure</span>
+<span style="color: #888888">      denominator and is considered noncompliant for the numerator.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 1:</span>
+<span style="color: #888888">      Identify the member’s PCP</span>
+<span style="color: #888888">        If the member had more than one PCP for the time period, identify the PCP who most recently</span>
+<span style="color: #888888">        provided care to the member</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Member&#39;s PCP&quot;</span>:
+  if ( <span style="color: #008800; font-weight: bold">Length</span>(<span style="color: #AA6600">&quot;Patient General Practitioners&quot;</span>) <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span> )
+    <span style="color: #008800; font-weight: bold">then</span> <span style="color: #AA6600">&quot;Patient General Practitioners&quot;</span>[<span style="color: #0000DD; font-weight: bold">0</span>].reference
+  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #AA6600">&quot;Get PCP Who Most Recently Provided Care&quot;</span>.reference
+
+define <span style="color: #AA6600">&quot;Patient General Practitioners&quot;</span>:
+  Patient.generalPractitioner practitioners
+    <span style="color: #008800; font-weight: bold">where</span> practitioners.reference <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
+
+<span style="color: #333333">//</span> NOTE <span style="color: #333333">-</span> <span style="color: #008800; font-weight: bold">using</span> Encounters <span style="color: #008800; font-weight: bold">to</span> determine PCP who most recently provided care
+define <span style="color: #AA6600">&quot;Get PCP Who Most Recently Provided Care&quot;</span>:
+  (
+    [Encounter] Encounters
+      <span style="color: #008800; font-weight: bold">where</span> Encounters.participant <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
+        <span style="color: #008800; font-weight: bold">and</span> Encounters.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;finished&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> Encounters.period during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+          sort <span style="color: #008800; font-weight: bold">by</span> period.<span style="color: #AA6600">&quot;start&quot;</span> <span style="color: #008800; font-weight: bold">desc</span>
+  ) MostRecentEncounters
+      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">First</span>(
+        MostRecentEncounters.participant participants
+          <span style="color: #008800; font-weight: bold">where</span> participants.individual <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
+            <span style="color: #008800; font-weight: bold">and</span> participants.individual.reference <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
+            <span style="color: #008800; font-weight: bold">return</span> participants.individual
+      )
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 2:</span>
+<span style="color: #888888">      Use one medical record to both confirm the diagnosis for the denominator and identify the</span>
+<span style="color: #888888">        representative BP level for the numerator.</span>
+<span style="color: #888888">      TODO - account for cirumstances when 2 records are needed to either confirm the diagnosis or obtain the BP reading</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #333333">//</span> TODO
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Numerator:</span>
+<span style="color: #888888">    The number of members in the denominator whose most recent BP (both systolic and diastolic) is adequately</span>
+<span style="color: #888888">      controlled during the measurement year based on the following criteria:</span>
+<span style="color: #888888">        - Members 18–59 years of age as of December 31 of the measurement year whose BP was &lt;140/90 mm Hg.</span>
+<span style="color: #888888">        - Members 60–85 years of age as of December 31 of the measurement year who were flagged with a</span>
+<span style="color: #888888">          diagnosis of diabetes and whose BP was &lt;140/90 mm Hg.</span>
+<span style="color: #888888">        - Members 60–85 years of age as of December 31 of the measurement year who were flagged as not having</span>
+<span style="color: #888888">          a diagnosis of diabetes and whose BP was &lt;150/90 mm Hg.</span>
+<span style="color: #888888">      To determine if the member’s BP is adequately controlled, the representative BP must be identified.</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 1:</span>
+<span style="color: #888888">    Identify the most recent BP reading noted during the measurement year. The reading must occur after the</span>
+<span style="color: #888888">      date when the diagnosis of hypertension was confirmed.</span>
+<span style="color: #888888">    Do not include BP readings: TODO</span>
+<span style="color: #888888">      - Taken during an acute inpatient stay or an ED visit.</span>
+<span style="color: #888888">      - Taken on the same day as a diagnostic test or diagnostic or therapeutic procedure that requires a</span>
+<span style="color: #888888">        change in diet or change in medication on or one day before the day of the test or procedure, with</span>
+<span style="color: #888888">        the exception of fasting blood tests.</span>
+<span style="color: #888888">      - Reported by or taken by the member.</span>
+<span style="color: #888888">    If multiple readings were recorded for a single date, use the lowest systolic and lowest diastolic BP</span>
+<span style="color: #888888">      on that date as the representative BP. The systolic and diastolic results do not need to be from</span>
+<span style="color: #888888">      the same reading. TODO</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #AA6600">&quot;Most Recent BP Readings&quot;</span>:
+  [Observation: <span style="color: #AA6600">&quot;Blood Pressure&quot;</span>] BPObservation
+    <span style="color: #008800; font-weight: bold">where</span> BPObservation.effective <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+      <span style="color: #008800; font-weight: bold">and</span> (BPObservation.effective <span style="color: #008800; font-weight: bold">as</span> dateTime) <span style="color: #008800; font-weight: bold">after</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">First</span>(<span style="color: #AA6600">&quot;Hypertension Diagnosis&quot;</span>).assertedDate
+        sort <span style="color: #008800; font-weight: bold">by</span> effective <span style="color: #008800; font-weight: bold">desc</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    Step 2:</span>
+<span style="color: #888888">      Determine numerator compliance using the criteria in the Numerator secition above.</span>
+<span style="color: #888888">      The member is not compliant if the BP reading does not meet the specified threshold or is missing,</span>
+<span style="color: #888888">        if there is no BP reading during the measurement year or if the reading is incomplete</span>
+<span style="color: #888888">        (e.g., the systolic or diastolic level is missing).</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">    NOTE</span>
+<span style="color: #888888">    I can imagine a couple of different ways an Observation could represent blood pressure values:</span>
+<span style="color: #888888">      - Observation with a valueRatio (Systolic/Diastolic)</span>
+<span style="color: #888888">      - Observation with component values for Systolic and Diastolic</span>
+<span style="color: #888888">*/</span>
+
+
+
+<span style="color: #888888">/*</span>
+
+<span style="color: #888888">    Helper functions</span>
+
+<span style="color: #888888">*/</span>
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Get Concept from Claim Diagnosis&quot;</span>(value Choice<span style="color: #333333">&lt;</span>FHIR.CodeableConcept, FHIR.Reference<span style="color: #333333">&gt;</span>):
+  if value <span style="color: #008800; font-weight: bold">is</span> FHIR.CodeableConcept
+    <span style="color: #008800; font-weight: bold">then</span> value
+  <span style="color: #008800; font-weight: bold">else</span> (
+    <span style="color: #AA6600">&quot;Diabetes Condition&quot;</span> DC
+      <span style="color: #008800; font-weight: bold">where</span> EndsWith(value.reference, DC.id)
+      <span style="color: #008800; font-weight: bold">return</span> DC.code
+  )
+</pre></div>
