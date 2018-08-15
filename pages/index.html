@@ -33,19 +33,7 @@
 <p>
 	The <a href="{{site.data.fhir.path}}/clinicalreasoning-module.html">Clinical Reasoning module</a> of the FHIR specification defines resources and operations to support decision support and quality measurement.	
 	In particular, FHIR's <a href="{{site.data.fhir.path}}/cqif/cqif-quality-reporting.html">Quality Reporting</a> section describes <a href="{{site.data.fhir.path}}/measure.html">Measure</a> and <a href="{{site.data.fhir.path}}/measurereport.html">MeasureReport</a> resources, which define quality measures and reporting measurement results, including the patient information involved in performing the calculations.</p>
-
-<p>By focusing on the data requirements involved in the calculation of payer quality measures, we can define what are effectively cohort definitions for each measure of interest and use the quality reporting mechanism defined in the Clinical Reasoning module to retrieve the patient information required to support a full calculation of the measure.</p>
-
-<p>The following diagram illustrates the approach:</p>
-
-<img src="payer-extract.png" alt="Payer Extract Approach"/>
-
-<p>
-	The measure processing component turns CQL-based measure definitions into FHIR requests against EHRs.
-	This can be done independently of the content of the measures, so it only has to be developed one time;
-	any measure written in CQL can be evaluated in this way.
-</p>
-
+  
 <a name="measures" style="display:none;">&nbsp;</a>
 <h4>Measures</h4>
 <p>
@@ -57,21 +45,23 @@
 		<tr><th>Measure</th><th>Description</th></tr>
 	</thead>
 	<tbody>
-		<tr><td>ABA</td><td>Adult BMI Assessment</td></tr>
-		<tr><td>ASF</td><td>Unhealthy Alcohol Use Screening and Follow-up</td></tr>
-		<tr><td>BCS</td><td>Breast Cancer Screening</td></tr>
-		<tr><td>CBP</td><td>Controlling High Blood Pressure</td></tr>
-		<tr><td>CCS</td><td>Cervical Cancer Screening</td></tr>
-		<tr><td>CDC</td><td>Comprehensive Diabetes Care</td></tr>
-		<tr><td>COL</td><td>Colorectal Cancer Screening</td></tr>
-		<tr><td>DMS</td><td>Utilization of the PHQ-9 to Monitor Depression Symptoms for Adolescents and Adults</td></tr>
-		<tr><td>DRR</td><td>Depression Remission or Response for Adolescents and Adults</td></tr>
-		<tr><td>DSF</td><td>Depression Screening and Follow-Up for Adolescents and Adults</td></tr>
-		<tr><td>MRP</td><td>Medication Reconciliation Post Discharge</td></tr>
-		<tr><td>PVS</td><td>Pneumococcal Vaccination Status of Older Adults</td></tr>
+		<tr><td>ABA</td><td>Adult BMI Assessment<br /><a href="Measure-measure-wcc-aba.html">Measure</a>&nbsp;<a href="cql/dstu2/wcc-aba-logic.cql">CQL</a>&nbsp;<a href="Library-library-wcc-aba-logic.html">Library</a></td></tr>
+		<tr><td>ASF</td><td>Unhealthy Alcohol Use Screening and Follow-up<br /><a href="Measure-measure-asf.html">Measure</a>&nbsp;<a href="cql/stu3/asf-logic.cql">CQL</a>&nbsp;<a href="Library-library-asf-logic.html">Library</a></td></tr>
+		<tr><td>BCS</td><td>Breast Cancer Screening<br /><a href="Measure-measure-bcs.html">Measure</a>&nbsp;<a href="cql/stu3/bcs-logic.cql">CQL</a>&nbsp;<a href="Library-library-bcs-logic.html">Library</a></td></tr>
+		<tr><td>CBP</td><td>Controlling High Blood Pressure<br /><a href="Measure-measure-cbp.html">Measure</a>&nbsp;<a href="cql/dstu2/cbp-logic.cql">CQL</a>&nbsp;<a href="Library-library-cbp-logic.html">Library</a></td></tr>
+		<tr><td>CCS</td><td>Cervical Cancer Screening<br /><a href="Measure-measure-ccs.html">Measure</a>&nbsp;<a href="cql/stu3/ccs-logic.cql">CQL</a>&nbsp;<a href="Library-library-ccs-logic.html">Library</a></td></tr>
+		<tr><td>CDC</td><td>Comprehensive Diabetes Care<br /><a href="Measure-measure-cdc.html">Measure</a>&nbsp;<a href="cql/dstu2/cdc-logic.cql">CQL</a>&nbsp;<a href="Library-library-cdc-logic.html">Library</a></td></tr>
+		<tr><td>COL</td><td>Colorectal Cancer Screening<br /><a href="Measure-measure-col.html">Measure</a>&nbsp;<a href="cql/stu3/col-logic.cql">CQL</a>&nbsp;<a href="Library-library-col-logic.html">Library</a></td></tr>
+		<tr><td>DMS</td><td>Utilization of the PHQ-9 to Monitor Depression Symptoms for Adolescents and Adults<br /><a href="Measure-measure-dms.html">Measure</a>&nbsp;<a href="cql/stu3/dms-logic.cql">CQL</a>&nbsp;<a href="Library-library-dms-logic.html">Library</a></td></tr>
+		<tr><td>DRR</td><td>Depression Remission or Response for Adolescents and Adults<br /><a href="Measure-measure-drr.html">Measure</a>&nbsp;<a href="cql/stu3/drr-logic.cql">CQL</a>&nbsp;<a href="Library-library-drr-logic.html">Library</a></td></tr>
+		<tr><td>DSF</td><td>Depression Screening and Follow-Up for Adolescents and Adults<br /><a href="Measure-measure-dsf.html">Measure</a>&nbsp;<a href="cql/stu3/dsf-logic.cql">CQL</a>&nbsp;<a href="Library-library-dsf-logic.html">Library</a></td></tr>
+		<tr><td>MRP</td><td>Medication Reconciliation Post Discharge<br /><a href="Measure-measure-mrp.html">Measure</a>&nbsp;<a href="cql/stu3/mrp-logic.cql">CQL</a>&nbsp;<a href="Library-library-mrp-logic.html">Library</a></td></tr>
+		<tr><td>PVS</td><td>Pneumococcal Vaccination Status of Older Adults<br /><a href="Measure-measure-pvs.html">Measure</a>&nbsp;<a href="cql/stu3/pvs-logic.cql">CQL</a>&nbsp;<a href="Library-library-pvs-logic.html">Library</a></td></tr>
 	</tbody>
 </table>
 
+<a name="profiles" style="display:none;">&nbsp;</a>
+<h4>Profiles</h4>
 <p>The following profiles were derived from <a href="http://hl7.org/fhir/us/qicore" target="_blank">QI Core</a>, a U.S. Realm Specification with support from the <a href="https://oncprojectracking.healthit.gov/wiki/display/TechLabSC/CQF+Home" target="_blank">Clinical Quality Framework (CQF) initiative</a>, in order to support the expression of HEDIS measures in FHIR:</p>
 
 <table class="grid">
@@ -82,6 +72,11 @@
 		{% include table-profiles.xhtml %}
 	</tbody>
 </table>
+
+<a name="implementation" style="display:none;">&nbsp;</a>
+<h4>Implementation</h4>
+
+<p>For detailed documentation on the implementation of quality measure evaluation using the measure resources provided in this implementation guide, refer to the <a href="implementation-documentation.html">Implementation Documentation</a></p>
 
 <a name="testdata" style="display:none;">&nbsp;</a>
 <h4>Test Data</h4>
