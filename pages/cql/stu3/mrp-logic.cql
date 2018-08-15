@@ -2,48 +2,53 @@
 Medication reconciliation postdischarge (MRP)
 */
 
-library MRP_FHIR
+library MRP_FHIR version '1.0.000'
 
 using FHIR version '3.0.0'
 
-codesystem SNOMED: 'http://snomed.info/sct'
-codesystem CPT: 'http://www.ama-assn.org/go/cpt'
+include FHIRHelpers version '3.0.0'
 
-valueset "Inpatient Encounter": 'http://ncqa.org/hedis/ValueSet/inpatientvalueset' // SNOMED
-valueset "Medication Reconciliation Value Set": 'http://ncqa.org/hedis/ValueSet/hedismedrecvalueset' // CPT
+// Use http://fhir.ext.apelon.com/dtsserverws/fhir to evaluate, but these are the canonical urls
+valueset "Inpatient Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.307' // In VSAC
+valueset "Medication Reconciliation Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1174' // HEDIS IG?
 
-code "Drug rehabilitation and detoxification": '56876005' from SNOMED
-code "Medication reconciliation postdischarge": '1111F' from CPT
+// Prescribing Practitioner, Clinical Pharmacist or Registered Nurse
+// http://hl7.org/fhir/v2/0360/2.7/index.html { CNP, CRN, DO, MD, NP, PharmD, RN, RPH }
+valueset "Valid Medication Reconciliation Performer Qualifications": 'http://ncqa.org/hedis/ValueSet/hedis-med-rec-practitioner'
 
 parameter "Measurement Period" default Interval[@2018-01-01T00:00, @2019-01-01T00:00)
 
 context Patient
 
-define "Initial Population":
-    AgeInYearsAt(end of "Measurement Period") >= 18
-
 define Encounters:
-  // TODO: debug this, should be a value set reference
-  [Encounter: "Drug rehabilitation and detoxification"] E
-    // where E.period."end" during "Measurement Period" TODO: debug this
+  [Encounter: "Inpatient Encounter"] E
+    where E.period ends during Interval[start of "Measurement Period", end of "Measurement Period" - 30 days]
+
+define "Initial Population":
+  Encounters E
+    where AgeInYearsAt(end of "Measurement Period") >= 18
 
 define Denominator:
-  exists (Encounters)
+  true
   
-define Procedures:
-  [Procedure: "Medication reconciliation postdischarge"]
+define Practitioners:
+  [Practitioner] P
+    where P.active
+      and exists (P.qualification Q where Q.code in "Valid Medication Reconciliation Performer Qualifications")
+  
+define Tasks:
+  [Task: "Medication Reconciliation Value Set"] T
+    where T.intent = 'order'
+      and T.status = 'completed'
+      and exists (Practitioners P where EndsWith(T.owner.reference, P.id))
+      
+define Observations:
+  [Observation: "Medication Reconciliation Value Set"] O
+    where O.status in { 'final', 'amended', 'corrected' }
+      and exists (Practitioners P where EndsWith(O.performer[0].reference, P.id))
 
 define Numerator:
-  exists (
-    Encounters E 
-      with Procedures P 
-        such that P.performed."end".value before E.period."end".value + 30 days
-  )
-
-//define TestEncounters: First(Encounters E return E.period."end".value)
-//define TestProcedures: First(Procedures P return P.performed."end".value)
-
-// TODO: debug this, should be able to say 30 days or less after...
-//define TestCondition: TestProcedures before TestEncounters + 30 days
-  
+  Encounters E 
+    where exists (Tasks T where FHIRHelpers.ToInterval(T.executionPeriod) during Interval[E.period."end", E.period."end" + 30 days])
+      or exists (Observations O where O.effective during Interval[E.period."end", E.period."end" + 30 days])
 

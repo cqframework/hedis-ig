@@ -5,48 +5,82 @@
     "versionId": "1",
     "lastUpdated": "2018-06-01T16:03:22.000+00:00"
   },
-  "text": {
-    "status": "generated"
-  },
-  "identifier": [
-    {
-      "use": "official",
-      "system": "http://hl7.org/fhir/cqi/ecqm/Measure/Identifier/payer-extract",
-      "value": "MRP"
-    }
-  ],
-  "version": "1.0.0",
-  "title": "Medication Reconciliation Post-Discharge Cohort Definition",
+  "url": "http://hl7.org/fhir/us/hedis/Measure/measure-mrp",
+  "identifier": [{
+    "system": "http://ncqa.org/hedis/identifiers",
+    "value": "MRP"
+  }],
+  "version": "1.0.000",
+  "name": "MRP_FHIR",
+  "title": "30-Day Medication Reconciliation Post-Discharge",
   "status": "active",
   "experimental": true,
   "date": "2015-03-08",
-  "description": "Medication Reconciliation Post-Discharge Cohort Definition",
-  "topic": [
-    {
-      "coding": [
-        {
+  "publisher": "National Committee for Quality Assurance",
+  "description": "Proportion of discharges with a medication reconciliation followup within 30 days of discharge.",
+  "approvalDate": "2018-08-14",
+  "lastReviewDate": "2018-08-14",
+  "effectivePeriod": {
+    "start": "2018-01-01",
+    "end": "2018-12-31"
+  },
+  "jurisdiction": [{
+    "coding": [{
+      "system": "urn:iso:std:iso:3166",
+      "code": "US",
+      "display": "United States of America (the)"
+    }],
+    "text": "United States of America (the)"
+  }],
+  "topic": [{
+      "coding": [{
           "system": "http://hl7.org/fhir/c80-doc-typecodes",
           "code": "57024-2"
-        }
-      ]
-    }
-  ],
-  "library": [
-    {
-      "reference": "Library/library-mrp-logic"
-    }
-  ],
-  "scoring": {
-    "coding": [
-      {
-        "code": "proportion"
-      }
-    ]
+        }]
+  }],
+  "contributor": [{
+    "type": "author",
+    "name": "National Committee for Quality Assurance"
+  }],
+  "contact": {
+    "telecom": [{
+      "system": "url",
+      "value": "http://ncqa.org"
+    }]
   },
+  "copyright": "HEDIS® is a registered trademark of the National Committee for Quality Assurance (NCQA). The HEDIS measures and specifications were developed by and are owned by the National Committee for Quality Assurance (“NCQA”). NCQA holds a copyright in the HEDIS measures and specifications and may rescind or alter these measures and specifications at any time. Users of the HEDIS measures and specifications shall not have the right to alter, enhance or otherwise modify the HEDIS measures and specifications, and shall not disassemble, recompile or reverse engineer the HEDIS measures and specifications. Anyone desiring to use or reproduce the materials without modification for a non-commercial purpose may do so without obtaining any approval from NCQA. All commercial uses or requests for alteration of the HEDIS measures and specifications must be approved by NCQA and are subject to a license at the discretion of NCQA.
+
+HEDIS measures and specifications are not clinical guidelines, do not establish a standard of medical care and have not been tested for all potential applications. The measures and specifications are provided “as is” without warranty of any kind. NCQA makes no representations, warranties or endorsements about the quality of any product, test or protocol identified as numerator compliant or otherwise identified as meeting the requirements of a HEDIS measure or specification. NCQA also makes no representations, warranties or endorsements about the quality of any organization or clinician who uses or reports performance measures. NCQA has no liability to anyone who relies on HEDIS measures and specifications or data reflective of performance under such measures and specifications.
+
+No measure rate resulting from calculations based on the HEDIS specifications may be called a HEDIS rate until it is audited and approved by an NCQA-certified HEDIS auditor. Until NCQA has approved a validation process and validates a calculated measure rate, users must prominently display a disclaimer near each uncertified calculated rate. Henceforth in this publication and in any other NCQA publication, “HEDIS measure” refers to the specifications and “HEDIS data” refers to and assumes data audited by an NCQA-certified auditor.
+
+Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. NCQA disclaims all liability for use or accuracy of any coding contained in the specifications.
+
+The American Medical Association holds a copyright to the CPT® codes contained in the measures specifications.
+
+Some measure specifications contain coding from LOINC® ([http://loinc.org](http://loinc.org)). The LOINC table, LOINC codes, LOINC panels and form file, LOINC linguistic variants file, LOINC/RSNA Radiology Playbook, and LOINC/IEEE Medical Device Code Mapping Table are copyright © 1995–2017, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the license at [http://loinc.org/terms-of-use](http://loinc.org/terms-of-use).
+
+No part of this publication may be reproduced or transmitted in any form or by any means, electronic or mechanical, including photocopy, recording or any information storage and retrieval system, without the written permission of NCQA.
+
+© 2018 by the National Committee for Quality Assurance, all rights reserved.",
+  "library": [{
+      "reference": "http://hl7.org/fhir/us/hedis/Library/library-mrp-logic"
+  }],
+  "scoring": {
+    "coding": [{
+        "code": "proportion"
+      }]
+  },
+  "type": [{
+    "coding": [{
+      "code": "process"
+    }]
+  }],
+  "improvementNotation": "increase",
   "group": [
     {
       "identifier": {
-        "value": "MRP-cohort"
+        "value": "main-group"
       },
       "population": [
         {
