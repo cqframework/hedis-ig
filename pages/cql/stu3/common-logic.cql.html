@@ -59,15 +59,6 @@ define <span style="color: #AA6600">&quot;Is Living Long Term in Institution&quo
     <span style="color: #333333">//</span>    LongTermPerformed.relevantPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
     <span style="color: #333333">//</span>)
 
-define <span style="color: #AA6600">&quot;Is Age 65 Plus at Start&quot;</span>:
-  CalendarAgeInYearsAt(Patient.birthDate, <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)<span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">65</span>
-
-define <span style="color: #AA6600">&quot;Lookback Interval Four More Years&quot;</span>:
-  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">4</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>]
-
-define <span style="color: #AA6600">&quot;Lookback Interval Two More Years&quot;</span>:
-  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>]
-
 <span style="color: #888888">/*This is the standard NCQA Hospice exclusion logic from 3.6.2018*/</span>
 define <span style="color: #AA6600">&quot;Has Hospice&quot;</span>:
   <span style="color: #008800; font-weight: bold">exists</span> ( [<span style="color: #AA6600">&quot;Encounter&quot;</span>: <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>] DischargeHospice
@@ -91,159 +82,34 @@ define <span style="color: #AA6600">&quot;Has Hospice&quot;</span>:
     <span style="color: #333333">//</span>    <span style="color: #008800; font-weight: bold">where</span> HospicePerformed.relevantPeriod <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
     <span style="color: #333333">//</span>)
 
-<span style="color: #333333">//</span> TODO: <span style="color: #008800; font-weight: bold">From</span> a QDM perspective, these really ought <span style="color: #008800; font-weight: bold">to</span> just be Participation, <span style="color: #008800; font-weight: bold">right</span><span style="color: #333333">?</span> There<span style="background-color: #fff0f0">&#39;s no need for this characteristic anymore?</span>
-<span style="background-color: #fff0f0">//define &quot;Is Medicaid&quot;:</span>
-<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Medicaid&quot;] )</span>
+<span style="color: #888888">/*ToDate takes a given DateTime value and returns a DateTime with the time components &quot;zeroed&quot;, and the timezone of the input value, for example */</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;ToDate&quot;</span>(Value DateTime ):
+  DateTime(<span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">month</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, timezone <span style="color: #008800; font-weight: bold">from</span> Value)
 
-<span style="background-color: #fff0f0">//define &quot;Is Commercial&quot;:</span>
-<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Commercial&quot;] )</span>
+<span style="color: #888888">/*CalendarAgeInDaysAt calculates the calendar age (meaning the age without considering time components) in days*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInDaysAt&quot;</span>(BirthDateTime DateTime, AsOf DateTime ):
+  days <span style="color: #008800; font-weight: bold">between</span> ToDate(BirthDateTime)<span style="color: #008800; font-weight: bold">and</span> ToDate(AsOf)
 
-<span style="background-color: #fff0f0">//define &quot;Is Medicare&quot;:</span>
-<span style="background-color: #fff0f0">//  exists ( [&quot;Patient Characteristic Payer&quot;: &quot;Medicare&quot;] )</span>
+<span style="color: #888888">/*CalendarAgeInDays calculates the calendar age (meaning the age without considering time components) in days as of today*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInDays&quot;</span>(BirthDateTime DateTime ):
+  CalendarAgeInDaysAt(BirthDateTime, Today())
 
-<span style="background-color: #fff0f0">define &quot;Medicaid Product&quot;:</span>
-<span style="background-color: #fff0f0">  &#39;</span>medicaid<span style="background-color: #fff0f0">&#39;</span>
+<span style="color: #888888">/*CalendarAgeInMonthsAt calculates the calendar age (meaning the age without considering time components) in months*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInMonthsAt&quot;</span>(BirthDateTime DateTime, AsOf DateTime ):
+  months <span style="color: #008800; font-weight: bold">between</span> ToDate(BirthDateTime)<span style="color: #008800; font-weight: bold">and</span> ToDate(AsOf)
 
-<span style="background-color: #fff0f0">define &quot;Commercial Product&quot;:</span>
-<span style="background-color: #fff0f0">  &#39;</span>commercial<span style="background-color: #fff0f0">&#39;</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInMonths&quot;</span>(BirthDateTime DateTime ):
+  CalendarAgeInMonthsAt(BirthDateTime, Today())
 
-<span style="background-color: #fff0f0">define &quot;Medicare Product&quot;:</span>
-<span style="background-color: #fff0f0">  &#39;</span>medicare<span style="background-color: #fff0f0">&#39;</span>
+<span style="color: #888888">/*calculates the difference in calendar days between the start and end of the given interval*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;LengthInDays&quot;</span>(Value <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
+  difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Value <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Value
 
-<span style="background-color: #fff0f0">define &quot;Is Enrolled Commercial&quot;:</span>
-<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Commercial Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Commercial Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Commercial Product&quot;)</span>
+<span style="color: #888888">/*CalendarAgeInYearsAt calculates the calendar age (meaning the age without considering time components) in years*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInYearsAt&quot;</span>(BirthDateTime DateTime, AsOf DateTime ):
+  years <span style="color: #008800; font-weight: bold">between</span> ToDate(BirthDateTime)<span style="color: #008800; font-weight: bold">and</span> ToDate(AsOf)
 
-<span style="background-color: #fff0f0">define &quot;Is Enrolled Medicaid&quot;:</span>
-<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Medicaid Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Medicaid Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Medicaid Product&quot;)</span>
-
-<span style="background-color: #fff0f0">define &quot;Is Enrolled Medicare&quot;:</span>
-<span style="background-color: #fff0f0">  &quot;Is Continuously Enrolled One Year&quot;(&quot;Medicare Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled Two Years&quot;(&quot;Medicare Product&quot;)</span>
-<span style="background-color: #fff0f0">    or &quot;Is Continuously Enrolled for Twenty Seven Months&quot;(&quot;Medicare Product&quot;)</span>
-
-<span style="background-color: #fff0f0">define &quot;First Predecessor Year&quot;:</span>
-<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 1 year, start of &quot;Measurement Period&quot; )</span>
-
-<span style="background-color: #fff0f0">define &quot;Second Predecessor Quarter&quot;:</span>
-<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 1 years - 3 months, start of &quot;Measurement Period&quot; - 1 year )</span>
-
-<span style="background-color: #fff0f0">define &quot;Second Predecessor Year&quot;:</span>
-<span style="background-color: #fff0f0">  Interval[start of &quot;Measurement Period&quot; - 2 years, start of &quot;Measurement Period&quot; - 1 year )</span>
-
-<span style="background-color: #fff0f0">/*ToDate takes a given DateTime value and returns a DateTime with the time components &quot;zeroed&quot;, and the timezone of the input value, for example */</span>
-<span style="background-color: #fff0f0">define function &quot;ToDate&quot;(Value DateTime ):</span>
-<span style="background-color: #fff0f0">  DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)</span>
-
-<span style="background-color: #fff0f0">/*CalendarAgeInDaysAt calculates the calendar age (meaning the age without considering time components) in days*/</span>
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInDaysAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
-<span style="background-color: #fff0f0">  days between ToDate(BirthDateTime)and ToDate(AsOf)</span>
-
-<span style="background-color: #fff0f0">/*CalendarAgeInDays calculates the calendar age (meaning the age without considering time components) in days as of today*/</span>
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInDays&quot;(BirthDateTime DateTime ):</span>
-<span style="background-color: #fff0f0">  CalendarAgeInDaysAt(BirthDateTime, Today())</span>
-
-<span style="background-color: #fff0f0">/*CalendarAgeInMonthsAt calculates the calendar age (meaning the age without considering time components) in months*/</span>
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInMonthsAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
-<span style="background-color: #fff0f0">  months between ToDate(BirthDateTime)and ToDate(AsOf)</span>
-
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInMonths&quot;(BirthDateTime DateTime ):</span>
-<span style="background-color: #fff0f0">  CalendarAgeInMonthsAt(BirthDateTime, Today())</span>
-
-<span style="background-color: #fff0f0">/*calculates the difference in calendar days between the start and end of the given interval*/</span>
-<span style="background-color: #fff0f0">define function &quot;LengthInDays&quot;(Value Interval&lt;DateTime&gt; ):</span>
-<span style="background-color: #fff0f0">  difference in days between start of Value and end of Value</span>
-
-<span style="background-color: #fff0f0">/*CalendarAgeInYearsAt calculates the calendar age (meaning the age without considering time components) in years*/</span>
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInYearsAt&quot;(BirthDateTime DateTime, AsOf DateTime ):</span>
-<span style="background-color: #fff0f0">  years between ToDate(BirthDateTime)and ToDate(AsOf)</span>
-
-<span style="background-color: #fff0f0">/*CalendarAgeInYears calculates the calendar age (meaning the age without considering time components) in years as of today */</span>
-<span style="background-color: #fff0f0">define function &quot;CalendarAgeInYears&quot;(BirthDateTime DateTime ):</span>
-<span style="background-color: #fff0f0">  CalendarAgeInYearsAt(BirthDateTime, Today())</span>
-
-<span style="background-color: #fff0f0">define function &quot;Enrollment Periods&quot;(ProductLine String ):</span>
-<span style="background-color: #fff0f0">  collapse ( ( case ProductLine </span>
-<span style="background-color: #fff0f0">        when &quot;Commercial Product&quot; then [&quot;Coverage&quot;: &quot;Commercial&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
-<span style="background-color: #fff0f0">        when &quot;Medicare Product&quot; then [&quot;Coverage&quot;: &quot;Medicare&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
-<span style="background-color: #fff0f0">        when &quot;Medicaid Product&quot; then [&quot;Coverage&quot;: &quot;Medicaid&quot;] C where C.status = &#39;</span>active<span style="background-color: #fff0f0">&#39;</span>
-<span style="background-color: #fff0f0">        else [&quot;Coverage&quot;: &quot;NCQA Payer&quot;] C where C.status = &#39;</span>active<span style="color: #FF0000; background-color: #FFAAAA">&#39;</span>
-      <span style="color: #008800; font-weight: bold">end</span> 
-    ) Coverage
-      <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">all</span> Coverage.period
-  )
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment in Quarter&quot;</span>(ProductLine String, Quarter <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
-  ( <span style="color: #FF0000; background-color: #FFAAAA">{</span>
-    ProductLine: ProductLine,
-    Quarter: Quarter
-  <span style="color: #FF0000; background-color: #FFAAAA">}</span> ) <span style="color: #008800; font-weight: bold">Input</span>
-    let Periods: <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(<span style="color: #008800; font-weight: bold">Input</span>.ProductLine, <span style="color: #008800; font-weight: bold">Input</span>.Quarter)
-    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">Count</span>(Periods)<span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>
-      <span style="color: #008800; font-weight: bold">and</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">=</span> Quarter
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(ProductLine String, <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
-  (<span style="color: #AA6600">&quot;Enrollment Periods&quot;</span>(ProductLine)) EnrP
-    <span style="color: #008800; font-weight: bold">where</span> EnrP <span style="color: #008800; font-weight: bold">overlaps</span> <span style="color: #008800; font-weight: bold">Year</span>
-    <span style="color: #008800; font-weight: bold">return</span> EnrP <span style="color: #008800; font-weight: bold">intersect</span> <span style="color: #008800; font-weight: bold">Year</span>
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine String ):
-  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
-    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>)
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine String ):
-  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
-    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>)
-    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Second Predecessor Year&quot;</span>)
-    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment in Quarter&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Second Predecessor Quarter&quot;</span>)
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is In Applicable Product Line&quot;</span>(ProductLine String ):
-  <span style="color: #008800; font-weight: bold">case</span> 
-    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> ) <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span> 
-    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Commercial Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
-      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
-    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Medicaid Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
-      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
-    <span style="color: #008800; font-weight: bold">when</span> ( ProductLine <span style="color: #333333">~</span> <span style="color: #AA6600">&quot;Medicare Product&quot;</span> ) <span style="color: #008800; font-weight: bold">then</span> 
-      <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled for Twenty Seven Months&quot;</span>(ProductLine)
-        <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled Two Years&quot;</span>(ProductLine)
-    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span> 
-  <span style="color: #008800; font-weight: bold">end</span>
-
-  <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">and</span>  (if <span style="color: #AA6600">&quot;Is Age 65 Plus at Start&quot;</span> <span style="color: #008800; font-weight: bold">then</span> ( <span style="color: #AA6600">&quot;Is Enrolled in Institutional SNP&quot;</span>
-  <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Living Long Term in Institution&quot;</span>
-  <span style="color: #333333">//</span>) <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>
-  <span style="color: #333333">//</span>)
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled One Year&quot;</span>(ProductLine String ):
-  <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine, <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
-
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuous Enrollment In Year&quot;</span>(ProductLine String, <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span> ):
-  ( <span style="color: #FF0000; background-color: #FFAAAA">{</span>
-    ProductLine: ProductLine,
-    <span style="color: #008800; font-weight: bold">Year</span>: <span style="color: #008800; font-weight: bold">Year</span>
-  <span style="color: #FF0000; background-color: #FFAAAA">}</span> ) <span style="color: #008800; font-weight: bold">Input</span>
-    let Periods: <span style="color: #AA6600">&quot;EnrollmentPeriodsInYear&quot;</span>(<span style="color: #008800; font-weight: bold">Input</span>.ProductLine, <span style="color: #008800; font-weight: bold">Input</span>.<span style="color: #008800; font-weight: bold">Year</span>)
-    <span style="color: #008800; font-weight: bold">return</span> 
-      <span style="color: #008800; font-weight: bold">case</span> <span style="color: #008800; font-weight: bold">Count</span>(Periods)
-        <span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">then</span> ( ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">Year</span>
-            <span style="color: #008800; font-weight: bold">and</span> ( ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">Year</span> ) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
-          )
-          <span style="color: #008800; font-weight: bold">or</span> ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] ends <span style="color: #008800; font-weight: bold">Year</span>
-            <span style="color: #008800; font-weight: bold">and</span> ( ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #008800; font-weight: bold">Year</span> ) <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
-          )
-        ) 
-        <span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #008800; font-weight: bold">then</span> ( Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">Year</span> <span style="color: #008800; font-weight: bold">and</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>] ends <span style="color: #008800; font-weight: bold">Year</span>
-          <span style="color: #008800; font-weight: bold">and</span> ( difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">45</span> )
-        ) 
-        <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span> 
-      <span style="color: #008800; font-weight: bold">end</span>
+<span style="color: #888888">/*CalendarAgeInYears calculates the calendar age (meaning the age without considering time components) in years as of today */</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;CalendarAgeInYears&quot;</span>(BirthDateTime DateTime ):
+  CalendarAgeInYearsAt(BirthDateTime, Today())
 </pre></div>

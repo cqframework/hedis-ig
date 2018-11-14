@@ -1,0 +1,34 @@
+{
+  "resourceType": "ValueSet",
+  "id": "ncqa-payer",
+	"extension": [
+		{
+			"url": "http://hl7.org/fhir/StructureDefinition/valueset-comment",
+			"extension": [
+				{
+					"url": "content",
+					"valueString": "Note that the use of the valueSet element in the include does not work with a valueset specified as an OID, so it is deliberately omitted (specified as valueset instead of valueSet in the source json for the resource)."
+				}
+			]
+		}
+	],
+  "url": "http://hl7.org/fhir/us/hedis/ValueSet/ncqa-payer",
+	"identifier": [
+		{
+			"system": "urn:ietf:rfc:3986",
+			"value": "2.16.840.1.113762.1.4.1165.42"
+		}
+	],
+	"name": "NCQAPayer",
+	"status": "draft",
+	"description": "NCQA Payers, including commercial, medicare, and medicaid payer codes",
+  "compose": {
+    "include": [
+      {
+				"valueset": [
+					"urn:oid:2.16.840.1.113762.1.4.1165.42"
+				]
+      }
+    ]
+  }
+}

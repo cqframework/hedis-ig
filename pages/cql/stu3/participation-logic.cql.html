@@ -1,0 +1,211 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library Participation <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> FHIRHelpers
+
+valueset <span style="color: #AA6600">&quot;NCQA Payer&quot;</span>: <span style="background-color: #fff0f0">&#39;http://hl7.org/fhir/us/hedis/ValueSet/ncqa-payer&#39;</span> <span style="color: #333333">//</span><span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.42&#39;</span>
+valueset <span style="color: #AA6600">&quot;Commercial&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.46&#39;</span>
+valueset <span style="color: #AA6600">&quot;Medicaid&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.45&#39;</span>
+valueset <span style="color: #AA6600">&quot;Medicare&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1165.44&#39;</span>
+
+context Patient
+
+define <span style="color: #AA6600">&quot;Medicaid Product&quot;</span>:
+	<span style="background-color: #fff0f0">&#39;medicaid&#39;</span>
+
+define <span style="color: #AA6600">&quot;Commercial Product&quot;</span>:
+	<span style="background-color: #fff0f0">&#39;commercial&#39;</span>
+
+define <span style="color: #AA6600">&quot;Medicare Product&quot;</span>:
+	<span style="background-color: #fff0f0">&#39;medicare&#39;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">  Report in the product line based on which product they are enrolled in at a given date</span>
+<span style="color: #888888">	(generally the end of the measurement period) but continuous enrollment calculations</span>
+<span style="color: #888888">	should consider all participation periods, regardless of product</span>
+<span style="color: #888888">	</span>
+<span style="color: #888888">	Input parameters:</span>
+<span style="color: #888888">		Product Line: The product line being reported</span>
+<span style="color: #888888">		Index Date: Generally measurement period, but could be tied to an event</span>
+<span style="color: #888888">		Participation Period: Generally one year, two years, or twenty seven months, but could be based on an event</span>
+<span style="color: #888888">		Allowed Gap Days: Generally 45 days, but could be 0</span>
+<span style="color: #888888">		</span>
+<span style="color: #888888">	Example 1 - One year continuously enrolled</span>
+<span style="color: #888888">		&quot;Is Enrolled&quot;(ProductLine, end of &quot;Measurement Period&quot;, &quot;Measurement Period&quot;, 45)</span>
+<span style="color: #888888">		</span>
+<span style="color: #888888">	Example 2 - Two years continuously enrolled</span>
+<span style="color: #888888">	  &quot;Is Enrolled&quot;(ProductLine, end of &quot;Measurement Period&quot;, Interval[start of &quot;Measurement Period&quot; - 1 year, end of &quot;Measurement Period&quot;], 45)</span>
+<span style="color: #888888">		</span>
+<span style="color: #888888">	Example 3 - Twenty seven months continuously enrolled</span>
+<span style="color: #888888">		&quot;Is Enrolled&quot;(ProductLine, end of &quot;Measurement Period&quot;, Interval[start of &quot;Measurement Period&quot; - 2 years - 3 months, end of &quot;Measurement Period&quot;], 45)</span>
+<span style="color: #888888">		</span>
+<span style="color: #888888">	Example 4 - Continuously enrolled surrounding an index event such as a heart attack</span>
+<span style="color: #888888">		&quot;Is Enrolled&quot;(ProductLine, &quot;Date of Heart Attack&quot;, Interval[&quot;Date of Heart Attack&quot;, &quot;Date of Heart Attack&quot; + 18 months], 45)</span>
+<span style="color: #888888">		</span>
+<span style="color: #888888">	Example 5 - Continuously enrolled with no gaps during the 9 months prior to a birth and for the following year, allowing for a gap</span>
+<span style="color: #888888">	  &quot;Is Enrolled&quot;(ProductLine, &quot;Date Of Delivery&quot;, Interval[&quot;Date Of Delivery&quot; - 9 months, &quot;Date Of Delivery&quot;], 0)</span>
+<span style="color: #888888">		  and &quot;Is Enrolled&quot;(ProductLine, &quot;Date Of Delivery&quot;, Interval[&quot;Date Of Delivery&quot;, &quot;Date Of Delivery&quot; + 1 year], 45)</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Enrolled&quot;</span>(ProductLine String, IndexDate DateTime, ParticipationPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>, AllowedGapDays <span style="color: #007020">Integer</span>):
+	<span style="color: #008800; font-weight: bold">case</span>
+		<span style="color: #333333">//</span> If this <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> running <span style="color: #008800; font-weight: bold">for</span> a <span style="color: #008800; font-weight: bold">specific</span> product line, <span style="color: #008800; font-weight: bold">ignore</span> enrollment considerations
+		<span style="color: #008800; font-weight: bold">when</span> ProductLine <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
+		<span style="color: #008800; font-weight: bold">else</span>
+			<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Is</span> the patient enrolled <span style="color: #008800; font-weight: bold">in</span> the given product line <span style="color: #008800; font-weight: bold">on</span> the given <span style="color: #008800; font-weight: bold">index</span> <span style="color: #007020">date</span><span style="color: #333333">?</span>
+			<span style="color: #AA6600">&quot;Is Enrolled On Date&quot;</span>(ProductLine, IndexDate)
+			<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Is</span> the patient continuously enrolled <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">every</span> <span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">of</span> the participation period
+			  <span style="color: #008800; font-weight: bold">and</span> AllTrue(
+						(<span style="color: #AA6600">&quot;Enrollment Periods&quot;</span>(ParticipationPeriod)) EnrollmentPeriod
+							<span style="color: #008800; font-weight: bold">return</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled In Period&quot;</span>(EnrollmentPeriod, if duration <span style="color: #008800; font-weight: bold">in</span> months <span style="color: #008800; font-weight: bold">of</span> EnrollmentPeriod <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">6</span> <span style="color: #008800; font-weight: bold">then</span> AllowedGapDays <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+					)
+	<span style="color: #008800; font-weight: bold">end</span>
+	
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Returns all Commercial, Medicaid, and Medicare participation for the patient</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Participation&quot;</span>:
+  [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Commercial&quot;</span>]
+	  <span style="color: #008800; font-weight: bold">union</span> [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Medicaid&quot;</span>]
+		<span style="color: #008800; font-weight: bold">union</span> [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Medicare&quot;</span>]
+	
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Enrolled On Date&quot;</span>(ProductLine String, IndexDate DateTime):
+  <span style="color: #008800; font-weight: bold">exists</span> (
+		(
+			<span style="color: #008800; font-weight: bold">case</span> ProductLine
+			  <span style="color: #008800; font-weight: bold">when</span> <span style="color: #AA6600">&quot;Commercial Product&quot;</span> <span style="color: #008800; font-weight: bold">then</span> [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Commercial&quot;</span>]
+				<span style="color: #008800; font-weight: bold">when</span> <span style="color: #AA6600">&quot;Medicare Product&quot;</span> <span style="color: #008800; font-weight: bold">then</span> [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Medicare&quot;</span>]
+				<span style="color: #008800; font-weight: bold">when</span> <span style="color: #AA6600">&quot;Medicaid Product&quot;</span> <span style="color: #008800; font-weight: bold">then</span> [<span style="color: #AA6600">&quot;Coverage&quot;</span>: <span style="color: #008800; font-weight: bold">type</span> <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Medicaid&quot;</span>]
+				<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">null</span>
+			<span style="color: #008800; font-weight: bold">end</span>
+		) P
+			<span style="color: #008800; font-weight: bold">where</span> IndexDate during P.period
+	)
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Returns enrollment periods of up to a year ending at the end of the participation period.</span>
+<span style="color: #888888">Note that this will not return more than 3 years (would need the expand from 1.3 to support more generally)</span>
+
+<span style="color: #888888">For example, given the following participation period:</span>
+
+<span style="color: #888888">        10/1/16 1/1/17       1/1/18      12/31/18</span>
+<span style="color: #888888">            [---||------------||------------]</span>
+
+<span style="color: #888888">The function will return the following enrollment periods:</span>
+
+<span style="color: #888888">            [---][------------][------------]</span>
+<span style="color: #888888">						</span>
+<span style="color: #888888">In values:</span>
+<span style="color: #888888">Participation Period: Interval[@2016-10-01, @2018-12-31]</span>
+<span style="color: #888888">Enrollment Periods: { Interval[@2016-10-01, @2016-12-31], Interval[@2017-01-01, @2017-12-31] Interval[@2018-01-01, @2018-12-31] }</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Enrollment Periods&quot;</span>(ParticipationPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>):
+  ( <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="color: #0000DD; font-weight: bold">3</span> years, <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span> ) <span style="color: #008800; font-weight: bold">Year</span>
+	  <span style="color: #008800; font-weight: bold">where</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #333333">-</span> (<span style="color: #008800; font-weight: bold">Year</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>) <span style="color: #008800; font-weight: bold">after</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod
+	  <span style="color: #008800; font-weight: bold">return</span> 
+		  <span style="color: #007020">Interval</span>[
+		    <span style="color: #008800; font-weight: bold">Max</span>(<span style="color: #FF0000; background-color: #FFAAAA">{</span> successor <span style="color: #008800; font-weight: bold">of</span> (<span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #333333">-</span> <span style="color: #008800; font-weight: bold">Year</span>), <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #FF0000; background-color: #FFAAAA">}</span>), 
+				<span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #333333">-</span> (<span style="color: #008800; font-weight: bold">Year</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>)
+			]
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">//Tests:</span>
+<span style="color: #888888">define TestTwentySevenMonthParticipationPeriod: Interval[@2016-10-01, @2018-12-31]</span>
+<span style="color: #888888">define TestExpectedTwentySevenMonthEnrollmentPeriods: { Interval[@2016-10-01, @2016-12-31], Interval[@2017-01-01, @2017-12-31], Interval[@2018-01-01, @2018-12-31] }</span>
+<span style="color: #888888">define TestTwentySevenMonthEnrollmentPeriods: &quot;Enrollment Periods&quot;(TestTwentySevenMonthParticipationPeriod)</span>
+<span style="color: #888888">define TestTwentySevenMonthPass: TestTwentySevenMonthEnrollmentPeriods = TestExpectedTwentySevenMonthEnrollmentPeriods</span>
+
+<span style="color: #888888">define TestThreeYearParticipationPeriod: Interval[@2016-01-01, @2018-12-31]</span>
+<span style="color: #888888">define TestExpectedThreeYearEnrollmentPeriods: { Interval[@2016-01-01, @2016-12-31], Interval[@2017-01-01, @2017-12-31], Interval[@2018-01-01, @2018-12-31] }</span>
+<span style="color: #888888">define TestThreeYearEnrollmentPeriods: &quot;Enrollment Periods&quot;(TestThreeYearParticipationPeriod)</span>
+<span style="color: #888888">define TestThreeYearPass: TestThreeYearEnrollmentPeriods = TestExpectedThreeYearEnrollmentPeriods</span>
+
+<span style="color: #888888">define TestTwoYearParticipationPeriod: Interval[@2017-01-01, @2018-12-31]</span>
+<span style="color: #888888">define TestExpectedTwoYearEnrollmentPeriods: { Interval[@2017-01-01, @2017-12-31], Interval[@2018-01-01, @2018-12-31] }</span>
+<span style="color: #888888">define TestTwoYearEnrollmentPeriods: &quot;Enrollment Periods&quot;(TestTwoYearParticipationPeriod)</span>
+<span style="color: #888888">define TestTwoYearPass: TestTwoYearEnrollmentPeriods = TestExpectedTwoYearEnrollmentPeriods</span>
+
+<span style="color: #888888">define TestOneYearParticipationPeriod: Interval[@2018-01-01, @2018-12-31]</span>
+<span style="color: #888888">define TestExpectedOneYearEnrollmentPeriods: { Interval[@2018-01-01, @2018-12-31] }</span>
+<span style="color: #888888">define TestOneYearEnrollmentPeriods: &quot;Enrollment Periods&quot;(TestOneYearParticipationPeriod)</span>
+<span style="color: #888888">define TestOneYearPass: TestOneYearEnrollmentPeriods = TestExpectedOneYearEnrollmentPeriods</span>
+
+<span style="color: #888888">define TestNineMonthParticipationPeriod: Interval[@2018-03-01, @2018-12-31]</span>
+<span style="color: #888888">define TestExpectedNineMonthEnrollmentPeriods: { Interval[@2018-03-01, @2018-12-31] }</span>
+<span style="color: #888888">define TestNineMonthEnrollmentPeriods: &quot;Enrollment Periods&quot;(TestNineMonthParticipationPeriod)</span>
+<span style="color: #888888">define TestNineMonthPass: TestNineMonthEnrollmentPeriods = TestExpectedNineMonthEnrollmentPeriods</span>
+<span style="color: #888888">*/</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Returns the periods during which the patient had coverage during the given participation period	</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Participation In Period&quot;</span>(ParticipationPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>):
+	collapse (
+		Participation P
+			<span style="color: #008800; font-weight: bold">where</span> P.period <span style="color: #008800; font-weight: bold">overlaps</span> ParticipationPeriod
+			<span style="color: #008800; font-weight: bold">return</span> <span style="color: #008800; font-weight: bold">all</span> P.period <span style="color: #008800; font-weight: bold">intersect</span> ParticipationPeriod
+	)
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">Returns the number of gap days in the given coverage periods, allowing only one gap.</span>
+<span style="color: #888888">If there is more than one gap, returns the maximum Integer</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Gap Days In Period&quot;</span>(ParticipationPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>, Periods List<span style="color: #333333">&lt;</span><span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;&gt;</span>):
+		<span style="color: #008800; font-weight: bold">case</span> <span style="color: #008800; font-weight: bold">Count</span>(Periods)
+			<span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">then</span>
+			  if Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #008800; font-weight: bold">then</span>
+				  difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod
+			  <span style="color: #008800; font-weight: bold">else</span> if Periods[<span style="color: #0000DD; font-weight: bold">0</span>] ends <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #008800; font-weight: bold">then</span>
+				  difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>]
+			  <span style="color: #008800; font-weight: bold">else</span> 
+				  maximum <span style="color: #007020">Integer</span>
+			<span style="color: #008800; font-weight: bold">when</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #008800; font-weight: bold">then</span>
+			  if Periods[<span style="color: #0000DD; font-weight: bold">0</span>] starts <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #008800; font-weight: bold">and</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>] ends <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> ParticipationPeriod <span style="color: #008800; font-weight: bold">then</span>
+				  difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> Periods[<span style="color: #0000DD; font-weight: bold">1</span>]
+			  <span style="color: #008800; font-weight: bold">else</span>
+				  maximum <span style="color: #007020">Integer</span>
+			<span style="color: #008800; font-weight: bold">else</span>
+			  maximum <span style="color: #007020">Integer</span>
+		<span style="color: #008800; font-weight: bold">end</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">//Tests:</span>
+<span style="color: #888888">define TestParticipationPeriod: Interval[@2017-01-01, @2017-12-31]</span>
+<span style="color: #888888">define Test1CoveragePeriods: { Interval[@2017-01-01, @2017-12-31] }</span>
+<span style="color: #888888">define Test2CoveragePeriods: { Interval[@2017-01-01, @2017-12-15] }</span>
+<span style="color: #888888">define Test3CoveragePeriods: { Interval[@2017-01-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test4CoveragePeriods: { Interval[@2017-01-01, @2017-11-15] }</span>
+<span style="color: #888888">define Test5CoveragePeriods: { Interval[@2017-02-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test6CoveragePeriods: { Interval[@2017-01-01, @2017-10-15] }</span>
+<span style="color: #888888">define Test7CoveragePeriods: { Interval[@2017-03-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test8CoveragePeriods: { Interval[@2017-01-15, @2017-11-15] }</span>
+<span style="color: #888888">define Test9CoveragePeriods: { Interval[@2017-01-01, @2017-01-14], Interval[@2017-02-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test10CoveragePeriods: { Interval[@2017-01-01, @2017-01-14], Interval[@2017-03-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test11CoveragePeriods: { Interval[@2017-01-01, @2017-01-14], Interval[@2017-02-15, @2017-06-14], Interval[@2017-07-15, @2017-12-31] }</span>
+<span style="color: #888888">define Test1CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test1CoveragePeriods)</span>
+<span style="color: #888888">define Test2CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test2CoveragePeriods)</span>
+<span style="color: #888888">define Test3CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test3CoveragePeriods)</span>
+<span style="color: #888888">define Test4CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test4CoveragePeriods)</span>
+<span style="color: #888888">define Test5CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test5CoveragePeriods)</span>
+<span style="color: #888888">define Test6CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test6CoveragePeriods)</span>
+<span style="color: #888888">define Test7CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test7CoveragePeriods)</span>
+<span style="color: #888888">define Test8CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test8CoveragePeriods)</span>
+<span style="color: #888888">define Test9CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test9CoveragePeriods)</span>
+<span style="color: #888888">define Test10CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test10CoveragePeriods)</span>
+<span style="color: #888888">define Test11CoverageGap: &quot;Gap Days In Period&quot;(TestParticipationPeriod, Test11CoveragePeriods)</span>
+<span style="color: #888888">define Test1ExpectedGap: 0</span>
+<span style="color: #888888">define Test2ExpectedGap: 16</span>
+<span style="color: #888888">define Test3ExpectedGap: 14</span>
+<span style="color: #888888">define Test4ExpectedGap: 46</span>
+<span style="color: #888888">define Test5ExpectedGap: 45</span>
+<span style="color: #888888">define Test6ExpectedGap: 77</span>
+<span style="color: #888888">define Test7ExpectedGap: 73</span>
+<span style="color: #888888">define Test8ExpectedGap: maximum Integer</span>
+<span style="color: #888888">define Test9ExpectedGap: 32</span>
+<span style="color: #888888">define Test10ExpectedGap: 60</span>
+<span style="color: #888888">define Test11ExpectedGap: maximum Integer</span>
+<span style="color: #888888">*/</span>
+
+define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled In Period&quot;</span>(EnrollmentPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>, AllowedGapDays <span style="color: #007020">Integer</span>):
+	<span style="color: #AA6600">&quot;Gap Days In Period&quot;</span>(EnrollmentPeriod, <span style="color: #AA6600">&quot;Participation In Period&quot;</span>(EnrollmentPeriod)) <span style="color: #333333">&lt;=</span> AllowedGapDays
+</pre></div>

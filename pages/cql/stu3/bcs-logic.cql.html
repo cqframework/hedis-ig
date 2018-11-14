@@ -7,6 +7,8 @@ library BCS_FHIR <span style="color: #008800; font-weight: bold">version</span> 
 <span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.1&#39;</span>
 <span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 
+<span style="color: #333333">//</span>include Participation <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> Participation
+
 <span style="color: #888888">/*</span>
 <span style="color: #888888">Description</span>
 <span style="color: #888888">The percentage of women 50-74 years of age who had a mammogram to screen for breast cancer.</span>
@@ -38,17 +40,6 @@ valueset <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot
 valueset <span style="color: #AA6600">&quot;Unilateral Mastectomy Left Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1334.15&#39;</span> <span style="color: #333333">//</span> ICD10PCS
 valueset <span style="color: #AA6600">&quot;Unilateral Mastectomy Right Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;2.16.840.1.113883.3.464.1004.1335.16&#39;</span> <span style="color: #333333">//</span> ICD10PCS
 
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Encounter Inpatient&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.3.666.5.307&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Home for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.3.117.1.7.1.209&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Discharged to Health Care Facility for Hospice Care&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113883.3.117.1.7.1.207&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;Hospice care ambulatory&quot;</span>: <span style="background-color: #fff0f0">&#39;urn:oid:2.16.840.1.113762.1.4.1108.15&#39;</span> <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;urn:hl7:version:eCQM%20Update%202017-05-05&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Commercial Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicaid Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Medicare Coverage Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Institutional SNP Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-<span style="color: #333333">//</span> valueset <span style="color: #AA6600">&quot;X Long-Term in Institution Value Set&quot;</span>: <span style="background-color: #fff0f0">&#39;TODO&#39;</span>
-
 <span style="color: #888888">/*</span>
 <span style="color: #888888">This library has an explicit parameter which is the product line.</span>
 <span style="color: #888888">Recognized normal arguments are {&#39;commercial&#39;, &#39;medicaid&#39;, &#39;medicare&#39;}.</span>
@@ -73,15 +64,6 @@ valueset <span style="color: #AA6600">&quot;Unilateral Mastectomy Right Value Se
 
 <span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>
 
-define <span style="color: #AA6600">&quot;First Predecessor Year&quot;</span>:
-	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #008800; font-weight: bold">year</span>)
-
-define <span style="color: #AA6600">&quot;Second Predecessor Year&quot;</span>:
-	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years)
-
-define <span style="color: #AA6600">&quot;Third Predecessor Quarter&quot;</span>:
-	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span> years <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span> years)
-
 define <span style="color: #AA6600">&quot;Lookback Interval 27 More Months&quot;</span>:
 	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">27</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
 
@@ -102,7 +84,12 @@ define <span style="color: #AA6600">&quot;Initial Population&quot;</span>:
 		<span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Age 52 to 74 at End&quot;</span>
 <span style="color: #888888">/*</span>
 <span style="color: #888888">		and (not &quot;Is In Hospice&quot;)</span>
-<span style="color: #888888">		and &quot;Is In Applicable Product Line&quot;</span>
+<span style="color: #888888">		and Participation.&quot;Is Enrolled&quot;(</span>
+<span style="color: #888888">			&quot;Product Line&quot;, </span>
+<span style="color: #888888">			start of &quot;Measurement Period&quot;, </span>
+<span style="color: #888888">			Interval[start of &quot;Measurement Period&quot; - 27 months, end of &quot;Measurement Period&quot;],</span>
+<span style="color: #888888">			45</span>
+<span style="color: #888888">		)</span>
 <span style="color: #888888">*/</span>
 
 define <span style="color: #AA6600">&quot;Is Female&quot;</span>:
@@ -146,103 +133,6 @@ define <span style="color: #AA6600">&quot;Is Age 52 to 74 at End&quot;</span>:
 <span style="color: #888888">			where HospicePerformed.status.value in { &#39;preparation&#39;, &#39;in-progress&#39;, &#39;suspended&#39;, &#39;aborted&#39;, &#39;completed&#39; }</span>
 <span style="color: #888888">				and date form PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of &quot;Measurement Period&quot;</span>
 <span style="color: #888888">	)</span>
-
-<span style="color: #888888">define &quot;Is In Applicable Product Line&quot;:</span>
-<span style="color: #888888">	case</span>
-<span style="color: #888888">		when (&quot;Product Line&quot; ~ null) then true</span>
-<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;commercial&#39;) then &quot;Is Continuous Enrollment&quot;</span>
-<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;medicaid&#39;) then &quot;Is Continuous Enrollment&quot;</span>
-<span style="color: #888888">		when (&quot;Product Line&quot; = &#39;medicare&#39;) then</span>
-<span style="color: #888888">			(&quot;Is Continuous Enrollment&quot;</span>
-<span style="color: #888888">				and (if &quot;Is Age 65 Plus at Start&quot;</span>
-<span style="color: #888888">					then (&quot;Is Enrolled in Institutional SNP&quot;</span>
-<span style="color: #888888">						or &quot;Is Living Long-Term in Institution&quot;)</span>
-<span style="color: #888888">					else false))</span>
-<span style="color: #888888">		else false</span>
-<span style="color: #888888">	end</span>
-
-<span style="color: #888888">define &quot;Enrollment Periods&quot;:</span>
-<span style="color: #888888">	collapse(</span>
-<span style="color: #888888">		[Coverage] Cov</span>
-<span style="color: #888888">			where Cov.status.value in { &#39;active&#39;, &#39;cancelled&#39; }</span>
-<span style="color: #888888">				and case &quot;Product Line&quot;</span>
-<span style="color: #888888">					when &#39;commercial&#39; then</span>
-<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Commercial Coverage Value Set&quot;</span>
-<span style="color: #888888">					when &#39;medicaid&#39; then</span>
-<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Medicaid Coverage Value Set&quot;</span>
-<span style="color: #888888">					when &#39;medicare&#39; then</span>
-<span style="color: #888888">						CodingToCode(Cov.type.coding) in &quot;X Medicare Coverage Value Set&quot;</span>
-<span style="color: #888888">					else false</span>
-<span style="color: #888888">				end</span>
-<span style="color: #888888">			return PeriodToIntervalOfDT(Cov.period)</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	// We assume [Coverage] in Patient context implicitly has this filter:</span>
-<span style="color: #888888">	// Cov.beneficiary.identifier ~ Patient.identifier</span>
-<span style="color: #888888">	// ... and that the paitient is not connected as a policy holder or payor.</span>
-<span style="color: #888888">	// TODO: Properly determine organization(s) for the product line.</span>
-<span style="color: #888888">	// Note: collapse() also puts the resulting intervals in order.</span>
-
-<span style="color: #888888">define function &quot;Enrollment Periods In Year&quot;(Year Interval&lt;DateTime&gt;):</span>
-<span style="color: #888888">	&quot;Enrollment Periods&quot; EnrP</span>
-<span style="color: #888888">		where EnrP overlaps Year</span>
-<span style="color: #888888">		return EnrP intersect Year</span>
-
-<span style="color: #888888">define function &quot;Is Continuous Enrollment In Year&quot;(Year Interval&lt;DateTime&gt;):</span>
-<span style="color: #888888">	case Count(&quot;Enrollment Periods In Year&quot;(Year))</span>
-<span style="color: #888888">		when 1 then (</span>
-<span style="color: #888888">			((&quot;Enrollment Periods In Year&quot;(Year)[0] starts Year)</span>
-<span style="color: #888888">				and ((difference in days between</span>
-<span style="color: #888888">						end of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
-<span style="color: #888888">						and end of Year</span>
-<span style="color: #888888">					) &lt;= 45))</span>
-<span style="color: #888888">			or</span>
-<span style="color: #888888">			((&quot;Enrollment Periods In Year&quot;(Year)[0] ends Year)</span>
-<span style="color: #888888">				and ((difference in days between</span>
-<span style="color: #888888">						start of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
-<span style="color: #888888">						and start of Year</span>
-<span style="color: #888888">					) &lt;= 45))</span>
-<span style="color: #888888">		)</span>
-<span style="color: #888888">		when 2 then (</span>
-<span style="color: #888888">			(&quot;Enrollment Periods In Year&quot;(Year)[0] starts Year)</span>
-<span style="color: #888888">				and (&quot;Enrollment Periods In Year&quot;(Year)[1] ends Year)</span>
-<span style="color: #888888">				and ((difference in days between</span>
-<span style="color: #888888">						end of &quot;Enrollment Periods In Year&quot;(Year)[0]</span>
-<span style="color: #888888">						and start of &quot;Enrollment Periods In Year&quot;(Year)[1]</span>
-<span style="color: #888888">					) &lt;= 45)</span>
-<span style="color: #888888">		)</span>
-<span style="color: #888888">		else false</span>
-<span style="color: #888888">	end</span>
-
-<span style="color: #888888">define function &quot;Is Continuous Enrollment In Quarter&quot;(Quarter Interval&lt;DateTime&gt;):</span>
-<span style="color: #888888">	case Count(&quot;Enrollment Periods In Year&quot;(Quarter))</span>
-<span style="color: #888888">		when 1 then (&quot;Enrollment Periods In Year&quot;(Quarter)[0] = Quarter)</span>
-<span style="color: #888888">		else false</span>
-<span style="color: #888888">	end</span>
-
-<span style="color: #888888">define &quot;Is Continuous Enrollment&quot;:</span>
-<span style="color: #888888">	&quot;Is Continuous Enrollment In Year&quot;(&quot;Measurement Period&quot;)</span>
-<span style="color: #888888">		and &quot;Is Continuous Enrollment In Year&quot;(&quot;First Predecessor Year&quot;)</span>
-<span style="color: #888888">		and &quot;Is Continuous Enrollment In Year&quot;(&quot;Second Predecessor Year&quot;)</span>
-<span style="color: #888888">		and &quot;Is Continuous Enrollment In Quarter&quot;(&quot;Third Predecessor Quarter&quot;)</span>
-
-<span style="color: #888888">define &quot;Is Age 65 Plus at Start&quot;:</span>
-<span style="color: #888888">	CalendarAgeInYearsAt(Patient.birthDate.value, start of &quot;Measurement Period&quot;) &gt;= 65</span>
-
-<span style="color: #888888">define &quot;Is Enrolled in Institutional SNP&quot;:</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Encounter: &quot;X Institutional SNP Value Set&quot;] Enc</span>
-<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
-<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	// TODO: Determine properly whether the patient was in SNP during the measurement year.</span>
-
-<span style="color: #888888">define &quot;Is Living Long-Term in Institution&quot;:</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Encounter: &quot;X Long-Term in Institution Value Set&quot;] Enc</span>
-<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
-<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	// TODO: Determine properly whether the patient was in LTI during the measurement year.</span>
 <span style="color: #888888">*/</span>
 
 <span style="color: #888888">/*</span>

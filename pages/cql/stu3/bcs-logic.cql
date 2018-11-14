@@ -7,6 +7,8 @@ library BCS_FHIR version '1.0.1'
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
+//include Participation version '1.0.0' called Participation
+
 /*
 Description
 The percentage of women 50-74 years of age who had a mammogram to screen for breast cancer.
@@ -38,17 +40,6 @@ valueset "Unilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1256' 
 valueset "Unilateral Mastectomy Left Value Set": '2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
 valueset "Unilateral Mastectomy Right Value Set": '2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
 
-// valueset "Hospice Value Set": 'TODO'
-// valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Discharged to Home for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Discharged to Health Care Facility for Hospice Care": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Hospice care ambulatory": 'urn:oid:2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "X Commercial Coverage Value Set": 'TODO'
-// valueset "X Medicaid Coverage Value Set": 'TODO'
-// valueset "X Medicare Coverage Value Set": 'TODO'
-// valueset "X Institutional SNP Value Set": 'TODO'
-// valueset "X Long-Term in Institution Value Set": 'TODO'
-
 /*
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
@@ -73,15 +64,6 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 
 parameter "Measurement Period" Interval<DateTime>
 
-define "First Predecessor Year":
-	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year)
-
-define "Second Predecessor Year":
-	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period" - 2 years)
-
-define "Third Predecessor Quarter":
-	Interval[start of "Measurement Period" - 2 years - 3 months, end of "Measurement Period" - 3 years)
-
 define "Lookback Interval 27 More Months":
 	Interval[start of "Measurement Period" - 27 months, end of "Measurement Period")
 
@@ -102,7 +84,12 @@ define "Initial Population":
 		and "Is Age 52 to 74 at End"
 /*
 		and (not "Is In Hospice")
-		and "Is In Applicable Product Line"
+		and Participation."Is Enrolled"(
+			"Product Line", 
+			start of "Measurement Period", 
+			Interval[start of "Measurement Period" - 27 months, end of "Measurement Period"],
+			45
+		)
 */
 
 define "Is Female":
@@ -146,103 +133,6 @@ define "Is In Hospice":
 			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
 				and date form PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of "Measurement Period"
 	)
-
-define "Is In Applicable Product Line":
-	case
-		when ("Product Line" ~ null) then true
-		when ("Product Line" = 'commercial') then "Is Continuous Enrollment"
-		when ("Product Line" = 'medicaid') then "Is Continuous Enrollment"
-		when ("Product Line" = 'medicare') then
-			("Is Continuous Enrollment"
-				and (if "Is Age 65 Plus at Start"
-					then ("Is Enrolled in Institutional SNP"
-						or "Is Living Long-Term in Institution")
-					else false))
-		else false
-	end
-
-define "Enrollment Periods":
-	collapse(
-		[Coverage] Cov
-			where Cov.status.value in { 'active', 'cancelled' }
-				and case "Product Line"
-					when 'commercial' then
-						CodingToCode(Cov.type.coding) in "X Commercial Coverage Value Set"
-					when 'medicaid' then
-						CodingToCode(Cov.type.coding) in "X Medicaid Coverage Value Set"
-					when 'medicare' then
-						CodingToCode(Cov.type.coding) in "X Medicare Coverage Value Set"
-					else false
-				end
-			return PeriodToIntervalOfDT(Cov.period)
-	)
-	// We assume [Coverage] in Patient context implicitly has this filter:
-	// Cov.beneficiary.identifier ~ Patient.identifier
-	// ... and that the paitient is not connected as a policy holder or payor.
-	// TODO: Properly determine organization(s) for the product line.
-	// Note: collapse() also puts the resulting intervals in order.
-
-define function "Enrollment Periods In Year"(Year Interval<DateTime>):
-	"Enrollment Periods" EnrP
-		where EnrP overlaps Year
-		return EnrP intersect Year
-
-define function "Is Continuous Enrollment In Year"(Year Interval<DateTime>):
-	case Count("Enrollment Periods In Year"(Year))
-		when 1 then (
-			(("Enrollment Periods In Year"(Year)[0] starts Year)
-				and ((difference in days between
-						end of "Enrollment Periods In Year"(Year)[0]
-						and end of Year
-					) <= 45))
-			or
-			(("Enrollment Periods In Year"(Year)[0] ends Year)
-				and ((difference in days between
-						start of "Enrollment Periods In Year"(Year)[0]
-						and start of Year
-					) <= 45))
-		)
-		when 2 then (
-			("Enrollment Periods In Year"(Year)[0] starts Year)
-				and ("Enrollment Periods In Year"(Year)[1] ends Year)
-				and ((difference in days between
-						end of "Enrollment Periods In Year"(Year)[0]
-						and start of "Enrollment Periods In Year"(Year)[1]
-					) <= 45)
-		)
-		else false
-	end
-
-define function "Is Continuous Enrollment In Quarter"(Quarter Interval<DateTime>):
-	case Count("Enrollment Periods In Year"(Quarter))
-		when 1 then ("Enrollment Periods In Year"(Quarter)[0] = Quarter)
-		else false
-	end
-
-define "Is Continuous Enrollment":
-	"Is Continuous Enrollment In Year"("Measurement Period")
-		and "Is Continuous Enrollment In Year"("First Predecessor Year")
-		and "Is Continuous Enrollment In Year"("Second Predecessor Year")
-		and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
-
-define "Is Age 65 Plus at Start":
-	CalendarAgeInYearsAt(Patient.birthDate.value, start of "Measurement Period") >= 65
-
-define "Is Enrolled in Institutional SNP":
-	exists(
-		[Encounter: "X Institutional SNP Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	// TODO: Determine properly whether the patient was in SNP during the measurement year.
-
-define "Is Living Long-Term in Institution":
-	exists(
-		[Encounter: "X Long-Term in Institution Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	// TODO: Determine properly whether the patient was in LTI during the measurement year.
 */
 
 /*

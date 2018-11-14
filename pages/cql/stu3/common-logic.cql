@@ -59,15 +59,6 @@ define "Is Living Long Term in Institution":
     //    LongTermPerformed.relevantPeriod overlaps "Measurement Period"
     //)
 
-define "Is Age 65 Plus at Start":
-  CalendarAgeInYearsAt(Patient.birthDate, start of "Measurement Period")>= 65
-
-define "Lookback Interval Four More Years":
-  Interval[start of "Measurement Period" - 4 years, end of "Measurement Period"]
-
-define "Lookback Interval Two More Years":
-  Interval[start of "Measurement Period" - 2 years, end of "Measurement Period"]
-
 /*This is the standard NCQA Hospice exclusion logic from 3.6.2018*/
 define "Has Hospice":
   exists ( ["Encounter": "Encounter Inpatient"] DischargeHospice
@@ -90,49 +81,6 @@ define "Has Hospice":
     //or exists ( ["Intervention, Performed": "Hospice care ambulatory"] HospicePerformed
     //    where HospicePerformed.relevantPeriod overlaps "Measurement Period"
     //)
-
-// TODO: From a QDM perspective, these really ought to just be Participation, right? There's no need for this characteristic anymore?
-//define "Is Medicaid":
-//  exists ( ["Patient Characteristic Payer": "Medicaid"] )
-
-//define "Is Commercial":
-//  exists ( ["Patient Characteristic Payer": "Commercial"] )
-
-//define "Is Medicare":
-//  exists ( ["Patient Characteristic Payer": "Medicare"] )
-
-define "Medicaid Product":
-  'medicaid'
-
-define "Commercial Product":
-  'commercial'
-
-define "Medicare Product":
-  'medicare'
-
-define "Is Enrolled Commercial":
-  "Is Continuously Enrolled One Year"("Commercial Product")
-    or "Is Continuously Enrolled Two Years"("Commercial Product")
-    or "Is Continuously Enrolled for Twenty Seven Months"("Commercial Product")
-
-define "Is Enrolled Medicaid":
-  "Is Continuously Enrolled One Year"("Medicaid Product")
-    or "Is Continuously Enrolled Two Years"("Medicaid Product")
-    or "Is Continuously Enrolled for Twenty Seven Months"("Medicaid Product")
-
-define "Is Enrolled Medicare":
-  "Is Continuously Enrolled One Year"("Medicare Product")
-    or "Is Continuously Enrolled Two Years"("Medicare Product")
-    or "Is Continuously Enrolled for Twenty Seven Months"("Medicare Product")
-
-define "First Predecessor Year":
-  Interval[start of "Measurement Period" - 1 year, start of "Measurement Period" )
-
-define "Second Predecessor Quarter":
-  Interval[start of "Measurement Period" - 1 years - 3 months, start of "Measurement Period" - 1 year )
-
-define "Second Predecessor Year":
-  Interval[start of "Measurement Period" - 2 years, start of "Measurement Period" - 1 year )
 
 /*ToDate takes a given DateTime value and returns a DateTime with the time components "zeroed", and the timezone of the input value, for example */
 define function "ToDate"(Value DateTime ):
@@ -165,84 +113,3 @@ define function "CalendarAgeInYearsAt"(BirthDateTime DateTime, AsOf DateTime ):
 define function "CalendarAgeInYears"(BirthDateTime DateTime ):
   CalendarAgeInYearsAt(BirthDateTime, Today())
 
-define function "Enrollment Periods"(ProductLine String ):
-  collapse ( ( case ProductLine 
-        when "Commercial Product" then ["Coverage": "Commercial"] C where C.status = 'active'
-        when "Medicare Product" then ["Coverage": "Medicare"] C where C.status = 'active'
-        when "Medicaid Product" then ["Coverage": "Medicaid"] C where C.status = 'active'
-        else ["Coverage": "NCQA Payer"] C where C.status = 'active'
-      end 
-    ) Coverage
-      return all Coverage.period
-  )
-
-define function "Is Continuous Enrollment in Quarter"(ProductLine String, Quarter Interval<DateTime> ):
-  ( {
-    ProductLine: ProductLine,
-    Quarter: Quarter
-  } ) Input
-    let Periods: "EnrollmentPeriodsInYear"(Input.ProductLine, Input.Quarter)
-    return Count(Periods)= 1
-      and Periods[0]= Quarter
-
-define function "EnrollmentPeriodsInYear"(ProductLine String, Year Interval<DateTime> ):
-  ("Enrollment Periods"(ProductLine)) EnrP
-    where EnrP overlaps Year
-    return EnrP intersect Year
-
-define function "Is Continuously Enrolled Two Years"(ProductLine String ):
-  "Is Continuous Enrollment In Year"(ProductLine, "Measurement Period")
-    and "Is Continuous Enrollment In Year"(ProductLine, "First Predecessor Year")
-
-define function "Is Continuously Enrolled for Twenty Seven Months"(ProductLine String ):
-  "Is Continuous Enrollment In Year"(ProductLine, "Measurement Period")
-    and "Is Continuous Enrollment In Year"(ProductLine, "First Predecessor Year")
-    and "Is Continuous Enrollment In Year"(ProductLine, "Second Predecessor Year")
-    and "Is Continuous Enrollment in Quarter"(ProductLine, "Second Predecessor Quarter")
-
-define function "Is In Applicable Product Line"(ProductLine String ):
-  case 
-    when ( ProductLine is null ) then true 
-    when ( ProductLine ~ "Commercial Product" ) then 
-      "Is Continuously Enrolled One Year"(ProductLine)
-        or "Is Continuously Enrolled for Twenty Seven Months"(ProductLine)
-        or "Is Continuously Enrolled Two Years"(ProductLine)
-    when ( ProductLine ~ "Medicaid Product" ) then 
-      "Is Continuously Enrolled One Year"(ProductLine)
-        or "Is Continuously Enrolled for Twenty Seven Months"(ProductLine)
-        or "Is Continuously Enrolled Two Years"(ProductLine)
-    when ( ProductLine ~ "Medicare Product" ) then 
-      "Is Continuously Enrolled One Year"(ProductLine)
-        or "Is Continuously Enrolled for Twenty Seven Months"(ProductLine)
-        or "Is Continuously Enrolled Two Years"(ProductLine)
-    else false 
-  end
-
-  //and  (if "Is Age 65 Plus at Start" then ( "Is Enrolled in Institutional SNP"
-  //or "Is Living Long Term in Institution"
-  //) else false
-  //)
-
-define function "Is Continuously Enrolled One Year"(ProductLine String ):
-  "Is Continuous Enrollment In Year"(ProductLine, "Measurement Period")
-
-define function "Is Continuous Enrollment In Year"(ProductLine String, Year Interval<DateTime> ):
-  ( {
-    ProductLine: ProductLine,
-    Year: Year
-  } ) Input
-    let Periods: "EnrollmentPeriodsInYear"(Input.ProductLine, Input.Year)
-    return 
-      case Count(Periods)
-        when 1 then ( ( Periods[0] starts Year
-            and ( ( difference in days between end of Periods[0] and end of Year ) <= 45 )
-          )
-          or ( Periods[0] ends Year
-            and ( ( difference in days between start of Periods[0] and start of Year ) <= 45 )
-          )
-        ) 
-        when 2 then ( Periods[0] starts Year and Periods[1] ends Year
-          and ( difference in days between end of Periods[0] and start of Periods[1]<= 45 )
-        ) 
-        else false 
-      end
