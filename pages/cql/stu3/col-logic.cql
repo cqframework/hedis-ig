@@ -4,7 +4,6 @@ Colorectal Cancer Screening (COL)
 
 library COL_FHIR version '1.0.1'
 
-//using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
 /*
@@ -45,17 +44,6 @@ valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.4
 valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
 valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
-// valueset "Hospice Value Set": 'TODO'
-// valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Discharged to Home for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.209' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Discharged to Health Care Facility for Hospice Care": '2.16.840.1.113883.3.117.1.7.1.207' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "Hospice care ambulatory": '2.16.840.1.113762.1.4.1108.15' version 'urn:hl7:version:eCQM%20Update%202017-05-05'
-// valueset "X Commercial Coverage Value Set": 'TODO'
-// valueset "X Medicaid Coverage Value Set": 'TODO'
-// valueset "X Medicare Coverage Value Set": 'TODO'
-// valueset "X Institutional SNP Value Set": 'TODO'
-// valueset "X Long-Term in Institution Value Set": 'TODO'
-
 /*
 This library has an explicit parameter which is the product line.
 Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
@@ -80,15 +68,6 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 
 parameter "Measurement Period" Interval<DateTime>
 
-define "First Predecessor Year":
-	Interval[start of "Measurement Period" - 1 year, end of "Measurement Period" - 1 year)
-
-define "Second Predecessor Year":
-	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period" - 2 years)
-
-define "Third Predecessor Quarter":
-	Interval[start of "Measurement Period" - 2 years - 3 months, end of "Measurement Period" - 3 years)
-
 define "Lookback Interval Two More Years":
 	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
 
@@ -112,145 +91,9 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 
 define "Initial Population":
 	"Is Age 51 to 75 at End"
-/*
-		and (not "Is In Hospice")
-		and "Is In Applicable Product Line"
-*/
 
 define "Is Age 51 to 75 at End":
 	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 51 and 75
-
-/*
-define "Is In Hospice":
-	exists(
-		[Encounter: "Hospice Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	or
-	exists(
-		[Encounter: "Encounter Inpatient"] DischargeHospice
-			where DischargeHospice.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and (CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
-						in "Discharged to Home for Hospice Care"
-					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
-						in "Discharged to Health Care Facility for Hospice Care")
-				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of "Measurement Period"
-	)
-	or
-	exists(
-		[ProcedureRequest: "Hospice care ambulatory"] HospiceOrder
-			where HospiceOrder.status.value in { 'active', 'completed' }
-				and HospiceOrder.authoredOn.value during day of "Measurement Period"
-	)
-	or
-	exists(
-		[Procedure: "Hospice care ambulatory"] HospicePerformed
-			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and HospicePerformed.performed overlaps day of "Measurement Period"
-	)
-
-define "Is In Applicable Product Line":
-	case
-		when ("Product Line" ~ null) then true
-		when ("Product Line" = 'commercial') then "Is Continuous Enrollment"
-		when ("Product Line" = 'medicaid') then "Is Continuous Enrollment"
-		when ("Product Line" = 'medicare') then
-			("Is Continuous Enrollment"
-				and (if "Is Age 65 Plus at Start"
-					then ("Is Enrolled in Institutional SNP"
-						or "Is Living Long-Term in Institution")
-					else false))
-		else false
-	end
-
-define "Enrollment Periods":
-	collapse(
-		[Coverage] Cov
-			where Cov.status.value in { 'active', 'cancelled' }
-				and case "Product Line"
-					when 'commercial' then
-						CodingToCode(Cov.type.coding) in "X Commercial Coverage Value Set"
-					when 'medicaid' then
-						CodingToCode(Cov.type.coding) in "X Medicaid Coverage Value Set"
-					when 'medicare' then
-						CodingToCode(Cov.type.coding) in "X Medicare Coverage Value Set"
-					else false
-				end
-			return PeriodToIntervalOfDT(Cov.period)
-	)
-	// We assume [Coverage] in Patient context implicitly has this filter:
-	// Cov.beneficiary.identifier ~ Patient.identifier
-	// ... and that the paitient is not connected as a policy holder or payor.
-	// TODO: Properly determine organization(s) for the product line.
-	// Note: collapse() also puts the resulting intervals in order.
-
-define function "Enrollment Periods In Year"(Year Interval<DateTime>):
-	"Enrollment Periods" EnrP
-		where EnrP overlaps day of Year
-		return EnrP intersect day of Year
-
-define function "Is Continuous Enrollment In Year"(Year Interval<DateTime>):
-	case Count("Enrollment Periods In Year"(Year))
-		when 1 then (
-			(("Enrollment Periods In Year"(Year)[0] starts Year)
-				and ((difference in days between
-						end of "Enrollment Periods In Year"(Year)[0]
-						and end of Year
-					) <= 45))
-			or
-			(("Enrollment Periods In Year"(Year)[0] ends Year)
-				and ((difference in days between
-						start of "Enrollment Periods In Year"(Year)[0]
-						and start of Year
-					) <= 45))
-		)
-		when 2 then (
-			("Enrollment Periods In Year"(Year)[0] starts Year)
-				and ("Enrollment Periods In Year"(Year)[1] ends Year)
-				and ((difference in days between
-						end of "Enrollment Periods In Year"(Year)[0]
-						and start of "Enrollment Periods In Year"(Year)[1]
-					) <= 45)
-		)
-		else false
-	end
-
-define function "Is Continuous Enrollment In Quarter"(Quarter Interval<DateTime>):
-	case Count("Enrollment Periods In Year"(Quarter))
-		when 1 then ("Enrollment Periods In Year"(Quarter)[0] = Quarter)
-		else false
-	end
-
-define "Is Continuous Enrollment":
-	"Is Continuous Enrollment In Year"("Measurement Period")
-		and "Is Continuous Enrollment In Year"("First Predecessor Year")
-		and "Is Continuous Enrollment In Year"("Second Predecessor Year")
-		// and "Is Continuous Enrollment In Quarter"("Third Predecessor Quarter")
-
-define "Is Age 65 Plus at Start":
-	CalendarAgeInYearsAt(Patient.birthDate.value, start of "Measurement Period") >= 65
-
-define "Is Enrolled in Institutional SNP":
-	exists(
-		[Encounter: "X Institutional SNP Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	// TODO: Determine properly whether the patient was in SNP during the measurement year.
-
-define "Is Living Long-Term in Institution":
-	exists(
-		[Encounter: "X Long-Term in Institution Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	// TODO: Determine properly whether the patient was in LTI during the measurement year.
-*/
-
-/*
-Administrative Specification
-*/
 
 define "Denominator":
 	// was "Initial Population", but that will always be true if this expression is executed
@@ -347,12 +190,6 @@ define "Is Total Colectomy":
 			where Proc.status.value = 'completed'
 				and end of PeriodToIntervalOfDT(Proc.performed) before day of end of "Measurement Period"
 	)
-
-/*
-Hybrid Specification
-TODO, if needed
-*/
-
 
 /*
 Utility Functions
