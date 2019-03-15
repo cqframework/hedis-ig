@@ -8,7 +8,7 @@ using FHIR version '3.0.0'
 
 include FHIRHelpers version '3.0.0'
 include Participation
-include NCQACommon
+include NCQACommon called Common
 
 // Use http://fhir.ext.apelon.com/dtsserverws/fhir to evaluate, but these are the canonical urls
 valueset "Inpatient Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.307' // In VSAC
@@ -24,19 +24,19 @@ context Patient
 
 define "Encounters Ending Before December 2nd":
   [Encounter: "Inpatient Encounter"] E1
-    where E.status ~ 'Finished'
-     and E.period ends during Interval[start of "Measurement Period", end of "Measurement Period" - 30 days] 
+    where E1.status ~ 'Finished'
+     and E1.period ends during Interval[start of "Measurement Period", end of "Measurement Period" - 30 days] 
 
 define "Encounters in Measurement Period":
   [Encounter: "Inpatient Encounter"] E2
-    where E.status ~ 'Finished'
-     and E.period ends during Interval[start of "Measurement Period", end of "Measurement Period"] 
+    where E2.status ~ 'Finished'
+     and E2.period ends during Interval[start of "Measurement Period", end of "Measurement Period"] 
      
 // Consider expressing this using a without, since in the case that there is no encounter after E1, this won't return
 define "Encounters without 30 Day Readmission":
 	"Encounters Ending Before December 2nd" E1
 	   with "Encounters in Measurement Period" E2 
-	   such that difference in days between E2.period and E1.period > 30
+	   such that difference in days between start of E2.period and start of E1.period > 30
     	
 
 define "Initial Population":
@@ -44,9 +44,7 @@ define "Initial Population":
     where AgeInYearsAt(end of "Measurement Period") >= 18
     and Participation."Is Enrolled"(Participation."Medicare Product",
 		  end of E.period + 30 days,Interval [start of E.period, end of E.period + 30 days], 0)
-		and not Common.HasHospice
-
-
+		and not Common."Has Hospice"
 
 define Denominator:
   true

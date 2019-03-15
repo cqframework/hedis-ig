@@ -4,7 +4,7 @@ using FHIR version '3.0.0'
 
 include FHIRHelpers version '3.0.0' called FHIRHelpers
 
-valueset "NCQA Payer": 'http://hl7.org/fhir/us/hedis/ValueSet/ncqa-payer' //'urn:oid:2.16.840.1.113762.1.4.1165.42'
+valueset "NCQA Payer": 'http://ncqa.org/fhir/us/hedis/ValueSet/ncqa-payer' //'urn:oid:2.16.840.1.113762.1.4.1165.42'
 valueset "Commercial": 'urn:oid:2.16.840.1.113762.1.4.1165.46'
 valueset "Medicaid": 'urn:oid:2.16.840.1.113762.1.4.1165.45'
 valueset "Medicare": 'urn:oid:2.16.840.1.113762.1.4.1165.44'
