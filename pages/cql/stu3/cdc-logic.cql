@@ -1,8 +1,8 @@
 library CDC version '1'
 
-using FHIR version '1.8'
+using FHIR version '3.0.0'
 
-include FHIRHelpers version '1.8' called FHIRHelpers
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 
@@ -123,7 +123,7 @@ define "Heamoglobin A1C Level Greater than 9.0":
 define "ACE Inhibitor or ARB Medication Order":
   [MedicationRequest : "ACE Inhibitor or ARB"] A
     where A.status = 'completed'
-      and A.dateWritten during day of "Lookback Interval One Year"
+      and A.authoredOn during day of "Lookback Interval One Year"
 
 // Dilated Eye Exam Observation
 
