@@ -1,8 +1,8 @@
+library ASF_FHIR version '1.0.0'
+
 /*
 Unhealthy Alcohol Use Screening and Follow-up (ASF)
-*/library ASF_FHIR version '1.0.0'
-
-//using FHIR version '3.0.1'
+*/
 
 using FHIR version '3.0.0'
 
@@ -23,25 +23,30 @@ other follow-up care within 2 months of a positive screening.
 codesystem "LOINC": 'http://loinc.org'
 codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
-// valueset "Alcohol Screening and Brief Counseling": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Five or more drinks per day": 'urn:oid:2.16.840.1.113883.3.464.1003.106.11.1035' // Value Set
-// valueset "Four or more drinks per day": 'urn:oid:2.16.840.1.113762.1.4.1072.14' // Value Set
-// valueset "Alcohol abuse or dependence": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1010' // Grouping Value Set
-// valueset "Dementia": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1101' // Grouping Value Set
-// valueset "Alcohol use disorder": 'TODO' // not in spec Data Criteria
-
 // Update
 
 valueset "Alcohol Counseling and Treatment": '2.16.840.1.113883.3.464.1004.1437'
 valueset "Alcohol Screening": '2.16.840.1.113883.3.464.1004.1337'
 valueset "Alcohol use disorder": '2.16.840.1.113883.3.464.1004.1339'
 valueset "Dementia": '2.16.840.1.113883.3.464.1004.1074'
-// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
 
-code "Five or more drinks per day": '00005' from "CQFramework"
-code "Four or more drinks per day": '00004' from "CQFramework"
+code "Alcoholic drinks per drinking day - Reported": '11287-0' from "LOINC"
 code "AUDIT Total Score (in points)": '75624-7' from "LOINC"
 code "AUDIT-C Total Score (in points)": '75626-2' from "LOINC"
+
+/*
+This library has an explicit parameter which is the product line.
+Recognized normal arguments are {'commercial', 'medicaid', 'medicare'}.
+If one of these normal arguments is given, the patient will only be
+considered to be in the Initial Population if they have an appropriate
+continuous enrollment in that kind of medical plan.
+If instead a null argument is given, their enrollment status will have no
+effect on whether they are considered to be in the Initial Population.
+If instead some other argument is given (an unrecognized plan type),
+the patient will unconditionally NOT be in the Initial Population.
+*/
+
+parameter "Product Line" String
 
 /*
 This library has an explicit parameter which is the measurement year.
@@ -60,11 +65,6 @@ that patient being given by the special context parameter Patient.
 
 context Patient
 
-/*
-Initial Population
-Product lines -- Commercial, Medicaid, Medicare (report each product line separately).
-*/
-
 define "Initial Population":
 	AgeInYearsAt(start of "Measurement Period") >= 18
 
@@ -73,15 +73,15 @@ Exclusions
 */
 
 define "Denominator Exclusion":
-	exists (
-	    [Condition: "Alcohol use disorder"] AlcoholUse
-			where AlcoholUse.clinicalStatus in { 'active', 'recurrence' }
-            and AlcoholUse.assertedDate during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
+  exists (
+    [Condition: "Alcohol use disorder"] AlcoholUse
+      where AlcoholUse.clinicalStatus in { 'active', 'recurrence' }
+        and AlcoholUse.assertedDate during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
 	)
     or exists (
-        [Condition: "Dementia"] D
-            where D.clinicalStatus in { 'active', 'recurrence' }
-            and D.assertedDate during day of Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
+      [Condition: "Dementia"] D
+        where D.clinicalStatus in { 'active', 'recurrence' }
+          and D.assertedDate during day of Interval[start of "Measurement Period", end of "Measurement Period" - 60 days]
     )
 
 /*
@@ -91,67 +91,67 @@ Denominators and Numerators
 // Unhealthy Alcohol Use Screening
 
 define "Denominator 1":
-	// "Initial Population"
-	true
+  // "Initial Population"
+  true
 
 // Unhealthy Alcohol Use Screening
 
 define "Numerator 1":
-	// "Initial Population"
-	exists ( "AUDIT-C Assessment" )
+  // "Initial Population"
+  exists ( "AUDIT-C Assessment" )
     or exists ( "AUDIT Assessment" )
     or (
-        "Patient is Male"
+      "Patient is Male"
         and exists ( "Five or more drinks per day Assessment" )
     )
     or (
-        "Patient is Female"
+      "Patient is Female"
         and (
-            exists ( "Four or more drinks per day Assessment" )
+          exists ( "Four or more drinks per day Assessment" )
             or exists ( "Five or more drinks per day Assessment" )
         )
     )
     or (
-        "Patient is 65 or Over"
-            and (
-                exists ( "Four or more drinks per day Assessment" )
-                or exists ( "Five or more drinks per day Assessment" )
-            )
+      "Patient is 65 or Over"
+        and (
+          exists ( "Four or more drinks per day Assessment" )
+            or exists ( "Five or more drinks per day Assessment" )
+        )
     )
    // Note: The spec doesn't include the over 65 test here but does in dependent N/D 2.
 
 define "AUDIT-C Assessment":
-	[Observation: "AUDIT-C Total Score (in points)"] A
-		where A.status.value in { 'final', 'amended', 'corrected' }
-			and A.effective.value in day of "Measurement Period"
-			and A.value is not null
+  [Observation: "AUDIT-C Total Score (in points)"] A
+    where A.status in { 'final', 'amended', 'corrected' }
+      and A.effective in day of "Measurement Period"
+      and A.value is not null
 
 define "AUDIT Assessment":
-	[Observation: "AUDIT Total Score (in points)"] A
-		where A.status.value in { 'final', 'amended', 'corrected' }
-			and A.effective.value in day of "Measurement Period"
-			and A.value is not null
+  [Observation: "AUDIT Total Score (in points)"] A
+    where A.status in { 'final', 'amended', 'corrected' }
+      and A.effective in day of "Measurement Period"
+      and A.value is not null
 
 define "Patient is Male":
-	Patient.gender.value = 'male'
+  Patient.gender = 'male'
 
 define "Five or more drinks per day Assessment":
-	[Observation: "Five or more drinks per day"] A
-		where A.status.value in { 'final', 'amended', 'corrected' }
-			and A.effective.value in day of "Measurement Period"
-			and A.value is not null
+  [Observation: "Alcoholic drinks per drinking day - Reported"] A
+    where A.status in { 'final', 'amended', 'corrected' }
+      and A.effective in day of "Measurement Period"
+      and A.value >= 5 '{drinks}/d'
 
 define "Patient is Female":
-	Patient.gender.value = 'female'
+  Patient.gender = 'female'
 
 define "Patient is 65 or Over":
-	AgeInYearsAt(start of "Measurement Period")>= 65
+  AgeInYearsAt(start of "Measurement Period")>= 65
 
 define "Four or more drinks per day Assessment":
-	[Observation: "Four or more drinks per day"] A
-		where A.status.value in { 'final', 'amended', 'corrected' }
-			and A.effective.value in day of "Measurement Period"
-			and A.value is not null
+  [Observation: "Alcoholic drinks per drinking day - Reported"] A
+    where A.status in { 'final', 'amended', 'corrected' }
+      and A.effective in day of "Measurement Period"
+      and A.value >= 4 '{drinks}/d'
 
 // Counseling or Other Follow-Up on Positive Screen
 
@@ -161,95 +161,78 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 */
 
 define "Denominator 2":
-	// "Initial Population"
-	exists "Positive Assessment for Unhealthy Alcohol Use"
+  // "Initial Population"
+  exists "Positive Assessment for Unhealthy Alcohol Use"
 
 // Counseling or Other Follow-Up on Positive Screen
 
 define "Numerator 2":
-	// "Initial Population"
-    exists (
-        "Initial Positive Assessment for Unhealthy Alcohol Use" A
-            with "Followup After Positive Screen" F
-                such that
-                if F is Observation then F.effective.value 2 months or less on or after day of A.effective.value
-                else F.performed."end".value 2 months or less on or after day of A.effective.value
-    )
+  // "Initial Population"
+  exists (
+    "Initial Positive Assessment for Unhealthy Alcohol Use" A
+      with "Followup After Positive Screen" F
+        such that
+          if F is Observation then F.effective 2 months or less on or after day of A.effective
+          else F.performed."end" 2 months or less on or after day of A.effective
+  )
 
 define "Positive Assessment for Unhealthy Alcohol Use":
-	(
-	    "AUDIT Assessment" A
-			where ( A.value as Quantity ).value.value >= 8
-	)
+  (
+    "AUDIT Assessment" A
+      where A.value >= 8
+  )
     union (
-        "AUDIT-C Assessment" A
-            where
-                (
-                    "Patient is Male"
-                        and ( A.value as Quantity ).value.value >= 4
-                )
-				or (
-				    "Patient is Female"
-                        and ( A.value as Quantity ).value.value >= 3
-                )
+      "AUDIT-C Assessment" A
+        where ("Patient is Male" and A.value >= 4)
+          or ("Patient is Female" and A.value >= 3)
     )
     union (
-        "Five or more drinks per day Assessment" A
-            where "Patient is Male"
-            and ( A.value as Quantity ).value.value >= 1
+      "Five or more drinks per day Assessment" A
+        where "Patient is Male"
+          and A.value >= 1
     )
     union (
-        "Four or more drinks per day Assessment" A
-            where (
-                "Patient is Female"
-                    or "Patient is 65 or Over"
-            )
-            and ( A.value as Quantity ).value.value >= 1
+      "Four or more drinks per day Assessment" A
+        where ("Patient is Female" or "Patient is 65 or Over")
+          and A.value >= 1
     )
 
 define "Followup After Positive Screen":
-	(
-	    [Procedure: "Alcohol Counseling and Treatment"] Proc
-			where Proc.status.value = 'completed'
+  (
+    [Procedure: "Alcohol Counseling and Treatment"] Proc
+      where Proc.status = 'completed'
 	)
     union (
-        [Observation: "Alcohol Counseling and Treatment"] Obs
-            where Obs.status.value in { 'final', 'amended', 'corrected' }
+      [Observation: "Alcohol Counseling and Treatment"] Obs
+        where Obs.status in { 'final', 'amended', 'corrected' }
     )
     union (
-        [Procedure: "Alcohol Screening"] Proc
-            where Proc.status.value = 'completed'
+      [Procedure: "Alcohol Screening"] Proc
+        where Proc.status = 'completed'
     )
     union (
-        [Observation: "Alcohol Screening"] Obs
-            where Obs.status.value in { 'final', 'amended', 'corrected' }
+      [Observation: "Alcohol Screening"] Obs
+        where Obs.status in { 'final', 'amended', 'corrected' }
     )
 
 define "Initial Positive Assessment for Unhealthy Alcohol Use":
-	{
-	    First(
-	        "Positive Assessment for Unhealthy Alcohol Use" A
-			    sort by effective.value
-        )
-    }
+  {
+    First(
+      "Positive Assessment for Unhealthy Alcohol Use" A
+        sort by effective.value
+    )
+  }
 
 /*
 Stratifiers
 */
 
 define "Stratifier 1":
-	AgeInYearsAt(start of "Measurement Period")in Interval[18, 44]
+  AgeInYearsAt(start of "Measurement Period")in Interval[18, 44]
 
 define "Stratifier 2":
-	AgeInYearsAt(start of "Measurement Period")in Interval[45, 64]
+  AgeInYearsAt(start of "Measurement Period")in Interval[45, 64]
 
 define "Stratifier 3":
-	AgeInYearsAt(start of "Measurement Period")>= 65
+  AgeInYearsAt(start of "Measurement Period")>= 65
 
-
-/*
-Utility Functions
-*/
-
-define function PeriodToIntervalOfDT(value FHIR.Period):
-	Interval[value."start".value, value."end".value]

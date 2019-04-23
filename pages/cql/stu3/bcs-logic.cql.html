@@ -1,13 +1,14 @@
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library BCS_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.1&#39;</span>
+
+<span style="color: #888888">/*</span>
 <span style="color: #888888">Breast Cancer Screening (BCS)</span>
 <span style="color: #888888">*/</span>
 
-library BCS_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.1&#39;</span>
-
-<span style="color: #333333">//</span><span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.1&#39;</span>
 <span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 
-<span style="color: #333333">//</span>include Participation <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> Participation
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
+include Participation <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> Participation
+include NCQACommon <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.10.000&#39;</span> <span style="color: #008800; font-weight: bold">called</span> Common
 
 <span style="color: #888888">/*</span>
 <span style="color: #888888">Description</span>
@@ -65,7 +66,7 @@ valueset <span style="color: #AA6600">&quot;Unilateral Mastectomy Right Value Se
 <span style="color: #008800; font-weight: bold">parameter</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>
 
 define <span style="color: #AA6600">&quot;Lookback Interval 27 More Months&quot;</span>:
-	<span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">27</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+  <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">27</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
 
 <span style="color: #888888">/*</span>
 <span style="color: #888888">This library evaluates with respect to exactly 1 candidate patient at a time,</span>
@@ -80,260 +81,302 @@ context Patient
 <span style="color: #888888">*/</span>
 
 define <span style="color: #AA6600">&quot;Initial Population&quot;</span>:
-	<span style="color: #AA6600">&quot;Is Female&quot;</span>
-		<span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Age 52 to 74 at End&quot;</span>
-<span style="color: #888888">/*</span>
-<span style="color: #888888">		and (not &quot;Is In Hospice&quot;)</span>
-<span style="color: #888888">		and Participation.&quot;Is Enrolled&quot;(</span>
-<span style="color: #888888">			&quot;Product Line&quot;, </span>
-<span style="color: #888888">			start of &quot;Measurement Period&quot;, </span>
-<span style="color: #888888">			Interval[start of &quot;Measurement Period&quot; - 27 months, end of &quot;Measurement Period&quot;],</span>
-<span style="color: #888888">			45</span>
-<span style="color: #888888">		)</span>
-<span style="color: #888888">*/</span>
+  <span style="color: #AA6600">&quot;Is Female&quot;</span>
+    <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Age 52 to 74 at End&quot;</span>
+    <span style="color: #008800; font-weight: bold">and</span> (<span style="color: #008800; font-weight: bold">not</span> Common.<span style="color: #AA6600">&quot;Has Hospice&quot;</span>)
+    <span style="color: #008800; font-weight: bold">and</span> Participation.<span style="color: #AA6600">&quot;Is Enrolled&quot;</span>(
+      <span style="color: #AA6600">&quot;Product Line&quot;</span>, 
+      <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, 
+      <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">27</span> months, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>],
+      <span style="color: #0000DD; font-weight: bold">45</span>
+    )
 
 define <span style="color: #AA6600">&quot;Is Female&quot;</span>:
-	Patient.gender.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;female&#39;</span>
+  Patient.gender <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;female&#39;</span>
 
 define <span style="color: #AA6600">&quot;Is Age 52 to 74 at End&quot;</span>:
-	CalendarAgeInYearsAt(Patient.birthDate.value, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>) <span style="color: #008800; font-weight: bold">between</span> <span style="color: #0000DD; font-weight: bold">52</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">74</span>
-
-<span style="color: #888888">/*</span>
-<span style="color: #888888">define &quot;Is In Hospice&quot;:</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Encounter: &quot;Hospice Value Set&quot;] Enc</span>
-<span style="color: #888888">			where Enc.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
-<span style="color: #888888">				and PeriodToIntervalOfDT(Enc.period) overlaps day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	or</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Claim: &quot;Hospice Value Set&quot;] Clm</span>
-<span style="color: #888888">			where Clm.status.value in { &#39;active&#39;, &#39;draft&#39; }</span>
-<span style="color: #888888">				and PeriodToIntervalOfDT(Clm.item.service.period) overlaps day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	or</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Encounter: &quot;Encounter Inpatient&quot;] DischargeHospice</span>
-<span style="color: #888888">			where DischargeHospice.status.value in { &#39;planned&#39;, &#39;arrived&#39;, &#39;triaged&#39;, &#39;in-progress&#39;, &#39;onleave&#39;, &#39;finished&#39; }</span>
-<span style="color: #888888">				and (CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)</span>
-<span style="color: #888888">						in &quot;Discharged to Home for Hospice Care&quot;</span>
-<span style="color: #888888">					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)</span>
-<span style="color: #888888">						in &quot;Discharged to Health Care Facility for Hospice Care&quot;)</span>
-<span style="color: #888888">				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	or</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[ProcedureRequest: &quot;Hospice care ambulatory&quot;] HospiceOrder</span>
-<span style="color: #888888">			where HospiceOrder.status.value in { &#39;active&#39;, &#39;completed&#39; }</span>
-<span style="color: #888888">				and HospiceOrder.authoredOn.value during &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">	or</span>
-<span style="color: #888888">	exists(</span>
-<span style="color: #888888">		[Procedure: &quot;Hospice care ambulatory&quot;] HospicePerformed</span>
-<span style="color: #888888">			where HospicePerformed.status.value in { &#39;preparation&#39;, &#39;in-progress&#39;, &#39;suspended&#39;, &#39;aborted&#39;, &#39;completed&#39; }</span>
-<span style="color: #888888">				and date form PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of &quot;Measurement Period&quot;</span>
-<span style="color: #888888">	)</span>
-<span style="color: #888888">*/</span>
+  Common.CalendarAgeInYearsAt(FHIRHelpers.ToDate(Patient.birthDate), <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>) <span style="color: #008800; font-weight: bold">between</span> <span style="color: #0000DD; font-weight: bold">52</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #0000DD; font-weight: bold">74</span>
 
 <span style="color: #888888">/*</span>
 <span style="color: #888888">Administrative Specification</span>
 <span style="color: #888888">*/</span>
 
 define <span style="color: #AA6600">&quot;Denominator&quot;</span>:
-    <span style="color: #333333">//</span> was <span style="color: #AA6600">&quot;Initial Population&quot;</span>, but that will always be <span style="color: #008800; font-weight: bold">true</span> if this expression <span style="color: #008800; font-weight: bold">is</span> executed
-	<span style="color: #008800; font-weight: bold">true</span>
+  <span style="color: #008800; font-weight: bold">true</span>
 
 define <span style="color: #AA6600">&quot;Numerator&quot;</span>:
-	<span style="color: #AA6600">&quot;Is Mammogram In Last 39 Months&quot;</span>
+  <span style="color: #AA6600">&quot;Is Mammogram In Last 39 Months&quot;</span>
 
 define <span style="color: #AA6600">&quot;Is Mammogram In Last 39 Months&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Mammography Value Set&quot;</span>] Proc
-			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> PeriodToIntervalOfDT(Proc.performed) included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval 27 More Months&quot;</span>
-	)
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Mammography Value Set&quot;</span>] Proc
+      <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> Proc.performed included <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval 27 More Months&quot;</span>
+  )
 
 define <span style="color: #AA6600">&quot;Denominator Exclusion&quot;</span>:
-	(<span style="color: #AA6600">&quot;Is Lacking Both Breasts&quot;</span>
-			<span style="color: #008800; font-weight: bold">or</span> (<span style="color: #AA6600">&quot;Is Lacking Left Breast&quot;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Lacking Right Breast&quot;</span>))
+  (<span style="color: #AA6600">&quot;Is Lacking Both Breasts&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> (<span style="color: #AA6600">&quot;Is Lacking Left Breast&quot;</span> <span style="color: #008800; font-weight: bold">and</span> <span style="color: #AA6600">&quot;Is Lacking Right Breast&quot;</span>)
+  )
 
 define <span style="color: #AA6600">&quot;Is Lacking Both Breasts&quot;</span>:
-	<span style="color: #AA6600">&quot;Is Bilateral Mastectomy&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is History Of Bilateral Mastectomy&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Twice Spread Two Weeks&quot;</span>
+  <span style="color: #AA6600">&quot;Is Bilateral Mastectomy&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is History Of Bilateral Mastectomy&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Twice Spread Two Weeks&quot;</span>
 
 define <span style="color: #AA6600">&quot;Is Lacking Left Breast&quot;</span>:
-	<span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Left&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Absence Of Left Breast&quot;</span>
+  <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Left&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Absence Of Left Breast&quot;</span>
 
 define <span style="color: #AA6600">&quot;Is Lacking Right Breast&quot;</span>:
-	<span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Right&quot;</span>
-		<span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Absence Of Right Breast&quot;</span>
+  <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Right&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Absence Of Right Breast&quot;</span>
 
 define <span style="color: #AA6600">&quot;Is Bilateral Mastectomy&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Bilateral Mastectomy Value Set&quot;</span>] Proc
-			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Bilateral Mastectomy Value Set&quot;</span>] Proc
+      <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
 
 define <span style="color: #AA6600">&quot;Is History Of Bilateral Mastectomy&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Condition: <span style="color: #AA6600">&quot;History of Bilateral Mastectomy Value Set&quot;</span>] Cond
-			<span style="color: #008800; font-weight: bold">where</span> Cond.verificationStatus.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> Cond.assertedDate.value same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Claim] Claim
-			<span style="color: #008800; font-weight: bold">where</span> Claim.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span>(
-				Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc1
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Bilateral Modifier Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc2
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-			)
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Twice Spread Two Weeks&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		(
-			[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
-				<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-				<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(Proc.performed)
-		) WhenUM1
-			<span style="color: #008800; font-weight: bold">with</span> (
-				[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
-					<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-					<span style="color: #008800; font-weight: bold">return</span> PeriodToIntervalOfDT(Proc.performed)
-			) WhenUM2
-				such that (((difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM1 <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM2) <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">14</span>)
-					<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM1 same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM2 same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Claim] Claim
-			<span style="color: #008800; font-weight: bold">where</span> Claim.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span>(
-				Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc1
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Left Modifier Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc2
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-			)
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Left&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Left Value Set&quot;</span>] Proc
-			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
-
-define <span style="color: #AA6600">&quot;Is Absence Of Left Breast&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Observation: <span style="color: #AA6600">&quot;Absence of Left Breast Value Set&quot;</span>] Obs
-			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
-				<span style="color: #008800; font-weight: bold">and</span> Obs.effective.value same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Claim] Claim
-			<span style="color: #008800; font-weight: bold">where</span> Claim.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span>(
-				Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc1
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-					<span style="color: #008800; font-weight: bold">with</span> (
-						[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Right Modifier Value Set&quot;</span>] Proc
-							<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-								<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-					) Proc2
-						such that
-							(if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
-								<span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
-								<span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
-			)
-	)
-
-define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Right&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Right Value Set&quot;</span>] Proc
-			<span style="color: #008800; font-weight: bold">where</span> Proc.status.value <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Proc.performed) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
-
-define <span style="color: #AA6600">&quot;Is Absence Of Right Breast&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span>(
-		[Observation: <span style="color: #AA6600">&quot;Absence of Right Breast Value Set&quot;</span>] Obs
-			<span style="color: #008800; font-weight: bold">where</span> Obs.status.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
-				<span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(Obs.effective) same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
-	)
-
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Condition: <span style="color: #AA6600">&quot;History of Bilateral Mastectomy Value Set&quot;</span>] Cond
+      <span style="color: #008800; font-weight: bold">where</span> Cond.verificationStatus <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;confirmed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> Cond.assertedDate same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
 
 <span style="color: #888888">/*</span>
-<span style="color: #888888">Utility Functions</span>
+<span style="color: #888888">This approach looks only at the procedure data.</span>
+<span style="color: #888888">NOTE: The Bilateral Modifier Value Set may not be appropriate for this usage</span>
+<span style="color: #888888">*/</span>  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier Procedure&quot;</span>: 
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] M
+      <span style="color: #008800; font-weight: bold">where</span> M.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> M.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (M.bodySite B <span style="color: #008800; font-weight: bold">where</span> B <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Bilateral Modifier Value Set&quot;</span>)
+  )
+  
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach looks only at the claim data</span>
 <span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier Claim&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.item Item
+            <span style="color: #008800; font-weight: bold">where</span> Item.service <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.serviced same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.modifier <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Bilateral Modifier Value Set&quot;</span>
+          )
+  )
+  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier&quot;</span>:
+  <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier Claim&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier Procedure&quot;</span>
 
-define <span style="color: #008800; font-weight: bold">function</span> PeriodToIntervalOfDT(value FHIR.Period):
-	<span style="color: #007020">Interval</span>[value.<span style="color: #AA6600">&quot;start&quot;</span>.value, value.<span style="color: #AA6600">&quot;end&quot;</span>.value]
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,</span>
+<span style="color: #888888">and one with the bilateral modifier code.</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Bilateral Modifier Claim Linked To Procedure&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc1
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Bilateral Modifier Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc2
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+        )
+  )
 
-define <span style="color: #008800; font-weight: bold">function</span> CodingToCode(coding FHIR.Coding):
-	<span style="color: #008800; font-weight: bold">System</span>.Code <span style="color: #FF0000; background-color: #FFAAAA">{</span>
-		code: coding.code.value,
-		<span style="color: #008800; font-weight: bold">system</span>: coding.<span style="color: #008800; font-weight: bold">system</span>.value,
-		<span style="color: #008800; font-weight: bold">version</span>: coding.<span style="color: #008800; font-weight: bold">version</span>.value,
-		display: coding.display.value
-	<span style="color: #FF0000; background-color: #FFAAAA">}</span>
-	<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">From</span> FHIRHelpers
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Twice Spread Two Weeks&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    (
+      [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
+        <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">return</span> Proc.performed
+    ) WhenUM1
+      <span style="color: #008800; font-weight: bold">with</span> (
+        [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
+          <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+          <span style="color: #008800; font-weight: bold">return</span> Proc.performed
+      ) WhenUM2
+        such that (((difference <span style="color: #008800; font-weight: bold">in</span> days <span style="color: #008800; font-weight: bold">between</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM1 <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM2) <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">14</span>)
+          <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM1 same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+          <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> WhenUM2 same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>)
+  )
 
-define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;ToDate&quot;</span>(Value DateTime):
-	DateTime(<span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">month</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">from</span> Value, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>, timezone <span style="color: #008800; font-weight: bold">from</span> Value)
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach looks only at the procedure data.</span>
+<span style="color: #888888">NOTE: The Left Modifier Value Set may not be appropriate for this usage</span>
+<span style="color: #888888">*/</span>  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier Procedure&quot;</span>: 
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] M
+      <span style="color: #008800; font-weight: bold">where</span> M.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> M.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (M.bodySite B <span style="color: #008800; font-weight: bold">where</span> B <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Left Modifier Value Set&quot;</span>)
+  )
 
-define <span style="color: #008800; font-weight: bold">function</span> CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
-    years <span style="color: #008800; font-weight: bold">between</span> ToDate(BirthDateTime)<span style="color: #008800; font-weight: bold">and</span> ToDate(AsOf)
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach looks only at the claim data</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier Claim&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.item Item
+            <span style="color: #008800; font-weight: bold">where</span> Item.service <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.serviced same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.modifier <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Left Modifier Value Set&quot;</span>
+          )
+  )
+  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier&quot;</span>:
+  <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier Claim&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier Procedure&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,</span>
+<span style="color: #888888">and one with the left modifier code.</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Left Modifier Claim Linked To Procedure&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc1
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Left Modifier Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc2
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+        )
+  )
+
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Left&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>(
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Left Value Set&quot;</span>] Proc
+      <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+
+define <span style="color: #AA6600">&quot;Is Absence Of Left Breast&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span>(
+    [Observation: <span style="color: #AA6600">&quot;Absence of Left Breast Value Set&quot;</span>] Obs
+      <span style="color: #008800; font-weight: bold">where</span> Obs.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        <span style="color: #008800; font-weight: bold">and</span> Obs.effective same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach looks only at the procedure data.</span>
+<span style="color: #888888">NOTE: The Right Modifier Value Set may not be appropriate for this usage</span>
+<span style="color: #888888">*/</span>  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier Procedure&quot;</span>: 
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] M
+      <span style="color: #008800; font-weight: bold">where</span> M.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> M.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (M.bodySite B <span style="color: #008800; font-weight: bold">where</span> B <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Right Modifier Value Set&quot;</span>)
+  )
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach looks only at the claim data</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier Claim&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.item Item
+            <span style="color: #008800; font-weight: bold">where</span> Item.service <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.serviced same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+              <span style="color: #008800; font-weight: bold">and</span> Item.modifier <span style="color: #008800; font-weight: bold">in</span> <span style="color: #AA6600">&quot;Right Modifier Value Set&quot;</span>
+          )
+  )
+  
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier&quot;</span>:
+  <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier Claim&quot;</span>
+    <span style="color: #008800; font-weight: bold">or</span> <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier Procedure&quot;</span>
+
+<span style="color: #888888">/*</span>
+<span style="color: #888888">This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,</span>
+<span style="color: #888888">and one with the right modifier code.</span>
+<span style="color: #888888">*/</span>
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy With Right Modifier Claim Linked To Procedure&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Claim] Claim
+      <span style="color: #008800; font-weight: bold">where</span> Claim.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;active&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">exists</span> (
+          Claim.<span style="color: #008800; font-weight: bold">procedure</span> BbElem
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc1
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc1.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+            <span style="color: #008800; font-weight: bold">with</span> (
+              [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Right Modifier Value Set&quot;</span>] Proc
+                <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+                  <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+            ) Proc2
+              such that
+                (if BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">is</span> FHIR.Reference
+                  <span style="color: #008800; font-weight: bold">then</span> (BbElem.<span style="color: #008800; font-weight: bold">procedure</span> <span style="color: #008800; font-weight: bold">as</span> FHIR.Reference).identifier <span style="color: #333333">~</span> Proc2.identifier
+                  <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">false</span>)
+        )
+  )
+
+define <span style="color: #AA6600">&quot;Is Unilateral Mastectomy Right&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [<span style="color: #008800; font-weight: bold">Procedure</span>: <span style="color: #AA6600">&quot;Unilateral Mastectomy Right Value Set&quot;</span>] Proc
+      <span style="color: #008800; font-weight: bold">where</span> Proc.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Proc.performed same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
+
+define <span style="color: #AA6600">&quot;Is Absence Of Right Breast&quot;</span>:
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    [Observation: <span style="color: #AA6600">&quot;Absence of Right Breast Value Set&quot;</span>] Obs
+      <span style="color: #008800; font-weight: bold">where</span> Obs.status <span style="color: #008800; font-weight: bold">in</span> <span style="color: #FF0000; background-color: #FFAAAA">{</span> <span style="background-color: #fff0f0">&#39;final&#39;</span>, <span style="background-color: #fff0f0">&#39;amended&#39;</span> <span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        <span style="color: #008800; font-weight: bold">and</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> Obs.effective same <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">before</span> <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>
+  )
 </pre></div>
