@@ -1,14 +1,14 @@
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/*</span>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library MRP_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.000&#39;</span>
+
+<span style="color: #888888">/*</span>
 <span style="color: #888888">Medication reconciliation postdischarge (MRP)</span>
 <span style="color: #888888">*/</span>
-
-library MRP_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.000&#39;</span>
 
 <span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 
 include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 include Participation
-include NCQACommon
+include NCQACommon <span style="color: #008800; font-weight: bold">called</span> Common
 
 <span style="color: #333333">//</span> Use http:<span style="color: #333333">//</span>fhir.ext.apelon.com<span style="color: #333333">/</span>dtsserverws<span style="color: #333333">/</span>fhir <span style="color: #008800; font-weight: bold">to</span> evaluate, but these <span style="color: #008800; font-weight: bold">are</span> the canonical urls
 valueset <span style="color: #AA6600">&quot;Inpatient Encounter&quot;</span>: <span style="background-color: #fff0f0">&#39;http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.307&#39;</span> <span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">In</span> VSAC
@@ -24,29 +24,27 @@ context Patient
 
 define <span style="color: #AA6600">&quot;Encounters Ending Before December 2nd&quot;</span>:
   [Encounter: <span style="color: #AA6600">&quot;Inpatient Encounter&quot;</span>] E1
-    <span style="color: #008800; font-weight: bold">where</span> E.status <span style="color: #333333">~</span> <span style="background-color: #fff0f0">&#39;Finished&#39;</span>
-     <span style="color: #008800; font-weight: bold">and</span> E.period ends during <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">30</span> days] 
+    <span style="color: #008800; font-weight: bold">where</span> E1.status <span style="color: #333333">~</span> <span style="background-color: #fff0f0">&#39;Finished&#39;</span>
+     <span style="color: #008800; font-weight: bold">and</span> E1.period ends during <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">30</span> days] 
 
 define <span style="color: #AA6600">&quot;Encounters in Measurement Period&quot;</span>:
   [Encounter: <span style="color: #AA6600">&quot;Inpatient Encounter&quot;</span>] E2
-    <span style="color: #008800; font-weight: bold">where</span> E.status <span style="color: #333333">~</span> <span style="background-color: #fff0f0">&#39;Finished&#39;</span>
-     <span style="color: #008800; font-weight: bold">and</span> E.period ends during <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>] 
+    <span style="color: #008800; font-weight: bold">where</span> E2.status <span style="color: #333333">~</span> <span style="background-color: #fff0f0">&#39;Finished&#39;</span>
+     <span style="color: #008800; font-weight: bold">and</span> E2.period ends during <span style="color: #007020">Interval</span>[<span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>, <span style="color: #008800; font-weight: bold">end</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Measurement Period&quot;</span>] 
      
 <span style="color: #333333">//</span> Consider expressing this <span style="color: #008800; font-weight: bold">using</span> a <span style="color: #008800; font-weight: bold">without</span>, since <span style="color: #008800; font-weight: bold">in</span> the <span style="color: #008800; font-weight: bold">case</span> that there <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">no</span> encounter <span style="color: #008800; font-weight: bold">after</span> E1, this won<span style="background-color: #fff0f0">&#39;t return</span>
 <span style="background-color: #fff0f0">define &quot;Encounters without 30 Day Readmission&quot;:</span>
 <span style="background-color: #fff0f0">	&quot;Encounters Ending Before December 2nd&quot; E1</span>
 <span style="background-color: #fff0f0">	   with &quot;Encounters in Measurement Period&quot; E2 </span>
-<span style="background-color: #fff0f0">	   such that difference in days between E2.period and E1.period &gt; 30</span>
+<span style="background-color: #fff0f0">	   such that difference in days between start of E2.period and start of E1.period &gt; 30</span>
 <span style="background-color: #fff0f0">    	</span>
 
 <span style="background-color: #fff0f0">define &quot;Initial Population&quot;:</span>
 <span style="background-color: #fff0f0">  &quot;Encounters without 30 Day Readmission&quot; E</span>
 <span style="background-color: #fff0f0">    where AgeInYearsAt(end of &quot;Measurement Period&quot;) &gt;= 18</span>
 <span style="background-color: #fff0f0">    and Participation.&quot;Is Enrolled&quot;(Participation.&quot;Medicare Product&quot;,</span>
-<span style="background-color: #fff0f0">		  end of E.period + 30 days,Interval [start of E.period, end of E.period + 30 days], 0)</span>
-<span style="background-color: #fff0f0">		and not Common.HasHospice</span>
-
-
+<span style="background-color: #fff0f0">		  end of E.period + 30 days, Interval[start of E.period, end of E.period + 30 days], 0)</span>
+<span style="background-color: #fff0f0">		and not Common.&quot;Has Hospice&quot;</span>
 
 <span style="background-color: #fff0f0">define Denominator:</span>
 <span style="background-color: #fff0f0">  true</span>
@@ -70,6 +68,6 @@ define <span style="color: #AA6600">&quot;Encounters in Measurement Period&quot;
 
 define Numerator:
   <span style="color: #AA6600">&quot;Encounters without 30 Day Readmission&quot;</span> E 
-    <span style="color: #008800; font-weight: bold">where</span> <span style="color: #008800; font-weight: bold">exists</span> (Tasks T <span style="color: #008800; font-weight: bold">where</span> FHIRHelpers.ToInterval(T.executionPeriod) during <span style="color: #007020">Interval</span>[E.period.<span style="color: #AA6600">&quot;end&quot;</span>, E.period.<span style="color: #AA6600">&quot;end&quot;</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">30</span> days])
+    <span style="color: #008800; font-weight: bold">where</span> <span style="color: #008800; font-weight: bold">exists</span> (Tasks T <span style="color: #008800; font-weight: bold">where</span> T.executionPeriod during <span style="color: #007020">Interval</span>[E.period.<span style="color: #AA6600">&quot;end&quot;</span>, E.period.<span style="color: #AA6600">&quot;end&quot;</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">30</span> days])
       <span style="color: #008800; font-weight: bold">or</span> <span style="color: #008800; font-weight: bold">exists</span> (Observations O <span style="color: #008800; font-weight: bold">where</span> O.effective during <span style="color: #007020">Interval</span>[E.period.<span style="color: #AA6600">&quot;end&quot;</span>, E.period.<span style="color: #AA6600">&quot;end&quot;</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">30</span> days])
 </pre></div>

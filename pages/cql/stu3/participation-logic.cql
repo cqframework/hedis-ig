@@ -49,12 +49,12 @@ define "Medicare Product":
 */
 define function "Is Enrolled"(ProductLine String, IndexDate DateTime, ParticipationPeriod Interval<DateTime>, AllowedGapDays Integer):
 	case
-		// If this is not running for a specific product line, ignore enrollment considerations
+		/* If this is not running for a specific product line, ignore enrollment considerations */
 		when ProductLine is null then true
 		else
-			// Is the patient enrolled in the given product line on the given index date?
+			/* Is the patient enrolled in the given product line on the given index date? */
 			"Is Enrolled On Date"(ProductLine, IndexDate)
-			// Is the patient continuously enrolled in every year of the participation period
+			/* Is the patient continuously enrolled in every year of the participation period */
 			  and AllTrue(
 						("Enrollment Periods"(ParticipationPeriod)) EnrollmentPeriod
 							return "Is Continuously Enrolled In Period"(EnrollmentPeriod, if duration in months of EnrollmentPeriod >= 6 then AllowedGapDays else 0)

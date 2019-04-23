@@ -1,13 +1,14 @@
+library BCS_FHIR version '1.0.1'
+
 /*
 Breast Cancer Screening (BCS)
 */
 
-library BCS_FHIR version '1.0.1'
-
-//using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
-//include Participation version '1.0.0' called Participation
+include FHIRHelpers version '3.0.0'
+include Participation version '1.0.0' called Participation
+include NCQACommon version '3.10.000' called Common
 
 /*
 Description
@@ -65,7 +66,7 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 parameter "Measurement Period" Interval<DateTime>
 
 define "Lookback Interval 27 More Months":
-	Interval[start of "Measurement Period" - 27 months, end of "Measurement Period")
+  Interval[start of "Measurement Period" - 27 months, end of "Measurement Period")
 
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
@@ -80,259 +81,302 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 */
 
 define "Initial Population":
-	"Is Female"
-		and "Is Age 52 to 74 at End"
-/*
-		and (not "Is In Hospice")
-		and Participation."Is Enrolled"(
-			"Product Line", 
-			start of "Measurement Period", 
-			Interval[start of "Measurement Period" - 27 months, end of "Measurement Period"],
-			45
-		)
-*/
+  "Is Female"
+    and "Is Age 52 to 74 at End"
+    and (not Common."Has Hospice")
+    and Participation."Is Enrolled"(
+      "Product Line", 
+      start of "Measurement Period", 
+      Interval[start of "Measurement Period" - 27 months, end of "Measurement Period"],
+      45
+    )
 
 define "Is Female":
-	Patient.gender.value = 'female'
+  Patient.gender = 'female'
 
 define "Is Age 52 to 74 at End":
-	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 52 and 74
-
-/*
-define "Is In Hospice":
-	exists(
-		[Encounter: "Hospice Value Set"] Enc
-			where Enc.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and PeriodToIntervalOfDT(Enc.period) overlaps day of "Measurement Period"
-	)
-	or
-	exists(
-		[Claim: "Hospice Value Set"] Clm
-			where Clm.status.value in { 'active', 'draft' }
-				and PeriodToIntervalOfDT(Clm.item.service.period) overlaps day of "Measurement Period"
-	)
-	or
-	exists(
-		[Encounter: "Encounter Inpatient"] DischargeHospice
-			where DischargeHospice.status.value in { 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished' }
-				and (CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
-						in "Discharged to Home for Hospice Care"
-					or CodingToCode(DischargeHospice.hospitalization.dischargeDisposition.coding)
-						in "Discharged to Health Care Facility for Hospice Care")
-				and PeriodToIntervalOfDT(DischargeHospice.period) ends during day of "Measurement Period"
-	)
-	or
-	exists(
-		[ProcedureRequest: "Hospice care ambulatory"] HospiceOrder
-			where HospiceOrder.status.value in { 'active', 'completed' }
-				and HospiceOrder.authoredOn.value during "Measurement Period"
-	)
-	or
-	exists(
-		[Procedure: "Hospice care ambulatory"] HospicePerformed
-			where HospicePerformed.status.value in { 'preparation', 'in-progress', 'suspended', 'aborted', 'completed' }
-				and date form PeriodToIntervalOfDT(HospicePerformed.performed) overlaps day of "Measurement Period"
-	)
-*/
+  Common.CalendarAgeInYearsAt(FHIRHelpers.ToDate(Patient.birthDate), end of "Measurement Period") between 52 and 74
 
 /*
 Administrative Specification
 */
 
 define "Denominator":
-    // was "Initial Population", but that will always be true if this expression is executed
-	true
+  true
 
 define "Numerator":
-	"Is Mammogram In Last 39 Months"
+  "Is Mammogram In Last 39 Months"
 
 define "Is Mammogram In Last 39 Months":
-	exists(
-		[Procedure: "Mammography Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and PeriodToIntervalOfDT(Proc.performed) included in day of "Lookback Interval 27 More Months"
-	)
+  exists (
+    [Procedure: "Mammography Value Set"] Proc
+      where Proc.status = 'completed'
+        and Proc.performed included in day of "Lookback Interval 27 More Months"
+  )
 
 define "Denominator Exclusion":
-	("Is Lacking Both Breasts"
-			or ("Is Lacking Left Breast"
-				and "Is Lacking Right Breast"))
+  ("Is Lacking Both Breasts"
+    or ("Is Lacking Left Breast" and "Is Lacking Right Breast")
+  )
 
 define "Is Lacking Both Breasts":
-	"Is Bilateral Mastectomy"
-		or "Is History Of Bilateral Mastectomy"
-		or "Is Unilateral Mastectomy With Bilateral Modifier"
-		or "Is Unilateral Mastectomy Twice Spread Two Weeks"
+  "Is Bilateral Mastectomy"
+    or "Is History Of Bilateral Mastectomy"
+    or "Is Unilateral Mastectomy With Bilateral Modifier"
+    or "Is Unilateral Mastectomy Twice Spread Two Weeks"
 
 define "Is Lacking Left Breast":
-	"Is Unilateral Mastectomy With Left Modifier"
-		or "Is Unilateral Mastectomy Left"
-		or "Is Absence Of Left Breast"
+  "Is Unilateral Mastectomy With Left Modifier"
+    or "Is Unilateral Mastectomy Left"
+    or "Is Absence Of Left Breast"
 
 define "Is Lacking Right Breast":
-	"Is Unilateral Mastectomy With Right Modifier"
-		or "Is Unilateral Mastectomy Right"
-		or "Is Absence Of Right Breast"
+  "Is Unilateral Mastectomy With Right Modifier"
+    or "Is Unilateral Mastectomy Right"
+    or "Is Absence Of Right Breast"
 
 define "Is Bilateral Mastectomy":
-	exists(
-		[Procedure: "Bilateral Mastectomy Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-	)
+  exists (
+    [Procedure: "Bilateral Mastectomy Value Set"] Proc
+      where Proc.status = 'completed'
+        and end of Proc.performed same day or before end of "Measurement Period"
+  )
 
 define "Is History Of Bilateral Mastectomy":
-	exists(
-		[Condition: "History of Bilateral Mastectomy Value Set"] Cond
-			where Cond.verificationStatus.value = 'confirmed'
-				and Cond.assertedDate.value same day or before end of "Measurement Period"
-	)
-
-define "Is Unilateral Mastectomy With Bilateral Modifier":
-	exists(
-		[Claim] Claim
-			where Claim.status.value = 'active'
-				and exists(
-				Claim.procedure BbElem
-					with (
-						[Procedure: "Unilateral Mastectomy Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc1
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
-								else false)
-					with (
-						[Procedure: "Bilateral Modifier Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc2
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
-								else false)
-			)
-	)
-
-define "Is Unilateral Mastectomy Twice Spread Two Weeks":
-	exists(
-		(
-			[Procedure: "Unilateral Mastectomy Value Set"] Proc
-				where Proc.status.value = 'completed'
-				return PeriodToIntervalOfDT(Proc.performed)
-		) WhenUM1
-			with (
-				[Procedure: "Unilateral Mastectomy Value Set"] Proc
-					where Proc.status.value = 'completed'
-					return PeriodToIntervalOfDT(Proc.performed)
-			) WhenUM2
-				such that (((difference in days between start of WhenUM1 and start of WhenUM2) >= 14)
-					and end of WhenUM1 same day or before end of "Measurement Period"
-					and end of WhenUM2 same day or before end of "Measurement Period")
-	)
-
-define "Is Unilateral Mastectomy With Left Modifier":
-	exists(
-		[Claim] Claim
-			where Claim.status.value = 'active'
-				and exists(
-				Claim.procedure BbElem
-					with (
-						[Procedure: "Unilateral Mastectomy Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc1
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
-								else false)
-					with (
-						[Procedure: "Left Modifier Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc2
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
-								else false)
-			)
-	)
-
-define "Is Unilateral Mastectomy Left":
-	exists(
-		[Procedure: "Unilateral Mastectomy Left Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-	)
-
-define "Is Absence Of Left Breast":
-	exists(
-		[Observation: "Absence of Left Breast Value Set"] Obs
-			where Obs.status.value in { 'final', 'amended' }
-				and Obs.effective.value same day or before end of "Measurement Period"
-	)
-
-define "Is Unilateral Mastectomy With Right Modifier":
-	exists(
-		[Claim] Claim
-			where Claim.status.value = 'active'
-				and exists(
-				Claim.procedure BbElem
-					with (
-						[Procedure: "Unilateral Mastectomy Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc1
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
-								else false)
-					with (
-						[Procedure: "Right Modifier Value Set"] Proc
-							where Proc.status.value = 'completed'
-								and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-					) Proc2
-						such that
-							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
-								else false)
-			)
-	)
-
-define "Is Unilateral Mastectomy Right":
-	exists(
-		[Procedure: "Unilateral Mastectomy Right Value Set"] Proc
-			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) same day or before end of "Measurement Period"
-	)
-
-define "Is Absence Of Right Breast":
-	exists(
-		[Observation: "Absence of Right Breast Value Set"] Obs
-			where Obs.status.value in { 'final', 'amended' }
-				and end of PeriodToIntervalOfDT(Obs.effective) same day or before end of "Measurement Period"
-	)
-
+  exists (
+    [Condition: "History of Bilateral Mastectomy Value Set"] Cond
+      where Cond.verificationStatus = 'confirmed'
+        and Cond.assertedDate same day or before end of "Measurement Period"
+  )
 
 /*
-Utility Functions
+This approach looks only at the procedure data.
+NOTE: The Bilateral Modifier Value Set may not be appropriate for this usage
+*/  
+define "Is Unilateral Mastectomy With Bilateral Modifier Procedure": 
+  exists (
+    [Procedure: "Unilateral Mastectomy Value Set"] M
+      where M.status = 'completed'
+        and end of M.performed same day or before end of "Measurement Period"
+        and exists (M.bodySite B where B in "Bilateral Modifier Value Set")
+  )
+  
+/*
+This approach looks only at the claim data
 */
+define "Is Unilateral Mastectomy With Bilateral Modifier Claim":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.item Item
+            where Item.service in "Unilateral Mastectomy Value Set"
+              and Item.serviced same day or before end of "Measurement Period"
+              and Item.modifier in "Bilateral Modifier Value Set"
+          )
+  )
+  
+define "Is Unilateral Mastectomy With Bilateral Modifier":
+  "Is Unilateral Mastectomy With Bilateral Modifier Claim"
+    or "Is Unilateral Mastectomy With Bilateral Modifier Procedure"
 
-define function PeriodToIntervalOfDT(value FHIR.Period):
-	Interval[value."start".value, value."end".value]
+/*
+This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,
+and one with the bilateral modifier code.
+*/
+define "Is Unilateral Mastectomy With Bilateral Modifier Claim Linked To Procedure":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.procedure BbElem
+            with (
+              [Procedure: "Unilateral Mastectomy Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc1
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+                  else false)
+            with (
+              [Procedure: "Bilateral Modifier Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc2
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+                  else false)
+        )
+  )
 
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers
+define "Is Unilateral Mastectomy Twice Spread Two Weeks":
+  exists (
+    (
+      [Procedure: "Unilateral Mastectomy Value Set"] Proc
+        where Proc.status = 'completed'
+        return Proc.performed
+    ) WhenUM1
+      with (
+        [Procedure: "Unilateral Mastectomy Value Set"] Proc
+          where Proc.status = 'completed'
+          return Proc.performed
+      ) WhenUM2
+        such that (((difference in days between start of WhenUM1 and start of WhenUM2) >= 14)
+          and end of WhenUM1 same day or before end of "Measurement Period"
+          and end of WhenUM2 same day or before end of "Measurement Period")
+  )
 
-define function "ToDate"(Value DateTime):
-	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
+/*
+This approach looks only at the procedure data.
+NOTE: The Left Modifier Value Set may not be appropriate for this usage
+*/  
+define "Is Unilateral Mastectomy With Left Modifier Procedure": 
+  exists (
+    [Procedure: "Unilateral Mastectomy Value Set"] M
+      where M.status = 'completed'
+        and end of M.performed same day or before end of "Measurement Period"
+        and exists (M.bodySite B where B in "Left Modifier Value Set")
+  )
 
-define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
-    years between ToDate(BirthDateTime)and ToDate(AsOf)
+/*
+This approach looks only at the claim data
+*/
+define "Is Unilateral Mastectomy With Left Modifier Claim":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.item Item
+            where Item.service in "Unilateral Mastectomy Value Set"
+              and Item.serviced same day or before end of "Measurement Period"
+              and Item.modifier in "Left Modifier Value Set"
+          )
+  )
+  
+define "Is Unilateral Mastectomy With Left Modifier":
+  "Is Unilateral Mastectomy With Left Modifier Claim"
+    or "Is Unilateral Mastectomy With Left Modifier Procedure"
+
+/*
+This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,
+and one with the left modifier code.
+*/
+define "Is Unilateral Mastectomy With Left Modifier Claim Linked To Procedure":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.procedure BbElem
+            with (
+              [Procedure: "Unilateral Mastectomy Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc1
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+                  else false)
+            with (
+              [Procedure: "Left Modifier Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc2
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+                  else false)
+        )
+  )
+
+define "Is Unilateral Mastectomy Left":
+  exists(
+    [Procedure: "Unilateral Mastectomy Left Value Set"] Proc
+      where Proc.status = 'completed'
+        and end of Proc.performed same day or before end of "Measurement Period"
+  )
+
+define "Is Absence Of Left Breast":
+  exists(
+    [Observation: "Absence of Left Breast Value Set"] Obs
+      where Obs.status in { 'final', 'amended' }
+        and Obs.effective same day or before end of "Measurement Period"
+  )
+
+/*
+This approach looks only at the procedure data.
+NOTE: The Right Modifier Value Set may not be appropriate for this usage
+*/  
+define "Is Unilateral Mastectomy With Right Modifier Procedure": 
+  exists (
+    [Procedure: "Unilateral Mastectomy Value Set"] M
+      where M.status = 'completed'
+        and end of M.performed same day or before end of "Measurement Period"
+        and exists (M.bodySite B where B in "Right Modifier Value Set")
+  )
+
+/*
+This approach looks only at the claim data
+*/
+define "Is Unilateral Mastectomy With Right Modifier Claim":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.item Item
+            where Item.service in "Unilateral Mastectomy Value Set"
+              and Item.serviced same day or before end of "Measurement Period"
+              and Item.modifier in "Right Modifier Value Set"
+          )
+  )
+  
+define "Is Unilateral Mastectomy With Right Modifier":
+  "Is Unilateral Mastectomy With Right Modifier Claim"
+    or "Is Unilateral Mastectomy With Right Modifier Procedure"
+
+/*
+This approach uses the Claim linked to two procedures, one with the unilateral mastectomy code,
+and one with the right modifier code.
+*/
+define "Is Unilateral Mastectomy With Right Modifier Claim Linked To Procedure":
+  exists (
+    [Claim] Claim
+      where Claim.status = 'active'
+        and exists (
+          Claim.procedure BbElem
+            with (
+              [Procedure: "Unilateral Mastectomy Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc1
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+                  else false)
+            with (
+              [Procedure: "Right Modifier Value Set"] Proc
+                where Proc.status = 'completed'
+                  and end of Proc.performed same day or before end of "Measurement Period"
+            ) Proc2
+              such that
+                (if BbElem.procedure is FHIR.Reference
+                  then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+                  else false)
+        )
+  )
+
+define "Is Unilateral Mastectomy Right":
+  exists (
+    [Procedure: "Unilateral Mastectomy Right Value Set"] Proc
+      where Proc.status = 'completed'
+        and end of Proc.performed same day or before end of "Measurement Period"
+  )
+
+define "Is Absence Of Right Breast":
+  exists (
+    [Observation: "Absence of Right Breast Value Set"] Obs
+      where Obs.status in { 'final', 'amended' }
+        and end of Obs.effective same day or before end of "Measurement Period"
+  )
+

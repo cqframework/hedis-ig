@@ -167,21 +167,18 @@ define "PHQ-9 Score":
 
 define "Numerator 1":
 	exists (
-	    // "Denominator 1" E
         "PHQ-9 Score" A
             where A.effective.value in day of "Assessment Period One"
     )
 
 define "Numerator 2":
     exists (
-	    // "Denominator 2" E
         "PHQ-9 Score" A
             where A.effective.value in day of "Assessment Period Two"
     )
 
 define "Numerator 3":
     exists (
-	    //"Denominator 3" E
         "PHQ-9 Score" A
 			where A.effective.value in day of "Assessment Period Three"
     )

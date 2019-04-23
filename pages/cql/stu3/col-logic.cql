@@ -6,6 +6,10 @@ library COL_FHIR version '1.0.1'
 
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+include NCQACommon version '3.10.000' called Common
+include Participation version '1.0.0'
+
 /*
 Description
 The percentage of members 50-75 years of age who had appropriate screening for colorectal cancer.
@@ -69,13 +73,13 @@ Interval[DateTime(2017,1,1,0,0,0,0), DateTime(2018,1,1,0,0,0,0))
 parameter "Measurement Period" Interval<DateTime>
 
 define "Lookback Interval Two More Years":
-	Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
+  Interval[start of "Measurement Period" - 2 years, end of "Measurement Period")
 
 define "Lookback Interval Four More Years":
-	Interval[start of "Measurement Period" - 4 years, end of "Measurement Period")
+  Interval[start of "Measurement Period" - 4 years, end of "Measurement Period")
 
 define "Lookback Interval Nine More Years":
-	Interval[start of "Measurement Period" - 9 years, end of "Measurement Period")
+  Interval[start of "Measurement Period" - 9 years, end of "Measurement Period")
 
 /*
 This library evaluates with respect to exactly 1 candidate patient at a time,
@@ -90,125 +94,102 @@ Product lines -- Commercial, Medicaid, Medicare (report each product line separa
 */
 
 define "Initial Population":
-	"Is Age 51 to 75 at End"
+  "Is Age 51 to 75 at End"
 
 define "Is Age 51 to 75 at End":
-	CalendarAgeInYearsAt(Patient.birthDate.value, end of "Measurement Period") between 51 and 75
+  Common.CalendarAgeInYearsAt(FHIRHelpers.ToDate(Patient.birthDate), end of "Measurement Period") between 51 and 75
 
 define "Denominator":
-	// was "Initial Population", but that will always be true if this expression is executed
-    true
+  true
 
 define "Numerator":
-	"Is Colorectal Cancer Screening"
+  "Is Colorectal Cancer Screening"
 
 define "Is Colorectal Cancer Screening":
-	"Is Fecal Occult Blood Test In Last Year"
-		or "Is Flexible Sigmoidoscopy In Last Five Years"
-		or "Is Colonoscopy In Last Ten Years"
-		or "Is CT Colonography In Last Five Years"
-		or "Is FIT-DNA Test In Last Three Years"
+  "Is Fecal Occult Blood Test In Last Year"
+    or "Is Flexible Sigmoidoscopy In Last Five Years"
+    or "Is Colonoscopy In Last Ten Years"
+    or "Is CT Colonography In Last Five Years"
+    or "Is FIT-DNA Test In Last Three Years"
 
 define "FOBT Observations":
-	[Observation: "FOBT Value Set (CPT)"]
-		union [Observation: "FOBT Value Set (HCPCS)"]
-		union [Observation: "FOBT Value Set (ICD9)"]
+  [Observation: "FOBT Value Set (CPT)"]
+    union [Observation: "FOBT Value Set (HCPCS)"]
+    union [Observation: "FOBT Value Set (ICD9)"]
 
 define "Is Fecal Occult Blood Test In Last Year":
-	exists(
-		"FOBT Observations" Obs
-			where Obs.status.value in { 'final', 'amended' }
-				and Obs.effective.value in day of "Measurement Period"
-	)
+  exists(
+    "FOBT Observations" Obs
+      where Obs.status in { 'final', 'amended' }
+        and Obs.effective in day of "Measurement Period"
+  )
 
 define "Flexible Sigmoidoscopy Reports":
-	[DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
-		union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
-		union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
+  [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
+    union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
+    union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
 
 define "Is Flexible Sigmoidoscopy In Last Five Years":
-	exists(
-		"Flexible Sigmoidoscopy Reports" DiagRep
-			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Four More Years"
-	)
+  exists(
+    "Flexible Sigmoidoscopy Reports" DiagRep
+      where DiagRep.status in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+        and DiagRep.effective overlaps day of "Lookback Interval Four More Years"
+  )
 
 define "Colonoscopy Reports":
-	[DiagnosticReport: "Colonoscopy Value Set (CPT)"]
-		union [DiagnosticReport: "Colonoscopy Value Set (HCPCS)"]
-		union [DiagnosticReport: "Colonoscopy Value Set (ICD9)"]
+  [DiagnosticReport: "Colonoscopy Value Set (CPT)"]
+    union [DiagnosticReport: "Colonoscopy Value Set (HCPCS)"]
+    union [DiagnosticReport: "Colonoscopy Value Set (ICD9)"]
 
 define "Is Colonoscopy In Last Ten Years":
-	exists(
-		"Colonoscopy Reports" DiagRep
-			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Nine More Years"
-	)
+  exists(
+    "Colonoscopy Reports" DiagRep
+      where DiagRep.status in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+        and DiagRep.effective overlaps day of "Lookback Interval Nine More Years"
+  )
 
 define "Is CT Colonography In Last Five Years":
-	exists(
-		[DiagnosticReport: "CT Colonography Value Set"] DiagRep
-			where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
-				and PeriodToIntervalOfDT(DiagRep.effective) overlaps day of "Lookback Interval Four More Years"
-	)
+  exists(
+    [DiagnosticReport: "CT Colonography Value Set"] DiagRep
+      where DiagRep.status in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
+        and DiagRep.effective overlaps day of "Lookback Interval Four More Years"
+  )
 
 define "FIT-DNA Observations":
-	[Observation: "FIT-DNA Value Set (CPT)"]
-		union [Observation: "FIT-DNA Value Set (HCPCS)"]
-		union [Observation: "FIT-DNA Value Set (LOINC)"]
+  [Observation: "FIT-DNA Value Set (CPT)"]
+    union [Observation: "FIT-DNA Value Set (HCPCS)"]
+    union [Observation: "FIT-DNA Value Set (LOINC)"]
 
 define "Is FIT-DNA Test In Last Three Years":
-	exists(
-		"FIT-DNA Observations" Obs
-			where Obs.status.value in { 'final', 'amended' }
-				and Obs.effective.value in day of "Lookback Interval Two More Years"
-	)
+  exists(
+    "FIT-DNA Observations" Obs
+      where Obs.status in { 'final', 'amended' }
+        and Obs.effective in day of "Lookback Interval Two More Years"
+  )
 
 define "Denominator Exclusion":
-	"Is Colorectal Cancer"
-			or "Is Total Colectomy"
+  "Is Colorectal Cancer"
+      or "Is Total Colectomy"
 
 define "Colorectal Cancer Conditions":
-	[Condition: "Colorectal Cancer Value Set (ICD10)"]
-		union [Condition: "Colorectal Cancer Value Set (ICD9)"]
+  [Condition: "Colorectal Cancer Value Set (ICD10)"]
+    union [Condition: "Colorectal Cancer Value Set (ICD9)"]
 
 define "Is Colorectal Cancer":
-	exists(
-		"Colorectal Cancer Conditions" Cond
-			where Cond.verificationStatus.value = 'confirmed'
-				and Cond.assertedDate.value before day of end of "Measurement Period"
-	)
+  exists(
+    "Colorectal Cancer Conditions" Cond
+      where Cond.verificationStatus = 'confirmed'
+        and Cond.assertedDate before day of end of "Measurement Period"
+  )
 
 define "Total Colectomy Procedures":
-	[Procedure: "Total Colectomy Value Set (CPT)"]
-		union [Procedure: "Total Colectomy Value Set (ICD10)"]
-		union [Procedure: "Total Colectomy Value Set (ICD9)"]
+  [Procedure: "Total Colectomy Value Set (CPT)"]
+    union [Procedure: "Total Colectomy Value Set (ICD10)"]
+    union [Procedure: "Total Colectomy Value Set (ICD9)"]
 
 define "Is Total Colectomy":
-	exists(
-		"Total Colectomy Procedures" Proc
-			where Proc.status.value = 'completed'
-				and end of PeriodToIntervalOfDT(Proc.performed) before day of end of "Measurement Period"
-	)
-
-/*
-Utility Functions
-*/
-
-define function PeriodToIntervalOfDT(value FHIR.Period):
-	Interval[value."start".value, value."end".value]
-
-define function CodingToCode(coding FHIR.Coding):
-	System.Code {
-		code: coding.code.value,
-		system: coding.system.value,
-		version: coding.version.value,
-		display: coding.display.value
-	}
-	// From FHIRHelpers
-
-define function "ToDate"(Value DateTime ):
-	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
-
-define function CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime):
-    years between ToDate(BirthDateTime)and ToDate(AsOf)
+  exists(
+    "Total Colectomy Procedures" Proc
+      where Proc.status = 'completed'
+        and end of Proc.performed before day of end of "Measurement Period"
+  )

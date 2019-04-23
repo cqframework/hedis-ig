@@ -1,8 +1,8 @@
+library MRP_FHIR version '1.0.000'
+
 /*
 Medication reconciliation postdischarge (MRP)
 */
-
-library MRP_FHIR version '1.0.000'
 
 using FHIR version '3.0.0'
 
@@ -43,7 +43,7 @@ define "Initial Population":
   "Encounters without 30 Day Readmission" E
     where AgeInYearsAt(end of "Measurement Period") >= 18
     and Participation."Is Enrolled"(Participation."Medicare Product",
-		  end of E.period + 30 days,Interval [start of E.period, end of E.period + 30 days], 0)
+		  end of E.period + 30 days, Interval[start of E.period, end of E.period + 30 days], 0)
 		and not Common."Has Hospice"
 
 define Denominator:
@@ -68,7 +68,7 @@ define Observations:
 
 define Numerator:
   "Encounters without 30 Day Readmission" E 
-    where exists (Tasks T where FHIRHelpers.ToInterval(T.executionPeriod) during Interval[E.period."end", E.period."end" + 30 days])
+    where exists (Tasks T where T.executionPeriod during Interval[E.period."end", E.period."end" + 30 days])
       or exists (Observations O where O.effective during Interval[E.period."end", E.period."end" + 30 days])
 
 
