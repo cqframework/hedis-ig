@@ -122,31 +122,28 @@ Denominators and Numerators
 */
 
 define "Denominator 1":
-	exists (
-	    First(
-            "Depression Encounters" E
-                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period One"
-                    sort by start of PeriodToIntervalOfDT(period)
-        )
+    First(
+      "Depression Encounters" E
+          where PeriodToIntervalOfDT(E.period) during day of "Assessment Period One"
+              sort by start of PeriodToIntervalOfDT(period)
     )
+      is not null
 
 define "Denominator 2":
-    exists (
-	    First(
-            "Depression Encounters" E
-                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Two"
-                sort by start of PeriodToIntervalOfDT(period)
-        )
+    First(
+      "Depression Encounters" E
+          where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Two"
+          sort by start of PeriodToIntervalOfDT(period)
     )
+      is not null
 
 define "Denominator 3":
-    exists (
-	    First(
-            "Depression Encounters" E
-                where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Three"
-                sort by start of PeriodToIntervalOfDT(period)
-        )
+    First(
+      "Depression Encounters" E
+          where PeriodToIntervalOfDT(E.period) during day of "Assessment Period Three"
+          sort by start of PeriodToIntervalOfDT(period)
     )
+      is not null
 
 define "Depression Encounters":
 	[Encounter: "Interactive Outpatient Encounter"] E
@@ -166,16 +163,16 @@ define "PHQ-9 Score":
 			and A.value is not null
 
 define "Numerator 1":
-	exists (
-        "PHQ-9 Score" A
-            where A.effective.value in day of "Assessment Period One"
-    )
+  exists (
+      "PHQ-9 Score" A
+          where A.effective.value in day of "Assessment Period One"
+  )
 
 define "Numerator 2":
-    exists (
-        "PHQ-9 Score" A
-            where A.effective.value in day of "Assessment Period Two"
-    )
+  exists (
+    "PHQ-9 Score" A
+        where A.effective.value in day of "Assessment Period Two"
+  )
 
 define "Numerator 3":
     exists (

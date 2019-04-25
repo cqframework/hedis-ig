@@ -122,31 +122,28 @@ define <span style="color: #AA6600">&quot;Denominator Exclusion&quot;</span>:
 <span style="color: #888888">*/</span>
 
 define <span style="color: #AA6600">&quot;Denominator 1&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #008800; font-weight: bold">First</span>(
-            <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
-                <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period One&quot;</span>
-                    sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
-        )
+    <span style="color: #008800; font-weight: bold">First</span>(
+      <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
+          <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period One&quot;</span>
+              sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
     )
+      <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
 
 define <span style="color: #AA6600">&quot;Denominator 2&quot;</span>:
-    <span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #008800; font-weight: bold">First</span>(
-            <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
-                <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Two&quot;</span>
-                sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
-        )
+    <span style="color: #008800; font-weight: bold">First</span>(
+      <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
+          <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Two&quot;</span>
+          sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
     )
+      <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
 
 define <span style="color: #AA6600">&quot;Denominator 3&quot;</span>:
-    <span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #008800; font-weight: bold">First</span>(
-            <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
-                <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Three&quot;</span>
-                sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
-        )
+    <span style="color: #008800; font-weight: bold">First</span>(
+      <span style="color: #AA6600">&quot;Depression Encounters&quot;</span> E
+          <span style="color: #008800; font-weight: bold">where</span> PeriodToIntervalOfDT(E.period) during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Three&quot;</span>
+          sort <span style="color: #008800; font-weight: bold">by</span> <span style="color: #008800; font-weight: bold">start</span> <span style="color: #008800; font-weight: bold">of</span> PeriodToIntervalOfDT(period)
     )
+      <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
 
 define <span style="color: #AA6600">&quot;Depression Encounters&quot;</span>:
 	[Encounter: <span style="color: #AA6600">&quot;Interactive Outpatient Encounter&quot;</span>] E
@@ -166,22 +163,19 @@ define <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span>:
 			<span style="color: #008800; font-weight: bold">and</span> A.value <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> <span style="color: #008800; font-weight: bold">null</span>
 
 define <span style="color: #AA6600">&quot;Numerator 1&quot;</span>:
-	<span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #333333">//</span> <span style="color: #AA6600">&quot;Denominator 1&quot;</span> E
-        <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span> A
-            <span style="color: #008800; font-weight: bold">where</span> A.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period One&quot;</span>
-    )
+  <span style="color: #008800; font-weight: bold">exists</span> (
+      <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span> A
+          <span style="color: #008800; font-weight: bold">where</span> A.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period One&quot;</span>
+  )
 
 define <span style="color: #AA6600">&quot;Numerator 2&quot;</span>:
-    <span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #333333">//</span> <span style="color: #AA6600">&quot;Denominator 2&quot;</span> E
-        <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span> A
-            <span style="color: #008800; font-weight: bold">where</span> A.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Two&quot;</span>
-    )
+  <span style="color: #008800; font-weight: bold">exists</span> (
+    <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span> A
+        <span style="color: #008800; font-weight: bold">where</span> A.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Two&quot;</span>
+  )
 
 define <span style="color: #AA6600">&quot;Numerator 3&quot;</span>:
     <span style="color: #008800; font-weight: bold">exists</span> (
-	    <span style="color: #333333">//</span><span style="color: #AA6600">&quot;Denominator 3&quot;</span> E
         <span style="color: #AA6600">&quot;PHQ-9 Score&quot;</span> A
 			<span style="color: #008800; font-weight: bold">where</span> A.effective.value <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Assessment Period Three&quot;</span>
     )

@@ -1,1568 +1,1968 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
-    <identifier id="PVS_FHIR" version="1.0.0"/>
-    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
-    <usings>
-        <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-        <def localId="1" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
-    </usings>
-    <parameters>
-        <def localId="16" name="Measurement Period" accessLevel="Public">
-            <parameterTypeSpecifier localId="15" xsi:type="IntervalTypeSpecifier">
-                <pointType localId="14" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
-            </parameterTypeSpecifier>
-        </def>
-    </parameters>
-    <valueSets>
-        <def localId="2" name="Anaphylactic Reaction Due to Serum" id="2.16.840.1.113883.3.464.1004.1023" accessLevel="Public"/>
-        <def localId="3" name="Anaphylactic Reaction Due to Vaccine" id="2.16.840.1.113883.3.464.1004.1024" accessLevel="Public"/>
-        <def localId="4" name="Bone Marrow Transplant" id="2.16.840.1.113883.3.464.1004.1325" accessLevel="Public"/>
-        <def localId="5" name="Bone Marrow Transplant SNOMED" id="2.16.840.1.113883.3.464.1004.1442" accessLevel="Public"/>
-        <def localId="6" name="Cerebrospinal Fluid Leaks" id="2.16.840.1.113883.3.464.1004.1448" accessLevel="Public"/>
-        <def localId="7" name="Chemotherapy" id="2.16.840.1.113883.3.464.1004.1326" accessLevel="Public"/>
-        <def localId="8" name="Chemotherapy SNOMED/CPT" id="2.16.840.1.113883.3.464.1004.1441" accessLevel="Public"/>
-        <def localId="9" name="Cochlear Implants" id="2.16.840.1.113883.3.464.1004.1447" accessLevel="Public"/>
-        <def localId="10" name="Disorders of the Immune System" id="2.16.840.1.113883.3.464.1004.1139" accessLevel="Public"/>
-        <def localId="11" name="Functional or Aplastic Anemia" id="2.16.840.1.113883.3.464.1004.1449" accessLevel="Public"/>
-        <def localId="12" name="Pneumococcal Conjugate Vaccine 13" id="2.16.840.1.113883.3.464.1004.1439" accessLevel="Public"/>
-        <def localId="13" name="Pneumococcal Conjugate Vaccine 23" id="2.16.840.1.113883.3.464.1004.1440" accessLevel="Public"/>
-    </valueSets>
-    <statements>
-        <def name="Patient" context="Patient">
-            <expression xsi:type="SingletonFrom">
-                <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
-            </expression>
-        </def>
-        <def localId="22" name="Initial Population" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="22">
-                    <a:s>define &quot;Initial Population&quot;:
-                    </a:s>
-                    <a:s r="21">
-                        <a:s r="19">
-                            <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="18">
-                                <a:s>start of </a:s>
-                                <a:s r="17">
-                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>)</a:s>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation startLine="85" startChar="2" endLine="85" endChar="28" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="87" startChar="2" endLine="87" endChar="38" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="79" startChar="3" endLine="79" endChar="60" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="117" startChar="2" endLine="117" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="122" startChar="2" endLine="122" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="151" startChar="3" endLine="151" endChar="49" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="152" startChar="9" endLine="152" endChar="59" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="153" startChar="9" endLine="153" endChar="60" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="159" startChar="2" endLine="159" endChar="33" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="136" startChar="2" endLine="136" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="141" startChar="2" endLine="141" endChar="52" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <identifier id="PVS_FHIR" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+   </usings>
+   <parameters>
+      <def localId="16" locator="50:1-50:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="15" locator="50:32-50:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="14" locator="50:41-50:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" locator="28:1-28:82" name="Anaphylactic Reaction Due to Serum" id="2.16.840.1.113883.3.464.1004.1023" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="3" locator="29:1-29:84" name="Anaphylactic Reaction Due to Vaccine" id="2.16.840.1.113883.3.464.1004.1024" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="4" locator="30:1-30:70" name="Bone Marrow Transplant" id="2.16.840.1.113883.3.464.1004.1325" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="5" locator="31:1-31:77" name="Bone Marrow Transplant SNOMED" id="2.16.840.1.113883.3.464.1004.1442" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="6" locator="32:1-32:73" name="Cerebrospinal Fluid Leaks" id="2.16.840.1.113883.3.464.1004.1448" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="7" locator="33:1-33:60" name="Chemotherapy" id="2.16.840.1.113883.3.464.1004.1326" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="8" locator="34:1-34:71" name="Chemotherapy SNOMED/CPT" id="2.16.840.1.113883.3.464.1004.1441" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="9" locator="35:1-35:65" name="Cochlear Implants" id="2.16.840.1.113883.3.464.1004.1447" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="10" locator="36:1-36:78" name="Disorders of the Immune System" id="2.16.840.1.113883.3.464.1004.1139" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="11" locator="37:1-37:77" name="Functional or Aplastic Anemia" id="2.16.840.1.113883.3.464.1004.1449" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="12" locator="39:1-39:81" name="Pneumococcal Conjugate Vaccine 13" id="2.16.840.1.113883.3.464.1004.1439" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="13" locator="40:1-40:81" name="Pneumococcal Conjugate Vaccine 23" id="2.16.840.1.113883.3.464.1004.1440" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def locator="57:1-57:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="57:1-57:15" dataType="fhir:Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="22" locator="64:1-65:50" resultTypeName="t:Boolean" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="22">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="21">
+                  <a:s r="19">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="18">
+                        <a:s>start of </a:s>
+                        <a:s r="17">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
                         </a:s>
-                        <a:s> >= 65</a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="21" xsi:type="GreaterOrEqual">
-                <operand localId="19" precision="Year" xsi:type="CalculateAgeAt">
-                    <operand path="birthDate.value" xsi:type="Property">
-                        <source name="Patient" xsi:type="ExpressionRef"/>
-                    </operand>
-                    <operand localId="18" xsi:type="Start">
-                        <operand localId="17" name="Measurement Period" xsi:type="ParameterRef"/>
-                    </operand>
-                </operand>
-                <operand localId="20" valueType="t:Integer" value="65" xsi:type="Literal"/>
-            </expression>
-        </def>
-        <def localId="26" name="Chemotherapy and Bone Marrow Transplant Procedures" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="26">
-                    <a:s>define &quot;Chemotherapy and Bone Marrow Transplant Procedures&quot;:
-                    </a:s>
-                    <a:s r="25">
-                        <a:s r="23">
-                            <a:s>[Procedure: </a:s>
-                            <a:s>
-                                <a:s>&quot;Chemotherapy&quot;</a:s>
-                            </a:s>
-                            <a:s>]</a:s>
-                        </a:s>
-                        <a:s>
-                            union
-                        </a:s>
-                        <a:s r="24">
-                            <a:s>[Procedure: </a:s>
-                            <a:s>
-                                <a:s>&quot;Bone Marrow Transplant&quot;</a:s>
-                            </a:s>
-                            <a:s>]</a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="25" xsi:type="Union">
-                <operand localId="23" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
-                    <codes name="Chemotherapy" xsi:type="ValueSetRef"/>
-                </operand>
-                <operand localId="24" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
-                    <codes name="Bone Marrow Transplant" xsi:type="ValueSetRef"/>
-                </operand>
-            </expression>
-        </def>
-        <def localId="46" name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="46">
-                    <a:s>define function PeriodToIntervalOfDT(value </a:s>
-                    <a:s r="38">
-                        <a:s>FHIR.Period</a:s>
-                    </a:s>
-                    <a:s>):
-                    </a:s>
-                    <a:s r="45">
-                        <a:s r="45">
-                            <a:s>Interval[</a:s>
-                            <a:s r="41">
-                                <a:s r="40">
-                                    <a:s r="39">
-                                        <a:s>value</a:s>
-                                    </a:s>
-                                    <a:s>.</a:s>
-                                    <a:s r="40">
-                                        <a:s>&quot;start&quot;</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>.</a:s>
-                                <a:s r="41">
-                                    <a:s>value</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>, </a:s>
-                            <a:s r="44">
-                                <a:s r="43">
-                                    <a:s r="42">
-                                        <a:s>value</a:s>
-                                    </a:s>
-                                    <a:s>.</a:s>
-                                    <a:s r="43">
-                                        <a:s>&quot;end&quot;</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>.</a:s>
-                                <a:s r="44">
-                                    <a:s>value</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>]</a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="45" lowClosed="true" highClosed="true" xsi:type="Interval">
-                <low localId="41" path="value" xsi:type="Property">
-                    <source localId="40" path="start" xsi:type="Property">
-                        <source localId="39" name="value" xsi:type="OperandRef"/>
-                    </source>
-                </low>
-                <high localId="44" path="value" xsi:type="Property">
-                    <source localId="43" path="end" xsi:type="Property">
-                        <source localId="42" name="value" xsi:type="OperandRef"/>
-                    </source>
-                </high>
-            </expression>
-            <operand name="value">
-                <operandTypeSpecifier localId="38" name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s r="20"> >= 65</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="21" locator="65:2-65:50" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="19" locator="65:2-65:44" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand xsi:type="ToDateTime">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="18" locator="65:15-65:43" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="17" locator="65:24-65:43" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
             </operand>
-        </def>
-        <def localId="75" name="Denominator Exclusion" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="75">
-                    <a:s>define &quot;Denominator Exclusion&quot;:
-                    </a:s>
-                    <a:s r="74">
-                        <a:s r="52">
-                            <a:s>exists </a:s>
-                            <a:s r="51">
-                                <a:s>(
-                                </a:s>
-                                <a:s r="51">
-                                    <a:s>
-                                        <a:s r="28">
-                                            <a:s r="27">
-                                                <a:s>
-                                                    <a:s>&quot;Chemotherapy and Bone Marrow Transplant Procedures&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> ProcedureUnion</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s>
-                                    </a:s>
-                                    <a:s r="50">
-                                        <a:s>where </a:s>
-                                        <a:s r="50">
-                                            <a:s r="35">
-                                                <a:s r="31">
-                                                    <a:s r="30">
-                                                        <a:s r="29">
-                                                            <a:s>ProcedureUnion</a:s>
-                                                        </a:s>
-                                                        <a:s>.</a:s>
-                                                        <a:s r="30">
-                                                            <a:s>status</a:s>
-                                                        </a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="31">
-                                                        <a:s>value</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s> in </a:s>
-                                                <a:s r="34">
-                                                    <a:s>{ </a:s>
-                                                    <a:s r="32">
-                                                        <a:s>'in-progress'</a:s>
-                                                    </a:s>
-                                                    <a:s>, </a:s>
-                                                    <a:s r="33">
-                                                        <a:s>'completed'</a:s>
-                                                    </a:s>
-                                                    <a:s> }</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>
-                                                and </a:s>
-                                            <a:s r="49">
-                                                <a:s r="47">
-                                                    <a:s>PeriodToIntervalOfDT(</a:s>
-                                                    <a:s r="37">
-                                                        <a:s r="36">
-                                                            <a:s>ProcedureUnion</a:s>
-                                                        </a:s>
-                                                        <a:s>.</a:s>
-                                                        <a:s r="37">
-                                                            <a:s>performed</a:s>
-                                                        </a:s>
-                                                    </a:s>
-                                                    <a:s>)</a:s>
-                                                </a:s>
-                                                <a:s> overlaps </a:s>
-                                                <a:s r="48">
-                                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                        </a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    )</a:s>
-                            </a:s>
+            <operand localId="20" locator="65:49-65:50" resultTypeName="t:Integer" valueType="t:Integer" value="65" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="26" locator="84:1-87:38" name="Chemotherapy and Bone Marrow Transplant Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="26">
+               <a:s>define &quot;Chemotherapy and Bone Marrow Transplant Procedures&quot;:&#xd;
+	</a:s>
+               <a:s r="25">
+                  <a:s r="23">
+                     <a:s>[Procedure: </a:s>
+                     <a:s>
+                        <a:s>&quot;Chemotherapy&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	union&#xd;
+	</a:s>
+                  <a:s r="24">
+                     <a:s>[Procedure: </a:s>
+                     <a:s>
+                        <a:s>&quot;Bone Marrow Transplant&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="25" locator="85:2-87:38" xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand localId="23" locator="85:2-85:28" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes locator="85:14-85:27" name="Chemotherapy" xsi:type="ValueSetRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </codes>
+            </operand>
+            <operand localId="24" locator="87:2-87:38" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes locator="87:14-87:37" name="Bone Marrow Transplant" xsi:type="ValueSetRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </codes>
+            </operand>
+         </expression>
+      </def>
+      <def localId="46" locator="180:1-181:49" name="PeriodToIntervalOfDT" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="46">
+               <a:s>define function PeriodToIntervalOfDT(value </a:s>
+               <a:s r="38">
+                  <a:s>FHIR.Period</a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="45">
+                  <a:s r="45">
+                     <a:s>Interval[</a:s>
+                     <a:s r="41">
+                        <a:s r="40">
+                           <a:s r="39">
+                              <a:s>value</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="40">
+                              <a:s>&quot;start&quot;</a:s>
+                           </a:s>
                         </a:s>
-                        <a:s>
-                            or
+                        <a:s>.</a:s>
+                        <a:s r="41">
+                           <a:s>value</a:s>
                         </a:s>
-                        <a:s r="73">
-                            <a:s>exists </a:s>
-                            <a:s r="72">
-                                <a:s>(
-                                </a:s>
-                                <a:s r="72">
-                                    <a:s>
-                                        <a:s r="54">
-                                            <a:s r="53">
-                                                <a:s r="53">
-                                                    <a:s>[DiagnosticReport: </a:s>
-                                                    <a:s>
-                                                        <a:s>&quot;Anaphylactic Reaction Due to Vaccine&quot;</a:s>
-                                                    </a:s>
-                                                    <a:s>]</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> ReactionToVaccine</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s>
-                                    </a:s>
-                                    <a:s r="71">
-                                        <a:s>where </a:s>
-                                        <a:s r="71">
-                                            <a:s r="64">
-                                                <a:s r="57">
-                                                    <a:s r="56">
-                                                        <a:s r="55">
-                                                            <a:s>ReactionToVaccine</a:s>
-                                                        </a:s>
-                                                        <a:s>.</a:s>
-                                                        <a:s r="56">
-                                                            <a:s>status</a:s>
-                                                        </a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="57">
-                                                        <a:s>value</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s> in </a:s>
-                                                <a:s r="63">
-                                                    <a:s>{ </a:s>
-                                                    <a:s r="58">
-                                                        <a:s>'preliminary'</a:s>
-                                                    </a:s>
-                                                    <a:s>, </a:s>
-                                                    <a:s r="59">
-                                                        <a:s>'final'</a:s>
-                                                    </a:s>
-                                                    <a:s>, </a:s>
-                                                    <a:s r="60">
-                                                        <a:s>'amended'</a:s>
-                                                    </a:s>
-                                                    <a:s>, </a:s>
-                                                    <a:s r="61">
-                                                        <a:s>'corrected'</a:s>
-                                                    </a:s>
-                                                    <a:s>, </a:s>
-                                                    <a:s r="62">
-                                                        <a:s>'appended'</a:s>
-                                                    </a:s>
-                                                    <a:s> }</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>
-                                                and </a:s>
-                                            <a:s r="70">
-                                                <a:s r="68">
-                                                    <a:s>start of </a:s>
-                                                    <a:s r="67">
-                                                        <a:s>PeriodToIntervalOfDT(</a:s>
-                                                        <a:s r="66">
-                                                            <a:s r="65">
-                                                                <a:s>ReactionToVaccine</a:s>
-                                                            </a:s>
-                                                            <a:s>.</a:s>
-                                                            <a:s r="66">
-                                                                <a:s>effective</a:s>
-                                                            </a:s>
-                                                        </a:s>
-                                                        <a:s>)</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s> before day of </a:s>
-                                                <a:s r="69">
-                                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                        </a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    )</a:s>
-                            </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="44">
+                        <a:s r="43">
+                           <a:s r="42">
+                              <a:s>value</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="43">
+                              <a:s>&quot;end&quot;</a:s>
+                           </a:s>
                         </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="74" xsi:type="Or">
-                <operand localId="52" xsi:type="Exists">
-                    <operand localId="51" xsi:type="Query">
-                        <source localId="28" alias="ProcedureUnion">
-                            <expression localId="27" name="Chemotherapy and Bone Marrow Transplant Procedures" xsi:type="ExpressionRef"/>
-                        </source>
-                        <where localId="50" xsi:type="And">
-                            <operand localId="35" xsi:type="In">
-                                <operand localId="31" path="value" xsi:type="Property">
-                                    <source localId="30" path="status" scope="ProcedureUnion" xsi:type="Property"/>
-                                </operand>
-                                <operand localId="34" xsi:type="List">
-                                    <element localId="32" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                                    <element localId="33" valueType="t:String" value="completed" xsi:type="Literal"/>
-                                </operand>
-                            </operand>
-                            <operand localId="49" xsi:type="Overlaps">
-                                <operand localId="47" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                    <operand asType="fhir:Period" xsi:type="As">
-                                        <operand localId="37" path="performed" scope="ProcedureUnion" xsi:type="Property"/>
-                                        <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                        <a:s>.</a:s>
+                        <a:s r="44">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="45" locator="181:2-181:49" lowClosed="true" highClosed="true" xsi:type="Interval">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <low localId="41" locator="181:11-181:29" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+               <source localId="40" locator="181:11-181:23" resultTypeName="fhir:dateTime" path="start" xsi:type="Property">
+                  <source localId="39" locator="181:11-181:15" resultTypeName="fhir:Period" name="value" xsi:type="OperandRef"/>
+               </source>
+            </low>
+            <high localId="44" locator="181:32-181:48" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+               <source localId="43" locator="181:32-181:42" resultTypeName="fhir:dateTime" path="end" xsi:type="Property">
+                  <source localId="42" locator="181:32-181:36" resultTypeName="fhir:Period" name="value" xsi:type="OperandRef"/>
+               </source>
+            </high>
+         </expression>
+         <operand name="value">
+            <operandTypeSpecifier localId="38" locator="180:44-180:54" resultTypeName="fhir:Period" name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="75" locator="71:1-82:2" resultTypeName="t:Boolean" name="Denominator Exclusion" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="75">
+               <a:s>define &quot;Denominator Exclusion&quot;:&#xd;
+	</a:s>
+               <a:s r="74">
+                  <a:s r="52">
+                     <a:s>exists </a:s>
+                     <a:s r="51">
+                        <a:s>(&#xd;
+		</a:s>
+                        <a:s r="51">
+                           <a:s>
+                              <a:s r="28">
+                                 <a:s r="27">
+                                    <a:s>
+                                       <a:s>&quot;Chemotherapy and Bone Marrow Transplant Procedures&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> ProcedureUnion</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="50">
+                              <a:s>where </a:s>
+                              <a:s r="50">
+                                 <a:s r="35">
+                                    <a:s r="31">
+                                       <a:s r="30">
+                                          <a:s r="29">
+                                             <a:s>ProcedureUnion</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="30">
+                                             <a:s>status</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="31">
+                                          <a:s>value</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> in </a:s>
+                                    <a:s r="34">
+                                       <a:s>{ </a:s>
+                                       <a:s r="32">
+                                          <a:s>'in-progress'</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="33">
+                                          <a:s>'completed'</a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+				and </a:s>
+                                 <a:s r="49">
+                                    <a:s r="47">
+                                       <a:s>PeriodToIntervalOfDT(</a:s>
+                                       <a:s r="37">
+                                          <a:s r="36">
+                                             <a:s>ProcedureUnion</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="37">
+                                             <a:s>performed</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                    <a:s r="49"> overlaps day of </a:s>
+                                    <a:s r="48">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	or&#xd;
+	</a:s>
+                  <a:s r="73">
+                     <a:s>exists </a:s>
+                     <a:s r="72">
+                        <a:s>(&#xd;
+		</a:s>
+                        <a:s r="72">
+                           <a:s>
+                              <a:s r="54">
+                                 <a:s r="53">
+                                    <a:s r="53">
+                                       <a:s>[DiagnosticReport: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Anaphylactic Reaction Due to Vaccine&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> ReactionToVaccine</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="71">
+                              <a:s>where </a:s>
+                              <a:s r="71">
+                                 <a:s r="64">
+                                    <a:s r="57">
+                                       <a:s r="56">
+                                          <a:s r="55">
+                                             <a:s>ReactionToVaccine</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="56">
+                                             <a:s>status</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="57">
+                                          <a:s>value</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> in </a:s>
+                                    <a:s r="63">
+                                       <a:s>{ </a:s>
+                                       <a:s r="58">
+                                          <a:s>'preliminary'</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="59">
+                                          <a:s>'final'</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="60">
+                                          <a:s>'amended'</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="61">
+                                          <a:s>'corrected'</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="62">
+                                          <a:s>'appended'</a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+				and </a:s>
+                                 <a:s r="70">
+                                    <a:s r="68">
+                                       <a:s>start of </a:s>
+                                       <a:s r="67">
+                                          <a:s>PeriodToIntervalOfDT(</a:s>
+                                          <a:s r="66">
+                                             <a:s r="65">
+                                                <a:s>ReactionToVaccine</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="66">
+                                                <a:s>effective</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="70"> before day of </a:s>
+                                    <a:s r="69">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="74" locator="72:2-82:2" resultTypeName="t:Boolean" xsi:type="Or">
+            <operand localId="52" locator="72:2-76:2" resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand localId="51" locator="72:9-76:2" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="28" locator="73:3-73:69" alias="ProcedureUnion">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="27" locator="73:3-73:54" name="Chemotherapy and Bone Marrow Transplant Procedures" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <where localId="50" locator="74:4-75:91" resultTypeName="t:Boolean" xsi:type="And">
+                     <operand localId="35" locator="74:10-74:70" resultTypeName="t:Boolean" xsi:type="In">
+                        <operand localId="31" locator="74:10-74:36" resultTypeName="t:String" path="value" xsi:type="Property">
+                           <source localId="30" locator="74:10-74:30" resultTypeName="fhir:EventStatus" path="status" scope="ProcedureUnion" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="34" locator="74:41-74:70" xsi:type="List">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <element localId="32" locator="74:43-74:55" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                           <element localId="33" locator="74:58-74:68" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                     <operand localId="49" locator="75:9-75:91" resultTypeName="t:Boolean" precision="Day" xsi:type="Overlaps">
+                        <operand localId="47" locator="75:9-75:54" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <operand asType="fhir:Period" xsi:type="As">
+                              <operand localId="37" locator="75:30-75:53" path="performed" scope="ProcedureUnion" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                    <choice name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                                    <choice name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="48" locator="75:72-75:91" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+            <operand localId="73" locator="78:2-82:2" resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand localId="72" locator="78:9-82:2" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="54" locator="79:3-79:78" alias="ReactionToVaccine">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="53" locator="79:3-79:60" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes locator="79:22-79:59" name="Anaphylactic Reaction Due to Vaccine" xsi:type="ValueSetRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </codes>
+                     </expression>
+                  </source>
+                  <where localId="71" locator="80:4-81:101" resultTypeName="t:Boolean" xsi:type="And">
+                     <operand localId="64" locator="80:10-80:105" resultTypeName="t:Boolean" xsi:type="In">
+                        <operand localId="57" locator="80:10-80:39" resultTypeName="t:String" path="value" xsi:type="Property">
+                           <source localId="56" locator="80:10-80:33" resultTypeName="fhir:DiagnosticReportStatus" path="status" scope="ReactionToVaccine" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="63" locator="80:44-80:105" xsi:type="List">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <element localId="58" locator="80:46-80:58" resultTypeName="t:String" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                           <element localId="59" locator="80:61-80:67" resultTypeName="t:String" valueType="t:String" value="final" xsi:type="Literal"/>
+                           <element localId="60" locator="80:70-80:78" resultTypeName="t:String" valueType="t:String" value="amended" xsi:type="Literal"/>
+                           <element localId="61" locator="80:81-80:91" resultTypeName="t:String" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                           <element localId="62" locator="80:94-80:103" resultTypeName="t:String" valueType="t:String" value="appended" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                     <operand localId="70" locator="81:9-81:101" resultTypeName="t:Boolean" precision="Day" xsi:type="Before">
+                        <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                           <low localId="68" locator="81:9-81:66" resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand localId="67" locator="81:18-81:66" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <operand asType="fhir:Period" xsi:type="As">
+                                    <operand localId="66" locator="81:39-81:65" path="effective" scope="ReactionToVaccine" xsi:type="Property">
+                                       <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                          <choice name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                                          <choice name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                       </resultTypeSpecifier>
                                     </operand>
-                                </operand>
-                                <operand localId="48" name="Measurement Period" xsi:type="ParameterRef"/>
-                            </operand>
-                        </where>
-                    </operand>
-                </operand>
-                <operand localId="73" xsi:type="Exists">
-                    <operand localId="72" xsi:type="Query">
-                        <source localId="54" alias="ReactionToVaccine">
-                            <expression localId="53" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                                <codes name="Anaphylactic Reaction Due to Vaccine" xsi:type="ValueSetRef"/>
-                            </expression>
-                        </source>
-                        <where localId="71" xsi:type="And">
-                            <operand localId="64" xsi:type="In">
-                                <operand localId="57" path="value" xsi:type="Property">
-                                    <source localId="56" path="status" scope="ReactionToVaccine" xsi:type="Property"/>
-                                </operand>
-                                <operand localId="63" xsi:type="List">
-                                    <element localId="58" valueType="t:String" value="preliminary" xsi:type="Literal"/>
-                                    <element localId="59" valueType="t:String" value="final" xsi:type="Literal"/>
-                                    <element localId="60" valueType="t:String" value="amended" xsi:type="Literal"/>
-                                    <element localId="61" valueType="t:String" value="corrected" xsi:type="Literal"/>
-                                    <element localId="62" valueType="t:String" value="appended" xsi:type="Literal"/>
-                                </operand>
-                            </operand>
-                            <operand localId="70" precision="Day" xsi:type="Before">
-                                <operand localId="68" xsi:type="Start">
-                                    <operand localId="67" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                        <operand asType="fhir:Period" xsi:type="As">
-                                            <operand localId="66" path="effective" scope="ReactionToVaccine" xsi:type="Property"/>
-                                            <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
-                                        </operand>
+                                 </operand>
+                              </operand>
+                           </low>
+                           <high localId="68" locator="81:9-81:66" resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand localId="67" locator="81:18-81:66" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <operand asType="fhir:Period" xsi:type="As">
+                                    <operand localId="66" locator="81:39-81:65" path="effective" scope="ReactionToVaccine" xsi:type="Property">
+                                       <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                          <choice name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                                          <choice name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                                       </resultTypeSpecifier>
                                     </operand>
-                                </operand>
-                                <operand localId="69" name="Measurement Period" xsi:type="ParameterRef"/>
-                            </operand>
-                        </where>
-                    </operand>
-                </operand>
-            </expression>
-        </def>
-        <def localId="77" name="Denominator" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="77">
-                    <a:s>define &quot;Denominator&quot;:
-                    </a:s>
-                    <a:s r="76">
-                        <a:s>&quot;Initial Population&quot;</a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="76" name="Initial Population" xsi:type="ExpressionRef"/>
-        </def>
-        <def localId="96" name="Pneumococcal Vaccine 13 After Age 60" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="96">
-                    <a:s>define &quot;Pneumococcal Vaccine 13 After Age 60&quot;:
-                    </a:s>
-                    <a:s r="95">
+                                 </operand>
+                              </operand>
+                           </high>
+                        </operand>
+                        <operand localId="69" locator="81:82-81:101" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="77" locator="93:1-94:21" resultTypeName="t:Boolean" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="77">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+	</a:s>
+               <a:s r="76">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="76" locator="94:2-94:21" resultTypeName="t:Boolean" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="96" locator="116:1-119:43" name="Pneumococcal Vaccine 13 After Age 60" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="96">
+               <a:s>define &quot;Pneumococcal Vaccine 13 After Age 60&quot;:&#xd;
+	</a:s>
+               <a:s r="95">
+                  <a:s>
+                     <a:s r="80">
+                        <a:s r="79">
+                           <a:s r="79">
+                              <a:s>[Immunization: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Pneumococcal Conjugate Vaccine 13&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> V13</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="94">
+                     <a:s>where </a:s>
+                     <a:s r="94">
+                        <a:s r="87">
+                           <a:s r="83">
+                              <a:s r="82">
+                                 <a:s r="81">
+                                    <a:s>V13</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="82">
+                                    <a:s>status</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="83">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="86">
+                              <a:s>{ </a:s>
+                              <a:s r="84">
+                                 <a:s>'in-progress'</a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="85">
+                                 <a:s>'completed'</a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="93">
+                           <a:s r="91">
+                              <a:s>AgeInYearsAt(</a:s>
+                              <a:s r="90">
+                                 <a:s r="89">
+                                    <a:s r="88">
+                                       <a:s>V13</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="89">
+                                       <a:s>&quot;date&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="90">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s r="92"> >= 60</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="95" locator="117:2-119:43" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="80" locator="117:2-117:56" alias="V13">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="79" locator="117:2-117:52" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="117:17-117:51" name="Pneumococcal Conjugate Vaccine 13" xsi:type="ValueSetRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </codes>
+               </expression>
+            </source>
+            <where localId="94" locator="118:3-119:43" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="87" locator="118:9-118:58" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="83" locator="118:9-118:24" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source localId="82" locator="118:9-118:18" resultTypeName="fhir:ImmunizationStatusCodes" path="status" scope="V13" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="86" locator="118:29-118:58" xsi:type="List">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <element localId="84" locator="118:31-118:43" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                     <element localId="85" locator="118:46-118:56" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+               <operand localId="93" locator="119:8-119:43" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="91" locator="119:8-119:37" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand xsi:type="ToDateTime">
+                        <operand path="birthDate.value" xsi:type="Property">
+                           <source name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="90" locator="119:21-119:36" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                        <source localId="89" locator="119:21-119:30" resultTypeName="fhir:dateTime" path="date" scope="V13" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="92" locator="119:42-119:43" resultTypeName="t:Integer" valueType="t:Integer" value="60" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="116" locator="121:1-124:43" name="Pneumococcal Vaccine 23 After Age 60" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="116">
+               <a:s>define &quot;Pneumococcal Vaccine 23 After Age 60&quot;:&#xd;
+	</a:s>
+               <a:s r="115">
+                  <a:s>
+                     <a:s r="100">
+                        <a:s r="99">
+                           <a:s r="99">
+                              <a:s>[Immunization: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Pneumococcal Conjugate Vaccine 23&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> V23</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="114">
+                     <a:s>where </a:s>
+                     <a:s r="114">
+                        <a:s r="107">
+                           <a:s r="103">
+                              <a:s r="102">
+                                 <a:s r="101">
+                                    <a:s>V23</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="102">
+                                    <a:s>status</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="103">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="106">
+                              <a:s>{ </a:s>
+                              <a:s r="104">
+                                 <a:s>'in-progress'</a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="105">
+                                 <a:s>'completed'</a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="113">
+                           <a:s r="111">
+                              <a:s>AgeInYearsAt(</a:s>
+                              <a:s r="110">
+                                 <a:s r="109">
+                                    <a:s r="108">
+                                       <a:s>V23</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="109">
+                                       <a:s>&quot;date&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="110">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s r="112"> >= 60</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="115" locator="122:2-124:43" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="100" locator="122:2-122:56" alias="V23">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="99" locator="122:2-122:52" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="122:17-122:51" name="Pneumococcal Conjugate Vaccine 23" xsi:type="ValueSetRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </codes>
+               </expression>
+            </source>
+            <where localId="114" locator="123:3-124:43" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="107" locator="123:9-123:58" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="103" locator="123:9-123:24" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source localId="102" locator="123:9-123:18" resultTypeName="fhir:ImmunizationStatusCodes" path="status" scope="V23" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="106" locator="123:29-123:58" xsi:type="List">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <element localId="104" locator="123:31-123:43" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                     <element localId="105" locator="123:46-123:56" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+               <operand localId="113" locator="124:8-124:43" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="111" locator="124:8-124:37" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand xsi:type="ToDateTime">
+                        <operand path="birthDate.value" xsi:type="Property">
+                           <source name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="110" locator="124:21-124:36" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                        <source localId="109" locator="124:21-124:30" resultTypeName="fhir:dateTime" path="date" scope="V23" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="112" locator="124:42-124:43" resultTypeName="t:Integer" valueType="t:Integer" value="60" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="131" locator="109:1-114:2" resultTypeName="t:Boolean" name="PVC13 After Age 60 And Then PVC23 After 12 More Months" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="131">
+               <a:s>define &quot;PVC13 After Age 60 And Then PVC23 After 12 More Months&quot;:&#xd;
+	</a:s>
+               <a:s r="130">
+                  <a:s>exists </a:s>
+                  <a:s r="129">
+                     <a:s>(&#xd;
+		</a:s>
+                     <a:s r="129">
                         <a:s>
-                            <a:s r="80">
-                                <a:s r="79">
-                                    <a:s r="79">
-                                        <a:s>[Immunization: </a:s>
-                                        <a:s>
-                                            <a:s>&quot;Pneumococcal Conjugate Vaccine 13&quot;</a:s>
-                                        </a:s>
-                                        <a:s>]</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> V13</a:s>
-                            </a:s>
+                           <a:s r="98">
+                              <a:s r="97">
+                                 <a:s>
+                                    <a:s>&quot;Pneumococcal Vaccine 13 After Age 60&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> V13</a:s>
+                           </a:s>
                         </a:s>
-                        <a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="128">
+                           <a:s>with </a:s>
+                           <a:s r="118">
+                              <a:s r="117">
+                                 <a:s>
+                                    <a:s>&quot;Pneumococcal Vaccine 23 After Age 60&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> V23</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+				such that </a:s>
+                           <a:s r="127">
+                              <a:s r="125">
+                                 <a:s>months between </a:s>
+                                 <a:s r="121">
+                                    <a:s r="120">
+                                       <a:s r="119">
+                                          <a:s>V13</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="120">
+                                          <a:s>&quot;date&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="121">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> and </a:s>
+                                 <a:s r="124">
+                                    <a:s r="123">
+                                       <a:s r="122">
+                                          <a:s>V23</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="123">
+                                          <a:s>&quot;date&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="124">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s r="126"> >= 12</a:s>
+                           </a:s>
                         </a:s>
-                        <a:s r="94">
-                            <a:s>where </a:s>
-                            <a:s r="94">
-                                <a:s r="87">
-                                    <a:s r="83">
-                                        <a:s r="82">
-                                            <a:s r="81">
-                                                <a:s>V13</a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="82">
-                                                <a:s>status</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="83">
-                                            <a:s>value</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s> in </a:s>
-                                    <a:s r="86">
-                                        <a:s>{ </a:s>
-                                        <a:s r="84">
-                                            <a:s>'in-progress'</a:s>
-                                        </a:s>
-                                        <a:s>, </a:s>
-                                        <a:s r="85">
-                                            <a:s>'completed'</a:s>
-                                        </a:s>
-                                        <a:s> }</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    and </a:s>
-                                <a:s r="93">
-                                    <a:s r="91">
-                                        <a:s>AgeInYearsAt(</a:s>
-                                        <a:s r="90">
-                                            <a:s r="89">
-                                                <a:s r="88">
-                                                    <a:s>V13</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="89">
-                                                    <a:s>&quot;date&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="90">
-                                                <a:s>value</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>)</a:s>
-                                    </a:s>
-                                    <a:s> >= 60</a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="95" xsi:type="Query">
-                <source localId="80" alias="V13">
-                    <expression localId="79" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
-                        <codes name="Pneumococcal Conjugate Vaccine 13" xsi:type="ValueSetRef"/>
-                    </expression>
-                </source>
-                <where localId="94" xsi:type="And">
-                    <operand localId="87" xsi:type="In">
-                        <operand localId="83" path="value" xsi:type="Property">
-                            <source localId="82" path="status" scope="V13" xsi:type="Property"/>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="130" locator="110:2-114:2" resultTypeName="t:Boolean" xsi:type="Exists">
+            <operand localId="129" locator="110:9-114:2" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="98" locator="111:3-111:44" alias="V13">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="97" locator="111:3-111:40" name="Pneumococcal Vaccine 13 After Age 60" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship localId="128" locator="112:4-113:72" alias="V23" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="117" locator="112:9-112:46" name="Pneumococcal Vaccine 23 After Age 60" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat localId="127" locator="113:15-113:72" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand localId="125" locator="113:15-113:66" resultTypeName="t:Integer" precision="Month" xsi:type="DurationBetween">
+                        <operand localId="121" locator="113:30-113:45" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                           <source localId="120" locator="113:30-113:39" resultTypeName="fhir:dateTime" path="date" scope="V13" xsi:type="Property"/>
                         </operand>
-                        <operand localId="86" xsi:type="List">
-                            <element localId="84" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                            <element localId="85" valueType="t:String" value="completed" xsi:type="Literal"/>
+                        <operand localId="124" locator="113:51-113:66" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                           <source localId="123" locator="113:51-113:60" resultTypeName="fhir:dateTime" path="date" scope="V23" xsi:type="Property"/>
                         </operand>
-                    </operand>
-                    <operand localId="93" xsi:type="GreaterOrEqual">
-                        <operand localId="91" precision="Year" xsi:type="CalculateAgeAt">
-                            <operand path="birthDate.value" xsi:type="Property">
-                                <source name="Patient" xsi:type="ExpressionRef"/>
-                            </operand>
-                            <operand localId="90" path="value" xsi:type="Property">
-                                <source localId="89" path="date" scope="V13" xsi:type="Property"/>
-                            </operand>
-                        </operand>
-                        <operand localId="92" valueType="t:Integer" value="60" xsi:type="Literal"/>
-                    </operand>
-                </where>
-            </expression>
-        </def>
-        <def localId="116" name="Pneumococcal Vaccine 23 After Age 60" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="116">
-                    <a:s>define &quot;Pneumococcal Vaccine 23 After Age 60&quot;:
-                    </a:s>
-                    <a:s r="115">
-                        <a:s>
-                            <a:s r="100">
-                                <a:s r="99">
-                                    <a:s r="99">
-                                        <a:s>[Immunization: </a:s>
-                                        <a:s>
-                                            <a:s>&quot;Pneumococcal Conjugate Vaccine 23&quot;</a:s>
-                                        </a:s>
-                                        <a:s>]</a:s>
+                     </operand>
+                     <operand localId="126" locator="113:71-113:72" resultTypeName="t:Integer" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def localId="157" locator="149:1-156:77" name="Immunocompromised Diagnoses Overlapping Measurement Period" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="157">
+               <a:s>define &quot;Immunocompromised Diagnoses Overlapping Measurement Period&quot;:&#xd;
+	</a:s>
+               <a:s r="156">
+                  <a:s>distinct </a:s>
+                  <a:s r="155">
+                     <a:s>
+                        <a:s r="138">
+                           <a:s r="137">
+                              <a:s>(&#xd;
+		</a:s>
+                              <a:s r="137">
+                                 <a:s r="135">
+                                    <a:s r="133">
+                                       <a:s>[DiagnosticReport: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Cerebrospinal Fluid Leaks&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
                                     </a:s>
-                                </a:s>
-                                <a:s> V23</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="114">
-                            <a:s>where </a:s>
-                            <a:s r="114">
-                                <a:s r="107">
-                                    <a:s r="103">
-                                        <a:s r="102">
-                                            <a:s r="101">
-                                                <a:s>V23</a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="102">
-                                                <a:s>status</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="103">
-                                            <a:s>value</a:s>
-                                        </a:s>
+                                    <a:s>&#xd;
+		union </a:s>
+                                    <a:s r="134">
+                                       <a:s>[DiagnosticReport: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Functional or Aplastic Anemia&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
                                     </a:s>
-                                    <a:s> in </a:s>
-                                    <a:s r="106">
-                                        <a:s>{ </a:s>
-                                        <a:s r="104">
-                                            <a:s>'in-progress'</a:s>
-                                        </a:s>
-                                        <a:s>, </a:s>
-                                        <a:s r="105">
-                                            <a:s>'completed'</a:s>
-                                        </a:s>
-                                        <a:s> }</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    and </a:s>
-                                <a:s r="113">
-                                    <a:s r="111">
-                                        <a:s>AgeInYearsAt(</a:s>
-                                        <a:s r="110">
-                                            <a:s r="109">
-                                                <a:s r="108">
-                                                    <a:s>V23</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="109">
-                                                    <a:s>&quot;date&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="110">
-                                                <a:s>value</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>)</a:s>
-                                    </a:s>
-                                    <a:s> >= 60</a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="115" xsi:type="Query">
-                <source localId="100" alias="V23">
-                    <expression localId="99" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
-                        <codes name="Pneumococcal Conjugate Vaccine 23" xsi:type="ValueSetRef"/>
-                    </expression>
-                </source>
-                <where localId="114" xsi:type="And">
-                    <operand localId="107" xsi:type="In">
-                        <operand localId="103" path="value" xsi:type="Property">
-                            <source localId="102" path="status" scope="V23" xsi:type="Property"/>
-                        </operand>
-                        <operand localId="106" xsi:type="List">
-                            <element localId="104" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                            <element localId="105" valueType="t:String" value="completed" xsi:type="Literal"/>
-                        </operand>
-                    </operand>
-                    <operand localId="113" xsi:type="GreaterOrEqual">
-                        <operand localId="111" precision="Year" xsi:type="CalculateAgeAt">
-                            <operand path="birthDate.value" xsi:type="Property">
-                                <source name="Patient" xsi:type="ExpressionRef"/>
-                            </operand>
-                            <operand localId="110" path="value" xsi:type="Property">
-                                <source localId="109" path="date" scope="V23" xsi:type="Property"/>
-                            </operand>
-                        </operand>
-                        <operand localId="112" valueType="t:Integer" value="60" xsi:type="Literal"/>
-                    </operand>
-                </where>
-            </expression>
-        </def>
-        <def localId="131" name="PVC13 After Age 60 And Then PVC23 After 12 More Months" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="131">
-                    <a:s>define &quot;PVC13 After Age 60 And Then PVC23 After 12 More Months&quot;:
-                    </a:s>
-                    <a:s r="130">
-                        <a:s>exists </a:s>
-                        <a:s r="129">
-                            <a:s>(
-                            </a:s>
-                            <a:s r="129">
-                                <a:s>
-                                    <a:s r="98">
-                                        <a:s r="97">
-                                            <a:s>
-                                                <a:s>&quot;Pneumococcal Vaccine 13 After Age 60&quot;</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> V13</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                </a:s>
-                                <a:s r="128">
-                                    <a:s>with </a:s>
-                                    <a:s r="118">
-                                        <a:s r="117">
-                                            <a:s>
-                                                <a:s>&quot;Pneumococcal Vaccine 23 After Age 60&quot;</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> V23</a:s>
-                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+		union </a:s>
+                                 <a:s r="136">
+                                    <a:s>[DiagnosticReport: </a:s>
                                     <a:s>
-                                        such that </a:s>
-                                    <a:s r="127">
-                                        <a:s r="125">
-                                            <a:s>months between </a:s>
-                                            <a:s r="121">
-                                                <a:s r="120">
-                                                    <a:s r="119">
-                                                        <a:s>V13</a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="120">
-                                                        <a:s>&quot;date&quot;</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="121">
-                                                    <a:s>value</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> and </a:s>
-                                            <a:s r="124">
-                                                <a:s r="123">
-                                                    <a:s r="122">
-                                                        <a:s>V23</a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="123">
-                                                        <a:s>&quot;date&quot;</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="124">
-                                                    <a:s>value</a:s>
-                                                </a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> >= 12</a:s>
+                                       <a:s>&quot;Disorders of the Immune System&quot;</a:s>
                                     </a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>
-                                )</a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+	)</a:s>
+                           </a:s>
+                           <a:s> D</a:s>
                         </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="130" xsi:type="Exists">
-                <operand localId="129" xsi:type="Query">
-                    <source localId="98" alias="V13">
-                        <expression localId="97" name="Pneumococcal Vaccine 13 After Age 60" xsi:type="ExpressionRef"/>
-                    </source>
-                    <relationship localId="128" alias="V23" xsi:type="With">
-                        <expression localId="117" name="Pneumococcal Vaccine 23 After Age 60" xsi:type="ExpressionRef"/>
-                        <suchThat localId="127" xsi:type="GreaterOrEqual">
-                            <operand localId="125" precision="Month" xsi:type="DurationBetween">
-                                <operand localId="121" path="value" xsi:type="Property">
-                                    <source localId="120" path="date" scope="V13" xsi:type="Property"/>
-                                </operand>
-                                <operand localId="124" path="value" xsi:type="Property">
-                                    <source localId="123" path="date" scope="V23" xsi:type="Property"/>
-                                </operand>
-                            </operand>
-                            <operand localId="126" valueType="t:Integer" value="12" xsi:type="Literal"/>
-                        </suchThat>
-                    </relationship>
-                </operand>
-            </expression>
-        </def>
-        <def localId="157" name="Immunocompromised Diagnoses Overlapping Measurement Period" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="157">
-                    <a:s>define &quot;Immunocompromised Diagnoses Overlapping Measurement Period&quot;:
-                    </a:s>
-                    <a:s r="156">
-                        <a:s>distinct </a:s>
-                        <a:s r="155">
-                            <a:s>
-                                <a:s r="138">
-                                    <a:s r="137">
-                                        <a:s>(
-                                        </a:s>
-                                        <a:s r="137">
-                                            <a:s r="135">
-                                                <a:s r="133">
-                                                    <a:s>[DiagnosticReport: </a:s>
-                                                    <a:s>
-                                                        <a:s>&quot;Cerebrospinal Fluid Leaks&quot;</a:s>
-                                                    </a:s>
-                                                    <a:s>]</a:s>
-                                                </a:s>
-                                                <a:s>
-                                                    union </a:s>
-                                                <a:s r="134">
-                                                    <a:s>[DiagnosticReport: </a:s>
-                                                    <a:s>
-                                                        <a:s>&quot;Functional or Aplastic Anemia&quot;</a:s>
-                                                    </a:s>
-                                                    <a:s>]</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>
-                                                union </a:s>
-                                            <a:s r="136">
-                                                <a:s>[DiagnosticReport: </a:s>
-                                                <a:s>
-                                                    <a:s>&quot;Disorders of the Immune System&quot;</a:s>
-                                                </a:s>
-                                                <a:s>]</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>
-                                            )</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="154">
+                        <a:s>where </a:s>
+                        <a:s r="154">
+                           <a:s r="148">
+                              <a:s r="141">
+                                 <a:s r="140">
+                                    <a:s r="139">
+                                       <a:s>D</a:s>
                                     </a:s>
-                                    <a:s> D</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>
-                            </a:s>
-                            <a:s r="154">
-                                <a:s>where </a:s>
-                                <a:s r="154">
-                                    <a:s r="148">
-                                        <a:s r="141">
-                                            <a:s r="140">
-                                                <a:s r="139">
-                                                    <a:s>D</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="140">
-                                                    <a:s>status</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="141">
-                                                <a:s>value</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s> in </a:s>
-                                        <a:s r="147">
-                                            <a:s>{ </a:s>
-                                            <a:s r="142">
-                                                <a:s>'preliminary'</a:s>
-                                            </a:s>
-                                            <a:s>, </a:s>
-                                            <a:s r="143">
-                                                <a:s>'final'</a:s>
-                                            </a:s>
-                                            <a:s>, </a:s>
-                                            <a:s r="144">
-                                                <a:s>'amended'</a:s>
-                                            </a:s>
-                                            <a:s>, </a:s>
-                                            <a:s r="145">
-                                                <a:s>'corrected'</a:s>
-                                            </a:s>
-                                            <a:s>, </a:s>
-                                            <a:s r="146">
-                                                <a:s>'appended'</a:s>
-                                            </a:s>
-                                            <a:s> }</a:s>
-                                        </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="140">
+                                       <a:s>status</a:s>
                                     </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="141">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> in </a:s>
+                              <a:s r="147">
+                                 <a:s>{ </a:s>
+                                 <a:s r="142">
+                                    <a:s>'preliminary'</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="143">
+                                    <a:s>'final'</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="144">
+                                    <a:s>'amended'</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="145">
+                                    <a:s>'corrected'</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="146">
+                                    <a:s>'appended'</a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			and </a:s>
+                           <a:s r="153">
+                              <a:s r="151">
+                                 <a:s>PeriodToIntervalOfDT(</a:s>
+                                 <a:s r="150">
+                                    <a:s r="149">
+                                       <a:s>D</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="150">
+                                       <a:s>effective</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s r="153"> overlaps day of </a:s>
+                              <a:s r="152">
+                                 <a:s>&quot;Measurement Period&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="156" locator="150:2-156:77" xsi:type="Distinct">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand localId="155" locator="150:11-156:77" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="138" locator="150:11-154:4" alias="D">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="137" locator="150:11-154:2" xsi:type="Union">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <operand localId="135" locator="151:3-152:59" xsi:type="Union">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand localId="133" locator="151:3-151:49" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes locator="151:22-151:48" name="Cerebrospinal Fluid Leaks" xsi:type="ValueSetRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </codes>
+                        </operand>
+                        <operand localId="134" locator="152:9-152:59" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes locator="152:28-152:58" name="Functional or Aplastic Anemia" xsi:type="ValueSetRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </codes>
+                        </operand>
+                     </operand>
+                     <operand localId="136" locator="153:9-153:60" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes locator="153:28-153:59" name="Disorders of the Immune System" xsi:type="ValueSetRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </codes>
+                     </operand>
+                  </expression>
+               </source>
+               <where localId="154" locator="155:3-156:77" resultTypeName="t:Boolean" xsi:type="And">
+                  <operand localId="148" locator="155:9-155:88" resultTypeName="t:Boolean" xsi:type="In">
+                     <operand localId="141" locator="155:9-155:22" resultTypeName="t:String" path="value" xsi:type="Property">
+                        <source localId="140" locator="155:9-155:16" resultTypeName="fhir:DiagnosticReportStatus" path="status" scope="D" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="147" locator="155:27-155:88" xsi:type="List">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <element localId="142" locator="155:29-155:41" resultTypeName="t:String" valueType="t:String" value="preliminary" xsi:type="Literal"/>
+                        <element localId="143" locator="155:44-155:50" resultTypeName="t:String" valueType="t:String" value="final" xsi:type="Literal"/>
+                        <element localId="144" locator="155:53-155:61" resultTypeName="t:String" valueType="t:String" value="amended" xsi:type="Literal"/>
+                        <element localId="145" locator="155:64-155:74" resultTypeName="t:String" valueType="t:String" value="corrected" xsi:type="Literal"/>
+                        <element localId="146" locator="155:77-155:86" resultTypeName="t:String" valueType="t:String" value="appended" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="153" locator="156:8-156:77" resultTypeName="t:Boolean" precision="Day" xsi:type="Overlaps">
+                     <operand localId="151" locator="156:8-156:40" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand asType="fhir:Period" xsi:type="As">
+                           <operand localId="150" locator="156:29-156:39" path="effective" scope="D" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                 <choice name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                                 <choice name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="152" locator="156:58-156:77" name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="178" locator="158:1-161:110" name="Cochlear Implants on or Before End of Measurement Period" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="178">
+               <a:s>define &quot;Cochlear Implants on or Before End of Measurement Period&quot;:&#xd;
+	</a:s>
+               <a:s r="177">
+                  <a:s>
+                     <a:s r="161">
+                        <a:s r="160">
+                           <a:s r="160">
+                              <a:s>[Procedure: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Cochlear Implants&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> CochlearImplant</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="176">
+                     <a:s>where </a:s>
+                     <a:s r="176">
+                        <a:s r="168">
+                           <a:s r="164">
+                              <a:s r="163">
+                                 <a:s r="162">
+                                    <a:s>CochlearImplant</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="163">
+                                    <a:s>status</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="164">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="167">
+                              <a:s>{ </a:s>
+                              <a:s r="165">
+                                 <a:s>'in-progress'</a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="166">
+                                 <a:s>'completed'</a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="175">
+                           <a:s r="172">
+                              <a:s>start of </a:s>
+                              <a:s r="171">
+                                 <a:s>PeriodToIntervalOfDT(</a:s>
+                                 <a:s r="170">
+                                    <a:s r="169">
+                                       <a:s>CochlearImplant</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="170">
+                                       <a:s>performed</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="175"> same day or before </a:s>
+                           <a:s r="174">
+                              <a:s>end of </a:s>
+                              <a:s r="173">
+                                 <a:s>&quot;Measurement Period&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="177" locator="159:2-161:110" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="161" locator="159:2-159:49" alias="CochlearImplant">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="160" locator="159:2-159:33" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="159:14-159:32" name="Cochlear Implants" xsi:type="ValueSetRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </codes>
+               </expression>
+            </source>
+            <where localId="176" locator="160:3-161:110" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="168" locator="160:9-160:70" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="164" locator="160:9-160:36" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source localId="163" locator="160:9-160:30" resultTypeName="fhir:EventStatus" path="status" scope="CochlearImplant" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="167" locator="160:41-160:70" xsi:type="List">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <element localId="165" locator="160:43-160:55" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                     <element localId="166" locator="160:58-160:68" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+               <operand localId="175" locator="161:8-161:110" resultTypeName="t:Boolean" precision="Day" xsi:type="SameOrBefore">
+                  <operand localId="172" locator="161:8-161:63" resultTypeName="t:DateTime" xsi:type="Start">
+                     <operand localId="171" locator="161:17-161:63" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand asType="fhir:Period" xsi:type="As">
+                           <operand localId="170" locator="161:38-161:62" path="performed" scope="CochlearImplant" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                 <choice name="fhir:dateTime" xsi:type="NamedTypeSpecifier"/>
+                                 <choice name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="174" locator="161:84-161:110" resultTypeName="t:DateTime" xsi:type="End">
+                     <operand localId="173" locator="161:91-161:110" name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="182" locator="145:1-147:72" resultTypeName="t:Boolean" name="Immunocompromised Diagnoses or Cochlear Implants" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="182">
+               <a:s>define &quot;Immunocompromised Diagnoses or Cochlear Implants&quot;:&#xd;
+	</a:s>
+               <a:s r="181">
+                  <a:s r="159">
+                     <a:s>exists </a:s>
+                     <a:s r="158">
+                        <a:s>(</a:s>
+                        <a:s r="158">
+                           <a:s>&quot;Immunocompromised Diagnoses Overlapping Measurement Period&quot;</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		or </a:s>
+                  <a:s r="180">
+                     <a:s>exists </a:s>
+                     <a:s r="179">
+                        <a:s>(</a:s>
+                        <a:s r="179">
+                           <a:s>&quot;Cochlear Implants on or Before End of Measurement Period&quot;</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="181" locator="146:2-147:72" resultTypeName="t:Boolean" xsi:type="Or">
+            <operand localId="159" locator="146:2-146:70" resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand localId="158" locator="146:9-146:70" name="Immunocompromised Diagnoses Overlapping Measurement Period" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+            <operand localId="180" locator="147:6-147:72" resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand localId="179" locator="147:13-147:72" name="Cochlear Implants on or Before End of Measurement Period" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="201" locator="135:1-138:42" name="Pneumococcal Vaccine 13 After Age 2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="201">
+               <a:s>define &quot;Pneumococcal Vaccine 13 After Age 2&quot;:&#xd;
+	</a:s>
+               <a:s r="200">
+                  <a:s>
+                     <a:s r="185">
+                        <a:s r="184">
+                           <a:s r="184">
+                              <a:s>[Immunization: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Pneumococcal Conjugate Vaccine 13&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> V13</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="199">
+                     <a:s>where </a:s>
+                     <a:s r="199">
+                        <a:s r="192">
+                           <a:s r="188">
+                              <a:s r="187">
+                                 <a:s r="186">
+                                    <a:s>V13</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="187">
+                                    <a:s>status</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="188">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="191">
+                              <a:s>{ </a:s>
+                              <a:s r="189">
+                                 <a:s>'in-progress'</a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="190">
+                                 <a:s>'completed'</a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="198">
+                           <a:s r="196">
+                              <a:s>AgeInYearsAt(</a:s>
+                              <a:s r="195">
+                                 <a:s r="194">
+                                    <a:s r="193">
+                                       <a:s>V13</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="194">
+                                       <a:s>&quot;date&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="195">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s r="197"> >= 2</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="200" locator="136:2-138:42" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="185" locator="136:2-136:56" alias="V13">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="184" locator="136:2-136:52" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="136:17-136:51" name="Pneumococcal Conjugate Vaccine 13" xsi:type="ValueSetRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </codes>
+               </expression>
+            </source>
+            <where localId="199" locator="137:3-138:42" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="192" locator="137:9-137:58" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="188" locator="137:9-137:24" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source localId="187" locator="137:9-137:18" resultTypeName="fhir:ImmunizationStatusCodes" path="status" scope="V13" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="191" locator="137:29-137:58" xsi:type="List">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <element localId="189" locator="137:31-137:43" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                     <element localId="190" locator="137:46-137:56" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+               <operand localId="198" locator="138:8-138:42" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="196" locator="138:8-138:37" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand xsi:type="ToDateTime">
+                        <operand path="birthDate.value" xsi:type="Property">
+                           <source name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="195" locator="138:21-138:36" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                        <source localId="194" locator="138:21-138:30" resultTypeName="fhir:dateTime" path="date" scope="V13" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="197" locator="138:42" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="221" locator="140:1-143:42" name="Pneumococcal Vaccine 23 After Age 2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>define &quot;Pneumococcal Vaccine 23 After Age 2&quot;:&#xd;
+	</a:s>
+               <a:s r="220">
+                  <a:s>
+                     <a:s r="205">
+                        <a:s r="204">
+                           <a:s r="204">
+                              <a:s>[Immunization: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Pneumococcal Conjugate Vaccine 23&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> V23</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="219">
+                     <a:s>where </a:s>
+                     <a:s r="219">
+                        <a:s r="212">
+                           <a:s r="208">
+                              <a:s r="207">
+                                 <a:s r="206">
+                                    <a:s>V23</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="207">
+                                    <a:s>status</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="208">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="211">
+                              <a:s>{ </a:s>
+                              <a:s r="209">
+                                 <a:s>'in-progress'</a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="210">
+                                 <a:s>'completed'</a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="218">
+                           <a:s r="216">
+                              <a:s>AgeInYearsAt(</a:s>
+                              <a:s r="215">
+                                 <a:s r="214">
+                                    <a:s r="213">
+                                       <a:s>V23</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="214">
+                                       <a:s>&quot;date&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="215">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s r="217"> >= 2</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="220" locator="141:2-143:42" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="205" locator="141:2-141:56" alias="V23">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="204" locator="141:2-141:52" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes locator="141:17-141:51" name="Pneumococcal Conjugate Vaccine 23" xsi:type="ValueSetRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </codes>
+               </expression>
+            </source>
+            <where localId="219" locator="142:3-143:42" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="212" locator="142:9-142:58" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="208" locator="142:9-142:24" resultTypeName="t:String" path="value" xsi:type="Property">
+                     <source localId="207" locator="142:9-142:18" resultTypeName="fhir:ImmunizationStatusCodes" path="status" scope="V23" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="211" locator="142:29-142:58" xsi:type="List">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <element localId="209" locator="142:31-142:43" resultTypeName="t:String" valueType="t:String" value="in-progress" xsi:type="Literal"/>
+                     <element localId="210" locator="142:46-142:56" resultTypeName="t:String" valueType="t:String" value="completed" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+               <operand localId="218" locator="143:8-143:42" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="216" locator="143:8-143:37" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand xsi:type="ToDateTime">
+                        <operand path="birthDate.value" xsi:type="Property">
+                           <source name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="215" locator="143:21-143:36" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                        <source localId="214" locator="143:21-143:30" resultTypeName="fhir:dateTime" path="date" scope="V23" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="217" locator="143:42" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="237" locator="126:1-133:2" resultTypeName="t:Boolean" name="PVC13 After Age 2 And Then PVC23 After 8 More Weeks" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="237">
+               <a:s>define &quot;PVC13 After Age 2 And Then PVC23 After 8 More Weeks&quot;:&#xd;
+	</a:s>
+               <a:s r="236">
+                  <a:s r="183">
+                     <a:s>&quot;Immunocompromised Diagnoses or Cochlear Implants&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	and&#xd;
+	</a:s>
+                  <a:s r="235">
+                     <a:s>exists </a:s>
+                     <a:s r="234">
+                        <a:s>(&#xd;
+		</a:s>
+                        <a:s r="234">
+                           <a:s>
+                              <a:s r="203">
+                                 <a:s r="202">
                                     <a:s>
-                                        and </a:s>
-                                    <a:s r="153">
-                                        <a:s r="151">
-                                            <a:s>PeriodToIntervalOfDT(</a:s>
-                                            <a:s r="150">
-                                                <a:s r="149">
-                                                    <a:s>D</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="150">
-                                                    <a:s>effective</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>)</a:s>
-                                        </a:s>
-                                        <a:s> overlaps </a:s>
-                                        <a:s r="152">
-                                            <a:s>&quot;Measurement Period&quot;</a:s>
-                                        </a:s>
+                                       <a:s>&quot;Pneumococcal Vaccine 13 After Age 2&quot;</a:s>
                                     </a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="156" xsi:type="Distinct">
-                <operand localId="155" xsi:type="Query">
-                    <source localId="138" alias="D">
-                        <expression localId="137" xsi:type="Union">
-                            <operand localId="135" xsi:type="Union">
-                                <operand localId="133" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                                    <codes name="Cerebrospinal Fluid Leaks" xsi:type="ValueSetRef"/>
-                                </operand>
-                                <operand localId="134" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                                    <codes name="Functional or Aplastic Anemia" xsi:type="ValueSetRef"/>
-                                </operand>
-                            </operand>
-                            <operand localId="136" dataType="fhir:DiagnosticReport" codeProperty="code" xsi:type="Retrieve">
-                                <codes name="Disorders of the Immune System" xsi:type="ValueSetRef"/>
-                            </operand>
-                        </expression>
-                    </source>
-                    <where localId="154" xsi:type="And">
-                        <operand localId="148" xsi:type="In">
-                            <operand localId="141" path="value" xsi:type="Property">
-                                <source localId="140" path="status" scope="D" xsi:type="Property"/>
-                            </operand>
-                            <operand localId="147" xsi:type="List">
-                                <element localId="142" valueType="t:String" value="preliminary" xsi:type="Literal"/>
-                                <element localId="143" valueType="t:String" value="final" xsi:type="Literal"/>
-                                <element localId="144" valueType="t:String" value="amended" xsi:type="Literal"/>
-                                <element localId="145" valueType="t:String" value="corrected" xsi:type="Literal"/>
-                                <element localId="146" valueType="t:String" value="appended" xsi:type="Literal"/>
-                            </operand>
-                        </operand>
-                        <operand localId="153" xsi:type="Overlaps">
-                            <operand localId="151" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                <operand asType="fhir:Period" xsi:type="As">
-                                    <operand localId="150" path="effective" scope="D" xsi:type="Property"/>
-                                    <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
-                                </operand>
-                            </operand>
-                            <operand localId="152" name="Measurement Period" xsi:type="ParameterRef"/>
-                        </operand>
-                    </where>
-                </operand>
-            </expression>
-        </def>
-        <def localId="178" name="Cochlear Implants on or Before End of Measurement Period" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="178">
-                    <a:s>define &quot;Cochlear Implants on or Before End of Measurement Period&quot;:
-                    </a:s>
-                    <a:s r="177">
-                        <a:s>
-                            <a:s r="161">
-                                <a:s r="160">
-                                    <a:s r="160">
-                                        <a:s>[Procedure: </a:s>
-                                        <a:s>
-                                            <a:s>&quot;Cochlear Implants&quot;</a:s>
-                                        </a:s>
-                                        <a:s>]</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> CochlearImplant</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="176">
-                            <a:s>where </a:s>
-                            <a:s r="176">
-                                <a:s r="168">
-                                    <a:s r="164">
-                                        <a:s r="163">
-                                            <a:s r="162">
-                                                <a:s>CochlearImplant</a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="163">
-                                                <a:s>status</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="164">
-                                            <a:s>value</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s> in </a:s>
-                                    <a:s r="167">
-                                        <a:s>{ </a:s>
-                                        <a:s r="165">
-                                            <a:s>'in-progress'</a:s>
-                                        </a:s>
-                                        <a:s>, </a:s>
-                                        <a:s r="166">
-                                            <a:s>'completed'</a:s>
-                                        </a:s>
-                                        <a:s> }</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    and </a:s>
-                                <a:s r="175">
-                                    <a:s r="172">
-                                        <a:s>start of </a:s>
-                                        <a:s r="171">
-                                            <a:s>PeriodToIntervalOfDT(</a:s>
-                                            <a:s r="170">
-                                                <a:s r="169">
-                                                    <a:s>CochlearImplant</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="170">
-                                                    <a:s>performed</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>)</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s> same day or before </a:s>
-                                    <a:s r="174">
-                                        <a:s>end of </a:s>
-                                        <a:s r="173">
-                                            <a:s>&quot;Measurement Period&quot;</a:s>
-                                        </a:s>
-                                    </a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="177" xsi:type="Query">
-                <source localId="161" alias="CochlearImplant">
-                    <expression localId="160" dataType="fhir:Procedure" codeProperty="code" xsi:type="Retrieve">
-                        <codes name="Cochlear Implants" xsi:type="ValueSetRef"/>
-                    </expression>
-                </source>
-                <where localId="176" xsi:type="And">
-                    <operand localId="168" xsi:type="In">
-                        <operand localId="164" path="value" xsi:type="Property">
-                            <source localId="163" path="status" scope="CochlearImplant" xsi:type="Property"/>
-                        </operand>
-                        <operand localId="167" xsi:type="List">
-                            <element localId="165" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                            <element localId="166" valueType="t:String" value="completed" xsi:type="Literal"/>
-                        </operand>
-                    </operand>
-                    <operand localId="175" precision="Day" xsi:type="SameOrBefore">
-                        <operand localId="172" xsi:type="Start">
-                            <operand localId="171" name="PeriodToIntervalOfDT" xsi:type="FunctionRef">
-                                <operand asType="fhir:Period" xsi:type="As">
-                                    <operand localId="170" path="performed" scope="CochlearImplant" xsi:type="Property"/>
-                                    <asTypeSpecifier name="fhir:Period" xsi:type="NamedTypeSpecifier"/>
-                                </operand>
-                            </operand>
-                        </operand>
-                        <operand localId="174" xsi:type="End">
-                            <operand localId="173" name="Measurement Period" xsi:type="ParameterRef"/>
-                        </operand>
-                    </operand>
-                </where>
-            </expression>
-        </def>
-        <def localId="182" name="Immunocompromised Diagnoses or Cochlear Implants" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="182">
-                    <a:s>define &quot;Immunocompromised Diagnoses or Cochlear Implants&quot;:
-                    </a:s>
-                    <a:s r="181">
-                        <a:s r="159">
-                            <a:s>exists </a:s>
-                            <a:s r="158">
-                                <a:s>(</a:s>
-                                <a:s r="158">
-                                    <a:s>&quot;Immunocompromised Diagnoses Overlapping Measurement Period&quot;</a:s>
-                                </a:s>
-                                <a:s>)</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                            or </a:s>
-                        <a:s r="180">
-                            <a:s>exists </a:s>
-                            <a:s r="179">
-                                <a:s>(</a:s>
-                                <a:s r="179">
-                                    <a:s>&quot;Cochlear Implants on or Before End of Measurement Period&quot;</a:s>
-                                </a:s>
-                                <a:s>)</a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="181" xsi:type="Or">
-                <operand localId="159" xsi:type="Exists">
-                    <operand localId="158" name="Immunocompromised Diagnoses Overlapping Measurement Period" xsi:type="ExpressionRef"/>
-                </operand>
-                <operand localId="180" xsi:type="Exists">
-                    <operand localId="179" name="Cochlear Implants on or Before End of Measurement Period" xsi:type="ExpressionRef"/>
-                </operand>
-            </expression>
-        </def>
-        <def localId="201" name="Pneumococcal Vaccine 13 After Age 2" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="201">
-                    <a:s>define &quot;Pneumococcal Vaccine 13 After Age 2&quot;:
-                    </a:s>
-                    <a:s r="200">
-                        <a:s>
-                            <a:s r="185">
-                                <a:s r="184">
-                                    <a:s r="184">
-                                        <a:s>[Immunization: </a:s>
-                                        <a:s>
-                                            <a:s>&quot;Pneumococcal Conjugate Vaccine 13&quot;</a:s>
-                                        </a:s>
-                                        <a:s>]</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> V13</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="199">
-                            <a:s>where </a:s>
-                            <a:s r="199">
-                                <a:s r="192">
-                                    <a:s r="188">
-                                        <a:s r="187">
-                                            <a:s r="186">
-                                                <a:s>V13</a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="187">
-                                                <a:s>status</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="188">
-                                            <a:s>value</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s> in </a:s>
-                                    <a:s r="191">
-                                        <a:s>{ </a:s>
-                                        <a:s r="189">
-                                            <a:s>'in-progress'</a:s>
-                                        </a:s>
-                                        <a:s>, </a:s>
-                                        <a:s r="190">
-                                            <a:s>'completed'</a:s>
-                                        </a:s>
-                                        <a:s> }</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    and </a:s>
-                                <a:s r="198">
-                                    <a:s r="196">
-                                        <a:s>AgeInYearsAt(</a:s>
-                                        <a:s r="195">
-                                            <a:s r="194">
-                                                <a:s r="193">
-                                                    <a:s>V13</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="194">
-                                                    <a:s>&quot;date&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="195">
-                                                <a:s>value</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>)</a:s>
-                                    </a:s>
-                                    <a:s> >= 2</a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="200" xsi:type="Query">
-                <source localId="185" alias="V13">
-                    <expression localId="184" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
-                        <codes name="Pneumococcal Conjugate Vaccine 13" xsi:type="ValueSetRef"/>
-                    </expression>
-                </source>
-                <where localId="199" xsi:type="And">
-                    <operand localId="192" xsi:type="In">
-                        <operand localId="188" path="value" xsi:type="Property">
-                            <source localId="187" path="status" scope="V13" xsi:type="Property"/>
-                        </operand>
-                        <operand localId="191" xsi:type="List">
-                            <element localId="189" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                            <element localId="190" valueType="t:String" value="completed" xsi:type="Literal"/>
-                        </operand>
-                    </operand>
-                    <operand localId="198" xsi:type="GreaterOrEqual">
-                        <operand localId="196" precision="Year" xsi:type="CalculateAgeAt">
-                            <operand path="birthDate.value" xsi:type="Property">
-                                <source name="Patient" xsi:type="ExpressionRef"/>
-                            </operand>
-                            <operand localId="195" path="value" xsi:type="Property">
-                                <source localId="194" path="date" scope="V13" xsi:type="Property"/>
-                            </operand>
-                        </operand>
-                        <operand localId="197" valueType="t:Integer" value="2" xsi:type="Literal"/>
-                    </operand>
-                </where>
-            </expression>
-        </def>
-        <def localId="221" name="Pneumococcal Vaccine 23 After Age 2" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="221">
-                    <a:s>define &quot;Pneumococcal Vaccine 23 After Age 2&quot;:
-                    </a:s>
-                    <a:s r="220">
-                        <a:s>
-                            <a:s r="205">
-                                <a:s r="204">
-                                    <a:s r="204">
-                                        <a:s>[Immunization: </a:s>
-                                        <a:s>
-                                            <a:s>&quot;Pneumococcal Conjugate Vaccine 23&quot;</a:s>
-                                        </a:s>
-                                        <a:s>]</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s> V23</a:s>
-                            </a:s>
-                        </a:s>
-                        <a:s>
-                        </a:s>
-                        <a:s r="219">
-                            <a:s>where </a:s>
-                            <a:s r="219">
-                                <a:s r="212">
-                                    <a:s r="208">
-                                        <a:s r="207">
-                                            <a:s r="206">
-                                                <a:s>V23</a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="207">
-                                                <a:s>status</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>.</a:s>
-                                        <a:s r="208">
-                                            <a:s>value</a:s>
-                                        </a:s>
-                                    </a:s>
-                                    <a:s> in </a:s>
-                                    <a:s r="211">
-                                        <a:s>{ </a:s>
-                                        <a:s r="209">
-                                            <a:s>'in-progress'</a:s>
-                                        </a:s>
-                                        <a:s>, </a:s>
-                                        <a:s r="210">
-                                            <a:s>'completed'</a:s>
-                                        </a:s>
-                                        <a:s> }</a:s>
-                                    </a:s>
-                                </a:s>
-                                <a:s>
-                                    and </a:s>
-                                <a:s r="218">
-                                    <a:s r="216">
-                                        <a:s>AgeInYearsAt(</a:s>
-                                        <a:s r="215">
-                                            <a:s r="214">
-                                                <a:s r="213">
-                                                    <a:s>V23</a:s>
-                                                </a:s>
-                                                <a:s>.</a:s>
-                                                <a:s r="214">
-                                                    <a:s>&quot;date&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s>.</a:s>
-                                            <a:s r="215">
-                                                <a:s>value</a:s>
-                                            </a:s>
-                                        </a:s>
-                                        <a:s>)</a:s>
-                                    </a:s>
-                                    <a:s> >= 2</a:s>
-                                </a:s>
-                            </a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="220" xsi:type="Query">
-                <source localId="205" alias="V23">
-                    <expression localId="204" dataType="fhir:Immunization" codeProperty="vaccineCode" xsi:type="Retrieve">
-                        <codes name="Pneumococcal Conjugate Vaccine 23" xsi:type="ValueSetRef"/>
-                    </expression>
-                </source>
-                <where localId="219" xsi:type="And">
-                    <operand localId="212" xsi:type="In">
-                        <operand localId="208" path="value" xsi:type="Property">
-                            <source localId="207" path="status" scope="V23" xsi:type="Property"/>
-                        </operand>
-                        <operand localId="211" xsi:type="List">
-                            <element localId="209" valueType="t:String" value="in-progress" xsi:type="Literal"/>
-                            <element localId="210" valueType="t:String" value="completed" xsi:type="Literal"/>
-                        </operand>
-                    </operand>
-                    <operand localId="218" xsi:type="GreaterOrEqual">
-                        <operand localId="216" precision="Year" xsi:type="CalculateAgeAt">
-                            <operand path="birthDate.value" xsi:type="Property">
-                                <source name="Patient" xsi:type="ExpressionRef"/>
-                            </operand>
-                            <operand localId="215" path="value" xsi:type="Property">
-                                <source localId="214" path="date" scope="V23" xsi:type="Property"/>
-                            </operand>
-                        </operand>
-                        <operand localId="217" valueType="t:Integer" value="2" xsi:type="Literal"/>
-                    </operand>
-                </where>
-            </expression>
-        </def>
-        <def localId="237" name="PVC13 After Age 2 And Then PVC23 After 8 More Weeks" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="237">
-                    <a:s>define &quot;PVC13 After Age 2 And Then PVC23 After 8 More Weeks&quot;:
-                    </a:s>
-                    <a:s r="236">
-                        <a:s r="183">
-                            <a:s>&quot;Immunocompromised Diagnoses or Cochlear Implants&quot;</a:s>
-                        </a:s>
-                        <a:s>
-                            and
-                        </a:s>
-                        <a:s r="235">
-                            <a:s>exists </a:s>
-                            <a:s r="234">
-                                <a:s>(
-                                </a:s>
-                                <a:s r="234">
+                                 </a:s>
+                                 <a:s> V13</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="233">
+                              <a:s>with </a:s>
+                              <a:s r="223">
+                                 <a:s r="222">
                                     <a:s>
-                                        <a:s r="203">
-                                            <a:s r="202">
-                                                <a:s>
-                                                    <a:s>&quot;Pneumococcal Vaccine 13 After Age 2&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> V13</a:s>
-                                        </a:s>
+                                       <a:s>&quot;Pneumococcal Vaccine 23 After Age 2&quot;</a:s>
                                     </a:s>
-                                    <a:s>
+                                 </a:s>
+                                 <a:s> V23</a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				such that </a:s>
+                              <a:s r="232">
+                                 <a:s r="230">
+                                    <a:s>weeks between </a:s>
+                                    <a:s r="226">
+                                       <a:s r="225">
+                                          <a:s r="224">
+                                             <a:s>V13</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="225">
+                                             <a:s>&quot;date&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="226">
+                                          <a:s>value</a:s>
+                                       </a:s>
                                     </a:s>
-                                    <a:s r="233">
-                                        <a:s>with </a:s>
-                                        <a:s r="223">
-                                            <a:s r="222">
-                                                <a:s>
-                                                    <a:s>&quot;Pneumococcal Vaccine 23 After Age 2&quot;</a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> V23</a:s>
-                                        </a:s>
-                                        <a:s>
-                                            such that </a:s>
-                                        <a:s r="232">
-                                            <a:s r="230">
-                                                <a:s>weeks between </a:s>
-                                                <a:s r="226">
-                                                    <a:s r="225">
-                                                        <a:s r="224">
-                                                            <a:s>V13</a:s>
-                                                        </a:s>
-                                                        <a:s>.</a:s>
-                                                        <a:s r="225">
-                                                            <a:s>&quot;date&quot;</a:s>
-                                                        </a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="226">
-                                                        <a:s>value</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                                <a:s> and </a:s>
-                                                <a:s r="229">
-                                                    <a:s r="228">
-                                                        <a:s r="227">
-                                                            <a:s>V23</a:s>
-                                                        </a:s>
-                                                        <a:s>.</a:s>
-                                                        <a:s r="228">
-                                                            <a:s>&quot;date&quot;</a:s>
-                                                        </a:s>
-                                                    </a:s>
-                                                    <a:s>.</a:s>
-                                                    <a:s r="229">
-                                                        <a:s>value</a:s>
-                                                    </a:s>
-                                                </a:s>
-                                            </a:s>
-                                            <a:s> >= 8</a:s>
-                                        </a:s>
+                                    <a:s> and </a:s>
+                                    <a:s r="229">
+                                       <a:s r="228">
+                                          <a:s r="227">
+                                             <a:s>V23</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="228">
+                                             <a:s>&quot;date&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="229">
+                                          <a:s>value</a:s>
+                                       </a:s>
                                     </a:s>
-                                </a:s>
-                                <a:s>
-                                    )</a:s>
-                            </a:s>
+                                 </a:s>
+                                 <a:s r="231"> >= 8</a:s>
+                              </a:s>
+                           </a:s>
                         </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="236" xsi:type="And">
-                <operand localId="183" name="Immunocompromised Diagnoses or Cochlear Implants" xsi:type="ExpressionRef"/>
-                <operand localId="235" xsi:type="Exists">
-                    <operand localId="234" xsi:type="Query">
-                        <source localId="203" alias="V13">
-                            <expression localId="202" name="Pneumococcal Vaccine 13 After Age 2" xsi:type="ExpressionRef"/>
-                        </source>
-                        <relationship localId="233" alias="V23" xsi:type="With">
-                            <expression localId="222" name="Pneumococcal Vaccine 23 After Age 2" xsi:type="ExpressionRef"/>
-                            <suchThat localId="232" xsi:type="GreaterOrEqual">
-                                <operand localId="230" precision="Week" xsi:type="DurationBetween">
-                                    <operand localId="226" path="value" xsi:type="Property">
-                                        <source localId="225" path="date" scope="V13" xsi:type="Property"/>
-                                    </operand>
-                                    <operand localId="229" path="value" xsi:type="Property">
-                                        <source localId="228" path="date" scope="V23" xsi:type="Property"/>
-                                    </operand>
-                                </operand>
-                                <operand localId="231" valueType="t:Integer" value="8" xsi:type="Literal"/>
-                            </suchThat>
-                        </relationship>
-                    </operand>
-                </operand>
-            </expression>
-        </def>
-        <def localId="241" name="Numerator" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="241">
-                    <a:s>define &quot;Numerator&quot;:
-                    </a:s>
-                    <a:s r="240">
-                        <a:s r="78">
-                            <a:s>&quot;Initial Population&quot;</a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="236" locator="127:2-133:2" resultTypeName="t:Boolean" xsi:type="And">
+            <operand localId="183" locator="127:2-127:51" resultTypeName="t:Boolean" name="Immunocompromised Diagnoses or Cochlear Implants" xsi:type="ExpressionRef"/>
+            <operand localId="235" locator="129:2-133:2" resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand localId="234" locator="129:9-133:2" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="203" locator="130:3-130:43" alias="V13">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="202" locator="130:3-130:39" name="Pneumococcal Vaccine 13 After Age 2" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <relationship localId="233" locator="131:4-132:70" alias="V23" xsi:type="With">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="222" locator="131:9-131:45" name="Pneumococcal Vaccine 23 After Age 2" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="fhir:Immunization" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                     <suchThat localId="232" locator="132:15-132:70" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                        <operand localId="230" locator="132:15-132:65" resultTypeName="t:Integer" precision="Week" xsi:type="DurationBetween">
+                           <operand localId="226" locator="132:29-132:44" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                              <source localId="225" locator="132:29-132:38" resultTypeName="fhir:dateTime" path="date" scope="V13" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="229" locator="132:50-132:65" resultTypeName="t:DateTime" path="value" xsi:type="Property">
+                              <source localId="228" locator="132:50-132:59" resultTypeName="fhir:dateTime" path="date" scope="V23" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                        <operand localId="231" locator="132:70" resultTypeName="t:Integer" valueType="t:Integer" value="8" xsi:type="Literal"/>
+                     </suchThat>
+                  </relationship>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="241" locator="100:1-107:2" resultTypeName="t:Boolean" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="241">
+               <a:s>define &quot;Numerator&quot;:&#xd;
+	</a:s>
+               <a:s r="240">
+                  <a:s r="78">
+                     <a:s>&quot;Initial Population&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	and&#xd;
+	</a:s>
+                  <a:s r="239">
+                     <a:s>(&#xd;
+		</a:s>
+                     <a:s r="239">
+                        <a:s r="132">
+                           <a:s>&quot;PVC13 After Age 60 And Then PVC23 After 12 More Months&quot;</a:s>
                         </a:s>
-                        <a:s>
-                            and
+                        <a:s>&#xd;
+		or&#xd;
+		</a:s>
+                        <a:s r="238">
+                           <a:s>&quot;PVC13 After Age 2 And Then PVC23 After 8 More Weeks&quot;</a:s>
                         </a:s>
-                        <a:s r="239">
-                            <a:s>(
-                            </a:s>
-                            <a:s r="239">
-                                <a:s r="132">
-                                    <a:s>&quot;PVC13 After Age 60 And Then PVC23 After 12 More Months&quot;</a:s>
-                                </a:s>
-                                <a:s>
-                                    or
-                                </a:s>
-                                <a:s r="238">
-                                    <a:s>&quot;PVC13 After Age 2 And Then PVC23 After 8 More Weeks&quot;</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>
-                                )</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="240" locator="101:2-107:2" resultTypeName="t:Boolean" xsi:type="And">
+            <operand localId="78" locator="101:2-101:21" resultTypeName="t:Boolean" name="Initial Population" xsi:type="ExpressionRef"/>
+            <operand localId="239" locator="103:2-107:2" resultTypeName="t:Boolean" xsi:type="Or">
+               <operand localId="132" locator="104:3-104:58" resultTypeName="t:Boolean" name="PVC13 After Age 60 And Then PVC23 After 12 More Months" xsi:type="ExpressionRef"/>
+               <operand localId="238" locator="106:3-106:55" resultTypeName="t:Boolean" name="PVC13 After Age 2 And Then PVC23 After 8 More Weeks" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="249" locator="167:1-168:64" resultTypeName="t:Boolean" name="Stratifier 1" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="249">
+               <a:s>define &quot;Stratifier 1&quot;:&#xd;
+	</a:s>
+               <a:s r="248">
+                  <a:s r="244">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="243">
+                        <a:s>start of </a:s>
+                        <a:s r="242">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
                         </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="240" xsi:type="And">
-                <operand localId="78" name="Initial Population" xsi:type="ExpressionRef"/>
-                <operand localId="239" xsi:type="Or">
-                    <operand localId="132" name="PVC13 After Age 60 And Then PVC23 After 12 More Months" xsi:type="ExpressionRef"/>
-                    <operand localId="238" name="PVC13 After Age 2 And Then PVC23 After 8 More Weeks" xsi:type="ExpressionRef"/>
-                </operand>
-            </expression>
-        </def>
-        <def localId="249" name="Stratifier 1" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="249">
-                    <a:s>define &quot;Stratifier 1&quot;:
-                    </a:s>
-                    <a:s r="248">
-                        <a:s r="244">
-                            <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="243">
-                                <a:s>start of </a:s>
-                                <a:s r="242">
-                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>)</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> in </a:s>
+                  <a:s r="247">
+                     <a:s r="245">Interval[65, 74]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="248" locator="168:2-168:64" resultTypeName="t:Boolean" xsi:type="In">
+            <operand localId="244" locator="168:2-168:44" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand xsi:type="ToDateTime">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="243" locator="168:15-168:43" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="242" locator="168:24-168:43" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="247" locator="168:49-168:64" lowClosed="true" highClosed="true" xsi:type="Interval">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <low localId="245" locator="168:58-168:59" resultTypeName="t:Integer" valueType="t:Integer" value="65" xsi:type="Literal"/>
+               <high localId="246" locator="168:62-168:63" resultTypeName="t:Integer" valueType="t:Integer" value="74" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="257" locator="170:1-171:64" resultTypeName="t:Boolean" name="Stratifier 2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="257">
+               <a:s>define &quot;Stratifier 2&quot;:&#xd;
+	</a:s>
+               <a:s r="256">
+                  <a:s r="252">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="251">
+                        <a:s>start of </a:s>
+                        <a:s r="250">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
                         </a:s>
-                        <a:s> in </a:s>
-                        <a:s r="247">
-                            <a:s>Interval[65, 74]</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> in </a:s>
+                  <a:s r="255">
+                     <a:s r="253">Interval[75, 84]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="256" locator="171:2-171:64" resultTypeName="t:Boolean" xsi:type="In">
+            <operand localId="252" locator="171:2-171:44" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand xsi:type="ToDateTime">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="251" locator="171:15-171:43" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="250" locator="171:24-171:43" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="255" locator="171:49-171:64" lowClosed="true" highClosed="true" xsi:type="Interval">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <low localId="253" locator="171:58-171:59" resultTypeName="t:Integer" valueType="t:Integer" value="75" xsi:type="Literal"/>
+               <high localId="254" locator="171:62-171:63" resultTypeName="t:Integer" valueType="t:Integer" value="84" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="263" locator="173:1-174:50" resultTypeName="t:Boolean" name="Stratifier 3" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="263">
+               <a:s>define &quot;Stratifier 3&quot;:&#xd;
+	</a:s>
+               <a:s r="262">
+                  <a:s r="260">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="259">
+                        <a:s>start of </a:s>
+                        <a:s r="258">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
                         </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="248" xsi:type="In">
-                <operand localId="244" precision="Year" xsi:type="CalculateAgeAt">
-                    <operand path="birthDate.value" xsi:type="Property">
-                        <source name="Patient" xsi:type="ExpressionRef"/>
-                    </operand>
-                    <operand localId="243" xsi:type="Start">
-                        <operand localId="242" name="Measurement Period" xsi:type="ParameterRef"/>
-                    </operand>
-                </operand>
-                <operand localId="247" lowClosed="true" highClosed="true" xsi:type="Interval">
-                    <low localId="245" valueType="t:Integer" value="65" xsi:type="Literal"/>
-                    <high localId="246" valueType="t:Integer" value="74" xsi:type="Literal"/>
-                </operand>
-            </expression>
-        </def>
-        <def localId="257" name="Stratifier 2" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="257">
-                    <a:s>define &quot;Stratifier 2&quot;:
-                    </a:s>
-                    <a:s r="256">
-                        <a:s r="252">
-                            <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="251">
-                                <a:s>start of </a:s>
-                                <a:s r="250">
-                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>)</a:s>
-                        </a:s>
-                        <a:s> in </a:s>
-                        <a:s r="255">
-                            <a:s>Interval[75, 84]</a:s>
-                        </a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="256" xsi:type="In">
-                <operand localId="252" precision="Year" xsi:type="CalculateAgeAt">
-                    <operand path="birthDate.value" xsi:type="Property">
-                        <source name="Patient" xsi:type="ExpressionRef"/>
-                    </operand>
-                    <operand localId="251" xsi:type="Start">
-                        <operand localId="250" name="Measurement Period" xsi:type="ParameterRef"/>
-                    </operand>
-                </operand>
-                <operand localId="255" lowClosed="true" highClosed="true" xsi:type="Interval">
-                    <low localId="253" valueType="t:Integer" value="75" xsi:type="Literal"/>
-                    <high localId="254" valueType="t:Integer" value="84" xsi:type="Literal"/>
-                </operand>
-            </expression>
-        </def>
-        <def localId="263" name="Stratifier 3" context="Patient" accessLevel="Public">
-            <annotation xsi:type="a:Annotation">
-                <a:s r="263">
-                    <a:s>define &quot;Stratifier 3&quot;:
-                    </a:s>
-                    <a:s r="262">
-                        <a:s r="260">
-                            <a:s>AgeInYearsAt(</a:s>
-                            <a:s r="259">
-                                <a:s>start of </a:s>
-                                <a:s r="258">
-                                    <a:s>&quot;Measurement Period&quot;</a:s>
-                                </a:s>
-                            </a:s>
-                            <a:s>)</a:s>
-                        </a:s>
-                        <a:s> >= 85</a:s>
-                    </a:s>
-                </a:s>
-            </annotation>
-            <expression localId="262" xsi:type="GreaterOrEqual">
-                <operand localId="260" precision="Year" xsi:type="CalculateAgeAt">
-                    <operand path="birthDate.value" xsi:type="Property">
-                        <source name="Patient" xsi:type="ExpressionRef"/>
-                    </operand>
-                    <operand localId="259" xsi:type="Start">
-                        <operand localId="258" name="Measurement Period" xsi:type="ParameterRef"/>
-                    </operand>
-                </operand>
-                <operand localId="261" valueType="t:Integer" value="85" xsi:type="Literal"/>
-            </expression>
-        </def>
-    </statements>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s r="261"> >= 85</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="262" locator="174:2-174:50" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="260" locator="174:2-174:44" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand xsi:type="ToDateTime">
+                  <operand path="birthDate.value" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="259" locator="174:15-174:43" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="258" locator="174:24-174:43" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="261" locator="174:49-174:50" resultTypeName="t:Integer" valueType="t:Integer" value="85" xsi:type="Literal"/>
+         </expression>
+      </def>
+   </statements>
 </library>
+
+
