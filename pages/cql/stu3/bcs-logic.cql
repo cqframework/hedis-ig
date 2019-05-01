@@ -7,8 +7,8 @@ Breast Cancer Screening (BCS)
 using FHIR version '3.0.0'
 
 include FHIRHelpers version '3.0.0'
-include Participation version '1.0.0' called Participation
-include NCQACommon version '3.10.000' called Common
+include Participation_FHIR version '1.0.0' called Participation
+include NCQACommon_FHIR version '3.10.000' called Common
 
 /*
 Description

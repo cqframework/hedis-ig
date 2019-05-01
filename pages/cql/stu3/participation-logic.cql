@@ -1,4 +1,4 @@
-library Participation version '1.0.0'
+library Participation_FHIR version '1.0.0'
 
 using FHIR version '3.0.0'
 

@@ -1,4 +1,4 @@
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library Participation <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library Participation_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.0.0&#39;</span>
 
 <span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 
@@ -49,12 +49,12 @@ define <span style="color: #AA6600">&quot;Medicare Product&quot;</span>:
 <span style="color: #888888">*/</span>
 define <span style="color: #008800; font-weight: bold">function</span> <span style="color: #AA6600">&quot;Is Enrolled&quot;</span>(ProductLine String, IndexDate DateTime, ParticipationPeriod <span style="color: #007020">Interval</span><span style="color: #333333">&lt;</span>DateTime<span style="color: #333333">&gt;</span>, AllowedGapDays <span style="color: #007020">Integer</span>):
 	<span style="color: #008800; font-weight: bold">case</span>
-		<span style="color: #333333">//</span> If this <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">not</span> running <span style="color: #008800; font-weight: bold">for</span> a <span style="color: #008800; font-weight: bold">specific</span> product line, <span style="color: #008800; font-weight: bold">ignore</span> enrollment considerations
+		<span style="color: #888888">/* If this is not running for a specific product line, ignore enrollment considerations */</span>
 		<span style="color: #008800; font-weight: bold">when</span> ProductLine <span style="color: #008800; font-weight: bold">is</span> <span style="color: #008800; font-weight: bold">null</span> <span style="color: #008800; font-weight: bold">then</span> <span style="color: #008800; font-weight: bold">true</span>
 		<span style="color: #008800; font-weight: bold">else</span>
-			<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Is</span> the patient enrolled <span style="color: #008800; font-weight: bold">in</span> the given product line <span style="color: #008800; font-weight: bold">on</span> the given <span style="color: #008800; font-weight: bold">index</span> <span style="color: #007020">date</span><span style="color: #333333">?</span>
+			<span style="color: #888888">/* Is the patient enrolled in the given product line on the given index date? */</span>
 			<span style="color: #AA6600">&quot;Is Enrolled On Date&quot;</span>(ProductLine, IndexDate)
-			<span style="color: #333333">//</span> <span style="color: #008800; font-weight: bold">Is</span> the patient continuously enrolled <span style="color: #008800; font-weight: bold">in</span> <span style="color: #008800; font-weight: bold">every</span> <span style="color: #008800; font-weight: bold">year</span> <span style="color: #008800; font-weight: bold">of</span> the participation period
+			<span style="color: #888888">/* Is the patient continuously enrolled in every year of the participation period */</span>
 			  <span style="color: #008800; font-weight: bold">and</span> AllTrue(
 						(<span style="color: #AA6600">&quot;Enrollment Periods&quot;</span>(ParticipationPeriod)) EnrollmentPeriod
 							<span style="color: #008800; font-weight: bold">return</span> <span style="color: #AA6600">&quot;Is Continuously Enrolled In Period&quot;</span>(EnrollmentPeriod, if duration <span style="color: #008800; font-weight: bold">in</span> months <span style="color: #008800; font-weight: bold">of</span> EnrollmentPeriod <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">6</span> <span style="color: #008800; font-weight: bold">then</span> AllowedGapDays <span style="color: #008800; font-weight: bold">else</span> <span style="color: #0000DD; font-weight: bold">0</span>)

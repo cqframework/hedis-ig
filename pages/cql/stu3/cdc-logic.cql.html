@@ -1,8 +1,8 @@
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library CDC <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1&#39;</span>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">library CDC_FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1&#39;</span>
 
-<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.8&#39;</span>
+<span style="color: #008800; font-weight: bold">using</span> FHIR <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span>
 
-include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;1.8&#39;</span> <span style="color: #008800; font-weight: bold">called</span> FHIRHelpers
+include FHIRHelpers <span style="color: #008800; font-weight: bold">version</span> <span style="background-color: #fff0f0">&#39;3.0.0&#39;</span> <span style="color: #008800; font-weight: bold">called</span> FHIRHelpers
 
 <span style="color: #888888">/*</span>
 
@@ -123,7 +123,7 @@ define <span style="color: #AA6600">&quot;Heamoglobin A1C Level Greater than 9.0
 define <span style="color: #AA6600">&quot;ACE Inhibitor or ARB Medication Order&quot;</span>:
   [MedicationRequest : <span style="color: #AA6600">&quot;ACE Inhibitor or ARB&quot;</span>] A
     <span style="color: #008800; font-weight: bold">where</span> A.status <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;completed&#39;</span>
-      <span style="color: #008800; font-weight: bold">and</span> A.dateWritten during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>
+      <span style="color: #008800; font-weight: bold">and</span> A.authoredOn during <span style="color: #008800; font-weight: bold">day</span> <span style="color: #008800; font-weight: bold">of</span> <span style="color: #AA6600">&quot;Lookback Interval One Year&quot;</span>
 
 <span style="color: #333333">//</span> Dilated Eye Exam Observation
 

@@ -1,4 +1,4 @@
-library CDC version '1'
+library CDC_FHIR version '1'
 
 using FHIR version '3.0.0'
 

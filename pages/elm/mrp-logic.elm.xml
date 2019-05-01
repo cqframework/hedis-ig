@@ -8,8 +8,8 @@
    </usings>
    <includes>
       <def localId="2" locator="9:1-9:35" localIdentifier="FHIRHelpers" path="FHIRHelpers" version="3.0.0"/>
-      <def localId="3" locator="10:1-10:21" localIdentifier="Participation" path="Participation"/>
-      <def localId="4" locator="11:1-11:32" localIdentifier="Common" path="NCQACommon"/>
+      <def localId="3" locator="10:1-10:56" localIdentifier="Common" path="NCQACommon_FHIR" version="3.10.000"/>
+      <def localId="4" locator="11:1-11:63" localIdentifier="Participation" path="Participation_FHIR" version="1.0.0"/>
    </includes>
    <parameters>
       <def localId="11" locator="21:1-21:85" name="Measurement Period" accessLevel="Public">
@@ -521,7 +521,7 @@
                                  </a:s>
                                  <a:s>, </a:s>
                                  <a:s r="87">
-                                    <a:s>Interval [</a:s>
+                                    <a:s>Interval[</a:s>
                                     <a:s r="81">
                                        <a:s>start of </a:s>
                                        <a:s r="80">
@@ -596,7 +596,7 @@
                </expression>
             </source>
             <where localId="94" locator="44:5-47:30" resultTypeName="t:Boolean" xsi:type="And">
-               <operand localId="90" locator="44:11-46:90" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="90" locator="44:11-46:89" resultTypeName="t:Boolean" xsi:type="And">
                   <operand localId="70" locator="44:11-44:57" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
                      <operand localId="68" locator="44:11-44:51" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
                         <operand xsi:type="ToDateTime">
@@ -614,7 +614,7 @@
                      </operand>
                      <operand localId="69" locator="44:56-44:57" resultTypeName="t:Integer" valueType="t:Integer" value="18" xsi:type="Literal"/>
                   </operand>
-                  <operand localId="89" locator="45:9-46:90" resultTypeName="t:Boolean" name="Is Enrolled" libraryName="Participation" xsi:type="FunctionRef">
+                  <operand localId="89" locator="45:9-46:89" resultTypeName="t:Boolean" name="Is Enrolled" libraryName="Participation" xsi:type="FunctionRef">
                      <operand localId="73" locator="45:37-45:68" resultTypeName="t:String" name="Medicare Product" libraryName="Participation" xsi:type="ExpressionRef"/>
                      <operand localId="78" locator="46:5-46:29" resultTypeName="t:DateTime" xsi:type="Add">
                         <operand localId="76" locator="46:5-46:19" resultTypeName="t:DateTime" xsi:type="End">
@@ -624,25 +624,25 @@
                         </operand>
                         <operand localId="77" locator="46:23-46:29" resultTypeName="t:Quantity" value="30" unit="days" xsi:type="Quantity"/>
                      </operand>
-                     <operand localId="87" locator="46:32-46:86" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <operand localId="87" locator="46:32-46:85" lowClosed="true" highClosed="true" xsi:type="Interval">
                         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
                            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
                         </resultTypeSpecifier>
-                        <low localId="81" locator="46:42-46:58" resultTypeName="t:DateTime" xsi:type="Start">
+                        <low localId="81" locator="46:41-46:57" resultTypeName="t:DateTime" xsi:type="Start">
                            <operand name="ToInterval" libraryName="FHIRHelpers" xsi:type="FunctionRef">
-                              <operand localId="80" locator="46:51-46:58" resultTypeName="fhir:Period" path="period" scope="E" xsi:type="Property"/>
+                              <operand localId="80" locator="46:50-46:57" resultTypeName="fhir:Period" path="period" scope="E" xsi:type="Property"/>
                            </operand>
                         </low>
-                        <high localId="86" locator="46:61-46:85" resultTypeName="t:DateTime" xsi:type="Add">
-                           <operand localId="84" locator="46:61-46:75" resultTypeName="t:DateTime" xsi:type="End">
+                        <high localId="86" locator="46:60-46:84" resultTypeName="t:DateTime" xsi:type="Add">
+                           <operand localId="84" locator="46:60-46:74" resultTypeName="t:DateTime" xsi:type="End">
                               <operand name="ToInterval" libraryName="FHIRHelpers" xsi:type="FunctionRef">
-                                 <operand localId="83" locator="46:68-46:75" resultTypeName="fhir:Period" path="period" scope="E" xsi:type="Property"/>
+                                 <operand localId="83" locator="46:67-46:74" resultTypeName="fhir:Period" path="period" scope="E" xsi:type="Property"/>
                               </operand>
                            </operand>
-                           <operand localId="85" locator="46:79-46:85" resultTypeName="t:Quantity" value="30" unit="days" xsi:type="Quantity"/>
+                           <operand localId="85" locator="46:78-46:84" resultTypeName="t:Quantity" value="30" unit="days" xsi:type="Quantity"/>
                         </high>
                      </operand>
-                     <operand localId="88" locator="46:89" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <operand localId="88" locator="46:88" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
                   </operand>
                </operand>
                <operand localId="93" locator="47:7-47:30" resultTypeName="t:Boolean" xsi:type="Not">

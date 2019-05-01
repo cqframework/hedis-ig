@@ -7,8 +7,8 @@ library CCS_FHIR version '1.0.1'
 using FHIR version '3.0.0'
 
 include FHIRHelpers version '3.0.0'
-include NCQACommon version '3.10.000' called Common
-include Participation version '1.0.0'
+include NCQACommon_FHIR version '3.10.000' called Common
+include Participation_FHIR version '1.0.0'
 
 /*
 Description

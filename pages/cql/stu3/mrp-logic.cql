@@ -7,8 +7,8 @@ Medication reconciliation postdischarge (MRP)
 using FHIR version '3.0.0'
 
 include FHIRHelpers version '3.0.0'
-include Participation
-include NCQACommon called Common
+include NCQACommon_FHIR version '3.10.000' called Common
+include Participation_FHIR version '1.0.0' called Participation
 
 // Use http://fhir.ext.apelon.com/dtsserverws/fhir to evaluate, but these are the canonical urls
 valueset "Inpatient Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.307' // In VSAC

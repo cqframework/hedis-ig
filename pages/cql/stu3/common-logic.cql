@@ -1,4 +1,4 @@
-library NCQA_Common_FHIR version '3.10.000'
+library NCQACommon_FHIR version '3.10.000'
 
 using FHIR version '3.0.0'
 

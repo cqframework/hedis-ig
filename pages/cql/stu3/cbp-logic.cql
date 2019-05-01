@@ -1,4 +1,4 @@
-library CBP version '2'
+library CBP_FHIR version '2'
 
 using FHIR version '3.0.0'
 
