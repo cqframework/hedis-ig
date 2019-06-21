@@ -2,7 +2,7 @@
 Breast Cancer Screening (BCS)
 */
 
-library BCS_FHIR version '1.0.0'
+library BCS_FHIR version '2.0.0'
 
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
@@ -65,7 +65,7 @@ define "Is Age 52 to 74 at End":
 
 define "Is Age 42 to 74 at End and Has BRACA Mutation Results":
   AgeInYearsAt(end of "Measurement Period") between 42 and 74
-    and exists (Common."BRACA Mutation Test Results")
+    and exists (Common."BRACA Mutation Observations")
 
 /*
 Administrative Specification
@@ -75,7 +75,7 @@ define "Denominator":
 	"Initial Population"
 
 define "Numerator":
-	Common."Has Mammogram In Last 36 Months"
+	Common."Is Mammogram In Last 39 Months"
 
 define "Denominator Exclusion":
 		(Common."Is Lacking Both Breasts"

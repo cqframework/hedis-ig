@@ -31,7 +31,8 @@ valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208' // G
 // valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.24' // LOINC
 // valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.25' // RevCode
 
-valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.26' // CPT
+valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265' // Grouping
+//valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.26' // CPT
 // valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.27' // HCPCS
 // valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.28' // LOINC
 

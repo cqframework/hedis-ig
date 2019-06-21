@@ -2,6 +2,10 @@ library BCS_Common_Logic version '0.0.0'
 
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+
+codesystem "SNOMEDCT": 'http://snomed.info/sct'
+
 valueset "Absence of Left Breast Value Set": '2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
 valueset "Absence of Right Breast Value Set": '2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
 
@@ -30,16 +34,26 @@ valueset "Unilateral Mastectomy Right Value Set": '2.16.840.1.113883.3.464.1004.
 
 valueset "BRACA1 or BRACA2 Mutation Test": 'TBD' // Test value set
 valueset "BRACA1 or BRACA2 Mutation": 'TBD' // Observation value set
+valueset "BRACA Mutation Condition Codes": 'TBD' // Condition value set
+
+valueset "Genetically Relevant Relationship": 'TBD' // { 'CHILD', 'PRN', 'SIB' }
+
+code "Positive": '441773004' from "SNOMEDCT" display 'Positive measurement finding (finding)'
+
+parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
 define "Is Female":
 	Patient.gender.value = 'female'
 
+define "Lookback Interval 27 More Months":
+  Interval[start of "Measurement Period" - 27 months, end of "Measurement Period")
+
 define "BRACA Mutation Procedures":
   [Procedure: "BRACA1 or BRACA2 Mutation Test"] P
     where P.status = 'completed'
-      and P.outcome = 'positive finding'
+      and FHIRHelpers.ToConcept(P.outcome) ~ "Positive"
   
 define "BRACA Mutation Observations":
   [Observation: "BRACA1 or BRACA2 Mutation"] O
@@ -49,10 +63,8 @@ define "BRACA Mutation Observations":
 define "History of BRACA Mutation":
   [FamilyMemberHistory] F
     where F.status = 'completed'
-      and F.relationship in { 'CHILD', 'PRN', 'SIB' } // NOTE: CHILD here includes adopted, should be excluded
-      and ( F.condition.code in "BRACA Mutation Observations"
-        or F.condition.code in "BRACA Mutation Procedures"
-      )
+      and F.relationship in "Genetically Relevant Relationship" // { 'CHILD', 'PRN', 'SIB' } // NOTE: CHILD here includes adopted, should be excluded
+      and F.condition.code in "BRACA Mutation Condition Codes"
 
 define "Is Lacking Both Breasts":
 	"Is Bilateral Mastectomy"
@@ -182,7 +194,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+								then (BbElem.procedure as FHIR.Reference).id = Proc1.id
 								else false)
 					with (
 						[Procedure: "Right Modifier Value Set"] Proc
@@ -191,7 +203,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then (BbElem.procedure as FHIR.Reference).id ~ Proc2.id
 								else false)
 			)
 	)

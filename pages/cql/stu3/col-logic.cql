@@ -23,30 +23,37 @@ the results in CQL, where the BCS and CCS measures take the grouping value set
 approach.
 */
 
-valueset "Colonoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1064.29' // CPT
-valueset "Colonoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
-valueset "Colonoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
+valueset "Colonoscopy Value Set": '2.16.840.1.113883.3.464.1004.1064' // Grouper
+//valueset "Colonoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1064.29' // CPT
+//valueset "Colonoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
+//valueset "Colonoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
 
-valueset "Colorectal Cancer Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
-valueset "Colorectal Cancer Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
+valueset "Colorectal Cancer Value Set": '2.16.840.1.113883.3.464.1004.1065' // Grouper
+//valueset "Colorectal Cancer Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
+//valueset "Colorectal Cancer Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
 
-valueset "CT Colonography Value Set": '2.16.840.1.113883.3.464.1004.1421.34' // CPT
+valueset "CT Colonography Value Set": '2.16.840.1.113883.3.464.1004.1421' // Grouper
+//valueset "CT Colonography Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1421.34' // CPT
 
-valueset "FIT-DNA Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1420.35' // CPT
-valueset "FIT-DNA Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
-valueset "FIT-DNA Value Set (LOINC)": '2.16.840.1.113883.3.464.1004.1420.37' // LOINC
+valueset "FIT-DNA Value Set": '2.16.840.1.113883.3.464.1004.1420' // Grouper
+//valueset "FIT-DNA Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1420.35' // CPT
+//valueset "FIT-DNA Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
+//valueset "FIT-DNA Value Set (LOINC)": '2.16.840.1.113883.3.464.1004.1420.37' // LOINC
 
-valueset "Flexible Sigmoidoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1102.38' // CPT
-valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
-valueset "Flexible Sigmoidoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
+valueset "Flexible Sigmoidoscopy Value Set": '2.16.840.1.113883.3.464.1004.1102' // Grouper
+//valueset "Flexible Sigmoidoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1102.38' // CPT
+//valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
+//valueset "Flexible Sigmoidoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
 
-valueset "FOBT Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
-valueset "FOBT Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
-valueset "FOBT Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
+valueset "FOBT Value Set": '2.16.840.1.113883.3.464.1004.1093' // Grouper
+//valueset "FOBT Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
+//valueset "FOBT Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
+//valueset "FOBT Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
 
-valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.44' // CPT
-valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
-valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
+valueset "Total Colectomy Value Set": '2.16.840.1.113883.3.464.1004.1250' // Grouper
+//valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.44' // CPT
+//valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
+//valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
 /*
 This library has an explicit parameter which is the product line.
@@ -112,11 +119,16 @@ define "Is Colorectal Cancer Screening":
     or "Is CT Colonography In Last Five Years"
     or "Is FIT-DNA Test In Last Three Years"
 
+/*
 define "FOBT Observations":
   [Observation: "FOBT Value Set (CPT)"]
     union [Observation: "FOBT Value Set (HCPCS)"]
     union [Observation: "FOBT Value Set (ICD9)"]
+*/
 
+define "FOBT Observations":
+  [Observation: "FOBT Value Set"]
+  
 define "Is Fecal Occult Blood Test In Last Year":
   exists(
     "FOBT Observations" Obs
@@ -124,10 +136,15 @@ define "Is Fecal Occult Blood Test In Last Year":
         and Obs.effective in day of "Measurement Period"
   )
 
+/*
 define "Flexible Sigmoidoscopy Reports":
   [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (CPT)"]
     union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (HCPCS)"]
     union [DiagnosticReport: "Flexible Sigmoidoscopy Value Set (ICD9)"]
+*/
+
+define "Flexible Sigmoidoscopy Reports":
+  [DiagnosticReport: "Flexible Sigmoidoscopy Value Set"]
 
 define "Is Flexible Sigmoidoscopy In Last Five Years":
   exists(
@@ -136,10 +153,15 @@ define "Is Flexible Sigmoidoscopy In Last Five Years":
         and DiagRep.effective overlaps day of "Lookback Interval Four More Years"
   )
 
+/*
 define "Colonoscopy Reports":
   [DiagnosticReport: "Colonoscopy Value Set (CPT)"]
     union [DiagnosticReport: "Colonoscopy Value Set (HCPCS)"]
     union [DiagnosticReport: "Colonoscopy Value Set (ICD9)"]
+*/
+
+define "Colonoscopy Reports":
+  [DiagnosticReport: "Colonoscopy Value Set"]
 
 define "Is Colonoscopy In Last Ten Years":
   exists(
@@ -155,10 +177,15 @@ define "Is CT Colonography In Last Five Years":
         and DiagRep.effective overlaps day of "Lookback Interval Four More Years"
   )
 
+/*
 define "FIT-DNA Observations":
   [Observation: "FIT-DNA Value Set (CPT)"]
     union [Observation: "FIT-DNA Value Set (HCPCS)"]
     union [Observation: "FIT-DNA Value Set (LOINC)"]
+*/
+
+define "FIT-DNA Observations":
+  [Observation: "FIT-DNA Value Set"]
 
 define "Is FIT-DNA Test In Last Three Years":
   exists(
@@ -171,9 +198,14 @@ define "Denominator Exclusion":
   "Is Colorectal Cancer"
       or "Is Total Colectomy"
 
+/*
 define "Colorectal Cancer Conditions":
   [Condition: "Colorectal Cancer Value Set (ICD10)"]
     union [Condition: "Colorectal Cancer Value Set (ICD9)"]
+*/
+
+define "Colorectal Cancer Conditions":
+  [Condition: "Colorectal Cancer Value Set"]
 
 define "Is Colorectal Cancer":
   exists(
@@ -182,10 +214,15 @@ define "Is Colorectal Cancer":
         and Cond.assertedDate before day of end of "Measurement Period"
   )
 
+/*
 define "Total Colectomy Procedures":
   [Procedure: "Total Colectomy Value Set (CPT)"]
     union [Procedure: "Total Colectomy Value Set (ICD10)"]
     union [Procedure: "Total Colectomy Value Set (ICD9)"]
+*/
+
+define "Total Colectomy Procedures":
+  [Procedure: "Total Colectomy Value Set"]
 
 define "Is Total Colectomy":
   exists(
@@ -193,3 +230,4 @@ define "Is Total Colectomy":
       where Proc.status = 'completed'
         and end of Proc.performed before day of end of "Measurement Period"
   )
+  
