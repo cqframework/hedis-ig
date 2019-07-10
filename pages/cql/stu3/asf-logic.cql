@@ -235,4 +235,3 @@ define "Stratifier 2":
 
 define "Stratifier 3":
   AgeInYearsAt(start of "Measurement Period")>= 65
-
