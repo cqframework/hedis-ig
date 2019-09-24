@@ -2,7 +2,7 @@ library CBP_FHIR version '2'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0' called FHIRHelpers
+include FHIRHelpers version '3.0.0'
 
 /*
 
@@ -209,14 +209,18 @@ define "Encounters with Diabetes Diagnosis":
       union "Nonacute Inpatient Encounters"
   ) Encounters
       with "Diabetes Condition" DiabetesCondition
-        such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+        such that
+          exists Encounters.diagnosis.condition.reference ConditionReference
+            where EndsWith(ConditionReference, DiabetesCondition.id)
           or EndsWith(DiabetesCondition."context".reference, Encounters.id)
       return Encounters
 
 define "Acute Encounters with Diabetes Diagnosis":
   "Acute Inpatient Encounters" Encounters
     with "Diabetes Condition" DiabetesCondition
-      such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+      such that
+        exists Encounters.diagnosis.condition.reference ConditionReference
+          where EndsWith(ConditionReference, DiabetesCondition.id)
         or EndsWith(DiabetesCondition."context".reference, Encounters.id)
     return Encounters
 
@@ -293,7 +297,9 @@ define "Diabetes Diagnosis in Any Setting":
   exists(
     [Encounter] Encounters
       with "Diabetes Condition" DiabetesCondition
-        such that EndsWith(Encounters.diagnosis.condition.reference, DiabetesCondition.id)
+        such that
+          exists Encounters.diagnosis.condition.reference ConditionReference
+            where EndsWith(ConditionReference, DiabetesCondition.id)
           or EndsWith(DiabetesCondition."context".reference, Encounters.id)
       return Encounters
   )
@@ -365,8 +371,8 @@ define "Denominator":
 
 define "Member's PCP":
   if ( Length("Patient General Practitioners") = 1 )
-    then "Patient General Practitioners"[0].reference
-  else "Get PCP Who Most Recently Provided Care".reference
+    then First("Patient General Practitioners").reference
+  else First("Get PCP Who Most Recently Provided Care").reference
 
 define "Patient General Practitioners":
   Patient.generalPractitioner practitioners
@@ -444,20 +450,3 @@ define "Most Recent BP Readings":
       - Observation with a valueRatio (Systolic/Diastolic)
       - Observation with component values for Systolic and Diastolic
 */
-
-
-
-/*
-
-    Helper functions
-
-*/
-
-define function "Get Concept from Claim Diagnosis"(value Choice<FHIR.CodeableConcept, FHIR.Reference>):
-  if value is FHIR.CodeableConcept
-    then value
-  else (
-    "Diabetes Condition" DC
-      where EndsWith(value.reference, DC.id)
-      return DC.code
-  )
