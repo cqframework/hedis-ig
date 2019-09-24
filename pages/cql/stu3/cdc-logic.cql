@@ -2,7 +2,7 @@ library CDC_FHIR version '1'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0' called FHIRHelpers
+include FHIRHelpers version '3.0.0'
 
 /*
 

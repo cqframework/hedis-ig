@@ -7,6 +7,8 @@ library PVS_FHIR version '1.0.0'
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+
 /*
 Measure Description
 The percentage of members 65 years of age and older who have ever received

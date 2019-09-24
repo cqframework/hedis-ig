@@ -7,6 +7,8 @@ library CCS_FHIR version '1.0.0'
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+
 /*
 Description
 The percentage of women 21-64 years of age who were screened for cervical
@@ -157,5 +159,3 @@ define function CodingToCode(coding FHIR.Coding):
 		display: coding.display.value
 	}
 	// From FHIRHelpers
-
-
