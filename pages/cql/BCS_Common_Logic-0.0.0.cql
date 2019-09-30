@@ -54,12 +54,12 @@ define "BRACA Mutation Procedures":
   [Procedure: "BRACA1 or BRACA2 Mutation Test"] P
     where P.status = 'completed'
       and FHIRHelpers.ToConcept(P.outcome) ~ "Positive"
-  
+
 define "BRACA Mutation Observations":
   [Observation: "BRACA1 or BRACA2 Mutation"] O
     where O.status in { 'final', 'amended' }
 
-// NOTE: Could look to this     
+// NOTE: Could look to this
 define "History of BRACA Mutation":
   [FamilyMemberHistory] F
     where F.status = 'completed'
@@ -109,7 +109,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+							 	then Proc1.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 					with (
 						[Procedure: "Bilateral Modifier Value Set"] Proc
@@ -118,7 +118,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then Proc2.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 			)
 	)
@@ -153,7 +153,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+								then Proc1.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 					with (
 						[Procedure: "Left Modifier Value Set"] Proc
@@ -162,7 +162,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then Proc2.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 			)
 	)
