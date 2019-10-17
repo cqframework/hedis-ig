@@ -6,6 +6,8 @@ library BCS_FHIR version '1.0.0'
 
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+
 valueset "Absence of Left Breast Value Set": '2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
 valueset "Absence of Right Breast Value Set": '2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
 
@@ -123,7 +125,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+								then Proc1.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 					with (
 						[Procedure: "Bilateral Modifier Value Set"] Proc
@@ -132,7 +134,7 @@ define "Is Unilateral Mastectomy With Bilateral Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then Proc2.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 			)
 	)
@@ -167,7 +169,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+								then Proc1.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 					with (
 						[Procedure: "Left Modifier Value Set"] Proc
@@ -176,7 +178,7 @@ define "Is Unilateral Mastectomy With Left Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then Proc2.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 			)
 	)
@@ -208,7 +210,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc1
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc1.identifier
+								then Proc1.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 					with (
 						[Procedure: "Right Modifier Value Set"] Proc
@@ -217,7 +219,7 @@ define "Is Unilateral Mastectomy With Right Modifier":
 					) Proc2
 						such that
 							(if BbElem.procedure is FHIR.Reference
-								then (BbElem.procedure as FHIR.Reference).identifier ~ Proc2.identifier
+								then Proc2.identifier contains (BbElem.procedure as FHIR.Reference).identifier
 								else false)
 			)
 	)

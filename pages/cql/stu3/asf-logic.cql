@@ -6,7 +6,7 @@ Unhealthy Alcohol Use Screening and Follow-up (ASF)
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0' called FHIRHelpers
+include FHIRHelpers version '3.0.0'
 
 /*
 Measure Description

@@ -2,6 +2,8 @@ library colPlandefinitionLogic version '1.0'
 
 using FHIR version '3.0.0'
 
+include FHIRHelpers version '3.0.0'
+
 valueset "FOBT Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
 valueset "FOBT Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
 valueset "FOBT Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
