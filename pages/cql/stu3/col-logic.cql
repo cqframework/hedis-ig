@@ -111,6 +111,7 @@ define "Denominator":
 
 define "Numerator":
   "Is Colorectal Cancer Screening"
+    and not "Denominator Exclusion"  
 
 define "Is Colorectal Cancer Screening":
   "Is Fecal Occult Blood Test In Last Year"
@@ -128,7 +129,7 @@ define "FOBT Observations":
 
 define "FOBT Observations":
   [Observation: "FOBT Value Set"]
-  
+
 define "Is Fecal Occult Blood Test In Last Year":
   exists(
     "FOBT Observations" Obs
@@ -230,4 +231,3 @@ define "Is Total Colectomy":
       where Proc.status = 'completed'
         and end of Proc.performed before day of end of "Measurement Period"
   )
-  
