@@ -111,7 +111,7 @@ define "Denominator":
 
 define "Numerator":
   "Is Colorectal Cancer Screening"
-    and not "Denominator Exclusion"  
+    and not "Denominator Exclusion"
 
 define "Is Colorectal Cancer Screening":
   "Is Fecal Occult Blood Test In Last Year"
