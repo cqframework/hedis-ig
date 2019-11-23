@@ -1,0 +1,161 @@
+{
+  "resourceType": "Bundle",
+  "id": "asf-in-2",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Patient/asf-in-2",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "asf-in-2",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Race",
+                  "code": "2056-0",
+                  "display": "Black"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Ethnicity",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-religion",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/ReligiousAffiliation",
+                  "code": "1004",
+                  "display": "Agnosticism"
+                }
+              ]
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/identifier-type",
+                  "code": "SB",
+                  "display": "Social Beneficiary Identifier"
+                }
+              ],
+              "text": "US Social Security Number"
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "000002667"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Everywoman",
+            "given": [
+              "Eve",
+              "Veronica"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "901-555-5864",
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "901-555-9891",
+            "use": "mobile"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1999-05-21",
+        "address": [
+          {
+            "use": "home",
+            "type": "postal",
+            "line": [
+              "666 Eden Circle"
+            ],
+            "city": "Boise",
+            "district": "Ada County",
+            "state": "ID",
+            "postalCode": "83701"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/asf-in-2"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/asf-in-2-audit",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "asf-in-2-audit",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75624-7"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/asf-in-2"
+        },
+        "effectiveDateTime": "2019-05-21",
+        "valueQuantity": {
+          "value": 8.0
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/asf-in-2-audit"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler/baseDstu3/Observation/asf-in-2-counseling",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "asf-in-2-counseling",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "429291000124102"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/asf-in-2"
+        },
+        "effectiveDateTime": "2019-06-21"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/asf-in-2-counseling"
+      }
+    }
+  ]
+}
