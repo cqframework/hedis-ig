@@ -69,14 +69,14 @@ One or more screenings for colorectal cancer. Any of the following meet criteria
 ### Content
 
 | Resource | Type | Description |
-| -------- | ---- | ----------- |
-| [library-col-logic](Library-library-col-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the COL Meaure |
+| --- | --- | ------ |
+| [library-col-logic](Library-library-col-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the COL Meaure <br/> [CQL Source Code](col-cql.html) |
 | [measure-col](Measure-measure-col.html) | Measure | FHIR Measure resource defining the structured, computable definition of the COL Measure |
 {: .list}
 
 ### Example Data/Requests
 
-| Description | Bundle | Request | Expected Response |
-| ----------- | ------ | ------- | ----------------- |
-| lorem ipsum | []() | `.../Measure/measure-col/$evaluate-measure/...` | []() |
+| Description | Patient Data | Request | Expected Response |
+| ------ | ---- | ------ | --- |
+| lorem ipsum |  | `.../Measure/measure-col/$evaluate-measure/...` |  |
 {: .list}
