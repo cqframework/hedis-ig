@@ -68,20 +68,22 @@ Members receiving __Alcohol Counseling or Other Follow Up Care__ on or 60 days a
 * "Total score \[AUDIT-C] (LOINC Code 75626-2)"
 * "Total score \[AUDIT] (LOINC Code 75624-7)"
 
+**[Common Libraries](common-libraries.html)**
+
 ### Content
 
 | Resource | Type | Description |
-| -------- | ---- | ----------- |
-| [library-asf-logic](Library-library-asf-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the ASF Meaure |
+| --- | --- | ------ |
+| [library-asf-logic](Library-library-asf-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the ASF Measure <br/> [CQL Source Code](asf-cql.html) |
 | [measure-asf](Measure-measure-asf.html) | Measure | FHIR Measure resource defining the structured, computable definition of the ASF Measure |
 {: .list} 
 
 ### Example Data/Requests
 
-| Description | Bundle | Request | Expected Response |
-| ----------- | ------ | ------- | ----------------- |
-| Patient is 18 years or older with a documented result for unhealthy alcohol use screening (Observation.code in "Total score \[AUDIT]" | [In Numerator 1](Bundle-asf-in.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-in`<br/>`&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 1 MeasureReport](MeasureReport-asf-in.html) |
-| Patient is 18 years or older without a documented result for unhealthy alcohol use screening | [Out Numerator 1](Bundle-asf-out.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-out`<br/>`&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF out Numerator 1 MeasureReport](MeasureReport-asf-out.html) |
-| Patient is 18 years or older with a documented result for unhealthy alcohol use screening (Observation.code in "Total score \[AUDIT]" and received counseling within 60 days (Observation.code in "Alcohol Counseling or Other Follow Up Care") | [In Numerator 2](Bundle-asf-in-2.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-in-2`<br/>`&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 2 MeasureReport](MeasureReport-asf-in-2.html) |
-| Patient is 18 years or older without a documented result for unhealthy alcohol use screening | [Out Numerator 2](Bundle-asf-out-2.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-out-2`<br/>`&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 2 MeasureReport](MeasureReport-asf-out-2.html) |
+| Description | Patient Data | Request | Expected Response |
+| ------ | ---- | ------ | --- |
+| Patient is 18 years or older with a documented result for unhealthy alcohol use screening (Observation.code in "Total score \[AUDIT]" | [In Numerator 1](Bundle-asf-in.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-in`  `&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 1 MeasureReport](MeasureReport-asf-in.html) |
+| Patient is 18 years or older without a documented result for unhealthy alcohol use screening | [Out Numerator 1](Bundle-asf-out.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-out`  `&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF out Numerator 1 MeasureReport](MeasureReport-asf-out.html) |
+| Patient is 18 years or older with a documented result for unhealthy alcohol use screening (Observation.code in "Total score \[AUDIT]" and received counseling within 60 days (Observation.code in "Alcohol Counseling or Other Follow Up Care") | [In Numerator 2](Bundle-asf-in-2.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-in-2`  `&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 2 MeasureReport](MeasureReport-asf-in-2.html) |
+| Patient is 18 years or older without a documented result for unhealthy alcohol use screening | [Out Numerator 2](Bundle-asf-out-2.html) | `.../Measure/measure-asf/$evaluate-measure?patient=asf-out-2`  `&reportType=patient&periodStart=2019-01-01&periodEnd=2019-12-31` | [ASF in Numerator 2 MeasureReport](MeasureReport-asf-out-2.html) |
 {: .list} 

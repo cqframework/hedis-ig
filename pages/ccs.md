@@ -52,14 +52,14 @@ The number of women who were screened for cervical cancer, as identified in step
 ### Content
 
 | Resource | Type | Description |
-| -------- | ---- | ----------- |
-| [library-ccs-logic](Library-library-ccs-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the CCS Meaure |
+| --- | --- | ------ |
+| [library-ccs-logic](Library-library-ccs-logic.html) | Library | CQL Library defining the data requirements to support the evaluation of the CCS Meaure <br/> [CQL Source Code](ccs-cql.html) |
 | [measure-ccs](Measure-measure-ccs.html) | Measure | FHIR Measure resource defining the structured, computable definition of the CCS Measure |
 {: .list}
 
 ### Example Data/Requests
 
-| Description | Bundle | Request | Expected Response |
-| ----------- | ------ | ------- | ----------------- |
-| lorem ipsum | []() | `.../Measure/measure-ccs/$evaluate-measure/...` | []() |
+| Description | Patient Data | Request | Expected Response |
+| ------ | ---- | ------ | --- |
+| lorem ipsum |  | `.../Measure/measure-ccs/$evaluate-measure/...` |  |
 {: .list}
