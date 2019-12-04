@@ -2,7 +2,7 @@ library CBP_FHIR version '2'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 
@@ -19,30 +19,30 @@ Note: Use the Hybrid Method for this measure. A single rate is reported and is t
 
 /*
 // These are valuesets containing CPT codes indicating these concepts
-valueset "Systolic Less Than 140": '2.16.840.1.113883.3.464.1004.1243'
-valueset "Systolic Greater Than/Equal To 140": '2.16.840.1.113883.3.464.1004.1242'
-valueset "Diastolic Less Than 80": '2.16.840.1.113883.3.464.1004.1084'
-valueset "Diastolic 80-89": '2.16.840.1.113883.3.464.1004.1082'
-valueset "Diastolic Greater Than/Equal To 90": '2.16.840.1.113883.3.464.1004.1083'
+valueset "Systolic Less Than 140": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1243'
+valueset "Systolic Greater Than/Equal To 140": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1242'
+valueset "Diastolic Less Than 80": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1084'
+valueset "Diastolic 80-89": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1082'
+valueset "Diastolic Greater Than/Equal To 90": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1083'
 */
 
 codesystem "LOINC": 'http://loinc.org'
 
-valueset "Acute Inpatient": '2.16.840.1.113883.3.464.1004.1017'
-valueset "Diabetes": '2.16.840.1.113883.3.464.1004.1077'
-valueset "Diabetes Exclusions": '2.16.840.1.113883.3.464.1004.1105'
-valueset "ED": '2.16.840.1.113883.3.464.1004.1086'
-valueset "ESRD": '2.16.840.1.113883.3.464.1004.1089'
-valueset "ESRD Obsolete": '2.16.840.1.113883.3.464.1004.1090'
-valueset "Essential Hypertension": '2.16.840.1.113883.3.464.1004.1122'
-valueset "Inpatient Stay": '2.16.840.1.113883.3.464.1004.1395'
-valueset "Kidney Transplant": '2.16.840.1.113883.3.464.1004.1141'
-valueset "Nonacute Inpatient": '2.16.840.1.113883.3.464.1004.1189'
-valueset "Nonacute Inpatient Stay": '2.16.840.1.113883.3.464.1004.1398'
-valueset "Observation": '2.16.840.1.113883.3.464.1004.1191'
-valueset "Outpatient": '2.16.840.1.113883.3.464.1004.1202'
-valueset "Outpatient Without UBREV": '2.16.840.1.113883.3.464.1004.1203'
-valueset "Pregnancy": '2.16.840.1.113883.3.464.1004.1219'
+valueset "Acute Inpatient": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1017'
+valueset "Diabetes": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1077'
+valueset "Diabetes Exclusions": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1105'
+valueset "ED": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1086'
+valueset "ESRD": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1089'
+valueset "ESRD Obsolete": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1090'
+valueset "Essential Hypertension": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1122'
+valueset "Inpatient Stay": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1395'
+valueset "Kidney Transplant": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1141'
+valueset "Nonacute Inpatient": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1189'
+valueset "Nonacute Inpatient Stay": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1398'
+valueset "Observation": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1191'
+valueset "Outpatient": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1202'
+valueset "Outpatient Without UBREV": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1203'
+valueset "Pregnancy": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1219'
 
 valueset "Diabetes Medications List": 'DiabetesMedicationsList' // NDC Codes
 

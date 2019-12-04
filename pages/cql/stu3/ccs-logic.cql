@@ -1,12 +1,12 @@
+library CCS_FHIR version '1.0.1'
+
 /*
 Cervical Cancer Screening (CCS)
 */
 
-library CCS_FHIR version '1.0.1'
-
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 include NCQACommon_FHIR version '3.10.000' called Common
 include Participation_FHIR version '1.0.0'
 
@@ -19,22 +19,22 @@ The percentage of women 21-64 years of age who were screened for cervical
     (HPV) co-testing performed every 5 years.
 */
 
-valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.17' // CPT
-// valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.18' // ICD10CM
-// valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.19' // ICD10PCS
-// valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.20' // ICD9CM
-// valueset "Absence of Cervix Value Set": '2.16.840.1.113883.3.464.1004.1123.21' // ICD9CMProc
+valueset "Absence of Cervix Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1123.17' // CPT
+// valueset "Absence of Cervix Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1123.18' // ICD10CM
+// valueset "Absence of Cervix Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1123.19' // ICD10PCS
+// valueset "Absence of Cervix Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1123.20' // ICD9CM
+// valueset "Absence of Cervix Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1123.21' // ICD9CMProc
 
-valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208' // Grouping
-// valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.22' // CPT
-// valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.23' // HCPCS
-// valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.24' // LOINC
-// valueset "Cervical Cytology Value Set": '2.16.840.1.113883.3.464.1004.1208.25' // RevCode
+valueset "Cervical Cytology Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1208' // Grouping
+// valueset "Cervical Cytology Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1208.22' // CPT
+// valueset "Cervical Cytology Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1208.23' // HCPCS
+// valueset "Cervical Cytology Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1208.24' // LOINC
+// valueset "Cervical Cytology Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1208.25' // RevCode
 
-valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265' // Grouping
-//valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.26' // CPT
-// valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.27' // HCPCS
-// valueset "HPV Tests Value Set": '2.16.840.1.113883.3.464.1004.1265.28' // LOINC
+valueset "HPV Tests Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1265' // Grouping
+// valueset "HPV Tests Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1265.26' // CPT
+// valueset "HPV Tests Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1265.27' // HCPCS
+// valueset "HPV Tests Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1265.28' // LOINC
 
 /*
 This library has an explicit parameter which is the product line.
@@ -97,7 +97,7 @@ define "Initial Population":
 
 define "Is Female":
   Patient.gender = 'female'
-  
+
 define "Is Age 24 to 64 at End":
   Common.CalendarAgeInYearsAt(FHIRHelpers.ToDate(Patient.birthDate), end of "Measurement Period") between 24 and 64
 

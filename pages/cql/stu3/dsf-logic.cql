@@ -1,13 +1,13 @@
+library DSF_FHIR version '1.0.0'
+
 /*
 Depression Screening and Follow-Up for Adolescents and Adults (DSF)
 */
 
-library DSF_FHIR version '1.0.0'
-
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 Measure Description
@@ -24,32 +24,32 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
-// valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
-// valueset "Bipolar Disorder ECDS": 'urn:oid:2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
-// valueset "Other Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
-// valueset "Behavioral Health Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
-// valueset "Depression Case Management Encounter": 'urn:oid:2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
-// valueset "ECDS Follow-Up Visit": 'urn:oid:2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
-// valueset "Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
-// valueset "Positive Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
-// valueset "Negative Depression Screen": 'urn:oid:2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
+// valueset "Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1044' // Grouping Value Set
+// valueset "Bipolar Disorder ECDS": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1346' // Grouping Value Set
+// valueset "Other Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1399' // Grouping Value Set
+// valueset "Behavioral Health Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1383' // Grouping Value Set
+// valueset "Depression Case Management Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1389' // Grouping Value Set
+// valueset "ECDS Follow-Up Visit": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1385' // Grouping Value Set
+// valueset "Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1384' // Grouping Value Set
+// valueset "Positive Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1387' // Grouping Value Set
+// valueset "Negative Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1386' // Grouping Value Set
 // valueset "Antidepressant Medication": 'TODO' // not in spec Data Criteria
 
 // update
-valueset "Behavioral Health Encounter": '2.16.840.1.113883.3.464.1004.1383'
-valueset "Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1044'
-valueset "Bipolar Disorder ECDS": '2.16.840.1.113883.3.464.1004.1346'
-valueset "Depression": '2.16.840.1.113883.3.464.1004.1390'
-valueset "Depression Case Management Encounter": '2.16.840.1.113883.3.464.1004.1389'
-valueset "Depression Screen": '2.16.840.1.113883.3.464.1004.1384'
-valueset "ECDS Follow-Up Visit": '2.16.840.1.113883.3.464.1004.1385'
-// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
-valueset "Mental Illness": '2.16.840.1.113883.3.464.1004.1179'
-valueset "Mental Illness SNOMED": '2.16.840.1.113883.3.464.1004.1453'
-valueset "Negative Depression Screen": '2.16.840.1.113883.3.464.1004.1386'
-valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'
-valueset "Positive Depression Screen": '2.16.840.1.113883.3.464.1004.1387'
-valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
+valueset "Behavioral Health Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1383'
+valueset "Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1044'
+valueset "Bipolar Disorder ECDS": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1346'
+valueset "Depression": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1390'
+valueset "Depression Case Management Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1389'
+valueset "Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1384'
+valueset "ECDS Follow-Up Visit": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1385'
+// valueset "Hospice": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1418'
+valueset "Mental Illness": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1179'
+valueset "Mental Illness SNOMED": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1453'
+valueset "Negative Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1386'
+valueset "Other Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1399'
+valueset "Positive Depression Screen": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1387'
+valueset "Major Depression and Dysthymia": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1351'
 
 code "Antidepressant Medication": '00001' from "CQFramework"
 code "PHQ-9 Modified Score": '00009' from "CQFramework"

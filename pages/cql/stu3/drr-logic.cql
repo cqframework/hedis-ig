@@ -1,13 +1,13 @@
+library DRR_FHIR version '1.0.0'
+
 /*
 Depression Remission or Response for Adolescents and Adults (DRR)
 */
 
-library DRR_FHIR version '1.0.0'
-
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 Measure Description
@@ -28,25 +28,25 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
 codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
-// valueset "Personality Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
-// valueset "Pervasive Developmental Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
-// valueset "Bipolar Disorder": 'urn:oid:2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
-// valueset "Psychotic Disorder": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
-// valueset "Interactive Outpatient Encounter": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1074'
-// valueset "PHQ-9 Tool": 'urn:oid:2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
-// valueset "PHQ-9 Modified Score": 'urn:oid:2.16.840.1.113883.3.464.1003.105.12.1154' // Grouping Value Set
+// valueset "Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.67.1.101.1.128' // Grouping Value Set
+// valueset "Personality Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.67.1.101.1.246' // Grouping Value Set
+// valueset "Psychotic Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1003.105.12.1153' // User Defined QDM Value Set
+// valueset "Pervasive Developmental Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1003.105.12.1152' // User Defined QDM Value Set
+// valueset "Interactive Outpatient Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1074' // Grouping Value Set
+// valueset "PHQ-9 Modified Score": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1003.105.12.1154' // User Defined QDM Value Set
+// valueset "PHQ-9 Tool": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.67.1.101.11.723' // Grouping Value Set
 
 // update
-valueset "Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1044'
-valueset "Bipolar Disorder ECDS": '2.16.840.1.113883.3.464.1004.1346'
-// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
-valueset "Interactive Outpatient Encounter": '2.16.840.1.113883.3.464.1004.1347'
-valueset "Major Depression and Dysthymia": '2.16.840.1.113883.3.464.1004.1351'
-valueset "Other Bipolar Disorder": '2.16.840.1.113883.3.464.1004.1399'
-valueset "Personality Disorder": '2.16.840.1.113883.3.464.1004.1355'
-valueset "Pervasive Developmental Disorder": '2.16.840.1.113883.3.464.1004.1356'
-valueset "PHQ-9 Total Score": '2.16.840.1.113883.3.464.1004.1401'
-valueset "Psychotic Disorder": '2.16.840.1.113883.3.464.1004.1352'
+valueset "Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1044'
+valueset "Bipolar Disorder ECDS": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1346'
+// valueset "Hospice": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1418'
+valueset "Interactive Outpatient Encounter": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1347'
+valueset "Major Depression and Dysthymia": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1351'
+valueset "Other Bipolar Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1399'
+valueset "Personality Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1355'
+valueset "Pervasive Developmental Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1356'
+valueset "PHQ-9 Total Score": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1401'
+valueset "Psychotic Disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1352'
 
 // code "Major Depression and Dysthymia": '78667006' from "SNOMED"
 code "PHQ-9 Modified Score": '00009' from "CQFramework"

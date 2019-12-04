@@ -2,7 +2,7 @@ library CDC_FHIR version '1'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 
@@ -40,21 +40,22 @@ Procedure              eye exam                                                 
 // NCQA Value Sets
 // https://ecqi.healthit.gov/system/files/ecqm/2014/EP/measures/CMS122v3.html
 // "Laboratory Test, Result: HbA1c Laboratory Test" using "HbA1c Laboratory Test Grouping Value Set (2.16.840.1.113883.3.464.1003.198.12.1013)"
-valueset "HbA1c Tests": '2.16.840.1.113883.3.464.1004.1116'
-valueset "HbA1c Level Less than 7.0": '2.16.840.1.113883.3.464.1004.1115'
-valueset "HbA1c Level 7.0-9.0": '2.16.840.1.113883.3.464.1004.1113'
-valueset "HbA1c Level Greater Than 9.0": '2.16.840.1.113883.3.464.1004.1114'
+valueset "HbA1c Tests": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1116'
+valueset "HbA1c Level Less than 7.0": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1115'
+valueset "HbA1c Level 7.0-9.0": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1113'
+valueset "HbA1c Level Greater Than 9.0": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1114'
 
-valueset "Diabetic Retinal Screening": '2.16.840.1.113883.3.464.1004.1078'
-valueset "Diabetic Retinal Screening Negative": '2.16.840.1.113883.3.464.1004.1079'
-valueset "Diabetic Retinal Screening With Eye Care Professional": '2.16.840.1.113883.3.464.1004.1080'
+valueset "Diabetic Retinal Screening": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1078'
+valueset "Diabetic Retinal Screening Negative": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1079'
+valueset "Diabetic Retinal Screening With Eye Care Professional": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1080'
 
 // https://ecqi.healthit.gov/system/files/ecqm/2014/EP/measures/CMS134v4_1.html
 // "Laboratory Test, Performed: Urine Protein Tests" using "Urine Protein Tests Grouping Value Set (2.16.840.1.113883.3.464.1003.109.12.1024)"
 // "Medication, Active: ACE Inhibitor or ARB" using "ACE Inhibitor or ARB Grouping Value Set (2.16.840.1.113883.3.526.3.1139)"
-valueset "ACE Inhibitor or ARB": '2.16.840.1.113883.3.526.3.1139'
-valueset "Urine Macroalbumin Tests": '2.16.840.1.113883.3.464.1004.1257'
-valueset "Positive Urine Macroalbumin Tests": '2.16.840.1.113883.3.464.1004.1216'
+valueset "ACE Inhibitor or ARB": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.526.3.1139'
+valueset "Urine Macroalbumin Tests": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1257'
+valueset "Positive Urine Macroalbumin Tests": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1216'
+// TODO: Get the canonical for "Urine Protein Test" ValueSet
 valueset "Urine Protein Test": 'Urine Protein Test'
 
 parameter MeasurementPeriod Interval<DateTime>

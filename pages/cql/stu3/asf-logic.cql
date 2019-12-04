@@ -6,7 +6,7 @@ Unhealthy Alcohol Use Screening and Follow-up (ASF)
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 Measure Description
@@ -25,10 +25,10 @@ codesystem "CQFramework": 'http://cqframework.info/codesystem/placeholder'
 
 // Update
 
-valueset "Alcohol Counseling and Treatment": '2.16.840.1.113883.3.464.1004.1437'
-valueset "Alcohol Screening": '2.16.840.1.113883.3.464.1004.1337'
-valueset "Alcohol use disorder": '2.16.840.1.113883.3.464.1004.1339'
-valueset "Dementia": '2.16.840.1.113883.3.464.1004.1074'
+valueset "Alcohol Counseling and Treatment": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1437'
+valueset "Alcohol Screening": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1337'
+valueset "Alcohol use disorder": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1339'
+valueset "Dementia": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1074'
 
 code "Alcoholic drinks per drinking day - Reported": '11287-0' from "LOINC"
 code "AUDIT Total Score (in points)": '75624-7' from "LOINC"
