@@ -1,0 +1,827 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Participation_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "NCQA Payer",
+            "id" : "http://ncqa.org/fhir/hedis/ValueSet/ncqa-payer",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Commercial",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.46",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Medicaid",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.45",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Medicare",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.44",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Medicaid Product",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "medicaid",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Commercial Product",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "commercial",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Medicare Product",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "medicare",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Is Enrolled On Date",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "P",
+                     "expression" : {
+                        "type" : "Case",
+                        "comparand" : {
+                           "name" : "ProductLine",
+                           "type" : "OperandRef"
+                        },
+                        "caseItem" : [ {
+                           "when" : {
+                              "name" : "Commercial Product",
+                              "type" : "ExpressionRef"
+                           },
+                           "then" : {
+                              "dataType" : "{http://hl7.org/fhir}Coverage",
+                              "codeProperty" : "type",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Commercial",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        }, {
+                           "when" : {
+                              "name" : "Medicare Product",
+                              "type" : "ExpressionRef"
+                           },
+                           "then" : {
+                              "dataType" : "{http://hl7.org/fhir}Coverage",
+                              "codeProperty" : "type",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Medicare",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        }, {
+                           "when" : {
+                              "name" : "Medicaid Product",
+                              "type" : "ExpressionRef"
+                           },
+                           "then" : {
+                              "dataType" : "{http://hl7.org/fhir}Coverage",
+                              "codeProperty" : "type",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Medicaid",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "else" : {
+                           "type" : "As",
+                           "operand" : {
+                              "type" : "Null"
+                           },
+                           "asTypeSpecifier" : {
+                              "type" : "ListTypeSpecifier",
+                              "elementType" : {
+                                 "name" : "{http://hl7.org/fhir}Coverage",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "IndexDate",
+                        "type" : "OperandRef"
+                     }, {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "P",
+                           "type" : "Property"
+                        } ]
+                     } ]
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "ProductLine",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}String",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "IndexDate",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "Enrollment Periods",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "Year",
+                  "expression" : {
+                     "type" : "List",
+                     "element" : [ {
+                        "value" : 3,
+                        "unit" : "years",
+                        "type" : "Quantity"
+                     }, {
+                        "value" : 2,
+                        "unit" : "years",
+                        "type" : "Quantity"
+                     }, {
+                        "value" : 1,
+                        "unit" : "year",
+                        "type" : "Quantity"
+                     } ]
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "After",
+                  "operand" : [ {
+                     "type" : "Subtract",
+                     "operand" : [ {
+                        "type" : "End",
+                        "operand" : {
+                           "name" : "ParticipationPeriod",
+                           "type" : "OperandRef"
+                        }
+                     }, {
+                        "type" : "Subtract",
+                        "operand" : [ {
+                           "name" : "Year",
+                           "type" : "AliasRef"
+                        }, {
+                           "value" : 1,
+                           "unit" : "year",
+                           "type" : "Quantity"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "ParticipationPeriod",
+                        "type" : "OperandRef"
+                     }
+                  } ]
+               },
+               "return" : {
+                  "expression" : {
+                     "lowClosed" : true,
+                     "highClosed" : true,
+                     "type" : "Interval",
+                     "low" : {
+                        "type" : "Max",
+                        "source" : {
+                           "type" : "List",
+                           "element" : [ {
+                              "type" : "Successor",
+                              "operand" : {
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "type" : "End",
+                                    "operand" : {
+                                       "name" : "ParticipationPeriod",
+                                       "type" : "OperandRef"
+                                    }
+                                 }, {
+                                    "name" : "Year",
+                                    "type" : "AliasRef"
+                                 } ]
+                              }
+                           }, {
+                              "type" : "Start",
+                              "operand" : {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              }
+                           } ]
+                        }
+                     },
+                     "high" : {
+                        "type" : "Subtract",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "ParticipationPeriod",
+                              "type" : "OperandRef"
+                           }
+                        }, {
+                           "type" : "Subtract",
+                           "operand" : [ {
+                              "name" : "Year",
+                              "type" : "AliasRef"
+                           }, {
+                              "value" : 1,
+                              "unit" : "year",
+                              "type" : "Quantity"
+                           } ]
+                        } ]
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "ParticipationPeriod",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "Participation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Union",
+               "operand" : [ {
+                  "type" : "Union",
+                  "operand" : [ {
+                     "dataType" : "{http://hl7.org/fhir}Coverage",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Commercial",
+                        "type" : "ValueSetRef"
+                     }
+                  }, {
+                     "dataType" : "{http://hl7.org/fhir}Coverage",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Medicaid",
+                        "type" : "ValueSetRef"
+                     }
+                  } ]
+               }, {
+                  "dataType" : "{http://hl7.org/fhir}Coverage",
+                  "codeProperty" : "type",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Medicare",
+                     "type" : "ValueSetRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Participation In Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Collapse",
+               "operand" : [ {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "P",
+                     "expression" : {
+                        "name" : "Participation",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "Overlaps",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "P",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "name" : "ParticipationPeriod",
+                        "type" : "OperandRef"
+                     } ]
+                  },
+                  "return" : {
+                     "distinct" : false,
+                     "expression" : {
+                        "type" : "Intersect",
+                        "operand" : [ {
+                           "name" : "ToInterval",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "period",
+                              "scope" : "P",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "name" : "ParticipationPeriod",
+                           "type" : "OperandRef"
+                        } ]
+                     }
+                  }
+               }, {
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Quantity",
+                  "type" : "Null"
+               } ]
+            },
+            "operand" : [ {
+               "name" : "ParticipationPeriod",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "Gap Days In Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Case",
+               "comparand" : {
+                  "type" : "Count",
+                  "source" : {
+                     "name" : "Periods",
+                     "type" : "OperandRef"
+                  }
+               },
+               "caseItem" : [ {
+                  "when" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "then" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "precision" : "Day",
+                           "type" : "Starts",
+                           "operand" : [ {
+                              "type" : "Indexer",
+                              "operand" : [ {
+                                 "name" : "Periods",
+                                 "type" : "OperandRef"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "0",
+                                 "type" : "Literal"
+                              } ]
+                           }, {
+                              "name" : "ParticipationPeriod",
+                              "type" : "OperandRef"
+                           } ]
+                        }
+                     },
+                     "then" : {
+                        "precision" : "Day",
+                        "type" : "DifferenceBetween",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "type" : "Indexer",
+                              "operand" : [ {
+                                 "name" : "Periods",
+                                 "type" : "OperandRef"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "0",
+                                 "type" : "Literal"
+                              } ]
+                           }
+                        }, {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "ParticipationPeriod",
+                              "type" : "OperandRef"
+                           }
+                        } ]
+                     },
+                     "else" : {
+                        "type" : "If",
+                        "condition" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "As",
+                           "operand" : {
+                              "precision" : "Day",
+                              "type" : "Ends",
+                              "operand" : [ {
+                                 "type" : "Indexer",
+                                 "operand" : [ {
+                                    "name" : "Periods",
+                                    "type" : "OperandRef"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "0",
+                                    "type" : "Literal"
+                                 } ]
+                              }, {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              } ]
+                           }
+                        },
+                        "then" : {
+                           "precision" : "Day",
+                           "type" : "DifferenceBetween",
+                           "operand" : [ {
+                              "type" : "Start",
+                              "operand" : {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              }
+                           }, {
+                              "type" : "Start",
+                              "operand" : {
+                                 "type" : "Indexer",
+                                 "operand" : [ {
+                                    "name" : "Periods",
+                                    "type" : "OperandRef"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "0",
+                                    "type" : "Literal"
+                                 } ]
+                              }
+                           } ]
+                        },
+                        "else" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "type" : "MaxValue"
+                        }
+                     }
+                  }
+               }, {
+                  "when" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2",
+                     "type" : "Literal"
+                  },
+                  "then" : {
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "precision" : "Day",
+                              "type" : "Starts",
+                              "operand" : [ {
+                                 "type" : "Indexer",
+                                 "operand" : [ {
+                                    "name" : "Periods",
+                                    "type" : "OperandRef"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "0",
+                                    "type" : "Literal"
+                                 } ]
+                              }, {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              } ]
+                           }, {
+                              "precision" : "Day",
+                              "type" : "Ends",
+                              "operand" : [ {
+                                 "type" : "Indexer",
+                                 "operand" : [ {
+                                    "name" : "Periods",
+                                    "type" : "OperandRef"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "1",
+                                    "type" : "Literal"
+                                 } ]
+                              }, {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              } ]
+                           } ]
+                        }
+                     },
+                     "then" : {
+                        "precision" : "Day",
+                        "type" : "DifferenceBetween",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "type" : "Indexer",
+                              "operand" : [ {
+                                 "name" : "Periods",
+                                 "type" : "OperandRef"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "0",
+                                 "type" : "Literal"
+                              } ]
+                           }
+                        }, {
+                           "type" : "Start",
+                           "operand" : {
+                              "type" : "Indexer",
+                              "operand" : [ {
+                                 "name" : "Periods",
+                                 "type" : "OperandRef"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              } ]
+                           }
+                        } ]
+                     },
+                     "else" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "type" : "MaxValue"
+                     }
+                  }
+               } ],
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "type" : "MaxValue"
+               }
+            },
+            "operand" : [ {
+               "name" : "ParticipationPeriod",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }, {
+               "name" : "Periods",
+               "operandTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "type" : "IntervalTypeSpecifier",
+                     "pointType" : {
+                        "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  }
+               }
+            } ]
+         }, {
+            "name" : "Is Continuously Enrolled In Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "LessOrEqual",
+               "operand" : [ {
+                  "name" : "Gap Days In Period",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "EnrollmentPeriod",
+                     "type" : "OperandRef"
+                  }, {
+                     "name" : "Participation In Period",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "name" : "EnrollmentPeriod",
+                        "type" : "OperandRef"
+                     } ]
+                  } ]
+               }, {
+                  "name" : "AllowedGapDays",
+                  "type" : "OperandRef"
+               } ]
+            },
+            "operand" : [ {
+               "name" : "EnrollmentPeriod",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }, {
+               "name" : "AllowedGapDays",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "Is Enrolled",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "Case",
+               "caseItem" : [ {
+                  "when" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "ProductLine",
+                        "type" : "OperandRef"
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "true",
+                     "type" : "Literal"
+                  }
+               } ],
+               "else" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Is Enrolled On Date",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "name" : "ProductLine",
+                        "type" : "OperandRef"
+                     }, {
+                        "name" : "IndexDate",
+                        "type" : "OperandRef"
+                     } ]
+                  }, {
+                     "type" : "AllTrue",
+                     "source" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "EnrollmentPeriod",
+                           "expression" : {
+                              "name" : "Enrollment Periods",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "name" : "ParticipationPeriod",
+                                 "type" : "OperandRef"
+                              } ]
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "return" : {
+                           "expression" : {
+                              "name" : "Is Continuously Enrolled In Period",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "name" : "EnrollmentPeriod",
+                                 "type" : "AliasRef"
+                              }, {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "GreaterOrEqual",
+                                       "operand" : [ {
+                                          "precision" : "Month",
+                                          "type" : "DurationBetween",
+                                          "operand" : [ {
+                                             "type" : "Start",
+                                             "operand" : {
+                                                "name" : "EnrollmentPeriod",
+                                                "type" : "AliasRef"
+                                             }
+                                          }, {
+                                             "type" : "End",
+                                             "operand" : {
+                                                "name" : "EnrollmentPeriod",
+                                                "type" : "AliasRef"
+                                             }
+                                          } ]
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                          "value" : "6",
+                                          "type" : "Literal"
+                                       } ]
+                                    }
+                                 },
+                                 "then" : {
+                                    "name" : "AllowedGapDays",
+                                    "type" : "OperandRef"
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "0",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }
+                  } ]
+               }
+            },
+            "operand" : [ {
+               "name" : "ProductLine",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}String",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "IndexDate",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "ParticipationPeriod",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }, {
+               "name" : "AllowedGapDays",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         } ]
+      }
+   }
+}

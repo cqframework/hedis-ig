@@ -1,0 +1,1477 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "startLine" : 192,
+         "startChar" : 3,
+         "endLine" : 192,
+         "endChar" : 29,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 194,
+         "startChar" : 3,
+         "endLine" : 194,
+         "endChar" : 39,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "DRR_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMED",
+            "id" : "http://snomed.info/sct",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "CQFramework",
+            "id" : "http://cqframework.info/codesystem/placeholder",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Bipolar Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1044",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bipolar Disorder ECDS",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1346",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Interactive Outpatient Encounter",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1347",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Major Depression and Dysthymia",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1351",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Other Bipolar Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1399",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Personality Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1355",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Pervasive Developmental Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1356",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "PHQ-9 Total Score",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1401",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Psychotic Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1352",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "PHQ-9 Modified Score",
+            "id" : "00009",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "CQFramework"
+            }
+         }, {
+            "name" : "PHQ-9 Tool",
+            "id" : "44249-1",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Intake Period As MP Shifted Back 7 Months",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 7,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "End",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 7,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Intake Period Union Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 7,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "End",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 7,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "PeriodToIntervalOfDT",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "start",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               },
+               "high" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "end",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "value",
+               "operandTypeSpecifier" : {
+                  "name" : "{http://hl7.org/fhir}Period",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "DRR Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "DRR",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Interactive Outpatient Encounter",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "DRR",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "planned",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "arrived",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "triaged",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "onleave",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "finished",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "PeriodToIntervalOfDT",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "DRR",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "name" : "Intake Period As MP Shifted Back 7 Months",
+                        "type" : "ExpressionRef"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "type" : "ToDateTime",
+                        "operand" : {
+                           "path" : "birthDate.value",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Patient",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     }, {
+                        "type" : "Start",
+                        "operand" : {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "12",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "DRR",
+                        "expression" : {
+                           "name" : "DRR Encounter",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "alias" : "DepressionDiagnosis",
+                        "type" : "With",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Major Depression and Dysthymia",
+                              "type" : "ValueSetRef"
+                           }
+                        },
+                        "suchThat" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "In",
+                              "operand" : [ {
+                                 "path" : "value",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "path" : "status",
+                                    "scope" : "DepressionDiagnosis",
+                                    "type" : "Property"
+                                 }
+                              }, {
+                                 "type" : "List",
+                                 "element" : [ {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "preliminary",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "final",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "amended",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "corrected",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "appended",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "precision" : "Day",
+                              "type" : "Overlaps",
+                              "operand" : [ {
+                                 "name" : "PeriodToIntervalOfDT",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "asType" : "{http://hl7.org/fhir}Period",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "effective",
+                                       "scope" : "DepressionDiagnosis",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "name" : "PeriodToIntervalOfDT",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "DRR",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator Exclusion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Distinct",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "D",
+                        "expression" : {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Bipolar Disorder",
+                                    "type" : "ValueSetRef"
+                                 }
+                              }, {
+                                 "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Personality Disorder",
+                                    "type" : "ValueSetRef"
+                                 }
+                              } ]
+                           }, {
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Psychotic Disorder",
+                                    "type" : "ValueSetRef"
+                                 }
+                              }, {
+                                 "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Pervasive Developmental Disorder",
+                                    "type" : "ValueSetRef"
+                                 }
+                              } ]
+                           } ]
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "D",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "preliminary",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "final",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "amended",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "corrected",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "appended",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "Overlaps",
+                           "operand" : [ {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "D",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "name" : "Intake Period Union Measurement Period",
+                              "type" : "ExpressionRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "PHQ-9 Assessments",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Distinct",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "PHQ",
+                     "expression" : {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "dataType" : "{http://hl7.org/fhir}Observation",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "type" : "ToList",
+                              "operand" : {
+                                 "name" : "PHQ-9 Tool",
+                                 "type" : "CodeRef"
+                              }
+                           }
+                        }, {
+                           "dataType" : "{http://hl7.org/fhir}Observation",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "type" : "ToList",
+                              "operand" : {
+                                 "name" : "PHQ-9 Modified Score",
+                                 "type" : "CodeRef"
+                              }
+                           }
+                        } ]
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "PHQ",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "type" : "Not",
+                        "operand" : {
+                           "type" : "IsNull",
+                           "operand" : {
+                              "path" : "value",
+                              "scope" : "PHQ",
+                              "type" : "Property"
+                           }
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Depression Index",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "First",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "PHQ",
+                     "expression" : {
+                        "name" : "PHQ-9 Assessments",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "DRR",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "DRR Encounter",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "Greater",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "value",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "strict" : false,
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "value",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    },
+                                    "asTypeSpecifier" : {
+                                       "name" : "{http://hl7.org/fhir}Quantity",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }
+                              }
+                           }, {
+                              "type" : "ToDecimal",
+                              "operand" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "9",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }, {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "type" : "And",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "SameOrBefore",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "name" : "PeriodToIntervalOfDT",
+                                       "type" : "FunctionRef",
+                                       "operand" : [ {
+                                          "path" : "period",
+                                          "scope" : "DRR",
+                                          "type" : "Property"
+                                       } ]
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "LessOrEqual",
+                                 "operand" : [ {
+                                    "precision" : "Day",
+                                    "type" : "DurationBetween",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "type" : "Start",
+                                       "operand" : {
+                                          "name" : "PeriodToIntervalOfDT",
+                                          "type" : "FunctionRef",
+                                          "operand" : [ {
+                                             "path" : "period",
+                                             "scope" : "DRR",
+                                             "type" : "Property"
+                                          } ]
+                                       }
+                                    } ]
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "15",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "And",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "SameOrAfter",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "name" : "PeriodToIntervalOfDT",
+                                       "type" : "FunctionRef",
+                                       "operand" : [ {
+                                          "path" : "period",
+                                          "scope" : "DRR",
+                                          "type" : "Property"
+                                       } ]
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "LessOrEqual",
+                                 "operand" : [ {
+                                    "precision" : "Day",
+                                    "type" : "DurationBetween",
+                                    "operand" : [ {
+                                       "type" : "Start",
+                                       "operand" : {
+                                          "name" : "PeriodToIntervalOfDT",
+                                          "type" : "FunctionRef",
+                                          "operand" : [ {
+                                             "path" : "period",
+                                             "scope" : "DRR",
+                                             "type" : "Property"
+                                          } ]
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "15",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     }
+                  } ],
+                  "return" : {
+                     "expression" : {
+                        "name" : "PHQ",
+                        "type" : "AliasRef"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Denominator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Initial Population",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "DRR Encounter",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }, {
+                  "type" : "Not",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "Depression Index",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Numerator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "PHQ",
+                        "expression" : {
+                           "name" : "PHQ-9 Assessments",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "alias" : "DI",
+                        "type" : "With",
+                        "expression" : {
+                           "name" : "Depression Index",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "And",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "After",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "DI",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "GreaterOrEqual",
+                                 "operand" : [ {
+                                    "precision" : "Day",
+                                    "type" : "DurationBetween",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "DI",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "150",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "LessOrEqual",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "DurationBetween",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "DI",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "210",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }
+                     } ],
+                     "return" : {
+                        "expression" : {
+                           "name" : "PHQ",
+                           "type" : "AliasRef"
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Denominator 1",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Numerator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "PHQ",
+                        "expression" : {
+                           "name" : "PHQ-9 Assessments",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "alias" : "DI",
+                        "type" : "With",
+                        "expression" : {
+                           "name" : "Depression Index",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "And",
+                              "operand" : [ {
+                                 "type" : "And",
+                                 "operand" : [ {
+                                    "type" : "Less",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "strict" : false,
+                                             "type" : "As",
+                                             "operand" : {
+                                                "path" : "value",
+                                                "scope" : "PHQ",
+                                                "type" : "Property"
+                                             },
+                                             "asTypeSpecifier" : {
+                                                "name" : "{http://hl7.org/fhir}Quantity",
+                                                "type" : "NamedTypeSpecifier"
+                                             }
+                                          }
+                                       }
+                                    }, {
+                                       "type" : "ToDecimal",
+                                       "operand" : {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                          "value" : "5",
+                                          "type" : "Literal"
+                                       }
+                                    } ]
+                                 }, {
+                                    "precision" : "Day",
+                                    "type" : "After",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "DI",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 } ]
+                              }, {
+                                 "type" : "GreaterOrEqual",
+                                 "operand" : [ {
+                                    "precision" : "Day",
+                                    "type" : "DurationBetween",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "DI",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "150",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "LessOrEqual",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "DurationBetween",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "DI",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "210",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }
+                     } ],
+                     "return" : {
+                        "expression" : {
+                           "name" : "PHQ",
+                           "type" : "AliasRef"
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Denominator 1",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Numerator 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "PHQ",
+                        "expression" : {
+                           "name" : "PHQ-9 Assessments",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "alias" : "DI",
+                        "type" : "With",
+                        "expression" : {
+                           "name" : "Depression Index",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "And",
+                              "operand" : [ {
+                                 "type" : "And",
+                                 "operand" : [ {
+                                    "type" : "LessOrEqual",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "strict" : false,
+                                             "type" : "As",
+                                             "operand" : {
+                                                "path" : "value",
+                                                "scope" : "PHQ",
+                                                "type" : "Property"
+                                             },
+                                             "asTypeSpecifier" : {
+                                                "name" : "{http://hl7.org/fhir}Quantity",
+                                                "type" : "NamedTypeSpecifier"
+                                             }
+                                          }
+                                       }
+                                    }, {
+                                       "type" : "Divide",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "value",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "strict" : false,
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "value",
+                                                   "scope" : "DI",
+                                                   "type" : "Property"
+                                                },
+                                                "asTypeSpecifier" : {
+                                                   "name" : "{http://hl7.org/fhir}Quantity",
+                                                   "type" : "NamedTypeSpecifier"
+                                                }
+                                             }
+                                          }
+                                       }, {
+                                          "type" : "ToDecimal",
+                                          "operand" : {
+                                             "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "value" : "2",
+                                             "type" : "Literal"
+                                          }
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "precision" : "Day",
+                                    "type" : "After",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "DI",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 } ]
+                              }, {
+                                 "type" : "GreaterOrEqual",
+                                 "operand" : [ {
+                                    "precision" : "Day",
+                                    "type" : "DurationBetween",
+                                    "operand" : [ {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "DI",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "path" : "value",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "effective",
+                                          "scope" : "PHQ",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "150",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "LessOrEqual",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "DurationBetween",
+                                 "operand" : [ {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "DI",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "path" : "value",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "effective",
+                                       "scope" : "PHQ",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "210",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }
+                     } ],
+                     "return" : {
+                        "expression" : {
+                           "name" : "PHQ",
+                           "type" : "AliasRef"
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "12",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "17",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "18",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "44",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "45",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "64",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 4",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         } ]
+      }
+   }
+}

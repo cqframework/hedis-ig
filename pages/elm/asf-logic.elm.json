@@ -1,0 +1,1684 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "startLine" : 124,
+         "startChar" : 3,
+         "endLine" : 124,
+         "endChar" : 50,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 130,
+         "startChar" : 3,
+         "endLine" : 130,
+         "endChar" : 48,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 139,
+         "startChar" : 3,
+         "endLine" : 139,
+         "endChar" : 63,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 151,
+         "startChar" : 3,
+         "endLine" : 151,
+         "endChar" : 63,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "ASF_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Product Line",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "name" : "{urn:hl7-org:elm-types:r1}String",
+               "type" : "NamedTypeSpecifier"
+            }
+         }, {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "CQFramework",
+            "id" : "http://cqframework.info/codesystem/placeholder",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Alcohol Counseling and Treatment",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1437",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Alcohol Screening",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1337",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Alcohol use disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1339",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Dementia",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1074",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "Alcoholic drinks per drinking day - Reported",
+            "id" : "11287-0",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "AUDIT Total Score (in points)",
+            "id" : "75624-7",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "AUDIT-C Total Score (in points)",
+            "id" : "75626-2",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "18",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Denominator Exclusion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "AlcoholUse",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Condition",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Alcohol use disorder",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "clinicalStatus",
+                                 "scope" : "AlcoholUse",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "active",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "recurrence",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToDateTime",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "assertedDate",
+                                 "scope" : "AlcoholUse",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "name" : "Measurement Period",
+                                       "type" : "ParameterRef"
+                                    }
+                                 }, {
+                                    "value" : 1,
+                                    "unit" : "year",
+                                    "type" : "Quantity"
+                                 } ]
+                              },
+                              "high" : {
+                                 "type" : "End",
+                                 "operand" : {
+                                    "name" : "Measurement Period",
+                                    "type" : "ParameterRef"
+                                 }
+                              }
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "D",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Condition",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Dementia",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "clinicalStatus",
+                                 "scope" : "D",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "active",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "recurrence",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToDateTime",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "assertedDate",
+                                 "scope" : "D",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "name" : "Measurement Period",
+                                    "type" : "ParameterRef"
+                                 }
+                              },
+                              "high" : {
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "type" : "End",
+                                    "operand" : {
+                                       "name" : "Measurement Period",
+                                       "type" : "ParameterRef"
+                                    }
+                                 }, {
+                                    "value" : 60,
+                                    "unit" : "days",
+                                    "type" : "Quantity"
+                                 } ]
+                              }
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "AUDIT-C Assessment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "A",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "AUDIT-C Total Score (in points)",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "A",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToDateTime",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "effective",
+                                 "scope" : "A",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsNull",
+                        "operand" : {
+                           "path" : "value",
+                           "scope" : "A",
+                           "type" : "Property"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "AUDIT Assessment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "A",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "AUDIT Total Score (in points)",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "A",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToDateTime",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "effective",
+                                 "scope" : "A",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Not",
+                     "operand" : {
+                        "type" : "IsNull",
+                        "operand" : {
+                           "path" : "value",
+                           "scope" : "A",
+                           "type" : "Property"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Patient is Male",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Equal",
+               "operand" : [ {
+                  "name" : "ToString",
+                  "libraryName" : "FHIRHelpers",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "path" : "gender",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "male",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Five or more drinks per day Assessment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "A",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Alcoholic drinks per drinking day - Reported",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "A",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToDateTime",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "effective",
+                                 "scope" : "A",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "name" : "ToQuantity",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "asType" : "{http://hl7.org/fhir}Quantity",
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "value",
+                              "scope" : "A",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "value" : 5,
+                        "unit" : "{drinks}/d",
+                        "type" : "Quantity"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Patient is Female",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Equal",
+               "operand" : [ {
+                  "name" : "ToString",
+                  "libraryName" : "FHIRHelpers",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "path" : "gender",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "female",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Four or more drinks per day Assessment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "A",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Alcoholic drinks per drinking day - Reported",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "A",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToDateTime",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "effective",
+                                 "scope" : "A",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "name" : "ToQuantity",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "asType" : "{http://hl7.org/fhir}Quantity",
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "value",
+                              "scope" : "A",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "value" : 4,
+                        "unit" : "{drinks}/d",
+                        "type" : "Quantity"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Patient is 65 or Over",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Numerator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Or",
+                     "operand" : [ {
+                        "type" : "Or",
+                        "operand" : [ {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "AUDIT-C Assessment",
+                              "type" : "ExpressionRef"
+                           }
+                        }, {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "AUDIT Assessment",
+                              "type" : "ExpressionRef"
+                           }
+                        } ]
+                     }, {
+                        "type" : "And",
+                        "operand" : [ {
+                           "name" : "Patient is Male",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "Five or more drinks per day Assessment",
+                              "type" : "ExpressionRef"
+                           }
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "And",
+                     "operand" : [ {
+                        "name" : "Patient is Female",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "type" : "Or",
+                        "operand" : [ {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "Four or more drinks per day Assessment",
+                              "type" : "ExpressionRef"
+                           }
+                        }, {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "Five or more drinks per day Assessment",
+                              "type" : "ExpressionRef"
+                           }
+                        } ]
+                     } ]
+                  } ]
+               }, {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Patient is 65 or Over",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "type" : "Or",
+                     "operand" : [ {
+                        "type" : "Exists",
+                        "operand" : {
+                           "name" : "Four or more drinks per day Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "name" : "Five or more drinks per day Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Positive Assessment for Unhealthy Alcohol Use",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Union",
+               "operand" : [ {
+                  "type" : "Union",
+                  "operand" : [ {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "A",
+                        "expression" : {
+                           "name" : "AUDIT Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "name" : "ToQuantity",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}Quantity",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "value",
+                                 "scope" : "A",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "type" : "ToQuantity",
+                           "operand" : {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "8",
+                              "type" : "Literal"
+                           }
+                        } ]
+                     }
+                  }, {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "A",
+                        "expression" : {
+                           "name" : "AUDIT-C Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "Or",
+                        "operand" : [ {
+                           "type" : "And",
+                           "operand" : [ {
+                              "name" : "Patient is Male",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "type" : "GreaterOrEqual",
+                              "operand" : [ {
+                                 "name" : "ToQuantity",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "asType" : "{http://hl7.org/fhir}Quantity",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "value",
+                                       "scope" : "A",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "ToQuantity",
+                                 "operand" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "4",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           } ]
+                        }, {
+                           "type" : "And",
+                           "operand" : [ {
+                              "name" : "Patient is Female",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "type" : "GreaterOrEqual",
+                              "operand" : [ {
+                                 "name" : "ToQuantity",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "asType" : "{http://hl7.org/fhir}Quantity",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "value",
+                                       "scope" : "A",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "ToQuantity",
+                                 "operand" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "3",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           } ]
+                        } ]
+                     }
+                  } ]
+               }, {
+                  "type" : "Union",
+                  "operand" : [ {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "A",
+                        "expression" : {
+                           "name" : "Five or more drinks per day Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "name" : "Patient is Male",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "type" : "GreaterOrEqual",
+                           "operand" : [ {
+                              "name" : "ToQuantity",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Quantity",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "value",
+                                    "scope" : "A",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "type" : "ToQuantity",
+                              "operand" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        } ]
+                     }
+                  }, {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "A",
+                        "expression" : {
+                           "name" : "Four or more drinks per day Assessment",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "name" : "Patient is Female",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "name" : "Patient is 65 or Over",
+                              "type" : "ExpressionRef"
+                           } ]
+                        }, {
+                           "type" : "GreaterOrEqual",
+                           "operand" : [ {
+                              "name" : "ToQuantity",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Quantity",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "value",
+                                    "scope" : "A",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "type" : "ToQuantity",
+                              "operand" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        } ]
+                     }
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Denominator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Positive Assessment for Unhealthy Alcohol Use",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Initial Positive Assessment for Unhealthy Alcohol Use",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "List",
+               "element" : [ {
+                  "type" : "First",
+                  "source" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "A",
+                        "expression" : {
+                           "name" : "Positive Assessment for Unhealthy Alcohol Use",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "sort" : {
+                        "by" : [ {
+                           "direction" : "asc",
+                           "type" : "ByExpression",
+                           "expression" : {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "effective",
+                                 "type" : "IdentifierRef"
+                              }
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Followup After Positive Screen",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Union",
+               "operand" : [ {
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "type" : "As",
+                              "operand" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Alcohol Counseling and Treatment",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Equal",
+                                    "operand" : [ {
+                                       "name" : "ToString",
+                                       "libraryName" : "FHIRHelpers",
+                                       "type" : "FunctionRef",
+                                       "operand" : [ {
+                                          "path" : "status",
+                                          "scope" : "Proc",
+                                          "type" : "Property"
+                                       } ]
+                                    }, {
+                                       "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                       "value" : "completed",
+                                       "type" : "Literal"
+                                    } ]
+                                 }
+                              },
+                              "asTypeSpecifier" : {
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "type" : "ChoiceTypeSpecifier",
+                                    "choice" : [ {
+                                       "name" : "{http://hl7.org/fhir}Procedure",
+                                       "type" : "NamedTypeSpecifier"
+                                    }, {
+                                       "name" : "{http://hl7.org/fhir}Observation",
+                                       "type" : "NamedTypeSpecifier"
+                                    } ]
+                                 }
+                              }
+                           }, {
+                              "type" : "As",
+                              "operand" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Obs",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Observation",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Alcohol Counseling and Treatment",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "In",
+                                    "operand" : [ {
+                                       "name" : "ToString",
+                                       "libraryName" : "FHIRHelpers",
+                                       "type" : "FunctionRef",
+                                       "operand" : [ {
+                                          "path" : "status",
+                                          "scope" : "Obs",
+                                          "type" : "Property"
+                                       } ]
+                                    }, {
+                                       "type" : "List",
+                                       "element" : [ {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "final",
+                                          "type" : "Literal"
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "amended",
+                                          "type" : "Literal"
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "corrected",
+                                          "type" : "Literal"
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "asTypeSpecifier" : {
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "type" : "ChoiceTypeSpecifier",
+                                    "choice" : [ {
+                                       "name" : "{http://hl7.org/fhir}Procedure",
+                                       "type" : "NamedTypeSpecifier"
+                                    }, {
+                                       "name" : "{http://hl7.org/fhir}Observation",
+                                       "type" : "NamedTypeSpecifier"
+                                    } ]
+                                 }
+                              }
+                           } ]
+                        },
+                        "asTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "type" : "ChoiceTypeSpecifier",
+                              "choice" : [ {
+                                 "name" : "{http://hl7.org/fhir}Procedure",
+                                 "type" : "NamedTypeSpecifier"
+                              }, {
+                                 "name" : "{http://hl7.org/fhir}Observation",
+                                 "type" : "NamedTypeSpecifier"
+                              } ]
+                           }
+                        }
+                     }, {
+                        "type" : "As",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "Proc",
+                              "expression" : {
+                                 "dataType" : "{http://hl7.org/fhir}Procedure",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Alcohol Screening",
+                                    "type" : "ValueSetRef"
+                                 }
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "type" : "Equal",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "status",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "completed",
+                                 "type" : "Literal"
+                              } ]
+                           }
+                        },
+                        "asTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "type" : "ChoiceTypeSpecifier",
+                              "choice" : [ {
+                                 "name" : "{http://hl7.org/fhir}Procedure",
+                                 "type" : "NamedTypeSpecifier"
+                              }, {
+                                 "name" : "{http://hl7.org/fhir}Observation",
+                                 "type" : "NamedTypeSpecifier"
+                              } ]
+                           }
+                        }
+                     } ]
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "type" : "ChoiceTypeSpecifier",
+                        "choice" : [ {
+                           "name" : "{http://hl7.org/fhir}Procedure",
+                           "type" : "NamedTypeSpecifier"
+                        }, {
+                           "name" : "{http://hl7.org/fhir}Observation",
+                           "type" : "NamedTypeSpecifier"
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "Obs",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Observation",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Alcohol Screening",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "Obs",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "type" : "ChoiceTypeSpecifier",
+                        "choice" : [ {
+                           "name" : "{http://hl7.org/fhir}Procedure",
+                           "type" : "NamedTypeSpecifier"
+                        }, {
+                           "name" : "{http://hl7.org/fhir}Observation",
+                           "type" : "NamedTypeSpecifier"
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Numerator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "A",
+                     "expression" : {
+                        "name" : "Initial Positive Assessment for Unhealthy Alcohol Use",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "F",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "Followup After Positive Screen",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "type" : "If",
+                        "condition" : {
+                           "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "As",
+                           "operand" : {
+                              "type" : "Is",
+                              "operand" : {
+                                 "name" : "F",
+                                 "type" : "AliasRef"
+                              },
+                              "isTypeSpecifier" : {
+                                 "name" : "{http://hl7.org/fhir}Observation",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        },
+                        "then" : {
+                           "precision" : "Day",
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToDateTime",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}dateTime",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "F",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "asType" : "{http://hl7.org/fhir}dateTime",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "effective",
+                                       "scope" : "A",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              },
+                              "high" : {
+                                 "type" : "Add",
+                                 "operand" : [ {
+                                    "name" : "ToDateTime",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "asType" : "{http://hl7.org/fhir}dateTime",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "path" : "effective",
+                                          "scope" : "A",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "value" : 2,
+                                    "unit" : "months",
+                                    "type" : "Quantity"
+                                 } ]
+                              }
+                           } ]
+                        },
+                        "else" : {
+                           "precision" : "Day",
+                           "type" : "In",
+                           "operand" : [ {
+                              "name" : "ToDateTime",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "end",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "path" : "performed",
+                                    "scope" : "F",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "asType" : "{http://hl7.org/fhir}dateTime",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "path" : "effective",
+                                       "scope" : "A",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              },
+                              "high" : {
+                                 "type" : "Add",
+                                 "operand" : [ {
+                                    "name" : "ToDateTime",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "asType" : "{http://hl7.org/fhir}dateTime",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "path" : "effective",
+                                          "scope" : "A",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "value" : 2,
+                                    "unit" : "months",
+                                    "type" : "Quantity"
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Stratifier 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "18",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "44",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "45",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "64",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         } ]
+      }
+   }
+}
