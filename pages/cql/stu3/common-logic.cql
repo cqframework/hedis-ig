@@ -2,21 +2,22 @@ library NCQACommon_FHIR version '3.10.000'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 codesystem "LOINC": 'urn:oid:2.16.840.1.113883.6.1'
 codesystem "SNOMEDCT": 'urn:oid:2.16.840.1.113883.6.96'
 codesystem "SNOMEDCT:2015-09": 'urn:oid:2.16.840.1.113883.6.96' version 'urn:hl7:version:2015-09'
 codesystem "SNOMEDCT:2016-03": 'urn:oid:2.16.840.1.113883.6.96' version 'urn:hl7:version:2016-03'
 
-valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
-valueset "Hospice care ambulatory": 'urn:oid:2.16.840.1.113762.1.4.1108.15'
-valueset "Care Services in Long-Term Residential Facility": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1014'
-valueset "X Institutional SNP Value Set": 'urn:oid:2.16.840.1.113762.1.4.1165.43'
-valueset "Commercial": 'urn:oid:2.16.840.1.113762.1.4.1165.46'
-valueset "Medicaid": 'urn:oid:2.16.840.1.113762.1.4.1165.45'
-valueset "Medicare": 'urn:oid:2.16.840.1.113762.1.4.1165.44'
-valueset "NCQA Payer": 'urn:oid:2.16.840.1.113762.1.4.1165.42'
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+valueset "Hospice care ambulatory": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1108.15'
+valueset "Care Services in Long-Term Residential Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014'
+valueset "NCQA Payer": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.42'
+valueset "X Institutional SNP Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.43'
+valueset "Medicare": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.44'
+valueset "Medicaid": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.45'
+valueset "Commercial": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.46'
+
 
 code "Birthdate": '21112-8' from "LOINC" display 'Birthdate'
 code "Dead": '419099009' from "SNOMEDCT" display 'Dead'

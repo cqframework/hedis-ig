@@ -1,0 +1,2049 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "BCS_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Absence of Left Breast Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1329.1",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Absence of Right Breast Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1330.2",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bilateral Mastectomy Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1042",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bilateral Modifier Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1043.5",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "History of Bilateral Mastectomy Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1331.6",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Left Modifier Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1148.7",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Mammography Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Right Modifier Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1230.12",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Unilateral Mastectomy Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1256",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Unilateral Mastectomy Left Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1334.15",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Unilateral Mastectomy Right Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1335.16",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "First Predecessor Year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 2,
+                     "unit" : "years",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 1,
+                     "unit" : "years",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Second Predecessor Year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 3,
+                     "unit" : "years",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 2,
+                     "unit" : "years",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Third Predecessor Quarter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Subtract",
+                     "operand" : [ {
+                        "type" : "Today"
+                     }, {
+                        "value" : 3,
+                        "unit" : "years",
+                        "type" : "Quantity"
+                     } ]
+                  }, {
+                     "value" : 3,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 3,
+                     "unit" : "years",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Lookback Interval 27 More Months",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Today"
+                  }, {
+                     "value" : 27,
+                     "unit" : "months",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Today"
+               }
+            }
+         }, {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Is Female",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Equal",
+               "operand" : [ {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "gender",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                  "value" : "female",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Is Age 52 to 74 at End",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "precision" : "Year",
+                     "type" : "CalculateAge",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "52",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "type" : "LessOrEqual",
+                  "operand" : [ {
+                     "precision" : "Year",
+                     "type" : "CalculateAge",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "74",
+                     "type" : "Literal"
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "PeriodToIntervalOfDT",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "start",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               },
+               "high" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "end",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "value",
+               "operandTypeSpecifier" : {
+                  "name" : "{http://hl7.org/fhir}Period",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "Is Bilateral Mastectomy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Proc",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Procedure",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Bilateral Mastectomy Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Proc",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is History Of Bilateral Mastectomy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Cond",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Condition",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "History of Bilateral Mastectomy Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "verificationStatus",
+                              "scope" : "Cond",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "confirmed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "assertedDate",
+                              "scope" : "Cond",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy With Bilateral Modifier",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Claim",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Claim",
+                        "type" : "Retrieve"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Claim",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "BbElem",
+                              "expression" : {
+                                 "path" : "procedure",
+                                 "scope" : "Claim",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ {
+                              "alias" : "Proc1",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Unilateral Mastectomy Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc1",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           }, {
+                              "alias" : "Proc2",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Bilateral Modifier Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc2",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy Twice Spread Two Weeks",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "WhenUM1",
+                     "expression" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "Proc",
+                           "expression" : {
+                              "dataType" : "{http://hl7.org/fhir}Procedure",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Unilateral Mastectomy Value Set",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "Proc",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "completed",
+                              "type" : "Literal"
+                           } ]
+                        },
+                        "return" : {
+                           "expression" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "WhenUM2",
+                     "type" : "With",
+                     "expression" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "Proc",
+                           "expression" : {
+                              "dataType" : "{http://hl7.org/fhir}Procedure",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Unilateral Mastectomy Value Set",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "Proc",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "completed",
+                              "type" : "Literal"
+                           } ]
+                        },
+                        "return" : {
+                           "expression" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }
+                     },
+                     "suchThat" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "GreaterOrEqual",
+                              "operand" : [ {
+                                 "precision" : "Day",
+                                 "type" : "DifferenceBetween",
+                                 "operand" : [ {
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "name" : "WhenUM1",
+                                       "type" : "AliasRef"
+                                    }
+                                 }, {
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "name" : "WhenUM2",
+                                       "type" : "AliasRef"
+                                    }
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "14",
+                                 "type" : "Literal"
+                              } ]
+                           }, {
+                              "precision" : "Day",
+                              "type" : "SameOrBefore",
+                              "operand" : [ {
+                                 "type" : "End",
+                                 "operand" : {
+                                    "name" : "WhenUM1",
+                                    "type" : "AliasRef"
+                                 }
+                              }, {
+                                 "type" : "ToDateTime",
+                                 "operand" : {
+                                    "type" : "Today"
+                                 }
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "SameOrBefore",
+                           "operand" : [ {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "WhenUM2",
+                                 "type" : "AliasRef"
+                              }
+                           }, {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "type" : "Today"
+                              }
+                           } ]
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Is Lacking Both Breasts",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Or",
+                     "operand" : [ {
+                        "name" : "Is Bilateral Mastectomy",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "name" : "Is History Of Bilateral Mastectomy",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "name" : "Is Unilateral Mastectomy With Bilateral Modifier",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "name" : "Is Unilateral Mastectomy Twice Spread Two Weeks",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy With Left Modifier",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Claim",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Claim",
+                        "type" : "Retrieve"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Claim",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "BbElem",
+                              "expression" : {
+                                 "path" : "procedure",
+                                 "scope" : "Claim",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ {
+                              "alias" : "Proc1",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Unilateral Mastectomy Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc1",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           }, {
+                              "alias" : "Proc2",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Left Modifier Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc2",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy Left",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Proc",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Procedure",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Unilateral Mastectomy Left Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Proc",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Absence Of Left Breast",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Obs",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Observation",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Absence of Left Breast Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Obs",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "effective",
+                              "scope" : "Obs",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Lacking Left Breast",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "name" : "Is Unilateral Mastectomy With Left Modifier",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Is Unilateral Mastectomy Left",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "name" : "Is Absence Of Left Breast",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy With Right Modifier",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Claim",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Claim",
+                        "type" : "Retrieve"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Claim",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "BbElem",
+                              "expression" : {
+                                 "path" : "procedure",
+                                 "scope" : "Claim",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ {
+                              "alias" : "Proc1",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Unilateral Mastectomy Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc1",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           }, {
+                              "alias" : "Proc2",
+                              "type" : "With",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "Proc",
+                                    "expression" : {
+                                       "dataType" : "{http://hl7.org/fhir}Procedure",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Right Modifier Value Set",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "Equal",
+                                       "operand" : [ {
+                                          "path" : "value",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "path" : "status",
+                                             "scope" : "Proc",
+                                             "type" : "Property"
+                                          }
+                                       }, {
+                                          "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                          "value" : "completed",
+                                          "type" : "Literal"
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "SameOrBefore",
+                                       "operand" : [ {
+                                          "type" : "End",
+                                          "operand" : {
+                                             "name" : "PeriodToIntervalOfDT",
+                                             "type" : "FunctionRef",
+                                             "operand" : [ {
+                                                "asType" : "{http://hl7.org/fhir}Period",
+                                                "type" : "As",
+                                                "operand" : {
+                                                   "path" : "performed",
+                                                   "scope" : "Proc",
+                                                   "type" : "Property"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "type" : "ToDateTime",
+                                          "operand" : {
+                                             "type" : "Today"
+                                          }
+                                       } ]
+                                    } ]
+                                 }
+                              },
+                              "suchThat" : {
+                                 "type" : "If",
+                                 "condition" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "type" : "Is",
+                                       "operand" : {
+                                          "path" : "procedure",
+                                          "scope" : "BbElem",
+                                          "type" : "Property"
+                                       },
+                                       "isTypeSpecifier" : {
+                                          "name" : "{http://hl7.org/fhir}Reference",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 },
+                                 "then" : {
+                                    "type" : "Contains",
+                                    "operand" : [ {
+                                       "path" : "identifier",
+                                       "scope" : "Proc2",
+                                       "type" : "Property"
+                                    }, {
+                                       "path" : "identifier",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "strict" : false,
+                                          "type" : "As",
+                                          "operand" : {
+                                             "path" : "procedure",
+                                             "scope" : "BbElem",
+                                             "type" : "Property"
+                                          },
+                                          "asTypeSpecifier" : {
+                                             "name" : "{http://hl7.org/fhir}Reference",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }
+                                    } ]
+                                 },
+                                 "else" : {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "value" : "false",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Unilateral Mastectomy Right",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Proc",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Procedure",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Unilateral Mastectomy Right Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Proc",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "Proc",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Absence Of Right Breast",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Obs",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Observation",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Absence of Right Breast Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Obs",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "Obs",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }
+                        }, {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "type" : "Today"
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Lacking Right Breast",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "name" : "Is Unilateral Mastectomy With Right Modifier",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Is Unilateral Mastectomy Right",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "name" : "Is Absence Of Right Breast",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Has Double Mastectomy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "name" : "Is Lacking Both Breasts",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Is Lacking Left Breast",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Is Lacking Right Breast",
+                     "type" : "ExpressionRef"
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Does Patient Qualify?",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "Is Female",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Is Age 52 to 74 at End",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "type" : "If",
+                  "condition" : {
+                     "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "As",
+                     "operand" : {
+                        "type" : "IsNull",
+                        "operand" : {
+                           "name" : "Has Double Mastectomy",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  },
+                  "then" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "true",
+                     "type" : "Literal"
+                  },
+                  "else" : {
+                     "type" : "Not",
+                     "operand" : {
+                        "name" : "Has Double Mastectomy",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Is Mammogram In Last 39 Months",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Proc",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Procedure",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Mammography Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Proc",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "IncludedIn",
+                        "operand" : [ {
+                           "name" : "PeriodToIntervalOfDT",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}Period",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "performed",
+                                 "scope" : "Proc",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "type" : "Interval",
+                           "low" : {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "path" : "low",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "Lookback Interval 27 More Months",
+                                    "type" : "ExpressionRef"
+                                 }
+                              }
+                           },
+                           "lowClosedExpression" : {
+                              "path" : "lowClosed",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Interval 27 More Months",
+                                 "type" : "ExpressionRef"
+                              }
+                           },
+                           "high" : {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "path" : "high",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "Lookback Interval 27 More Months",
+                                    "type" : "ExpressionRef"
+                                 }
+                              }
+                           },
+                           "highClosedExpression" : {
+                              "path" : "highClosed",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Interval 27 More Months",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Needs Mammogram",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "name" : "Is Mammogram In Last 39 Months",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "true",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "Not",
+                  "operand" : {
+                     "name" : "Is Mammogram In Last 39 Months",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "MammogramSummary",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "A Mammogram procedure for the patient is recommended",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "MammogramDetail",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "The patient has not had a Mammogram procedure in the last 39 months",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "MammogramIndicator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}String",
+               "value" : "warning",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "CodingToCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "classType" : "{urn:hl7-org:elm-types:r1}Code",
+               "type" : "Instance",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "code",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "coding",
+                           "type" : "OperandRef"
+                        }
+                     }
+                  }
+               }, {
+                  "name" : "system",
+                  "value" : {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "system",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "coding",
+                           "type" : "OperandRef"
+                        }
+                     }
+                  }
+               }, {
+                  "name" : "version",
+                  "value" : {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "version",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "coding",
+                           "type" : "OperandRef"
+                        }
+                     }
+                  }
+               }, {
+                  "name" : "display",
+                  "value" : {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "display",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "coding",
+                           "type" : "OperandRef"
+                        }
+                     }
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "coding",
+               "operandTypeSpecifier" : {
+                  "name" : "{http://hl7.org/fhir}Coding",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         } ]
+      }
+   }
+}

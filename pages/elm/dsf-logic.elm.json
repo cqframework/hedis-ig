@@ -1,0 +1,1411 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "startLine" : 180,
+         "startChar" : 2,
+         "endLine" : 180,
+         "endChar" : 64,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "DSF_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMED",
+            "id" : "http://snomed.info/sct",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "CQFramework",
+            "id" : "http://cqframework.info/codesystem/placeholder",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Behavioral Health Encounter",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1383",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bipolar Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1044",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bipolar Disorder ECDS",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1346",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Depression",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1390",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Depression Case Management Encounter",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1389",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Depression Screen",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1384",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "ECDS Follow-Up Visit",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1385",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Mental Illness",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1179",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Mental Illness SNOMED",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1453",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Negative Depression Screen",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1386",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Other Bipolar Disorder",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1399",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Positive Depression Screen",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1387",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Major Depression and Dysthymia",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1351",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "Antidepressant Medication",
+            "id" : "00001",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "CQFramework"
+            }
+         }, {
+            "name" : "PHQ-9 Modified Score",
+            "id" : "00009",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "CQFramework"
+            }
+         }, {
+            "name" : "PHQ-9 Tool",
+            "id" : "44249-1",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "First Predecessor Year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 1,
+                     "unit" : "year",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "Start",
+                  "operand" : {
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Lookback Interval One More Year",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 1,
+                     "unit" : "year",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "End",
+                  "operand" : {
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "12",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Bipolar Disorder Reports",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Union",
+               "operand" : [ {
+                  "type" : "Union",
+                  "operand" : [ {
+                     "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Bipolar Disorder",
+                        "type" : "ValueSetRef"
+                     }
+                  }, {
+                     "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Bipolar Disorder ECDS",
+                        "type" : "ValueSetRef"
+                     }
+                  } ]
+               }, {
+                  "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Other Bipolar Disorder",
+                     "type" : "ValueSetRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "PeriodToIntervalOfDT",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "start",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               },
+               "high" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "end",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "value",
+               "operandTypeSpecifier" : {
+                  "name" : "{http://hl7.org/fhir}Period",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "Denominator Exclusion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "BD",
+                        "expression" : {
+                           "name" : "Bipolar Disorder Reports",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "BD",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "preliminary",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "final",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "amended",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "corrected",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "appended",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "Overlaps",
+                           "operand" : [ {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "BD",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "name" : "Lookback Interval One More Year",
+                              "type" : "ExpressionRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "MDD",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Major Depression and Dysthymia",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "MDD",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "preliminary",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "final",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "amended",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "corrected",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "appended",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "Overlaps",
+                           "operand" : [ {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "MDD",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "name" : "First Predecessor Year",
+                              "type" : "ExpressionRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Numerator 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "DepressionScreen",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Observation",
+                           "codeProperty" : "code",
+                           "dateProperty" : "effective.value",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Depression Screen",
+                              "type" : "ValueSetRef"
+                           },
+                           "dateRange" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "DepressionScreen",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Positive Depression Screen During Follow-Up Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "PositiveScreen",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "dateProperty" : "effective.value",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Positive Depression Screen",
+                        "type" : "ValueSetRef"
+                     },
+                     "dateRange" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "In",
+                  "operand" : [ {
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "path" : "status",
+                        "scope" : "PositiveScreen",
+                        "type" : "Property"
+                     }
+                  }, {
+                     "type" : "List",
+                     "element" : [ {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "final",
+                        "type" : "Literal"
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "amended",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Denominator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "Positive Depression Screen During Follow-Up Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "First Positive Depression Screen During Follow-Up Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "List",
+               "element" : [ {
+                  "type" : "First",
+                  "source" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "Obs",
+                        "expression" : {
+                           "name" : "Positive Depression Screen During Follow-Up Period",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "sort" : {
+                        "by" : [ {
+                           "direction" : "asc",
+                           "type" : "ByExpression",
+                           "expression" : {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "effective",
+                                 "type" : "IdentifierRef"
+                              }
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Dispensed Antidepressant Within 31 Days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "Antidepressants",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}MedicationDispense",
+                     "codeProperty" : "medication",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Antidepressant Medication",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "PositiveScreen",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "First Positive Depression Screen During Follow-Up Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "Antidepressants",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "LessOrEqual",
+                        "operand" : [ {
+                           "precision" : "Day",
+                           "type" : "DurationBetween",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "whenHandedOver",
+                                 "scope" : "Antidepressants",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "effective",
+                                 "scope" : "PositiveScreen",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "31",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }
+               } ],
+               "return" : {
+                  "expression" : {
+                     "name" : "Antidepressants",
+                     "type" : "AliasRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Follow-Up Care Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Distinct",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Enc",
+                     "expression" : {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "dataType" : "{http://hl7.org/fhir}Encounter",
+                              "codeProperty" : "type",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Behavioral Health Encounter",
+                                 "type" : "ValueSetRef"
+                              }
+                           }, {
+                              "type" : "Query",
+                              "source" : [ {
+                                 "alias" : "E",
+                                 "expression" : {
+                                    "dataType" : "{http://hl7.org/fhir}Encounter",
+                                    "codeProperty" : "type",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "ECDS Follow-Up Visit",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }
+                              } ],
+                              "relationship" : [ {
+                                 "alias" : "D",
+                                 "type" : "With",
+                                 "expression" : {
+                                    "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "Major Depression and Dysthymia",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 },
+                                 "suchThat" : {
+                                    "type" : "And",
+                                    "operand" : [ {
+                                       "type" : "And",
+                                       "operand" : [ {
+                                          "type" : "In",
+                                          "operand" : [ {
+                                             "path" : "value",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "path" : "status",
+                                                "scope" : "E",
+                                                "type" : "Property"
+                                             }
+                                          }, {
+                                             "type" : "List",
+                                             "element" : [ {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "planned",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "arrived",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "triaged",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "in-progress",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "onleave",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "finished",
+                                                "type" : "Literal"
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "type" : "In",
+                                          "operand" : [ {
+                                             "path" : "value",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "path" : "status",
+                                                "scope" : "D",
+                                                "type" : "Property"
+                                             }
+                                          }, {
+                                             "type" : "List",
+                                             "element" : [ {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "preliminary",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "final",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "amended",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "corrected",
+                                                "type" : "Literal"
+                                             }, {
+                                                "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                                "value" : "appended",
+                                                "type" : "Literal"
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "precision" : "Day",
+                                       "type" : "Overlaps",
+                                       "operand" : [ {
+                                          "name" : "PeriodToIntervalOfDT",
+                                          "type" : "FunctionRef",
+                                          "operand" : [ {
+                                             "asType" : "{http://hl7.org/fhir}Period",
+                                             "type" : "As",
+                                             "operand" : {
+                                                "path" : "effective",
+                                                "scope" : "D",
+                                                "type" : "Property"
+                                             }
+                                          } ]
+                                       }, {
+                                          "name" : "PeriodToIntervalOfDT",
+                                          "type" : "FunctionRef",
+                                          "operand" : [ {
+                                             "path" : "period",
+                                             "scope" : "E",
+                                             "type" : "Property"
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }
+                              } ]
+                           } ]
+                        }, {
+                           "dataType" : "{http://hl7.org/fhir}Encounter",
+                           "codeProperty" : "type",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Depression Case Management Encounter",
+                              "type" : "ValueSetRef"
+                           }
+                        } ]
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "Enc",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "planned",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "arrived",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "triaged",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "onleave",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "finished",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Follow-Up Encounter Within 31 Days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "FollowUps",
+                  "expression" : {
+                     "name" : "Follow-Up Care Encounters",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "PositiveScreen",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "First Positive Depression Screen During Follow-Up Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "precision" : "Day",
+                           "type" : "DurationBetween",
+                           "operand" : [ {
+                              "type" : "Start",
+                              "operand" : {
+                                 "name" : "PeriodToIntervalOfDT",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "FollowUps",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "effective",
+                                 "scope" : "PositiveScreen",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "LessOrEqual",
+                        "operand" : [ {
+                           "precision" : "Day",
+                           "type" : "DurationBetween",
+                           "operand" : [ {
+                              "type" : "Start",
+                              "operand" : {
+                                 "name" : "PeriodToIntervalOfDT",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "FollowUps",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "effective",
+                                 "scope" : "PositiveScreen",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "31",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }
+               } ],
+               "return" : {
+                  "expression" : {
+                     "name" : "FollowUps",
+                     "type" : "AliasRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Same Day Behavioral Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "BehavioralEncounter",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Behavioral Health Encounter",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "PositiveScreen",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "First Positive Depression Screen During Follow-Up Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "BehavioralEncounter",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "planned",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "arrived",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "triaged",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "in-progress",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "onleave",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "finished",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "SameAs",
+                        "operand" : [ {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "period",
+                                 "scope" : "BehavioralEncounter",
+                                 "type" : "Property"
+                              } ]
+                           }
+                        }, {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "effective",
+                              "scope" : "PositiveScreen",
+                              "type" : "Property"
+                           }
+                        } ]
+                     } ]
+                  }
+               } ],
+               "return" : {
+                  "expression" : {
+                     "name" : "BehavioralEncounter",
+                     "type" : "AliasRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Negative Depression Screen Within 31 Days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "NegativeScreen",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Negative Depression Screen",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "PositiveScreen",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "First Positive Depression Screen During Follow-Up Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "NegativeScreen",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "type" : "LessOrEqual",
+                        "operand" : [ {
+                           "precision" : "Day",
+                           "type" : "DurationBetween",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "effective",
+                                 "scope" : "NegativeScreen",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "effective",
+                                 "scope" : "PositiveScreen",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "31",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }
+               } ],
+               "return" : {
+                  "expression" : {
+                     "name" : "NegativeScreen",
+                     "type" : "AliasRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Numerator 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Or",
+                     "operand" : [ {
+                        "type" : "Or",
+                        "operand" : [ {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "Dispensed Antidepressant Within 31 Days",
+                              "type" : "ExpressionRef"
+                           }
+                        }, {
+                           "type" : "Exists",
+                           "operand" : {
+                              "name" : "Follow-Up Encounter Within 31 Days",
+                              "type" : "ExpressionRef"
+                           }
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "name" : "Same Day Behavioral Encounter",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Negative Depression Screen Within 31 Days",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "12",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "17",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "18",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "44",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "45",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "64",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 4",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         } ]
+      }
+   }
+}

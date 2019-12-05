@@ -1,0 +1,903 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "NCQACommon_FHIR",
+         "version" : "3.10.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMEDCT",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMEDCT:2015-09",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "version" : "urn:hl7:version:2015-09",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "SNOMEDCT:2016-03",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "version" : "urn:hl7:version:2016-03",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Encounter Inpatient",
+            "id" : "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Hospice care ambulatory",
+            "id" : "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1108.15",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Care Services in Long-Term Residential Facility",
+            "id" : "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1014",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "NCQA Payer",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.42",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "X Institutional SNP Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.43",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Medicare",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.44",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Medicaid",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.45",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Commercial",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1165.46",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "Birthdate",
+            "id" : "21112-8",
+            "display" : "Birthdate",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "Dead",
+            "id" : "419099009",
+            "display" : "Dead",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT"
+            }
+         }, {
+            "name" : "Discharge to healthcare facility for hospice care (procedure)",
+            "id" : "428371000124100",
+            "display" : "Discharge to healthcare facility for hospice care (procedure)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT:2015-09"
+            }
+         }, {
+            "name" : "Discharge to home for hospice care (procedure)",
+            "id" : "428361000124107",
+            "display" : "Discharge to home for hospice care (procedure)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT:2015-09"
+            }
+         }, {
+            "name" : "Long term care hospital (environment)",
+            "id" : "32074000",
+            "display" : "Long term care hospital (environment)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT:2016-03"
+            }
+         }, {
+            "name" : "Patient transfer, to another health care facility (procedure)",
+            "id" : "19712007",
+            "display" : "Patient transfer, to another health care facility (procedure)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT:2016-03"
+            }
+         }, {
+            "name" : "Referral to long term care service (procedure)",
+            "id" : "417708006",
+            "display" : "Referral to long term care service (procedure)",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "SNOMEDCT:2016-03"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Is Enrolled in Institutional SNP",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "SNP",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Encounter",
+                        "codeProperty" : "type",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "X Institutional SNP Value Set",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "SNP",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "in-progress",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "finished",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "type" : "Overlaps",
+                        "operand" : [ {
+                           "name" : "ToInterval",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "period",
+                              "scope" : "SNP",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Is Living Long Term in Institution",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "DischargeLongTerm",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Encounter",
+                           "codeProperty" : "type",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Encounter Inpatient",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "In",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "status",
+                                    "scope" : "DischargeLongTerm",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "type" : "List",
+                                 "element" : [ {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "in-progress",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "finished",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "Or",
+                              "operand" : [ {
+                                 "type" : "Equivalent",
+                                 "operand" : [ {
+                                    "name" : "ToConcept",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "dischargeDisposition",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "hospitalization",
+                                          "scope" : "DischargeLongTerm",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "type" : "ToConcept",
+                                    "operand" : {
+                                       "name" : "Patient transfer, to another health care facility (procedure)",
+                                       "type" : "CodeRef"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "Equivalent",
+                                 "operand" : [ {
+                                    "name" : "ToConcept",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "dischargeDisposition",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "hospitalization",
+                                          "scope" : "DischargeLongTerm",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "type" : "ToConcept",
+                                    "operand" : {
+                                       "name" : "Referral to long term care service (procedure)",
+                                       "type" : "CodeRef"
+                                    }
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "type" : "In",
+                           "operand" : [ {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "DischargeLongTerm",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           }, {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "LongTermOrder",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Task",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Care Services in Long-Term Residential Facility",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "intent",
+                                 "scope" : "LongTermOrder",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "order",
+                              "type" : "Literal"
+                           } ]
+                        }, {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "type" : "In",
+                              "operand" : [ {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "authoredOn",
+                                    "scope" : "LongTermOrder",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              } ]
+                           }, {
+                              "type" : "Overlaps",
+                              "operand" : [ {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "executionPeriod",
+                                    "scope" : "LongTermOrder",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              } ]
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Has Hospice",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "DischargeHospice",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Encounter",
+                           "codeProperty" : "type",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Encounter Inpatient",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "In",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "status",
+                                    "scope" : "DischargeHospice",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "type" : "List",
+                                 "element" : [ {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "in-progress",
+                                    "type" : "Literal"
+                                 }, {
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "finished",
+                                    "type" : "Literal"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "Or",
+                              "operand" : [ {
+                                 "type" : "Equivalent",
+                                 "operand" : [ {
+                                    "name" : "ToConcept",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "dischargeDisposition",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "hospitalization",
+                                          "scope" : "DischargeHospice",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "type" : "ToConcept",
+                                    "operand" : {
+                                       "name" : "Discharge to home for hospice care (procedure)",
+                                       "type" : "CodeRef"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "Equivalent",
+                                 "operand" : [ {
+                                    "name" : "ToConcept",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "dischargeDisposition",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "hospitalization",
+                                          "scope" : "DischargeHospice",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "type" : "ToConcept",
+                                    "operand" : {
+                                       "name" : "Discharge to healthcare facility for hospice care (procedure)",
+                                       "type" : "CodeRef"
+                                    }
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "type" : "In",
+                           "operand" : [ {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "DischargeHospice",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           }, {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "HospiceTask",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Task",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Hospice care ambulatory",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "intent",
+                                 "scope" : "HospiceTask",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "order",
+                              "type" : "Literal"
+                           } ]
+                        }, {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "type" : "In",
+                              "operand" : [ {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "authoredOn",
+                                    "scope" : "HospiceTask",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              } ]
+                           }, {
+                              "type" : "Overlaps",
+                              "operand" : [ {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "executionPeriod",
+                                    "scope" : "HospiceTask",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              } ]
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "ToDate",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "type" : "DateTime",
+               "year" : {
+                  "precision" : "Year",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "month" : {
+                  "precision" : "Month",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "day" : {
+                  "precision" : "Day",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "hour" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "minute" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "second" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "millisecond" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "timezoneOffset" : {
+                  "type" : "TimezoneFrom",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Value",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInDaysAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "precision" : "Day",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInDays",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "name" : "CalendarAgeInDaysAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "type" : "ToDateTime",
+                  "operand" : {
+                     "type" : "Today"
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInMonthsAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "precision" : "Month",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInMonths",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "name" : "CalendarAgeInMonthsAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "type" : "ToDateTime",
+                  "operand" : {
+                     "type" : "Today"
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "LengthInDays",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "precision" : "Day",
+               "type" : "DifferenceBetween",
+               "operand" : [ {
+                  "type" : "Start",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               }, {
+                  "type" : "End",
+                  "operand" : {
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "Value",
+               "operandTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInYearsAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "precision" : "Year",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "CalendarAgeInYears",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "name" : "CalendarAgeInYearsAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "type" : "ToDateTime",
+                  "operand" : {
+                     "type" : "Today"
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         } ]
+      }
+   }
+}

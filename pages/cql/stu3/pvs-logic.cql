@@ -1,13 +1,13 @@
+library PVS_FHIR version '1.0.0'
+
 /*
 Pneumococcal Vaccination Status of Older Adults (PVS)
 */
 
-library PVS_FHIR version '1.0.0'
-
 //using FHIR version '3.0.1'
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 Measure Description
@@ -16,30 +16,30 @@ the recommended series of pneumococcal vaccines: 13-valent pneumococcal
 conjugate vaccine (PCV13) and 23-valent pneumococcal polysaccharide vaccine (PPSV23).
 */
 
-// valueset "Anaphylactic Reaction Due to Vaccine": 'urn:oid:2.16.840.1.113883.3.464.1003.199.12.1027' // Grouping Value Set
-// valueset "Cerebrospinal Fluid Leaks": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Functional or Aplastic Anemia": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Disorders of the Immune System": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Pneumococcal Conjugate Vaccine 13": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Pneumococcal Conjugate Vaccine 23": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
-// valueset "Bone Marrow Transplant": 'urn:oid:2.16.840.1.113883.3.666.5.336' // Grouping Value Set
-// valueset "Chemotherapy": 'urn:oid:2.16.840.1.113762.1.4.1047.451' // Grouping Value Set
-// valueset "Cochlear Implants": 'urn:oid:1.1.1.1' // User Defined QDM Value Set
+// valueset "Anaphylactic Reaction Due to Vaccine": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1003.199.12.1027' // Grouping Value Set
+// valueset "Cerebrospinal Fluid Leaks": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
+// valueset "Functional or Aplastic Anemia": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
+// valueset "Disorders of the Immune System": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
+// valueset "Pneumococcal Conjugate Vaccine 13": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
+// valueset "Pneumococcal Conjugate Vaccine 23": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
+// valueset "Bone Marrow Transplant": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.666.5.336' // Grouping Value Set
+// valueset "Chemotherapy": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113762.1.4.1047.451' // Grouping Value Set
+// valueset "Cochlear Implants": 'http://ncqa.org/hedis/ValueSet/1.1.1.1' // User Defined QDM Value Set
 
 // update
-valueset "Anaphylactic Reaction Due to Serum": '2.16.840.1.113883.3.464.1004.1023'
-valueset "Anaphylactic Reaction Due to Vaccine": '2.16.840.1.113883.3.464.1004.1024'
-valueset "Bone Marrow Transplant": '2.16.840.1.113883.3.464.1004.1325'
-valueset "Bone Marrow Transplant SNOMED": '2.16.840.1.113883.3.464.1004.1442'
-valueset "Cerebrospinal Fluid Leaks": '2.16.840.1.113883.3.464.1004.1448'
-valueset "Chemotherapy": '2.16.840.1.113883.3.464.1004.1326'
-valueset "Chemotherapy SNOMED/CPT": '2.16.840.1.113883.3.464.1004.1441'
-valueset "Cochlear Implants": '2.16.840.1.113883.3.464.1004.1447'
-valueset "Disorders of the Immune System": '2.16.840.1.113883.3.464.1004.1139'
-valueset "Functional or Aplastic Anemia": '2.16.840.1.113883.3.464.1004.1449'
-// valueset "Hospice": '2.16.840.1.113883.3.464.1004.1418'
-valueset "Pneumococcal Conjugate Vaccine 13": '2.16.840.1.113883.3.464.1004.1439'
-valueset "Pneumococcal Conjugate Vaccine 23": '2.16.840.1.113883.3.464.1004.1440'
+valueset "Anaphylactic Reaction Due to Serum": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1023'
+valueset "Anaphylactic Reaction Due to Vaccine": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1024'
+valueset "Bone Marrow Transplant": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1325'
+valueset "Bone Marrow Transplant SNOMED": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1442'
+valueset "Cerebrospinal Fluid Leaks": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1448'
+valueset "Chemotherapy": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1326'
+valueset "Chemotherapy SNOMED/CPT": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1441'
+valueset "Cochlear Implants": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1447'
+valueset "Disorders of the Immune System": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1139'
+valueset "Functional or Aplastic Anemia": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1449'
+// valueset "Hospice": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1418'
+valueset "Pneumococcal Conjugate Vaccine 13": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1439'
+valueset "Pneumococcal Conjugate Vaccine 23": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1440'
 
 /*
 This library has an explicit parameter which is the measurement year.

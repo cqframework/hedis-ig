@@ -6,7 +6,7 @@ Colorectal Cancer Screening (COL)
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 include NCQACommon_FHIR version '3.10.000' called Common
 include Participation_FHIR version '1.0.0'
 
@@ -23,37 +23,37 @@ the results in CQL, where the BCS and CCS measures take the grouping value set
 approach.
 */
 
-valueset "Colonoscopy Value Set": '2.16.840.1.113883.3.464.1004.1064' // Grouper
-//valueset "Colonoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1064.29' // CPT
-//valueset "Colonoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
-//valueset "Colonoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
+valueset "Colonoscopy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1064' // Grouper
+//valueset "Colonoscopy Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1064.29' // CPT
+//valueset "Colonoscopy Value Set (HCPCS)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1064.30' // HCPCS
+//valueset "Colonoscopy Value Set (ICD9)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1064.31' // ICD9CMProc
 
-valueset "Colorectal Cancer Value Set": '2.16.840.1.113883.3.464.1004.1065' // Grouper
-//valueset "Colorectal Cancer Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
-//valueset "Colorectal Cancer Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
+valueset "Colorectal Cancer Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1065' // Grouper
+//valueset "Colorectal Cancer Value Set (ICD10)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1065.32' // ICD10CM
+//valueset "Colorectal Cancer Value Set (ICD9)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1065.33' // ICD9CM
 
-valueset "CT Colonography Value Set": '2.16.840.1.113883.3.464.1004.1421' // Grouper
-//valueset "CT Colonography Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1421.34' // CPT
+valueset "CT Colonography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1421' // Grouper
+//valueset "CT Colonography Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1421.34' // CPT
 
-valueset "FIT-DNA Value Set": '2.16.840.1.113883.3.464.1004.1420' // Grouper
-//valueset "FIT-DNA Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1420.35' // CPT
-//valueset "FIT-DNA Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
-//valueset "FIT-DNA Value Set (LOINC)": '2.16.840.1.113883.3.464.1004.1420.37' // LOINC
+valueset "FIT-DNA Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1420' // Grouper
+//valueset "FIT-DNA Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1420.35' // CPT
+//valueset "FIT-DNA Value Set (HCPCS)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1420.36' // HCPCS
+//valueset "FIT-DNA Value Set (LOINC)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1420.37' // LOINC
 
-valueset "Flexible Sigmoidoscopy Value Set": '2.16.840.1.113883.3.464.1004.1102' // Grouper
-//valueset "Flexible Sigmoidoscopy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1102.38' // CPT
-//valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
-//valueset "Flexible Sigmoidoscopy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
+valueset "Flexible Sigmoidoscopy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1102' // Grouper
+//valueset "Flexible Sigmoidoscopy Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1102.38' // CPT
+//valueset "Flexible Sigmoidoscopy Value Set (HCPCS)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1102.39' // HCPCS
+//valueset "Flexible Sigmoidoscopy Value Set (ICD9)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1102.40' // ICD9CMProc
 
-valueset "FOBT Value Set": '2.16.840.1.113883.3.464.1004.1093' // Grouper
-//valueset "FOBT Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1093.41' // CPT
-//valueset "FOBT Value Set (HCPCS)": '2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
-//valueset "FOBT Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
+valueset "FOBT Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1093' // Grouper
+//valueset "FOBT Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1093.41' // CPT
+//valueset "FOBT Value Set (HCPCS)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1093.42' // HCPCS
+//valueset "FOBT Value Set (ICD9)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1093.43' // ICD9CMProc
 
-valueset "Total Colectomy Value Set": '2.16.840.1.113883.3.464.1004.1250' // Grouper
-//valueset "Total Colectomy Value Set (CPT)": '2.16.840.1.113883.3.464.1004.1250.44' // CPT
-//valueset "Total Colectomy Value Set (ICD10)": '2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
-//valueset "Total Colectomy Value Set (ICD9)": '2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
+valueset "Total Colectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1250' // Grouper
+//valueset "Total Colectomy Value Set (CPT)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1250.44' // CPT
+//valueset "Total Colectomy Value Set (ICD10)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1250.45' // ICD10PCS
+//valueset "Total Colectomy Value Set (ICD9)": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1250.46' // ICD9CMProc
 
 /*
 This library has an explicit parameter which is the product line.

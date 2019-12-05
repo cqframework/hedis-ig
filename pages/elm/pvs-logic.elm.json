@@ -1,0 +1,1117 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "PVS_FHIR",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Anaphylactic Reaction Due to Serum",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1023",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Anaphylactic Reaction Due to Vaccine",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1024",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bone Marrow Transplant",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1325",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Bone Marrow Transplant SNOMED",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1442",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Cerebrospinal Fluid Leaks",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1448",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Chemotherapy",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1326",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Chemotherapy SNOMED/CPT",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1441",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Cochlear Implants",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1447",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Disorders of the Immune System",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1139",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Functional or Aplastic Anemia",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1449",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Pneumococcal Conjugate Vaccine 13",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1439",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Pneumococcal Conjugate Vaccine 23",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1440",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "65",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "name" : "Chemotherapy and Bone Marrow Transplant Procedures",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Union",
+               "operand" : [ {
+                  "dataType" : "{http://hl7.org/fhir}Procedure",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Chemotherapy",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "dataType" : "{http://hl7.org/fhir}Procedure",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Bone Marrow Transplant",
+                     "type" : "ValueSetRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "PeriodToIntervalOfDT",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "start",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               },
+               "high" : {
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "path" : "end",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "value",
+                        "type" : "OperandRef"
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "value",
+               "operandTypeSpecifier" : {
+                  "name" : "{http://hl7.org/fhir}Period",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "name" : "Denominator Exclusion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "ProcedureUnion",
+                        "expression" : {
+                           "name" : "Chemotherapy and Bone Marrow Transplant Procedures",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "ProcedureUnion",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "in-progress",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "completed",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "Overlaps",
+                           "operand" : [ {
+                              "name" : "PeriodToIntervalOfDT",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "performed",
+                                    "scope" : "ProcedureUnion",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "ReactionToVaccine",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Anaphylactic Reaction Due to Vaccine",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "In",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "status",
+                                 "scope" : "ReactionToVaccine",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "type" : "List",
+                              "element" : [ {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "preliminary",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "final",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "amended",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "corrected",
+                                 "type" : "Literal"
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "appended",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "Before",
+                           "operand" : [ {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "name" : "PeriodToIntervalOfDT",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "asType" : "{http://hl7.org/fhir}Period",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "path" : "effective",
+                                          "scope" : "ReactionToVaccine",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }
+                              },
+                              "high" : {
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "name" : "PeriodToIntervalOfDT",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "asType" : "{http://hl7.org/fhir}Period",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "path" : "effective",
+                                          "scope" : "ReactionToVaccine",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }
+                              }
+                           }, {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Pneumococcal Vaccine 13 After Age 60",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "V13",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Immunization",
+                     "codeProperty" : "vaccineCode",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Pneumococcal Conjugate Vaccine 13",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "V13",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "precision" : "Year",
+                        "type" : "CalculateAgeAt",
+                        "operand" : [ {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }, {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "date",
+                              "scope" : "V13",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "60",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Pneumococcal Vaccine 23 After Age 60",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "V23",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Immunization",
+                     "codeProperty" : "vaccineCode",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Pneumococcal Conjugate Vaccine 23",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "V23",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "precision" : "Year",
+                        "type" : "CalculateAgeAt",
+                        "operand" : [ {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }, {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "date",
+                              "scope" : "V23",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "60",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "PVC13 After Age 60 And Then PVC23 After 12 More Months",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "V13",
+                     "expression" : {
+                        "name" : "Pneumococcal Vaccine 13 After Age 60",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "V23",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "Pneumococcal Vaccine 23 After Age 60",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "precision" : "Month",
+                           "type" : "DurationBetween",
+                           "operand" : [ {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "date",
+                                 "scope" : "V13",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "path" : "value",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "date",
+                                 "scope" : "V23",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "12",
+                           "type" : "Literal"
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Immunocompromised Diagnoses Overlapping Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Distinct",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "D",
+                     "expression" : {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Cerebrospinal Fluid Leaks",
+                                 "type" : "ValueSetRef"
+                              }
+                           }, {
+                              "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Functional or Aplastic Anemia",
+                                 "type" : "ValueSetRef"
+                              }
+                           } ]
+                        }, {
+                           "dataType" : "{http://hl7.org/fhir}DiagnosticReport",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Disorders of the Immune System",
+                              "type" : "ValueSetRef"
+                           }
+                        } ]
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "status",
+                              "scope" : "D",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "preliminary",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "appended",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "precision" : "Day",
+                        "type" : "Overlaps",
+                        "operand" : [ {
+                           "name" : "PeriodToIntervalOfDT",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}Period",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "effective",
+                                 "scope" : "D",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "name" : "Cochlear Implants on or Before End of Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "CochlearImplant",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Procedure",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Cochlear Implants",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "CochlearImplant",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "SameOrBefore",
+                     "operand" : [ {
+                        "type" : "Start",
+                        "operand" : {
+                           "name" : "PeriodToIntervalOfDT",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "asType" : "{http://hl7.org/fhir}Period",
+                              "type" : "As",
+                              "operand" : {
+                                 "path" : "performed",
+                                 "scope" : "CochlearImplant",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "type" : "End",
+                        "operand" : {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Immunocompromised Diagnoses or Cochlear Implants",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "Immunocompromised Diagnoses Overlapping Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "name" : "Cochlear Implants on or Before End of Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Pneumococcal Vaccine 13 After Age 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "V13",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Immunization",
+                     "codeProperty" : "vaccineCode",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Pneumococcal Conjugate Vaccine 13",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "V13",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "precision" : "Year",
+                        "type" : "CalculateAgeAt",
+                        "operand" : [ {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }, {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "date",
+                              "scope" : "V13",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "2",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Pneumococcal Vaccine 23 After Age 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "V23",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Immunization",
+                     "codeProperty" : "vaccineCode",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Pneumococcal Conjugate Vaccine 23",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "In",
+                     "operand" : [ {
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "path" : "status",
+                           "scope" : "V23",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "type" : "List",
+                        "element" : [ {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "in-progress",
+                           "type" : "Literal"
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "precision" : "Year",
+                        "type" : "CalculateAgeAt",
+                        "operand" : [ {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }, {
+                           "path" : "value",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "date",
+                              "scope" : "V23",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "2",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "PVC13 After Age 2 And Then PVC23 After 8 More Weeks",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Immunocompromised Diagnoses or Cochlear Implants",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Exists",
+                  "operand" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "V13",
+                        "expression" : {
+                           "name" : "Pneumococcal Vaccine 13 After Age 2",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "alias" : "V23",
+                        "type" : "With",
+                        "expression" : {
+                           "name" : "Pneumococcal Vaccine 23 After Age 2",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "type" : "GreaterOrEqual",
+                           "operand" : [ {
+                              "precision" : "Week",
+                              "type" : "DurationBetween",
+                              "operand" : [ {
+                                 "path" : "value",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "path" : "date",
+                                    "scope" : "V13",
+                                    "type" : "Property"
+                                 }
+                              }, {
+                                 "path" : "value",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "path" : "date",
+                                    "scope" : "V23",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "8",
+                              "type" : "Literal"
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "name" : "PVC13 After Age 60 And Then PVC23 After 12 More Months",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "PVC13 After Age 2 And Then PVC23 After 8 More Weeks",
+                     "type" : "ExpressionRef"
+                  } ]
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "65",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "74",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "75",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "84",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Stratifier 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  } ]
+               }, {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "85",
+                  "type" : "Literal"
+               } ]
+            }
+         } ]
+      }
+   }
+}

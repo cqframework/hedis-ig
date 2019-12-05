@@ -2,7 +2,7 @@ library WCCABA version '1'
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 
 /*
 
@@ -27,6 +27,7 @@ No value set, but must be retrieved for ABA compliance data to be used in a stan
 Uses the DAF Profiles for Body Height/Body Weight
 */
 
+// TODO: get canonical urls for these ValueSets
 valueset "BMI Percentile": 'BMI Percentile'
 valueset "BMI Value": 'BMI Value'
 valueset "Body Height": 'Body Height' // LOINC 8302-2

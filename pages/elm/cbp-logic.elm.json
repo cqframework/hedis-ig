@@ -1,0 +1,2586 @@
+{
+   "library" : {
+      "annotation" : [ {
+         "startLine" : 267,
+         "startChar" : 3,
+         "endLine" : 267,
+         "endChar" : 80,
+         "message" : "Could not resolve code path medicationCodeableConcept for the type of the retrieve FHIR.MedicationDispense.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 267,
+         "startChar" : 3,
+         "endLine" : 267,
+         "endChar" : 80,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      }, {
+         "startLine" : 434,
+         "startChar" : 3,
+         "endLine" : 434,
+         "endChar" : 33,
+         "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+         "errorType" : "semantic",
+         "errorSeverity" : "warning",
+         "type" : "CqlToElmError"
+      } ],
+      "identifier" : {
+         "id" : "CBP_FHIR",
+         "version" : "2"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "default" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Date",
+                  "year" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2018",
+                     "type" : "Literal"
+                  },
+                  "month" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "day" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  }
+               },
+               "high" : {
+                  "type" : "Date",
+                  "year" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2019",
+                     "type" : "Literal"
+                  },
+                  "month" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "day" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  }
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Acute Inpatient",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1017",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Diabetes",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1077",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Diabetes Exclusions",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1105",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "ED",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1086",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "ESRD",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1089",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "ESRD Obsolete",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1090",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Essential Hypertension",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1122",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Inpatient Stay",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1395",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Kidney Transplant",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1141",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Nonacute Inpatient",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1189",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Nonacute Inpatient Stay",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1398",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Observation",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1191",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Outpatient",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1202",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Outpatient Without UBREV",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1203",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Pregnancy",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1219",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Diabetes Medications List",
+            "id" : "DiabetesMedicationsList",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "name" : "Blood Pressure",
+            "id" : "55284-4",
+            "display" : "Blood pressure",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "Systolic Blood Pressure",
+            "id" : "8480-6",
+            "display" : "Systolic blood pressure",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         }, {
+            "name" : "Diastolic Blood Pressure",
+            "id" : "8462-4",
+            "display" : "Diastolic blood pressure",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "First 6 Months of Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "ToDateTime",
+                  "operand" : {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }
+               },
+               "high" : {
+                  "type" : "DateTime",
+                  "year" : {
+                     "precision" : "Year",
+                     "type" : "DateTimeComponentFrom",
+                     "operand" : {
+                        "type" : "Start",
+                        "operand" : {
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     }
+                  },
+                  "month" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "6",
+                     "type" : "Literal"
+                  },
+                  "day" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "30",
+                     "type" : "Literal"
+                  }
+               }
+            }
+         }, {
+            "name" : "In Demographic",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "In",
+               "operand" : [ {
+                  "precision" : "Year",
+                  "type" : "CalculateAgeAt",
+                  "operand" : [ {
+                     "type" : "ToDateTime",
+                     "operand" : {
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }, {
+                     "type" : "DateTime",
+                     "year" : {
+                        "precision" : "Year",
+                        "type" : "DateTimeComponentFrom",
+                        "operand" : {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        }
+                     },
+                     "month" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "12",
+                        "type" : "Literal"
+                     },
+                     "day" : {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "31",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "lowClosed" : true,
+                  "highClosed" : true,
+                  "type" : "Interval",
+                  "low" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "18",
+                     "type" : "Literal"
+                  },
+                  "high" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "85",
+                     "type" : "Literal"
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Outpatient Encounters Without UBREV",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "Encounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Outpatient Without UBREV",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "Encounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "start",
+                           "type" : "Property",
+                           "source" : {
+                              "path" : "period",
+                              "scope" : "Encounters",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "name" : "First 6 Months of Measurement Period",
+                        "type" : "ExpressionRef"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Hypertension Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "HTDiagnosis",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Condition",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Essential Hypertension",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "clinicalStatus",
+                              "scope" : "HTDiagnosis",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "verificationStatus",
+                              "scope" : "HTDiagnosis",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "confirmed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "assertedDate",
+                           "scope" : "HTDiagnosis",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "name" : "First 6 Months of Measurement Period",
+                        "type" : "ExpressionRef"
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "assertedDate",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Event Diagnosis Context Match",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Encounters",
+                     "expression" : {
+                        "name" : "Outpatient Encounters Without UBREV",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "HTDiagnosis",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "Hypertension Diagnosis",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "type" : "EndsWith",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "reference",
+                              "type" : "Property",
+                              "source" : {
+                                 "path" : "context",
+                                 "scope" : "HTDiagnosis",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }, {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "id",
+                              "scope" : "Encounters",
+                              "type" : "Property"
+                           } ]
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Event Diagnosis Date Match",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Encounters",
+                     "expression" : {
+                        "name" : "Outpatient Encounters Without UBREV",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "HTDiagnosis",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "Hypertension Diagnosis",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToDateTime",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "assertedDate",
+                              "scope" : "HTDiagnosis",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "name" : "ToInterval",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "period",
+                              "scope" : "Encounters",
+                              "type" : "Property"
+                           } ]
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Event Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "AnyTrue",
+               "source" : {
+                  "type" : "List",
+                  "element" : [ {
+                     "name" : "Event Diagnosis Context Match",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Event Diagnosis Date Match",
+                     "type" : "ExpressionRef"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "And",
+               "operand" : [ {
+                  "name" : "In Demographic",
+                  "type" : "ExpressionRef"
+               }, {
+                  "name" : "Event Diagnosis",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Lookback Period Year Prior to End of Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "lowClosed" : true,
+               "highClosed" : true,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "Subtract",
+                  "operand" : [ {
+                     "type" : "Start",
+                     "operand" : {
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     }
+                  }, {
+                     "value" : 1,
+                     "unit" : "year",
+                     "type" : "Quantity"
+                  } ]
+               },
+               "high" : {
+                  "type" : "End",
+                  "operand" : {
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  }
+               }
+            }
+         }, {
+            "name" : "Diabetes Condition",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "DiabetesCondition",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Condition",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Diabetes",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "clinicalStatus",
+                                 "scope" : "DiabetesCondition",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "active",
+                              "type" : "Literal"
+                           } ]
+                        }, {
+                           "type" : "Equal",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "verificationStatus",
+                                 "scope" : "DiabetesCondition",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "confirmed",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "CategoryConcepts",
+                              "expression" : {
+                                 "path" : "category",
+                                 "scope" : "DiabetesCondition",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "type" : "Exists",
+                              "operand" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "ConceptCodes",
+                                    "expression" : {
+                                       "path" : "coding",
+                                       "scope" : "CategoryConcepts",
+                                       "type" : "Property"
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "type" : "Equal",
+                                    "operand" : [ {
+                                       "name" : "ToString",
+                                       "libraryName" : "FHIRHelpers",
+                                       "type" : "FunctionRef",
+                                       "operand" : [ {
+                                          "path" : "code",
+                                          "scope" : "ConceptCodes",
+                                          "type" : "Property"
+                                       } ]
+                                    }, {
+                                       "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                       "value" : "encounter-diagnosis",
+                                       "type" : "Literal"
+                                    } ]
+                                 }
+                              }
+                           }
+                        }
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "assertedDate",
+                           "scope" : "DiabetesCondition",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Outpatient Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "OutpatientEncounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Outpatient",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "OutpatientEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "OutpatientEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "path" : "start",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "period",
+                           "type" : "IdentifierRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Observation Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "ObservationEncounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Observation",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "ObservationEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "ObservationEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "path" : "start",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "period",
+                           "type" : "IdentifierRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "ED Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "EDEncounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "ED",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "EDEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "EDEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "path" : "start",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "period",
+                           "type" : "IdentifierRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Nonacute Inpatient Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "NonacuteEncounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Nonacute Inpatient",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "NonacuteEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "NonacuteEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "path" : "start",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "period",
+                           "type" : "IdentifierRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Encounters with Diabetes Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "Encounters",
+                  "expression" : {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "name" : "Outpatient Encounters",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "name" : "Observation Encounters",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }, {
+                        "type" : "Union",
+                        "operand" : [ {
+                           "name" : "ED Encounters",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "name" : "Nonacute Inpatient Encounters",
+                           "type" : "ExpressionRef"
+                        } ]
+                     } ]
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "DiabetesCondition",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "Diabetes Condition",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "ConditionReference",
+                           "expression" : {
+                              "type" : "Query",
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "expression" : {
+                                    "type" : "Query",
+                                    "source" : [ {
+                                       "alias" : "$this",
+                                       "expression" : {
+                                          "path" : "diagnosis",
+                                          "scope" : "Encounters",
+                                          "type" : "Property"
+                                       }
+                                    } ],
+                                    "where" : {
+                                       "type" : "Not",
+                                       "operand" : {
+                                          "type" : "IsNull",
+                                          "operand" : {
+                                             "path" : "condition",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef"
+                                             }
+                                          }
+                                       }
+                                    },
+                                    "return" : {
+                                       "expression" : {
+                                          "path" : "condition",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef"
+                                          }
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "path" : "reference",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef"
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "expression" : {
+                                    "path" : "reference",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef"
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "type" : "EndsWith",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "name" : "ConditionReference",
+                                    "type" : "AliasRef"
+                                 } ]
+                              }, {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "id",
+                                    "scope" : "DiabetesCondition",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "EndsWith",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "reference",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "context",
+                                       "scope" : "DiabetesCondition",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "id",
+                                    "scope" : "Encounters",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           } ]
+                        },
+                        "return" : {
+                           "expression" : {
+                              "name" : "Encounters",
+                              "type" : "AliasRef"
+                           }
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Count Encounters with Diabetes Diagnosis on Different Dates of Service",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Count",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "DiabetesDiagnosisEncounters",
+                     "expression" : {
+                        "name" : "Encounters with Diabetes Diagnosis",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "distinct" : true,
+                     "expression" : {
+                        "path" : "period",
+                        "scope" : "DiabetesDiagnosisEncounters",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Acute Inpatient Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "AcuteEncounters",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Nonacute Inpatient",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "AcuteEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "IncludedIn",
+                     "operand" : [ {
+                        "name" : "ToInterval",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "period",
+                           "scope" : "AcuteEncounters",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "type" : "ByExpression",
+                     "expression" : {
+                        "path" : "start",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "period",
+                           "type" : "IdentifierRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Acute Encounters with Diabetes Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "Encounters",
+                  "expression" : {
+                     "name" : "Acute Inpatient Encounters",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "DiabetesCondition",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "Diabetes Condition",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "ConditionReference",
+                           "expression" : {
+                              "type" : "Query",
+                              "source" : [ {
+                                 "alias" : "$this",
+                                 "expression" : {
+                                    "type" : "Query",
+                                    "source" : [ {
+                                       "alias" : "$this",
+                                       "expression" : {
+                                          "path" : "diagnosis",
+                                          "scope" : "Encounters",
+                                          "type" : "Property"
+                                       }
+                                    } ],
+                                    "where" : {
+                                       "type" : "Not",
+                                       "operand" : {
+                                          "type" : "IsNull",
+                                          "operand" : {
+                                             "path" : "condition",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef"
+                                             }
+                                          }
+                                       }
+                                    },
+                                    "return" : {
+                                       "expression" : {
+                                          "path" : "condition",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef"
+                                          }
+                                       }
+                                    }
+                                 }
+                              } ],
+                              "where" : {
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "path" : "reference",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef"
+                                       }
+                                    }
+                                 }
+                              },
+                              "return" : {
+                                 "expression" : {
+                                    "path" : "reference",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "$this",
+                                       "type" : "AliasRef"
+                                    }
+                                 }
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "Or",
+                           "operand" : [ {
+                              "type" : "EndsWith",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "name" : "ConditionReference",
+                                    "type" : "AliasRef"
+                                 } ]
+                              }, {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "id",
+                                    "scope" : "DiabetesCondition",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "EndsWith",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "reference",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "context",
+                                       "scope" : "DiabetesCondition",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "id",
+                                    "scope" : "Encounters",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           } ]
+                        },
+                        "return" : {
+                           "expression" : {
+                              "name" : "Encounters",
+                              "type" : "AliasRef"
+                           }
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Count Acute Encounters with Diabetes Diagnosis",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Count",
+               "source" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "DiabetesDiagnosisEncounters",
+                     "expression" : {
+                        "name" : "Acute Encounters with Diabetes Diagnosis",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ]
+               }
+            }
+         }, {
+            "name" : "Is Diabetic Using Claim and Encounter Data?",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Diabetes Condition",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "then" : {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "name" : "Count Encounters with Diabetes Diagnosis on Different Dates of Service",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "2",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "name" : "Count Acute Encounters with Diabetes Diagnosis",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "1",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               },
+               "else" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "false",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "name" : "Members Dispensed Diabetes Medications During Step 1 Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "DiabetesMedicationDispense",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}MedicationDispense",
+                     "codeProperty" : "medicationCodeableConcept",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Diabetes Medications List",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "DiabetesMedicationDispense",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "completed",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "whenHandedOver",
+                           "scope" : "DiabetesMedicationDispense",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Is Diabetic Using Pharmacy Data",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "name" : "Members Dispensed Diabetes Medications During Step 1 Period",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "name" : "Step 1 Is Diabetic Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Or",
+               "operand" : [ {
+                  "name" : "Is Diabetic Using Claim and Encounter Data?",
+                  "type" : "ExpressionRef"
+               }, {
+                  "name" : "Is Diabetic Using Pharmacy Data",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "name" : "Diabetes Diagnosis in Any Setting",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "type" : "Query",
+                  "source" : [ {
+                     "alias" : "Encounters",
+                     "expression" : {
+                        "dataType" : "{http://hl7.org/fhir}Encounter",
+                        "type" : "Retrieve"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "alias" : "DiabetesCondition",
+                     "type" : "With",
+                     "expression" : {
+                        "name" : "Diabetes Condition",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "ConditionReference",
+                              "expression" : {
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "alias" : "$this",
+                                    "expression" : {
+                                       "type" : "Query",
+                                       "source" : [ {
+                                          "alias" : "$this",
+                                          "expression" : {
+                                             "path" : "diagnosis",
+                                             "scope" : "Encounters",
+                                             "type" : "Property"
+                                          }
+                                       } ],
+                                       "where" : {
+                                          "type" : "Not",
+                                          "operand" : {
+                                             "type" : "IsNull",
+                                             "operand" : {
+                                                "path" : "condition",
+                                                "type" : "Property",
+                                                "source" : {
+                                                   "name" : "$this",
+                                                   "type" : "AliasRef"
+                                                }
+                                             }
+                                          }
+                                       },
+                                       "return" : {
+                                          "expression" : {
+                                             "path" : "condition",
+                                             "type" : "Property",
+                                             "source" : {
+                                                "name" : "$this",
+                                                "type" : "AliasRef"
+                                             }
+                                          }
+                                       }
+                                    }
+                                 } ],
+                                 "where" : {
+                                    "type" : "Not",
+                                    "operand" : {
+                                       "type" : "IsNull",
+                                       "operand" : {
+                                          "path" : "reference",
+                                          "type" : "Property",
+                                          "source" : {
+                                             "name" : "$this",
+                                             "type" : "AliasRef"
+                                          }
+                                       }
+                                    }
+                                 },
+                                 "return" : {
+                                    "expression" : {
+                                       "path" : "reference",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "name" : "$this",
+                                          "type" : "AliasRef"
+                                       }
+                                    }
+                                 }
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "type" : "Or",
+                              "operand" : [ {
+                                 "type" : "EndsWith",
+                                 "operand" : [ {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "name" : "ConditionReference",
+                                       "type" : "AliasRef"
+                                    } ]
+                                 }, {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "id",
+                                       "scope" : "DiabetesCondition",
+                                       "type" : "Property"
+                                    } ]
+                                 } ]
+                              }, {
+                                 "type" : "EndsWith",
+                                 "operand" : [ {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "reference",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "context",
+                                          "scope" : "DiabetesCondition",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "name" : "ToString",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "id",
+                                       "scope" : "Encounters",
+                                       "type" : "Property"
+                                    } ]
+                                 } ]
+                              } ]
+                           },
+                           "return" : {
+                              "expression" : {
+                                 "name" : "Encounters",
+                                 "type" : "AliasRef"
+                              }
+                           }
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Has Diagnosis of Gestational or Steroid-Induced Diabetes",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "InducedDiabetesCondition",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Condition",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Diabetes Exclusions",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "clinicalStatus",
+                              "scope" : "InducedDiabetesCondition",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "active",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "verificationStatus",
+                              "scope" : "InducedDiabetesCondition",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "confirmed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "assertedDate",
+                           "scope" : "InducedDiabetesCondition",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Lookback Period Year Prior to End of Measurement Period",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Lookback Period Year Prior to End of Measurement Period",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Step 2 Is Diabetic Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Not",
+               "operand" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Or",
+                     "operand" : [ {
+                        "type" : "Not",
+                        "operand" : {
+                           "name" : "Diabetes Diagnosis in Any Setting",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "type" : "And",
+                        "operand" : [ {
+                           "name" : "Is Diabetic Using Pharmacy Data",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "type" : "Not",
+                           "operand" : {
+                              "type" : "Exists",
+                              "operand" : {
+                                 "name" : "Encounters with Diabetes Diagnosis",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "name" : "Has Diagnosis of Gestational or Steroid-Induced Diabetes",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Step 3 Is Diabetic Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "IsNull",
+                        "operand" : {
+                           "name" : "Step 1 Is Diabetic Flag",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "type" : "IsNull",
+                        "operand" : {
+                           "name" : "Step 2 Is Diabetic Flag",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  }
+               },
+               "then" : {
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "false",
+                  "type" : "Literal"
+               },
+               "else" : {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "name" : "Step 1 Is Diabetic Flag",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "name" : "Step 2 Is Diabetic Flag",
+                     "type" : "ExpressionRef"
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            }
+         }, {
+            "name" : "Patient General Practitioners",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "practitioners",
+                  "expression" : {
+                     "path" : "generalPractitioner",
+                     "type" : "Property",
+                     "source" : {
+                        "name" : "Patient",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "Not",
+                  "operand" : {
+                     "type" : "IsNull",
+                     "operand" : {
+                        "path" : "reference",
+                        "scope" : "practitioners",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Get PCP Who Most Recently Provided Care",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "MostRecentEncounters",
+                  "expression" : {
+                     "type" : "Query",
+                     "source" : [ {
+                        "alias" : "Encounters",
+                        "expression" : {
+                           "dataType" : "{http://hl7.org/fhir}Encounter",
+                           "type" : "Retrieve"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "type" : "And",
+                        "operand" : [ {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "Not",
+                              "operand" : {
+                                 "type" : "IsNull",
+                                 "operand" : {
+                                    "path" : "participant",
+                                    "scope" : "Encounters",
+                                    "type" : "Property"
+                                 }
+                              }
+                           }, {
+                              "type" : "Equal",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "status",
+                                    "scope" : "Encounters",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "finished",
+                                 "type" : "Literal"
+                              } ]
+                           } ]
+                        }, {
+                           "precision" : "Day",
+                           "type" : "IncludedIn",
+                           "operand" : [ {
+                              "name" : "ToInterval",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "period",
+                                 "scope" : "Encounters",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "type" : "Interval",
+                              "low" : {
+                                 "type" : "ToDateTime",
+                                 "operand" : {
+                                    "path" : "low",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "Measurement Period",
+                                       "type" : "ParameterRef"
+                                    }
+                                 }
+                              },
+                              "lowClosedExpression" : {
+                                 "path" : "lowClosed",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "Measurement Period",
+                                    "type" : "ParameterRef"
+                                 }
+                              },
+                              "high" : {
+                                 "type" : "ToDateTime",
+                                 "operand" : {
+                                    "path" : "high",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "name" : "Measurement Period",
+                                       "type" : "ParameterRef"
+                                    }
+                                 }
+                              },
+                              "highClosedExpression" : {
+                                 "path" : "highClosed",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "Measurement Period",
+                                    "type" : "ParameterRef"
+                                 }
+                              }
+                           } ]
+                        } ]
+                     },
+                     "sort" : {
+                        "by" : [ {
+                           "direction" : "desc",
+                           "type" : "ByExpression",
+                           "expression" : {
+                              "path" : "start",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "period",
+                                 "type" : "IdentifierRef"
+                              }
+                           }
+                        } ]
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "expression" : {
+                     "type" : "First",
+                     "source" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "participants",
+                           "expression" : {
+                              "path" : "participant",
+                              "scope" : "MostRecentEncounters",
+                              "type" : "Property"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "And",
+                           "operand" : [ {
+                              "type" : "Not",
+                              "operand" : {
+                                 "type" : "IsNull",
+                                 "operand" : {
+                                    "path" : "individual",
+                                    "scope" : "participants",
+                                    "type" : "Property"
+                                 }
+                              }
+                           }, {
+                              "type" : "Not",
+                              "operand" : {
+                                 "type" : "IsNull",
+                                 "operand" : {
+                                    "path" : "reference",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "individual",
+                                       "scope" : "participants",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              }
+                           } ]
+                        },
+                        "return" : {
+                           "expression" : {
+                              "path" : "individual",
+                              "scope" : "participants",
+                              "type" : "Property"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Member's PCP",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "If",
+               "condition" : {
+                  "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "As",
+                  "operand" : {
+                     "type" : "Equal",
+                     "operand" : [ {
+                        "type" : "Length",
+                        "operand" : {
+                           "name" : "Patient General Practitioners",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "1",
+                        "type" : "Literal"
+                     } ]
+                  }
+               },
+               "then" : {
+                  "path" : "reference",
+                  "type" : "Property",
+                  "source" : {
+                     "type" : "First",
+                     "source" : {
+                        "name" : "Patient General Practitioners",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "else" : {
+                  "path" : "reference",
+                  "type" : "Property",
+                  "source" : {
+                     "type" : "First",
+                     "source" : {
+                        "name" : "Get PCP Who Most Recently Provided Care",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }
+            }
+         }, {
+            "name" : "Most Recent BP Readings",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "BPObservation",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Blood Pressure",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "precision" : "Day",
+                     "type" : "In",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "asType" : "{http://hl7.org/fhir}dateTime",
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "effective",
+                              "scope" : "BPObservation",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "low",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           }
+                        },
+                        "lowClosedExpression" : {
+                           "path" : "lowClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "ToDateTime",
+                           "operand" : {
+                              "path" : "high",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           }
+                        },
+                        "highClosedExpression" : {
+                           "path" : "highClosed",
+                           "type" : "Property",
+                           "source" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        }
+                     } ]
+                  }, {
+                     "precision" : "Day",
+                     "type" : "After",
+                     "operand" : [ {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "path" : "effective",
+                              "scope" : "BPObservation",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "name" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     }, {
+                        "name" : "ToDateTime",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "assertedDate",
+                           "type" : "Property",
+                           "source" : {
+                              "type" : "First",
+                              "source" : {
+                                 "name" : "Hypertension Diagnosis",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        } ]
+                     } ]
+                  } ]
+               },
+               "sort" : {
+                  "by" : [ {
+                     "direction" : "desc",
+                     "path" : "effective",
+                     "type" : "ByColumn"
+                  } ]
+               }
+            }
+         } ]
+      }
+   }
+}

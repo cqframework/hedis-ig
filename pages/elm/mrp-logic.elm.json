@@ -1,0 +1,877 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "MRP_FHIR",
+         "version" : "1.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "3.0.0"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "FHIRHelpers",
+            "version" : "3.0.0"
+         }, {
+            "localIdentifier" : "Common",
+            "path" : "NCQACommon_FHIR",
+            "version" : "3.10.000"
+         }, {
+            "localIdentifier" : "Participation",
+            "path" : "Participation_FHIR",
+            "version" : "1.0.0"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "default" : {
+               "lowClosed" : true,
+               "highClosed" : false,
+               "type" : "Interval",
+               "low" : {
+                  "type" : "DateTime",
+                  "year" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2018",
+                     "type" : "Literal"
+                  },
+                  "month" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "day" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "hour" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "0",
+                     "type" : "Literal"
+                  },
+                  "minute" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "0",
+                     "type" : "Literal"
+                  }
+               },
+               "high" : {
+                  "type" : "DateTime",
+                  "year" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2019",
+                     "type" : "Literal"
+                  },
+                  "month" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "day" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "1",
+                     "type" : "Literal"
+                  },
+                  "hour" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "0",
+                     "type" : "Literal"
+                  },
+                  "minute" : {
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "0",
+                     "type" : "Literal"
+                  }
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "name" : "Valid Medication Reconciliation Performer Qualifications",
+            "id" : "http://ncqa.org/hedis/ValueSet/hedis-med-rec-practitioner",
+            "accessLevel" : "Public"
+         }, {
+            "name" : "Medication Reconciliation Value Set",
+            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1174",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "name" : "Encounters Ending Before December 2nd",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "E1",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Encounter Inpatient",
+                        "libraryName" : "Common",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equivalent",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "E1",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "type" : "In",
+                     "operand" : [ {
+                        "type" : "End",
+                        "operand" : {
+                           "name" : "ToInterval",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "period",
+                              "scope" : "E1",
+                              "type" : "Property"
+                           } ]
+                        }
+                     }, {
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "Subtract",
+                           "operand" : [ {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           }, {
+                              "value" : 30,
+                              "unit" : "days",
+                              "type" : "Quantity"
+                           } ]
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Encounters in Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "E2",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Encounter",
+                     "codeProperty" : "type",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Encounter Inpatient",
+                        "libraryName" : "Common",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "Equivalent",
+                     "operand" : [ {
+                        "name" : "ToString",
+                        "libraryName" : "FHIRHelpers",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "path" : "status",
+                           "scope" : "E2",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "Finished",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "type" : "In",
+                     "operand" : [ {
+                        "type" : "End",
+                        "operand" : {
+                           "name" : "ToInterval",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "period",
+                              "scope" : "E2",
+                              "type" : "Property"
+                           } ]
+                        }
+                     }, {
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        },
+                        "high" : {
+                           "type" : "End",
+                           "operand" : {
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Encounters without 30 Day Readmission",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "E1",
+                  "expression" : {
+                     "name" : "Encounters Ending Before December 2nd",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "E2",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "Encounters in Measurement Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "Greater",
+                     "operand" : [ {
+                        "precision" : "Day",
+                        "type" : "DifferenceBetween",
+                        "operand" : [ {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "ToInterval",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "period",
+                                 "scope" : "E2",
+                                 "type" : "Property"
+                              } ]
+                           }
+                        }, {
+                           "type" : "Start",
+                           "operand" : {
+                              "name" : "ToInterval",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "period",
+                                 "scope" : "E1",
+                                 "type" : "Property"
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "30",
+                        "type" : "Literal"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "E",
+                  "expression" : {
+                     "name" : "Encounters without 30 Day Readmission",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "precision" : "Year",
+                           "type" : "CalculateAgeAt",
+                           "operand" : [ {
+                              "type" : "ToDateTime",
+                              "operand" : {
+                                 "path" : "birthDate.value",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "name" : "Patient",
+                                    "type" : "ExpressionRef"
+                                 }
+                              }
+                           }, {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "18",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "name" : "Is Enrolled",
+                        "libraryName" : "Participation",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "name" : "Medicare Product",
+                           "libraryName" : "Participation",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "type" : "Add",
+                           "operand" : [ {
+                              "type" : "End",
+                              "operand" : {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "E",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           }, {
+                              "value" : 30,
+                              "unit" : "days",
+                              "type" : "Quantity"
+                           } ]
+                        }, {
+                           "lowClosed" : true,
+                           "highClosed" : true,
+                           "type" : "Interval",
+                           "low" : {
+                              "type" : "Start",
+                              "operand" : {
+                                 "name" : "ToInterval",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "period",
+                                    "scope" : "E",
+                                    "type" : "Property"
+                                 } ]
+                              }
+                           },
+                           "high" : {
+                              "type" : "Add",
+                              "operand" : [ {
+                                 "type" : "End",
+                                 "operand" : {
+                                    "name" : "ToInterval",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "period",
+                                       "scope" : "E",
+                                       "type" : "Property"
+                                    } ]
+                                 }
+                              }, {
+                                 "value" : 30,
+                                 "unit" : "days",
+                                 "type" : "Quantity"
+                              } ]
+                           }
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "0",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Not",
+                     "operand" : {
+                        "name" : "Has Hospice",
+                        "libraryName" : "Common",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "name" : "Practitioners",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "P",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Practitioner",
+                     "type" : "Retrieve"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "name" : "ToBoolean",
+                     "libraryName" : "FHIRHelpers",
+                     "type" : "FunctionRef",
+                     "operand" : [ {
+                        "path" : "active",
+                        "scope" : "P",
+                        "type" : "Property"
+                     } ]
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "Q",
+                           "expression" : {
+                              "path" : "qualification",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "InValueSet",
+                           "code" : {
+                              "name" : "ToConcept",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "code",
+                                 "scope" : "Q",
+                                 "type" : "Property"
+                              } ]
+                           },
+                           "valueset" : {
+                              "name" : "Valid Medication Reconciliation Performer Qualifications"
+                           }
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Tasks",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "T",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Task",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Medication Reconciliation Value Set",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "And",
+                  "operand" : [ {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "intent",
+                              "scope" : "T",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "order",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "type" : "Equal",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "T",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                           "value" : "completed",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "P",
+                           "expression" : {
+                              "name" : "Practitioners",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "EndsWith",
+                           "operand" : [ {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "reference",
+                                 "type" : "Property",
+                                 "source" : {
+                                    "path" : "owner",
+                                    "scope" : "T",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "name" : "ToString",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "id",
+                                 "scope" : "P",
+                                 "type" : "Property"
+                              } ]
+                           } ]
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "name" : "Observations",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "O",
+                  "expression" : {
+                     "dataType" : "{http://hl7.org/fhir}Observation",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Medication Reconciliation Value Set",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "alias" : "P",
+                  "type" : "With",
+                  "expression" : {
+                     "name" : "Practitioners",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "type" : "And",
+                     "operand" : [ {
+                        "type" : "In",
+                        "operand" : [ {
+                           "name" : "ToString",
+                           "libraryName" : "FHIRHelpers",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "path" : "status",
+                              "scope" : "O",
+                              "type" : "Property"
+                           } ]
+                        }, {
+                           "type" : "List",
+                           "element" : [ {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "final",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "amended",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "corrected",
+                              "type" : "Literal"
+                           } ]
+                        } ]
+                     }, {
+                        "type" : "Exists",
+                        "operand" : {
+                           "type" : "Query",
+                           "source" : [ {
+                              "alias" : "OP",
+                              "expression" : {
+                                 "path" : "performer",
+                                 "scope" : "O",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "type" : "EndsWith",
+                              "operand" : [ {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "reference",
+                                    "scope" : "OP",
+                                    "type" : "Property"
+                                 } ]
+                              }, {
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "id",
+                                    "scope" : "P",
+                                    "type" : "Property"
+                                 } ]
+                              } ]
+                           }
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Query",
+               "source" : [ {
+                  "alias" : "E",
+                  "expression" : {
+                     "name" : "Encounters without 30 Day Readmission",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "type" : "Or",
+                  "operand" : [ {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "T",
+                           "expression" : {
+                              "name" : "Tasks",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "IncludedIn",
+                           "operand" : [ {
+                              "name" : "ToInterval",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "path" : "executionPeriod",
+                                 "scope" : "T",
+                                 "type" : "Property"
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "end",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "period",
+                                       "scope" : "E",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              },
+                              "high" : {
+                                 "type" : "Add",
+                                 "operand" : [ {
+                                    "name" : "ToDateTime",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "end",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "period",
+                                          "scope" : "E",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "value" : 30,
+                                    "unit" : "days",
+                                    "type" : "Quantity"
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }
+                  }, {
+                     "type" : "Exists",
+                     "operand" : {
+                        "type" : "Query",
+                        "source" : [ {
+                           "alias" : "O",
+                           "expression" : {
+                              "name" : "Observations",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "type" : "IncludedIn",
+                           "operand" : [ {
+                              "name" : "ToInterval",
+                              "libraryName" : "FHIRHelpers",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "path" : "effective",
+                                    "scope" : "O",
+                                    "type" : "Property"
+                                 }
+                              } ]
+                           }, {
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "name" : "ToDateTime",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "path" : "end",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "path" : "period",
+                                       "scope" : "E",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              },
+                              "high" : {
+                                 "type" : "Add",
+                                 "operand" : [ {
+                                    "name" : "ToDateTime",
+                                    "libraryName" : "FHIRHelpers",
+                                    "type" : "FunctionRef",
+                                    "operand" : [ {
+                                       "path" : "end",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "path" : "period",
+                                          "scope" : "E",
+                                          "type" : "Property"
+                                       }
+                                    } ]
+                                 }, {
+                                    "value" : 30,
+                                    "unit" : "days",
+                                    "type" : "Quantity"
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               }
+            }
+         } ]
+      }
+   }
+}

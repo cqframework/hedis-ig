@@ -6,7 +6,7 @@ Breast Cancer Screening (BCS)
 
 using FHIR version '3.0.0'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '3.0.0' called FHIRHelpers
 include Participation_FHIR version '1.0.0' called Participation
 include NCQACommon_FHIR version '3.10.000' called Common
 
@@ -15,31 +15,31 @@ Description
 The percentage of women 50-74 years of age who had a mammogram to screen for breast cancer.
 */
 
-valueset "Absence of Left Breast Value Set": '2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
-valueset "Absence of Right Breast Value Set": '2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
+valueset "Absence of Left Breast Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1329.1' // ICD10CM
+valueset "Absence of Right Breast Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1330.2' // ICD10CM
 
-valueset "Bilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1042' // Grouping
-// valueset "Bilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1042.3' // ICD10PCS
-// valueset "Bilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1042.4' // ICD9CMProc
+valueset "Bilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1042' // Grouping
+// valueset "Bilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1042.3' // ICD10PCS
+// valueset "Bilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1042.4' // ICD9CMProc
 
-valueset "Bilateral Modifier Value Set": '2.16.840.1.113883.3.464.1004.1043.5' // CPT-Mod
-valueset "History of Bilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1331.6' // ICD10CM
-valueset "Left Modifier Value Set": '2.16.840.1.113883.3.464.1004.1148.7' // CPT-Mod
+valueset "Bilateral Modifier Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1043.5' // CPT-Mod
+valueset "History of Bilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1331.6' // ICD10CM
+valueset "Left Modifier Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1148.7' // CPT-Mod
 
-valueset "Mammography Value Set": '2.16.840.1.113883.3.464.1004.1168' // Grouping
-// valueset "Mammography Value Set": '2.16.840.1.113883.3.464.1004.1168.8' // CPT
-// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.9' // HCPCS
-// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.10' // ICD9CMProc
-// valueset "Mammography Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1168.11' // RevCode
+valueset "Mammography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168' // Grouping
+// valueset "Mammography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168.8' // CPT
+// valueset "Mammography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168.9' // HCPCS
+// valueset "Mammography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168.10' // ICD9CMProc
+// valueset "Mammography Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1168.11' // RevCode
 
-valueset "Right Modifier Value Set": '2.16.840.1.113883.3.464.1004.1230.12' // CPT-Mod
+valueset "Right Modifier Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1230.12' // CPT-Mod
 
-valueset "Unilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1256' // Grouping
-// valueset "Unilateral Mastectomy Value Set": '2.16.840.1.113883.3.464.1004.1256.13' // CPT
-// valueset "Unilateral Mastectomy Value Set": 'urn:oid:2.16.840.1.113883.3.464.1004.1256.14' // ICD9CMProc
+valueset "Unilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1256' // Grouping
+// valueset "Unilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1256.13' // CPT
+// valueset "Unilateral Mastectomy Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1256.14' // ICD9CMProc
 
-valueset "Unilateral Mastectomy Left Value Set": '2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
-valueset "Unilateral Mastectomy Right Value Set": '2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
+valueset "Unilateral Mastectomy Left Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1334.15' // ICD10PCS
+valueset "Unilateral Mastectomy Right Value Set": 'http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1335.16' // ICD10PCS
 
 /*
 This library has an explicit parameter which is the product line.
