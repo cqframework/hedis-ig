@@ -103,11 +103,11 @@
       "valueSets" : {
          "def" : [ {
             "name" : "Valid Medication Reconciliation Performer Qualifications",
-            "id" : "http://ncqa.org/hedis/ValueSet/hedis-med-rec-practitioner",
+            "id" : "http://ncqa.org/fhir/hedis/ValueSet/hedis-med-rec-practitioner",
             "accessLevel" : "Public"
          }, {
             "name" : "Medication Reconciliation Value Set",
-            "id" : "http://ncqa.org/hedis/ValueSet/2.16.840.1.113883.3.464.1004.1174",
+            "id" : "http://ncqa.org/fhir/hedis/ValueSet/hedismedrecvalueset",
             "accessLevel" : "Public"
          } ]
       },
@@ -812,13 +812,13 @@
                         } ],
                         "relationship" : [ ],
                         "where" : {
-                           "type" : "IncludedIn",
+                           "type" : "In",
                            "operand" : [ {
-                              "name" : "ToInterval",
+                              "name" : "ToDateTime",
                               "libraryName" : "FHIRHelpers",
                               "type" : "FunctionRef",
                               "operand" : [ {
-                                 "asType" : "{http://hl7.org/fhir}Period",
+                                 "asType" : "{http://hl7.org/fhir}dateTime",
                                  "type" : "As",
                                  "operand" : {
                                     "path" : "effective",
