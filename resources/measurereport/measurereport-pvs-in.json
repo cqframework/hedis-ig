@@ -1,0 +1,223 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "measurereport-pvs-in",
+  "contained": [
+    {
+      "resourceType": "Bundle",
+      "id": "a9133001-f64e-4ee9-a630-7eca9b6bcafd",
+      "type": "collection",
+      "entry": [
+        {
+          "fullUrl": "Patient/pvs-in",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "pvs-in",
+            "identifier": [
+              {
+                "use": "official",
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/identifier-type",
+                      "code": "SB",
+                      "display": "Social Beneficiary Identifier"
+                    }
+                  ],
+                  "text": "US Social Security Number"
+                },
+                "system": "http://hl7.org/fhir/sid/us-ssn",
+                "value": "000002667"
+              }
+            ],
+            "active": true,
+            "name": [
+              {
+                "family": "Everywoman",
+                "given": [
+                  "Eve",
+                  "Veronica"
+                ]
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "901-555-5864",
+                "use": "home"
+              },
+              {
+                "system": "phone",
+                "value": "901-555-9891",
+                "use": "mobile"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1951-05-21",
+            "address": [
+              {
+                "use": "home",
+                "type": "postal",
+                "line": [
+                  "666 Eden Circle"
+                ],
+                "city": "Boise",
+                "district": "Ada County",
+                "state": "ID",
+                "postalCode": "83701"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "45171ab0-cd65-4493-9202-263e355d6fb5",
+          "resource": {
+            "resourceType": "List",
+            "id": "45171ab0-cd65-4493-9202-263e355d6fb5",
+            "status": "current",
+            "mode": "snapshot",
+            "title": "numerator",
+            "entry": [
+              {
+                "item": {
+                  "reference": "Immunization/pvs-in-v13"
+                }
+              },
+              {
+                "item": {
+                  "reference": "Immunization/pvs-in-v23"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Immunization/pvs-in-v13",
+          "resource": {
+            "resourceType": "Immunization",
+            "id": "pvs-in-v13",
+            "status": "completed",
+            "notGiven": false,
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "448964007",
+                  "display": "Pneumococcal 13-valent conjugate vaccine (product)"
+                }
+              ]
+            },
+            "patient": {
+              "reference": "Patient/pvs-in"
+            },
+            "date": "2012-05-21",
+            "primarySource": true
+          }
+        },
+        {
+          "fullUrl": "Immunization/pvs-in-v23",
+          "resource": {
+            "resourceType": "Immunization",
+            "id": "pvs-in-v23",
+            "status": "completed",
+            "notGiven": false,
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "90732",
+                  "display": "PPSV23 VACC 2 YRS+ SUBQ/IM"
+                }
+              ]
+            },
+            "patient": {
+              "reference": "Patient/pvs-in"
+            },
+            "date": "2013-07-21",
+            "primarySource": true
+          }
+        },
+        {
+          "fullUrl": "2490a03e-6a35-4b46-b7a6-afe3ce3a0636",
+          "resource": {
+            "resourceType": "List",
+            "id": "2490a03e-6a35-4b46-b7a6-afe3ce3a0636",
+            "status": "current",
+            "mode": "snapshot",
+            "title": "initial-population",
+            "entry": [
+              {
+                "item": {
+                  "reference": "Patient/pvs-in"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "status": "complete",
+  "type": "individual",
+  "measure": {
+    "reference": "Measure/measure-pvs"
+  },
+  "patient": {
+    "reference": "Patient/pvs-in"
+  },
+  "period": {
+    "start": "2019-01-01T00:00:00-07:00",
+    "end": "2019-12-31T00:00:00-07:00"
+  },
+  "group": [
+    {
+      "identifier": {
+        "value": "PVS-cohort"
+      },
+      "population": [
+        {
+          "identifier": {
+            "value": "initial-population"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "initial-population"
+              }
+            ]
+          },
+          "count": 1
+        },
+        {
+          "identifier": {
+            "value": "numerator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "numerator"
+              }
+            ]
+          },
+          "count": 1
+        },
+        {
+          "identifier": {
+            "value": "denominator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "denominator"
+              }
+            ]
+          },
+          "count": 1
+        }
+      ],
+      "measureScore": 1.0
+    }
+  ],
+  "evaluatedResources": {
+    "reference": "#a9133001-f64e-4ee9-a630-7eca9b6bcafd"
+  }
+}
