@@ -1,131 +1,45 @@
 {
   "resourceType": "Bundle",
-  "id": "drr-in-3",
+  "id": "drr-in-1",
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/DiagnosticReport/drr-in-3",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/drr-in-1-assessment1",
       "resource": {
-        "resourceType": "DiagnosticReport",
-        "id": "drr-in-3",
-        "contained": [
-          {
-            "resourceType": "Encounter",
-            "id": "drr-in-3",
-            "status": "finished",
-            "class": {
-              "system": "http://hl7.org/fhir/v3/ActCode",
-              "code": "IMP",
-              "display": "inpatient encounter"
-            },
-            "type": [
-              {
-                "coding": [
-                  {
-                    "system": "http://www.ama-assn.org/go/cpt",
-                    "code": "99078",
-                    "display": "GROUP HEALTH EDUCATION"
-                  }
-                ]
-              }
-            ],
-            "subject": {
-              "reference": "Patient/drr-in-3",
-              "display": "Eve Veronica Everywoman"
-            },
-            "participant": [
-              {
-                "period": {
-                  "start": "2017-09-30T00:00:00-04:00",
-                  "end": "2017-09-30T14:19:00-04:00"
-                },
-                "individual": {
-                  "reference": "Practitioner/drr-in-3",
-                  "display": "Stanley Jason Garrett MD"
-                }
-              }
-            ],
-            "period": {
-              "start": "2017-09-30T00:00:00-04:00",
-              "end": "2017-09-30T14:19:00-04:00"
-            },
-            "hospitalization": {
-              "dischargeDisposition": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/discharge-disposition",
-                    "code": "home",
-                    "display": "Home"
-                  }
-                ]
-              }
-            },
-            "location": [
-              {
-                "location": {
-                  "reference": "Location/Location-1001",
-                  "display": "Windward General Hospital"
-                }
-              }
-            ],
-            "serviceProvider": {
-              "reference": "Organization/Organization-1001",
-              "display": "Windward General Hospital"
-            }
-          }
-        ],
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
-            "valueReference": {
-              "reference": "Location/Location-1001"
-            }
-          }
-        ],
-        "identifier": [
-          {
-            "system": "http://acme.com/lab/reports",
-            "value": "5234342"
-          }
-        ],
+        "resourceType": "Observation",
+        "id": "drr-in-1-assessment1",
         "status": "final",
-        "category": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/v2/0074",
-              "code": "HM"
-            }
-          ]
-        },
         "code": {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/sid/icd-10-cm",
-              "code": "F32.0",
-              "display": "[F32.0] Major depressive disorder, single episode, mild"
+              "system": "http://loinc.org",
+              "code": "44249-1"
             }
-          ],
-          "text": "[F32.0] Major depressive disorder, single episode, mild"
+          ]
         },
         "subject": {
-          "reference": "Patient/drr-in-3"
+          "reference": "Patient/drr-in-1"
         },
-        "effectivePeriod": {
-          "start": "2017-09-30T00:00:00-04:00",
-          "end": "2017-09-30T23:59:00-04:00"
-        },
-        "issued": "2017-09-30T00:00:00-04:00"
+        "effectiveDateTime": "2017-09-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/drr-in-1"
+          }
+        ],
+        "valueQuantity": {
+          "value": 10.0
+        }
       },
       "request": {
         "method": "PUT",
-        "url": "DiagnosticReport/drr-in-3"
+        "url": "Observation/drr-in-1-assessment1"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Encounter/drr-in-3",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Encounter/drr-in-1",
       "resource": {
         "resourceType": "Encounter",
-        "id": "drr-in-3",
+        "id": "drr-in-1",
         "status": "finished",
         "class": {
           "system": "http://hl7.org/fhir/v3/ActCode",
@@ -144,7 +58,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/drr-in-3",
+          "reference": "Patient/drr-in-1",
           "display": "Eve Veronica Everywoman"
         },
         "participant": [
@@ -154,7 +68,7 @@
               "end": "2017-09-30T14:19:00-04:00"
             },
             "individual": {
-              "reference": "Practitioner/drr-in-3",
+              "reference": "Practitioner/drr-in-1",
               "display": "Stanley Jason Garrett MD"
             }
           }
@@ -189,14 +103,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Encounter/drr-in-3"
+        "url": "Encounter/drr-in-1"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Practitioner/drr-in-3",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Practitioner/drr-in-1",
       "resource": {
         "resourceType": "Practitioner",
-        "id": "drr-in-3",
+        "id": "drr-in-1",
         "meta": {
           "versionId": "1",
           "lastUpdated": "2019-12-06T14:24:16.298-07:00"
@@ -290,14 +204,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Practitioner/drr-in-3"
+        "url": "Practitioner/drr-in-1"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Patient/drr-in-3",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Patient/drr-in-1",
       "resource": {
         "resourceType": "Patient",
-        "id": "drr-in-3",
+        "id": "drr-in-1",
         "extension": [
           {
             "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
@@ -393,14 +307,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Patient/drr-in-3"
+        "url": "Patient/drr-in-1"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/drr-in-3-assessment1",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/drr-in-1-assessment2",
       "resource": {
         "resourceType": "Observation",
-        "id": "drr-in-3-assessment1",
+        "id": "drr-in-1-assessment2",
         "status": "final",
         "code": {
           "coding": [
@@ -411,90 +325,93 @@
           ]
         },
         "subject": {
-          "reference": "Patient/drr-in-3"
-        },
-        "performer": {
-          "reference": "Practitioner/drr-in-3"
-        },
-        "effectiveDateTime": "2017-09-20T00:00:00-04:00",
-        "valueQuantity": {
-          "value": 12.0
-        }
-      },
-      "request": {
-        "method": "PUT",
-        "url": "Observation/drr-in-3-assessment1"
-      }
-    },
-    {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/Observation/drr-in-3-assessment2",
-      "resource": {
-        "resourceType": "Observation",
-        "id": "drr-in-3-assessment2",
-        "status": "final",
-        "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "44249-1"
-            }
-          ]
-        },
-        "subject": {
-          "reference": "Patient/drr-in-3"
-        },
-        "performer": {
-          "reference": "Practitioner/drr-in-3"
+          "reference": "Patient/drr-in-1"
         },
         "effectiveDateTime": "2018-03-20T00:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/drr-in-1"
+          }
+        ],
         "valueQuantity": {
           "value": 6.0
         }
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/drr-in-3-assessment2"
+        "url": "Observation/drr-in-1-assessment2"
       }
     },
     {
-      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/MeasureReport/drr-in-3",
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/DiagnosticReport/drr-in-1",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "drr-in-1",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
+            "valueReference": {
+              "reference": "Location/Location-1001"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "system": "http://acme.com/lab/reports",
+            "value": "5234342"
+          }
+        ],
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0074",
+              "code": "HM"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F32.0",
+              "display": "[F32.0] Major depressive disorder, single episode, mild"
+            }
+          ],
+          "text": "[F32.0] Major depressive disorder, single episode, mild"
+        },
+        "subject": {
+          "reference": "Patient/drr-in-1"
+        },
+        "effectivePeriod": {
+          "start": "2017-09-30T00:00:00-04:00",
+          "end": "2017-09-30T23:59:00-04:00"
+        },
+        "issued": "2017-09-30T00:00:00-04:00"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "DiagnosticReport/drr-in-1"
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8080/cqf-ruler-dstu3/fhir/MeasureReport/drr-in-1",
       "resource": {
         "resourceType": "MeasureReport",
-        "id": "drr-in-3",
         "contained": [
           {
             "resourceType": "Bundle",
-            "id": "0f0b78c9-a0b0-4b48-8117-1921463816eb",
+            "id": "562bc352-be63-46c8-8ce3-5de5d1d27756",
             "type": "collection",
             "entry": [
               {
-                "fullUrl": "1ef4c40a-2dc0-4467-ab09-50e01b17adc5",
-                "resource": {
-                  "resourceType": "List",
-                  "id": "1ef4c40a-2dc0-4467-ab09-50e01b17adc5",
-                  "title": "denominator",
-                  "entry": [
-                    {
-                      "item": {
-                        "reference": "#Observation/drr-in-3-assessment1"
-                      }
-                    },
-                    {
-                      "item": {
-                        "reference": "#Observation/drr-in-3-assessment2"
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "fullUrl": "Patient/drr-in-3",
+                "fullUrl": "Patient/drr-in-1",
                 "resource": {
                   "resourceType": "Patient",
-                  "id": "drr-in-3",
+                  "id": "drr-in-1",
                   "meta": {
                     "versionId": "1",
-                    "lastUpdated": "2019-12-11T08:24:44.822-07:00"
+                    "lastUpdated": "2019-12-11T14:39:27.823-07:00"
                   },
                   "text": {
                     "status": "generated",
@@ -595,102 +512,38 @@
                 }
               },
               {
-                "fullUrl": "Observation/drr-in-3-assessment1",
-                "resource": {
-                  "resourceType": "Observation",
-                  "id": "drr-in-3-assessment1",
-                  "meta": {
-                    "versionId": "3",
-                    "lastUpdated": "2019-12-11T08:41:30.419-07:00"
-                  },
-                  "status": "final",
-                  "code": {
-                    "coding": [
-                      {
-                        "system": "http://loinc.org",
-                        "code": "44249-1"
-                      }
-                    ]
-                  },
-                  "subject": {
-                    "reference": "Patient/drr-in-3"
-                  },
-                  "effectiveDateTime": "2017-09-20T00:00:00-04:00",
-                  "performer": [
-                    {
-                      "reference": "Practitioner/drr-in"
-                    }
-                  ],
-                  "valueQuantity": {
-                    "value": 12.0
-                  }
-                }
-              },
-              {
-                "fullUrl": "Observation/drr-in-3-assessment2",
-                "resource": {
-                  "resourceType": "Observation",
-                  "id": "drr-in-3-assessment2",
-                  "meta": {
-                    "versionId": "3",
-                    "lastUpdated": "2019-12-11T08:41:30.369-07:00"
-                  },
-                  "status": "final",
-                  "code": {
-                    "coding": [
-                      {
-                        "system": "http://loinc.org",
-                        "code": "44249-1"
-                      }
-                    ]
-                  },
-                  "subject": {
-                    "reference": "Patient/drr-in-3"
-                  },
-                  "effectiveDateTime": "2018-03-20T00:00:00-04:00",
-                  "performer": [
-                    {
-                      "reference": "Practitioner/drr-in"
-                    }
-                  ],
-                  "valueQuantity": {
-                    "value": 6.0
-                  }
-                }
-              },
-              {
-                "fullUrl": "bcc1f555-f780-4dbb-a850-09a6492c25a6",
+                "fullUrl": "9e4444ea-057e-4265-9cd6-ca0ddef48400",
                 "resource": {
                   "resourceType": "List",
-                  "id": "bcc1f555-f780-4dbb-a850-09a6492c25a6",
+                  "id": "9e4444ea-057e-4265-9cd6-ca0ddef48400",
                   "title": "initial-population",
                   "entry": [
                     {
                       "item": {
-                        "reference": "#Patient/drr-in-3"
+                        "reference": "#Patient/drr-in-1"
                       }
                     },
                     {
                       "item": {
-                        "reference": "#DiagnosticReport/drr-in-3"
+                        "reference": "#DiagnosticReport/drr-in-1"
                       }
                     },
                     {
                       "item": {
-                        "reference": "#Encounter/drr-in-3"
+                        "reference": "#Encounter/drr-in-1"
                       }
                     }
                   ]
                 }
               },
               {
-                "fullUrl": "DiagnosticReport/drr-in-3",
+                "fullUrl": "DiagnosticReport/drr-in-1",
                 "resource": {
                   "resourceType": "DiagnosticReport",
-                  "id": "drr-in-3",
+                  "id": "drr-in-1",
                   "meta": {
                     "versionId": "1",
-                    "lastUpdated": "2019-12-11T08:24:44.822-07:00"
+                    "lastUpdated": "2019-12-11T14:39:27.823-07:00"
                   },
                   "text": {
                     "status": "generated",
@@ -730,7 +583,7 @@
                     "text": "[F32.0] Major depressive disorder, single episode, mild"
                   },
                   "subject": {
-                    "reference": "Patient/drr-in-3"
+                    "reference": "Patient/drr-in-1"
                   },
                   "effectivePeriod": {
                     "start": "2017-09-30T00:00:00-04:00",
@@ -740,13 +593,97 @@
                 }
               },
               {
-                "fullUrl": "Encounter/drr-in-3",
+                "fullUrl": "Observation/drr-in-1-assessment2",
                 "resource": {
-                  "resourceType": "Encounter",
-                  "id": "drr-in-3",
+                  "resourceType": "Observation",
+                  "id": "drr-in-1-assessment2",
                   "meta": {
                     "versionId": "1",
-                    "lastUpdated": "2019-12-11T08:24:44.822-07:00"
+                    "lastUpdated": "2019-12-11T14:39:27.823-07:00"
+                  },
+                  "status": "final",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://loinc.org",
+                        "code": "44249-1"
+                      }
+                    ]
+                  },
+                  "subject": {
+                    "reference": "Patient/drr-in-1"
+                  },
+                  "effectiveDateTime": "2018-03-20T00:00:00-04:00",
+                  "performer": [
+                    {
+                      "reference": "Practitioner/drr-in-1"
+                    }
+                  ],
+                  "valueQuantity": {
+                    "value": 6.0
+                  }
+                }
+              },
+              {
+                "fullUrl": "Observation/drr-in-1-assessment1",
+                "resource": {
+                  "resourceType": "Observation",
+                  "id": "drr-in-1-assessment1",
+                  "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2019-12-11T14:39:27.823-07:00"
+                  },
+                  "status": "final",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://loinc.org",
+                        "code": "44249-1"
+                      }
+                    ]
+                  },
+                  "subject": {
+                    "reference": "Patient/drr-in-1"
+                  },
+                  "effectiveDateTime": "2017-09-20T00:00:00-04:00",
+                  "performer": [
+                    {
+                      "reference": "Practitioner/drr-in-1"
+                    }
+                  ],
+                  "valueQuantity": {
+                    "value": 10.0
+                  }
+                }
+              },
+              {
+                "fullUrl": "3dde503d-4929-4aa7-94e4-5876c3ef15d6",
+                "resource": {
+                  "resourceType": "List",
+                  "id": "3dde503d-4929-4aa7-94e4-5876c3ef15d6",
+                  "title": "denominator",
+                  "entry": [
+                    {
+                      "item": {
+                        "reference": "#Observation/drr-in-1-assessment2"
+                      }
+                    },
+                    {
+                      "item": {
+                        "reference": "#Observation/drr-in-1-assessment1"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "fullUrl": "Encounter/drr-in-1",
+                "resource": {
+                  "resourceType": "Encounter",
+                  "id": "drr-in-1",
+                  "meta": {
+                    "versionId": "1",
+                    "lastUpdated": "2019-12-11T14:39:27.823-07:00"
                   },
                   "status": "finished",
                   "class": {
@@ -766,7 +703,7 @@
                     }
                   ],
                   "subject": {
-                    "reference": "Patient/drr-in-3",
+                    "reference": "Patient/drr-in-1",
                     "display": "Eve Veronica Everywoman"
                   },
                   "participant": [
@@ -776,7 +713,7 @@
                         "end": "2017-09-30T14:19:00-04:00"
                       },
                       "individual": {
-                        "reference": "Practitioner/drr-in",
+                        "reference": "Practitioner/drr-in-1",
                         "display": "Stanley Jason Garrett MD"
                       }
                     }
@@ -819,7 +756,7 @@
           "reference": "Measure/measure-drr"
         },
         "patient": {
-          "reference": "Patient/drr-in-3"
+          "reference": "Patient/drr-in-1"
         },
         "period": {
           "start": "2018-01-01T00:00:00-07:00",
@@ -949,7 +886,7 @@
                     }
                   ]
                 },
-                "count": 1
+                "count": 0
               },
               {
                 "identifier": {
@@ -965,16 +902,16 @@
                 "count": 1
               }
             ],
-            "measureScore": 1.0
+            "measureScore": 0.0
           }
         ],
         "evaluatedResources": {
-          "reference": "#0f0b78c9-a0b0-4b48-8117-1921463816eb"
+          "reference": "#562bc352-be63-46c8-8ce3-5de5d1d27756"
         }
       },
       "request": {
         "method": "PUT",
-        "url": "MeasureReport/drr-in3"
+        "url": "MeasureReport/drr-in-1"
       }
     }
   ]

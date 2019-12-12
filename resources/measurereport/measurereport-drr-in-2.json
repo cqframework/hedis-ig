@@ -1,140 +1,91 @@
 {
   "resourceType": "MeasureReport",
-  "id": "drr-out-3",
+  "id": "drr-in-2",
   "contained": [
     {
       "resourceType": "Bundle",
-      "id": "2c1c4ba1-804c-4782-9eb0-13ef7ad8d94d",
+      "id": "2fd73719-a1aa-4e61-be6c-12f5d4f0c831",
       "type": "collection",
       "entry": [
         {
-          "fullUrl": "DiagnosticReport/drr-out-3",
+          "fullUrl": "Encounter/drr-in-2",
           "resource": {
-            "resourceType": "DiagnosticReport",
-            "id": "drr-out-3",
+            "resourceType": "Encounter",
+            "id": "drr-in-2",
             "meta": {
               "versionId": "1",
-              "lastUpdated": "2019-12-11T10:26:34.984-07:00"
+              "lastUpdated": "2019-12-11T11:43:07.049-07:00"
             },
-            "text": {
-              "status": "generated",
-              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> [F32.0] Major depressive disorder, single episode, mild </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>FINAL</td></tr><tr><td>Issued</td><td>29 September 2017 22:00:00</td></tr></tbody></table></div>"
+            "status": "finished",
+            "class": {
+              "system": "http://hl7.org/fhir/v3/ActCode",
+              "code": "IMP",
+              "display": "inpatient encounter"
             },
-            "extension": [
+            "type": [
               {
-                "url": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
-                "valueReference": {
-                  "reference": "Location/Location-1001"
-                }
+                "coding": [
+                  {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "99078",
+                    "display": "GROUP HEALTH EDUCATION"
+                  }
+                ]
               }
             ],
-            "identifier": [
-              {
-                "system": "http://acme.com/lab/reports",
-                "value": "5234342"
-              }
-            ],
-            "status": "final",
-            "category": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/v2/0074",
-                  "code": "HM"
-                }
-              ]
-            },
-            "code": {
-              "coding": [
-                {
-                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
-                  "code": "F32.0",
-                  "display": "[F32.0] Major depressive disorder, single episode, mild"
-                }
-              ],
-              "text": "[F32.0] Major depressive disorder, single episode, mild"
-            },
             "subject": {
-              "reference": "Patient/drr-out-3"
+              "reference": "Patient/drr-in-2",
+              "display": "Eve Veronica Everywoman"
             },
-            "effectivePeriod": {
+            "participant": [
+              {
+                "period": {
+                  "start": "2017-09-30T00:00:00-04:00",
+                  "end": "2017-09-30T14:19:00-04:00"
+                },
+                "individual": {
+                  "reference": "Practitioner/drr-in-2",
+                  "display": "Stanley Jason Garrett MD"
+                }
+              }
+            ],
+            "period": {
               "start": "2017-09-30T00:00:00-04:00",
-              "end": "2017-09-30T23:59:00-04:00"
+              "end": "2017-09-30T14:19:00-04:00"
             },
-            "issued": "2017-09-30T00:00:00-04:00"
-          }
-        },
-        {
-          "fullUrl": "Observation/drr-out-3-assessment2",
-          "resource": {
-            "resourceType": "Observation",
-            "id": "drr-out-3-assessment2",
-            "meta": {
-              "versionId": "1",
-              "lastUpdated": "2019-12-11T10:22:23.858-07:00"
+            "hospitalization": {
+              "dischargeDisposition": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/discharge-disposition",
+                    "code": "home",
+                    "display": "Home"
+                  }
+                ]
+              }
             },
-            "status": "final",
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "44249-1"
-                }
-              ]
-            },
-            "subject": {
-              "reference": "Patient/drr-out-3"
-            },
-            "effectiveDateTime": "2018-03-20T00:00:00-04:00",
-            "performer": [
+            "location": [
               {
-                "reference": "Practitioner/drr-out-3"
+                "location": {
+                  "reference": "Location/Location-1001",
+                  "display": "Windward General Hospital"
+                }
               }
             ],
-            "valueQuantity": {
-              "value": 7.0
+            "serviceProvider": {
+              "reference": "Organization/Organization-1001",
+              "display": "Windward General Hospital"
             }
           }
         },
         {
-          "fullUrl": "Observation/drr-out-assessment1",
-          "resource": {
-            "resourceType": "Observation",
-            "id": "drr-out-assessment1",
-            "meta": {
-              "versionId": "1",
-              "lastUpdated": "2019-12-11T10:22:23.858-07:00"
-            },
-            "status": "final",
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "44249-1"
-                }
-              ]
-            },
-            "subject": {
-              "reference": "Patient/drr-out-3"
-            },
-            "effectiveDateTime": "2017-09-20T00:00:00-04:00",
-            "performer": [
-              {
-                "reference": "Practitioner/drr-out-3"
-              }
-            ],
-            "valueQuantity": {
-              "value": 12.0
-            }
-          }
-        },
-        {
-          "fullUrl": "Patient/drr-out-3",
+          "fullUrl": "Patient/drr-in-2",
           "resource": {
             "resourceType": "Patient",
-            "id": "drr-out-3",
+            "id": "drr-in-2",
             "meta": {
               "versionId": "1",
-              "lastUpdated": "2019-12-11T10:22:23.858-07:00"
+              "lastUpdated": "2019-12-11T11:43:07.049-07:00"
             },
             "text": {
               "status": "generated",
@@ -235,119 +186,168 @@
           }
         },
         {
-          "fullUrl": "443b17cc-834a-4a70-a74c-0fdf3e017fff",
+          "fullUrl": "3735e2b1-8655-4ebe-86e7-717fe021ff20",
           "resource": {
             "resourceType": "List",
-            "id": "443b17cc-834a-4a70-a74c-0fdf3e017fff",
-            "title": "initial-population",
-            "entry": [
-              {
-                "item": {
-                  "reference": "#DiagnosticReport/drr-out-3"
-                }
-              },
-              {
-                "item": {
-                  "reference": "#Patient/drr-out-3"
-                }
-              },
-              {
-                "item": {
-                  "reference": "#Encounter/drr-out-3"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "fullUrl": "0f4a9477-b131-4f02-a9f6-67a31e8c862d",
-          "resource": {
-            "resourceType": "List",
-            "id": "0f4a9477-b131-4f02-a9f6-67a31e8c862d",
+            "id": "3735e2b1-8655-4ebe-86e7-717fe021ff20",
             "title": "denominator",
             "entry": [
               {
                 "item": {
-                  "reference": "#Observation/drr-out-3-assessment2"
+                  "reference": "#Observation/drr-in-2-assessment2"
                 }
               },
               {
                 "item": {
-                  "reference": "#Observation/drr-out-assessment1"
+                  "reference": "#Observation/drr-in-2-assessment1"
                 }
               }
             ]
           }
         },
         {
-          "fullUrl": "Encounter/drr-out-3",
+          "fullUrl": "Observation/drr-in-2-assessment2",
           "resource": {
-            "resourceType": "Encounter",
-            "id": "drr-out-3",
+            "resourceType": "Observation",
+            "id": "drr-in-2-assessment2",
+            "meta": {
+              "versionId": "2",
+              "lastUpdated": "2019-12-11T11:46:07.631-07:00"
+            },
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "44249-1"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/drr-in-2"
+            },
+            "effectiveDateTime": "2018-03-20T00:00:00-04:00",
+            "performer": [
+              {
+                "reference": "Practitioner/drr-in-2"
+              }
+            ],
+            "valueQuantity": {
+              "value": 4.8
+            }
+          }
+        },
+        {
+          "fullUrl": "Observation/drr-in-2-assessment1",
+          "resource": {
+            "resourceType": "Observation",
+            "id": "drr-in-2-assessment1",
+            "meta": {
+              "versionId": "2",
+              "lastUpdated": "2019-12-11T11:46:07.626-07:00"
+            },
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "44249-1"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/drr-in-2"
+            },
+            "effectiveDateTime": "2017-09-20T00:00:00-04:00",
+            "performer": [
+              {
+                "reference": "Practitioner/drr-in-2"
+              }
+            ],
+            "valueQuantity": {
+              "value": 9.5
+            }
+          }
+        },
+        {
+          "fullUrl": "103606e2-087b-4298-9b87-bcb83ca73c19",
+          "resource": {
+            "resourceType": "List",
+            "id": "103606e2-087b-4298-9b87-bcb83ca73c19",
+            "title": "initial-population",
+            "entry": [
+              {
+                "item": {
+                  "reference": "#Encounter/drr-in-2"
+                }
+              },
+              {
+                "item": {
+                  "reference": "#Patient/drr-in-2"
+                }
+              },
+              {
+                "item": {
+                  "reference": "#DiagnosticReport/drr-in-2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "DiagnosticReport/drr-in-2",
+          "resource": {
+            "resourceType": "DiagnosticReport",
+            "id": "drr-in-2",
             "meta": {
               "versionId": "1",
-              "lastUpdated": "2019-12-11T10:22:23.858-07:00"
+              "lastUpdated": "2019-12-11T11:43:07.049-07:00"
             },
-            "status": "finished",
-            "class": {
-              "system": "http://hl7.org/fhir/v3/ActCode",
-              "code": "IMP",
-              "display": "inpatient encounter"
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> [F32.0] Major depressive disorder, single episode, mild </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>FINAL</td></tr><tr><td>Issued</td><td>29 September 2017 22:00:00</td></tr></tbody></table></div>"
             },
-            "type": [
+            "extension": [
               {
-                "coding": [
-                  {
-                    "system": "http://www.ama-assn.org/go/cpt",
-                    "code": "99078",
-                    "display": "GROUP HEALTH EDUCATION"
-                  }
-                ]
+                "url": "http://hl7.org/fhir/StructureDefinition/diagnosticReport-locationPerformed",
+                "valueReference": {
+                  "reference": "Location/Location-1001"
+                }
               }
             ],
+            "identifier": [
+              {
+                "system": "http://acme.com/lab/reports",
+                "value": "5234342"
+              }
+            ],
+            "status": "final",
+            "category": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0074",
+                  "code": "HM"
+                }
+              ]
+            },
+            "code": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "F32.0",
+                  "display": "[F32.0] Major depressive disorder, single episode, mild"
+                }
+              ],
+              "text": "[F32.0] Major depressive disorder, single episode, mild"
+            },
             "subject": {
-              "reference": "Patient/drr-out-3",
-              "display": "Eve Veronica Everywoman"
+              "reference": "Patient/drr-in-2"
             },
-            "participant": [
-              {
-                "period": {
-                  "start": "2017-09-30T00:00:00-04:00",
-                  "end": "2017-09-30T14:19:00-04:00"
-                },
-                "individual": {
-                  "reference": "Practitioner/drr-out-3",
-                  "display": "Stanley Jason Garrett MD"
-                }
-              }
-            ],
-            "period": {
+            "effectivePeriod": {
               "start": "2017-09-30T00:00:00-04:00",
-              "end": "2017-09-30T14:19:00-04:00"
+              "end": "2017-09-30T23:59:00-04:00"
             },
-            "hospitalization": {
-              "dischargeDisposition": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/discharge-disposition",
-                    "code": "home",
-                    "display": "Home"
-                  }
-                ]
-              }
-            },
-            "location": [
-              {
-                "location": {
-                  "reference": "Location/Location-1001",
-                  "display": "Windward General Hospital"
-                }
-              }
-            ],
-            "serviceProvider": {
-              "reference": "Organization/Organization-1001",
-              "display": "Windward General Hospital"
-            }
+            "issued": "2017-09-30T00:00:00-04:00"
           }
         }
       ]
@@ -359,7 +359,7 @@
     "reference": "Measure/measure-drr"
   },
   "patient": {
-    "reference": "Patient/drr-out-3"
+    "reference": "Patient/drr-in-2"
   },
   "period": {
     "start": "2018-01-01T00:00:00-07:00",
@@ -442,7 +442,7 @@
               }
             ]
           },
-          "count": 0
+          "count": 1
         },
         {
           "identifier": {
@@ -458,7 +458,7 @@
           "count": 1
         }
       ],
-      "measureScore": 0.0
+      "measureScore": 1.0
     },
     {
       "identifier": {
@@ -509,6 +509,6 @@
     }
   ],
   "evaluatedResources": {
-    "reference": "#2c1c4ba1-804c-4782-9eb0-13ef7ad8d94d"
+    "reference": "#2fd73719-a1aa-4e61-be6c-12f5d4f0c831"
   }
 }
