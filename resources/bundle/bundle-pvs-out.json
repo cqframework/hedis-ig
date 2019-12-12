@@ -1,0 +1,126 @@
+{
+  "resourceType": "Bundle",
+  "id": "pvs-out",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "http://ncqa.org/fhir/hedis/Patient/pvs-out",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pvs-out",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/identifier-type",
+                  "code": "SB",
+                  "display": "Social Beneficiary Identifier"
+                }
+              ],
+              "text": "US Social Security Number"
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "000002667"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Everywoman",
+            "given": [
+              "Eve",
+              "Veronica"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "901-555-5864",
+            "use": "home"
+          },
+          {
+            "system": "phone",
+            "value": "901-555-9891",
+            "use": "mobile"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1951-05-21",
+        "address": [
+          {
+            "use": "home",
+            "type": "postal",
+            "line": [
+              "666 Eden Circle"
+            ],
+            "city": "Boise",
+            "district": "Ada County",
+            "state": "ID",
+            "postalCode": "83701"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/pvs-out"
+      }
+    },
+    {
+      "fullUrl": "http://ncqa.org/fhir/hedis/Immunization/pvs-out-v13",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "pvs-out-v13",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "448964007",
+              "display": "Pneumococcal 13-valent conjugate vaccine (product)"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/pvs-out"
+        },
+        "date": "2012-05-21",
+        "primarySource": true
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Immunization/pvs-out-v13"
+      }
+    },
+    {
+      "fullUrl": "http://ncqa.org/fhir/hedis/Immunization/pvs-out-v23",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "pvs-out-v23",
+        "status": "completed",
+        "notGiven": false,
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "90732",
+              "display": "PPSV23 VACC 2 YRS+ SUBQ/IM"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/pvs-out"
+        },
+        "date": "2013-03-21",
+        "primarySource": true
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Immunization/pvs-out-v23"
+      }
+    }
+  ]
+}

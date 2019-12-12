@@ -1,0 +1,223 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "measurereport-pvs-out",
+  "contained": [
+    {
+      "resourceType": "Bundle",
+      "id": "da4b244d-bf26-48d0-aea3-d7d635f64590",
+      "type": "collection",
+      "entry": [
+        {
+          "fullUrl": "a99a849d-c9f5-4adb-8adf-aed290646f5d",
+          "resource": {
+            "resourceType": "List",
+            "id": "a99a849d-c9f5-4adb-8adf-aed290646f5d",
+            "status": "current",
+            "mode": "snapshot",
+            "title": "numerator",
+            "entry": [
+              {
+                "item": {
+                  "reference": "Immunization/pvs-out-v23"
+                }
+              },
+              {
+                "item": {
+                  "reference": "Immunization/pvs-out-v13"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Patient/pvs-out",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "pvs-out",
+            "identifier": [
+              {
+                "use": "official",
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://hl7.org/fhir/identifier-type",
+                      "code": "SB",
+                      "display": "Social Beneficiary Identifier"
+                    }
+                  ],
+                  "text": "US Social Security Number"
+                },
+                "system": "http://hl7.org/fhir/sid/us-ssn",
+                "value": "000002667"
+              }
+            ],
+            "active": true,
+            "name": [
+              {
+                "family": "Everywoman",
+                "given": [
+                  "Eve",
+                  "Veronica"
+                ]
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "901-555-5864",
+                "use": "home"
+              },
+              {
+                "system": "phone",
+                "value": "901-555-9891",
+                "use": "mobile"
+              }
+            ],
+            "gender": "female",
+            "birthDate": "1951-05-21",
+            "address": [
+              {
+                "use": "home",
+                "type": "postal",
+                "line": [
+                  "666 Eden Circle"
+                ],
+                "city": "Boise",
+                "district": "Ada County",
+                "state": "ID",
+                "postalCode": "83701"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "ef898a80-5c90-438e-b7a9-56fbd7a79de2",
+          "resource": {
+            "resourceType": "List",
+            "id": "ef898a80-5c90-438e-b7a9-56fbd7a79de2",
+            "status": "current",
+            "mode": "snapshot",
+            "title": "initial-population",
+            "entry": [
+              {
+                "item": {
+                  "reference": "Patient/pvs-out"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl": "Immunization/pvs-out-v23",
+          "resource": {
+            "resourceType": "Immunization",
+            "id": "pvs-out-v23",
+            "status": "completed",
+            "notGiven": false,
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://www.ama-assn.org/go/cpt",
+                  "code": "90732",
+                  "display": "PPSV23 VACC 2 YRS+ SUBQ/IM"
+                }
+              ]
+            },
+            "patient": {
+              "reference": "Patient/pvs-out"
+            },
+            "date": "2013-03-21",
+            "primarySource": true
+          }
+        },
+        {
+          "fullUrl": "Immunization/pvs-out-v13",
+          "resource": {
+            "resourceType": "Immunization",
+            "id": "pvs-out-v13",
+            "status": "completed",
+            "notGiven": false,
+            "vaccineCode": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "448964007",
+                  "display": "Pneumococcal 13-valent conjugate vaccine (product)"
+                }
+              ]
+            },
+            "patient": {
+              "reference": "Patient/pvs-out"
+            },
+            "date": "2012-05-21",
+            "primarySource": true
+          }
+        }
+      ]
+    }
+  ],
+  "status": "complete",
+  "type": "individual",
+  "measure": {
+    "reference": "Measure/measure-pvs"
+  },
+  "patient": {
+    "reference": "Patient/pvs-out"
+  },
+  "period": {
+    "start": "2019-01-01T00:00:00-07:00",
+    "end": "2019-12-31T00:00:00-07:00"
+  },
+  "group": [
+    {
+      "identifier": {
+        "value": "PVS-cohort"
+      },
+      "population": [
+        {
+          "identifier": {
+            "value": "initial-population"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "initial-population"
+              }
+            ]
+          },
+          "count": 1
+        },
+        {
+          "identifier": {
+            "value": "numerator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "numerator"
+              }
+            ]
+          },
+          "count": 0
+        },
+        {
+          "identifier": {
+            "value": "denominator"
+          },
+          "code": {
+            "coding": [
+              {
+                "code": "denominator"
+              }
+            ]
+          },
+          "count": 1
+        }
+      ],
+      "measureScore": 0.0
+    }
+  ],
+  "evaluatedResources": {
+    "reference": "#da4b244d-bf26-48d0-aea3-d7d635f64590"
+  }
+}
